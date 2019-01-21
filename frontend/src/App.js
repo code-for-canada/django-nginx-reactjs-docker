@@ -36,6 +36,26 @@ class App extends Component {
           <p>
             The backend says: {this.state.test}
           </p>
+          <form>
+            <div>
+              <label>*Username:</label>
+              <input type="text" id="username" />
+              <br/>
+              <label>*Password:</label>
+              <input type="text" id="password" />
+              <br/>
+              <label>*Given name:</label>
+              <input type="text" id="givenname" />
+              <br/>
+              <label>*Family Name:</label>
+              <input type="text" id="familyname" />
+              <br/>
+              <label>*Email:</label>
+              <input type="text" id="email" />
+            </div>
+            <br/>
+            <input style={ { float: 'right' } } type="submit" value="Send to DB" />
+          </form>
         </header>
       </div>
     );
