@@ -38,6 +38,8 @@ class MyUser(AbstractBaseUser):
 
     objects = MyUserManager()
 
+    REQUIRED_FIELDS = ['username', 'password', 'given_name', 'family_name']
+
     # def has_perms(self, perm, ob=None):
     #     return True
 
