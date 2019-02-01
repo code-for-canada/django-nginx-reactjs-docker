@@ -37,9 +37,7 @@ class GetAllUsersTests(UserViewTest):
 
         # SELECT * FROM backend_myuser;
         expected = MyUser.objects.all()
-        print(response.data)
         serialized = user_serializers.UserSerializer(expected, many=True)
-        print(serialized.data)
         self.assertEqual(response.data, serialized.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
