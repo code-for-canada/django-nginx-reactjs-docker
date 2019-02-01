@@ -1,5 +1,5 @@
 from django.test import TestCase
-from backend.views import index
+from backend.views.views import index
 
 class ViewsTest(TestCase):
 
