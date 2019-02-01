@@ -140,7 +140,8 @@ disable=print-statement,
         exception-escape,
         comprehension-escape,
         C0111,    # to avoid unwanted import errors
-        E0401     # to avoid warnings related to docstring on every methods/classes/modules
+        E0401,    # to avoid warnings related to docstring on every methods/classes/modules
+        E0611	# to avoid warnings related no name in module
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
