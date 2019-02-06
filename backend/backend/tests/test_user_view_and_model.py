@@ -1,3 +1,8 @@
+'''
+It tests the queryset that is used in the view (user_view.py),
+but also the model itself (user_model.py)
+'''
+
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
 from backend.views.user_view import MyUser
