@@ -7,4 +7,4 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = MyUser.objects.all() # same as 'SELECT * FROM backend_myuser;'
     serializer_class = UserSerializer
     # allows only GET requests
-    http_method_names = ['get']
+    http_method_names = ['get'] # TODO: (fnormand01) disable GET request as soon as we deploy
