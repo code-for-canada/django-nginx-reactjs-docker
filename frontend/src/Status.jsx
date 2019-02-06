@@ -77,16 +77,9 @@ class Status extends Component {
     }
   }
 
-  checkDatabase = async () => {
-    const test = await fetch('http://localhost:80/database_check/', {
-      method: 'GET',
-      headers,
-      cache: 'default',
-    });
-    const testJson = await test.json();
-    if (testJson) {
-      this.setState({ databaseStatus: true });
-    }
+  checkDatabase = () => {
+    // TODO(caleybrock): expose an endpoint to check database.
+    this.setState({ databaseStatus: false });
   }
 
   // You must have JavaScript enabled to be able to run the app at all
@@ -146,7 +139,7 @@ class Status extends Component {
               isPassing={this.state.backendStatus}
             />
             <StatusCheck
-              description={'Database completing API requests sccessfully'}
+              description={'Database check not currently setup'}
               isPassing={this.state.databaseStatus}
             />
           </Panel.Body>

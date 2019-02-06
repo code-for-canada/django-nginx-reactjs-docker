@@ -7,3 +7,5 @@ __pycache__
 build 
 
 .DS_Store
+
+snyk_results_*.html

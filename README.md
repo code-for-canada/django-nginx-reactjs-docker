@@ -45,3 +45,9 @@ This includes:
   * [frontend/README](./frontend/README.md)
   * [backend/README](./backend/README.md)
 
+
+## Snyk Vulnerabilities
+
+frontend/package.json -> [![Known Vulnerabilities](https://snyk.io/test/github/code-for-canada/project-thundercat/badge.svg?targetFile=frontend%2Fpackage.json)](https://snyk.io/test/github/code-for-canada/project-thundercat?targetFile=frontend%2Fpackage.json)
+
+backend/requirements.txt -> [![Known Vulnerabilities](https://snyk.io/test/github/code-for-canada/project-thundercat/badge.svg?targetFile=backend%2Frequirements.txt)](https://snyk.io/test/github/code-for-canada/project-thundercat?targetFile=backend%2Frequirements.txt)
