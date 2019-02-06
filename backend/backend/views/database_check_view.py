@@ -6,3 +6,5 @@ class DatabaseViewSet(viewsets.ModelViewSet):
     # same as 'SELECT * FROM backend_databasecheckmodel;'
     queryset = DatabaseCheckModel.objects.all()
     serializer_class = DatabaseCheckSerializer
+    # allows only GET requests
+    http_method_names = ['get']
