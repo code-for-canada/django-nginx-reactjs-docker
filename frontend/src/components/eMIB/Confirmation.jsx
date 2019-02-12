@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { STRINGS } from "./Emib";
+import { WORDING } from "../translation/Translation";
 
 class Confirmation extends Component {
   render() {
     return (
       <div>
-        <p>{STRINGS.submissionConfirmed}</p>
+        <p>{WORDING.submissionConfirmed}</p>
         <a style={{ color: "blue" }} href="/experiment">
-          {STRINGS.exitTest}
+          {WORDING.exitTest}
         </a>
       </div>
     );
