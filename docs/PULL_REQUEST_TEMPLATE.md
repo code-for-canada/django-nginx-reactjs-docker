@@ -33,4 +33,5 @@ Screenshot of unit tests run passing:
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] I have researched WCAG2.1 standards and met them in this PR
+- [ ] Navigation with `Tab` and `Enter` still works
 - [ ] My changes look good on IE
