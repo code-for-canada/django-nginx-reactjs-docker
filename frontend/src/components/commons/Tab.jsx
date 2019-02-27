@@ -38,7 +38,7 @@ class Tab extends Component {
           </li>
         )}
         {this.props.selected === true && (
-          <li role="presentation" className="active" style={styles.li}>
+          <li role="presentation" style={styles.li}>
             <button
               id={this.props.tabName}
               style={{ ...styles.button, ...styles.active }}

@@ -46,7 +46,7 @@ class TabNavigation extends Component {
 
   render() {
     return (
-      <div className="bootstrap-tabs">
+      <div>
         <ul role="tablist" className="nav nav-tabs" style={styles.bootstrapNav}>
           {this.props.tabSpecs.map((tab, key) => (
             <span key={tab.id} onClick={() => this.selectTab(tab.id)}>
@@ -56,9 +56,7 @@ class TabNavigation extends Component {
           ))}
         </ul>
         <div style={styles.afterNav} />
-        <div style={styles.tabContent} className="tab-content">
-          {this.state.currentBody}
-        </div>
+        <div style={styles.tabContent}>{this.state.currentBody}</div>
       </div>
     );
   }
