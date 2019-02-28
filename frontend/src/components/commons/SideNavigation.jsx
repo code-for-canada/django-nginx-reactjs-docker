@@ -2,29 +2,26 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 const styles = {
-  sideNavPane: {
-    display: "flex",
-    flexDirection: "row"
-  },
+  sideNavPane: {},
   buttonList: {
     width: 240,
     paddingRight: 25,
-    marginTop: 18
+    marginTop: 18,
+    float: "left"
   },
   button: {
     width: 200,
     marginBottom: 10,
     marginLeft: 20,
     marginRight: 20,
-    display: "flex",
     justifyContent: "center",
     textAlign: "center",
     borderRadius: 4,
     padding: 6
   },
   bodyContent: {
-    display: "flex",
-    justifyContent: "flext-end",
+    float: "left",
+    maxWidth: 898,
     paddingRight: 20,
     height: "calc(100vh - 220px)",
     overflow: "auto"
