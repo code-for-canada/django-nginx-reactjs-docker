@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import LOCALIZE from "../../text_resources";
 
 const styles = {
   comingSoon: {
