@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import LOCALIZE from "../../text_resources";
 
+const styles = {
+  comingSoon: {
+    padding: 20
+  }
+};
+
+// TODO(caleybrock): localize strings once replaced with real content.
 class Inbox extends Component {
   render() {
     return (
       <div>
-        <h2>{LOCALIZE.emibTest.inboxPage.title}</h2>
-        <h3>{LOCALIZE.emibTest.inboxPage.taskList}</h3>
-        <h3>{LOCALIZE.emibTest.inboxPage.notePad}</h3>
-        <h3>{LOCALIZE.emibTest.inboxPage.textTools}</h3>
-        <h3>{LOCALIZE.emibTest.inboxPage.emailFeatures}</h3>
-        <h3>{LOCALIZE.emibTest.inboxPage.progressSaved}</h3>
-        <h3>{LOCALIZE.emibTest.inboxPage.timer}</h3>
+        <h2 style={styles.comingSoon}>Inbox coming soon!</h2>
       </div>
     );
   }

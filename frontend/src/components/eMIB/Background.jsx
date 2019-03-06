@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import LOCALIZE from "../../text_resources";
 
+const styles = {
+  comingSoon: {
+    padding: 20
+  }
+};
+
+// TODO(caleybrock): localize strings once replaced with real content.
 class Background extends Component {
   render() {
     return (
       <div>
-        <h2>{LOCALIZE.emibTest.backgroundPage.title}</h2>
-        <h3>{LOCALIZE.emibTest.backgroundPage.orgChart}</h3>
-        <h3>{LOCALIZE.emibTest.backgroundPage.Scenarios}</h3>
+        <h2 style={styles.comingSoon}>Background coming soon!</h2>
       </div>
     );
   }
