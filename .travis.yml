@@ -12,5 +12,13 @@ before_install:
 install:
   - docker-compose build
 
+postgres:
+  adapter: postgresql
+  database: myapp_test
+  username: postgres
+before_script:
+  - "psql -c 'create database myapp_test;' -U postgres"
+  - "rake db:migrate"
+
 script:
   - docker-compose run --rm backend ./manage.py test backend/tests/
