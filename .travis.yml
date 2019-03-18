@@ -1,1 +1,10 @@
 #Travis Config File
+
+language: python
+matrix:
+  include:
+    - name: "Unit Tests"
+      python: "3.6"
+      env: TEST_SUITE=suite_3_6_unit
+script: docker-compose run \
+  --rm backend ./manage.py test backend/tests/
