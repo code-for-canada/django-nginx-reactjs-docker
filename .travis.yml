@@ -6,9 +6,8 @@ services:
   - docker
 
 install:
-  - docker-compose build backend
-  - docker-compose build frontend
+  # - docker-compose build
 
 script:
   - docker-compose run --rm backend ./manage.py test backend/tests/
-  - docker-compose run --rm frontend npm test -- --watch
+  - docker-compose run --rm frontend npm test
