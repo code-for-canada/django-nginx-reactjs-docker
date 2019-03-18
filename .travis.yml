@@ -8,3 +8,6 @@ services:
 before_install:
   # - docker-compose build
   - docker-compose run --rm backend ./manage.py test backend/tests/
+
+install:
+  - pip install backend/requirements.txt
