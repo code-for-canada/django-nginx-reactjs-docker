@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  # - docker-compose build
+  - docker-compose up --build
 
 script:
   - docker-compose run --rm backend ./manage.py test backend/tests/
