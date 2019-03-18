@@ -4,19 +4,10 @@ language: python
 
 services:
   - docker
-  - postgresql
-
-before_install:
-  - "psql -c 'create database myapp_test;' -U postgres"
-  - ./manage.py migrate /backend
 
 install:
-  - docker-compose build
-
-postgres:
-  adapter: postgresql
-  database: myapp_test
-  username: postgres
+  # - docker-compose build
 
 script:
   - docker-compose run --rm backend ./manage.py test backend/tests/
+  - docker-compose run --rm frontend npm test -- --watch
