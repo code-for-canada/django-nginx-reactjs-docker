@@ -13,7 +13,6 @@ matrix:
     - language: node_js
       node_js: 10.15
       before_script:
-        - cd frontend/src/tests
         - npm install
       script:
-        - docker-compose run --rm frontend npm test -- --watch=false
+        - docker-compose run --rm frontend npm test -- --watch
