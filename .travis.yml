@@ -16,4 +16,4 @@ matrix:
         - cd frontend/src/tests
         - npm install
       script:
-        - docker-compose run --rm frontend npm test -- --forceExit
+        - docker-compose run --rm frontend npm test -- --watch=false
