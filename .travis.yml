@@ -15,5 +15,6 @@ matrix:
       before_script:
         - npm install
         - docker-compose up -d --build
+      provider: script
       script:
-        - docker-compose run --rm frontend yarn test --coverage
+        - docker-compose run --rm frontend npm test -- --coverage
