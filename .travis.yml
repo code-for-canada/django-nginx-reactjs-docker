@@ -20,4 +20,4 @@ matrix:
       node_js: 10.15
       provider: script
       script:
-        - docker-compose run --rm frontend npm test -- --coverage
+        - docker-compose run --rm frontend npm test src/tests/
