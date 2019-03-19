@@ -3,20 +3,21 @@
 services:
   - docker
 
+language: node_js
+
+install:
+  - docker-compose up -d --build
+
 matrix:
   include:
     - language: python
       python: 3.6
-      before_script:
-        - docker-compose up -d --build
       provider: script
       script:
         - docker-compose run --rm backend ./manage.py test backend/tests/
 
     - language: node_js
       node_js: 10.15
-      before_script:
-        - docker-compose up -d --build
       provider: script
       script:
         - docker-compose run --rm frontend npm test -- --coverage
