@@ -7,7 +7,7 @@ language: node_js
 
 install:
   - docker-compose up -d --build
-  - npm install
+  - npm install frontend/
 
 matrix:
   include:
