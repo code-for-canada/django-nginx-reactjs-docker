@@ -17,7 +17,7 @@ matrix:
       node_js: 10.15
       provider: script
       before_script:
-        - docker-compose build
+        - docker-compose up -d --build
         - npm install frontend/
       script:
         - docker-compose run --rm frontend npm test src/tests/ -- --coverage
