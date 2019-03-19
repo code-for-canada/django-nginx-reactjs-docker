@@ -1,13 +1,16 @@
 #Travis Configs File
 
-language: python
-
 services:
   - docker
 
-install:
-  - docker-compose up --build
+matrix:
+  include:
+    - language: python
+      python: 3.6
+      script:
+        - docker-compose run --rm backend ./manage.py test backend/tests/
 
-script:
-  - docker-compose run --rm backend ./manage.py test backend/tests/
-  - docker-compose run --rm frontend npm test
+    - language: node_js
+      node_js: "10.15"
+      script:
+        - docker-compose run --rm frontend npm test -- --watch
