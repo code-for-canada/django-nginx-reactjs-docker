@@ -14,6 +14,5 @@ matrix:
       node_js: 10.15
       before_script:
         - npm install
-        - cd frontend/src/tests
       script:
-        - docker-compose run --rm frontend npm test
+        - docker-compose run --rm frontend npm test -- --watch
