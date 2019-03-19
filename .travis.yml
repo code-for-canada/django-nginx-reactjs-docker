@@ -1,4 +1,4 @@
-#Travis Configs File
+#Travis Config File
 
 services:
   - docker
@@ -7,12 +7,14 @@ language: node_js
 
 matrix:
   include:
+    #Backend Tests
     - language: python
       python: 3.6
       provider: script
       script:
         - docker-compose run --rm backend ./manage.py test backend/tests/
 
+    #Frontend Tests
     - language: node_js
       node_js: 10.15
       provider: script
