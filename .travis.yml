@@ -13,4 +13,4 @@ matrix:
     - language: node_js
       node_js: "10.15"
       script:
-        - docker-compose run --rm frontend npm run test
+        - docker-compose run --rm frontend npm test -- --watch
