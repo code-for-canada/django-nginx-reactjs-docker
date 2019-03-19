@@ -16,4 +16,4 @@ matrix:
         - cd frontend/src/tests
         - npm install
       script:
-        - docker-compose run --rm frontend timeout=9000 npm test -- --watch
+        - docker-compose run --rm frontend npm test
