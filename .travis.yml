@@ -11,9 +11,11 @@ matrix:
     #     - docker-compose run --rm backend ./manage.py test backend/tests/
 
     - language: node_js
-      node_js: "10.15"
+      node_js: 10.15
       before_script:
         - cd frontend/src/tests
         - npm install
       script:
         - docker-compose run --rm frontend npm test -- --watch
+      after_success:
+        - exit 0
