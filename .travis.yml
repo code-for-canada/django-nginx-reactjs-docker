@@ -1,4 +1,4 @@
-#Travis Configs File
+#Travis Config File
 
 services:
   - docker
