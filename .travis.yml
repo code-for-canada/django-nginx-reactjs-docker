@@ -16,4 +16,4 @@ matrix:
         - npm install
         - docker-compose up -d --build
       script:
-        - docker-compose run --rm frontend npm test -- --watch
+        - docker-compose run --rm frontend npm test -- --coverage
