@@ -5,14 +5,14 @@ services:
 
 matrix:
   include:
-    - language: python
-      python: 3.6
-      script:
-        - docker-compose run --rm backend ./manage.py test backend/tests/
+    # - language: python
+    #   python: 3.6
+    #   script:
+    #     - docker-compose run --rm backend ./manage.py test backend/tests/
 
     - language: node_js
       node_js: 10.15
       before_script:
         - npm install
       script:
-        - docker-compose run --rm frontend npm test -- --coverage
+        - docker-compose run --rm frontend npm test src/tests -- --coverage
