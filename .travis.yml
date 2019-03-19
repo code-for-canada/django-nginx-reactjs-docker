@@ -1,5 +1,9 @@
 #Travis Configs File
 
+language:
+  - python
+  - node_js
+
 services:
   - docker
 
@@ -14,6 +18,7 @@ matrix:
       node_js: 10.15
       before_script:
         - npm install
+        - yarn install
         - docker-compose up -d --build
       provider: script
       script:
