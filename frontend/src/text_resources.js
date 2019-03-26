@@ -28,9 +28,7 @@ let LOCALIZE = new LocalizedStrings({
             inputTwoPlaceholder: "Password"
           }
         },
-        button: "Login",
-        invalidCredentialsError: "Invalid Credentials",
-        badRequestError: "Please provide both username and password"
+        button: "Login"
       }
     },
 
@@ -408,9 +406,7 @@ let LOCALIZE = new LocalizedStrings({
             inputTwoPlaceholder: "Mot de passe"
           }
         },
-        button: "Connexion",
-        invalidCredentialsError: "Identifiant invalide",
-        badRequestError: "S'il vous plaît fournir le nom d'utilisateur et le mot de passe"
+        button: "Connexion"
       }
     },
 

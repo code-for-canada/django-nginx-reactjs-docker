@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 
 const styles = {
@@ -27,68 +28,23 @@ const styles = {
 };
 
 class LoginForm extends Component {
+  static propTypes = {
+    authentification: PropTypes.func
+  };
+
   state = {
-    // token: "",
-    isLoaded: false,
-    validCredentials: true,
-    validRequest: true
+    isAuthenticated: false
   };
 
-  handleLogin = () => {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    const pageStatus = {
-      badRequest: 400,
-      invalidCredentials: 404
-    };
-
-    fetch("http://localhost/api/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    })
-      .then(res => {
-        if (res.ok) {
-          this.setState({ validCredentials: true, validRequest: true });
-          return res.json();
-        } else {
-          if (res.status === pageStatus.badRequest) {
-            this.setState({ validRequest: false });
-            console.log("Bad Request");
-          } else if (res.status === pageStatus.invalidCredentials) {
-            this.setState({ validCredentials: false });
-            console.log("Invalid Credentials");
-          }
-          throw Error(res.statusText);
-        }
-      })
-      .then(json => {
-        this.setState({
-          isLoaded: true
-          // token: json
-        });
-      })
-      .catch(error => console.error(error));
-  };
-
-  handleSubmit = event => {
-    this.setState({ validCredentials: true, validRequest: true });
-    event.preventDefault();
+  handleSubmit = () => {
+    this.setState({ isAuthenticated: true });
+    this.props.authentification();
   };
 
   render() {
-    // console.log(this.state.token);
-    // console.log(this.state.isLoaded);
     return (
       <div>
-        {!this.state.isLoaded && (
+        {!this.state.isAuthenticated && (
           <div>
             <div style={styles.loginContent}>
               <h3>{LOCALIZE.homePage.login.content.title}</h3>
@@ -117,28 +73,16 @@ class LoginForm extends Component {
                     style={styles.inputs}
                   />
                 </div>
-                {!this.state.validCredentials && (
-                  <div style={styles.validationError}>
-                    {LOCALIZE.homePage.login.invalidCredentialsError}
-                  </div>
-                )}
-                {!this.state.validRequest && (
-                  <div style={styles.validationError}>
-                    {LOCALIZE.homePage.login.badRequestError}
-                  </div>
-                )}
                 <input
                   style={styles.loginBtn}
                   className="btn btn-primary"
                   type="submit"
                   value={LOCALIZE.homePage.login.button}
-                  onClick={this.handleLogin}
                 />
               </form>
             </div>
           </div>
         )}
-        {this.state.isLoaded && <div>You've just logged in</div>}
       </div>
     );
   }
