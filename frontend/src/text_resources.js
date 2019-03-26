@@ -14,7 +14,24 @@ let LOCALIZE = new LocalizedStrings({
       title: "The Public Service Commission's Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool.",
       description:
-        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change.",
+      login: {
+        title: "LOG IN",
+        content: {
+          title: "Login",
+          description:
+            "An account is required to proceed further. To log in, enter your credentials below.",
+          inputs: {
+            inputOneTitle: "Email Address:",
+            inputOnePlaceholder: "johnsmith@outlook.ca",
+            inputTwoTitle: "Password:",
+            inputTwoPlaceholder: "Password"
+          }
+        },
+        button: "Login",
+        invalidCredentialsError: "Invalid Credentials",
+        badRequestError: "Please provide both username and password"
+      }
     },
 
     //Prototype Page
@@ -377,7 +394,24 @@ let LOCALIZE = new LocalizedStrings({
         "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
-        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change.",
+      login: {
+        title: "SE CONNECTER",
+        content: {
+          title: "Connexion",
+          description:
+            "FR An account is required to proceed further. To log in, enter your credentials below.",
+          inputs: {
+            inputOneTitle: "Adresse courriel :",
+            inputOnePlaceholder: "johnsmith@outlook.ca",
+            inputTwoTitle: "Mot de passe :",
+            inputTwoPlaceholder: "Mot de passe"
+          }
+        },
+        button: "Connexion",
+        invalidCredentialsError: "Identifiant invalide",
+        badRequestError: "S'il vous plaît fournir le nom d'utilisateur et le mot de passe"
+      }
     },
 
     //Prototype Page
