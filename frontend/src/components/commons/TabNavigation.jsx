@@ -25,13 +25,7 @@ const styles = {
     display: "block",
     WebkitTransition: "opacity 0.15s linear",
     OTransition: "opacity 0.15s linear",
-    transition: "opacity 0.15s linear",
-    backgroundColor: "white",
-    borderWidth: "1px 1px 0 1px",
-    borderStyle: "solid",
-    borderColor: "#00565e",
-    borderTopColor: "white",
-    height: "calc(100vh - 241px)"
+    transition: "opacity 0.15s linear"
   }
 };
 
@@ -39,7 +33,8 @@ class TabNavigation extends Component {
   static propTypes = {
     tabSpecs: PropTypes.array.isRequired,
     currentTab: PropTypes.number.isRequired,
-    menuName: PropTypes.string.isRequired
+    menuName: PropTypes.string.isRequired,
+    style: PropTypes.object
   };
 
   state = {
@@ -65,7 +60,9 @@ class TabNavigation extends Component {
           </ul>
         </nav>
         <div style={styles.afterNav} />
-        <div style={styles.tabContent}>{this.state.currentBody}</div>
+        <div style={this.props.style}>
+          <div style={styles.tabContent}>{this.state.currentBody}</div>
+        </div>
       </div>
     );
   }

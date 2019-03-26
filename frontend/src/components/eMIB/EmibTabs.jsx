@@ -40,7 +40,19 @@ class EmibTabs extends Component {
     ];
     return (
       <div style={customStyles.container}>
-        <TabNavigation tabSpecs={TABS} currentTab={1} menuName={LOCALIZE.ariaLabel.tabMenu} />
+        <TabNavigation
+          tabSpecs={TABS}
+          currentTab={1}
+          menuName={LOCALIZE.ariaLabel.tabMenu}
+          style={{
+            height: "calc(100vh - 241px)",
+            backgroundColor: "white",
+            borderWidth: "1px 1px 0 1px",
+            borderStyle: "solid",
+            borderColor: "#00565e",
+            borderTopColor: "white"
+          }}
+        />
         <Notepad />
       </div>
     );
