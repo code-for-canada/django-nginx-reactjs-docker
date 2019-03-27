@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LOCALIZE from "./text_resources";
 import ContentContainer from "./components/commons/ContentContainer";
-import LoginTabs from "./components/login/LoginTabs";
+import LoginTabs from "./components/authentication/AuthenticationTabs";
 
 class Home extends Component {
   //TODO(fnormand): Remove this part when implementing login functionality in the backend
