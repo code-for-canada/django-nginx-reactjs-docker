@@ -23,12 +23,33 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             inputOneTitle: "Email Address:",
-            inputOnePlaceholder: "johnsmith@outlook.ca",
+            inputOnePlaceholder: "john.smith@outlook.ca",
             inputTwoTitle: "Password:",
             inputTwoPlaceholder: "Password"
           }
         },
         button: "Login"
+      },
+      createAccount: {
+        title: "CREATE AN ACCOUNT",
+        content: {
+          title: "Create an account",
+          description:
+            "An account is required to proceed further. To create an account, fill out the following.",
+          inputs: {
+            inputOneTitle: "First Name:",
+            inputOnePlaceholder: "John",
+            inputTwoTitle: "Last Name:",
+            inputTwoPlaceholder: "Smith",
+            inputThreeTitle: "Email Address:",
+            inputThreePlaceholder: "john.smith@outlook.ca",
+            inputFourTitle: "Password (must be between 5-15 characters):",
+            inputFourPlaceholder: "Password",
+            inputFiveTitle: "Confirm Password:",
+            inputFivePlaceholder: "Password"
+          }
+        },
+        button: "Create account"
       }
     },
 
@@ -401,12 +422,33 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             inputOneTitle: "Adresse courriel :",
-            inputOnePlaceholder: "johnsmith@outlook.ca",
+            inputOnePlaceholder: "john.smith@outlook.ca",
             inputTwoTitle: "Mot de passe :",
             inputTwoPlaceholder: "Mot de passe"
           }
         },
         button: "Connexion"
+      },
+      createAccount: {
+        title: "CRÉER UN COMPTE",
+        content: {
+          title: "Créer un compte",
+          description:
+            "FR An account is required to proceed further. To create an account, fill out the following.",
+          inputs: {
+            inputOneTitle: "Prénom :",
+            inputOnePlaceholder: "John",
+            inputTwoTitle: "Nom de famille :",
+            inputTwoPlaceholder: "Smith",
+            inputThreeTitle: "Adresse courriel :",
+            inputThreePlaceholder: "john.smith@outlook.ca",
+            inputFourTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
+            inputFourPlaceholder: "Mot de passe",
+            inputFiveTitle: "Confirmer le mot de passe :",
+            inputFivePlaceholder: "Mot de passe"
+          }
+        },
+        button: "Créer compte"
       }
     },
 

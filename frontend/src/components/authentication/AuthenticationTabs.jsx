@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TabNavigation from "../commons/TabNavigation";
 import LoginForm from "./LoginForm";
+import CreateAccountForm from "./CreateAccountForm";
 import LOCALIZE from "../../text_resources";
 
 const customStyles = {
@@ -40,8 +41,8 @@ class LoginTabs extends Component {
       },
       {
         id: 1,
-        tabName: "CREATE AN ACCOUNT",
-        body: "Coming Soon!"
+        tabName: LOCALIZE.homePage.createAccount.title,
+        body: <CreateAccountForm />
       }
     ];
     return (
@@ -58,7 +59,8 @@ class LoginTabs extends Component {
                 borderWidth: "1px 1px 1px 1px",
                 borderStyle: "solid",
                 borderColor: "#00565e",
-                borderTopColor: "white"
+                borderTopColor: "white",
+                marginBottom: 25
               }}
             />
           </div>
