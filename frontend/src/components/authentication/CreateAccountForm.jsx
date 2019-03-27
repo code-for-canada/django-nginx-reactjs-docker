@@ -7,7 +7,7 @@ const styles = {
   createAccountContent: {
     padding: "12px 32px 0 32px"
   },
-  inputTitles: {
+  inputTitle: {
     padding: "12px 0 6px 0",
     fontWeight: "bold"
   },
@@ -16,18 +16,23 @@ const styles = {
     padding: "3px 6px 3px 6px",
     borderRadius: 4
   },
-  namesZone: {
+  zoneForNames: {
     display: "flow-root"
   },
-  nameInputs: {
+  inputForNames: {
     width: 190,
     padding: "3px 6px 3px 6px",
     borderRadius: 4
   },
-  namesValidationError: {
-    color: "red",
-    //must be the same width of nameInputs
-    width: 190
+  iconForNames: {
+    color: "#278400",
+    position: "absolute",
+    margin: "8px 0 0 170px"
+  },
+  iconForOtherFields: {
+    color: "#278400",
+    position: "absolute",
+    margin: "8px 0 0 370px"
   },
   loginBtn: {
     width: 150,
@@ -137,11 +142,14 @@ class LoginForm extends Component {
 
   render() {
     const {
+      isValidFirstName,
+      isValidLastName,
+      isValidEmail,
+      isValidPassword,
       isFirstPasswordLoad,
       firstNameClassStyle,
       lastNameClassStyle,
       emailClassStyle,
-      isValidPassword,
       passwordClassStyle,
       isValidPasswordConfirmation,
       passwordConfirmationClassStyle
@@ -156,11 +164,15 @@ class LoginForm extends Component {
             <h3>{LOCALIZE.homePage.createAccount.content.title}</h3>
             <span>{LOCALIZE.homePage.createAccount.content.description}</span>
             <form>
-              <div style={styles.namesZone}>
+              <div style={styles.zoneForNames}>
                 <div className="float-left">
-                  <div style={styles.inputTitles}>
+                  <div style={styles.inputTitle}>
                     <span>{LOCALIZE.homePage.createAccount.content.inputs.firstNameTitle}</span>
                   </div>
+                  {isValidFirstName && (
+                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                  )}
+
                   <input
                     className={firstNameClassStyle}
                     type="text"
@@ -168,30 +180,36 @@ class LoginForm extends Component {
                       LOCALIZE.homePage.createAccount.content.inputs.firstNamePlaceholder
                     }
                     id="first-name"
-                    style={styles.nameInputs}
+                    style={styles.inputForNames}
                     onChange={this.firstNameValidation}
                   />
                 </div>
                 <div className="float-right">
-                  <div style={styles.inputTitles}>
-                    <span style={styles.inputTitles}>
+                  <div style={styles.inputTitle}>
+                    <span style={styles.inputTitle}>
                       {LOCALIZE.homePage.createAccount.content.inputs.lastNameTitle}
                     </span>
                   </div>
+                  {isValidLastName && (
+                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                  )}
                   <input
                     className={lastNameClassStyle}
                     type="text"
                     placeholder={LOCALIZE.homePage.createAccount.content.inputs.lastNamePlaceholder}
                     id="last-name"
-                    style={styles.nameInputs}
+                    style={styles.inputForNames}
                     onChange={this.lastNameValidation}
                   />
                 </div>
               </div>
               <div>
-                <div style={styles.inputTitles}>
+                <div style={styles.inputTitle}>
                   <span>{LOCALIZE.homePage.createAccount.content.inputs.emailTitle}</span>
                 </div>
+                {isValidEmail && (
+                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                )}
                 <input
                   className={emailClassStyle}
                   type="text"
@@ -202,9 +220,12 @@ class LoginForm extends Component {
                 />
               </div>
               <div>
-                <div style={styles.inputTitles}>
+                <div style={styles.inputTitle}>
                   <span>{LOCALIZE.homePage.createAccount.content.inputs.passwordTitle}</span>
                 </div>
+                {isValidPassword && (
+                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                )}
                 <input
                   className={passwordClassStyle}
                   type="password"
@@ -224,11 +245,14 @@ class LoginForm extends Component {
                 )}
               </div>
               <div>
-                <div style={styles.inputTitles}>
+                <div style={styles.inputTitle}>
                   <span>
                     {LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationTitle}
                   </span>
                 </div>
+                {isValidPasswordConfirmation && (
+                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                )}
                 <input
                   className={passwordConfirmationClassStyle}
                   type="password"

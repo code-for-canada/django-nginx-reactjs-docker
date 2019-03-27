@@ -7,5 +7,5 @@ create-account-form.css is used for the CreateAccountForm.jsx styles that cannot
 }
 
 .invalid-field {
-  border: 2px solid red;
+  border: 3px solid red;
 }
