@@ -37,16 +37,24 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
-            inputOneTitle: "First Name:",
-            inputOnePlaceholder: "John",
-            inputTwoTitle: "Last Name:",
-            inputTwoPlaceholder: "Smith",
-            inputThreeTitle: "Email Address:",
-            inputThreePlaceholder: "john.smith@outlook.ca",
-            inputFourTitle: "Password (must be between 5-15 characters):",
-            inputFourPlaceholder: "Password",
-            inputFiveTitle: "Confirm Password:",
-            inputFivePlaceholder: "Password"
+            firstNameTitle: "First Name:",
+            firstNamePlaceholder: "John",
+            lastNameTitle: "Last Name:",
+            lastNamePlaceholder: "Smith",
+            emailTitle: "Email Address:",
+            emailPlaceholder: "john.smith@outlook.ca",
+            passwordTitle: "Password (must be between 5-15 characters):",
+            passwordPlaceholder: "Password",
+            passwordErrors: {
+              Bullet1: "At least one upper case",
+              Bullet2: "At least one lower case",
+              Bullet3: "At least one digit",
+              Bullet4: "At least one special character",
+              Bullet5: "Minimum of 5 characters and maximum of 15"
+            },
+            passwordConfirmationTitle: "Confirm Password:",
+            passwordConfirmationPlaceholder: "Password",
+            passwordConfirmationError: "Must match the Password"
           }
         },
         button: "Create account"
@@ -436,16 +444,24 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "FR An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
-            inputOneTitle: "Prénom :",
-            inputOnePlaceholder: "John",
-            inputTwoTitle: "Nom de famille :",
-            inputTwoPlaceholder: "Smith",
-            inputThreeTitle: "Adresse courriel :",
-            inputThreePlaceholder: "john.smith@outlook.ca",
-            inputFourTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
-            inputFourPlaceholder: "Mot de passe",
-            inputFiveTitle: "Confirmer le mot de passe :",
-            inputFivePlaceholder: "Mot de passe"
+            firstNameTitle: "Prénom :",
+            firstNamePlaceholder: "John",
+            lastNameTitle: "Nom de famille :",
+            lastNamePlaceholder: "Smith",
+            emailTitle: "Adresse courriel :",
+            emailPlaceholder: "john.smith@outlook.ca",
+            passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
+            passwordPlaceholder: "Mot de passe",
+            passwordErrors: {
+              Bullet1: "Au moins une majuscule",
+              Bullet2: "Au moins une minuscule",
+              Bullet3: "Au moins un chiffre",
+              Bullet4: "Au moins un caractère spécial",
+              Bullet5: "Au moins 5 caractères et maximum 15"
+            },
+            passwordConfirmationTitle: "Confirmer le mot de passe :",
+            passwordConfirmationPlaceholder: "Mot de passe",
+            passwordConfirmationError: "Doit correspondre au mot de passe"
           }
         },
         button: "Créer compte"

@@ -63,7 +63,6 @@ class LoginForm extends Component {
                     id="username"
                     style={styles.inputs}
                   />
-                  <br />
                 </div>
                 <div>
                   <div style={styles.inputTitles}>

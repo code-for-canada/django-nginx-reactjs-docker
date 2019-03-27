@@ -1,0 +1,11 @@
+/*
+create-account-form.css is used for the CreateAccountForm.jsx styles that cannot be added inside a const
+*/
+
+.valid-field {
+  border: 1px solid #00565e;
+}
+
+.invalid-field {
+  border: 2px solid red;
+}
