@@ -28,6 +28,8 @@ const styles = {
 };
 
 class LoginForm extends Component {
+  //TODO(fnormand): Remove this part when implementing login functionality in the backend
+  //===========================================
   static propTypes = {
     authentification: PropTypes.func
   };
@@ -40,6 +42,7 @@ class LoginForm extends Component {
     this.setState({ isAuthenticated: true });
     this.props.authentification();
   };
+  //===========================================
 
   render() {
     return (

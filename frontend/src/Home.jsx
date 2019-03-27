@@ -4,6 +4,8 @@ import ContentContainer from "./components/commons/ContentContainer";
 import LoginTabs from "./components/login/LoginTabs";
 
 class Home extends Component {
+  //TODO(fnormand): Remove this part when implementing login functionality in the backend
+  //===========================================
   state = {
     isAuthenticated: false
   };
@@ -11,6 +13,7 @@ class Home extends Component {
   authentification = () => {
     this.setState({ isAuthenticated: true });
   };
+  //===========================================
 
   render() {
     return (

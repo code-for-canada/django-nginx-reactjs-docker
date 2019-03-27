@@ -15,6 +15,8 @@ const customStyles = {
 };
 
 class LoginTabs extends Component {
+  //TODO(fnormand): Remove this part when implementing login functionality in the backend
+  //===========================================
   static propTypes = {
     authentification: PropTypes.func
   };
@@ -27,6 +29,7 @@ class LoginTabs extends Component {
     this.setState({ isAuthenticated: true });
     this.props.authentification();
   };
+  //===========================================
 
   render() {
     const TABS = [
