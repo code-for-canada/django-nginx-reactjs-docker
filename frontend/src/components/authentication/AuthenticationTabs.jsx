@@ -45,12 +45,12 @@ class LoginTabs extends Component {
     const TABS = [
       {
         id: 0,
-        tabName: LOCALIZE.homePage.login.title,
+        tabName: LOCALIZE.authentication.login.title,
         body: <LoginForm authentification={this.authentification} />
       },
       {
         id: 1,
-        tabName: LOCALIZE.homePage.createAccount.title,
+        tabName: LOCALIZE.authentication.createAccount.title,
         body: <CreateAccountForm />
       }
     ];

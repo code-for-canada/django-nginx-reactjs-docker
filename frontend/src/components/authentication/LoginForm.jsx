@@ -50,29 +50,29 @@ class LoginForm extends Component {
         {!this.state.isAuthenticated && (
           <div>
             <div style={styles.loginContent}>
-              <h3>{LOCALIZE.homePage.login.content.title}</h3>
-              <span>{LOCALIZE.homePage.login.content.description}</span>
+              <h3>{LOCALIZE.authentication.login.content.title}</h3>
+              <span>{LOCALIZE.authentication.login.content.description}</span>
               <form onSubmit={this.handleSubmit}>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.homePage.login.content.inputs.emailTitle}</span>
+                    <span>{LOCALIZE.authentication.login.content.inputs.emailTitle}</span>
                   </div>
                   <input
-                    aria-label={LOCALIZE.homePage.login.content.inputs.emailTitle}
+                    aria-label={LOCALIZE.authentication.login.content.inputs.emailTitle}
                     type="text"
-                    placeholder={LOCALIZE.homePage.login.content.inputs.emailPlaceholder}
+                    placeholder={LOCALIZE.authentication.login.content.inputs.emailPlaceholder}
                     id="username"
                     style={styles.inputs}
                   />
                 </div>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.homePage.login.content.inputs.passwordTitle}</span>
+                    <span>{LOCALIZE.authentication.login.content.inputs.passwordTitle}</span>
                   </div>
                   <input
-                    aria-label={LOCALIZE.homePage.login.content.inputs.passwordTitle}
+                    aria-label={LOCALIZE.authentication.login.content.inputs.passwordTitle}
                     type="password"
-                    placeholder={LOCALIZE.homePage.login.content.inputs.passwordPlaceholder}
+                    placeholder={LOCALIZE.authentication.login.content.inputs.passwordPlaceholder}
                     id="password"
                     style={styles.inputs}
                   />
@@ -81,7 +81,7 @@ class LoginForm extends Component {
                   style={styles.loginBtn}
                   className="btn btn-primary"
                   type="submit"
-                  value={LOCALIZE.homePage.login.button}
+                  value={LOCALIZE.authentication.login.button}
                 />
               </form>
             </div>

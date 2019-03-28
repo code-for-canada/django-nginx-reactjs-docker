@@ -9,12 +9,8 @@ let LOCALIZE = new LocalizedStrings({
       statusTabTitle: "Status"
     },
 
-    //Home Page
-    homePage: {
-      title: "The Public Service Commission's Competency Assessment Tool",
-      welcomeMsg: "Welcome to the Compotency Assessment Tool.",
-      description:
-        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change.",
+    //authentication
+    authentication: {
       login: {
         title: "LOG IN",
         content: {
@@ -60,6 +56,14 @@ let LOCALIZE = new LocalizedStrings({
         },
         button: "Create account"
       }
+    },
+
+    //Home Page
+    homePage: {
+      title: "The Public Service Commission's Competency Assessment Tool",
+      welcomeMsg: "Welcome to the Compotency Assessment Tool.",
+      description:
+        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
     },
 
     //Prototype Page
@@ -417,13 +421,8 @@ let LOCALIZE = new LocalizedStrings({
       statusTabTitle: "Statut"
     },
 
-    //Home Page
-    homePage: {
-      title:
-        "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
-      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
-      description:
-        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change.",
+    //authentication
+    authentication: {
       login: {
         title: "SE CONNECTER",
         content: {
@@ -469,6 +468,15 @@ let LOCALIZE = new LocalizedStrings({
         },
         button: "Créer compte"
       }
+    },
+
+    //Home Page
+    homePage: {
+      title:
+        "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
+      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
+      description:
+        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
     },
 
     //Prototype Page

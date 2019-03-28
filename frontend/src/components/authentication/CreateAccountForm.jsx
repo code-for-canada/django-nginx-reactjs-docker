@@ -161,24 +161,26 @@ class CreateAccountForm extends Component {
       <div>
         <div>
           <div style={styles.createAccountContent}>
-            <h3>{LOCALIZE.homePage.createAccount.content.title}</h3>
-            <span>{LOCALIZE.homePage.createAccount.content.description}</span>
+            <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
+            <span>{LOCALIZE.authentication.createAccount.content.description}</span>
             <form>
               <div style={styles.zoneForNames}>
                 <div className="float-left">
                   <div style={styles.inputTitle}>
-                    <span>{LOCALIZE.homePage.createAccount.content.inputs.firstNameTitle}</span>
+                    <span>
+                      {LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
+                    </span>
                   </div>
                   {isValidFirstName && (
                     <span className="far fa-check-circle" style={styles.iconForNames} />
                   )}
 
                   <input
-                    aria-label={LOCALIZE.homePage.createAccount.content.inputs.firstNameTitle}
+                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
                     className={firstNameClassStyle}
                     type="text"
                     placeholder={
-                      LOCALIZE.homePage.createAccount.content.inputs.firstNamePlaceholder
+                      LOCALIZE.authentication.createAccount.content.inputs.firstNamePlaceholder
                     }
                     id="first-name"
                     style={styles.inputForNames}
@@ -188,17 +190,19 @@ class CreateAccountForm extends Component {
                 <div className="float-right">
                   <div style={styles.inputTitle}>
                     <span style={styles.inputTitle}>
-                      {LOCALIZE.homePage.createAccount.content.inputs.lastNameTitle}
+                      {LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     </span>
                   </div>
                   {isValidLastName && (
                     <span className="far fa-check-circle" style={styles.iconForNames} />
                   )}
                   <input
-                    aria-label={LOCALIZE.homePage.createAccount.content.inputs.lastNameTitle}
+                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={lastNameClassStyle}
                     type="text"
-                    placeholder={LOCALIZE.homePage.createAccount.content.inputs.lastNamePlaceholder}
+                    placeholder={
+                      LOCALIZE.authentication.createAccount.content.inputs.lastNamePlaceholder
+                    }
                     id="last-name"
                     style={styles.inputForNames}
                     onChange={this.lastNameValidation}
@@ -207,16 +211,18 @@ class CreateAccountForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <span>{LOCALIZE.homePage.createAccount.content.inputs.emailTitle}</span>
+                  <span>{LOCALIZE.authentication.createAccount.content.inputs.emailTitle}</span>
                 </div>
                 {isValidEmail && (
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
                 )}
                 <input
-                  aria-label={LOCALIZE.homePage.createAccount.content.inputs.emailTitle}
+                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   className={emailClassStyle}
                   type="text"
-                  placeholder={LOCALIZE.homePage.createAccount.content.inputs.emailPlaceholder}
+                  placeholder={
+                    LOCALIZE.authentication.createAccount.content.inputs.emailPlaceholder
+                  }
                   id="email"
                   style={styles.inputs}
                   onChange={this.emailValidation}
@@ -224,16 +230,18 @@ class CreateAccountForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <span>{LOCALIZE.homePage.createAccount.content.inputs.passwordTitle}</span>
+                  <span>{LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}</span>
                 </div>
                 {isValidPassword && (
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
                 )}
                 <input
-                  aria-label={LOCALIZE.homePage.createAccount.content.inputs.passwordTitle}
+                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   className={passwordClassStyle}
                   type="password"
-                  placeholder={LOCALIZE.homePage.createAccount.content.inputs.passwordPlaceholder}
+                  placeholder={
+                    LOCALIZE.authentication.createAccount.content.inputs.passwordPlaceholder
+                  }
                   id="password"
                   style={styles.inputs}
                   onChange={this.passwordValidation}
@@ -241,24 +249,35 @@ class CreateAccountForm extends Component {
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <div>
                     <p style={styles.validationError}>
-                      {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.description}
+                      {
+                        LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                          .description
+                      }
                     </p>
                     <ul style={styles.validationError}>
                       <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.upperCase}
+                        {
+                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                            .upperCase
+                        }
                       </li>
-                      <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.lowerCase}
-                      </li>
-                      <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.digit}</li>
                       <li>
                         {
-                          LOCALIZE.homePage.createAccount.content.inputs.passwordErrors
+                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                            .lowerCase
+                        }
+                      </li>
+                      <li>
+                        {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.digit}
+                      </li>
+                      <li>
+                        {
+                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
                             .specialCharacter
                         }
                       </li>
                       <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.length}
+                        {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
                       </li>
                     </ul>
                   </div>
@@ -267,7 +286,7 @@ class CreateAccountForm extends Component {
               <div>
                 <div style={styles.inputTitle}>
                   <span>
-                    {LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationTitle}
+                    {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
                   </span>
                 </div>
                 {isValidPasswordConfirmation && (
@@ -275,12 +294,13 @@ class CreateAccountForm extends Component {
                 )}
                 <input
                   aria-label={
-                    LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationTitle
+                    LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle
                   }
                   className={passwordConfirmationClassStyle}
                   type="password"
                   placeholder={
-                    LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationPlaceholder
+                    LOCALIZE.authentication.createAccount.content.inputs
+                      .passwordConfirmationPlaceholder
                   }
                   id="password-confirmation"
                   style={styles.inputs}
@@ -288,7 +308,7 @@ class CreateAccountForm extends Component {
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
                   <p style={styles.validationError}>
-                    {LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationError}
+                    {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
                   </p>
                 )}
               </div>
@@ -298,7 +318,7 @@ class CreateAccountForm extends Component {
                 className="btn btn-primary"
                 type="submit"
               >
-                {LOCALIZE.homePage.createAccount.button}
+                {LOCALIZE.authentication.createAccount.button}
               </button>
             </form>
           </div>
