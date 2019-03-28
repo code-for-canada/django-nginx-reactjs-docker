@@ -47,11 +47,11 @@ let LOCALIZE = new LocalizedStrings({
             passwordPlaceholder: "Password",
             passwordErrors: {
               description: "Your password must satisfy the following:",
-              Bullet1: "At least one upper case",
-              Bullet2: "At least one lower case",
-              Bullet3: "At least one digit",
-              Bullet4: "At least one special character",
-              Bullet5: "Minimum of 5 characters and maximum of 15"
+              upperCase: "At least one upper case",
+              lowerCase: "At least one lower case",
+              digit: "At least one digit",
+              specialCharacter: "At least one special character",
+              length: "Minimum of 5 characters and maximum of 15"
             },
             passwordConfirmationTitle: "Confirm Password:",
             passwordConfirmationPlaceholder: "Password",
@@ -456,11 +456,11 @@ let LOCALIZE = new LocalizedStrings({
             passwordPlaceholder: "Mot de passe",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
-              Bullet1: "Au moins une majuscule",
-              Bullet2: "Au moins une minuscule",
-              Bullet3: "Au moins un chiffre",
-              Bullet4: "Au moins un caractère spécial",
-              Bullet5: "Au moins 5 caractères et maximum 15"
+              upperCase: "Au moins une majuscule",
+              lowerCase: "Au moins une minuscule",
+              digit: "Au moins un chiffre",
+              specialCharacter: "Au moins un caractère spécial",
+              length: "Au moins 5 caractères et maximum 15"
             },
             passwordConfirmationTitle: "Confirmer le mot de passe :",
             passwordConfirmationPlaceholder: "Mot de passe",

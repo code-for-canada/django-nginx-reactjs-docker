@@ -245,19 +245,20 @@ class CreateAccountForm extends Component {
                     </p>
                     <ul style={styles.validationError}>
                       <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet1}
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.upperCase}
                       </li>
                       <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet2}
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.lowerCase}
+                      </li>
+                      <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.digit}</li>
+                      <li>
+                        {
+                          LOCALIZE.homePage.createAccount.content.inputs.passwordErrors
+                            .specialCharacter
+                        }
                       </li>
                       <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet3}
-                      </li>
-                      <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet4}
-                      </li>
-                      <li>
-                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet5}
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.length}
                       </li>
                     </ul>
                   </div>
