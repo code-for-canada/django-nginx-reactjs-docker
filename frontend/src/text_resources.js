@@ -22,10 +22,10 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
-            inputOneTitle: "Email Address:",
-            inputOnePlaceholder: "john.smith@outlook.ca",
-            inputTwoTitle: "Password:",
-            inputTwoPlaceholder: "Password"
+            emailTitle: "Email Address:",
+            emailPlaceholder: "john.smith@outlook.ca",
+            passwordTitle: "Password:",
+            passwordPlaceholder: "Password"
           }
         },
         button: "Login"
@@ -382,7 +382,8 @@ let LOCALIZE = new LocalizedStrings({
       mainMenu: "Main Menu",
       tabMenu: "eMIB Tab Menu",
       instructionsMenu: "Instructions Menu",
-      languageToggleBtn: "language-toggle-button"
+      languageToggleBtn: "language-toggle-button",
+      authenticationMenu: "Authentication Menu"
     },
 
     //Commons
@@ -430,10 +431,10 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
-            inputOneTitle: "Adresse courriel :",
-            inputOnePlaceholder: "john.smith@outlook.ca",
-            inputTwoTitle: "Mot de passe :",
-            inputTwoPlaceholder: "Mot de passe"
+            emailTitle: "Adresse courriel :",
+            emailPlaceholder: "john.smith@outlook.ca",
+            passwordTitle: "Mot de passe :",
+            passwordPlaceholder: "Mot de passe"
           }
         },
         button: "Connexion"
@@ -797,7 +798,8 @@ let LOCALIZE = new LocalizedStrings({
       mainMenu: "Menu Principal",
       tabMenu: "Menu des onglets de la BRG-e",
       instructionsMenu: "Menu des instructions",
-      languageToggleBtn: "bouton-de-langue-a-bascule"
+      languageToggleBtn: "bouton-de-langue-a-bascule",
+      authenticationMenu: "Menu d'authentification"
     },
 
     //Commons

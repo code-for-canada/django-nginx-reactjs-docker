@@ -55,22 +55,24 @@ class LoginForm extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.homePage.login.content.inputs.inputOneTitle}</span>
+                    <span>{LOCALIZE.homePage.login.content.inputs.emailTitle}</span>
                   </div>
                   <input
+                    aria-label={LOCALIZE.homePage.login.content.inputs.emailTitle}
                     type="text"
-                    placeholder={LOCALIZE.homePage.login.content.inputs.inputOnePlaceholder}
+                    placeholder={LOCALIZE.homePage.login.content.inputs.emailPlaceholder}
                     id="username"
                     style={styles.inputs}
                   />
                 </div>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.homePage.login.content.inputs.inputTwoTitle}</span>
+                    <span>{LOCALIZE.homePage.login.content.inputs.passwordTitle}</span>
                   </div>
                   <input
+                    aria-label={LOCALIZE.homePage.login.content.inputs.passwordTitle}
                     type="password"
-                    placeholder={LOCALIZE.homePage.login.content.inputs.inputTwoPlaceholder}
+                    placeholder={LOCALIZE.homePage.login.content.inputs.passwordPlaceholder}
                     id="password"
                     style={styles.inputs}
                   />

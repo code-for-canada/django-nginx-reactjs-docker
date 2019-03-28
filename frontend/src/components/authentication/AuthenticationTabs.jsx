@@ -52,7 +52,7 @@ class LoginTabs extends Component {
             <TabNavigation
               tabSpecs={TABS}
               currentTab={0}
-              menuName="Login Menu"
+              menuName={LOCALIZE.ariaLabel.authenticationMenu}
               style={{
                 height: "100%",
                 backgroundColor: "white",

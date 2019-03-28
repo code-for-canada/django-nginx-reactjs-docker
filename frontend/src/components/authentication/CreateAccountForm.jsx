@@ -174,6 +174,7 @@ class LoginForm extends Component {
                   )}
 
                   <input
+                    aria-label={LOCALIZE.homePage.createAccount.content.inputs.firstNameTitle}
                     className={firstNameClassStyle}
                     type="text"
                     placeholder={
@@ -194,6 +195,7 @@ class LoginForm extends Component {
                     <span className="far fa-check-circle" style={styles.iconForNames} />
                   )}
                   <input
+                    aria-label={LOCALIZE.homePage.createAccount.content.inputs.lastNameTitle}
                     className={lastNameClassStyle}
                     type="text"
                     placeholder={LOCALIZE.homePage.createAccount.content.inputs.lastNamePlaceholder}
@@ -211,6 +213,7 @@ class LoginForm extends Component {
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
                 )}
                 <input
+                  aria-label={LOCALIZE.homePage.createAccount.content.inputs.emailTitle}
                   className={emailClassStyle}
                   type="text"
                   placeholder={LOCALIZE.homePage.createAccount.content.inputs.emailPlaceholder}
@@ -227,6 +230,7 @@ class LoginForm extends Component {
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
                 )}
                 <input
+                  aria-label={LOCALIZE.homePage.createAccount.content.inputs.passwordTitle}
                   className={passwordClassStyle}
                   type="password"
                   placeholder={LOCALIZE.homePage.createAccount.content.inputs.passwordPlaceholder}
@@ -269,6 +273,9 @@ class LoginForm extends Component {
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
                 )}
                 <input
+                  aria-label={
+                    LOCALIZE.homePage.createAccount.content.inputs.passwordConfirmationTitle
+                  }
                   className={passwordConfirmationClassStyle}
                   type="password"
                   placeholder={
