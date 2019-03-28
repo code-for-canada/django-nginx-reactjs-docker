@@ -235,13 +235,28 @@ class LoginForm extends Component {
                   onChange={this.passwordValidation}
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
-                  <ul style={styles.validationError}>
-                    <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet1}</li>
-                    <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet2}</li>
-                    <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet3}</li>
-                    <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet4}</li>
-                    <li>{LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet5}</li>
-                  </ul>
+                  <div>
+                    <p style={styles.validationError}>
+                      {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.description}
+                    </p>
+                    <ul style={styles.validationError}>
+                      <li>
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet1}
+                      </li>
+                      <li>
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet2}
+                      </li>
+                      <li>
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet3}
+                      </li>
+                      <li>
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet4}
+                      </li>
+                      <li>
+                        {LOCALIZE.homePage.createAccount.content.inputs.passwordErrors.Bullet5}
+                      </li>
+                    </ul>
+                  </div>
                 )}
               </div>
               <div>

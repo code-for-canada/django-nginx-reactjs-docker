@@ -46,6 +46,7 @@ let LOCALIZE = new LocalizedStrings({
             passwordTitle: "Password (must be between 5-15 characters):",
             passwordPlaceholder: "Password",
             passwordErrors: {
+              description: "Your password must satisfy the following:",
               Bullet1: "At least one upper case",
               Bullet2: "At least one lower case",
               Bullet3: "At least one digit",
@@ -453,6 +454,7 @@ let LOCALIZE = new LocalizedStrings({
             passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
             passwordPlaceholder: "Mot de passe",
             passwordErrors: {
+              description: "Votre mot de passe doit satisfaire les critères suivants :",
               Bullet1: "Au moins une majuscule",
               Bullet2: "Au moins une minuscule",
               Bullet3: "Au moins un chiffre",
