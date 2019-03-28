@@ -47,7 +47,7 @@ const styles = {
 
 let SUBMIT_BTN_DISABLED;
 
-class LoginForm extends Component {
+class CreateAccountForm extends Component {
   state = {
     isFirstPasswordLoad: true,
     isValidFirstName: false,
@@ -307,4 +307,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default CreateAccountForm;
