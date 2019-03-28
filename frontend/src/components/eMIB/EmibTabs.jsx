@@ -7,7 +7,7 @@ import InTestInstructions from "./InTestInstructions";
 import Notepad from "../commons/Notepad";
 import "../../css/emib-tabs.css";
 
-const customStyles = {
+const styles = {
   container: {
     maxWidth: 1400,
     minWidth: 900,
@@ -16,6 +16,14 @@ const customStyles = {
     display: "flex",
     paddingRight: 20,
     paddingLeft: 20
+  },
+  tabNavigation: {
+    height: "calc(100vh - 241px)",
+    backgroundColor: "white",
+    borderWidth: "1px 1px 0 1px",
+    borderStyle: "solid",
+    borderColor: "#00565e",
+    borderTopColor: "white"
   }
 };
 
@@ -39,19 +47,12 @@ class EmibTabs extends Component {
       }
     ];
     return (
-      <div style={customStyles.container}>
+      <div style={styles.container}>
         <TabNavigation
           tabSpecs={TABS}
           currentTab={1}
           menuName={LOCALIZE.ariaLabel.tabMenu}
-          style={{
-            height: "calc(100vh - 241px)",
-            backgroundColor: "white",
-            borderWidth: "1px 1px 0 1px",
-            borderStyle: "solid",
-            borderColor: "#00565e",
-            borderTopColor: "white"
-          }}
+          style={styles.tabNavigation}
         />
         <Notepad />
       </div>
