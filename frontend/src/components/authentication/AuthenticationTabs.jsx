@@ -5,13 +5,22 @@ import LoginForm from "./LoginForm";
 import CreateAccountForm from "./CreateAccountForm";
 import LOCALIZE from "../../text_resources";
 
-const customStyles = {
+const styles = {
   container: {
     width: 500,
     margin: "0px auto",
     paddingTop: 24,
     paddingRight: 20,
     paddingLeft: 20
+  },
+  tabNavigationStyle: {
+    height: "100%",
+    backgroundColor: "white",
+    borderWidth: "1px 1px 1px 1px",
+    borderStyle: "solid",
+    borderColor: "#00565e",
+    borderTopColor: "white",
+    marginBottom: 25
   }
 };
 
@@ -48,20 +57,12 @@ class LoginTabs extends Component {
     return (
       <div>
         {!this.state.isAuthenticated && (
-          <div style={customStyles.container}>
+          <div style={styles.container}>
             <TabNavigation
               tabSpecs={TABS}
               currentTab={0}
               menuName={LOCALIZE.ariaLabel.authenticationMenu}
-              style={{
-                height: "100%",
-                backgroundColor: "white",
-                borderWidth: "1px 1px 1px 1px",
-                borderStyle: "solid",
-                borderColor: "#00565e",
-                borderTopColor: "white",
-                marginBottom: 25
-              }}
+              style={styles.tabNavigationStyle}
             />
           </div>
         )}
