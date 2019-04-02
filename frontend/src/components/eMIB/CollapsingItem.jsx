@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "../../css/collapsing-item.css";
 
 const styles = {
@@ -20,13 +21,15 @@ const styles = {
   },
   contentContainer: {
     margin: 12
-  },
-  EditButton: {
-    float: "right"
   }
 };
 
 class CollapsingItem extends Component {
+  static propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.object
+  };
+
   state = {
     isHidden: true,
     buttonClass: "btn btn-secondary",
@@ -53,39 +56,15 @@ class CollapsingItem extends Component {
   };
 
   render() {
+    const { title, body } = this.props;
     const { isHidden, buttonClass, iconClass, containerClass } = this.state;
     return (
       <div className={containerClass} style={styles.container}>
         <button className={buttonClass} style={styles.button} onClick={this.expandItem}>
-          Email Response #1
+          {title}
         </button>
         <span className={iconClass} style={styles.collapsingIcon} />
-        {!isHidden && (
-          <div style={styles.contentContainer}>
-            <div>
-              <p>For this response, you've chosen to: </p>
-              <p>To: </p>
-              <p>Cc: </p>
-            </div>
-            <hr />
-            <div>
-              <p>Your response:</p>
-              <p>Response...</p>
-            </div>
-            <hr />
-            <div>
-              <p>Your reasons for action:</p>
-              <p>Reasons...</p>
-            </div>
-            <hr />
-            <div>
-              <button className="btn btn-danger" style={styles.EditButton}>
-                Delete response
-              </button>
-              <button className="btn btn-primary">Edit response</button>
-            </div>
-          </div>
-        )}
+        {!isHidden && <div style={styles.contentContainer}>{body}</div>}
       </div>
     );
   }
