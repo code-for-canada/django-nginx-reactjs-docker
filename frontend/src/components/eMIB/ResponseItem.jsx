@@ -12,8 +12,7 @@ const styles = {
   },
   responseType: {
     color: "#00565E",
-    textDecoration: "underline",
-    fontWeight: "bold"
+    textDecoration: "underline"
   },
   deleteButton: {
     float: "right"
@@ -32,16 +31,18 @@ export const RESPONSE_TYPE = {
 class CollapsingItem extends Component {
   static propTypes = {
     responseType: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    cc: PropTypes.string,
     response: PropTypes.string.isRequired,
     reasonsForAction: PropTypes.string.isRequired
   };
 
   render() {
-    const { responseType, response, reasonsForAction } = this.props;
+    const { responseType, to, cc, response, reasonsForAction } = this.props;
     return (
       <div>
         <div>
-          <p>
+          <p className="font-weight-bold">
             {LOCALIZE.emibTest.inboxPage.emailResponse.description}
             {responseType === RESPONSE_TYPE.reply && (
               <>
@@ -68,17 +69,29 @@ class CollapsingItem extends Component {
               </>
             )}
           </p>
-          <p>{LOCALIZE.emibTest.inboxPage.emailResponse.to}</p>
-          <p>{LOCALIZE.emibTest.inboxPage.emailResponse.cc}</p>
+          <p>
+            <span className="font-weight-bold">
+              {LOCALIZE.emibTest.inboxPage.emailResponse.to}&nbsp;
+            </span>
+            <span>{to}</span>
+          </p>
+          <p>
+            <span className="font-weight-bold">
+              {LOCALIZE.emibTest.inboxPage.emailResponse.cc}&nbsp;
+            </span>
+            <span>{cc}</span>
+          </p>
         </div>
         <hr />
         <div>
-          <p>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</p>
+          <p className="font-weight-bold">{LOCALIZE.emibTest.inboxPage.emailResponse.response}</p>
           <p>{response}</p>
         </div>
         <hr />
         <div>
-          <p>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</p>
+          <p className="font-weight-bold">
+            {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
+          </p>
           <p>{reasonsForAction}</p>
         </div>
         <hr />
