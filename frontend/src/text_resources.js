@@ -337,6 +337,11 @@ let LOCALIZE = new LocalizedStrings({
         replyTextPart2: " emails and ",
         replyTextPart3: " tasks",
         emailResponse: {
+          responseType: {
+            reply: "reply",
+            replyAll: "reply all",
+            forward: "forward"
+          },
           description: "For this response, you've chosen to:",
           to: "To:",
           cc: "Cc:",
@@ -864,6 +869,11 @@ let LOCALIZE = new LocalizedStrings({
         replyTextPart2: " FR emails and ",
         replyTextPart3: " FR tasks",
         emailResponse: {
+          responseType: {
+            reply: "répondre",
+            replyAll: "répondre à tous",
+            forward: "transmettre"
+          },
           description: "FR For this response, you've chosen to:",
           to: "À :",
           cc: "Cc :",

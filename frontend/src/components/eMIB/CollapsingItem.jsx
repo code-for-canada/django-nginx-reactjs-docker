@@ -4,12 +4,14 @@ import "../../css/collapsing-item.css";
 
 const styles = {
   container: {
-    position: "relative",
-    cursor: "pointer"
+    position: "relative"
   },
   button: {
     width: "100%",
     textAlign: "left"
+  },
+  envelopeIcon: {
+    marginRight: 6
   },
   collapsingIcon: {
     position: "absolute",
@@ -24,10 +26,16 @@ const styles = {
   }
 };
 
+export const ICON_TYPE = {
+  email: "fas fa-envelope",
+  task: "fas fa-tasks"
+};
+
 class CollapsingItem extends Component {
   static propTypes = {
-    title: PropTypes.string,
-    body: PropTypes.object
+    iconType: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.object.isRequired
   };
 
   state = {
@@ -56,11 +64,12 @@ class CollapsingItem extends Component {
   };
 
   render() {
-    const { title, body } = this.props;
+    const { iconType, title, body } = this.props;
     const { isHidden, buttonClass, iconClass, containerClass } = this.state;
     return (
       <div className={containerClass} style={styles.container}>
         <button className={buttonClass} style={styles.button} onClick={this.expandItem}>
+          <span className={iconType} style={styles.envelopeIcon} />
           {title}
         </button>
         <span className={iconClass} style={styles.collapsingIcon} />
