@@ -4,15 +4,17 @@ import CollapsingItemContainer, {
   ICON_TYPE
 } from "../../../components/eMIB/CollapsingItemContainer";
 
+const body = { body: <div>body</div> };
+
 it("renders the right icon types (email, task)", () => {
   //email
   const emailWrapper = shallow(
-    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={"body"} />
+    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={body} />
   );
 
   //task
   const taskWrapper = shallow(
-    <CollapsingItemContainer iconType={ICON_TYPE.task} title={"title"} body={"body"} />
+    <CollapsingItemContainer iconType={ICON_TYPE.task} title={"title"} body={<div>body</div>} />
   );
 
   const buttonWithEmailIcon = (
@@ -56,7 +58,7 @@ it("renders the right arrow (up, down) icons when closed or expanded", () => {
   };
 
   const wrapper = shallow(
-    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={"body"} />
+    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={body} />
   );
 
   const arrowDownIconDisplayed = (
@@ -75,7 +77,7 @@ it("renders the right arrow (up, down) icons when closed or expanded", () => {
         title
       </button>
       <span className="fas fa-angle-up expanded-icon-style expanded-icon" />
-      <div>body</div>
+      <div>{body}</div>
     </div>
   );
 
@@ -94,7 +96,7 @@ it("renders the right arrow (up, down) icons when closed or expanded", () => {
 
 it("renders title and/or body depending on the 'isHidden' state", () => {
   const wrapper = shallow(
-    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={<div>body</div>} />
+    <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={body} />
   );
 
   //display only title
@@ -116,9 +118,7 @@ it("renders title and/or body depending on the 'isHidden' state", () => {
         title
       </button>
       <span />
-      <div>
-        <div>body</div>
-      </div>
+      <div>{body}</div>
     </div>
   );
 
