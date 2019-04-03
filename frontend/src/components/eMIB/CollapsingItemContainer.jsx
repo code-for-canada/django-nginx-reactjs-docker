@@ -31,7 +31,7 @@ export const ICON_TYPE = {
   task: "fas fa-tasks"
 };
 
-class CollapsingItem extends Component {
+class CollapsingItemContainer extends Component {
   static propTypes = {
     iconType: PropTypes.string,
     title: PropTypes.string.isRequired,
@@ -79,4 +79,4 @@ class CollapsingItem extends Component {
   }
 }
 
-export default CollapsingItem;
+export default CollapsingItemContainer;

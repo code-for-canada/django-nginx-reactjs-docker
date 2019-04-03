@@ -498,7 +498,11 @@ let LOCALIZE = new LocalizedStrings({
       tabMenu: "eMIB Tab Menu",
       instructionsMenu: "Instructions Menu",
       languageToggleBtn: "language-toggle-button",
-      authenticationMenu: "Authentication Menu"
+      authenticationMenu: "Authentication Menu",
+      emailHeader: "email header",
+      responseDetails: "response details",
+      reasonsForActionDetails: "reasons for action details",
+      emailOptions: "email options"
     },
 
     //Commons
@@ -1034,7 +1038,11 @@ let LOCALIZE = new LocalizedStrings({
       tabMenu: "Menu des onglets de la BRG-e",
       instructionsMenu: "Menu des instructions",
       languageToggleBtn: "bouton-de-langue-a-bascule",
-      authenticationMenu: "Menu d'authentification"
+      authenticationMenu: "Menu d'authentification",
+      emailHeader: "en-tête du courriel",
+      responseDetails: "détails de la réponse",
+      reasonsForActionDetails: "motifs de l'action",
+      emailOptions: "options de messagerie"
     },
 
     //Commons

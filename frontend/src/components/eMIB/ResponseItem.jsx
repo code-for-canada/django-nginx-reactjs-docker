@@ -28,7 +28,7 @@ export const RESPONSE_TYPE = {
   forward: "forward"
 };
 
-class CollapsingItem extends Component {
+class CollapsingItemContainer extends Component {
   static propTypes = {
     responseType: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
@@ -41,61 +41,79 @@ class CollapsingItem extends Component {
     const { responseType, to, cc, response, reasonsForAction } = this.props;
     return (
       <div>
-        <div>
-          <p className="font-weight-bold">
-            {LOCALIZE.emibTest.inboxPage.emailResponse.description}
-            {responseType === RESPONSE_TYPE.reply && (
-              <>
-                <span className="fas fa-reply" style={styles.responseTypeIcon} />
-                <span style={styles.responseType}>
-                  {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.reply}
-                </span>
-              </>
-            )}
-            {responseType === RESPONSE_TYPE.replyAll && (
-              <>
-                <span className="fas fa-reply-all" style={styles.responseTypeIcon} />
-                <span style={styles.responseType}>
-                  {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.replyAll}
-                </span>
-              </>
-            )}
-            {responseType === RESPONSE_TYPE.forward && (
-              <>
-                <span className="fas fa-share-square" style={styles.responseTypeIcon} />
-                <span style={styles.responseType}>
-                  {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.forward}
-                </span>
-              </>
-            )}
-          </p>
-          <p>
-            <span className="font-weight-bold">
-              {LOCALIZE.emibTest.inboxPage.emailResponse.to}&nbsp;
-            </span>
-            <span>{to}</span>
-          </p>
-          <p>
-            <span className="font-weight-bold">
-              {LOCALIZE.emibTest.inboxPage.emailResponse.cc}&nbsp;
-            </span>
-            <span>{cc}</span>
-          </p>
+        <div
+          aria-label={LOCALIZE.ariaLabel.emailHeader}
+          tabIndex="0"
+          aria-describedby="email-header-desc"
+        >
+          <div id="email-header-desc" role="dialog">
+            <p className="font-weight-bold">
+              {LOCALIZE.emibTest.inboxPage.emailResponse.description}
+              {responseType === RESPONSE_TYPE.reply && (
+                <>
+                  <span className="fas fa-reply" style={styles.responseTypeIcon} />
+                  <span style={styles.responseType}>
+                    {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.reply}
+                  </span>
+                </>
+              )}
+              {responseType === RESPONSE_TYPE.replyAll && (
+                <>
+                  <span className="fas fa-reply-all" style={styles.responseTypeIcon} />
+                  <span style={styles.responseType}>
+                    {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.replyAll}
+                  </span>
+                </>
+              )}
+              {responseType === RESPONSE_TYPE.forward && (
+                <>
+                  <span className="fas fa-share-square" style={styles.responseTypeIcon} />
+                  <span style={styles.responseType}>
+                    {LOCALIZE.emibTest.inboxPage.emailResponse.responseType.forward}
+                  </span>
+                </>
+              )}
+            </p>
+            <p>
+              <span className="font-weight-bold">
+                {LOCALIZE.emibTest.inboxPage.emailResponse.to}&nbsp;
+              </span>
+              <span>{to}</span>
+            </p>
+            <p>
+              <span className="font-weight-bold">
+                {LOCALIZE.emibTest.inboxPage.emailResponse.cc}&nbsp;
+              </span>
+              <span>{cc}</span>
+            </p>
+          </div>
         </div>
         <hr />
-        <div>
-          <p className="font-weight-bold">{LOCALIZE.emibTest.inboxPage.emailResponse.response}</p>
-          <p>{response}</p>
+        <div
+          aria-label={LOCALIZE.ariaLabel.responseDetails}
+          tabIndex="0"
+          aria-describedby="email-response"
+        >
+          <div id="email-response" role="dialog">
+            <p className="font-weight-bold">{LOCALIZE.emibTest.inboxPage.emailResponse.response}</p>
+            <p>{response}</p>
+          </div>
         </div>
         <hr />
-        <div>
-          <p className="font-weight-bold">
-            {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
-          </p>
-          <p>{reasonsForAction}</p>
+        <div
+          aria-label={LOCALIZE.ariaLabel.reasonsForActionDetails}
+          tabIndex="0"
+          aria-describedby="email-reasons-for-action"
+        >
+          <div id="email-reasons-for-action" role="dialog">
+            <p className="font-weight-bold">
+              {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
+            </p>
+            <p>{reasonsForAction}</p>
+          </div>
         </div>
         <hr />
-        <div>
+        <div aria-label={LOCALIZE.ariaLabel.emailOptions}>
           <button className="btn btn-primary" style={styles.de}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.editButton}
           </button>
@@ -108,4 +126,4 @@ class CollapsingItem extends Component {
   }
 }
 
-export default CollapsingItem;
+export default CollapsingItemContainer;

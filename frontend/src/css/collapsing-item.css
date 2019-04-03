@@ -1,5 +1,5 @@
 /*
-collapsing-item.css is used for the CollapsingItem.jsx styles that cannot be added inside a const
+collapsing-item.css is used for the CollapsingItemContainer.jsx styles that cannot be added inside a const
 */
 
 .collapsing-item-container:hover .expand-icon {
