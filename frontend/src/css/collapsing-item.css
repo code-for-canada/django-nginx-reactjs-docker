@@ -2,7 +2,7 @@
 collapsing-item.css is used for the CollapsingItemContainer.jsx styles that cannot be added inside a const
 */
 
-.collapsing-item-container:hover .expanded-icon {
+.collapsing-item-container:hover .expand-icon {
   color: white !important;
 }
 
@@ -10,7 +10,7 @@ collapsing-item.css is used for the CollapsingItemContainer.jsx styles that cann
   border-radius: 5px 5px 0 0;
 }
 
-.expanded-icon-style {
+.expand-icon-style {
   color: white !important;
 }
 
