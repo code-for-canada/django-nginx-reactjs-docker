@@ -57,8 +57,9 @@ it("renders the right response types (reply, reply all, forward)", () => {
   expect(forwardWrapper.containsMatchingElement(forward)).toEqual(true);
 });
 
-it("renders email's header", () => {
-  const wrapper = shallow(
+it("renders email's header (with and without cc, since it is optional)", () => {
+  //with cc field
+  const withCcWrapper = shallow(
     <ResponseItem
       responseType={RESPONSE_TYPE.reply}
       to={"to"}
@@ -68,7 +69,17 @@ it("renders email's header", () => {
     />
   );
 
-  const headerContent = (
+  //without cc field
+  const withoutCcWrapper = shallow(
+    <ResponseItem
+      responseType={RESPONSE_TYPE.reply}
+      to={"to"}
+      response={"response"}
+      reasonsForAction={"reasons"}
+    />
+  );
+
+  const headerContentWithCc = (
     <div>
       <div>
         <p>
@@ -94,7 +105,34 @@ it("renders email's header", () => {
     </div>
   );
 
-  expect(wrapper.containsMatchingElement(headerContent)).toEqual(true);
+  const headerContentWithoutCc = (
+    <div>
+      <div>
+        <p>
+          {LOCALIZE.emibTest.inboxPage.emailResponse.description}
+          <>
+            <span className="fas fa-reply" />
+            <span>{LOCALIZE.emibTest.inboxPage.emailResponse.responseType.reply}</span>
+          </>
+        </p>
+        <p>
+          <span className="font-weight-bold">
+            {LOCALIZE.emibTest.inboxPage.emailResponse.to}&nbsp;
+          </span>
+          <span>to</span>
+        </p>
+        <p>
+          <span className="font-weight-bold">
+            {LOCALIZE.emibTest.inboxPage.emailResponse.cc}&nbsp;
+          </span>
+          <span />
+        </p>
+      </div>
+    </div>
+  );
+
+  expect(withCcWrapper.containsMatchingElement(headerContentWithCc)).toEqual(true);
+  expect(withoutCcWrapper.containsMatchingElement(headerContentWithoutCc)).toEqual(true);
 });
 
 it("renders email's response", () => {
