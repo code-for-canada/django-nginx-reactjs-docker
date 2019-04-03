@@ -41,7 +41,7 @@ class CollapsingItemContainer extends Component {
   state = {
     isHidden: true,
     buttonClass: "btn btn-secondary",
-    iconClass: "fas fa-angle-down expand-icon",
+    iconClass: "fas fa-angle-down expanded-icon",
     containerClass: "collapsing-item-container"
   };
 
@@ -50,14 +50,14 @@ class CollapsingItemContainer extends Component {
       this.setState({
         isHidden: false,
         buttonClass: "btn btn-primary expanded-button-style",
-        iconClass: "fas fa-angle-up expanded-icon-style expand-icon",
+        iconClass: "fas fa-angle-up expanded-icon-style expanded-icon",
         containerClass: "collapsing-item-container expanded-container-style"
       });
     } else {
       this.setState({
         isHidden: true,
         buttonClass: "btn btn-secondary",
-        iconClass: "fas fa-angle-down expand-icon",
+        iconClass: "fas fa-angle-down expanded-icon",
         containerClass: "collapsing-item-container"
       });
     }
