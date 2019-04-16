@@ -8,7 +8,7 @@ This project serves as an example of a deployment front-end (ReactJS) and back-e
 
 1. Follow our [setup guide](./SETUP.md) to configure your workstation.
 2. Clone the repository using [git](./doc/contributing-with-git.md)
-3. `docker-compose up` to build the application if you have not done so already
+3. `docker-compose -f docker-compose.dev.yml` to run the application locally
 4. Open your browser to [http://localhost:80/](http://localhost:80/).
 
 To see a list of all build commands, run `docker` from the repository root or see our [notes-on-docker](./docs/notes-on-docker.md).
@@ -24,7 +24,7 @@ Here's a quick overview of the major landmarks:
 
 ### [backend](./backend)
 
-The server for our CAT platform, a [Django](https://www.djangoproject.com/) application responsible for:
+The api server for our CAT platform, a [Django](https://www.djangoproject.com/) application responsible for:
 
 - not much yet, but it will hold our APIs
 
