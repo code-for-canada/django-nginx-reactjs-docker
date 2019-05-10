@@ -168,7 +168,6 @@ class EditTask extends Component {
                 <i
                   id="task-tooltip"
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
-                  tabIndex="0"
                   className={taskTooltipIcon}
                   style={styles.tasks.icon}
                   onFocus={this.onTaskTooltipFocus}
@@ -214,7 +213,6 @@ class EditTask extends Component {
                 <i
                   id="reasons-for-action-tooltip"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
-                  tabIndex="0"
                   className={reasonsForActionTooltipIcon}
                   style={styles.reasonsForAction.icon}
                   onFocus={this.onReasonsForActionTooltipFocus}

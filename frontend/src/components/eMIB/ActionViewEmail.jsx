@@ -112,7 +112,7 @@ class ActionViewEmail extends Component {
     const visibleCcNames = this.generateEmailNameList(action.emailCc);
     return (
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
-        <div style={styles.header.zone} tabIndex="0">
+        <div style={styles.header.zone}>
           <div style={styles.header.elementHeight}>
             <h6 style={styles.responseType.description}>
               {LOCALIZE.emibTest.inboxPage.emailResponse.description}
@@ -156,12 +156,12 @@ class ActionViewEmail extends Component {
           </div>
         </div>
         <hr style={styles.hr} />
-        <div tabIndex="0">
+        <div>
           <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</h6>
           <p style={styles.preWrap}>{action.emailBody}</p>
         </div>
         <hr style={styles.hr} />
-        <div tabIndex="0">
+        <div>
           <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</h6>
           <p style={styles.preWrap}>{action.reasonsForAction}</p>
         </div>

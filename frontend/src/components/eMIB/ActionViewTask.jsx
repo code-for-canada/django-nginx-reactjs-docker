@@ -61,12 +61,12 @@ class ActionViewTask extends Component {
     const action = this.props.action;
     return (
       <div aria-label={LOCALIZE.ariaLabel.taskDetails}>
-        <div tabIndex="0">
+        <div>
           <h6 style={styles.taskStyle}>{LOCALIZE.emibTest.inboxPage.taskContent.task}</h6>
           <p style={styles.preWrap}>{action.task}</p>
         </div>
         <hr style={styles.hr} />
-        <div tabIndex="0">
+        <div>
           <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</h6>
           <p style={styles.preWrap}>{action.reasonsForAction}</p>
         </div>
