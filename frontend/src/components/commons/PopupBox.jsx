@@ -23,10 +23,6 @@ const styles = {
   boxContent: {
     padding: 12
   },
-  modalHeader: {
-    display: "table",
-    width: "100%"
-  },
   modelTitle: {
     fontSize: "28px",
     margin: 0
@@ -101,51 +97,55 @@ class PopupBox extends Component {
     } = this.props;
 
     return (
-      <div>
-        <Modal show={show} onHide={handleClose}>
-          <div style={styles.boxContent}>
-            <Modal.Header closeButton style={styles.modalHeader}>
-              <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
-                {title}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body id="unit-test-popup-box-description">{description}</Modal.Body>
-            <Modal.Footer>
-              <div style={styles.buttonsZone}>
-                {leftButtonType && leftButtonTitle && (
-                  <div style={styles.leftBtnLocation}>
-                    <button
-                      disabled={leftButtonState}
-                      id="unit-test-left-btn-title"
-                      type="button"
-                      className={leftButtonType}
-                      style={styles.buttonSize}
-                      onClick={this.leftButtonCloseAndAction}
-                    >
-                      {leftButtonTitle}
-                    </button>
-                  </div>
-                )}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        autoFocus={true}
+        enforceFocus={true}
+        aria-hidden={false}
+      >
+        <div style={styles.boxContent}>
+          <Modal.Header closeButton style={styles.modalHeader}>
+            <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
+              {title}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body id="unit-test-popup-box-description">{description}</Modal.Body>
+          <Modal.Footer>
+            <div style={styles.buttonsZone}>
+              {leftButtonType && leftButtonTitle && (
+                <div style={styles.leftBtnLocation}>
+                  <button
+                    disabled={leftButtonState}
+                    id="unit-test-left-btn-title"
+                    type="button"
+                    className={leftButtonType}
+                    style={styles.buttonSize}
+                    onClick={this.leftButtonCloseAndAction}
+                  >
+                    {leftButtonTitle}
+                  </button>
+                </div>
+              )}
 
-                {rightButtonType && rightButtonTitle && (
-                  <div style={styles.rightBtnLocation}>
-                    <button
-                      disabled={rightButtonState}
-                      id="unit-test-right-btn-title"
-                      type="button"
-                      className={rightButtonType}
-                      style={styles.buttonSize}
-                      onClick={this.rightButtonCloseAndAction}
-                    >
-                      {rightButtonTitle}
-                    </button>
-                  </div>
-                )}
-              </div>
-            </Modal.Footer>
-          </div>
-        </Modal>
-      </div>
+              {rightButtonType && rightButtonTitle && (
+                <div style={styles.rightBtnLocation}>
+                  <button
+                    disabled={rightButtonState}
+                    id="unit-test-right-btn-title"
+                    type="button"
+                    className={rightButtonType}
+                    style={styles.buttonSize}
+                    onClick={this.rightButtonCloseAndAction}
+                  >
+                    {rightButtonTitle}
+                  </button>
+                </div>
+              )}
+            </div>
+          </Modal.Footer>
+        </div>
+      </Modal>
     );
   }
 }

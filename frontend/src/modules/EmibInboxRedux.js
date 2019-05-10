@@ -27,6 +27,7 @@ const UPDATE_EMAIL = "emibInbox/UPDATE_EMAIL";
 const UPDATE_TASK = "emibInbox/UPDATE_TASK";
 const DELETE_EMAIL = "emibInbox/DELETE_EMAIL";
 const DELETE_TASK = "emibInbox/DELETE_TASK";
+const CHANGE_CURRENT_EMAIL = "emibInbox/CHANGE_CURRENT_EMAIL";
 
 // Action Creators
 const readEmail = emailIndex => ({ type: READ_EMAIL, emailIndex });
@@ -61,6 +62,12 @@ const deleteTask = (emailIndex, responseId) => ({
   responseId
 });
 
+// emailIndex refers to the index of the currently visible email
+const changeCurrentEmail = emailIndex => ({
+  type: CHANGE_CURRENT_EMAIL,
+  emailIndex
+});
+
 // Initial State
 // emails - represents an array of emailShape objects in the currently selected language.
 // emailSummaries - represents an array of objects indicating read state of each email.
@@ -71,7 +78,8 @@ const initialState = {
   emails: emailsJson.emailsEN,
   emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
   emailActions: initializeEmailActions(emailsJson.emailsEN.length),
-  addressBook: addressBookJson.addressBookEN
+  addressBook: addressBookJson.addressBookEN,
+  currentEmail: 0
 };
 
 // Reducer
@@ -161,6 +169,12 @@ const emibInbox = (state = initialState, action) => {
         emailSummaries: purifiedEmailSummaries,
         emailActions: purifiedEmailActions
       };
+    case CHANGE_CURRENT_EMAIL:
+      return {
+        ...state,
+        currentEmail: action.emailIndex
+      };
+
     default:
       return state;
   }
@@ -181,5 +195,6 @@ export {
   updateTask,
   deleteEmail,
   deleteTask,
-  selectEmailActions
+  selectEmailActions,
+  changeCurrentEmail
 };

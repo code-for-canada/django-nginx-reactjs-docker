@@ -6,7 +6,8 @@ import emibInbox, {
   updateEmail,
   deleteEmail,
   deleteTask,
-  updateTask
+  updateTask,
+  changeCurrentEmail
 } from "../../modules/EmibInboxRedux";
 import { EMAIL_TYPE, ACTION_TYPE } from "../../components/eMIB/constants";
 import { setLanguage } from "../../modules/LocalizeRedux";
@@ -18,7 +19,8 @@ describe("EmibInboxRedux", () => {
     stubbedInitialState = {
       emails: emailsJson.emailsEN,
       emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
-      emailActions: [[], [], []]
+      emailActions: [[], [], []],
+      currentEmail: 0
     };
   });
 
@@ -333,6 +335,18 @@ describe("EmibInboxRedux", () => {
       const addAction = addTask(0, taskAction);
       const newState = emibInbox(stubbedInitialState, addAction);
       expect(newState.emailActions[0]).toEqual([{ ...taskAction, actionType: ACTION_TYPE.task }]);
+    });
+
+    it("should change curent email", () => {
+      const changeAction1 = changeCurrentEmail(1);
+      const newState1 = emibInbox(stubbedInitialState, changeAction1);
+      expect(newState1.currentEmail).toEqual(1);
+      const changeAction2 = changeCurrentEmail(2);
+      const newState2 = emibInbox(newState1, changeAction2);
+      expect(newState2.currentEmail).toEqual(2);
+      const changeAction3 = changeCurrentEmail(3);
+      const newState3 = emibInbox(newState2, changeAction3);
+      expect(newState3.currentEmail).toEqual(3);
     });
   });
 });

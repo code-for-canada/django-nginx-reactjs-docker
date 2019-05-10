@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "../../css/lib/aurora.min.css";
 import LOCALIZE from "../../text_resources";
-import "../../css/cat-theme.css";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import emib_sample_test_example_team_chart_en from "../../images/emib_sample_test_example_team_chart_en.png";
@@ -12,7 +10,6 @@ import emib_sample_test_example_team_chart_fr from "../../images/emib_sample_tes
 import emib_sample_test_example_team_chart_fr_zoomed from "../../images/emib_sample_test_example_team_chart_fr.png";
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
-import { styleConstants } from "./styleConstants.js";
 
 const styles = {
   testImage: {
@@ -57,32 +54,18 @@ class TeamInformation extends Component {
         <div>
           <h2>{LOCALIZE.emibTest.background.teamInformation.title}</h2>
           <div>
-            <h3 style={styleConstants.instuctions.h3}>
-              {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.title}
-            </h3>
+            <h3>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.title}</h3>
             <div>
-              <h4 style={styleConstants.instuctions.h4}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1Title}
-              </h4>
-              <p style={styleConstants.instuctions.p}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1}
-              </p>
-              <h4 style={styleConstants.instuctions.h4}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2Title}
-              </h4>
-              <p style={styleConstants.instuctions.p}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2}
-              </p>
-              <h4 style={styleConstants.instuctions.h4}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3Title}
-              </h4>
-              <p style={styleConstants.instuctions.p}>
-                {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3}
-              </p>
+              <h4>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1Title}</h4>
+              <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1}</p>
+              <h4>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2Title}</h4>
+              <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2}</p>
+              <h4>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3Title}</h4>
+              <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3}</p>
             </div>
           </div>
           <div>
-            <p style={styleConstants.instuctions.p}>
+            <p>
               {currentLanguage === LANGUAGES.english && (
                 <ImageZoom
                   longdesc="#team-image-description"
@@ -126,12 +109,10 @@ class TeamInformation extends Component {
             </button>
           </div>
           <div>
-            <h3 style={styleConstants.instuctions.h3}>
-              {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.title}
-            </h3>
+            <h3>{LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.title}</h3>
             <div>
               <div>
-                <p style={styleConstants.instuctions.p}>
+                <p>
                   {
                     LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection
                       .listDescription
@@ -166,12 +147,10 @@ class TeamInformation extends Component {
                     {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.item3}
                   </li>
                 </ol>
-                <h4 style={styleConstants.instuctions.h4}>
+                <h4>
                   {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1Title}
                 </h4>
-                <p style={styleConstants.instuctions.p}>
-                  {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1}
-                </p>
+                <p>{LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1}</p>
               </div>
             </div>
           </div>

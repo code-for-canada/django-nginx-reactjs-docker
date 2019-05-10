@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "../../css/lib/aurora.min.css";
 import LOCALIZE from "../../text_resources";
-import "../../css/cat-theme.css";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import emib_sample_test_example_org_chart_en from "../../images/emib_sample_test_example_org_chart_en.png";
@@ -12,7 +10,6 @@ import emib_sample_test_example_org_chart_fr from "../../images/emib_sample_test
 import emib_sample_test_example_org_chart_fr_zoomed from "../../images/emib_sample_test_example_org_chart_fr.png";
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
-import { styleConstants } from "./styleConstants.js";
 
 const styles = {
   testImage: {
@@ -96,34 +93,32 @@ class OrganizationalStructure extends Component {
         <div>
           <h2>{LOCALIZE.emibTest.background.organizationalStructure.title}</h2>
           <div>
-            <p style={styleConstants.instuctions.p}>
-              {LOCALIZE.emibTest.background.organizationalStructure.description}
-            </p>
-            <p style={styleConstants.instuctions.p}>
+            <p>{LOCALIZE.emibTest.background.organizationalStructure.description}</p>
+            <p>
               <span className="font-weight-bold">
                 {LOCALIZE.emibTest.background.organizationalStructure.para1Title}
               </span>
               {LOCALIZE.emibTest.background.organizationalStructure.para1}
             </p>
-            <p style={styleConstants.instuctions.p}>
+            <p>
               <span className="font-weight-bold">
                 {LOCALIZE.emibTest.background.organizationalStructure.para2Title}
               </span>
               {LOCALIZE.emibTest.background.organizationalStructure.para2}
             </p>
-            <p style={styleConstants.instuctions.p}>
+            <p>
               <span className="font-weight-bold">
                 {LOCALIZE.emibTest.background.organizationalStructure.para3Title}
               </span>
               {LOCALIZE.emibTest.background.organizationalStructure.para3}
             </p>
-            <p style={styleConstants.instuctions.p}>
+            <p>
               <span className="font-weight-bold">
                 {LOCALIZE.emibTest.background.organizationalStructure.para4Title}
               </span>
               {LOCALIZE.emibTest.background.organizationalStructure.para4}
             </p>
-            <p style={styleConstants.instuctions.p}>
+            <p>
               {currentLanguage === LANGUAGES.english && (
                 <ImageZoom
                   image={{

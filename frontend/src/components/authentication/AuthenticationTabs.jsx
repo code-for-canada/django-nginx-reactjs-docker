@@ -1,25 +1,12 @@
 import React, { Component } from "react";
-import TabNavigation from "../commons/TabNavigation";
 import LoginForm from "./LoginForm";
 import CreateAccountForm from "./CreateAccountForm";
 import LOCALIZE from "../../text_resources";
+import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 
 const styles = {
-  container: {
-    width: 500,
-    margin: "0px auto",
-    paddingTop: 24,
-    paddingRight: 20,
-    paddingLeft: 20
-  },
-  tabNavigationStyle: {
-    height: "100%",
-    backgroundColor: "white",
-    borderWidth: "1px 1px 1px 1px",
-    borderStyle: "solid",
-    borderColor: "#00565e",
-    borderTopColor: "white",
-    marginBottom: 25
+  loginComponent: {
+    maxWidth: 600
   }
 };
 
@@ -27,27 +14,33 @@ class AuthenticationTabs extends Component {
   render() {
     const TABS = [
       {
-        id: 0,
+        key: "login",
         tabName: LOCALIZE.authentication.login.title,
         body: <LoginForm />
       },
       {
-        id: 1,
+        key: "account",
         tabName: LOCALIZE.authentication.createAccount.title,
         body: <CreateAccountForm />
       }
     ];
     return (
       <div>
-        <div style={styles.container}>
-          <TabNavigation
-            tabSpecs={TABS}
-            initialTab={0}
-            menuName={LOCALIZE.ariaLabel.authenticationMenu}
-            style={styles.tabNavigationStyle}
-            disabledTabsArray={[]}
-          />
-        </div>
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col style={styles.loginComponent}>
+              <Tabs defaultActiveKey="login" id="login-tabs">
+                {TABS.map((tab, index) => {
+                  return (
+                    <Tab key={index} eventKey={tab.key} title={tab.tabName}>
+                      {tab.body}
+                    </Tab>
+                  );
+                })}
+              </Tabs>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

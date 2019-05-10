@@ -6,7 +6,7 @@ import EmailPreview from "./EmailPreview";
 import Email from "./Email";
 import "../../css/inbox.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT, emailShape } from "./constants";
-import { readEmail } from "../../modules/EmibInboxRedux";
+import { readEmail, changeCurrentEmail } from "../../modules/EmibInboxRedux";
 
 const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
@@ -31,16 +31,14 @@ class Inbox extends Component {
     // Provided by redux
     emails: PropTypes.arrayOf(emailShape),
     emailSummaries: PropTypes.array.isRequired,
-    readEmail: PropTypes.func.isRequired
-  };
-
-  state = {
-    currentEmail: 0
+    currentEmail: PropTypes.number.isRequired,
+    readEmail: PropTypes.func.isRequired,
+    changeCurrentEmail: PropTypes.func.isRequired
   };
 
   changeEmail = index => {
-    this.props.readEmail(this.state.currentEmail);
-    this.setState({ currentEmail: index });
+    this.props.readEmail(this.props.currentEmail);
+    this.props.changeCurrentEmail(index);
   };
 
   render() {
@@ -63,7 +61,7 @@ class Inbox extends Component {
                   isRepliedTo={
                     emailSummaries[index].emailCount + emailSummaries[index].taskCount > 0
                   }
-                  isSelected={index === this.state.currentEmail}
+                  isSelected={index === this.props.currentEmail}
                 />
               </div>
             ))}
@@ -71,9 +69,9 @@ class Inbox extends Component {
         </nav>
         <div className="inbox-grid-content-cell" style={styles.bodyContent}>
           <Email
-            email={emails[this.state.currentEmail]}
-            emailCount={emailSummaries[this.state.currentEmail].emailCount}
-            taskCount={emailSummaries[this.state.currentEmail].taskCount}
+            email={emails[this.props.currentEmail]}
+            emailCount={emailSummaries[this.props.currentEmail].emailCount}
+            taskCount={emailSummaries[this.props.currentEmail].taskCount}
           />
         </div>
       </div>
@@ -85,14 +83,16 @@ export { Inbox as UnconnectedInbox };
 const mapStateToProps = (state, ownProps) => {
   return {
     emails: state.emibInbox.emails,
-    emailSummaries: state.emibInbox.emailSummaries
+    emailSummaries: state.emibInbox.emailSummaries,
+    currentEmail: state.emibInbox.currentEmail
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      readEmail
+      readEmail,
+      changeCurrentEmail
     },
     dispatch
   );

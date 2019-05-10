@@ -14,6 +14,9 @@ const styles = {
   },
   preWrap: {
     whiteSpace: "pre-wrap"
+  },
+  subject: {
+    marginTop: 0
   }
 };
 
@@ -26,7 +29,7 @@ class EmailContent extends Component {
     const { email } = this.props;
     return (
       <div>
-        <h3>{email.subject}</h3>
+        <h3 style={styles.subject}>{email.subject}</h3>
         <div>
           {LOCALIZE.emibTest.inboxPage.from}: <span style={styles.replyAndUser}>{email.from}</span>
         </div>

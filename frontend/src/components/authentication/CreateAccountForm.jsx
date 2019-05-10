@@ -5,7 +5,8 @@ import "../../css/create-account-form.css";
 
 const styles = {
   createAccountContent: {
-    padding: "12px 32px 0 32px"
+    padding: "12px 32px 0 32px",
+    border: "1px solid #cdcdcd"
   },
   inputTitle: {
     padding: "12px 0 6px 0",

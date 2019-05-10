@@ -7,7 +7,8 @@ import { connect } from "react-redux";
 
 const styles = {
   loginContent: {
-    padding: "12px 32px 0 32px"
+    padding: "12px 32px 0 32px",
+    border: "1px solid #cdcdcd"
   },
   inputTitles: {
     padding: "12px 0 6px 0",

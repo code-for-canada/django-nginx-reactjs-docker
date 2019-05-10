@@ -4,18 +4,9 @@ import SystemCheck from "./components/status/SystemCheck";
 import detectBrowser from "./helpers/detectBrowser";
 import getIeVersion from "./helpers/getIeVersion";
 import getScreenResolution from "./helpers/getScreenResolution";
-import logo from "./images/logo.png";
 import LOCALIZE from "./text_resources";
 import ContentContainer from "./components/commons/ContentContainer";
 import { Helmet } from "react-helmet";
-
-const styles = {
-  logo: {
-    margin: 20,
-    width: 30,
-    height: 30
-  }
-};
 
 const headers = new Headers({
   Accept: "application/json",
@@ -128,7 +119,6 @@ class Status extends Component {
                 {LOCALIZE.statusPage.gitHubRepoBtn}
               </button>
             </a>
-            <img src={logo} style={styles.logo} alt={LOCALIZE.statusPage.logo} />
           </p>
         </div>
 
