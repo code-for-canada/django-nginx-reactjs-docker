@@ -13,7 +13,7 @@ export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
 // Action Creators
-let url = process.env.REACT_APP_DEV_URL || BACKENDURL;
+let url = BACKENDURL;
 
 // TODO (fnormand): Make this function works with the login process
 // function authenticateAction(userData, dispatch, location, push) {
