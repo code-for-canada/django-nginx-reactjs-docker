@@ -67,7 +67,8 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Must match the Password"
           }
         },
-        button: "Create account"
+        button: "Create account",
+        accountAlreadyExistsError: "A user with that username already exists."
       }
     },
 
@@ -593,7 +594,8 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Doit correspondre au mot de passe"
           }
         },
-        button: "Créer compte"
+        button: "Créer compte",
+        accountAlreadyExistsError: "FR A user with that username already exists."
       }
     },
 

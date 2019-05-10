@@ -45,6 +45,10 @@ const styles = {
   validationError: {
     color: "red",
     marginTop: 6
+  },
+  errorMessage: {
+    color: "red",
+    marginTop: 6
   }
 };
 
@@ -71,7 +75,9 @@ class CreateAccountForm extends Component {
     isFirstPasswordLoad: true,
     isValidPasswordConfirmation: false,
     // PopupBox
-    showDialog: false
+    showDialog: false,
+    // handle errors
+    accountExistsError: false
   };
 
   firstNameValidation = event => {
@@ -139,18 +145,13 @@ class CreateAccountForm extends Component {
         email: this.state.emailContent,
         password: this.state.passwordContent
       })
-      .then(resp => {
-        if (
-          this.state.isValidFirstName &&
-          this.state.isValidLastName &&
-          this.state.isValidEmail &&
-          this.state.isValidPassword &&
-          this.state.isValidPasswordConfirmation
-        ) {
-          // if successfully
-          this.setState({ showDialog: true });
+      .then(response => {
+        // account already exists
+        if (response.username[0] === "A user with that username already exists.") {
+          this.setState({ accountExistsError: true });
+          // account successfully created
         } else {
-          // TODO(fnormand): handle errors
+          this.setState({ showDialog: true, accountExistsError: false });
         }
       });
 
@@ -341,6 +342,11 @@ class CreateAccountForm extends Component {
                   </p>
                 )}
               </div>
+              {this.state.accountExistsError && (
+                <p style={styles.errorMessage}>
+                  {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
+                </p>
+              )}
               <button
                 disabled={!submitButtonEnabled}
                 style={styles.loginBtn}
