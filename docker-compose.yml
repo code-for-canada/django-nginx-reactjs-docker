@@ -8,7 +8,7 @@ services:
     image: postgres:10.1-alpine
     container_name: "project-thundercat_postgres"
     ports:
-      - 5432:5432
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
   backend:
