@@ -3,14 +3,14 @@ from .base import *
 
 DEBUG = True
 
-# Used for Debug Toolbar to show
-INTERNAL_IPS = ["127.0.0.1"]
-
 # TODO: Setup the real dev DB here
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "HOST": "db",  # set in docker-compose.yml
+        "PORT": 5432,  # default postgres port
     }
 }
 
