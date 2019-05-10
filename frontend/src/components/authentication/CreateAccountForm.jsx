@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import validateName, { validateEmail, validatePassword } from "../../helpers/regexValidator";
 import "../../css/create-account-form.css";
+import { registerAction, registrationSuccessMessage } from "../../modules/LoginRedux";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 
 const styles = {
   createAccountContent: {
@@ -30,7 +35,7 @@ const styles = {
   iconForOtherFields: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 370px"
+    margin: "8px 0 0 484px"
   },
   loginBtn: {
     width: 150,
@@ -44,6 +49,12 @@ const styles = {
 };
 
 class CreateAccountForm extends Component {
+  static propTypes = {
+    // Props from Redux
+    registerAction: PropTypes.func,
+    registrationSuccessMessage: PropTypes.func
+  };
+
   state = {
     // Ensures no errors are shown on page load
     isFirstLoad: true,
@@ -58,7 +69,9 @@ class CreateAccountForm extends Component {
     isValidPassword: false,
     passwordConfirmationContent: "",
     isFirstPasswordLoad: true,
-    isValidPasswordConfirmation: false
+    isValidPasswordConfirmation: false,
+    // PopupBox
+    showDialog: false
   };
 
   firstNameValidation = event => {
@@ -110,6 +123,40 @@ class CreateAccountForm extends Component {
     });
   };
 
+  closeDialog = () => {
+    this.setState({ showDialog: false });
+  };
+
+  redirectToLoginPage = () => {
+    // refresh the page in order to show the login form
+    window.location.reload();
+  };
+
+  handleSubmit = event => {
+    this.props
+      .registerAction({
+        username: this.state.emailContent,
+        email: this.state.emailContent,
+        password: this.state.passwordContent
+      })
+      .then(resp => {
+        if (
+          this.state.isValidFirstName &&
+          this.state.isValidLastName &&
+          this.state.isValidEmail &&
+          this.state.isValidPassword &&
+          this.state.isValidPasswordConfirmation
+        ) {
+          // if successfully
+          this.setState({ showDialog: true });
+        } else {
+          // TODO(fnormand): handle errors
+        }
+      });
+
+    event.preventDefault();
+  };
+
   render() {
     const {
       isFirstLoad,
@@ -141,7 +188,7 @@ class CreateAccountForm extends Component {
           <div style={styles.createAccountContent}>
             <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="names-grid">
                 <div className="names-grid-first-name">
                   <div style={styles.inputTitle}>
@@ -305,9 +352,34 @@ class CreateAccountForm extends Component {
             </form>
           </div>
         </div>
+        <PopupBox
+          show={this.state.showDialog}
+          handleClose={this.closeDialog}
+          title={"Account Created"}
+          description={
+            <div>
+              <p>{"You have just created a new account!"}</p>
+            </div>
+          }
+          rightButtonType={BUTTON_TYPE.primary}
+          rightButtonTitle={"Ok"}
+          rightButtonAction={this.redirectToLoginPage}
+        />
       </div>
     );
   }
 }
 
-export default CreateAccountForm;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      registerAction,
+      registrationSuccessMessage
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateAccountForm);
