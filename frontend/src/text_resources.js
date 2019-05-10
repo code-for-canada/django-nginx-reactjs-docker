@@ -68,7 +68,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         button: "Create account",
-        accountAlreadyExistsError: "A user with that username already exists."
+        accountAlreadyExistsError: "An account is already associated to this email address."
       }
     },
 
@@ -595,7 +595,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         button: "Créer compte",
-        accountAlreadyExistsError: "FR A user with that username already exists."
+        accountAlreadyExistsError: "FR An account is already associated to this email address."
       }
     },
 

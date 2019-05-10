@@ -48,7 +48,9 @@ const styles = {
   },
   errorMessage: {
     color: "red",
-    marginTop: 6
+    fontWeight: "bold",
+    padding: 0,
+    marginTop: 12
   }
 };
 
@@ -129,13 +131,11 @@ class CreateAccountForm extends Component {
     });
   };
 
-  closeDialog = () => {
-    this.setState({ showDialog: false });
-  };
-
   redirectToLoginPage = () => {
     // refresh the page in order to show the login form
     window.location.reload();
+    // close dialog
+    this.setState({ showDialog: false });
   };
 
   handleSubmit = event => {
@@ -256,6 +256,11 @@ class CreateAccountForm extends Component {
                   onChange={this.emailValidation}
                 />
               </div>
+              {this.state.accountExistsError && (
+                <p style={styles.errorMessage}>
+                  {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
+                </p>
+              )}
               <div>
                 <div style={styles.inputTitle}>
                   <span>{LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}</span>
@@ -342,11 +347,6 @@ class CreateAccountForm extends Component {
                   </p>
                 )}
               </div>
-              {this.state.accountExistsError && (
-                <p style={styles.errorMessage}>
-                  {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
-                </p>
-              )}
               <button
                 disabled={!submitButtonEnabled}
                 style={styles.loginBtn}
@@ -360,7 +360,7 @@ class CreateAccountForm extends Component {
         </div>
         <PopupBox
           show={this.state.showDialog}
-          handleClose={this.closeDialog}
+          handleClose={this.redirectToLoginPage}
           title={"Account Created"}
           description={
             <div>
