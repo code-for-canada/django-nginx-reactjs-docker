@@ -72,10 +72,12 @@ class Status extends Component {
       headers,
       cache: "default"
     });
-    const testJson = await test.json();
-    if (testJson) {
-      this.setState({ databaseStatus: true });
-    }
+    try {
+      const testJson = await test.json();
+      if (testJson) {
+        this.setState({ databaseStatus: true });
+      }
+    } catch (err) {}
   };
 
   // You must have JavaScript enabled to be able to run the app at all
