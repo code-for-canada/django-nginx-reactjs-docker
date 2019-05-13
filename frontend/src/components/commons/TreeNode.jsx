@@ -223,9 +223,9 @@ class TreeNode extends Component {
           //save id to remove focus from last element
           //update current target id
           //@TOD0 UPDATE THE TARGET ONLY IF ITS VISABLE
-          if (this.state.tid > 0) {
+          if (oldID > 0) {
             //find closest visable item to current node
-            this.state.tid = this.findVisableInReverse(this.state.tid - 1);
+            this.state.tid = this.findVisableInReverse(oldID - 1);
           } else {
             //loop back to begining node
             console.log("beggining of nodes looping to botttom");
