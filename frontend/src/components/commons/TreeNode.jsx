@@ -242,16 +242,16 @@ class TreeNode extends Component {
 
         case "ArrowRight":
           //save id to remove focus from last element
-          if (!("expanded" in nodes[this.state.tid])) {
+          if (!("expanded" in nodes[oldID])) {
             //end node
-          } else if (nodes[this.state.tid].expanded === false) {
+          } else if (nodes[oldID].expanded === false) {
             //open the node
-            nodes[this.state.tid].expanded = true;
-            this.setNodeVisibleState(this.state.tid);
+            nodes[oldID].expanded = true;
+            this.setNodeVisibleState(oldID);
           } else {
-            if ("groups" in nodes[this.state.tid]) {
+            if ("groups" in nodes[oldID]) {
               //move to first group
-              this.state.tid = nodes[this.state.tid].groups[0];
+              this.state.tid = nodes[oldID].groups[0];
             } else {
               console.log("ERROR all expanded data nodes must have a group");
             }
