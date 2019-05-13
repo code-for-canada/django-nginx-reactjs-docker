@@ -154,12 +154,13 @@ class TreeNode extends Component {
 			For parent nodes, one possible default action is to open or close the node. 
 			In single-select trees where selection does not follow focus (see https://www.w3.org/TR/wai-aria-practices-1.1/#issue-container-generatedID-27), 
 			the default action is typically to select the focused node.
-		*/
+    */
+    let nodes = this.state.nodes;
 
     if (e.keyCode === 32) {
-      if ("expanded" in this.state.nodes[this.state.tid]) {
+      if ("expanded" in nodes[this.state.tid]) {
         e.preventDefault();
-        this.state.nodes[this.state.tid].expanded = !this.state.nodes[this.state.tid].expanded;
+        nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
         this.setNodeVisibleState(this.state.tid);
       } else {
         //element can not expand ignore enter key
@@ -177,8 +178,8 @@ class TreeNode extends Component {
 					the default action is typically to select the focused node.
 				*/
         case "Enter":
-          if ("expanded" in this.state.nodes[this.state.tid]) {
-            this.state.nodes[this.state.tid].expanded = !this.state.nodes[this.state.tid].expanded;
+          if ("expanded" in nodes[this.state.tid]) {
+            nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
             this.setNodeVisibleState(this.state.tid);
           } else {
             //element can not expand ignore enter key
@@ -191,14 +192,14 @@ class TreeNode extends Component {
 				*/
         case "ArrowDown":
           //save id to remove focus from last element
-          if (this.state.nodes.length > this.state.tid + 1) {
+          if (nodes.length > this.state.tid + 1) {
             //find closest visable item
-            for (i = this.state.tid + 1; i < this.state.nodes.length; i++) {
-              elem = this.state.nodes[i];
+            for (i = this.state.tid + 1; i < nodes.length; i++) {
+              elem = nodes[i];
               if ("visable" in elem && elem.visable === true) {
                 this.state.tid = i;
                 break;
-              } else if (i === this.state.nodes.length - 1) {
+              } else if (i === nodes.length - 1) {
                 //no loops are found
                 console.log("no visable element found return to root");
                 this.state.tid = 0;
@@ -228,7 +229,7 @@ class TreeNode extends Component {
           } else {
             //loop back to begining node
             console.log("beggining of nodes looping to botttom");
-            this.state.tid = this.findVisableInReverse(this.state.nodes.length - 1);
+            this.state.tid = this.findVisableInReverse(nodes.length - 1);
           }
           this.moveFocus(oldID, this.state.tid);
           break;
@@ -241,16 +242,16 @@ class TreeNode extends Component {
 
         case "ArrowRight":
           //save id to remove focus from last element
-          if (!("expanded" in this.state.nodes[this.state.tid])) {
+          if (!("expanded" in nodes[this.state.tid])) {
             //end node
-          } else if (this.state.nodes[this.state.tid].expanded === false) {
+          } else if (nodes[this.state.tid].expanded === false) {
             //open the node
-            this.state.nodes[this.state.tid].expanded = true;
+            nodes[this.state.tid].expanded = true;
             this.setNodeVisibleState(this.state.tid);
           } else {
-            if ("groups" in this.state.nodes[this.state.tid]) {
+            if ("groups" in nodes[this.state.tid]) {
               //move to first group
-              this.state.tid = this.state.nodes[this.state.tid].groups[0];
+              this.state.tid = nodes[this.state.tid].groups[0];
             } else {
               console.log("ERROR all expanded data nodes must have a group");
             }
@@ -266,21 +267,18 @@ class TreeNode extends Component {
 				*/
         case "ArrowLeft":
           //save id to remove focus from last element
-          if (
-            this.state.nodes[this.state.tid].parent === "" &&
-            this.state.nodes[this.state.tid].expanded === false
-          ) {
+          if (nodes[this.state.tid].parent === "" && nodes[this.state.tid].expanded === false) {
             console.log("root element");
             // When focus is on a root node that is also either an end node or a closed node, does nothing.
-          } else if (this.state.nodes[this.state.tid].expanded === true) {
+          } else if (nodes[this.state.tid].expanded === true) {
             console.log("expanded element closing");
             // When focus is on an open node, closes the node.
-            this.state.nodes[this.state.tid].expanded = false;
+            nodes[this.state.tid].expanded = false;
             this.setNodeVisibleState(this.state.tid);
           } else {
             // When focus is on a child node that is also either an end node or a closed node, moves focus to its parent node.
             console.log("move to parent element");
-            this.state.tid = this.state.nodes[this.state.tid].parent;
+            this.state.tid = nodes[this.state.tid].parent;
             this.setNodeVisibleState(this.state.tid);
           }
           this.moveFocus(oldID, this.state.tid);
@@ -300,7 +298,7 @@ class TreeNode extends Component {
 				*/
         case "End":
           console.log("not implimented");
-          this.state.tid = this.findVisableInReverse(this.state.nodes.length - 1);
+          this.state.tid = this.findVisableInReverse(nodes.length - 1);
           this.moveFocus(oldID, this.state.tid);
           break;
 
@@ -315,8 +313,8 @@ class TreeNode extends Component {
         case (e.key.match(/^[a-zA-Z]{1}$/) || {}).input:
           let found = false;
           //start search from current node
-          for (i = this.state.tid + 1; i < this.state.nodes.length; i++) {
-            elem = this.state.nodes[i];
+          for (i = this.state.tid + 1; i < nodes.length; i++) {
+            elem = nodes[i];
             if (
               "visable" in elem &&
               elem.visable === true &&
@@ -330,7 +328,7 @@ class TreeNode extends Component {
           //if not found search from beginning
           if (!found) {
             for (i = 0; i < this.state.tid + 1; i++) {
-              elem = this.state.nodes[i];
+              elem = nodes[i];
               if (
                 "visable" in elem &&
                 elem.visable === true &&
@@ -354,7 +352,7 @@ class TreeNode extends Component {
           console.log(e.key);
       }
     }
-    this.setState({ nodes: this.state.nodes });
+    this.setState({ nodes: nodes });
   }
 
   //only supports tree nodes max - three levels deep
