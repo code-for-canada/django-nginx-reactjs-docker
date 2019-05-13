@@ -35,9 +35,12 @@ class TreeNode extends Component {
       if (node.level === 1) {
         node.tabIndex = tabIndex;
         tabIndex += 1;
+        node.visable = true;
       } else {
         node.tabIndex = -1;
+        node.visable = false;
       }
+      node.focus = false;
       //TODO uncomment when fixed
       //node.level = level;
 
@@ -45,8 +48,7 @@ class TreeNode extends Component {
       /*id: 0,
         parent: "",
         visable: true,
-        expanded: false,
-        focus: false,
+        expanded: false, // this will need more work.....
         groups: [1, 2, 3, 7, 8],
         */
       nodes.push(node);
