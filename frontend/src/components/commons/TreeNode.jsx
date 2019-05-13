@@ -69,7 +69,7 @@ class TreeNode extends Component {
       console.log("error no data id on event, you must tab into tree view");
     }
     //clicked a childs span element not a node
-    if (event.target.id == "span" + this.state.tid) {
+    if (event.target.id === "span" + this.state.tid) {
       this.state.nodes[this.state.tid].expanded = !this.state.nodes[this.state.tid].expanded;
     }
     this.setNodeVisibleState(this.state.tid);
@@ -134,7 +134,7 @@ class TreeNode extends Component {
     var id = this.state.tid;
     //find closest visable item
     for (var i = searchStart; i >= 0; --i) {
-      if (this.state.nodes[i].visable == true) {
+      if (this.state.nodes[i].visable === true) {
         id = i;
         break;
       }
@@ -150,7 +150,7 @@ class TreeNode extends Component {
 			the default action is typically to select the focused node.
 		*/
 
-    if (e.keyCode == 32) {
+    if (e.keyCode === 32) {
       if ("expanded" in this.state.nodes[this.state.tid]) {
         e.preventDefault();
         this.state.nodes[this.state.tid].expanded = !this.state.nodes[this.state.tid].expanded;
@@ -187,10 +187,10 @@ class TreeNode extends Component {
             //find closest visable item
             for (var i = this.state.tid + 1; i < this.state.nodes.length; i++) {
               var elem = this.state.nodes[i];
-              if ("visable" in elem && elem.visable == true) {
+              if ("visable" in elem && elem.visable === true) {
                 this.state.tid = i;
                 break;
-              } else if (i == this.state.nodes.length - 1) {
+              } else if (i === this.state.nodes.length - 1) {
                 //no loops are found
                 console.log("no visable element found return to root");
                 this.state.tid = 0;
@@ -237,7 +237,7 @@ class TreeNode extends Component {
           var oldID = this.state.tid;
           if (!("expanded" in this.state.nodes[this.state.tid])) {
             //end node
-          } else if (this.state.nodes[this.state.tid].expanded == false) {
+          } else if (this.state.nodes[this.state.tid].expanded === false) {
             //open the node
             this.state.nodes[this.state.tid].expanded = true;
             this.setNodeVisibleState(this.state.tid);
@@ -263,11 +263,11 @@ class TreeNode extends Component {
           var oldID = this.state.tid;
           if (
             this.state.nodes[this.state.tid].parent === "" &&
-            this.state.nodes[this.state.tid].expanded == false
+            this.state.nodes[this.state.tid].expanded === false
           ) {
             console.log("root element");
             // When focus is on a root node that is also either an end node or a closed node, does nothing.
-          } else if (this.state.nodes[this.state.tid].expanded == true) {
+          } else if (this.state.nodes[this.state.tid].expanded === true) {
             console.log("expanded element closing");
             // When focus is on an open node, closes the node.
             this.state.nodes[this.state.tid].expanded = false;
@@ -317,8 +317,8 @@ class TreeNode extends Component {
             var elem = this.state.nodes[i];
             if (
               "visable" in elem &&
-              elem.visable == true &&
-              e.key.toLowerCase() == elem.name[0].toLowerCase()
+              elem.visable === true &&
+              e.key.toLowerCase() === elem.name[0].toLowerCase()
             ) {
               this.state.tid = i;
               found = true;
@@ -331,8 +331,8 @@ class TreeNode extends Component {
               var elem = this.state.nodes[i];
               if (
                 "visable" in elem &&
-                elem.visable == true &&
-                e.key.toLowerCase() == elem.name[0].toLowerCase()
+                elem.visable === true &&
+                e.key.toLowerCase() === elem.name[0].toLowerCase()
               ) {
                 this.state.tid = i;
                 found = true;
