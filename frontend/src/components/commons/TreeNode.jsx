@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 //import "../../helpers/lib/tree";
 import "../../css/lib/tree.css";
 
+// Largely based on src/js/aria.js (https://github.com/psw58/aria-tree-react/blob/master/src/js/aria.jsx)
+// From aria-tree-react project (https://github.com/psw58/aria-tree-react)
+
 // The structure of a node in a treeview
 export const treeNodeShape = PropTypes.shape({
   text: PropTypes.string.isRequired
