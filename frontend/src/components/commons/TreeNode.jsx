@@ -60,45 +60,47 @@ class TreeNode extends Component {
   }
 
   onClickEvent(event) {
+    let nodes = this.state.nodes;
     //@TODO if this element does not have focus give it focus
     const oldID = this.state.tid;
     //get the id of the element from the data set
     if (event.target.dataset.id) {
-      this.state.tid = parseInt(event.target.dataset.id);
+      this.setState({ tid: parseInt(event.target.dataset.id) });
     } else {
       console.log("error no data id on event, you must tab into tree view");
     }
     //clicked a childs span element not a node
     if (event.target.id === "span" + this.state.tid) {
-      this.state.nodes[this.state.tid].expanded = !this.state.nodes[this.state.tid].expanded;
+      nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
     }
     this.setNodeVisibleState(this.state.tid);
-    this.setState({ nodes: this.state.nodes });
+    this.setState({ nodes: nodes });
     this.moveFocus(oldID, this.state.tid);
   }
 
   setNodeVisibleState(stateID) {
     const myID = stateID;
-    if ("groups" in this.state.nodes[myID]) {
-      this.state.nodes[myID].groups.forEach(element => {
-        if (this.state.nodes[myID].expanded) {
+    let nodes = this.state.nodes;
+    if ("groups" in nodes[myID]) {
+      nodes[myID].groups.forEach(element => {
+        if (nodes[myID].expanded) {
           //visable is true
-          this.state.nodes[element].visable = true;
+          nodes[element].visable = true;
           //if the node is expanded set the children to visible
-          if (this.state.nodes[element].groups && this.state.nodes[element].expanded) {
-            //console.log("setting id " + this.state.nodes[element].id + " children to searchable");
-            this.state.nodes[element].groups.forEach(el => {
-              this.state.nodes[el].visable = true;
+          if (nodes[element].groups && nodes[element].expanded) {
+            //console.log("setting id " + nodes[element].id + " children to searchable");
+            nodes[element].groups.forEach(el => {
+              nodes[el].visable = true;
             });
           }
         } else {
           //visible is false
-          this.state.nodes[element].visable = false;
+          nodes[element].visable = false;
           //set child nodes to hiden
-          if (this.state.nodes[element].groups && this.state.nodes[element].expanded) {
-            //console.log("setting id " + this.state.nodes[element].id + " children to searchable");
-            this.state.nodes[element].groups.forEach(el => {
-              this.state.nodes[el].visable = false;
+          if (nodes[element].groups && nodes[element].expanded) {
+            //console.log("setting id " + nodes[element].id + " children to searchable");
+            nodes[element].groups.forEach(el => {
+              nodes[el].visable = false;
             });
           }
         }
@@ -106,6 +108,7 @@ class TreeNode extends Component {
     } else {
       console.log("no groups");
     }
+    this.setState({ nodes: nodes });
   }
 
   moveFocus(curID, nextID) {
