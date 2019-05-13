@@ -159,10 +159,10 @@ class TreeNode extends Component {
     const oldID = this.state.tid;
 
     if (e.keyCode === 32) {
-      if ("expanded" in nodes[this.state.tid]) {
+      if ("expanded" in nodes[oldID]) {
         e.preventDefault();
-        nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
-        this.setNodeVisibleState(this.state.tid);
+        nodes[oldID].expanded = !nodes[oldID].expanded;
+        this.setNodeVisibleState(oldID);
       } else {
         //element can not expand ignore enter key
         console.log("element can not expand");
