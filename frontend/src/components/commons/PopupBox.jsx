@@ -13,6 +13,10 @@ export const BUTTON_STATE = {
   enabled: false
 };
 
+export const BACKDROP = {
+  static: "static"
+};
+
 const styles = {
   boxshape: {
     borderWidth: "1px 1px 0 1px",
@@ -64,7 +68,13 @@ class PopupBox extends Component {
       rightButtonType: PropTypes.string,
       rightButtonTitle: PropTypes.string,
       rightButtonAction: PropTypes.func,
-      rightButtonState: PropTypes.string
+      rightButtonState: PropTypes.string,
+      backdrop: PropTypes.string,
+      closeButton: PropTypes.bool
+    };
+    // display 'close button' by default
+    PopupBox.defaultProps = {
+      closeButton: true
     };
   }
 
@@ -103,9 +113,10 @@ class PopupBox extends Component {
         autoFocus={true}
         enforceFocus={true}
         aria-hidden={false}
+        backdrop={this.props.backdrop}
       >
         <div style={styles.boxContent}>
-          <Modal.Header closeButton style={styles.modalHeader}>
+          <Modal.Header closeButton={this.props.closeButton} style={styles.modalHeader}>
             <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
               {title}
             </Modal.Title>
