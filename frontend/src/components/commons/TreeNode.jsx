@@ -112,25 +112,28 @@ class TreeNode extends Component {
   }
 
   moveFocus(curID, nextID) {
+    let nodes = this.state.nodes;
     //remove focus from old element
-    this.state.nodes[curID].focus = false;
-    this.state.nodes[curID].tabIndex = -1;
+    nodes[curID].focus = false;
+    nodes[curID].tabIndex = -1;
     //set focus to current elem
-    this.state.nodes[nextID].focus = true;
-    this.state.nodes[nextID].tabIndex = 0;
-    this.setState({ nodes: this.state.nodes });
+    nodes[nextID].focus = true;
+    nodes[nextID].tabIndex = 0;
+    this.setState({ nodes: nodes });
     this.refs[nextID].focus();
   }
 
   onFocusEvent(e) {
-    this.state.nodes[this.state.tid].focus = true;
-    this.state.nodes[this.state.tid].tabIndex = 0;
-    this.setState({ nodes: this.state.nodes });
+    let nodes = this.state.nodes;
+    nodes[this.state.tid].focus = true;
+    nodes[this.state.tid].tabIndex = 0;
+    this.setState({ nodes: nodes });
   }
 
   onBlurEvent(e) {
-    this.state.nodes[this.state.tid].focus = false;
-    this.setState({ nodes: this.state.nodes });
+    let nodes = this.state.nodes;
+    nodes[this.state.tid].focus = false;
+    this.setState({ nodes: nodes });
   }
 
   findVisableInReverse(searchStart) {
