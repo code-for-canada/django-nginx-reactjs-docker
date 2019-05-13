@@ -267,18 +267,18 @@ class TreeNode extends Component {
 				*/
         case "ArrowLeft":
           //save id to remove focus from last element
-          if (nodes[this.state.tid].parent === "" && nodes[this.state.tid].expanded === false) {
+          if (nodes[oldID].parent === "" && nodes[oldID].expanded === false) {
             console.log("root element");
             // When focus is on a root node that is also either an end node or a closed node, does nothing.
-          } else if (nodes[this.state.tid].expanded === true) {
+          } else if (nodes[oldID].expanded === true) {
             console.log("expanded element closing");
             // When focus is on an open node, closes the node.
-            nodes[this.state.tid].expanded = false;
-            this.setNodeVisibleState(this.state.tid);
+            nodes[oldID].expanded = false;
+            this.setNodeVisibleState(oldID);
           } else {
             // When focus is on a child node that is also either an end node or a closed node, moves focus to its parent node.
             console.log("move to parent element");
-            this.state.tid = nodes[this.state.tid].parent;
+            this.state.tid = nodes[oldID].parent;
             this.setNodeVisibleState(this.state.tid);
           }
           this.moveFocus(oldID, this.state.tid);
