@@ -1,0 +1,9 @@
+{
+  "addons": [],
+  "buildpacks": [],
+  "env": {},
+  "formation": {},
+  "name": "project-thundercat",
+  "scripts": {},
+  "stack": "container"
+}
