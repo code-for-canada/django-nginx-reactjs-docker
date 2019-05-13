@@ -7,21 +7,53 @@ import "../../css/lib/tree.css";
 
 // The structure of a node in a treeview
 export const treeNodeShape = PropTypes.shape({
-  text: PropTypes.string.isRequired
+  //text: PropTypes.string.isRequired
 });
 
-treeNodeShape.children = PropTypes.arrayOf(treeNodeShape);
+//treeNodeShape.children = PropTypes.arrayOf(treeNodeShape);
 
 //Recursive tree building component. for each
 class TreeNode extends Component {
   static propTypes = {
-    node: PropTypes.arrayOf(treeNodeShape).isRequired
+    nodes: PropTypes.arrayOf(treeNodeShape).isRequired
   };
 
   state = {
-    nodes: this.props.nodes,
+    nodes: this.transformNodes(this.props.nodes, 1),
     tid: 0
   };
+
+  transformNodes(originalNodes, level) {
+    let nodes = [];
+    let tabIndex = 0;
+    for (let node of originalNodes) {
+      if (node.children) {
+        console.log("um... how??");
+        node.children = this.transformNodes(node.children, level + 1);
+      }
+      // TODO change to level when fixed
+      if (node.level === 1) {
+        node.tabIndex = tabIndex;
+        tabIndex += 1;
+      } else {
+        node.tabIndex = -1;
+      }
+      //TODO uncomment when fixed
+      //node.level = level;
+
+      //TODO assign these...
+      /*id: 0,
+        parent: "",
+        visable: true,
+        expanded: false,
+        focus: false,
+        groups: [1, 2, 3, 7, 8],
+        */
+      nodes.push(node);
+    }
+    console.log(nodes);
+    return nodes;
+  }
 
   onClickEvent(event) {
     //@TODO if this element does not have focus give it focus
