@@ -156,6 +156,7 @@ class TreeNode extends Component {
 			the default action is typically to select the focused node.
     */
     let nodes = this.state.nodes;
+    const oldID = this.state.tid;
 
     if (e.keyCode === 32) {
       if ("expanded" in nodes[this.state.tid]) {
@@ -167,7 +168,6 @@ class TreeNode extends Component {
         console.log("element can not expand");
       }
     } else {
-      const oldID = this.state.tid;
       let i;
       let elem;
       switch (e.key) {
