@@ -6,7 +6,7 @@ import "../../css/registration-form.css";
 import { registerAction, registrationSuccessMessage } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import PopupBox, { BUTTON_TYPE, BACKDROP } from "../commons/PopupBox";
+import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 
 const styles = {
   createAccountContent: {
@@ -359,7 +359,6 @@ class RegistrationForm extends Component {
           </div>
         </div>
         <PopupBox
-          backdrop={BACKDROP.static}
           show={this.state.showDialog}
           handleClose={this.redirectToLoginPage}
           title={"Account Created"}
