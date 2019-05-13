@@ -178,9 +178,9 @@ class TreeNode extends Component {
 					the default action is typically to select the focused node.
 				*/
         case "Enter":
-          if ("expanded" in nodes[this.state.tid]) {
-            nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
-            this.setNodeVisibleState(this.state.tid);
+          if ("expanded" in nodes[oldID]) {
+            nodes[oldID].expanded = !nodes[oldID].expanded;
+            this.setNodeVisibleState(oldID);
           } else {
             //element can not expand ignore enter key
             console.log("element can not expand");
@@ -192,9 +192,9 @@ class TreeNode extends Component {
 				*/
         case "ArrowDown":
           //save id to remove focus from last element
-          if (nodes.length > this.state.tid + 1) {
+          if (nodes.length > oldID + 1) {
             //find closest visable item
-            for (i = this.state.tid + 1; i < nodes.length; i++) {
+            for (i = oldID + 1; i < nodes.length; i++) {
               elem = nodes[i];
               if ("visable" in elem && elem.visable === true) {
                 this.state.tid = i;
