@@ -131,9 +131,9 @@ class TreeNode extends Component {
   }
 
   findVisableInReverse(searchStart) {
-    var id = this.state.tid;
+    let id = this.state.tid;
     //find closest visable item
-    for (var i = searchStart; i >= 0; --i) {
+    for (let i = searchStart; i >= 0; --i) {
       if (this.state.nodes[i].visable === true) {
         id = i;
         break;
@@ -307,7 +307,7 @@ class TreeNode extends Component {
 				*/
 
         case (e.key.match(/^[a-zA-Z]{1}$/) || {}).input:
-          var found = false;
+          let found = false;
           //start search from current node
           for (i = this.state.tid + 1; i < this.state.nodes.length; i++) {
             elem = this.state.nodes[i];
@@ -354,7 +354,7 @@ class TreeNode extends Component {
   //only supports tree nodes max - three levels deep
   render() {
     //get all root nodes
-    var roots = this.state.nodes.filter((elem, i) => {
+    let roots = this.state.nodes.filter((elem, i) => {
       //root elements have no parent
       if (elem.parent === "") {
         return true;
