@@ -160,6 +160,7 @@ class TreeNode extends Component {
         console.log("element can not expand");
       }
     } else {
+      const oldID = this.state.tid;
       switch (e.key) {
         /* ENTER KEY: --------------------------------------------------
 					activates a node, i.e., performs its default action. 
@@ -182,7 +183,6 @@ class TreeNode extends Component {
 				*/
         case "ArrowDown":
           //save id to remove focus from last element
-          var oldID = this.state.tid;
           if (this.state.nodes.length > this.state.tid + 1) {
             //find closest visable item
             for (var i = this.state.tid + 1; i < this.state.nodes.length; i++) {
@@ -212,7 +212,6 @@ class TreeNode extends Component {
 				*/
         case "ArrowUp":
           //save id to remove focus from last element
-          var oldID = this.state.tid;
           //update current target id
           //@TOD0 UPDATE THE TARGET ONLY IF ITS VISABLE
           if (this.state.tid > 0) {
@@ -234,7 +233,6 @@ class TreeNode extends Component {
 
         case "ArrowRight":
           //save id to remove focus from last element
-          var oldID = this.state.tid;
           if (!("expanded" in this.state.nodes[this.state.tid])) {
             //end node
           } else if (this.state.nodes[this.state.tid].expanded === false) {
@@ -260,7 +258,6 @@ class TreeNode extends Component {
 				*/
         case "ArrowLeft":
           //save id to remove focus from last element
-          var oldID = this.state.tid;
           if (
             this.state.nodes[this.state.tid].parent === "" &&
             this.state.nodes[this.state.tid].expanded === false
@@ -285,7 +282,6 @@ class TreeNode extends Component {
 					Moves focus to the first node in the tree without opening or closing a node.
 				*/
         case "Home":
-          var oldID = this.state.tid;
           this.state.tid = 0;
           this.moveFocus(oldID, this.state.tid);
           console.log("not implimented");
@@ -296,7 +292,6 @@ class TreeNode extends Component {
 				*/
         case "End":
           console.log("not implimented");
-          var oldID = this.state.tid;
           this.state.tid = this.findVisableInReverse(this.state.nodes.length - 1);
           this.moveFocus(oldID, this.state.tid);
           break;
@@ -310,7 +305,6 @@ class TreeNode extends Component {
 				*/
 
         case (e.key.match(/^[a-zA-Z]{1}$/) || {}).input:
-          var oldID = this.state.tid;
           var found = false;
           //start search from current node
           for (var i = this.state.tid + 1; i < this.state.nodes.length; i++) {
