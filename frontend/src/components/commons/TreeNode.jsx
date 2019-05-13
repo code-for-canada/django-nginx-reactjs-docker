@@ -161,6 +161,7 @@ class TreeNode extends Component {
       }
     } else {
       const oldID = this.state.tid;
+      let i;
       switch (e.key) {
         /* ENTER KEY: --------------------------------------------------
 					activates a node, i.e., performs its default action. 
@@ -185,7 +186,7 @@ class TreeNode extends Component {
           //save id to remove focus from last element
           if (this.state.nodes.length > this.state.tid + 1) {
             //find closest visable item
-            for (var i = this.state.tid + 1; i < this.state.nodes.length; i++) {
+            for (i = this.state.tid + 1; i < this.state.nodes.length; i++) {
               var elem = this.state.nodes[i];
               if ("visable" in elem && elem.visable === true) {
                 this.state.tid = i;
@@ -307,7 +308,7 @@ class TreeNode extends Component {
         case (e.key.match(/^[a-zA-Z]{1}$/) || {}).input:
           var found = false;
           //start search from current node
-          for (var i = this.state.tid + 1; i < this.state.nodes.length; i++) {
+          for (i = this.state.tid + 1; i < this.state.nodes.length; i++) {
             var elem = this.state.nodes[i];
             if (
               "visable" in elem &&
@@ -321,7 +322,7 @@ class TreeNode extends Component {
           }
           //if not found search from beginning
           if (!found) {
-            for (var i = 0; i < this.state.tid + 1; i++) {
+            for (i = 0; i < this.state.tid + 1; i++) {
               var elem = this.state.nodes[i];
               if (
                 "visable" in elem &&
