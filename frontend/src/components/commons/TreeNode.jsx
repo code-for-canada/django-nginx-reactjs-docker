@@ -41,14 +41,16 @@ class TreeNode extends Component {
         node.visable = false;
       }
       node.focus = false;
+      //TODO change to children when changed
+      if (node.groups) {
+        node.expanded = false;
+      }
       //TODO uncomment when fixed
       //node.level = level;
 
       //TODO assign these...
       /*id: 0,
         parent: "",
-        visable: true,
-        expanded: false, // this will need more work.....
         groups: [1, 2, 3, 7, 8],
         */
       nodes.push(node);
