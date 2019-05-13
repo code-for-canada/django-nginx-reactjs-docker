@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import validateName, { validateEmail, validatePassword } from "../../helpers/regexValidator";
-import "../../css/create-account-form.css";
+import "../../css/registration-form.css";
 import { registerAction, registrationSuccessMessage } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -54,7 +54,7 @@ const styles = {
   }
 };
 
-class CreateAccountForm extends Component {
+class RegistrationForm extends Component {
   static propTypes = {
     // Props from Redux
     registerAction: PropTypes.func,
@@ -388,4 +388,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   null,
   mapDispatchToProps
-)(CreateAccountForm);
+)(RegistrationForm);
