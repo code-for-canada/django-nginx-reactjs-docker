@@ -313,7 +313,7 @@ class TreeNode extends Component {
         case (e.key.match(/^[a-zA-Z]{1}$/) || {}).input:
           let found = false;
           //start search from current node
-          for (i = this.state.tid + 1; i < nodes.length; i++) {
+          for (i = oldID + 1; i < nodes.length; i++) {
             elem = nodes[i];
             if (
               "visable" in elem &&
@@ -327,7 +327,7 @@ class TreeNode extends Component {
           }
           //if not found search from beginning
           if (!found) {
-            for (i = 0; i < this.state.tid + 1; i++) {
+            for (i = 0; i < oldID + 1; i++) {
               elem = nodes[i];
               if (
                 "visable" in elem &&
