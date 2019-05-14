@@ -63,19 +63,20 @@ class TreeNode extends Component {
     let nodes = this.state.nodes;
     //@TODO if this element does not have focus give it focus
     const oldID = this.state.tid;
+    let tid = this.state.tid;
     //get the id of the element from the data set
     if (event.target.dataset.id) {
-      this.setState({ tid: parseInt(event.target.dataset.id) });
+      tid = parseInt(event.target.dataset.id);
     } else {
       console.log("error no data id on event, you must tab into tree view");
     }
     //clicked a childs span element not a node
-    if (event.target.id === "span" + this.state.tid) {
-      nodes[this.state.tid].expanded = !nodes[this.state.tid].expanded;
+    if (event.target.id === "span" + tid) {
+      nodes[tid].expanded = !nodes[tid].expanded;
     }
-    this.setNodeVisibleState(this.state.tid);
-    this.setState({ nodes: nodes });
-    this.moveFocus(oldID, this.state.tid);
+    this.setNodeVisibleState(tid);
+    this.setState({ nodes: nodes, tid: tid });
+    this.moveFocus(oldID, tid);
   }
 
   setNodeVisibleState(stateID) {
