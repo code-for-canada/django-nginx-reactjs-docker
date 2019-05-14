@@ -13,6 +13,13 @@ export const treeNodeShape = PropTypes.shape({
 
 //treeNodeShape.children = PropTypes.arrayOf(treeNodeShape);
 
+//Could not store this in state
+// onFocus and onBlur are automatically called when focus is move to a node
+// this.state.<x> = <y> causes warnings in the console (state should be changed by this.setState)
+// <x> is not updated by the time onBlur and onFocus are called, so they update the wrong node
+//currently have to use a global variabel to track this value
+let focusedNodeId = 0;
+
 //Recursive tree building component. for each
 class TreeNode extends Component {
   static propTypes = {
@@ -20,8 +27,7 @@ class TreeNode extends Component {
   };
 
   state = {
-    nodes: this.transformNodes(this.props.nodes),
-    tid: 0
+    nodes: this.transformNodes(this.props.nodes)
   };
 
   // Added by Michael to auto-fill fields
@@ -56,21 +62,20 @@ class TreeNode extends Component {
   onClickEvent(event) {
     let nodes = this.state.nodes;
     //@TODO if this element does not have focus give it focus
-    const oldID = this.state.tid;
-    let tid = this.state.tid;
+    const oldID = focusedNodeId;
     //get the id of the element from the data set
     if (event.target.dataset.id) {
-      tid = parseInt(event.target.dataset.id);
+      focusedNodeId = parseInt(event.target.dataset.id);
     } else {
       console.log("error no data id on event, you must tab into tree view");
     }
     //clicked a childs span element not a node
-    if (event.target.id === "span" + tid) {
-      nodes[tid].expanded = !nodes[tid].expanded;
+    if (event.target.id === "span" + focusedNodeId) {
+      nodes[focusedNodeId].expanded = !nodes[focusedNodeId].expanded;
     }
-    this.setNodeVisibleState(tid);
-    this.setState({ nodes: nodes, tid: tid });
-    this.moveFocus(oldID, tid);
+    this.setNodeVisibleState(focusedNodeId);
+    this.setState({ nodes: nodes });
+    this.moveFocus(oldID, focusedNodeId);
   }
 
   setNodeVisibleState(stateID) {
@@ -120,19 +125,19 @@ class TreeNode extends Component {
 
   onFocusEvent(e) {
     let nodes = this.state.nodes;
-    nodes[this.state.tid].focus = true;
-    nodes[this.state.tid].tabIndex = 0;
+    nodes[focusedNodeId].focus = true;
+    nodes[focusedNodeId].tabIndex = 0;
     this.setState({ nodes: nodes });
   }
 
   onBlurEvent(e) {
     let nodes = this.state.nodes;
-    nodes[this.state.tid].focus = false;
+    nodes[focusedNodeId].focus = false;
     this.setState({ nodes: nodes });
   }
 
   findVisableInReverse(searchStart) {
-    let id = this.state.tid;
+    let id = focusedNodeId;
     //find closest visable item
     for (let i = searchStart; i >= 0; --i) {
       if (this.state.nodes[i].visable === true) {
@@ -151,7 +156,7 @@ class TreeNode extends Component {
 			the default action is typically to select the focused node.
     */
     let nodes = this.state.nodes;
-    const oldID = this.state.tid;
+    const oldID = focusedNodeId;
 
     if (e.keyCode === 32) {
       if ("expanded" in nodes[oldID]) {
@@ -192,12 +197,12 @@ class TreeNode extends Component {
             for (i = oldID + 1; i < nodes.length; i++) {
               elem = nodes[i];
               if ("visable" in elem && elem.visable === true) {
-                this.state.tid = i;
+                focusedNodeId = i;
                 break;
               } else if (i === nodes.length - 1) {
                 //no loops are found
                 console.log("no visable element found return to root");
-                this.state.tid = 0;
+                focusedNodeId = 0;
               } else {
                 console.log("error no visable elem");
               }
@@ -205,10 +210,10 @@ class TreeNode extends Component {
           } else {
             //your on last node loop back to begining node
             console.log("beggining of nodes looping to root");
-            this.state.tid = 0;
+            focusedNodeId = 0;
           }
           //set focus to this element
-          this.moveFocus(oldID, this.state.tid);
+          this.moveFocus(oldID, focusedNodeId);
           break;
 
         /* Up Arrow: --------------------------------------------------------
@@ -220,13 +225,13 @@ class TreeNode extends Component {
           //@TOD0 UPDATE THE TARGET ONLY IF ITS VISABLE
           if (oldID > 0) {
             //find closest visable item to current node
-            this.state.tid = this.findVisableInReverse(oldID - 1);
+            focusedNodeId = this.findVisableInReverse(oldID - 1);
           } else {
             //loop back to begining node
             console.log("beggining of nodes looping to botttom");
-            this.state.tid = this.findVisableInReverse(nodes.length - 1);
+            focusedNodeId = this.findVisableInReverse(nodes.length - 1);
           }
-          this.moveFocus(oldID, this.state.tid);
+          this.moveFocus(oldID, focusedNodeId);
           break;
 
         /* Right arrow: ------------------------------------------------------
@@ -246,13 +251,13 @@ class TreeNode extends Component {
           } else {
             if ("groups" in nodes[oldID]) {
               //move to first group
-              this.state.tid = nodes[oldID].groups[0];
+              focusedNodeId = nodes[oldID].groups[0];
             } else {
               console.log("ERROR all expanded data nodes must have a group");
             }
           }
 
-          this.moveFocus(oldID, this.state.tid);
+          this.moveFocus(oldID, focusedNodeId);
           break;
 
         /* Left arrow: --------------------------------------------------------
@@ -273,18 +278,18 @@ class TreeNode extends Component {
           } else {
             // When focus is on a child node that is also either an end node or a closed node, moves focus to its parent node.
             console.log("move to parent element");
-            this.state.tid = nodes[oldID].parent;
-            this.setNodeVisibleState(this.state.tid);
+            focusedNodeId = nodes[oldID].parent;
+            this.setNodeVisibleState(focusedNodeId);
           }
-          this.moveFocus(oldID, this.state.tid);
+          this.moveFocus(oldID, focusedNodeId);
           break;
 
         /* Home: ----------------------------------------------------------------
 					Moves focus to the first node in the tree without opening or closing a node.
 				*/
         case "Home":
-          this.state.tid = 0;
-          this.moveFocus(oldID, this.state.tid);
+          focusedNodeId = 0;
+          this.moveFocus(oldID, focusedNodeId);
           console.log("move to first node in the tree");
           break;
 
@@ -293,8 +298,8 @@ class TreeNode extends Component {
 				*/
         case "End":
           console.log("move to last node in the tree");
-          this.state.tid = this.findVisableInReverse(nodes.length - 1);
-          this.moveFocus(oldID, this.state.tid);
+          focusedNodeId = this.findVisableInReverse(nodes.length - 1);
+          this.moveFocus(oldID, focusedNodeId);
           break;
 
         /* CHARACTER: -----------------------------------------------------------------
@@ -315,7 +320,7 @@ class TreeNode extends Component {
               elem.visable === true &&
               e.key.toLowerCase() === elem.name[0].toLowerCase()
             ) {
-              this.state.tid = i;
+              focusedNodeId = i;
               found = true;
               break;
             }
@@ -329,7 +334,7 @@ class TreeNode extends Component {
                 elem.visable === true &&
                 e.key.toLowerCase() === elem.name[0].toLowerCase()
               ) {
-                this.state.tid = i;
+                focusedNodeId = i;
                 found = true;
                 break;
               }
@@ -338,7 +343,7 @@ class TreeNode extends Component {
           if (!found) {
             console.log("no search results found for " + e.key);
           } else {
-            this.moveFocus(oldID, this.state.tid);
+            this.moveFocus(oldID, focusedNodeId);
           }
           break;
 
