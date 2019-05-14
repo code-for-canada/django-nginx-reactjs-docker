@@ -19,20 +19,16 @@ class TreeNode extends Component {
   };
 
   state = {
-    nodes: this.transformNodes(this.props.nodes, 1),
+    nodes: this.transformNodes(this.props.nodes),
     tid: 0
   };
 
   // Added by Michael to auto-fill fields
   // with default values to prevent user error
-  transformNodes(originalNodes, level) {
+  transformNodes(originalNodes) {
     let nodes = [];
     let tabIndex = 0;
     for (let node of originalNodes) {
-      if (node.children) {
-        console.log("um... how??");
-        node.children = this.transformNodes(node.children, level + 1);
-      }
       // TODO change to level when fixed
       if (node.level === 1) {
         node.tabIndex = tabIndex;
@@ -42,19 +38,15 @@ class TreeNode extends Component {
         node.tabIndex = -1;
         node.visable = false;
       }
-      node.focus = false;
-      //TODO change to children when changed
+
       if (node.groups) {
         node.expanded = false;
       }
-      //TODO uncomment when fixed
-      //node.level = level;
 
-      //TODO assign these...
-      /*id: 0,
-        parent: "",
-        groups: [1, 2, 3, 7, 8],
-        */
+      //TODO auto generate:
+      // - level
+      // - groups
+      node.focus = false;
       nodes.push(node);
     }
     console.log(nodes);
