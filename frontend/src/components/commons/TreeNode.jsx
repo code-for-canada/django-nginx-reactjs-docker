@@ -7,11 +7,12 @@ import "../../css/lib/tree.css";
 
 // The structure of a node in a treeview
 export const treeNodeShape = PropTypes.shape({
-  //TODO add props for treeNodeShape
-  //text: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  parent: PropTypes.number,
+  groups: PropTypes.arrayOf(PropTypes.number),
+  level: PropTypes.number.isRequired
 });
-
-//treeNodeShape.children = PropTypes.arrayOf(treeNodeShape);
 
 //Could not store this in state
 // onFocus and onBlur are automatically called when focus is move to a node
