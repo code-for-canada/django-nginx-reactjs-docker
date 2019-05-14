@@ -23,6 +23,8 @@ class TreeNode extends Component {
     tid: 0
   };
 
+  // Added by Michael to auto-fill fields
+  // with default values to prevent user error
   transformNodes(originalNodes, level) {
     let nodes = [];
     let tabIndex = 0;
@@ -198,12 +200,12 @@ class TreeNode extends Component {
             for (i = oldID + 1; i < nodes.length; i++) {
               elem = nodes[i];
               if ("visable" in elem && elem.visable === true) {
-                this.state.tid = i;
+                this.setState({ tid: i });
                 break;
               } else if (i === nodes.length - 1) {
                 //no loops are found
                 console.log("no visable element found return to root");
-                this.state.tid = 0;
+                this.setState({ tid: 0 });
               } else {
                 console.log("error no visable elem");
               }
@@ -211,7 +213,7 @@ class TreeNode extends Component {
           } else {
             //your on last node loop back to begining node
             console.log("beggining of nodes looping to root");
-            this.state.tid = 0;
+            this.setState({ tid: 0 });
           }
           //set focus to this element
           this.moveFocus(oldID, this.state.tid);
