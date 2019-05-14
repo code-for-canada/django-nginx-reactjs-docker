@@ -200,12 +200,12 @@ class TreeNode extends Component {
             for (i = oldID + 1; i < nodes.length; i++) {
               elem = nodes[i];
               if ("visable" in elem && elem.visable === true) {
-                this.setState({ tid: i });
+                this.state.tid = i;
                 break;
               } else if (i === nodes.length - 1) {
                 //no loops are found
                 console.log("no visable element found return to root");
-                this.setState({ tid: 0 });
+                this.state.tid = 0;
               } else {
                 console.log("error no visable elem");
               }
@@ -213,7 +213,7 @@ class TreeNode extends Component {
           } else {
             //your on last node loop back to begining node
             console.log("beggining of nodes looping to root");
-            this.setState({ tid: 0 });
+            this.state.tid = 0;
           }
           //set focus to this element
           this.moveFocus(oldID, this.state.tid);
