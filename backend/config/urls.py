@@ -16,8 +16,8 @@ router.register(r"database_check", database_check_view.DatabaseViewSet)
 urlpatterns = [
     url(r"^$", schema_view),
     url(r"^admin/", admin.site.urls),
-    url(r"^auth/", include("djoser.urls")),
-    url(r"^auth/", include("djoser.urls.jwt")),
+    url(r"^api/auth/", include("djoser.urls")),
+    url(r"^api/auth/", include("djoser.urls.jwt")),
     path(r"api/", views.index, name="index"),
     path("", include(router.urls)),
 ]

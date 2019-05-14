@@ -1,7 +1,4 @@
 // Action Types
-// URL (Default Docker IP Address)
-// TODO(fnormand): Find a way to put the right URL here for deployments
-export const BACKENDURL = "http://10.0.75.1:8000";
 // AUTH ACTIONS
 export const AUTHENTICATED = "AUTHENTICATED";
 export const UNAUTHENTICATED = "UNAUTHENTICATED";
@@ -12,9 +9,6 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-// Action Creators
-let url = BACKENDURL;
-
 // Simplified version of the authentication action (temporary)
 const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
 
@@ -24,7 +18,7 @@ function registrationSuccessMessage() {
 
 function registerAction(data) {
   return async function() {
-    let response = await fetch(`${url}/auth/users/create/`, {
+    let response = await fetch("api/auth/users/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -38,7 +32,7 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
-    let response = await fetch(`${url}/auth/jwt/create/`, {
+    let response = await fetch("/api/auth/jwt/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
