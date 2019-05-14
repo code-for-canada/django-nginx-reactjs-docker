@@ -60,6 +60,12 @@ class TreeNode extends Component {
     return nodes;
   }
 
+  // reset to 0 when component is re-mounted
+  // prevents issue when switching form a larger org chart to a smaller one
+  componentWillMount() {
+    focusedNodeId = 0;
+  }
+
   onClickEvent(event) {
     let nodes = this.state.nodes;
     //@TODO if this element does not have focus give it focus
