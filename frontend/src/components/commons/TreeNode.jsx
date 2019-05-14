@@ -376,10 +376,6 @@ class TreeNode extends Component {
 
     return (
       <div>
-        <h2 id="tree_label" aria-label="Org Chart press the tab key to enter the tree view">
-          <span id="treeLabel">Org Chart</span>
-        </h2>
-
         <ul
           role="tree"
           aria-labelledby="treeLabel"
