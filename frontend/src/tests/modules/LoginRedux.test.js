@@ -17,4 +17,4 @@ describe("authenticate action", () => {
   });
 });
 
-// TODO(fnormand): Add tests for all other actions if possible
+// TODO(fnormand): Add tests for registerAction, loginAction and logoutAction
