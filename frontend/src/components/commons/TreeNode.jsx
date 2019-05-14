@@ -7,6 +7,7 @@ import "../../css/lib/tree.css";
 
 // The structure of a node in a treeview
 export const treeNodeShape = PropTypes.shape({
+  //TODO add props for treeNodeShape
   //text: PropTypes.string.isRequired
 });
 
