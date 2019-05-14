@@ -3,7 +3,6 @@
 export const AUTHENTICATED = "AUTHENTICATED";
 export const UNAUTHENTICATED = "UNAUTHENTICATED";
 export const TESTING_TOKEN_REFRESH = "TESTING_TOKEN_REFRESH";
-export const REGISTRATION_SUCCESS_MESSAGE = "REGISTRATION_SUCCESS_MESSAGE";
 //CHANGE PASSWORD ACTIONS
 export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
@@ -11,10 +10,6 @@ export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
 // Simplified version of the authentication action (temporary)
 const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
-
-function registrationSuccessMessage() {
-  return { type: REGISTRATION_SUCCESS_MESSAGE };
-}
 
 function registerAction(data) {
   return async function() {
@@ -52,11 +47,8 @@ function logoutAction() {
 
 // Initial State
 const initialState = {
-  authenticated: false,
-  registration_message: ""
+  authenticated: false
 };
-
-const registration_message = "You have been registered successfully.";
 
 // Reducer
 const login = (state = initialState, action) => {
@@ -67,9 +59,7 @@ const login = (state = initialState, action) => {
         authenticated: action.authenticated
       };
     case UNAUTHENTICATED:
-      return { authenticated: false, registration_message: "" };
-    case REGISTRATION_SUCCESS_MESSAGE:
-      return { ...state, registration_message: registration_message };
+      return { authenticated: false };
 
     default:
       return state;
@@ -77,11 +67,4 @@ const login = (state = initialState, action) => {
 };
 
 export default login;
-export {
-  initialState,
-  registerAction,
-  loginAction,
-  authenticateAction,
-  logoutAction,
-  registrationSuccessMessage
-};
+export { initialState, registerAction, loginAction, authenticateAction, logoutAction };
