@@ -15,20 +15,6 @@ export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 // Action Creators
 let url = BACKENDURL;
 
-// TODO (fnormand): Make this function works with the login process
-// function authenticateAction(userData, dispatch, location, push) {
-//   return async function() {
-//     if (navigator.cookieEnabled) {
-//       localStorage.setItem("ecom_token", userData.token);
-//     }
-
-//     if (location === "/login") {
-//       push("/");
-//     }
-//     return dispatch({ type: AUTHENTICATED });
-//   };
-// }
-
 // Simplified version of the authentication action (temporary)
 const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
 
@@ -82,7 +68,6 @@ const registration_message = "You have been registered successfully.";
 const login = (state = initialState, action) => {
   switch (action.type) {
     case AUTHENTICATED:
-      //return { authenticated: true, registration_message: "" };
       return {
         ...state,
         authenticated: action.authenticated
