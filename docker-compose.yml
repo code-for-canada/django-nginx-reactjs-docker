@@ -1,10 +1,15 @@
-#This script is for developement use only. Please do not deploy it in production in its current stage. 
+#This script is for developement use only. Please do not deploy it in production in its current stage.
+#Exposing backend and db directly to enable dubuging locally
 
 version: "3"
 
 services:
   db:
+    restart: always
     image: postgres:10.1-alpine
+    container_name: "project-thundercat_postgres"
+    ports:
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
   backend:
@@ -15,14 +20,14 @@ services:
     command: sh entrypoint.sh
     depends_on:
       - db
+    ports:
+      - 8000:8000
   frontend:
-    volumes :
-      - ./frontend:/home/node  
+    volumes:
+      - ./frontend:/home/node
     build: ./frontend
     command: sh entrypoint.sh
     working_dir: /home/node
-
-
   nginx:
     build: ./nginx
     ports:

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from serializers.database_check_serializer import DatabaseCheckSerializer
-from custom_models.models import DatabaseCheckModel
+from custom_models.database_models import DatabaseCheckModel
 
 
 class DatabaseViewSet(viewsets.ModelViewSet):
