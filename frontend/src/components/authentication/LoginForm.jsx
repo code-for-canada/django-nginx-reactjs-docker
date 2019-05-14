@@ -39,7 +39,6 @@ class LoginForm extends Component {
     loginAction: PropTypes.func,
     authenticateAction: PropTypes.func,
     setLoginState: PropTypes.func,
-    loggedIn: PropTypes.bool,
     authenticated: PropTypes.bool
   };
 
@@ -132,7 +131,6 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loggedIn: state.login.loggedIn,
     authenticated: state.login.authenticated
   };
 };
