@@ -1,10 +1,7 @@
 from .base import *
 import os
 
-
 DEBUG = True
-
-INTERNAL_IPS = ["127.0.0.1"]
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
