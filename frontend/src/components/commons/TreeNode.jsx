@@ -291,14 +291,14 @@ class TreeNode extends Component {
         case "Home":
           this.state.tid = 0;
           this.moveFocus(oldID, this.state.tid);
-          console.log("not implimented");
+          console.log("move to first node in the tree");
           break;
 
         /* End: ---------------------------------------------------------------------
 					Moves focus to the last node in the tree that is focusable without opening a node.
 				*/
         case "End":
-          console.log("not implimented");
+          console.log("move to last node in the tree");
           this.state.tid = this.findVisableInReverse(nodes.length - 1);
           this.moveFocus(oldID, this.state.tid);
           break;
