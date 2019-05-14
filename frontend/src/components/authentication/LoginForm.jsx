@@ -48,6 +48,7 @@ class LoginForm extends Component {
     wrongCredentials: false
   };
 
+  // TODO(fnormand): encrypt passwords
   handleSubmit = event => {
     this.props
       .loginAction({ username: this.state.username, password: this.state.password })
