@@ -184,7 +184,7 @@ class EditTask extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.task.length}/{MAX_TASK}
+                {this.state.task === undefined ? 0 : this.state.task.length}/{MAX_TASK}
               </div>
             </div>
           </div>
@@ -229,7 +229,8 @@ class EditTask extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.reasonsForAction.length}/{MAX_REASON}
+                {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction}/
+                {MAX_REASON}
               </div>
             </div>
           </div>
