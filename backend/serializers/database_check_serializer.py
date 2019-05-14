@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from custom_models.models import DatabaseCheckModel
+from custom_models.database_models import DatabaseCheckModel
 
 # Serializers define the API representation
 class DatabaseCheckSerializer(serializers.ModelSerializer):

@@ -1,7 +1,4 @@
 // Action Types
-export const SET_LOGIN_STATE = "localize/SET_LOGIN_STATE";
-// URL
-export const BACKENDURL = "localhost";
 // AUTH ACTIONS
 export const AUTHENTICATED = "AUTHENTICATED";
 export const UNAUTHENTICATED = "UNAUTHENTICATED";
@@ -12,30 +9,16 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-// Action Creators
-const setLoginState = loggedIn => ({ type: SET_LOGIN_STATE, loggedIn });
+// Simplified version of the authentication action (temporary)
+const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
 
-let url = process.env.REACT_APP_DEV_URL || BACKENDURL;
-
-function authenticateAction(userData, dispatch, location, push) {
-  return async function() {
-    if (navigator.cookieEnabled) {
-      localStorage.setItem("ecom_token", userData.token);
-    }
-
-    if (location === "/login") {
-      push("/");
-    }
-    return dispatch({ type: AUTHENTICATED });
-  };
-}
 function registrationSuccessMessage() {
   return { type: REGISTRATION_SUCCESS_MESSAGE };
 }
 
 function registerAction(data) {
   return async function() {
-    let response = await fetch(`${url}/auth/users/create/`, {
+    let response = await fetch("api/auth/users/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -49,7 +32,7 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
-    let response = await fetch(`${url}/auth/jwt/create/`, {
+    let response = await fetch("/api/auth/jwt/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -69,7 +52,6 @@ function logoutAction() {
 
 // Initial State
 const initialState = {
-  loggedIn: false,
   authenticated: false,
   registration_message: ""
 };
@@ -79,13 +61,11 @@ const registration_message = "You have been registered successfully.";
 // Reducer
 const login = (state = initialState, action) => {
   switch (action.type) {
-    case SET_LOGIN_STATE:
+    case AUTHENTICATED:
       return {
         ...state,
-        loggedIn: action.loggedIn
+        authenticated: action.authenticated
       };
-    case AUTHENTICATED:
-      return { authenticated: true, registration_message: "" };
     case UNAUTHENTICATED:
       return { authenticated: false, registration_message: "" };
     case REGISTRATION_SUCCESS_MESSAGE:
@@ -98,7 +78,6 @@ const login = (state = initialState, action) => {
 
 export default login;
 export {
-  setLoginState,
   initialState,
   registerAction,
   loginAction,

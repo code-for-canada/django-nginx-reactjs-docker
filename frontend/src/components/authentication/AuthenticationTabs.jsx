@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import TabNavigation from "../commons/TabNavigation";
 import LoginForm from "./LoginForm";
 import CreateAccountForm from "./CreateAccountForm";
@@ -25,28 +24,12 @@ const styles = {
 };
 
 class AuthenticationTabs extends Component {
-  //TODO(fnormand): Remove this part when implementing login functionality in the backend
-  //===========================================
-  static propTypes = {
-    authentification: PropTypes.func
-  };
-
-  state = {
-    isAuthenticated: false
-  };
-
-  authentification = () => {
-    this.setState({ isAuthenticated: true });
-    this.props.authentification();
-  };
-  //===========================================
-
   render() {
     const TABS = [
       {
         id: 0,
         tabName: LOCALIZE.authentication.login.title,
-        body: <LoginForm authentification={this.authentification} />
+        body: <LoginForm />
       },
       {
         id: 1,
@@ -56,17 +39,15 @@ class AuthenticationTabs extends Component {
     ];
     return (
       <div>
-        {!this.state.isAuthenticated && (
-          <div style={styles.container}>
-            <TabNavigation
-              tabSpecs={TABS}
-              initialTab={0}
-              menuName={LOCALIZE.ariaLabel.authenticationMenu}
-              style={styles.tabNavigationStyle}
-              disabledTabsArray={[]}
-            />
-          </div>
-        )}
+        <div style={styles.container}>
+          <TabNavigation
+            tabSpecs={TABS}
+            initialTab={0}
+            menuName={LOCALIZE.ariaLabel.authenticationMenu}
+            style={styles.tabNavigationStyle}
+            disabledTabsArray={[]}
+          />
+        </div>
       </div>
     );
   }
