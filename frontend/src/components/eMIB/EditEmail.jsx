@@ -318,7 +318,8 @@ class EditEmail extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.emailBody.length}/{MAX_RESPONSE}
+                {this.state.emailBody === undefined ? 0 : this.state.emailBody.length}/
+                {MAX_RESPONSE}
               </div>
             </div>
           </div>
@@ -338,7 +339,8 @@ class EditEmail extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.reasonsForAction.length}/{MAX_REASON}
+                {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}
+                /{MAX_REASON}
               </div>
             </div>
           </div>
