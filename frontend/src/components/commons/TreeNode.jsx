@@ -7,11 +7,12 @@ import "../../css/lib/tree.css";
 
 // The structure of a node in a treeview
 export const treeNodeShape = PropTypes.shape({
-  //TODO add props for treeNodeShape
-  //text: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  parent: PropTypes.number,
+  groups: PropTypes.arrayOf(PropTypes.number),
+  level: PropTypes.number.isRequired
 });
-
-//treeNodeShape.children = PropTypes.arrayOf(treeNodeShape);
 
 //Could not store this in state
 // onFocus and onBlur are automatically called when focus is move to a node
@@ -267,7 +268,7 @@ class TreeNode extends Component {
 				*/
         case "ArrowLeft":
           //save id to remove focus from last element
-          if (nodes[oldID].parent === "" && nodes[oldID].expanded === false) {
+          if (nodes[oldID].parent === undefined && nodes[oldID].expanded === false) {
             console.log("root element");
             // When focus is on a root node that is also either an end node or a closed node, does nothing.
           } else if (nodes[oldID].expanded === true) {
@@ -360,7 +361,7 @@ class TreeNode extends Component {
     //get all root nodes
     let roots = this.state.nodes.filter((elem, i) => {
       //root elements have no parent
-      if (elem.parent === "") {
+      if (elem.parent === undefined) {
         return true;
       } else {
         return false;
@@ -407,7 +408,6 @@ class TreeNode extends Component {
       >
         <span className={elem.focus ? "focus" : ""} id={"span" + elem.id} data-id={elem.id}>
           <span className="wrapper">
-            <span className="inline title">{elem.title}</span>
             <span className="inline title">{elem.name}</span>
           </span>
           {elem.expanded ? (
@@ -459,7 +459,6 @@ class TreeNode extends Component {
           data-id={this.state.nodes[elem].id}
         >
           <span className="wrapper">
-            <span className="inline title">{this.state.nodes[elem].title}</span>
             <span className="inline title">{this.state.nodes[elem].name}</span>
           </span>
           {this.state.nodes[elem].expanded ? (
@@ -488,7 +487,7 @@ class TreeNode extends Component {
         aria-posinset={pos}
         aria-level={this.state.nodes[elem].level}
       >
-        {this.state.nodes[elem].name} - {this.state.nodes[elem].title}
+        {this.state.nodes[elem].name}
       </li>
     );
   }
