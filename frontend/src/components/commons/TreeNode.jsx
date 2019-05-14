@@ -29,7 +29,6 @@ class TreeNode extends Component {
     let nodes = [];
     let tabIndex = 0;
     for (let node of originalNodes) {
-      // TODO change to level when fixed
       if (node.level === 1) {
         node.tabIndex = tabIndex;
         tabIndex += 1;
@@ -44,8 +43,8 @@ class TreeNode extends Component {
       }
 
       //TODO auto generate:
-      // - level
-      // - groups
+      // - groups: child adds its own id to the parent's group
+      // - level: parent sets child.level=parent.level+1
       node.focus = false;
       nodes.push(node);
     }
