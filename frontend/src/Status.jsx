@@ -55,7 +55,7 @@ class Status extends Component {
   }
 
   checkBackend = async () => {
-    const test = await fetch("/api/", {
+    const test = await fetch("/api/backend-status", {
       method: "GET",
       headers,
       cache: "default"

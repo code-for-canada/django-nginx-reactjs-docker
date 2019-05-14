@@ -18,7 +18,7 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r"^api/auth/", include("djoser.urls")),
     url(r"^api/auth/", include("djoser.urls.jwt")),
-    path(r"api/", views.index, name="index"),
+    path(r"api/backend-status", views.index, name="index"),
     path("", include(router.urls)),
 ]
 
