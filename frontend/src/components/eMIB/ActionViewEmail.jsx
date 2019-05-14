@@ -99,6 +99,9 @@ class ActionViewEmail extends Component {
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
   generateEmailNameList(contactIdList) {
+    if (contactIdList === undefined) {
+      return "";
+    }
     let visibleContactNames = [];
     for (let id of contactIdList) {
       visibleContactNames.push(contactNameFromId(this.props.addressBook, id));
