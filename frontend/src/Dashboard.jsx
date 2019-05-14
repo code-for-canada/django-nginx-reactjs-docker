@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import LOCALIZE from "./text_resources";
 
 class Dashboard extends Component {
-  static propTypes = {
-    // Props from Redux
-    authenticated: PropTypes.bool
-  };
-
   render() {
     return (
       <div>
