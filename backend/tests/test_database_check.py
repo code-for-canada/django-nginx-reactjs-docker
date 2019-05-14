@@ -23,7 +23,7 @@ class DatabaseCheckViewTests(APITestCase):
 
 class GetAllDatabaseEntriesTest(DatabaseCheckViewTests):
     def test_get_all_users(self):
-        response = self.client.get("http://localhost:80/api/database_check/")
+        response = self.client.get("http://localhost:80/api/database-check/")
 
         # SELECT * FROM backend_databasecheckmodel;
         expected = DatabaseCheckModel.objects.all()
@@ -37,7 +37,7 @@ class GetAllDatabaseEntriesTest(DatabaseCheckViewTests):
 
 class GetSpecificDataTest(DatabaseCheckViewTests):
     def test_get_specific_user(self):
-        response = self.client.get("http://localhost:80/api/database_check/")
+        response = self.client.get("http://localhost:80/api/database-check/")
 
         # SELECT name FROM backend_databasecheckmodel WHERE name='name1';
         expected = DatabaseCheckModel.objects.values_list("name", flat=True).get(
