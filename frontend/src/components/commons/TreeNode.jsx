@@ -407,7 +407,6 @@ class TreeNode extends Component {
       >
         <span className={elem.focus ? "focus" : ""} id={"span" + elem.id} data-id={elem.id}>
           <span className="wrapper">
-            <span className="inline title">{elem.title}</span>
             <span className="inline title">{elem.name}</span>
           </span>
           {elem.expanded ? (
@@ -459,7 +458,6 @@ class TreeNode extends Component {
           data-id={this.state.nodes[elem].id}
         >
           <span className="wrapper">
-            <span className="inline title">{this.state.nodes[elem].title}</span>
             <span className="inline title">{this.state.nodes[elem].name}</span>
           </span>
           {this.state.nodes[elem].expanded ? (
@@ -488,7 +486,7 @@ class TreeNode extends Component {
         aria-posinset={pos}
         aria-level={this.state.nodes[elem].level}
       >
-        {this.state.nodes[elem].name} - {this.state.nodes[elem].title}
+        {this.state.nodes[elem].name}
       </li>
     );
   }
