@@ -22,6 +22,52 @@ const styles = {
   }
 };
 
+const treeView = [
+  {
+    id: 0,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.manager,
+    groups: [1, 2, 3, 4, 5, 6],
+    level: 1
+  },
+  {
+    id: 1,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst1,
+    parent: 0,
+    level: 2
+  },
+
+  {
+    id: 2,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst2,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 3,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst3,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 4,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst4,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 5,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst5,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 6,
+    name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst6,
+    parent: 0,
+    level: 2
+  }
+];
+
 class TeamInformation extends Component {
   static propTypes = {
     // Props from Redux
@@ -42,51 +88,6 @@ class TeamInformation extends Component {
 
   render() {
     const { currentLanguage } = this.props;
-    const treeView = [
-      {
-        id: 0,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.manager,
-        groups: [1, 2, 3, 4, 5, 6],
-        level: 1
-      },
-      {
-        id: 1,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst1,
-        parent: 0,
-        level: 2
-      },
-
-      {
-        id: 2,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst2,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 3,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst3,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 4,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst4,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 5,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst5,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 6,
-        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst6,
-        parent: 0,
-        level: 2
-      }
-    ];
 
     //"This is the organizational chart for the Quality Assurance (QA) Team at the Organizational Development Council. You, Claude Huard are the Manager of this unit, and are located at the top of the organizational chart. Under you, The Manager, are 6 Quality Assurance Analysts: Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier."
     return (

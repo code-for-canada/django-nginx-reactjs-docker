@@ -22,6 +22,83 @@ const styles = {
   }
 };
 
+const treeView = [
+  {
+    id: 0,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.president,
+    groups: [1, 5, 6, 7],
+    level: 1
+  },
+  {
+    id: 1,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.corpDirector,
+    parent: 0,
+    groups: [2, 3, 4],
+    level: 2
+  },
+  {
+    id: 2,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.hr,
+    parent: 1,
+    level: 3
+  },
+  {
+    id: 3,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.finance,
+    parent: 1,
+    level: 3
+  },
+  {
+    id: 4,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.it,
+    parent: 1,
+    level: 3
+  },
+  {
+    id: 5,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.research,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 6,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.programDev,
+    parent: 0,
+    level: 2
+  },
+  {
+    id: 7,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.communications,
+    parent: 0,
+    groups: [8, 9, 10, 11],
+    level: 2
+  },
+  {
+    id: 8,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.qa,
+    parent: 7,
+    level: 3
+  },
+  {
+    id: 9,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.services,
+    parent: 7,
+    level: 3
+  },
+  {
+    id: 10,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.audits,
+    parent: 7,
+    level: 3
+  },
+  {
+    id: 11,
+    name: LOCALIZE.emibTest.background.organizationalStructure.dialog.training,
+    parent: 7,
+    level: 3
+  }
+];
+
 class OrganizationalStructure extends Component {
   static propTypes = {
     // Props from Redux
@@ -42,82 +119,6 @@ class OrganizationalStructure extends Component {
 
   render() {
     const { currentLanguage } = this.props;
-    const treeView = [
-      {
-        id: 0,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.president,
-        groups: [1, 5, 6, 7],
-        level: 1
-      },
-      {
-        id: 1,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.corpDirector,
-        parent: 0,
-        groups: [2, 3, 4],
-        level: 2
-      },
-      {
-        id: 2,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.hr,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 3,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.finance,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 4,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.it,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 5,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.research,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 6,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.programDev,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 7,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.communications,
-        parent: 0,
-        groups: [8, 9, 10, 11],
-        level: 2
-      },
-      {
-        id: 8,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.qa,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 9,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.services,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 10,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.audits,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 11,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.training,
-        parent: 7,
-        level: 3
-      }
-    ];
 
     return (
       <div>
