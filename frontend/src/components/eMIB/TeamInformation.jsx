@@ -10,6 +10,7 @@ import emib_sample_test_example_team_chart_fr from "../../images/emib_sample_tes
 import emib_sample_test_example_team_chart_fr_zoomed from "../../images/emib_sample_test_example_team_chart_fr.png";
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
+import TreeNode from "../commons/TreeNode";
 
 const styles = {
   testImage: {
@@ -41,13 +42,60 @@ class TeamInformation extends Component {
 
   render() {
     const { currentLanguage } = this.props;
+    const treeView = [
+      {
+        id: 0,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.manager,
+        groups: [1, 2, 3, 4, 5, 6],
+        level: 1
+      },
+      {
+        id: 1,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst1,
+        parent: 0,
+        level: 2
+      },
+
+      {
+        id: 2,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst2,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 3,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst3,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 4,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst4,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 5,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst5,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 6,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst6,
+        parent: 0,
+        level: 2
+      }
+    ];
+
+    //"This is the organizational chart for the Quality Assurance (QA) Team at the Organizational Development Council. You, Claude Huard are the Manager of this unit, and are located at the top of the organizational chart. Under you, The Manager, are 6 Quality Assurance Analysts: Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier."
     return (
       <div>
         <PopupBox
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
           title={LOCALIZE.emibTest.background.teamInformation.dialog.title}
-          description={<div>{LOCALIZE.emibTest.background.teamInformation.dialog.description}</div>}
+          description={<TreeNode nodes={treeView} />}
           rightButtonType={BUTTON_TYPE.secondary}
           rightButtonTitle={LOCALIZE.commons.close}
         />
