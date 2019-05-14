@@ -67,7 +67,7 @@ class Status extends Component {
   };
 
   checkDatabase = async () => {
-    const test = await fetch("/database_check/", {
+    const test = await fetch("/api/database_check/", {
       method: "GET",
       headers,
       cache: "default"
