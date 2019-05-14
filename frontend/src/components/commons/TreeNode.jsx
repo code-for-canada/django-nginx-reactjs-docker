@@ -56,7 +56,6 @@ class TreeNode extends Component {
       node.focus = false;
       nodes.push(node);
     }
-    console.log(nodes);
     return nodes;
   }
 
@@ -73,8 +72,6 @@ class TreeNode extends Component {
     //get the id of the element from the data set
     if (event.target.dataset.id) {
       focusedNodeId = parseInt(event.target.dataset.id);
-    } else {
-      console.log("error no data id on event, you must tab into tree view");
     }
     //clicked a childs span element not a node
     if (event.target.id === "span" + focusedNodeId) {
@@ -95,7 +92,6 @@ class TreeNode extends Component {
           nodes[element].visable = true;
           //if the node is expanded set the children to visible
           if (nodes[element].groups && nodes[element].expanded) {
-            //console.log("setting id " + nodes[element].id + " children to searchable");
             nodes[element].groups.forEach(el => {
               nodes[el].visable = true;
             });
@@ -105,15 +101,12 @@ class TreeNode extends Component {
           nodes[element].visable = false;
           //set child nodes to hiden
           if (nodes[element].groups && nodes[element].expanded) {
-            //console.log("setting id " + nodes[element].id + " children to searchable");
             nodes[element].groups.forEach(el => {
               nodes[el].visable = false;
             });
           }
         }
       });
-    } else {
-      console.log("no groups");
     }
     this.setState({ nodes: nodes });
   }
@@ -170,9 +163,6 @@ class TreeNode extends Component {
         e.preventDefault();
         nodes[oldID].expanded = !nodes[oldID].expanded;
         this.setNodeVisibleState(oldID);
-      } else {
-        //element can not expand ignore enter key
-        console.log("element can not expand");
       }
     } else {
       let i;
@@ -188,9 +178,6 @@ class TreeNode extends Component {
           if ("expanded" in nodes[oldID]) {
             nodes[oldID].expanded = !nodes[oldID].expanded;
             this.setNodeVisibleState(oldID);
-          } else {
-            //element can not expand ignore enter key
-            console.log("element can not expand");
           }
           break;
 
@@ -208,15 +195,11 @@ class TreeNode extends Component {
                 break;
               } else if (i === nodes.length - 1) {
                 //no loops are found
-                console.log("no visable element found return to root");
                 focusedNodeId = 0;
-              } else {
-                console.log("error no visable elem");
               }
             }
           } else {
             //your on last node loop back to begining node
-            console.log("beggining of nodes looping to root");
             focusedNodeId = 0;
           }
           //set focus to this element
@@ -235,7 +218,6 @@ class TreeNode extends Component {
             focusedNodeId = this.findVisableInReverse(oldID - 1);
           } else {
             //loop back to begining node
-            console.log("beggining of nodes looping to botttom");
             focusedNodeId = this.findVisableInReverse(nodes.length - 1);
           }
           this.moveFocus(oldID, focusedNodeId);
@@ -259,8 +241,6 @@ class TreeNode extends Component {
             if ("groups" in nodes[oldID]) {
               //move to first group
               focusedNodeId = nodes[oldID].groups[0];
-            } else {
-              console.log("ERROR all expanded data nodes must have a group");
             }
           }
 
@@ -275,16 +255,13 @@ class TreeNode extends Component {
         case "ArrowLeft":
           //save id to remove focus from last element
           if (nodes[oldID].parent === undefined && nodes[oldID].expanded === false) {
-            console.log("root element");
             // When focus is on a root node that is also either an end node or a closed node, does nothing.
           } else if (nodes[oldID].expanded === true) {
-            console.log("expanded element closing");
             // When focus is on an open node, closes the node.
             nodes[oldID].expanded = false;
             this.setNodeVisibleState(oldID);
           } else {
             // When focus is on a child node that is also either an end node or a closed node, moves focus to its parent node.
-            console.log("move to parent element");
             focusedNodeId = nodes[oldID].parent;
             this.setNodeVisibleState(focusedNodeId);
           }
@@ -297,14 +274,12 @@ class TreeNode extends Component {
         case "Home":
           focusedNodeId = 0;
           this.moveFocus(oldID, focusedNodeId);
-          console.log("move to first node in the tree");
           break;
 
         /* End: ---------------------------------------------------------------------
 					Moves focus to the last node in the tree that is focusable without opening a node.
 				*/
         case "End":
-          console.log("move to last node in the tree");
           focusedNodeId = this.findVisableInReverse(nodes.length - 1);
           this.moveFocus(oldID, focusedNodeId);
           break;
@@ -347,16 +322,13 @@ class TreeNode extends Component {
               }
             }
           }
-          if (!found) {
-            console.log("no search results found for " + e.key);
-          } else {
+          if (found) {
             this.moveFocus(oldID, focusedNodeId);
           }
           break;
 
         // DEFAULT: -------------------------------------------------------------------
         default:
-          console.log(e.key);
       }
     }
     this.setState({ nodes: nodes });
