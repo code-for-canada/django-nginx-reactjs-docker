@@ -10,6 +10,7 @@ import emib_sample_test_example_org_chart_fr from "../../images/emib_sample_test
 import emib_sample_test_example_org_chart_fr_zoomed from "../../images/emib_sample_test_example_org_chart_fr.png";
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
+import TreeNode from "../commons/TreeNode";
 
 const styles = {
   testImage: {
@@ -41,52 +42,90 @@ class OrganizationalStructure extends Component {
 
   render() {
     const { currentLanguage } = this.props;
+    const treeView = [
+      {
+        id: 0,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.president,
+        groups: [1, 5, 6, 7],
+        level: 1
+      },
+      {
+        id: 1,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.corpDirector,
+        parent: 0,
+        groups: [2, 3, 4],
+        level: 2
+      },
+      {
+        id: 2,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.hr,
+        parent: 1,
+        level: 3
+      },
+      {
+        id: 3,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.finance,
+        parent: 1,
+        level: 3
+      },
+      {
+        id: 4,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.it,
+        parent: 1,
+        level: 3
+      },
+      {
+        id: 5,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.research,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 6,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.programDev,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 7,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.communications,
+        parent: 0,
+        groups: [8, 9, 10, 11],
+        level: 2
+      },
+      {
+        id: 8,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.qa,
+        parent: 7,
+        level: 3
+      },
+      {
+        id: 9,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.services,
+        parent: 7,
+        level: 3
+      },
+      {
+        id: 10,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.audits,
+        parent: 7,
+        level: 3
+      },
+      {
+        id: 11,
+        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.training,
+        parent: 7,
+        level: 3
+      }
+    ];
+
     return (
       <div>
         <PopupBox
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
           title={LOCALIZE.emibTest.background.organizationalStructure.dialog.title}
-          description={
-            <div>
-              <ul>
-                <li>
-                  {LOCALIZE.emibTest.background.organizationalStructure.dialog.president}
-                  <ul>
-                    <li>
-                      {LOCALIZE.emibTest.background.organizationalStructure.dialog.corpDirector}
-                      <ul>
-                        <li>{LOCALIZE.emibTest.background.organizationalStructure.dialog.hr}</li>
-                        <li>
-                          {LOCALIZE.emibTest.background.organizationalStructure.dialog.finance}
-                        </li>
-                        <li>{LOCALIZE.emibTest.background.organizationalStructure.dialog.it}</li>
-                      </ul>
-                    </li>
-                    <li>{LOCALIZE.emibTest.background.organizationalStructure.dialog.research}</li>
-                    <li>
-                      {LOCALIZE.emibTest.background.organizationalStructure.dialog.programDev}
-                    </li>
-                    <li>
-                      {LOCALIZE.emibTest.background.organizationalStructure.dialog.communications}
-                      <ul>
-                        <li>{LOCALIZE.emibTest.background.organizationalStructure.dialog.qa}</li>
-                        <li>
-                          {LOCALIZE.emibTest.background.organizationalStructure.dialog.services}
-                        </li>
-                        <li>
-                          {LOCALIZE.emibTest.background.organizationalStructure.dialog.audits}
-                        </li>
-                        <li>
-                          {LOCALIZE.emibTest.background.organizationalStructure.dialog.training}
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          }
+          description={<TreeNode nodes={treeView} />}
           rightButtonType={BUTTON_TYPE.secondary}
           rightButtonTitle={LOCALIZE.commons.close}
         />
