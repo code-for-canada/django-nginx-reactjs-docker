@@ -1,4 +1,5 @@
 #This script is for developement use only. Please do not deploy it in production in its current stage.
+#Exposing backend and db directly to enable dubuging locally
 
 version: "3"
 
