@@ -13,6 +13,15 @@ import { contactShape } from "./constants";
 import { contactNameFromId } from "../../helpers/transformations";
 
 const styles = {
+  type: {
+    minHeight: 35
+  },
+  replyAndUser: {
+    color: "#00565E"
+  },
+  headings: {
+    fontWeight: "bold"
+  },
   responseType: {
     icon: {
       color: "white",
@@ -95,7 +104,7 @@ class ActionViewEmail extends Component {
     return (
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
         <div>
-          <div>
+          <div style={styles.type}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.description}
             {action.emailType === EMAIL_TYPE.reply && (
               <>
@@ -124,22 +133,24 @@ class ActionViewEmail extends Component {
             )}
           </div>
           <div>
-            {LOCALIZE.emibTest.inboxPage.emailCommons.to}
-            <span>{visibleToNames}</span>
+            {LOCALIZE.emibTest.inboxPage.emailCommons.to}{" "}
+            <span style={styles.replyAndUser}>{visibleToNames}</span>
           </div>
           <div>
-            {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
-            <span>{visibleCcNames}</span>
+            {LOCALIZE.emibTest.inboxPage.emailCommons.cc}{" "}
+            <span style={styles.replyAndUser}>{visibleCcNames}</span>
           </div>
         </div>
         <hr style={styles.hr} />
         <div>
-          <div>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</div>
+          <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</div>
           <p style={styles.preWrap}>{action.emailBody}</p>
         </div>
         <hr style={styles.hr} />
         <div>
-          <div>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</div>
+          <div style={styles.headings}>
+            {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
+          </div>
           <p style={styles.preWrap}>{action.reasonsForAction}</p>
         </div>
         {!this.props.disabled && (
