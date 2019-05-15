@@ -13,11 +13,16 @@ import { contactShape } from "./constants";
 import { contactNameFromId } from "../../helpers/transformations";
 
 const styles = {
+  type: {
+    minHeight: 35
+  },
+  replyAndUser: {
+    color: "#00565E"
+  },
+  headings: {
+    fontWeight: "bold"
+  },
   responseType: {
-    description: {
-      float: "left",
-      margin: "4px 0 0 0"
-    },
     icon: {
       color: "white",
       margin: "0 8px",
@@ -29,23 +34,6 @@ const styles = {
     attribute: {
       color: "#00565E",
       textDecoration: "underline"
-    }
-  },
-  header: {
-    zone: {
-      minHeight: 95
-    },
-    elementHeight: {
-      minHeight: 24
-    },
-    toAndCcTitle: {
-      float: "left",
-      width: 32,
-      height: 32,
-      margin: "2px 0 0 0"
-    },
-    toFieldMargin: {
-      margin: "9px 0 12px 0"
     }
   },
   hr: {
@@ -115,11 +103,11 @@ class ActionViewEmail extends Component {
     const visibleCcNames = this.generateEmailNameList(action.emailCc);
     return (
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
-        <div style={styles.header.zone}>
-          <div style={styles.header.elementHeight}>
-            <h6 style={styles.responseType.description}>
+        <div>
+          <div style={styles.type}>
+            <span style={styles.headings}>
               {LOCALIZE.emibTest.inboxPage.emailResponse.description}
-            </h6>
+            </span>
             {action.emailType === EMAIL_TYPE.reply && (
               <>
                 <i className="fas fa-reply" style={styles.responseType.icon} />
@@ -128,6 +116,7 @@ class ActionViewEmail extends Component {
                 </span>
               </>
             )}
+
             {action.emailType === EMAIL_TYPE.replyAll && (
               <>
                 <i className="fas fa-reply-all" style={styles.responseType.icon} />
@@ -145,27 +134,25 @@ class ActionViewEmail extends Component {
               </>
             )}
           </div>
-          <div style={{ ...styles.header.toFieldMargin, ...styles.header.elementHeight }}>
-            <h6 style={styles.header.toAndCcTitle}>
-              {LOCALIZE.emibTest.inboxPage.emailCommons.to}
-            </h6>
-            <span>{visibleToNames}</span>
+          <div>
+            {LOCALIZE.emibTest.inboxPage.emailCommons.to}{" "}
+            <span style={styles.replyAndUser}>{visibleToNames}</span>
           </div>
-          <div style={styles.header.elementHeight}>
-            <h6 style={styles.header.toAndCcTitle}>
-              {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
-            </h6>
-            <span>{visibleCcNames}</span>
+          <div>
+            {LOCALIZE.emibTest.inboxPage.emailCommons.cc}{" "}
+            <span style={styles.replyAndUser}>{visibleCcNames}</span>
           </div>
         </div>
         <hr style={styles.hr} />
         <div>
-          <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</h6>
+          <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</div>
           <p style={styles.preWrap}>{action.emailBody}</p>
         </div>
         <hr style={styles.hr} />
         <div>
-          <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</h6>
+          <div style={styles.headings}>
+            {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
+          </div>
           <p style={styles.preWrap}>{action.reasonsForAction}</p>
         </div>
         {!this.props.disabled && (

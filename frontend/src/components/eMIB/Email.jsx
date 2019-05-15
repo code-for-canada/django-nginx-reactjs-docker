@@ -81,10 +81,10 @@ class Email extends Component {
     return (
       <div style={styles.email}>
         <div style={styles.header}>
-          <h2 style={styles.emailId}>
+          <div style={styles.emailId}>
             {LOCALIZE.emibTest.inboxPage.emailId.toUpperCase()}
             {email.id + 1}
-          </h2>
+          </div>
           {hasTakenAction && (
             <div className="font-weight-bold" style={styles.replyStatus}>
               <i className="fas fa-sign-out-alt" style={styles.replyIcon} />

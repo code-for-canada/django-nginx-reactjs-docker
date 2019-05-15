@@ -31,7 +31,7 @@ const styles = {
     paddingBottom: 12
   },
   originalEmail: {
-    padding: "0 12px",
+    padding: 12,
     marginRight: 12,
     border: "1px #00565E solid",
     borderRadius: 4
