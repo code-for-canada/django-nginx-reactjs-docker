@@ -13,7 +13,7 @@ const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticate
 
 function registerAction(data) {
   return async function() {
-    let response = await fetch("api/auth/users/create/", {
+    let response = await fetch("/api/auth/users/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
