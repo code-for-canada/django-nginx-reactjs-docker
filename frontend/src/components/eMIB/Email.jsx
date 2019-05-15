@@ -79,7 +79,7 @@ class Email extends Component {
     let emailNumber = 0;
     let taskNumber = 0;
     return (
-      <div style={styles.email}>
+      <div style={styles.email} tabIndex={0}>
         <div style={styles.header}>
           <div style={styles.emailId}>
             {LOCALIZE.emibTest.inboxPage.emailId.toUpperCase()}
