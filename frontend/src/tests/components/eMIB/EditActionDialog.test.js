@@ -400,3 +400,33 @@ describe("edit action dialog helper file", () => {
     ).toBe(true);
   });
 });
+
+it("renders EditActionDialog with an edit empty email response", () => {
+  emptyActionMount(ACTION_TYPE.email);
+});
+
+it("renders EditActionDialog with an edit empty task response", () => {
+  emptyActionMount(ACTION_TYPE.task);
+});
+
+function emptyActionMount(actionType) {
+  mount(
+    <Provider store={mockStore(initialState)}>
+      <EditActionDialog
+        email={emailStub}
+        showDialog={true}
+        handleClose={() => {}}
+        addEmail={() => {}}
+        addTask={() => {}}
+        updateEmail={() => {}}
+        updateTask={() => {}}
+        readEmail={() => {}}
+        actionType={actionType}
+        editMode={EDIT_MODE.update}
+        action={{
+          actionType: actionType
+        }}
+      />
+    </Provider>
+  );
+}
