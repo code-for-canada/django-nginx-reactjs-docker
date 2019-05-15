@@ -49,7 +49,7 @@ class SideNavigation extends Component {
             </Nav>
           </Col>
           <Col sm={9}>
-            <Tab.Content>
+            <Tab.Content tabIndex={0}>
               {specs.map((item, index) => {
                 return (
                   <Tab.Pane key={index} eventKey={EVENT_KEYS[index]}>

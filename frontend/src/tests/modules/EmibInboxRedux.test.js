@@ -349,4 +349,24 @@ describe("EmibInboxRedux", () => {
       expect(newState3.currentEmail).toEqual(3);
     });
   });
+
+  it("should add an empty email action to the action list", () => {
+    const addAction = addEmail(0, {});
+    const newState1 = emibInbox(stubbedInitialState, addAction);
+    expect(newState1.emailActions[0]).toEqual([{ ...{}, actionType: ACTION_TYPE.email }]);
+
+    const updateAction = updateEmail(0, 0, {});
+    const newState2 = emibInbox(newState1, updateAction);
+    expect(newState2.emailActions[0]).toEqual([{ ...{}, actionType: ACTION_TYPE.email }]);
+  });
+
+  it("should add an empty task action to the action list", () => {
+    const addAction = addTask(0, {});
+    const newState1 = emibInbox(stubbedInitialState, addAction);
+    expect(newState1.emailActions[0]).toEqual([{ ...{}, actionType: ACTION_TYPE.task }]);
+
+    const updateAction = updateTask(0, 0, {});
+    const newState2 = emibInbox(newState1, updateAction);
+    expect(newState2.emailActions[0]).toEqual([{ ...{}, actionType: ACTION_TYPE.task }]);
+  });
 });

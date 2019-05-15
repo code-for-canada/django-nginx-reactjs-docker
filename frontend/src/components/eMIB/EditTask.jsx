@@ -168,7 +168,6 @@ class EditTask extends Component {
                 <i
                   id="task-tooltip"
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
-                  tabIndex="0"
                   className={taskTooltipIcon}
                   style={styles.tasks.icon}
                   onFocus={this.onTaskTooltipFocus}
@@ -185,7 +184,7 @@ class EditTask extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.task.length}/{MAX_TASK}
+                {this.state.task === undefined ? 0 : this.state.task.length}/{MAX_TASK}
               </div>
             </div>
           </div>
@@ -214,7 +213,6 @@ class EditTask extends Component {
                 <i
                   id="reasons-for-action-tooltip"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
-                  tabIndex="0"
                   className={reasonsForActionTooltipIcon}
                   style={styles.reasonsForAction.icon}
                   onFocus={this.onReasonsForActionTooltipFocus}
@@ -231,7 +229,8 @@ class EditTask extends Component {
                 />
               </div>
               <div style={styles.textCounter}>
-                {this.state.reasonsForAction.length}/{MAX_REASON}
+                {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction}/
+                {MAX_REASON}
               </div>
             </div>
           </div>

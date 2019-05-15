@@ -64,7 +64,13 @@ class PopupBox extends Component {
       rightButtonType: PropTypes.string,
       rightButtonTitle: PropTypes.string,
       rightButtonAction: PropTypes.func,
-      rightButtonState: PropTypes.string
+      rightButtonState: PropTypes.string,
+      isBackdropStatic: PropTypes.bool,
+      isCloseButtonVisible: PropTypes.bool
+    };
+    // display 'close button' by default
+    PopupBox.defaultProps = {
+      isCloseButtonVisible: true
     };
   }
 
@@ -103,9 +109,10 @@ class PopupBox extends Component {
         autoFocus={true}
         enforceFocus={true}
         aria-hidden={false}
+        backdrop={this.props.isBackdropStatic ? false : true}
       >
         <div style={styles.boxContent}>
-          <Modal.Header closeButton style={styles.modalHeader}>
+          <Modal.Header closeButton={this.props.isCloseButtonVisible} style={styles.modalHeader}>
             <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
               {title}
             </Modal.Title>
