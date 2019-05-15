@@ -100,12 +100,19 @@ class EditActionDialog extends Component {
 
   // function to check if there already is an emailType or default to reply if there isn't one
   defaultEmailType() {
+    // if a task, return nothing
+    if (this.props.actionType === ACTION_TYPE.task) {
+      return undefined;
+    }
+    // if an email with no action, return reply
     if (this.props.action === undefined) {
       return EMAIL_TYPE.reply;
     }
+    // if an email with no action.emailType, return reply
     if (this.props.action.emailType === undefined) {
       return EMAIL_TYPE.reply;
     }
+    // otherwise, return the emailType
     return this.props.action.emailType;
   }
 
