@@ -87,3 +87,15 @@ describe("check that the disabled prop works as expected", () => {
     expect(wrapper.find("#unit-test-view-task-delete-button").exists()).toEqual(false);
   });
 });
+
+it("it renders when the email is undefined", () => {
+  shallow(
+    <UnconnectedActionViewTask
+      actionId={0}
+      action={{ actionType: ACTION_TYPE.task }}
+      email={emailStub}
+      deleteTask={() => {}}
+      disabled={false}
+    />
+  );
+});
