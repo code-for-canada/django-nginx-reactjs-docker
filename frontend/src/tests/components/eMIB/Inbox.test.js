@@ -16,7 +16,9 @@ it("Displays 3 email previews when there are 3 emails", () => {
         { isRead: false, taskCount: 0, emailCount: 0 },
         { isRead: false, taskCount: 0, emailCount: 0 }
       ]}
+      currentEmail={0}
       readEmail={() => {}}
+      changeCurrentEmail={() => {}}
     />
   );
   expect(wrapper.find(EmailPreview).length).toEqual(INBOX_SPECS.length);

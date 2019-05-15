@@ -4,7 +4,7 @@ All component specific CSS lives in the React file with the component.
 */
 
 body {
-  padding-top: 50px;
+  padding-top: 0px;
 }
 
 .app {
@@ -27,28 +27,34 @@ h1.green-divider:after {
 }
 
 h1 {
-  padding-bottom: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 h2 {
   color: #00565e;
-  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 h3 {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 h4 {
+  margin-top: 18px;
+  margin-bottom: 4px;
   color: #00565e;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
-
 p {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 /* Buttons */
@@ -108,58 +114,40 @@ p {
   background-color: #00565e;
 }
 
-/*
-Progess Steps
-*/
-
-.step-indicator .steps li {
-  text-transform: none;
-  width: 20%;
-}
-
-/* override color of text in active li*/
-.step-indicator .steps li.active {
-  color: #00565e;
-}
-
-/* override inner and outer cicle colors of active li */
-.step-indicator .steps li.active:before {
-  border-color: #009fae;
-  box-shadow: 0 0 0 0.2rem #c7e68c;
-}
-
-/* override checkmark and text color of completed li */
-.step-indicator .steps li.complete {
-  color: #00565e;
-}
-
-/* override circle color of completed li */
-.step-indicator .steps li.complete:before {
-  border-color: #009fae;
-}
-
-/* override line color of completed li to active li */
-.step-indicator .steps li.complete + li:after {
-  background-color: #009fae;
-}
-
-.step-indicator .steps li.complete:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f00c";
-  font-weight: 900;
-}
-
 /* Nav */
+
+.nav-tabs {
+  border-bottom: 2px solid #cdcdcd;
+}
+
+.tab-content {
+  background-color: #ffffff;
+}
+
+#emib-tabs-tabpane-instructions,
+#emib-tabs-tabpane-background,
+#emib-tabs-tabpane-inbox {
+  border: 1px solid #cdcdcd;
+}
+
+.nav-tabs .nav-link {
+  text-decoration: underline;
+}
 
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
   border-color: transparent transparent #00565e;
+  border-bottom-width: 4px;
+  text-decoration: none;
 }
 .nav-tabs .nav-link.disabled {
   color: #00565e;
+  text-decoration: none;
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
+  text-decoration: none;
+  border-bottom-width: 4px;
   color: #00565e;
   border-color: transparent transparent #00565e;
 }

@@ -7,9 +7,6 @@ import EmibTabs from "./EmibTabs";
 import TestFooter from "../commons/TestFooter";
 import LOCALIZE from "../../text_resources";
 import ContentContainer from "../commons/ContentContainer";
-import TipsOnTest from "./TipsOnTest";
-import TestInstructions from "./TestInstructions";
-import Evaluation from "./Evaluation";
 import PopupBox, { BUTTON_TYPE, BUTTON_STATE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { activateTest, deactivateTest } from "../../modules/TestStatusRedux";
@@ -39,19 +36,6 @@ const styles = {
   }
 };
 
-//Returns array where each item indicates specifications related to How To Page including the title and the body
-export const getInstructionContent = () => {
-  return [
-    {
-      id: 0,
-      text: LOCALIZE.emibTest.howToPage.testInstructions.title,
-      body: <TestInstructions />
-    },
-    { id: 1, text: LOCALIZE.emibTest.howToPage.tipsOnTest.title, body: <TipsOnTest /> },
-    { id: 2, text: LOCALIZE.emibTest.howToPage.evaluation.title, body: <Evaluation /> }
-  ];
-};
-
 const quitConditions = () => {
   return [
     { text: LOCALIZE.emibTest.testFooter.quitTestPopupBox.checkboxOne, checked: false },
@@ -69,7 +53,7 @@ class Emib extends Component {
 
   state = {
     curPage: PAGES.preTest,
-    initialTab: 0,
+    currentTab: "instructions",
     disabledTabs: [1, 2],
     showEnterEmibPopup: false,
     testIsStarted: false,
@@ -98,6 +82,7 @@ class Emib extends Component {
     }
   };
 
+  // Pre-test functions
   openEnterEmibPopup = () => {
     this.setState({ showEnterEmibPopup: true });
   };
@@ -106,8 +91,13 @@ class Emib extends Component {
     this.setState({ showEnterEmibPopup: false });
   };
 
+  // Within eMIB Tabs functions
   handleStartTest = () => {
-    this.setState({ testIsStarted: true, disabledTabs: [], initialTab: 1 });
+    this.setState({ testIsStarted: true, disabledTabs: [], currentTab: "background" });
+  };
+
+  switchTab = tabId => {
+    this.setState({ currentTab: tabId });
   };
 
   openStartTestPopup = () => {
@@ -118,6 +108,7 @@ class Emib extends Component {
     this.setState({ showStartTestPopup: false });
   };
 
+  // Leaving the eMIB functions
   openSubmitPopup = () => {
     this.setState({ showSubmitPopup: true });
   };
@@ -156,16 +147,15 @@ class Emib extends Component {
         <Helmet>
           <title>{LOCALIZE.titles.eMIB}</title>
         </Helmet>
-        <div>
-          {this.state.curPage === PAGES.emibTabs && (
-            <EmibTabs
-              initialTab={this.state.initialTab}
-              disabledTabsArray={this.state.disabledTabs}
-            />
-          )}
-        </div>
+        {this.state.curPage === PAGES.emibTabs && (
+          <EmibTabs
+            currentTab={this.state.currentTab}
+            switchTab={this.switchTab}
+            disabledTabsArray={this.state.disabledTabs}
+          />
+        )}
         {this.state.curPage !== PAGES.emibTabs && (
-          <ContentContainer hideBanner={this.state.curPage === PAGES.emibTabs}>
+          <ContentContainer hideBanner={false}>
             {this.state.curPage === PAGES.preTest && (
               <EmibIntroductionPage showEnterEmibPopup={this.openEnterEmibPopup} />
             )}

@@ -4,16 +4,11 @@ import LOCALIZE from "../../text_resources";
 import { setLanguage } from "../../modules/LocalizeRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 const LANGUAGES = {
   english: "en",
   french: "fr"
-};
-
-const styles = {
-  button: {
-    width: 86
-  }
 };
 
 class Translation extends Component {
@@ -23,44 +18,32 @@ class Translation extends Component {
 
   static propTypes = {
     // Props from Redux
-    setLanguage: PropTypes.func
+    setLanguage: PropTypes.func,
+    variant: PropTypes.string
   };
 
-  onSetLanguageToFrench = () => {
-    LOCALIZE.setLanguage(LANGUAGES.french);
-    this.setState({ currentLanguage: LANGUAGES.french });
-    this.props.setLanguage(LANGUAGES.french);
-  };
-
-  onSetLanguageToEnglish = () => {
-    LOCALIZE.setLanguage(LANGUAGES.english);
-    this.setState({ currentLanguage: LANGUAGES.english });
-    this.props.setLanguage(LANGUAGES.english);
+  toggleLanguage = () => {
+    if (this.state.currentLanguage === LANGUAGES.english) {
+      LOCALIZE.setLanguage(LANGUAGES.french);
+      this.setState({ currentLanguage: LANGUAGES.french });
+      this.props.setLanguage(LANGUAGES.french);
+    } else {
+      LOCALIZE.setLanguage(LANGUAGES.english);
+      this.setState({ currentLanguage: LANGUAGES.english });
+      this.props.setLanguage(LANGUAGES.english);
+    }
   };
 
   render() {
+    const languageString =
+      this.state.currentLanguage === LANGUAGES.english ? "Français" : "English";
+    const htmlLang =
+      this.state.currentLanguage === LANGUAGES.english ? LANGUAGES.french : LANGUAGES.english;
     return (
       <div>
-        {this.state.currentLanguage === LANGUAGES.english && (
-          <button
-            type="button"
-            className="btn btn-secondary"
-            style={styles.button}
-            onClick={this.onSetLanguageToFrench}
-          >
-            Français
-          </button>
-        )}
-        {this.state.currentLanguage === LANGUAGES.french && (
-          <button
-            type="button"
-            className="btn btn-secondary"
-            style={styles.button}
-            onClick={this.onSetLanguageToEnglish}
-          >
-            English
-          </button>
-        )}
+        <Button variant={this.props.variant} onClick={this.toggleLanguage} lang={htmlLang}>
+          {languageString}
+        </Button>
       </div>
     );
   }

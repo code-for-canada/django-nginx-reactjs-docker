@@ -3,38 +3,29 @@ import PropTypes from "prop-types";
 import Background from "./Background";
 import Inbox from "./Inbox";
 import LOCALIZE from "../../text_resources";
-import TabNavigation from "../commons/TabNavigation";
 import InTestInstructions from "./InTestInstructions";
 import Notepad from "../commons/Notepad";
-import "../../css/emib-tabs.css";
-import { HEADER_HEIGHT, FOOTER_HEIGHT } from "./constants";
 import { Helmet } from "react-helmet";
-
-const TAB_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
+import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 
 const styles = {
   container: {
     maxWidth: 1400,
     minWidth: 900,
-    margin: "0px auto",
     paddingTop: 20,
-    display: "flex",
     paddingRight: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    margin: "0px auto"
   },
-  tabNavigation: {
-    height: TAB_HEIGHT,
-    backgroundColor: "white",
-    borderWidth: "0 1px",
-    borderStyle: "solid",
-    borderColor: "#00565e",
-    borderTopColor: "white"
+  notepad: {
+    paddingLeft: 0
   }
 };
 
 class EmibTabs extends Component {
   static propTypes = {
-    initialTab: PropTypes.number.isRequired,
+    currentTab: PropTypes.string.isRequired,
+    switchTab: PropTypes.func.isRequired,
     /* used to disable specific tabs
     disabledTabsArray={[1, 2]} will disable the second and third tabs
     disabledTabsArray={[]} will keep all the tabs enabled */
@@ -42,36 +33,56 @@ class EmibTabs extends Component {
   };
 
   render() {
-    const TABS = [
+    let TABS = [
       {
-        id: 0,
+        key: "instructions",
         tabName: LOCALIZE.emibTest.tabs.instructionsTabTitle,
         body: <InTestInstructions />
       },
       {
-        id: 1,
+        key: "background",
         tabName: LOCALIZE.emibTest.tabs.backgroundTabTitle,
         body: <Background />
       },
       {
-        id: 2,
+        key: "inbox",
         tabName: LOCALIZE.emibTest.tabs.inboxTabTitle,
         body: <Inbox />
       }
     ];
+
+    // Hide disabled tabs.
+    TABS = TABS.filter((tab, index) => {
+      return !(this.props.disabledTabsArray.indexOf(index) > -1);
+    });
     return (
       <div style={styles.container}>
         <Helmet>
           <title>{LOCALIZE.titles.simulation}</title>
         </Helmet>
-        <TabNavigation
-          tabSpecs={TABS}
-          initialTab={this.props.initialTab}
-          menuName={LOCALIZE.ariaLabel.tabMenu}
-          style={styles.tabNavigation}
-          disabledTabsArray={this.props.disabledTabsArray}
-        />
-        <Notepad />
+        <Container>
+          <Row>
+            <Col>
+              <Tabs
+                defaultActiveKey="instructions"
+                id="emib-tabs"
+                activeKey={this.props.currentTab}
+                onSelect={key => this.props.switchTab(key)}
+              >
+                {TABS.map((tab, index) => {
+                  return (
+                    <Tab key={index} eventKey={tab.key} title={tab.tabName}>
+                      {tab.body}
+                    </Tab>
+                  );
+                })}
+              </Tabs>
+            </Col>
+            <Col md="auto" style={styles.notepad}>
+              <Notepad />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

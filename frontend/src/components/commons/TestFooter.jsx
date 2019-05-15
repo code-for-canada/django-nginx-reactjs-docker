@@ -1,34 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
+import { Navbar, Nav } from "react-bootstrap";
 
 const styles = {
   footer: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    maxWidth: 1400,
-    minWidth: 900,
-    height: 72,
-    paddingRight: 20,
-    paddingLeft: 20
-  },
-  hr: {
-    width: "100%",
-    borderTop: "2px solid #96a8b2",
-    margin: 0
-  },
-  startTestBtn: {
-    float: "right",
-    paddingTop: 17
-  },
-  submitBtn: {
-    float: "right",
-    paddingTop: 17
-  },
-  quitTestBtn: {
-    float: "left",
-    paddingTop: 17
+    borderTop: "1px solid #96a8b2"
   }
 };
 
@@ -43,33 +20,10 @@ class TestFooter extends Component {
   render() {
     return (
       <div>
-        <hr style={styles.hr} />
-        <div style={styles.footer}>
-          {!this.props.testIsStarted && (
-            <div style={styles.startTestBtn}>
-              <button
-                id="unit-test-start-btn"
-                type="button"
-                className="btn btn-primary"
-                onClick={this.props.startTest}
-              >
-                {LOCALIZE.commons.startTest}
-              </button>
-            </div>
-          )}
-          {this.props.testIsStarted && (
-            <div>
-              <div style={styles.submitBtn}>
-                <button
-                  id="unit-test-submit-btn"
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={this.props.submitTest}
-                >
-                  {LOCALIZE.commons.submitTestButton}
-                </button>
-              </div>
-              <div style={styles.quitTestBtn}>
+        <Navbar bg="light" fixed="bottom" style={styles.footer}>
+          <Nav className="mr-auto">
+            {this.props.testIsStarted && (
+              <Navbar.Text>
                 <button
                   id="unit-test-quit-btn"
                   type="button"
@@ -78,10 +32,34 @@ class TestFooter extends Component {
                 >
                   {LOCALIZE.commons.quitTest}
                 </button>
-              </div>
-            </div>
+              </Navbar.Text>
+            )}
+          </Nav>
+          {!this.props.testIsStarted && (
+            <Navbar.Text className="justify-content-end">
+              <button
+                id="unit-test-start-btn"
+                type="button"
+                className="btn btn-primary"
+                onClick={this.props.startTest}
+              >
+                {LOCALIZE.commons.startTest}
+              </button>
+            </Navbar.Text>
           )}
-        </div>
+          {this.props.testIsStarted && (
+            <Navbar.Text className="justify-content-end">
+              <button
+                id="unit-test-submit-btn"
+                type="button"
+                className="btn btn-primary"
+                onClick={this.props.submitTest}
+              >
+                {LOCALIZE.commons.submitTestButton}
+              </button>
+            </Navbar.Text>
+          )}
+        </Navbar>
       </div>
     );
   }

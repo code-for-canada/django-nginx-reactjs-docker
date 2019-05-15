@@ -10,7 +10,7 @@ const styles = {
     width: 202,
     textAlign: "left",
     padding: 8,
-    borderWidth: "0 1px 1px 0",
+    borderWidth: "0 1px 1px 1px",
     borderStyle: "solid",
     borderColor: "#00565E",
     cursor: "pointer",

@@ -43,7 +43,7 @@ This includes:
 
 - [SETUP](./SETUP.md): Instructions to get everything up and running.
 - [TESTING](./TESTING.md): How to be sure nothing broke.
-- TODO: add license
+- [LICENSE](./LICENSE.md): MIT
 - There are many more topical guides in the [docs](./docs) folder.
 - In addition, several sections of the repository have their own documentation:
   - [frontend/README](./frontend/README.md)
