@@ -27,7 +27,7 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
-    let response = await fetch("/api/auth/jwt/create/", {
+    let response = await fetch("/api/auth/token/create/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

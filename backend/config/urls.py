@@ -17,7 +17,7 @@ urlpatterns = [
     url(r"^$", schema_view),
     url(r"^admin/", admin.site.urls),
     url(r"^api/auth/", include("djoser.urls")),
-    url(r"^api/auth/", include("djoser.urls.jwt")),
+    url(r"^api/auth/", include("djoser.urls.authtoken")),
     path(r"api/backend-status", views.index, name="index"),
     path("", include(router.urls)),
 ]
