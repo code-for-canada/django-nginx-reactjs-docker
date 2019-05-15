@@ -11,8 +11,8 @@ import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 
 const styles = {
-  taskStyle: {
-    marginTop: 18
+  headings: {
+    fontWeight: "bold"
   },
   hr: {
     margin: "16px 0 16px 0"
@@ -61,13 +61,15 @@ class ActionViewTask extends Component {
     const action = this.props.action;
     return (
       <div aria-label={LOCALIZE.ariaLabel.taskDetails}>
-        <div tabIndex="0">
-          <h6 style={styles.taskStyle}>{LOCALIZE.emibTest.inboxPage.taskContent.task}</h6>
+        <div>
+          <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.taskContent.task}</div>
           <p style={styles.preWrap}>{action.task}</p>
         </div>
         <hr style={styles.hr} />
-        <div tabIndex="0">
-          <h6>{LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}</h6>
+        <div>
+          <div style={styles.headings}>
+            {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
+          </div>
           <p style={styles.preWrap}>{action.reasonsForAction}</p>
         </div>
         {!this.props.disabled && (

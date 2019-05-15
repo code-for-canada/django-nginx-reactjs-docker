@@ -40,25 +40,24 @@ class LoginForm extends Component {
     loginAction: PropTypes.func,
     authenticateAction: PropTypes.func,
     setLoginState: PropTypes.func,
-    loggedIn: PropTypes.bool,
     authenticated: PropTypes.bool
   };
 
   state = {
     username: "",
     password: "",
-    isAuthenticated: false,
     wrongCredentials: false
   };
 
+  // TODO(fnormand): encrypt passwords
   handleSubmit = event => {
     this.props
       .loginAction({ username: this.state.username, password: this.state.password })
       .then(response => {
-        if (response.non_field_errors || typeof response.token === "undefined") {
+        if (response.non_field_errors || typeof response.auth_token === "undefined") {
           this.setState({ wrongCredentials: true });
         } else {
-          this.setState({ isAuthenticated: true, wrongCredentials: false });
+          this.setState({ wrongCredentials: false });
           this.props.authenticateAction(true);
         }
       });
@@ -134,7 +133,6 @@ class LoginForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loggedIn: state.login.loggedIn,
     authenticated: state.login.authenticated
   };
 };

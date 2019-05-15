@@ -308,7 +308,7 @@ let LOCALIZE = new LocalizedStrings({
             hr: "Marc Sheridan - Human Resources Manager",
             finance: "Bob McNutt - Finance Manager",
             it: "Lana Hussad - Information Technology Manager",
-            research: "Research and Innovations Director",
+            research: "Geneviève Bédard - Research and Innovations Director",
             programDev: "Bartosz Greco - Program Development Director",
             communications: "Nancy Ward - Services and Communications Director",
             qa: "Claude Huard - Quality Assurance Manager (You)",
@@ -337,8 +337,13 @@ let LOCALIZE = new LocalizedStrings({
           },
           dialog: {
             title: "The Organizational Chart of the QA Team",
-            description:
-              "This is the organizational chart for the Quality Assurance (QA) Team at the Organizational Development Council. You, Claude Huard are the Manager of this unit, and are located at the top of the organizational chart. Under you, The Manager, are 6 Quality Assurance Analysts: Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier."
+            manager: "Claude Huard - Manager (You)",
+            analyst1: "Danny McBride - QA Analyst",
+            analyst2: "Serge Duplessis - QA Analyst",
+            analyst3: "Marina Richter - QA Analyst",
+            analyst4: "Mary Woodside - QA Analyst",
+            analyst5: "Charlie Wang - QA Analyst",
+            analyst6: "Jack Laurier - QA Analyst"
           },
           responsibilitiesSection: {
             title: "QA Team Responsibilities",
@@ -362,6 +367,7 @@ let LOCALIZE = new LocalizedStrings({
       //Inbox Page
       inboxPage: {
         emailId: " email id# ",
+        subject: "Subject",
         to: "To",
         from: "From",
         date: "Date",
@@ -837,7 +843,7 @@ let LOCALIZE = new LocalizedStrings({
             hr: "FR Marc Sheridan - Human Resources Manager",
             finance: "FR Bob McNutt - Finance Manager",
             it: "FR Lana Hussad - Information Technology Manager",
-            research: "FR Research and Innovations Director",
+            research: "FR Geneviève Bédard - Research and Innovations Director",
             programDev: "FR Bartosz Greco - Program Development Director",
             communications: "FR Nancy Ward - Services and Communications Director",
             qa: "FR Claude Huard - Quality Assurance Manager (You)",
@@ -866,8 +872,13 @@ let LOCALIZE = new LocalizedStrings({
           },
           dialog: {
             title: "FR The Organizational Chart of the QA Team",
-            description:
-              "FR This is the organizational chart for the Quality Assurance (QA) Team at the Organizational Development Council. You, Claude Huard are the Manager of this unit, and are located at the top of the organizational chart. Under you, The Manager, are 6 Quality Assurance Analysts: Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier."
+            manager: "FR Claude Huard - Manager (You)",
+            analyst1: "FR Danny McBride - QA Analyst",
+            analyst2: "FR Serge Duplessis - QA Analyst",
+            analyst3: "FR Marina Richter - QA Analyst",
+            analyst4: "FR Mary Woodside - QA Analyst",
+            analyst5: "FR Charlie Wang - QA Analyst",
+            analyst6: "FR Jack Laurier - QA Analyst"
           },
           responsibilitiesSection: {
             title: "Responsabilités de l’Équipe de l’AQ",
@@ -892,6 +903,7 @@ let LOCALIZE = new LocalizedStrings({
       //Inbox Page
       inboxPage: {
         emailId: " courriel # ",
+        subject: "FR Subject",
         to: "À",
         from: "Expéditeur",
         date: "Date",

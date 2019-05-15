@@ -13,7 +13,9 @@ const styles = {
     marginRight: 15
   },
   navlink: {
-    all: "unset"
+    all: "unset",
+    width: 136,
+    marginRight: 15
   }
 };
 

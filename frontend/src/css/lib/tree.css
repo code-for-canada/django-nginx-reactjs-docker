@@ -1,0 +1,43 @@
+/*
+ *   Based on example at https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/treeview-1a.html
+ *   Copied from https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/css/tree.css
+ */
+ul[role="tree"] {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 120%;
+}
+
+[role="treeitem"][aria-expanded="false"] > ul {
+  display: none;
+}
+
+[role="treeitem"][aria-expanded="true"] > ul {
+  display: block;
+}
+
+[role="treeitem"],
+[role="treeitem"] span {
+  margin: 0;
+  padding: 0.125em;
+  border: 2px transparent solid;
+  display: block;
+}
+
+/* disable default keyboard focus styling for treeitems
+     Keyboard focus is styled with the following CSS */
+[role="treeitem"]:focus {
+  outline: 0;
+}
+
+[role="treeitem"].focus,
+[role="treeitem"] span.focus {
+  border-color: black;
+  background-color: #eee;
+}
+
+[role="treeitem"].hover,
+[role="treeitem"] span:hover {
+  background-color: #ddd;
+}

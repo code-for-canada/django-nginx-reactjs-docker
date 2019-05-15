@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "djoser",
     "rest_framework_swagger",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,8 @@ JWT_AUTH = {
     "JWT_EXPIRATION_DELTA": datetime.timedelta(hours=1),
     "JWT_ALLOW_REFRESH": True,
 }
+
+SIMPLE_JWT = {"AUTH_HEADER_TYPES": ("JWT",)}
 
 # Swagger settings for documentation
 SWAGGER_SETTINGS = {

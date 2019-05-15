@@ -148,3 +148,15 @@ function createWrapper(responseType, cc, deleteEmail) {
     />
   );
 }
+
+it("it renders when the email is undefined", () => {
+  shallow(
+    <UnconnectedActionViewEmail
+      actionId={0}
+      action={{ actionType: ACTION_TYPE.email }}
+      email={emailStub}
+      deleteEmail={() => {}}
+      addressBook={addressBook}
+    />
+  );
+});

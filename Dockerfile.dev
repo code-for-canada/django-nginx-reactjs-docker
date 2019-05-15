@@ -26,3 +26,4 @@ ENV ENVIRONMENT="dev"
 EXPOSE 8000
 
 ENTRYPOINT ["sh", "entrypoint.sh"]
+CMD ["sh", "entrypoint.sh"]
