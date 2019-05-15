@@ -11,7 +11,7 @@ const styles = {
 
 class EmibIntroductionPage extends Component {
   static propTypes = {
-    showEnterEmibPopup: PropTypes.func.isRequired
+    nextPage: PropTypes.func.isRequired
   };
 
   render() {
@@ -22,11 +22,7 @@ class EmibIntroductionPage extends Component {
         <p>{LOCALIZE.emibTest.howToPage.introductionPage.description1}</p>
         <p>{LOCALIZE.emibTest.howToPage.introductionPage.description2}</p>
         <div style={styles.startTestBtn}>
-          <button
-            type="button"
-            className="btn btn-primary btn-wide"
-            onClick={this.props.showEnterEmibPopup}
-          >
+          <button type="button" className="btn btn-primary btn-wide" onClick={this.props.nextPage}>
             {LOCALIZE.commons.enterEmib}
           </button>
         </div>
