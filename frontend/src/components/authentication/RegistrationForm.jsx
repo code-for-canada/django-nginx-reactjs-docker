@@ -57,8 +57,7 @@ const styles = {
 class RegistrationForm extends Component {
   static propTypes = {
     // Props from Redux
-    registerAction: PropTypes.func,
-    registrationSuccessMessage: PropTypes.func
+    registerAction: PropTypes.func
   };
 
   state = {
