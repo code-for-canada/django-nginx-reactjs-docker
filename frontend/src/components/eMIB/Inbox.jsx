@@ -12,20 +12,33 @@ import { Tab, Row, Col, Nav } from "react-bootstrap";
 const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
 const styles = {
-  ul: {
-    borderBottom: "none"
-  },
-  buttonList: {
-    overflow: "auto",
-    height: INBOX_HEIGHT
-  },
   bodyContent: {
     overflow: "auto",
     height: INBOX_HEIGHT
+  },
+  contentColumn: {
+    paddingLeft: 0
+  },
+  navItem: {
+    width: "100%"
+  },
+  navLink: {
+    padding: 0
   }
 };
 
-const eventKeys = ["first", "second", "third"];
+const EVENT_KEYS = [
+  "first",
+  "second",
+  "third",
+  "fourth",
+  "fifth",
+  "sixth",
+  "seventh",
+  "eigth",
+  "nineth",
+  "tenth"
+];
 
 class Inbox extends Component {
   static propTypes = {
@@ -38,8 +51,7 @@ class Inbox extends Component {
   };
 
   changeEmail = eventKey => {
-    console.log(eventKey);
-    const index = eventKeys.indexOf(eventKey);
+    const index = EVENT_KEYS.indexOf(eventKey);
     this.props.readEmail(this.props.currentEmail);
     this.props.changeCurrentEmail(index);
   };
@@ -48,13 +60,13 @@ class Inbox extends Component {
     const { emails, emailSummaries } = this.props;
     return (
       <div>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first" onSelect={this.changeEmail}>
+        <Tab.Container id="inbox-tabs" defaultActiveKey="first" onSelect={this.changeEmail}>
           <Row>
             <Col sm={4}>
               <Nav className="flex-column">
                 {emails.map((email, index) => (
-                  <Nav.Item key={index} style={{ width: "100%" }}>
-                    <Nav.Link eventKey={eventKeys[index]} style={{ padding: 0 }}>
+                  <Nav.Item key={index} style={styles.navItem}>
+                    <Nav.Link eventKey={EVENT_KEYS[index]} style={styles.navLink}>
                       <EmailPreview
                         email={email}
                         isRead={this.props.emailSummaries[index].isRead}
@@ -68,10 +80,10 @@ class Inbox extends Component {
                 ))}
               </Nav>
             </Col>
-            <Col sm={8} style={{ paddingLeft: 0 }}>
+            <Col sm={8} tabIndex={0} style={styles.contentColumn}>
               <Tab.Content style={styles.bodyContent}>
                 {emails.map((email, index) => (
-                  <Tab.Pane eventKey={eventKeys[index]} key={index}>
+                  <Tab.Pane eventKey={EVENT_KEYS[index]} key={index}>
                     <Email
                       email={email}
                       emailCount={emailSummaries[this.props.currentEmail].emailCount}
