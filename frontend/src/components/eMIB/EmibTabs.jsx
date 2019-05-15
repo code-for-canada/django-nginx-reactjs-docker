@@ -60,29 +60,27 @@ class EmibTabs extends Component {
         <Helmet>
           <title>{LOCALIZE.titles.simulation}</title>
         </Helmet>
-        <Container>
-          <Row>
-            <Col>
-              <Tabs
-                defaultActiveKey="instructions"
-                id="emib-tabs"
-                activeKey={this.props.currentTab}
-                onSelect={key => this.props.switchTab(key)}
-              >
-                {TABS.map((tab, index) => {
-                  return (
-                    <Tab key={index} eventKey={tab.key} title={tab.tabName}>
-                      {tab.body}
-                    </Tab>
-                  );
-                })}
-              </Tabs>
-            </Col>
-            <Col md="auto" style={styles.notepad}>
-              <Notepad />
-            </Col>
-          </Row>
-        </Container>
+        <Row>
+          <Col>
+            <Tabs
+              defaultActiveKey="instructions"
+              id="emib-tabs"
+              activeKey={this.props.currentTab}
+              onSelect={key => this.props.switchTab(key)}
+            >
+              {TABS.map((tab, index) => {
+                return (
+                  <Tab key={index} eventKey={tab.key} title={tab.tabName}>
+                    {tab.body}
+                  </Tab>
+                );
+              })}
+            </Tabs>
+          </Col>
+          <Col md="auto" style={styles.notepad}>
+            <Notepad />
+          </Col>
+        </Row>
       </div>
     );
   }
