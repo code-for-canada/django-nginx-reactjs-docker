@@ -96,6 +96,8 @@ function testCore(actionType, editMode) {
         .first()
         .hasClass(taskIcon)
     ).toEqual(false);
+    // verify that the empty emailType is overridden to be a reply
+    expect(wrapper.state("action").emailType).toEqual(EMAIL_TYPE.reply);
   }
   if (actionType === ACTION_TYPE.task) {
     expect(
@@ -429,4 +431,39 @@ function emptyActionMount(actionType) {
       />
     </Provider>
   );
+}
+
+it("check that undefined email type is overriden to be reply", () => {
+  checkEmailTypeOverride(undefined);
+});
+
+it("check that replyAll email type is not overridden", () => {
+  checkEmailTypeOverride(EMAIL_TYPE.replyAll);
+});
+
+it("check that forward email type is not overridden", () => {
+  checkEmailTypeOverride(EMAIL_TYPE.forward);
+});
+
+function checkEmailTypeOverride(emailType) {
+  const wrapper = shallow(
+    <EditActionDialog
+      email={emailStub}
+      showDialog={true}
+      handleClose={() => {}}
+      addEmail={() => {}}
+      addTask={() => {}}
+      updateEmail={() => {}}
+      updateTask={() => {}}
+      readEmail={() => {}}
+      actionType={ACTION_TYPE.email}
+      action={{ actionType: ACTION_TYPE.email, emailType: emailType }}
+      editMode={EDIT_MODE.create}
+    />
+  );
+  if (emailType === undefined) {
+    expect(wrapper.state("action").emailType).toEqual(EMAIL_TYPE.reply);
+  } else {
+    expect(wrapper.state("action").emailType).toEqual(emailType);
+  }
 }
