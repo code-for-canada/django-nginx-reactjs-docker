@@ -13,8 +13,11 @@ matrix:
     - language: python
       python: 3.6
       provider: script
+      before_script:
+        - cd backend/
+        - pip install -r requirements.txt
       script:
-        - docker-compose run --rm backend ./manage.py test backend/tests/
+        - docker-compose run --rm backend ./manage.py test tests
 
     #Frontend Tests
     - language: node_js

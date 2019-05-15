@@ -7,7 +7,6 @@ import "./css/cat-theme.css";
 import { Helmet } from "react-helmet";
 import Status from "./Status";
 import Home from "./Home";
-import Dashboard from "./Dashboard";
 import Prototype from "./Prototype";
 import Emib from "./components/eMIB/Emib";
 import LoginButton from "./components/commons/LoginButton";
@@ -17,7 +16,6 @@ import psc_header from "./images/psc_header.png";
 
 const PATH = {
   home: "/",
-  dashboard: "/dashboard",
   prototype: "/prototype",
   status: "/status",
   emibSampleTest: "/emib-sample"
@@ -59,13 +57,6 @@ const isHomeActive = (match, location) => {
   return pathname === PATH.home;
 };
 
-//Check if the dashboard page is selected
-const isDashboardActive = (match, location) => {
-  if (!location) return false;
-  const { pathname } = location;
-  return pathname === PATH.dashboard;
-};
-
 //Check if the Prototype page is selected even when you start the eMIB Sample Test
 const isPrototypeActive = (match, location) => {
   if (!location) return false;
@@ -85,7 +76,6 @@ const isStatusActive = (match, location) => {
 class App extends Component {
   static propTypes = {
     // Props from Redux
-    loggedIn: PropTypes.bool,
     currentLanguage: PropTypes.string,
     isTestActive: PropTypes.bool.isRequired
   };
@@ -130,16 +120,6 @@ class App extends Component {
                       <li className="bg-white" role="menuitem">
                         <NavLink
                           aria-current="page"
-                          isActive={isDashboardActive}
-                          className="nav-link"
-                          to={PATH.dashboard}
-                        >
-                          {LOCALIZE.mainTabs.dashboardTabTitle}
-                        </NavLink>
-                      </li>
-                      <li className="bg-white" role="menuitem">
-                        <NavLink
-                          aria-current="page"
                           isActive={isPrototypeActive}
                           className="nav-link"
                           to={PATH.prototype}
@@ -173,7 +153,6 @@ class App extends Component {
               </nav>
             </header>
             <Route exact path={PATH.home} component={Home} />
-            <Route path={PATH.dashboard} component={Dashboard} />
             <Route path={PATH.prototype} component={Prototype} />
             <Route path={PATH.status} component={Status} />
             <Route path={PATH.emibSampleTest} component={Emib} />
@@ -187,7 +166,6 @@ export { PATH };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loggedIn: state.login.loggedIn,
     currentLanguage: state.localize.language,
     isTestActive: state.testStatus.isTestActive
   };
