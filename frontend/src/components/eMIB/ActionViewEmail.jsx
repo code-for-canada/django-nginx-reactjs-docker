@@ -105,7 +105,9 @@ class ActionViewEmail extends Component {
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
         <div>
           <div style={styles.type}>
-            {LOCALIZE.emibTest.inboxPage.emailResponse.description}
+            <span style={styles.headings}>
+              {LOCALIZE.emibTest.inboxPage.emailResponse.description}
+            </span>
             {action.emailType === EMAIL_TYPE.reply && (
               <>
                 <i className="fas fa-reply" style={styles.responseType.icon} />
