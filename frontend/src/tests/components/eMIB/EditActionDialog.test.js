@@ -299,16 +299,16 @@ describe("edit action dialog helper file", () => {
     stubbedCurrentVariables = {};
   });
 
+  it("renders EditActionDialog with an edit empty email response", () => {
+    emptyActionMount(ACTION_TYPE.email);
+  });
 
-it("renders EditActionDialog with an edit empty email response", () => {
-  emptyActionMount(ACTION_TYPE.email);
+  it("renders EditActionDialog with an edit empty task response", () => {
+    emptyActionMount(ACTION_TYPE.task);
+  });
 });
 
-it("renders EditActionDialog with an edit empty task response", () => {
-  emptyActionMount(ACTION_TYPE.task);
-});
-
-function emptyActionMount(actionType) {
+const emptyActionMount = actionType => {
   mount(
     <Provider store={mockStore(initialState)}>
       <EditActionDialog
@@ -328,4 +328,4 @@ function emptyActionMount(actionType) {
       />
     </Provider>
   );
-}
+};

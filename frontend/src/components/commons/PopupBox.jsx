@@ -89,7 +89,15 @@ class PopupBox extends Component {
       rightButtonTitle,
       rightButtonState
     } = this.props;
-    Modal.setAppElement("#root");
+
+    // If a root node exists, the app is being served, otherwise it's a unit test.
+    const ariaHideApp = true;
+    if (document.getElementById("#root")) {
+      Modal.setAppElement("#root");
+    } else {
+      // Unit tests do not consider outside of the dialog.
+      ariaHideApp = false;
+    }
     return (
       <Modal
         isOpen={show}
@@ -101,6 +109,7 @@ class PopupBox extends Component {
           labelledby: "modal-heading",
           describedby: "modal-description"
         }}
+        ariaHideApp={ariaHideApp}
       >
         <h2 id="modal-heading">{title}</h2>
         <div id="modal-description" style={styles.description}>
