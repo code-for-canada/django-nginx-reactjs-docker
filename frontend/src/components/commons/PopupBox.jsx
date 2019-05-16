@@ -22,6 +22,9 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)"
   }
 };
 
@@ -48,12 +51,11 @@ class PopupBox extends Component {
       rightButtonTitle: PropTypes.string,
       rightButtonAction: PropTypes.func,
       rightButtonState: PropTypes.string,
-      isBackdropStatic: PropTypes.bool,
-      isCloseButtonVisible: PropTypes.bool
+      isBackdropStatic: PropTypes.bool
     };
-    // display 'close button' by default
+    // click away or esc to close
     PopupBox.defaultProps = {
-      isCloseButtonVisible: true
+      isBackdropStatic: false
     };
   }
 
@@ -86,7 +88,13 @@ class PopupBox extends Component {
     } = this.props;
 
     return (
-      <Modal isOpen={show} onRequestClose={handleClose} style={customStyles} contentLabel={title}>
+      <Modal
+        isOpen={show}
+        onRequestClose={handleClose}
+        style={customStyles}
+        contentLabel={title}
+        shouldCloseOnOverlayClick={!this.props.isBackdropStatic}
+      >
         <h2>{title}</h2>
         <div>{description}</div>
         {leftButtonTitle && leftButtonType && (

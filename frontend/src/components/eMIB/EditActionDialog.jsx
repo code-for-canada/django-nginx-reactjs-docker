@@ -25,6 +25,9 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)"
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)"
   }
 };
 
@@ -117,7 +120,12 @@ class EditActionDialog extends Component {
   render() {
     const { showDialog, actionType, editMode } = this.props;
     return (
-      <Modal isOpen={showDialog} onRequestClose={this.handleClose} style={customStyles}>
+      <Modal
+        isOpen={showDialog}
+        onRequestClose={this.handleClose}
+        style={customStyles}
+        shouldCloseOnOverlayClick={false}
+      >
         <div>
           <div>
             {actionType === ACTION_TYPE.email && (
@@ -166,7 +174,7 @@ class EditActionDialog extends Component {
           </div>
           <div style={{ paddingTop: 10 }}>
             <button className={"btn btn-danger"} onClick={this.handleClose}>
-              Cancel
+              Cancel changes
             </button>
             <button
               style={{ float: "right" }}
