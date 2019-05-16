@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import LOCALIZE from "../../text_resources";
 import EditEmail from "./EditEmail";
 import EditTask from "./EditTask";
-import { Modal } from "react-bootstrap";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape } from "./constants";
@@ -22,6 +21,19 @@ import isEmailFormEmpty, {
   isTaskFormEdited,
   isEmailFormEdited
 } from "../../helpers/editActionDialogHelper";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    maxWidth: 900,
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  }
+};
 
 const styles = {
   container: {
@@ -39,36 +51,8 @@ const styles = {
   icon: {
     float: "left",
     marginTop: 14,
-    marginRight: 8
-  },
-  dialogHeaderText: {
-    float: "left",
-    fontSize: 20,
-    marginTop: 10,
-    marginBottom: 10
-  },
-  modalHeader: {
-    backgroundColor: "#00565E",
-    color: "white",
-    fontSize: 16,
-    fontWeight: 600,
-    borderRadius: "9px 9px 0px 0px",
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  closeButton: {
-    backgroundColor: "transparent",
-    float: "right",
-    color: "white",
-    border: 0,
-    marginTop: 11
-  },
-  modalBody: {
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  fullWidth: {
-    width: "100%"
+    marginRight: 8,
+    fontSize: 24
   }
 };
 
@@ -245,86 +229,71 @@ class EditActionDialog extends Component {
     const { showDialog, actionType, editMode } = this.props;
     return (
       <div>
-        <Modal show={showDialog} onHide={this.handleCancelConfirmationDisplay} backdrop={"static"}>
+        <Modal
+          isOpen={showDialog}
+          onRequestClose={this.handleCancelConfirmationDisplay}
+          style={customStyles}
+        >
           <div>
-            <Modal.Header style={styles.modalHeader}>
-              {
-                <div style={styles.fullWidth}>
-                  {actionType === ACTION_TYPE.email && (
-                    <div style={styles.fullWidth}>
-                      <i style={styles.icon} className="fas fa-envelope" />
-                      <h3 style={styles.dialogHeaderText}>
-                        {editMode === EDIT_MODE.create &&
-                          LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
-                        {editMode === EDIT_MODE.update &&
-                          LOCALIZE.emibTest.inboxPage.editActionDialog.editEmail}
-                      </h3>
-                      <button
-                        onClick={this.handleCancelConfirmationDisplay}
-                        style={styles.closeButton}
-                      >
-                        <i className="fas fa-times" />
-                      </button>
-                    </div>
-                  )}
-                  {actionType === ACTION_TYPE.task && (
-                    <div style={styles.fullWidth}>
-                      <i style={styles.icon} className="fas fa-tasks" />
-                      <h3 style={styles.dialogHeaderText}>
-                        {editMode === EDIT_MODE.create &&
-                          LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
-                        {editMode === EDIT_MODE.update &&
-                          LOCALIZE.emibTest.inboxPage.editActionDialog.editTask}
-                      </h3>
-                      <button
-                        onClick={this.handleCancelConfirmationDisplay}
-                        style={styles.closeButton}
-                      >
-                        <i className="fas fa-times" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              }
-            </Modal.Header>
-            <Modal.Body style={styles.modalBody}>
-              <div style={styles.container}>
-                <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
-                {actionType === ACTION_TYPE.email && (
-                  <EditEmail
-                    onChange={this.editAction}
-                    action={editMode === EDIT_MODE.update ? this.props.action : null}
-                  />
-                )}
-                {actionType === ACTION_TYPE.task && (
-                  <EditTask
-                    emailNumber={this.props.email.id}
-                    emailSubject={this.props.email.subject}
-                    onChange={this.editAction}
-                    action={editMode === EDIT_MODE.update ? this.props.action : null}
-                  />
-                )}
-                <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}</h4>
-                <div style={styles.originalEmail}>
-                  <EmailContent email={this.props.email} />
-                </div>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <div>
+            <div>
+              {actionType === ACTION_TYPE.email && (
                 <div>
-                  <button
-                    id="unit-test-email-response-button"
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={this.handleSave}
-                    disabled={!this.props.showDialog}
-                  >
-                    {LOCALIZE.emibTest.inboxPage.editActionDialog.save}
-                  </button>
+                  <i style={styles.icon} className="fas fa-envelope" />
+                  <h2>
+                    {editMode === EDIT_MODE.create &&
+                      LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
+                    {editMode === EDIT_MODE.update &&
+                      LOCALIZE.emibTest.inboxPage.editActionDialog.editEmail}
+                  </h2>
                 </div>
+              )}
+              {actionType === ACTION_TYPE.task && (
+                <div>
+                  <i style={styles.icon} className="fas fa-tasks" />
+                  <h2>
+                    {editMode === EDIT_MODE.create &&
+                      LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
+                    {editMode === EDIT_MODE.update &&
+                      LOCALIZE.emibTest.inboxPage.editActionDialog.editTask}
+                  </h2>
+                </div>
+              )}
+            </div>
+            <div style={styles.container}>
+              <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
+              {actionType === ACTION_TYPE.email && (
+                <EditEmail
+                  onChange={this.editAction}
+                  action={editMode === EDIT_MODE.update ? this.props.action : null}
+                />
+              )}
+              {actionType === ACTION_TYPE.task && (
+                <EditTask
+                  emailNumber={this.props.email.id}
+                  emailSubject={this.props.email.subject}
+                  onChange={this.editAction}
+                  action={editMode === EDIT_MODE.update ? this.props.action : null}
+                />
+              )}
+              <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}</h4>
+              <div style={styles.originalEmail}>
+                <EmailContent email={this.props.email} />
               </div>
-            </Modal.Footer>
+            </div>
+            <div style={{ paddingTop: 10 }}>
+              <button className={"btn btn-danger"} onClick={this.handleClose}>
+                Cancel
+              </button>
+              <button
+                style={{ float: "right" }}
+                id="unit-test-email-response-button"
+                type="button"
+                className="btn btn-primary"
+                onClick={this.handleSave}
+              >
+                {LOCALIZE.emibTest.inboxPage.editActionDialog.save}
+              </button>
+            </div>
           </div>
         </Modal>
         {this.state.showCancelConfirmationDialog && (
