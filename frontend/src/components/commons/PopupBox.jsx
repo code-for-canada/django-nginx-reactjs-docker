@@ -84,7 +84,11 @@ class PopupBox extends Component {
         <h2>{title}</h2>
         <div>{description}</div>
         {leftButtonTitle && leftButtonType && (
-          <button className={leftButtonType} onClick={this.leftButtonCloseAndAction}>
+          <button
+            className={leftButtonType}
+            onClick={this.leftButtonCloseAndAction}
+            disabled={leftButtonState}
+          >
             {leftButtonTitle}
           </button>
         )}
@@ -93,6 +97,7 @@ class PopupBox extends Component {
             style={{ float: "right" }}
             className={rightButtonType}
             onClick={this.rightButtonCloseAndAction}
+            disabled={rightButtonState}
           >
             {rightButtonTitle}
           </button>
