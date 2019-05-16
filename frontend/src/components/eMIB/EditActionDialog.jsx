@@ -125,6 +125,7 @@ class EditActionDialog extends Component {
 
   render() {
     const { showDialog, actionType, editMode } = this.props;
+    Modal.setAppElement("#root");
     return (
       <Modal
         isOpen={showDialog}
@@ -197,8 +198,6 @@ class EditActionDialog extends Component {
     );
   }
 }
-
-Modal.setAppElement("#root");
 
 export { EditActionDialog as UnconnectedEditActionDialog };
 

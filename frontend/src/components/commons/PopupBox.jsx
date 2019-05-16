@@ -89,7 +89,7 @@ class PopupBox extends Component {
       rightButtonTitle,
       rightButtonState
     } = this.props;
-
+    Modal.setAppElement("#root");
     return (
       <Modal
         isOpen={show}
@@ -98,12 +98,12 @@ class PopupBox extends Component {
         contentLabel={title}
         shouldCloseOnOverlayClick={!this.props.isBackdropStatic}
         aria={{
-          labelledby: "heading",
-          describedby: "full_description"
+          labelledby: "modal-heading",
+          describedby: "modal-description"
         }}
       >
-        <h2 id="heading">{title}</h2>
-        <div id="full_description" style={styles.description}>
+        <h2 id="modal-heading">{title}</h2>
+        <div id="modal-description" style={styles.description}>
           {description}
         </div>
         {leftButtonTitle && leftButtonType && (
@@ -111,6 +111,7 @@ class PopupBox extends Component {
             className={leftButtonType}
             onClick={this.leftButtonCloseAndAction}
             disabled={leftButtonState}
+            id="unit-test-left-btn"
           >
             {leftButtonTitle}
           </button>
@@ -121,6 +122,7 @@ class PopupBox extends Component {
             className={rightButtonType}
             onClick={this.rightButtonCloseAndAction}
             disabled={rightButtonState}
+            id="unit-test-right-btn"
           >
             {rightButtonTitle}
           </button>
@@ -129,7 +131,5 @@ class PopupBox extends Component {
     );
   }
 }
-
-Modal.setAppElement("#root");
 
 export default PopupBox;
