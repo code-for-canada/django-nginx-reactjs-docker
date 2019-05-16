@@ -91,7 +91,7 @@ class PopupBox extends Component {
     } = this.props;
 
     // If a root node exists, the app is being served, otherwise it's a unit test.
-    const ariaHideApp = true;
+    let ariaHideApp = true;
     if (document.getElementById("#root")) {
       Modal.setAppElement("#root");
     } else {
