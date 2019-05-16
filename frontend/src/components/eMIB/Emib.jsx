@@ -10,7 +10,6 @@ import ContentContainer from "../commons/ContentContainer";
 import PopupBox, { BUTTON_TYPE, BUTTON_STATE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { activateTest, deactivateTest } from "../../modules/TestStatusRedux";
-import ConfirmEnterEmib from "./ConfirmEnterEmib";
 import ConfirmStartTest from "../commons/ConfirmStartTest";
 import EmibIntroductionPage from "./EmibIntroductionPage";
 import { Helmet } from "react-helmet";
@@ -55,7 +54,6 @@ class Emib extends Component {
     curPage: PAGES.preTest,
     currentTab: "instructions",
     disabledTabs: [1, 2],
-    showEnterEmibPopup: false,
     testIsStarted: false,
     showStartTestPopup: false,
     showSubmitPopup: false,
@@ -80,15 +78,6 @@ class Emib extends Component {
         this.setState({ curPage: PAGES.preTest });
         break;
     }
-  };
-
-  // Pre-test functions
-  openEnterEmibPopup = () => {
-    this.setState({ showEnterEmibPopup: true });
-  };
-
-  closeEnterEmibPopup = () => {
-    this.setState({ showEnterEmibPopup: false });
   };
 
   // Within eMIB Tabs functions
@@ -157,7 +146,7 @@ class Emib extends Component {
         {this.state.curPage !== PAGES.emibTabs && (
           <ContentContainer hideBanner={false}>
             {this.state.curPage === PAGES.preTest && (
-              <EmibIntroductionPage showEnterEmibPopup={this.openEnterEmibPopup} />
+              <EmibIntroductionPage nextPage={this.changePage} />
             )}
 
             {this.state.curPage === PAGES.confirm && <Confirmation />}
@@ -171,12 +160,6 @@ class Emib extends Component {
             testIsStarted={this.state.testIsStarted}
           />
         )}
-
-        <ConfirmEnterEmib
-          showDialog={this.state.showEnterEmibPopup}
-          handleClose={this.closeEnterEmibPopup}
-          enterEmib={this.changePage}
-        />
 
         <ConfirmStartTest
           showDialog={this.state.showStartTestPopup}
