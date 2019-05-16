@@ -118,11 +118,6 @@ class EditActionDialog extends Component {
 
   handleSave = () => {
     this.props.handleClose();
-    // if it is an email, and there is no emailType defined, default to reply
-    /*if (this.props.actionType === ACTION_TYPE.email && this.state.action.emailType === undefined) {
-      this.state.action.emailType = EMAIL_TYPE.reply;
-    }*/
-
     // determine which function to call depening on action type and edit mode
     if (this.props.actionType === ACTION_TYPE.email && this.props.editMode === EDIT_MODE.create) {
       this.props.addEmail(this.props.email.id, this.state.action);
