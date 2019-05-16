@@ -8,7 +8,7 @@ import "../../css/inbox.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT, emailShape } from "./constants";
 import { readEmail, changeCurrentEmail } from "../../modules/EmibInboxRedux";
 
-const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
+const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 5}px)`;
 
 const styles = {
   ul: {
