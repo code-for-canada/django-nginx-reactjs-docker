@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
+import Modal from "react-modal";
 
 export const BUTTON_TYPE = {
   primary: "btn btn-primary",
@@ -13,41 +13,18 @@ export const BUTTON_STATE = {
   enabled: false
 };
 
-const styles = {
-  boxshape: {
-    borderWidth: "1px 1px 0 1px",
-    borderStyle: "solid",
-    borderColor: "#00565e",
-    borderRadius: "5px 5px 5px 5px"
-  },
-  boxContent: {
-    padding: 12
-  },
-  modelTitle: {
-    fontSize: "28px",
-    margin: 0
-  },
-  buttonsZone: {
-    width: "100%"
-  },
-  leftBtnLocation: {
-    float: "left"
-  },
-  rightBtnLocation: {
-    float: "right"
-  },
-  buttonSize: {
-    minWidth: 125
+const customStyles = {
+  content: {
+    maxWidth: 700,
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 
-/*
-To make the buttons appear, you need to specify the button type, the button title and if needed the button action (button action is not mandatory).
-By default, all buttons close the popup box, even if no action has been assigned.
-This component can provide a popup box that contains 0 to 2 buttons: none, leftButton and rightButton
-Example with one button (1 action): <PopupBox rightButtonType={BUTTON_TYPE.secondary} rightButtonTitle={"Ok"} rightButtonAction={() => someFunction()} />
-Example with two buttons (no action): <PopupBox rightButtonType={BUTTON_TYPE.primary} rightButtonTitle={"Cancel"} leftButtonType={BUTTON_TYPE.secondary} leftButtonTitle={"Ok"} />
-*/
 class PopupBox extends Component {
   constructor(props, context) {
     super(props, context);
@@ -103,55 +80,23 @@ class PopupBox extends Component {
     } = this.props;
 
     return (
-      <Modal
-        show={show}
-        onHide={handleClose}
-        autoFocus={true}
-        enforceFocus={true}
-        aria-hidden={false}
-        backdrop={this.props.isBackdropStatic ? false : true}
-      >
-        <div style={styles.boxContent}>
-          <Modal.Header closeButton={this.props.isCloseButtonVisible} style={styles.modalHeader}>
-            <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
-              {title}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body id="unit-test-popup-box-description">{description}</Modal.Body>
-          <Modal.Footer>
-            <div style={styles.buttonsZone}>
-              {leftButtonType && leftButtonTitle && (
-                <div style={styles.leftBtnLocation}>
-                  <button
-                    disabled={leftButtonState}
-                    id="unit-test-left-btn-title"
-                    type="button"
-                    className={leftButtonType}
-                    style={styles.buttonSize}
-                    onClick={this.leftButtonCloseAndAction}
-                  >
-                    {leftButtonTitle}
-                  </button>
-                </div>
-              )}
-
-              {rightButtonType && rightButtonTitle && (
-                <div style={styles.rightBtnLocation}>
-                  <button
-                    disabled={rightButtonState}
-                    id="unit-test-right-btn-title"
-                    type="button"
-                    className={rightButtonType}
-                    style={styles.buttonSize}
-                    onClick={this.rightButtonCloseAndAction}
-                  >
-                    {rightButtonTitle}
-                  </button>
-                </div>
-              )}
-            </div>
-          </Modal.Footer>
-        </div>
+      <Modal isOpen={show} onRequestClose={handleClose} style={customStyles} contentLabel={title}>
+        <h2>{title}</h2>
+        <div>{description}</div>
+        {leftButtonTitle && leftButtonType && (
+          <button className={leftButtonType} onClick={this.leftButtonCloseAndAction}>
+            {leftButtonTitle}
+          </button>
+        )}
+        {rightButtonTitle && rightButtonType && (
+          <button
+            style={{ float: "right" }}
+            className={rightButtonType}
+            onClick={this.rightButtonCloseAndAction}
+          >
+            {rightButtonTitle}
+          </button>
+        )}
       </Modal>
     );
   }
