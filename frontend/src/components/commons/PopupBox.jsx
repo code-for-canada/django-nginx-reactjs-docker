@@ -25,6 +25,12 @@ const customStyles = {
   }
 };
 
+const styles = {
+  rightButton: {
+    float: "right"
+  }
+};
+
 class PopupBox extends Component {
   constructor(props, context) {
     super(props, context);
@@ -94,7 +100,7 @@ class PopupBox extends Component {
         )}
         {rightButtonTitle && rightButtonType && (
           <button
-            style={{ float: "right" }}
+            style={styles.rightButton}
             className={rightButtonType}
             onClick={this.rightButtonCloseAndAction}
             disabled={rightButtonState}
