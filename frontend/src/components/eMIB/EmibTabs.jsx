@@ -6,7 +6,7 @@ import LOCALIZE from "../../text_resources";
 import InTestInstructions from "./InTestInstructions";
 import Notepad from "../commons/Notepad";
 import { Helmet } from "react-helmet";
-import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
+import { Tabs, Tab, Row, Col } from "react-bootstrap";
 
 const styles = {
   container: {
