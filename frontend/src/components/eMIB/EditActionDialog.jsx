@@ -49,6 +49,12 @@ const styles = {
     marginTop: 14,
     marginRight: 8,
     fontSize: 24
+  },
+  buttons: {
+    paddingTop: 10
+  },
+  rightButton: {
+    float: "right"
   }
 };
 
@@ -172,12 +178,12 @@ class EditActionDialog extends Component {
               <EmailContent email={this.props.email} />
             </div>
           </div>
-          <div style={{ paddingTop: 10 }}>
+          <div style={styles.buttons}>
             <button className={"btn btn-danger"} onClick={this.handleClose}>
-              Cancel changes
+              {LOCALIZE.commons.cancelResponse}
             </button>
             <button
-              style={{ float: "right" }}
+              style={styles.rightButton}
               id="unit-test-email-response-button"
               type="button"
               className="btn btn-primary"

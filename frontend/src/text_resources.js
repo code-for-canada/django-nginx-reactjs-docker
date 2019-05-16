@@ -520,7 +520,7 @@ let LOCALIZE = new LocalizedStrings({
         openButton: "Open Notes"
       },
       cancel: "Cancel",
-      cancelResponse: "Cancel response",
+      cancelResponse: "Cancel changes",
       close: "Close",
       login: "Login",
       logout: "Logout"
