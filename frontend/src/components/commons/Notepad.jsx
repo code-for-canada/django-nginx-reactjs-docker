@@ -101,7 +101,6 @@ class Notepad extends Component {
             )}
             <button
               id="notepad-button"
-              role="button"
               aria-pressed={notepadHidden}
               onClick={this.toggleNotepad}
               style={notepadHidden ? styles.openNotepadBtn : styles.hideNotepadBtn}
