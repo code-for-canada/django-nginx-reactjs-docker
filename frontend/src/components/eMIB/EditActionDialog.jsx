@@ -192,6 +192,8 @@ class EditActionDialog extends Component {
   }
 }
 
+Modal.setAppElement("#root");
+
 export { EditActionDialog as UnconnectedEditActionDialog };
 
 const mapDispatchToProps = dispatch =>

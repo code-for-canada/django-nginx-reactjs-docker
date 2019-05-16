@@ -31,6 +31,9 @@ const customStyles = {
 const styles = {
   rightButton: {
     float: "right"
+  },
+  description: {
+    padding: "16px 0px"
   }
 };
 
@@ -94,9 +97,15 @@ class PopupBox extends Component {
         style={customStyles}
         contentLabel={title}
         shouldCloseOnOverlayClick={!this.props.isBackdropStatic}
+        aria={{
+          labelledby: "heading",
+          describedby: "full_description"
+        }}
       >
-        <h2>{title}</h2>
-        <div>{description}</div>
+        <h2 id="heading">{title}</h2>
+        <div id="full_description" style={styles.description}>
+          {description}
+        </div>
         {leftButtonTitle && leftButtonType && (
           <button
             className={leftButtonType}
@@ -120,5 +129,7 @@ class PopupBox extends Component {
     );
   }
 }
+
+Modal.setAppElement("#root");
 
 export default PopupBox;
