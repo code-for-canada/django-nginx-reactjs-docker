@@ -243,3 +243,8 @@ p {
 .form-group {
   margin-bottom: 0;
 }
+
+.btn-danger:disabled {
+  background-color: #db3336;
+  border-color: #db3336;
+}
