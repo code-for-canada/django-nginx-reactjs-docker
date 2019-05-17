@@ -17,7 +17,6 @@ let LOCALIZE = new LocalizedStrings({
       eMIB: "eMIB Assessment",
       simulation: "eMIB Assessment Simulation",
       status: "CAT System Status",
-      dashboard: "CAT Dashboard",
       prototypes: "CAT Prototypes",
       home: "CAT Home"
     },
@@ -37,7 +36,8 @@ let LOCALIZE = new LocalizedStrings({
             passwordPlaceholder: "Password"
           }
         },
-        button: "Login"
+        button: "Login",
+        invalidCredentials: "Invalid credentials!"
       },
       createAccount: {
         title: "CREATE AN ACCOUNT",
@@ -82,8 +82,7 @@ let LOCALIZE = new LocalizedStrings({
     //Dashboard Page
     dashboard: {
       title: "Welcome to your dashboard",
-      descriptionIfLoggedOut: "You can access this after logging in.",
-      descriptionIfLoggedIn: "You can now view your dashboard."
+      description: "Here is your dashboard..."
     },
 
     //Prototype Page
@@ -543,7 +542,6 @@ let LOCALIZE = new LocalizedStrings({
       eMIB: "FR eMIB Assessment",
       simulation: "FR eMIB Assessment Simulation",
       status: "FR CAT System Status",
-      dashboard: "FR CAT Dashboard",
       prototypes: "FR CAT Prototypes",
       home: "FR CAT Home"
     },
@@ -563,7 +561,8 @@ let LOCALIZE = new LocalizedStrings({
             passwordPlaceholder: "Mot de passe"
           }
         },
-        button: "Connexion"
+        button: "Connexion",
+        invalidCredentials: "FR Invalid credentials!"
       },
       createAccount: {
         title: "CRÉER UN COMPTE",
@@ -609,8 +608,7 @@ let LOCALIZE = new LocalizedStrings({
     //Dashboard Page
     dashboard: {
       title: "FR Welcome to your dashboard",
-      descriptionIfLoggedOut: "FR You can access this after logging in.",
-      descriptionIfLoggedIn: "FR You can now view your dashboard."
+      description: "FR Here is your dashboard..."
     },
 
     //Prototype Page

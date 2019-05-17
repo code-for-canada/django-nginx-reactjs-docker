@@ -46,7 +46,7 @@ class Status extends Component {
   }
 
   checkBackend = async () => {
-    const test = await fetch("/api/", {
+    const test = await fetch("/api/backend-status", {
       method: "GET",
       headers,
       cache: "default"
@@ -58,15 +58,17 @@ class Status extends Component {
   };
 
   checkDatabase = async () => {
-    const test = await fetch("/database_check/", {
+    const test = await fetch("/api/database-check/", {
       method: "GET",
       headers,
       cache: "default"
     });
-    const testJson = await test.json();
-    if (testJson) {
-      this.setState({ databaseStatus: true });
-    }
+    try {
+      const testJson = await test.json();
+      if (testJson) {
+        this.setState({ databaseStatus: true });
+      }
+    } catch (err) {}
   };
 
   // You must have JavaScript enabled to be able to run the app at all

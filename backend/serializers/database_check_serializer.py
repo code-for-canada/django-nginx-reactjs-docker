@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from backend.models.database_check_model import DatabaseCheckModel
+from custom_models.database_models import DatabaseCheckModel
 
 # Serializers define the API representation
 class DatabaseCheckSerializer(serializers.ModelSerializer):
     class Meta:
         model = DatabaseCheckModel
-        fields = '__all__'
+        fields = "__all__"

@@ -7,7 +7,6 @@ import "./css/cat-theme.css";
 import { Helmet } from "react-helmet";
 import Status from "./Status";
 import Home from "./Home";
-import Dashboard from "./Dashboard";
 import Emib from "./components/eMIB/Emib";
 import LoginButton from "./components/commons/LoginButton";
 import Translation from "./components/commons/Translation";
@@ -20,7 +19,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const PATH = {
   home: "/",
-  dashboard: "/dashboard",
+  prototype: "/prototype",
   status: "/status",
   emibSampleTest: "/emib-sample"
 };
@@ -28,7 +27,6 @@ const PATH = {
 class App extends Component {
   static propTypes = {
     // Props from Redux
-    loggedIn: PropTypes.bool,
     currentLanguage: PropTypes.string,
     isTestActive: PropTypes.bool.isRequired
   };
@@ -55,7 +53,6 @@ class App extends Component {
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                   <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
-                  <Nav.Link href="/dashboard">{LOCALIZE.mainTabs.dashboardTabTitle}</Nav.Link>
                   <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
                   <Nav.Link href="/status">{LOCALIZE.mainTabs.statusTabTitle}</Nav.Link>
                 </Nav>
@@ -78,7 +75,6 @@ class App extends Component {
               </Navbar>
             )}
             <Route exact path={PATH.home} component={Home} />
-            <Route path={PATH.dashboard} component={Dashboard} />
             <Route path={PATH.status} component={Status} />
             <Route path={PATH.emibSampleTest} component={Emib} />
           </div>
@@ -91,7 +87,6 @@ export { PATH };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loggedIn: state.login.loggedIn,
     currentLanguage: state.localize.language,
     isTestActive: state.testStatus.isTestActive
   };
