@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import LOCALIZE from "../../text_resources";
 import EditEmail from "./EditEmail";
 import EditTask from "./EditTask";
-import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape } from "./constants";
 import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape, EMAIL_TYPE } from "./constants";
 import EmailContent from "./EmailContent";
 import {
