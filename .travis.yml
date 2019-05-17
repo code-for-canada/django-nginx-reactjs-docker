@@ -19,6 +19,21 @@ matrix:
       script:
         - docker-compose run --rm backend ./manage.py test tests
 
+    #APIs Tests
+    - language: node_js
+      node_js: 10.15
+      install:
+        - npm install newman
+      provider: script
+      before_script:
+        - docker-compose up -d --build
+        - npm install frontend/
+        - node --version
+        - npm --version
+        - node_modules/.bin/newman --version
+      script:
+        - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json
+
     #Frontend Tests
     - language: node_js
       node_js: 10.15
