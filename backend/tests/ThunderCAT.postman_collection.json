@@ -7,6 +7,20 @@
 	"item": [
 		{
 			"name": "Get Users List - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -43,6 +57,24 @@
 		},
 		{
 			"name": "Create User(1) - /api/auth/users/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d985de8-68ce-4d4a-b485-f6a479189199",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting created email and username\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test@email.ca\",\"username\":\"api-test\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -70,7 +102,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"username1@email.ca\",\r\n  \"username\": \"username1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"email\": \"api-test@email.ca\",\r\n  \"username\": \"api-test\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost/api/auth/users/create",
@@ -291,7 +323,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Getting auth token\", function () {\r",
+							"pm.test(\"Getting auth token from account crendentials\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
 							"});"
 						],
@@ -326,7 +358,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin1234!\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost/api/auth/token/create/",
@@ -347,6 +379,20 @@
 		},
 		{
 			"name": "Delete User - /api/auth/users/{id}/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -366,7 +412,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/auth/users/{id}/",
+					"raw": "http://localhost:8000/api/auth/users/1/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -376,7 +422,7 @@
 						"api",
 						"auth",
 						"users",
-						"{id}",
+						"1",
 						""
 					]
 				}
