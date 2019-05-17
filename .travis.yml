@@ -32,7 +32,7 @@ matrix:
         - npm --version
         - node_modules/.bin/newman --version
       script:
-        - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json
+        - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json -e backend/tests/ThunderCAT.postman_environment.json
 
     #Frontend Tests
     - language: node_js
