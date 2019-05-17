@@ -6,6 +6,7 @@ import LOCALIZE from "../../text_resources";
 import EditEmail from "./EditEmail";
 import EditTask from "./EditTask";
 import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape } from "./constants";
+import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape, EMAIL_TYPE } from "./constants";
 import EmailContent from "./EmailContent";
 import {
   addEmail,
@@ -77,12 +78,34 @@ class EditActionDialog extends Component {
   };
 
   state = {
-    action: { ...this.props.action },
+    action: {
+      ...this.props.action,
+      ...{ emailType: this.defaultEmailType() }
+    },
     showCancelConfirmationDialog: false
   };
 
+  // function to check if there already is an emailType or default to reply if there isn't one
+  defaultEmailType() {
+    // if a task, return nothing
+    if (this.props.actionType === ACTION_TYPE.task) {
+      return undefined;
+    }
+    // if an email with no action, return reply
+    if (this.props.action === undefined) {
+      return EMAIL_TYPE.reply;
+    }
+    // if an email with no action.emailType, return reply
+    if (this.props.action.emailType === undefined) {
+      return EMAIL_TYPE.reply;
+    }
+    // otherwise, return the emailType
+    return this.props.action.emailType;
+  }
+
   handleSave = () => {
     this.props.handleClose();
+    // determine which function to call depening on action type and edit mode
     if (this.props.actionType === ACTION_TYPE.email && this.props.editMode === EDIT_MODE.create) {
       this.props.addEmail(this.props.email.id, this.state.action);
       this.props.readEmail(this.props.email.id);

@@ -1,19 +1,17 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Home from "../Home";
-import { LANGUAGES } from "../components/commons/Translation";
+import { UnconnectedHome as Home } from "../Home";
 import LOCALIZE from "../text_resources";
+import Dashboard from "../Dashboard";
 
-it("renders Home Page Title in English", () => {
-  LOCALIZE.setLanguage(LANGUAGES.english);
-  const wrapper = shallow(<Home />);
+it("renders home page title if not authenticated", () => {
+  const wrapper = shallow(<Home authenticated={false} />);
   const homePageTitle = <h1>{LOCALIZE.homePage.title}</h1>;
-  expect(wrapper.contains(homePageTitle)).toEqual(true);
+  expect(wrapper.containsMatchingElement(homePageTitle)).toEqual(true);
 });
 
-it("renders Home Page Title in French", () => {
-  LOCALIZE.setLanguage(LANGUAGES.french);
-  const wrapper = shallow(<Home />);
-  const homePageTitle = <h1>{LOCALIZE.homePage.title}</h1>;
-  expect(wrapper.contains(homePageTitle)).toEqual(true);
+it("renders dashboard component if authenticated", () => {
+  const wrapper = shallow(<Home authenticated={true} />);
+  const dashboardComponent = <Dashboard />;
+  expect(wrapper.containsMatchingElement(dashboardComponent)).toEqual(true);
 });

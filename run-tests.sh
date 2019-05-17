@@ -7,7 +7,7 @@ docker-compose build
 # Test the backened
 printf "**** ${BLUE}Begin backend tests${NC} ***\n"
 docker-compose run \
-  --rm backend ./manage.py test backend/tests/
+  --rm backend ./manage.py test tests
 printf "**** Complete backend tests ***\n"
 # Test the frontend
 printf "**** ${BLUE}Begin frontend tests${NC} ***\n"

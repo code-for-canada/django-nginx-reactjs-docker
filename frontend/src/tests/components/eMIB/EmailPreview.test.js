@@ -47,7 +47,6 @@ function testCore(isRead, isRepliedTo, isSelected) {
   const wrapper = mount(
     <EmailPreview
       email={emailStub}
-      selectEmail={() => {}}
       isRead={isRead}
       isRepliedTo={isRepliedTo}
       isSelected={isSelected}

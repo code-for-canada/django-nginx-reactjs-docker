@@ -1,10 +1,11 @@
 from rest_framework import viewsets
-from backend.serializers.database_check_serializer import DatabaseCheckSerializer
-from backend.models.database_check_model import DatabaseCheckModel
+from serializers.database_check_serializer import DatabaseCheckSerializer
+from custom_models.database_models import DatabaseCheckModel
+
 
 class DatabaseViewSet(viewsets.ModelViewSet):
     # same as 'SELECT * FROM backend_databasecheckmodel;'
     queryset = DatabaseCheckModel.objects.all()
     serializer_class = DatabaseCheckSerializer
     # allows only GET requests
-    http_method_names = ['get']
+    http_method_names = ["get"]

@@ -1,20 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LOCALIZE from "./text_resources";
 import ContentContainer from "./components/commons/ContentContainer";
-import LoginTabs from "./components/authentication/AuthenticationTabs";
+import AuthenticationTabs from "./components/authentication/AuthenticationTabs";
+import Dashboard from "./Dashboard";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
 
 class Home extends Component {
-  //TODO(fnormand): Remove this part when implementing login functionality in the backend
-  //===========================================
-  state = {
-    isAuthenticated: false
+  static propTypes = {
+    // Props from Redux
+    authenticated: PropTypes.bool
   };
-
-  authentification = () => {
-    this.setState({ isAuthenticated: true });
-  };
-  //===========================================
 
   render() {
     return (
@@ -23,21 +20,30 @@ class Home extends Component {
           <title>{LOCALIZE.titles.home}</title>
         </Helmet>
         <ContentContainer>
-          <h1>{LOCALIZE.homePage.title}</h1>
-          <p>{LOCALIZE.homePage.description}</p>
-          <div>
-            <LoginTabs authentification={this.authentification} />
-          </div>
-          {this.state.isAuthenticated && (
+          {!this.props.authenticated && (
             <div>
-              <h3>Welcome!</h3>
-              <p>You've just logged in.</p>
+              <h1>{LOCALIZE.homePage.title}</h1>
+              <p>{LOCALIZE.homePage.description}</p>
+              <div>
+                <AuthenticationTabs />
+              </div>
             </div>
           )}
+          {this.props.authenticated && <Dashboard />}
         </ContentContainer>
       </div>
     );
   }
 }
 
-export default Home;
+export { Home as UnconnectedHome };
+const mapStateToProps = (state, ownProps) => {
+  return {
+    authenticated: state.login.authenticated
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Home);

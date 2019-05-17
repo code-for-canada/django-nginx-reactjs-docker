@@ -7,24 +7,38 @@ import Email from "./Email";
 import "../../css/inbox.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT, emailShape } from "./constants";
 import { readEmail, changeCurrentEmail } from "../../modules/EmibInboxRedux";
+import { Tab, Row, Col, Nav } from "react-bootstrap";
 
 const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 5}px)`;
 
 const styles = {
-  ul: {
-    borderBottom: "none"
-  },
-  buttonList: {
-    overflow: "auto",
-    width: 219,
-    paddingRight: 25,
-    height: INBOX_HEIGHT
-  },
   bodyContent: {
     overflow: "auto",
     height: INBOX_HEIGHT
+  },
+  contentColumn: {
+    paddingLeft: 0
+  },
+  navItem: {
+    width: "100%"
+  },
+  navLink: {
+    padding: 0
   }
 };
+
+const EVENT_KEYS = [
+  "first",
+  "second",
+  "third",
+  "fourth",
+  "fifth",
+  "sixth",
+  "seventh",
+  "eigth",
+  "nineth",
+  "tenth"
+];
 
 class Inbox extends Component {
   static propTypes = {
@@ -36,7 +50,8 @@ class Inbox extends Component {
     changeCurrentEmail: PropTypes.func.isRequired
   };
 
-  changeEmail = index => {
+  changeEmail = eventKey => {
+    const index = EVENT_KEYS.indexOf(eventKey);
     this.props.readEmail(this.props.currentEmail);
     this.props.changeCurrentEmail(index);
   };
@@ -44,36 +59,42 @@ class Inbox extends Component {
   render() {
     const { emails, emailSummaries } = this.props;
     return (
-      <div className="inbox-grid">
-        <nav
-          className="inbox-grid-buttons-cell"
-          style={styles.buttonList}
-          role="dialog"
-          aria-label={"Inbox"}
-        >
-          <ul className="nav nav-tabs" style={styles.ul} role="menubar">
-            {emails.map((email, index) => (
-              <div key={index}>
-                <EmailPreview
-                  email={email}
-                  selectEmail={this.changeEmail}
-                  isRead={this.props.emailSummaries[index].isRead}
-                  isRepliedTo={
-                    emailSummaries[index].emailCount + emailSummaries[index].taskCount > 0
-                  }
-                  isSelected={index === this.props.currentEmail}
-                />
-              </div>
-            ))}
-          </ul>
-        </nav>
-        <div className="inbox-grid-content-cell" style={styles.bodyContent}>
-          <Email
-            email={emails[this.props.currentEmail]}
-            emailCount={emailSummaries[this.props.currentEmail].emailCount}
-            taskCount={emailSummaries[this.props.currentEmail].taskCount}
-          />
-        </div>
+      <div>
+        <Tab.Container id="inbox-tabs" defaultActiveKey="first" onSelect={this.changeEmail}>
+          <Row>
+            <Col sm={4}>
+              <Nav className="flex-column">
+                {emails.map((email, index) => (
+                  <Nav.Item key={index} style={styles.navItem}>
+                    <Nav.Link eventKey={EVENT_KEYS[index]} style={styles.navLink}>
+                      <EmailPreview
+                        email={email}
+                        isRead={this.props.emailSummaries[index].isRead}
+                        isRepliedTo={
+                          emailSummaries[index].emailCount + emailSummaries[index].taskCount > 0
+                        }
+                        isSelected={index === this.props.currentEmail}
+                      />
+                    </Nav.Link>
+                  </Nav.Item>
+                ))}
+              </Nav>
+            </Col>
+            <Col sm={8} tabIndex={0} style={styles.contentColumn}>
+              <Tab.Content style={styles.bodyContent}>
+                {emails.map((email, index) => (
+                  <Tab.Pane eventKey={EVENT_KEYS[index]} key={index}>
+                    <Email
+                      email={email}
+                      emailCount={emailSummaries[this.props.currentEmail].emailCount}
+                      taskCount={emailSummaries[this.props.currentEmail].taskCount}
+                    />
+                  </Tab.Pane>
+                ))}
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
       </div>
     );
   }

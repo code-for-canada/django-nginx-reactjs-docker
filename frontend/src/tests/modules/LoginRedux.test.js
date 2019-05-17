@@ -1,10 +1,18 @@
-import login, { setLoginState, initialState } from "../../modules/LoginRedux";
+import login, { authenticateAction, initialState } from "../../modules/LoginRedux";
 
-describe("setLoginState action", () => {
-  it("should update loggedIn state", () => {
-    const action1 = setLoginState(true);
-    expect(login(initialState, action1)).toEqual({ loggedIn: true });
-    const action2 = setLoginState(false);
-    expect(login(initialState, action2)).toEqual({ loggedIn: false });
+describe("authenticate action", () => {
+  it("should update authenticated state to true", () => {
+    const action = authenticateAction(true);
+    expect(login(initialState, action)).toEqual({
+      authenticated: true
+    });
+  });
+  it("should update authenticated state to false", () => {
+    const action = authenticateAction(false);
+    expect(login(initialState, action)).toEqual({
+      authenticated: false
+    });
   });
 });
+
+// TODO(fnormand): Add tests for registerAction, loginAction and logoutAction
