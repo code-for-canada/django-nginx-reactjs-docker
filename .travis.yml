@@ -29,10 +29,6 @@ matrix:
         - docker-compose up -d --build
         - npm install frontend/
         - node_modules/.bin/newman --version
-        - cd backend/
-        - python manage.py makemigrations custom_models
-        - python manage.py migrate
-        - cd..
       script:
         - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json
 
