@@ -23,11 +23,16 @@ matrix:
     - language: node_js
       node_js: 10.15
       provider: script
+      install:
+        - npm install newman
       before_script:
         - docker-compose up -d --build
         - npm install frontend/
-        - npm install newman
         - node_modules/.bin/newman --version
+        - cd backend/
+        - python manage.py makemigrations custom_models
+        - python manage.py migrate
+        - cd..
       script:
         - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json
 
