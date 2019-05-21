@@ -9,7 +9,7 @@ import { HEADER_HEIGHT, FOOTER_HEIGHT, emailShape } from "./constants";
 import { readEmail, changeCurrentEmail } from "../../modules/EmibInboxRedux";
 import { Tab, Row, Col, Nav } from "react-bootstrap";
 
-const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
+const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 5}px)`;
 
 const styles = {
   bodyContent: {
