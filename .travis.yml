@@ -29,6 +29,10 @@ matrix:
         - docker-compose up -d --build
         - npm install frontend/
         - node_modules/.bin/newman --version
+        - cd backend/
+        - pip install -r requirements.txt
+        - python manage.py runserver
+        - cd ..
       script:
         - node_modules/.bin/newman run backend/tests/ThunderCAT.postman_collection.json -e backend/tests/ThunderCAT.postman_environment.json
 
