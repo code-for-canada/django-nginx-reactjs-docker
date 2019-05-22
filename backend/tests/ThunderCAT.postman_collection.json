@@ -168,18 +168,37 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "accept-encoding",
+						"value": "gzip, deflate",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
 					"host": [
