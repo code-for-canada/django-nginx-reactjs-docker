@@ -19,7 +19,7 @@ matrix:
       script:
         - docker-compose run --rm backend ./manage.py test tests
 
-    #APIs Tests
+    #APIs Tests (Local Environment Only)
     - language: node_js
       node_js: 10.15
       provider: script
@@ -30,7 +30,7 @@ matrix:
         - npm install frontend/
         - node_modules/.bin/newman --version
       script:
-        - newman run backend/tests/ThunderCAT.postman_collection.json -e backend/tests/ThunderCAT.local.postman_environment.json
+        - newman run backend/tests/postman/ThunderCAT.postman_collection.json -e backend/tests/postman/environments/local/ThunderCAT.local.postman_environment.json
 
     #Frontend Tests
     - language: node_js
