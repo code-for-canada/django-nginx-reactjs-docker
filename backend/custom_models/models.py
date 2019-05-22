@@ -20,6 +20,7 @@ class ItemType(models.Model):
     type_desc = models.CharField(max_length=MAX)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
+
     date_to = models.DateTimeField(null=True, blank=True)
 
 
