@@ -6,65 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Authentication - /api/auth/token/create/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
-						"exec": [
-							"// save token in environment variables\r",
-							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "25a5f79e-3ab3-427e-8414-573e02f8d797",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"admin1234!\",\r\n  \"username\": \"admin\"\r\n}"
-				},
-				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
-					"host": [
-						"{{THUNDERCAT_URL}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"token",
-						"create",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get auth urls -  /api/auth",
 			"event": [
 				{
@@ -251,55 +192,6 @@
 						"auth",
 						"users",
 						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User - /api/auth/users/{id}/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
-						"exec": [
-							"// making sure that the new account has been deleted (expects status code: 204)\r",
-							"pm.test(\"New account has been deleted successfully\", function () {\r",
-							"    pm.response.to.have.status(204);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "basic YWRtaW46YWRtaW4xMjM0IQ==",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/users/0/",
-					"host": [
-						"{{THUNDERCAT_URL}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"users",
-						"0",
-						""
 					]
 				}
 			},
