@@ -6,19 +6,16 @@
 	},
 	"item": [
 		{
-			"name": "Get User's Token - /api/auth/token/create/",
+			"name": "Authentication - /api/auth/token/create/",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
 						"exec": [
+							"// save token in environment variables\r",
 							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);\r",
-							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);"
 						],
 						"type": "text/javascript"
 					}
@@ -88,13 +85,104 @@
 					"script": {
 						"id": "975330b7-e058-4a15-9dcb-7b2100f8b8c2",
 						"exec": [
+							"// request successful\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
+							"// getting all urls\r",
 							"pm.test(\"Getting 'user' url\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include('\"user\":\"http://localhost/api/auth/me\"');\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-create\":\"http://localhost/api/auth/users/create\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-delete' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-delete\":\"http://localhost/api/auth/users/delete\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-active' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-activate\":\"http://localhost/api/auth/users/activate\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-activate-resend' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-activate-resend\":\"http://localhost/api/auth/users/resend\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'set_username' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"set_username\":\"http://localhost/api/auth/username\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'set_password' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"set_password\":\"http://localhost/api/auth/password\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'password_reset' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"password_reset\":\"http://localhost/api/auth/password/reset\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'password_reset_confirm' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"password_reset_confirm\":\"http://localhost/api/auth/password/reset/confirm\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'root' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"root\":\"http://localhost/api/auth/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-list' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-list\":\"http://localhost/api/auth/users/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-change-username' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-change-username\":\"http://localhost/api/auth/users/change_username/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-confirm' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-confirm\":\"http://localhost/api/auth/users/confirm/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-me' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-me\":\"http://localhost/api/auth/users/me/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-detail' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-detail\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'api-root' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"api-root\":\"http://localhost/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'token-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"token-create\":\"http://localhost/api/auth/token/create\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'token-destroy' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"token-destroy\":\"http://localhost/api/auth/token/destroy\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'login' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"login\":\"http://localhost/api/auth/token/login\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'logout' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"logout\":\"http://localhost/api/auth/token/logout\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-create\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-refresh' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-refresh\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-verify' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-verify\":\"\"');\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -120,6 +208,72 @@
 					"path": [
 						"api",
 						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users List - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e2b71b1f-97dd-4a9e-9397-3964cf6c66f5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{THUNDERCAT_PASSWORD}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{THUNDERCAT_USERNAME}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/auth/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
 					]
 				}
 			},
