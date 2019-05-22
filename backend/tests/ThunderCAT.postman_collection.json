@@ -33,19 +33,7 @@
 			],
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{THUNDERCAT_PASSWORD}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{THUNDERCAT_USERNAME}}",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [
@@ -53,6 +41,11 @@
 						"key": "Content-Type",
 						"name": "Content-Type",
 						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
 						"type": "text"
 					}
 				],
@@ -221,13 +214,13 @@
 					"script": {
 						"id": "4d985de8-68ce-4d4a-b485-f6a479189199",
 						"exec": [
-							"// request successful\r",
-							"pm.test(\"Status code is 201\", function () {\r",
+							"// making sure that a new account has been created (expects status code: 201)\r",
+							"pm.test(\"New account has been created\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
 							"// getting the email and username values\r",
-							"pm.test(\"Getting created email and username\", function () {\r",
+							"pm.test(\"Getting new email and username values\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test@email.ca\",\"username\":\"api-test\"');\r",
 							"});"
 						],
@@ -278,8 +271,8 @@
 					"script": {
 						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
 						"exec": [
-							"// making sure that the new account has been deleted\r",
-							"pm.test(\"Status code is 204\", function () {\r",
+							"// making sure that the new account has been deleted (expects status code: 204)\r",
+							"pm.test(\"New account has been deleted successfully\", function () {\r",
 							"    pm.response.to.have.status(204);\r",
 							"});"
 						],
