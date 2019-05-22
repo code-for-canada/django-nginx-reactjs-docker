@@ -32,9 +32,6 @@
 				}
 			],
 			"request": {
-				"auth": {
-					"type": "noauth"
-				},
 				"method": "POST",
 				"header": [
 					{
@@ -48,13 +45,13 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "username",
-							"value": "admin",
+							"key": "password",
+							"value": "admin1234!",
 							"type": "text"
 						},
 						{
-							"key": "password",
-							"value": "admin1234!",
+							"key": "username",
+							"value": "admin",
 							"type": "text"
 						}
 					]
