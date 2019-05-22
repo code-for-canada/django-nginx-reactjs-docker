@@ -288,11 +288,14 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer {{token}}",
+						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
 						"type": "text"
 					}
 				],
