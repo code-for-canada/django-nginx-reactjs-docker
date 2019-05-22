@@ -267,12 +267,12 @@
 			"response": []
 		},
 		{
-			"name": "Delete Test - /api/auth/users/{id}",
+			"name": "Delete User - /api/auth/users/{id}/",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b841da9d-3620-4f36-bb84-8dd0c984009c",
+						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
 						"exec": [
 							"// making sure that the new account has been deleted (expects status code: 204)\r",
 							"pm.test(\"New account has been deleted successfully\", function () {\r",
@@ -284,19 +284,19 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "DELETE",
 				"header": [
 					{
-						"key": "accept",
-						"value": "application/json"
-					},
-					{
-						"key": "X-CSRFToken",
-						"value": "HZrpPyVTQJG5VZ2E0WcPyUCNJg8j81fY8d6i3sOJJ423jDEIK0WNjtnTNYrAxWTZ"
-					},
-					{
 						"key": "Authorization",
 						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
 						"type": "text"
 					}
 				],
@@ -305,7 +305,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/auth/users/0/",
+					"raw": "http://localhost:8000/api/auth/users/1/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -315,7 +315,7 @@
 						"api",
 						"auth",
 						"users",
-						"0",
+						"1",
 						""
 					]
 				}
