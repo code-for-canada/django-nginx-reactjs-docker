@@ -467,14 +467,9 @@
 					"script": {
 						"id": "df56307b-a434-4ece-ae02-6210a83ff891",
 						"exec": [
-							"// successful request\r",
-							"pm.test(\"Successful request\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"// password changed successfully\r",
-							"pm.test(\"Password of api-test2 account has been changed successfully\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"// Password changed successfully\r",
+							"pm.test(\"Password changed successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -512,6 +507,61 @@
 						"api",
 						"auth",
 						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test2 login with new credentials - /api/auth/token/login/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test2 new credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
 						""
 					]
 				}
