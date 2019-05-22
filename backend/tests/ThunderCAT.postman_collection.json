@@ -14,7 +14,21 @@
 						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);"
+							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "25a5f79e-3ab3-427e-8414-573e02f8d797",
+						"exec": [
+							""
 						],
 						"type": "text/javascript"
 					}
