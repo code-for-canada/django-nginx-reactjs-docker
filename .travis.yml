@@ -28,7 +28,6 @@ matrix:
       before_script:
         - docker-compose up -d --build
         - npm install frontend/
-        - node_modules/.bin/newman --version
       script:
         - newman run backend/tests/postman/ThunderCAT.postman_collection.json -e backend/tests/postman/environments/local/ThunderCAT.local.postman_environment.json
 
