@@ -6,6 +6,67 @@
 	},
 	"item": [
 		{
+			"name": "Get User's Token - /api/auth/token/create/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{THUNDERCAT_PASSWORD}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{THUNDERCAT_USERNAME}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/api/auth/token/create/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get auth urls -  /api/auth",
 			"event": [
 				{
@@ -17,7 +78,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Getting user url\", function () {\r",
+							"pm.test(\"Getting 'user' url\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include('\"user\":\"http://localhost/api/auth/me\"');\r",
 							"});"
 						],
@@ -33,15 +94,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"value": "Bearer {{token}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost/api/auth",
-					"protocol": "http",
+					"raw": "{{THUNDERCAT_URL}}/api/auth",
 					"host": [
-						"localhost"
+						"{{THUNDERCAT_URL}}"
 					],
 					"path": [
 						"api",
