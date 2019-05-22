@@ -155,7 +155,7 @@
 							"});\r",
 							"\r",
 							"// getting new email and username values\r",
-							"pm.test(\"Getting new email and username values\", function () {\r",
+							"pm.test(\"Getting api-test1 email and username values\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test1@email.ca\",\"username\":\"api-test1\"');\r",
 							"});"
 						],
@@ -190,60 +190,6 @@
 						"auth",
 						"users",
 						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create api-test2 account - /api/auth/users/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "31bc0998-1043-4b76-b911-fda21dcb79db",
-						"exec": [
-							"// making sure that a new account has been created (expects status code: 201)\r",
-							"pm.test(\"New account api-test2 has been created\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});\r",
-							"\r",
-							"// getting new email and username values\r",
-							"pm.test(\"Getting new email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
-				},
-				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
-					"host": [
-						"{{THUNDERCAT_URL}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"users",
-						""
 					]
 				}
 			},
@@ -315,6 +261,51 @@
 			"response": []
 		},
 		{
+			"name": "destroy account token - /api/auth/token/destroy/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// destroyed token successfully (expects status code: 204)\r",
+							"pm.test(\"Destroyed token successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/destroy/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"destroy",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "api-test1 login - /api/auth/token/login/",
 			"event": [
 				{
@@ -370,127 +361,7 @@
 			"response": []
 		},
 		{
-			"name": "api-test2 authentication - /api/auth/token/create/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
-						"exec": [
-							"// successful request\r",
-							"pm.test(\"Successful request\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"// logged in successfully\r",
-							"pm.test(\"Logged in successfully with api-test2 credentials\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "25a5f79e-3ab3-427e-8414-573e02f8d797",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
-				},
-				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
-					"host": [
-						"{{THUNDERCAT_URL}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"token",
-						"create",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "api-test2 login - /api/auth/token/login/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
-						"exec": [
-							"// successful request\r",
-							"pm.test(\"Successful request\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"// logged in successfully\r",
-							"pm.test(\"Logged in successfully with api-test2 credentials\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
-				},
-				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
-					"host": [
-						"{{THUNDERCAT_URL}}"
-					],
-					"path": [
-						"api",
-						"auth",
-						"token",
-						"login",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "api-test2 logout - /api/auth/token/logout/",
+			"name": "account logout - /api/auth/token/logout/",
 			"event": [
 				{
 					"listen": "test",
@@ -513,10 +384,9 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -529,6 +399,60 @@
 						"auth",
 						"token",
 						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create api-test2 account - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31bc0998-1043-4b76-b911-fda21dcb79db",
+						"exec": [
+							"// making sure that a new account has been created (expects status code: 201)\r",
+							"pm.test(\"New account api-test2 has been created\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// getting new email and username values\r",
+							"pm.test(\"Getting api-test2 email and username values\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
 						""
 					]
 				}
