@@ -269,6 +269,50 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete User - /api/auth/users/{id}/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
+						"exec": [
+							"// making sure that the new account has been deleted\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/auth/users/0/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"0",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
