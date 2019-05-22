@@ -29,4 +29,4 @@ describe("logout action", () => {
   });
 });
 
-// TODO(fnormand): Add tests for registerAction, loginAction
+// TODO(fnormand): Add tests for registerAction
