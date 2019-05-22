@@ -11,7 +11,7 @@ class Language(models.Model):
     ISO_Code_2 = models.CharField(max_length=3)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
 
 
 # Item Models
@@ -20,17 +20,18 @@ class ItemType(models.Model):
     type_desc = models.CharField(max_length=MAX)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
 
 
 class Item(models.Model):
     item_id = models.AutoField(primary_key=True)
-    parent_id = models.ForeignKey("self", on_delete=models.CASCADE)
+    parent_id = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True, blank=True)
     item_type_id = models.ForeignKey(ItemType, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
 
 
 class ItemText(models.Model):
@@ -40,7 +41,7 @@ class ItemText(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
 
 # Question Models
 
@@ -50,7 +51,7 @@ class QuestionType(models.Model):
     question_type_desc = models.CharField(max_length=MAX)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
 
 
 class Question(models.Model):
@@ -60,4 +61,4 @@ class Question(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(null=True, blank=True)
