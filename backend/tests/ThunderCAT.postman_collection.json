@@ -40,18 +40,24 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"value": "application/x-www-form-urlencoded",
 						"type": "text"
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"admin1234!\"\r\n}"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin1234!",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
 					"raw": "http://localhost/api/auth/token/create/",
