@@ -1,9 +1,20 @@
 from django.db import models
-from language_models import Language
 
 MAX = 100
 
+# Language Models
 
+
+class Language(models.Model):
+    language_id = models.AutoField(primary_key=True)
+    ISO_Code_1 = models.CharField(max_length=2)
+    ISO_Code_2 = models.CharField(max_length=3)
+    date_created = models.DateTimeField()
+    date_from = models.DateTimeField()
+    date_to = models.DateTimeField()
+
+
+# Item Models
 class ItemType(models.Model):
     item_type_id = models.AutoField(primary_key=True)
     type_desc = models.CharField(max_length=MAX)
@@ -27,6 +38,26 @@ class ItemText(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     text_detail = models.CharField(max_length=MAX)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    date_created = models.DateTimeField()
+    date_from = models.DateTimeField()
+    date_to = models.DateTimeField()
+
+# Question Models
+
+
+class QuestionType(models.Model):
+    question_type_id = models.AutoField(primary_key=True)
+    question_type_desc = models.CharField(max_length=MAX)
+    date_created = models.DateTimeField()
+    date_from = models.DateTimeField()
+    date_to = models.DateTimeField()
+
+
+class Question(models.Model):
+    question_id = models.AutoField(primary_key=True)
+    question_type_id = models.ForeignKey(
+        QuestionType, on_delete=models.CASCADE)
+    item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     date_created = models.DateTimeField()
     date_from = models.DateTimeField()
     date_to = models.DateTimeField()
