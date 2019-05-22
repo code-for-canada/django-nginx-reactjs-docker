@@ -30,7 +30,7 @@ matrix:
         - npm install frontend/
         - node_modules/.bin/newman --version
       script:
-        - newman run backend/tests/ThunderCAT.postman_collection.json -e backend/tests/ThunderCAT.postman_environment.json
+        - newman run backend/tests/ThunderCAT.postman_collection.json -e backend/tests/ThunderCAT.local.postman_environment.json
 
     #Frontend Tests
     - language: node_js
