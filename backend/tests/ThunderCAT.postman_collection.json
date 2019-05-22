@@ -214,57 +214,48 @@
 			"response": []
 		},
 		{
-			"name": "Get Users List - /api/auth/users/",
+			"name": "Create User(1) - /api/auth/users/create",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"id": "4d985de8-68ce-4d4a-b485-f6a479189199",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"// request successful\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// getting the email and username values\r",
+							"pm.test(\"Getting created email and username\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test@email.ca\",\"username\":\"api-test\"');\r",
 							"});"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "e2b71b1f-97dd-4a9e-9397-3964cf6c66f5",
-						"exec": [
-							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{THUNDERCAT_PASSWORD}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{THUNDERCAT_USERNAME}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
+				"method": "POST",
 				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
 					{
 						"key": "Authorization",
 						"value": "Bearer {{token}}",
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"api-test@email.ca\",\r\n  \"username\": \"api-test\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
 				"url": {
-					"raw": "http://localhost/api/auth/users/",
+					"raw": "http://localhost/api/auth/users/create",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -273,7 +264,7 @@
 						"api",
 						"auth",
 						"users",
-						""
+						"create"
 					]
 				}
 			},
