@@ -150,7 +150,7 @@
 						"id": "4d985de8-68ce-4d4a-b485-f6a479189199",
 						"exec": [
 							"// making sure that a new account has been created (expects status code: 201)\r",
-							"pm.test(\"New account has been created\", function () {\r",
+							"pm.test(\"New account api-test1 has been created\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
@@ -204,7 +204,7 @@
 						"id": "31bc0998-1043-4b76-b911-fda21dcb79db",
 						"exec": [
 							"// making sure that a new account has been created (expects status code: 201)\r",
-							"pm.test(\"New account has been created\", function () {\r",
+							"pm.test(\"New account api-test2 has been created\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
@@ -250,7 +250,7 @@
 			"response": []
 		},
 		{
-			"name": "Authentication - /api/auth/token/create/",
+			"name": "Account 1 Authentication - /api/auth/token/create/",
 			"event": [
 				{
 					"listen": "test",
@@ -259,7 +259,17 @@
 						"exec": [
 							"// save token in environment variables\r",
 							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);"
+							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);\r",
+							"\r",
+							"// request successful\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test1 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -302,6 +312,116 @@
 						"auth",
 						"token",
 						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account 2 Authentication - /api/auth/token/create/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
+						"exec": [
+							"// request successful\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test2 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "25a5f79e-3ab3-427e-8414-573e02f8d797",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User - /api/auth/users/{id}/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
+						"exec": [
+							"// making sure that the api-test2 account has been deleted (expects status code: 204)\r",
+							"pm.test(\"api-test2 account has been deleted successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/1/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"1",
 						""
 					]
 				}
