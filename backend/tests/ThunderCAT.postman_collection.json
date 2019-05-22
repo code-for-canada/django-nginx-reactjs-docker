@@ -460,6 +460,65 @@
 			"response": []
 		},
 		{
+			"name": "change api-test2 password - /api/auth/password/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df56307b-a434-4ece-ae02-6210a83ff891",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Password of api-test2 account has been changed successfully\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QyOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"new_password\": \"Qwerty1234!NEW\",\r\n  \"re_new_password\": \"Qwerty1234!NEW\",\r\n  \"current_password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/password/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "delete api-test2 account - /api/auth/users/{id}/",
 			"event": [
 				{
@@ -498,6 +557,60 @@
 						"auth",
 						"users",
 						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users list - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"exec": [
+							"// request successful\r",
+							"pm.test(\"Request successful\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e2b71b1f-97dd-4a9e-9397-3964cf6c66f5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
 						""
 					]
 				}
