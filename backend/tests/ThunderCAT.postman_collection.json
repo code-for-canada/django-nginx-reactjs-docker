@@ -32,35 +32,26 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"type": "text"
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "password",
-							"value": "admin1234!",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "text"
-						}
-					]
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"admin1234!\",\r\n  \"username\": \"admin\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost/api/auth/token/create/",
-					"protocol": "http",
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
 					"host": [
-						"localhost"
+						"{{THUNDERCAT_URL}}"
 					],
 					"path": [
 						"api",
@@ -251,10 +242,9 @@
 					"raw": "{\r\n  \"email\": \"api-test@email.ca\",\r\n  \"username\": \"api-test\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost/api/auth/users/create",
-					"protocol": "http",
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/create",
 					"host": [
-						"localhost"
+						"{{THUNDERCAT_URL}}"
 					],
 					"path": [
 						"api",
@@ -291,31 +281,24 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
+						"value": "basic YWRtaW46YWRtaW4xMjM0IQ==",
 						"type": "text"
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": []
+					"mode": "urlencoded",
+					"urlencoded": []
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/auth/users/1/",
-					"protocol": "http",
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/0/",
 					"host": [
-						"localhost"
+						"{{THUNDERCAT_URL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"auth",
 						"users",
-						"1",
+						"0",
 						""
 					]
 				}
