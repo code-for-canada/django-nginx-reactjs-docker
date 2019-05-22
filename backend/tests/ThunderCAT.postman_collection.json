@@ -293,6 +293,12 @@
 						"key": "Authorization",
 						"value": "Basic YWRtaW46YWRtaW4xMjM0IQ==",
 						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
 					}
 				],
 				"url": {
