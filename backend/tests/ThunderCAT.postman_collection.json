@@ -6,15 +6,15 @@
 	},
 	"item": [
 		{
-			"name": "Get auth urls -  /api/auth",
+			"name": "get auth urls -  /api/auth",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "975330b7-e058-4a15-9dcb-7b2100f8b8c2",
 						"exec": [
-							"// request successful\r",
-							"pm.test(\"Status code is 200\", function () {\r",
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -124,8 +124,8 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer {{token}}",
-						"type": "text"
+						"type": "text",
+						"value": "Bearer {{token}}"
 					}
 				],
 				"url": {
@@ -142,7 +142,7 @@
 			"response": []
 		},
 		{
-			"name": "Create User(1) - /api/auth/users/create",
+			"name": "create api-test1 account - /api/auth/users/create",
 			"event": [
 				{
 					"listen": "test",
@@ -196,7 +196,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Users(2) - /api/auth/users/",
+			"name": "create api-test2 account - /api/auth/users/",
 			"event": [
 				{
 					"listen": "test",
@@ -250,19 +250,15 @@
 			"response": []
 		},
 		{
-			"name": "Account 1 Authentication - /api/auth/token/create/",
+			"name": "api-test1 authentication - /api/auth/token/create/",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
 						"exec": [
-							"// save token in environment variables\r",
-							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"token\", jsonData.auth_token);\r",
-							"\r",
-							"// request successful\r",
-							"pm.test(\"Status code is 200\", function () {\r",
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -319,15 +315,70 @@
 			"response": []
 		},
 		{
-			"name": "Account 2 Authentication - /api/auth/token/create/",
+			"name": "api-test1 login - /api/auth/token/login/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test1 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test2 authentication - /api/auth/token/create/",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
 						"exec": [
-							"// request successful\r",
-							"pm.test(\"Status code is 200\", function () {\r",
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -384,7 +435,108 @@
 			"response": []
 		},
 		{
-			"name": "Delete User - /api/auth/users/{id}/",
+			"name": "api-test2 login - /api/auth/token/login/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test2 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test2 logout - /api/auth/token/logout/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// logged out successfully (expects status code: 204)\r",
+							"pm.test(\"Logged out successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/logout/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete api-test2 account - /api/auth/users/{id}/",
 			"event": [
 				{
 					"listen": "test",
