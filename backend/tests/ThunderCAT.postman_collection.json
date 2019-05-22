@@ -142,6 +142,60 @@
 			"response": []
 		},
 		{
+			"name": "Get Users List - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"exec": [
+							"// request successful\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e2b71b1f-97dd-4a9e-9397-3964cf6c66f5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YWRtaW46YWRtaW4xMjM0IQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create User(1) - /api/auth/users/create",
 			"event": [
 				{
@@ -154,9 +208,9 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"// getting the email and username values\r",
+							"// getting new email and username values\r",
 							"pm.test(\"Getting new email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test@email.ca\",\"username\":\"api-test\"');\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test1@email.ca\",\"username\":\"api-test1\"');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -164,6 +218,9 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -180,7 +237,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"api-test@email.ca\",\r\n  \"username\": \"api-test\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"email\": \"api-test1@email.ca\",\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/create",
@@ -192,6 +249,65 @@
 						"auth",
 						"users",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Users(2) - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31bc0998-1043-4b76-b911-fda21dcb79db",
+						"exec": [
+							"// making sure that a new account has been created (expects status code: 201)\r",
+							"pm.test(\"New account has been created\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// getting new email and username values\r",
+							"pm.test(\"Getting new email and username values\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
 					]
 				}
 			},
