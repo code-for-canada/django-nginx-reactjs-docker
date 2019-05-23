@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import validateName, { validateEmail, validatePassword } from "../../helpers/regexValidator";
-import "../../css/create-account-form.css";
+import "../../css/registration-form.css";
+import { registerAction } from "../../modules/LoginRedux";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 
 const styles = {
   createAccountContent: {
@@ -30,7 +35,7 @@ const styles = {
   iconForOtherFields: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 370px"
+    margin: "8px 0 0 484px"
   },
   loginBtn: {
     width: 150,
@@ -40,10 +45,21 @@ const styles = {
   validationError: {
     color: "red",
     marginTop: 6
+  },
+  errorMessage: {
+    color: "red",
+    fontWeight: "bold",
+    padding: 0,
+    marginTop: 12
   }
 };
 
-class CreateAccountForm extends Component {
+class RegistrationForm extends Component {
+  static propTypes = {
+    // Props from Redux
+    registerAction: PropTypes.func
+  };
+
   state = {
     // Ensures no errors are shown on page load
     isFirstLoad: true,
@@ -58,7 +74,11 @@ class CreateAccountForm extends Component {
     isValidPassword: false,
     passwordConfirmationContent: "",
     isFirstPasswordLoad: true,
-    isValidPasswordConfirmation: false
+    isValidPasswordConfirmation: false,
+    // PopupBox
+    showDialog: false,
+    // handle errors
+    accountExistsError: false
   };
 
   firstNameValidation = event => {
@@ -110,6 +130,33 @@ class CreateAccountForm extends Component {
     });
   };
 
+  redirectToLoginPage = () => {
+    // refresh the page in order to show the login form
+    window.location.reload();
+    // close dialog
+    this.setState({ showDialog: false });
+  };
+
+  handleSubmit = event => {
+    this.props
+      .registerAction({
+        username: this.state.emailContent,
+        email: this.state.emailContent,
+        password: this.state.passwordContent
+      })
+      .then(response => {
+        // account already exists
+        if (response.username[0] === "A user with that username already exists.") {
+          this.setState({ accountExistsError: true });
+          // account successfully created
+        } else {
+          this.setState({ showDialog: true, accountExistsError: false });
+        }
+      });
+
+    event.preventDefault();
+  };
+
   render() {
     const {
       isFirstLoad,
@@ -141,7 +188,7 @@ class CreateAccountForm extends Component {
           <div style={styles.createAccountContent}>
             <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="names-grid">
                 <div className="names-grid-first-name">
                   <div style={styles.inputTitle}>
@@ -208,6 +255,11 @@ class CreateAccountForm extends Component {
                   onChange={this.emailValidation}
                 />
               </div>
+              {this.state.accountExistsError && (
+                <p style={styles.errorMessage}>
+                  {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
+                </p>
+              )}
               <div>
                 <div style={styles.inputTitle}>
                   <span>{LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}</span>
@@ -305,9 +357,35 @@ class CreateAccountForm extends Component {
             </form>
           </div>
         </div>
+        <PopupBox
+          isCloseButtonVisible={false}
+          isBackdropStatic={true}
+          show={this.state.showDialog}
+          handleClose={this.redirectToLoginPage}
+          title={LOCALIZE.authentication.createAccount.popupBox.title}
+          description={
+            <div>
+              <p>{LOCALIZE.authentication.createAccount.popupBox.description}</p>
+            </div>
+          }
+          rightButtonType={BUTTON_TYPE.primary}
+          rightButtonTitle={LOCALIZE.commons.ok}
+          rightButtonAction={this.redirectToLoginPage}
+        />
       </div>
     );
   }
 }
 
-export default CreateAccountForm;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      registerAction
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RegistrationForm);

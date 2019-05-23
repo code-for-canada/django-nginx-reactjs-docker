@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm";
-import CreateAccountForm from "./CreateAccountForm";
+import RegistrationForm from "./RegistrationForm";
 import LOCALIZE from "../../text_resources";
 import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 
 const styles = {
   loginComponent: {
-    maxWidth: 600
+    maxWidth: 600,
+    marginBottom: 32
   }
 };
 
@@ -21,7 +22,7 @@ class AuthenticationTabs extends Component {
       {
         key: "account",
         tabName: LOCALIZE.authentication.createAccount.title,
-        body: <CreateAccountForm />
+        body: <RegistrationForm />
       }
     ];
     return (

@@ -67,7 +67,13 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Must match the Password"
           }
         },
-        button: "Create account"
+        //temporary
+        popupBox: {
+          title: "Account Created",
+          description: "You have just created a new account!"
+        },
+        button: "Create account",
+        accountAlreadyExistsError: "An account is already associated to this email address."
       }
     },
 
@@ -522,7 +528,8 @@ let LOCALIZE = new LocalizedStrings({
       cancelResponse: "Cancel changes",
       close: "Close",
       login: "Login",
-      logout: "Logout"
+      logout: "Logout",
+      ok: "Ok"
     }
   },
 
@@ -592,7 +599,13 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Doit correspondre au mot de passe"
           }
         },
-        button: "Créer compte"
+        //temporary
+        popupBox: {
+          title: "FR Account Created",
+          description: "FR You have just created a new account!"
+        },
+        button: "Créer compte",
+        accountAlreadyExistsError: "FR An account is already associated to this email address."
       }
     },
 
@@ -1052,7 +1065,8 @@ let LOCALIZE = new LocalizedStrings({
       cancelResponse: "Annuler la réponse",
       close: "Fermer",
       login: "Se connecter",
-      logout: "Se déconnecter"
+      logout: "Se déconnecter",
+      ok: "Ok"
     }
   }
 });

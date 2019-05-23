@@ -19,7 +19,6 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const PATH = {
   home: "/",
-  prototype: "/prototype",
   status: "/status",
   emibSampleTest: "/emib-sample"
 };
