@@ -1,5 +1,6 @@
-import login, { authenticateAction, initialState } from "../../modules/LoginRedux";
+import login, { authenticateAction, initialState, logoutAction } from "../../modules/LoginRedux";
 
+// authenticateAction
 describe("authenticate action", () => {
   it("should update authenticated state to true", () => {
     const action = authenticateAction(true);
@@ -15,4 +16,17 @@ describe("authenticate action", () => {
   });
 });
 
-// TODO(fnormand): Add tests for registerAction, loginAction and logoutAction
+// logoutAction
+describe("logout action", () => {
+  const action = logoutAction();
+  it("should update authenticated state to false", () => {
+    expect(login(initialState, action)).toEqual({
+      authenticated: false
+    });
+  });
+  it("should render UNAUTHENTICATED type", () => {
+    expect(action).toEqual({ type: "UNAUTHENTICATED" });
+  });
+});
+
+// TODO(fnormand): Add tests for registerAction

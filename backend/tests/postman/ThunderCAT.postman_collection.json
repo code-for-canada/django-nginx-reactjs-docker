@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "a8edf4b0-f3eb-438b-88d6-b1b342f9bf37",
+		"name": "ThunderCAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get auth urls -  /api/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "975330b7-e058-4a15-9dcb-7b2100f8b8c2",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// getting all urls\r",
+							"pm.test(\"Getting 'user' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user\":\"http://localhost/api/auth/me\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-create\":\"http://localhost/api/auth/users/create\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-delete' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-delete\":\"http://localhost/api/auth/users/delete\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-active' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-activate\":\"http://localhost/api/auth/users/activate\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-activate-resend' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-activate-resend\":\"http://localhost/api/auth/users/resend\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'set_username' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"set_username\":\"http://localhost/api/auth/username\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'set_password' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"set_password\":\"http://localhost/api/auth/password\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'password_reset' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"password_reset\":\"http://localhost/api/auth/password/reset\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'password_reset_confirm' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"password_reset_confirm\":\"http://localhost/api/auth/password/reset/confirm\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'root' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"root\":\"http://localhost/api/auth/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-list' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-list\":\"http://localhost/api/auth/users/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-change-username' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-change-username\":\"http://localhost/api/auth/users/change_username/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-confirm' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-confirm\":\"http://localhost/api/auth/users/confirm/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-me' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-me\":\"http://localhost/api/auth/users/me/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'user-detail' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"user-detail\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'api-root' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"api-root\":\"http://localhost/\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'token-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"token-create\":\"http://localhost/api/auth/token/create\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'token-destroy' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"token-destroy\":\"http://localhost/api/auth/token/destroy\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'login' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"login\":\"http://localhost/api/auth/token/login\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'logout' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"logout\":\"http://localhost/api/auth/token/logout\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-create' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-create\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-refresh' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-refresh\":\"\"');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Getting 'jwt-verify' url\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"jwt-verify\":\"\"');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create api-test1 account - /api/auth/users/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d985de8-68ce-4d4a-b485-f6a479189199",
+						"exec": [
+							"// making sure that a new account has been created (expects status code: 201)\r",
+							"pm.test(\"New account api-test1 has been created\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// getting new email and username values\r",
+							"pm.test(\"Getting api-test1 email and username values\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test1@email.ca\",\"username\":\"api-test1\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"api-test1@email.ca\",\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/create",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test1 authentication - /api/auth/token/create/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa278198-bc43-4519-b13f-acda2a4e7b9e",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test1 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "25a5f79e-3ab3-427e-8414-573e02f8d797",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users list - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
+						"exec": [
+							"// request successful\r",
+							"pm.test(\"Request successful\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e2b71b1f-97dd-4a9e-9397-3964cf6c66f5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "destroy account token - /api/auth/token/destroy/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// destroyed token successfully (expects status code: 204)\r",
+							"pm.test(\"Destroyed token successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/destroy/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"destroy",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test1 login - /api/auth/token/login/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test1 credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account logout - /api/auth/token/logout/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// logged out successfully (expects status code: 204)\r",
+							"pm.test(\"Logged out successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/logout/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create api-test2 account - /api/auth/users/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31bc0998-1043-4b76-b911-fda21dcb79db",
+						"exec": [
+							"// making sure that a new account has been created (expects status code: 201)\r",
+							"pm.test(\"New account api-test2 has been created\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"// getting new email and username values\r",
+							"pm.test(\"Getting api-test2 email and username values\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change api-test2 password - /api/auth/password/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df56307b-a434-4ece-ae02-6210a83ff891",
+						"exec": [
+							"// Password changed successfully\r",
+							"pm.test(\"Password changed successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QyOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"new_password\": \"Qwerty1234!NEW\",\r\n  \"re_new_password\": \"Qwerty1234!NEW\",\r\n  \"current_password\": \"Qwerty1234!\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/password/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-test2 login with new credentials - /api/auth/token/login/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "559ccbb3-5bf4-45d5-a769-410449d03c61",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// logged in successfully\r",
+							"pm.test(\"Logged in successfully with api-test2 new credentials\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"auth_token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
+				},
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete api-test2 account - /api/auth/users/{id}/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
+						"exec": [
+							"// making sure that the api-test2 account has been deleted (expects status code: 204)\r",
+							"pm.test(\"api-test2 account has been deleted successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/1/",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
