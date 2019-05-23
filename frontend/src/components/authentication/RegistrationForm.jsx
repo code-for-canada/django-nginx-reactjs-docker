@@ -362,14 +362,14 @@ class RegistrationForm extends Component {
           isBackdropStatic={true}
           show={this.state.showDialog}
           handleClose={this.redirectToLoginPage}
-          title={"Account Created"}
+          title={LOCALIZE.authentication.createAccount.popupBox.title}
           description={
             <div>
-              <p>{"You have just created a new account!"}</p>
+              <p>{LOCALIZE.authentication.createAccount.popupBox.description}</p>
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={"Ok"}
+          rightButtonTitle={LOCALIZE.commons.ok}
           rightButtonAction={this.redirectToLoginPage}
         />
       </div>
