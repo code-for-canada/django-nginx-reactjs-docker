@@ -47,7 +47,7 @@ class TreeNode extends Component {
       }
 
       if (node.groups) {
-        node.expanded = false;
+        node.expanded = true;
       }
 
       //TODO auto generate:
@@ -347,7 +347,7 @@ class TreeNode extends Component {
     });
 
     return (
-      <div>
+      <div style={{ minWidth: 700 }}>
         <ul
           role="tree"
           aria-labelledby="treeLabel"
@@ -381,14 +381,16 @@ class TreeNode extends Component {
         aria-level={elem.level}
       >
         <span className={elem.focus ? "focus" : ""} id={"span" + elem.id} data-id={elem.id}>
+          <span style={{ float: "left" }}>
+            {elem.expanded ? (
+              <i className="fas fa-chevron-down root" aria-hidden="true" />
+            ) : (
+              <i className="fas fa-chevron-right root" aria-hidden="true" />
+            )}
+          </span>
           <span className="wrapper">
             <span className="inline title">{elem.name}</span>
           </span>
-          {elem.expanded ? (
-            <i className="fas fa-chevron-down root" aria-hidden="true" />
-          ) : (
-            <i className="fas fa-chevron-right root" aria-hidden="true" />
-          )}
         </span>
         {/* this assumes all root nodes will have at least on group */}
         <ul role="group">
@@ -432,14 +434,16 @@ class TreeNode extends Component {
           id={"span" + this.state.nodes[elem].id}
           data-id={this.state.nodes[elem].id}
         >
+          <span style={{ float: "left" }}>
+            {this.state.nodes[elem].expanded ? (
+              <i className="fas fa-chevron-down group" aria-hidden="true" />
+            ) : (
+              <i className="fas fa-chevron-right group" aria-hidden="true" />
+            )}
+          </span>
           <span className="wrapper">
             <span className="inline title">{this.state.nodes[elem].name}</span>
           </span>
-          {this.state.nodes[elem].expanded ? (
-            <i className="fas fa-chevron-down group" aria-hidden="true" />
-          ) : (
-            <i className="fas fa-chevron-right group" aria-hidden="true" />
-          )}
         </span>
         <ul>{this.state.nodes[elem].groups.map(id => this.renderItem(id))}</ul>
       </li>

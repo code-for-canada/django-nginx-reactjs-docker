@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
+import Modal from "react-modal";
 
 export const BUTTON_TYPE = {
   primary: "btn btn-primary",
@@ -13,41 +13,30 @@ export const BUTTON_STATE = {
   enabled: false
 };
 
-const styles = {
-  boxshape: {
-    borderWidth: "1px 1px 0 1px",
-    borderStyle: "solid",
-    borderColor: "#00565e",
-    borderRadius: "5px 5px 5px 5px"
+const customStyles = {
+  content: {
+    maxWidth: 700,
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   },
-  boxContent: {
-    padding: 12
-  },
-  modelTitle: {
-    fontSize: "28px",
-    margin: 0
-  },
-  buttonsZone: {
-    width: "100%"
-  },
-  leftBtnLocation: {
-    float: "left"
-  },
-  rightBtnLocation: {
-    float: "right"
-  },
-  buttonSize: {
-    minWidth: 125
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)"
   }
 };
 
-/*
-To make the buttons appear, you need to specify the button type, the button title and if needed the button action (button action is not mandatory).
-By default, all buttons close the popup box, even if no action has been assigned.
-This component can provide a popup box that contains 0 to 2 buttons: none, leftButton and rightButton
-Example with one button (1 action): <PopupBox rightButtonType={BUTTON_TYPE.secondary} rightButtonTitle={"Ok"} rightButtonAction={() => someFunction()} />
-Example with two buttons (no action): <PopupBox rightButtonType={BUTTON_TYPE.primary} rightButtonTitle={"Cancel"} leftButtonType={BUTTON_TYPE.secondary} leftButtonTitle={"Ok"} />
-*/
+const styles = {
+  rightButton: {
+    float: "right"
+  },
+  description: {
+    padding: "16px 0px"
+  }
+};
+
 class PopupBox extends Component {
   constructor(props, context) {
     super(props, context);
@@ -65,12 +54,11 @@ class PopupBox extends Component {
       rightButtonTitle: PropTypes.string,
       rightButtonAction: PropTypes.func,
       rightButtonState: PropTypes.string,
-      isBackdropStatic: PropTypes.bool,
-      isCloseButtonVisible: PropTypes.bool
+      isBackdropStatic: PropTypes.bool
     };
-    // display 'close button' by default
+    // click away or esc to close
     PopupBox.defaultProps = {
-      isCloseButtonVisible: true
+      isBackdropStatic: false
     };
   }
 
@@ -102,56 +90,52 @@ class PopupBox extends Component {
       rightButtonState
     } = this.props;
 
+    // If a root node exists, the app is being served, otherwise it's a unit test.
+    let ariaHideApp = true;
+    if (document.getElementById("#root")) {
+      Modal.setAppElement("#root");
+    } else {
+      // Unit tests do not consider outside of the dialog.
+      ariaHideApp = false;
+    }
     return (
       <Modal
-        show={show}
-        onHide={handleClose}
-        autoFocus={true}
-        enforceFocus={true}
-        aria-hidden={false}
-        backdrop={this.props.isBackdropStatic ? false : true}
+        isOpen={show}
+        onRequestClose={handleClose}
+        style={customStyles}
+        contentLabel={title}
+        shouldCloseOnOverlayClick={!this.props.isBackdropStatic}
+        aria={{
+          labelledby: "modal-heading",
+          describedby: "modal-description"
+        }}
+        ariaHideApp={ariaHideApp}
       >
-        <div style={styles.boxContent}>
-          <Modal.Header closeButton={this.props.isCloseButtonVisible} style={styles.modalHeader}>
-            <Modal.Title id="unit-test-popup-box-title" style={styles.modelTitle}>
-              {title}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body id="unit-test-popup-box-description">{description}</Modal.Body>
-          <Modal.Footer>
-            <div style={styles.buttonsZone}>
-              {leftButtonType && leftButtonTitle && (
-                <div style={styles.leftBtnLocation}>
-                  <button
-                    disabled={leftButtonState}
-                    id="unit-test-left-btn-title"
-                    type="button"
-                    className={leftButtonType}
-                    style={styles.buttonSize}
-                    onClick={this.leftButtonCloseAndAction}
-                  >
-                    {leftButtonTitle}
-                  </button>
-                </div>
-              )}
-
-              {rightButtonType && rightButtonTitle && (
-                <div style={styles.rightBtnLocation}>
-                  <button
-                    disabled={rightButtonState}
-                    id="unit-test-right-btn-title"
-                    type="button"
-                    className={rightButtonType}
-                    style={styles.buttonSize}
-                    onClick={this.rightButtonCloseAndAction}
-                  >
-                    {rightButtonTitle}
-                  </button>
-                </div>
-              )}
-            </div>
-          </Modal.Footer>
+        <h2 id="modal-heading">{title}</h2>
+        <div id="modal-description" style={styles.description}>
+          {description}
         </div>
+        {leftButtonTitle && leftButtonType && (
+          <button
+            className={leftButtonType}
+            onClick={this.leftButtonCloseAndAction}
+            disabled={leftButtonState}
+            id="unit-test-left-btn"
+          >
+            {leftButtonTitle}
+          </button>
+        )}
+        {rightButtonTitle && rightButtonType && (
+          <button
+            style={styles.rightButton}
+            className={rightButtonType}
+            onClick={this.rightButtonCloseAndAction}
+            disabled={rightButtonState}
+            id="unit-test-right-btn"
+          >
+            {rightButtonTitle}
+          </button>
+        )}
       </Modal>
     );
   }

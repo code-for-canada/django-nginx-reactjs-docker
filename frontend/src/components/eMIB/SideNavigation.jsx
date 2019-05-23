@@ -3,7 +3,7 @@ import { Tab, Row, Col, Nav } from "react-bootstrap";
 import { HEADER_HEIGHT, FOOTER_HEIGHT } from "../eMIB/constants";
 import PropTypes from "prop-types";
 
-const BODY_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
+const BODY_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 5}px)`;
 
 const EVENT_KEYS = ["first", "second", "third", "fourth"];
 

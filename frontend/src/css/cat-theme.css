@@ -157,41 +157,6 @@ p {
   background-color: #00565e;
 }
 
-/* React Bootstrap Modal */
-/* ref: https://github.com/shlomiassaf/ngx-modialog/issues/280 */
-/* https://github.com/react-bootstrap/react-bootstrap/issues/995 */
-
-.fade.in {
-  opacity: 1;
-}
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0);
-}
-
-.modal-backdrop .fade .in {
-  opacity: 0.5 !important;
-}
-
-.modal-backdrop.fade {
-  opacity: 0.5 !important;
-}
-
-.modal-content {
-  border-radius: 10px;
-  background-color: #fafafa;
-}
-
-.modal-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-  min-width: 500px !important;
-  max-width: 750px !important;
-}
-
 /* visually hidden, but stil accessible */
 .visually-hidden {
   /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
@@ -242,4 +207,9 @@ p {
 /* overriding form group bottom margin */
 .form-group {
   margin-bottom: 0;
+}
+
+.btn-danger:disabled {
+  background-color: #923534;
+  border-color: #923534;
 }

@@ -42,6 +42,9 @@ const styles = {
     minWidth: 300,
     height: NOTEPAD_HEIGHT
   },
+  hiddenContent: {
+    width: 50
+  },
   notepadSection: {
     overflow: "auto",
     width: "100%",
@@ -60,7 +63,12 @@ const styles = {
     borderBottomRightRadius: 0,
     cursor: "pointer",
     whiteSpace: "normal",
-    padding: 8
+    padding: 8,
+    backgroundColor: "#00565e",
+    borderColor: "#00565e"
+  },
+  openText: {
+    color: "#FFFFFF"
   }
 };
 
@@ -70,12 +78,8 @@ class Notepad extends Component {
     notepadContent: ""
   };
 
-  handleHide = () => {
-    this.setState({ notepadHidden: true });
-  };
-
-  handleOpen = () => {
-    this.setState({ notepadHidden: false });
+  toggleNotepad = () => {
+    this.setState({ notepadHidden: !this.state.notepadHidden });
   };
 
   handleNotepadContent = event => {
@@ -86,19 +90,36 @@ class Notepad extends Component {
     const { notepadHidden } = this.state;
     return (
       <div style={styles.windowPadding}>
-        {!notepadHidden && (
-          <div style={styles.content}>
-            <div style={styles.headerSection}>
+        <div style={notepadHidden ? styles.hiddenContent : styles.content}>
+          <div style={notepadHidden ? {} : styles.headerSection}>
+            {!notepadHidden && (
               <div style={styles.label}>
                 <label htmlFor={"text-area-notepad"}>
                   {LOCALIZE.commons.notepad.title.toUpperCase()}
                 </label>
               </div>
-              <button onClick={this.handleHide} style={styles.hideNotepadBtn}>
-                <i style={styles.hideNotepadBtnIcon} className="fas fa-minus-circle" />
-                {LOCALIZE.commons.notepad.hideButton}
-              </button>
-            </div>
+            )}
+            <button
+              id="notepad-button"
+              aria-pressed={notepadHidden}
+              onClick={this.toggleNotepad}
+              style={notepadHidden ? styles.openNotepadBtn : styles.hideNotepadBtn}
+            >
+              {!notepadHidden && (
+                <span>
+                  <i style={styles.hideNotepadBtnIcon} className="fas fa-minus-circle" />
+                  {LOCALIZE.commons.notepad.hideButton}
+                </span>
+              )}
+              {notepadHidden && (
+                <span style={styles.openText}>
+                  <i style={styles.hideNotepadBtnIcon} className="fas fa-plus-circle" />
+                  {LOCALIZE.commons.notepad.openButton}
+                </span>
+              )}
+            </button>
+          </div>
+          {!notepadHidden && (
             <div style={styles.notepadSection}>
               <TextareaAutosize
                 id="text-area-notepad"
@@ -112,18 +133,8 @@ class Notepad extends Component {
                 onChange={this.handleNotepadContent}
               />
             </div>
-          </div>
-        )}
-        {notepadHidden && (
-          <button
-            className="btn btn-primary"
-            onClick={this.handleOpen}
-            style={styles.openNotepadBtn}
-          >
-            <i className="fas fa-external-link-alt" />
-            {LOCALIZE.commons.notepad.openButton}
-          </button>
-        )}
+          )}
+        </div>
       </div>
     );
   }

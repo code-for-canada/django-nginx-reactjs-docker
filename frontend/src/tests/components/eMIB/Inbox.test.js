@@ -22,5 +22,5 @@ it("Displays 3 email previews when there are 3 emails", () => {
     />
   );
   expect(wrapper.find(EmailPreview).length).toEqual(INBOX_SPECS.length);
-  expect(wrapper.find(Email).length).toEqual(1);
+  expect(wrapper.find(Email).length).toEqual(INBOX_SPECS.length);
 });

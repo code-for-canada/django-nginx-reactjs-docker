@@ -7,10 +7,9 @@ import "../../css/inbox.css";
 const styles = {
   //buttons
   button: {
-    width: 202,
     textAlign: "left",
-    padding: 8,
-    borderWidth: "0 1px 1px 1px",
+    padding: 10,
+    borderWidth: "0px 1px 1px 1px",
     borderStyle: "solid",
     borderColor: "#00565E",
     cursor: "pointer",
@@ -64,7 +63,6 @@ const styles = {
 class EmailPreview extends Component {
   static propTypes = {
     email: emailShape,
-    selectEmail: PropTypes.func.isRequired,
     isRead: PropTypes.bool.isRequired,
     isRepliedTo: PropTypes.bool.isRequired,
     isSelected: PropTypes.bool.isRequired
@@ -103,21 +101,15 @@ class EmailPreview extends Component {
     };
     const email = this.props.email;
     return (
-      <li
+      <div
         id={
           this.props.isSelected
             ? "unit-test-selected-email-preview"
             : "unit-test-unselected-email-preview"
         }
         style={styles.li}
-        aria-current={this.props.isSelected ? "page" : ""}
-        role="menuitem"
       >
-        <button
-          className={this.props.isSelected ? "" : "email-preview-button"}
-          style={buttonStyle}
-          onClick={() => this.props.selectEmail(email.id)}
-        >
+        <div className={this.props.isSelected ? "" : "email-preview-button"} style={buttonStyle}>
           <div id={this.props.isRead ? "read-email-preview" : "unread-email-preview"}>
             {this.props.isRead ? (
               <i className="far fa-envelope-open" style={imageStyle} />
@@ -133,8 +125,8 @@ class EmailPreview extends Component {
           </div>
           <div style={subject}>{email.subject}</div>
           <div style={styles.truncated}>{email.from}</div>
-        </button>
-      </li>
+        </div>
+      </div>
     );
   }
 }

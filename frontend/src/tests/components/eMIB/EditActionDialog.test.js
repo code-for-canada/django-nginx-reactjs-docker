@@ -2,11 +2,6 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import { UnconnectedEditActionDialog as EditActionDialog } from "../../../components/eMIB/EditActionDialog";
 import { ACTION_TYPE, EDIT_MODE, EMAIL_TYPE } from "../../../components/eMIB/constants";
-import isEmailFormEmpty, {
-  isTaskFormEmpty,
-  isTaskFormEdited,
-  isEmailFormEdited
-} from "../../../helpers/editActionDialogHelper";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 
@@ -96,6 +91,8 @@ function testCore(actionType, editMode) {
         .first()
         .hasClass(taskIcon)
     ).toEqual(false);
+    // verify that the empty emailType is overridden to be a reply
+    expect(wrapper.state("action").emailType).toEqual(EMAIL_TYPE.reply);
   }
   if (actionType === ACTION_TYPE.task) {
     expect(
@@ -303,113 +300,17 @@ describe("edit action dialog helper file", () => {
   afterEach(() => {
     stubbedCurrentVariables = {};
   });
-  // ==========================================================================
 
-  it("isEmailFormEmpty() returns 'true' if all the fields are empty and 'false' if at least one field has been updated", () => {
-    // all fields are empty ==> returns true
-    expect(
-      isEmailFormEmpty(
-        emptyEmailType,
-        emptyEmailTo,
-        emptyEmailCc,
-        emptyEmailResponse,
-        emptyReasonsForActionContent
-      )
-    ).toBe(true);
-    // at least one of the fields is not empty (in that case, emailTo field is not empty) ==> returns false
-    expect(
-      isEmailFormEmpty(
-        emptyEmailType,
-        stubbedCurrentVariables.emailTo,
-        emptyEmailCc,
-        emptyEmailResponse,
-        emptyReasonsForActionContent
-      )
-    ).toBe(false);
+  it("renders EditActionDialog with an edit empty email response", () => {
+    emptyActionMount(ACTION_TYPE.email);
   });
 
-  it("isTaskFormEmpty() returns 'true' if all the fields are empty and 'false' if at least one field has been updated", () => {
-    // all fields are empty ==> returns true
-    expect(isTaskFormEmpty(emptyTaskContent, emptyReasonsForActionContent)).toBe(true);
-
-    // at least one of the fields is not empty (in that case, taskContent field is not empty) ==> returns false
-    expect(isTaskFormEmpty(stubbedCurrentVariables.taskContent, emptyReasonsForActionContent)).toBe(
-      false
-    );
-  });
-
-  it("isEmailFormEdited() return 'true' if at least one field has been updated and 'false' if all the initial values are the same as the current ones", () => {
-    // all fields are the same ==> return false
-    expect(
-      isEmailFormEdited(
-        initialEmailType,
-        stubbedCurrentVariables.emailType,
-        initialEmailTo,
-        stubbedCurrentVariables.emailTo,
-        initialEmailCc,
-        stubbedCurrentVariables.emailCc,
-        initialEmailResponse,
-        stubbedCurrentVariables.emailResponse,
-        initialReasonsForActionContent,
-        stubbedCurrentVariables.reasonsForActionContent
-      )
-    ).toBe(false);
-
-    // updating emailResponse field
-    stubbedCurrentVariables.emailResponse = "this is an updated response";
-
-    // at least one of the fields has been updated (in that case, emailResponse has been updated) ==> return true
-    expect(
-      isEmailFormEdited(
-        initialEmailType,
-        stubbedCurrentVariables.emailType,
-        initialEmailTo,
-        stubbedCurrentVariables.emailTo,
-        initialEmailCc,
-        stubbedCurrentVariables.emailCc,
-        initialEmailResponse,
-        stubbedCurrentVariables.emailResponse,
-        initialReasonsForActionContent,
-        stubbedCurrentVariables.reasonsForActionContent
-      )
-    ).toBe(true);
-  });
-
-  it("isTaskFormEdited() return 'true' if at least one field has been updated and 'false' if all the initial values are the same as the current ones", () => {
-    // all fields are the same ==> return false
-    expect(
-      isTaskFormEdited(
-        initialTaskContent,
-        stubbedCurrentVariables.taskContent,
-        initialReasonsForActionContent,
-        stubbedCurrentVariables.reasonsForActionContent
-      )
-    ).toBe(false);
-
-    // updating taskContent field
-    stubbedCurrentVariables.taskContent = "this is an updated task";
-
-    // at least one of the fields has been updated (in that case, taskContent has been updated) ==> return true
-    expect(
-      isTaskFormEdited(
-        initialTaskContent,
-        stubbedCurrentVariables.taskContent,
-        initialReasonsForActionContent,
-        stubbedCurrentVariables.reasonsForActionContent
-      )
-    ).toBe(true);
+  it("renders EditActionDialog with an edit empty task response", () => {
+    emptyActionMount(ACTION_TYPE.task);
   });
 });
 
-it("renders EditActionDialog with an edit empty email response", () => {
-  emptyActionMount(ACTION_TYPE.email);
-});
-
-it("renders EditActionDialog with an edit empty task response", () => {
-  emptyActionMount(ACTION_TYPE.task);
-});
-
-function emptyActionMount(actionType) {
+const emptyActionMount = actionType => {
   mount(
     <Provider store={mockStore(initialState)}>
       <EditActionDialog
@@ -429,4 +330,39 @@ function emptyActionMount(actionType) {
       />
     </Provider>
   );
+};
+
+it("check that undefined email type is overriden to be reply", () => {
+  checkEmailTypeOverride(undefined);
+});
+
+it("check that replyAll email type is not overridden", () => {
+  checkEmailTypeOverride(EMAIL_TYPE.replyAll);
+});
+
+it("check that forward email type is not overridden", () => {
+  checkEmailTypeOverride(EMAIL_TYPE.forward);
+});
+
+function checkEmailTypeOverride(emailType) {
+  const wrapper = shallow(
+    <EditActionDialog
+      email={emailStub}
+      showDialog={true}
+      handleClose={() => {}}
+      addEmail={() => {}}
+      addTask={() => {}}
+      updateEmail={() => {}}
+      updateTask={() => {}}
+      readEmail={() => {}}
+      actionType={ACTION_TYPE.email}
+      action={{ actionType: ACTION_TYPE.email, emailType: emailType }}
+      editMode={EDIT_MODE.create}
+    />
+  );
+  if (emailType === undefined) {
+    expect(wrapper.state("action").emailType).toEqual(EMAIL_TYPE.reply);
+  } else {
+    expect(wrapper.state("action").emailType).toEqual(emailType);
+  }
 }
