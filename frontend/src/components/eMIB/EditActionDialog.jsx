@@ -7,6 +7,7 @@ import EditEmail from "./EditEmail";
 import EditTask from "./EditTask";
 import { ACTION_TYPE, EDIT_MODE, actionShape, emailShape, EMAIL_TYPE } from "./constants";
 import EmailContent from "./EmailContent";
+import CollapsingItemContainer, { ICON_TYPE } from "./CollapsingItemContainer";
 import {
   addEmail,
   addTask,
@@ -55,6 +56,11 @@ const styles = {
   },
   rightButton: {
     float: "right"
+  },
+  dataBodyDivider: {
+    width: "100%",
+    borderTop: "1px solid #96a8b2",
+    margin: "12px 0 12px 0"
   }
 };
 
@@ -189,6 +195,12 @@ class EditActionDialog extends Component {
             )}
           </div>
           <div style={styles.container}>
+            <CollapsingItemContainer
+              title={LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}
+              body={<EmailContent email={this.props.email} />}
+              iconType={ICON_TYPE.email}
+            />
+            <hr style={styles.dataBodyDivider} />
             <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
             {actionType === ACTION_TYPE.email && (
               <EditEmail
@@ -204,10 +216,6 @@ class EditActionDialog extends Component {
                 action={editMode === EDIT_MODE.update ? this.props.action : null}
               />
             )}
-            <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}</h4>
-            <div style={styles.originalEmail}>
-              <EmailContent email={this.props.email} />
-            </div>
           </div>
           <div style={styles.buttons}>
             <button className={"btn btn-danger"} onClick={this.handleClose}>
