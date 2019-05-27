@@ -9,6 +9,7 @@ import Status from "./Status";
 import Home from "./Home";
 import Emib from "./components/eMIB/Emib";
 import LoginButton from "./components/commons/LoginButton";
+import Settings from "./components/commons/Settings";
 import Translation from "./components/commons/Translation";
 import LOCALIZE from "./text_resources";
 import psc_logo_en from "./images/psc_logo_en.png";
@@ -53,9 +54,9 @@ class App extends Component {
                 <Nav className="mr-auto">
                   <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
                   <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
-                  <Nav.Link href="/status">{LOCALIZE.mainTabs.statusTabTitle}</Nav.Link>
                 </Nav>
                 <LoginButton />
+                <Settings variant="secondary" />
                 <Translation variant="secondary" />
               </Navbar>
             )}
@@ -70,6 +71,7 @@ class App extends Component {
                   />
                 </Navbar.Brand>
                 <Nav className="mr-auto" />
+                <Settings variant="outline-light" />
                 <Translation variant="outline-light" />
               </Navbar>
             )}

@@ -9,13 +9,10 @@ import { PATH } from "../../App";
 
 const styles = {
   button: {
-    width: 136,
     marginRight: 15
   },
   navlink: {
-    all: "unset",
-    width: 136,
-    marginRight: 15
+    all: "unset"
   }
 };
 
