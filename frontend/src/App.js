@@ -12,10 +12,8 @@ import LoginButton from "./components/commons/LoginButton";
 import Settings from "./components/commons/Settings";
 import Translation from "./components/commons/Translation";
 import LOCALIZE from "./text_resources";
-import psc_logo_en from "./images/psc_logo_en.png";
-import psc_logo_fr from "./images/psc_logo_fr.png";
-import psc_logo_en_light from "./images/psc_logo_en_light.png";
-import psc_logo_fr_light from "./images/psc_logo_fr_light.png";
+import psc_logo from "./images/psc_logo.png";
+import psc_logo_light from "./images/psc_logo_light.png";
 import { Navbar, Nav } from "react-bootstrap";
 
 const PATH = {
@@ -44,12 +42,7 @@ class App extends Component {
             {!isTestActive && (
               <Navbar bg="light" variant="light">
                 <Navbar.Brand href="/">
-                  <img
-                    alt=""
-                    src={currentLanguage === "fr" ? psc_logo_fr : psc_logo_en}
-                    width="220"
-                    className="d-inline-block align-top"
-                  />
+                  <img alt="" src={psc_logo} width="370" className="d-inline-block align-top" />
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                   <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
@@ -65,8 +58,8 @@ class App extends Component {
                 <Navbar.Brand>
                   <img
                     alt=""
-                    src={currentLanguage === "fr" ? psc_logo_fr_light : psc_logo_en_light}
-                    width="220"
+                    src={psc_logo_light}
+                    width="370"
                     className="d-inline-block align-top"
                   />
                 </Navbar.Brand>
