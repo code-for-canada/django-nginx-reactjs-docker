@@ -15,6 +15,7 @@ import LOCALIZE from "./text_resources";
 import psc_logo from "./images/psc_logo.png";
 import psc_logo_light from "./images/psc_logo_light.png";
 import { Navbar, Nav } from "react-bootstrap";
+import QuitTest from "./components/commons/QuitTest";
 
 const PATH = {
   home: "/",
@@ -64,6 +65,7 @@ class App extends Component {
                   />
                 </Navbar.Brand>
                 <Nav className="mr-auto" />
+                <QuitTest />
                 <Settings variant="outline-light" />
                 <Translation variant="outline-light" />
               </Navbar>

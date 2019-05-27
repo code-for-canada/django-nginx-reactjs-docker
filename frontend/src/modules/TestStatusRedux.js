@@ -6,9 +6,16 @@ const DEACTIVATE_TEST = "testStatus/DEACTIVATE_TEST";
 const activateTest = () => ({ type: ACTIVATE_TEST });
 const deactivateTest = () => ({ type: DEACTIVATE_TEST });
 
+const PAGES = {
+  preTest: "preTest",
+  emibTabs: "emibTabs",
+  confirm: "confirm"
+};
+
 // Initial State
 const initialState = {
-  isTestActive: false
+  isTestActive: false,
+  currentPage: PAGES.preTest
 };
 
 // Reducer
@@ -17,12 +24,14 @@ const testStatus = (state = initialState, action) => {
     case ACTIVATE_TEST:
       return {
         ...state,
-        isTestActive: true
+        isTestActive: true,
+        currentPage: PAGES.emibTabs
       };
     case DEACTIVATE_TEST:
       return {
         ...state,
-        isTestActive: false
+        isTestActive: false,
+        currentPage: PAGES.confirm
       };
 
     default:
