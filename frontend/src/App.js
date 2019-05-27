@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   render() {
-    const { isTestActive, currentLanguage } = this.props;
+    const { isTestActive } = this.props;
     return (
       <div>
         <Helmet>

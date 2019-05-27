@@ -6,7 +6,8 @@ import { Navbar, Nav } from "react-bootstrap";
 const styles = {
   footer: {
     borderTop: "1px solid #96a8b2",
-    zIndex: -1
+    zIndex: -1,
+    backgroundColor: "#D5DEE0"
   }
 };
 
@@ -21,7 +22,7 @@ class TestFooter extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" fixed="bottom" style={styles.footer}>
+        <Navbar fixed="bottom" style={styles.footer}>
           <Nav className="mr-auto">
             {this.props.testIsStarted && (
               <Navbar.Text>
@@ -41,7 +42,7 @@ class TestFooter extends Component {
               <button
                 id="unit-test-start-btn"
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-success"
                 onClick={this.props.startTest}
               >
                 {LOCALIZE.commons.startTest}
@@ -53,7 +54,7 @@ class TestFooter extends Component {
               <button
                 id="unit-test-submit-btn"
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-success"
                 onClick={this.props.submitTest}
               >
                 {LOCALIZE.commons.submitTestButton}
