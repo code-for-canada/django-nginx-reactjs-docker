@@ -2,6 +2,8 @@ from django.db import models
 from .item import Item
 from .question_type import QuestionType
 
+# Question model; adds a question type to an item in the Item table
+
 
 class Question(models.Model):
     question_id = models.AutoField(primary_key=True)

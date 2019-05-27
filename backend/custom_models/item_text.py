@@ -3,6 +3,10 @@ from .item import Item
 from .language import Language
 MAX_CHAR_LEN = 100
 
+# Item Text model. Stores the "display name" of an item, the item id, and the language.
+# this can be the name of a test, a text identifier of a question set, the text of a question or answer
+# etc
+
 
 class ItemText(models.Model):
     item_text_id = models.AutoField(primary_key=True)
