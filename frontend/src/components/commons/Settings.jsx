@@ -26,7 +26,12 @@ class Settings extends Component {
     // TODO(caleybrock) - Fill in context and localize.
     return (
       <div>
-        <Button style={styles.button} variant={this.props.variant} onClick={this.toggleDialog}>
+        <Button
+          style={styles.button}
+          variant={this.props.variant}
+          onClick={this.toggleDialog}
+          aria-label="System settings"
+        >
           <i className="fas fa-cog" />
         </Button>
         <PopupBox

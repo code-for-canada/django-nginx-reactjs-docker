@@ -79,7 +79,12 @@ class QuitTest extends Component {
       <div>
         {this.props.isTestActive && (
           <div>
-            <Button style={styles.button} variant="outline-light" onClick={this.openQuitPopup}>
+            <Button
+              style={styles.button}
+              variant="outline-light"
+              onClick={this.openQuitPopup}
+              aria-label={LOCALIZE.emibTest.testFooter.quitTestPopupBox.title}
+            >
               <i className="fas fa-eject" />
             </Button>
             <PopupBox
