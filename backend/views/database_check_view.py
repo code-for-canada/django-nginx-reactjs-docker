@@ -1,7 +1,7 @@
 from rest_framework import viewsets
+from rest_framework import permissions
 from serializers.database_check_serializer import DatabaseCheckSerializer
 from custom_models.database_models import DatabaseCheckModel
-from rest_framework import permissions
 
 
 class DatabaseViewSet(viewsets.ModelViewSet):
