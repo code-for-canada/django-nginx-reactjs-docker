@@ -8,6 +8,14 @@ const styles = {
     borderTop: "1px solid #96a8b2",
     zIndex: -1,
     backgroundColor: "#D5DEE0"
+  },
+  content: {
+    width: 1400,
+    margin: "0 auto",
+    padding: "0px 20px"
+  },
+  button: {
+    float: "right"
   }
 };
 
@@ -22,30 +30,32 @@ class TestFooter extends Component {
     return (
       <div>
         <Navbar fixed="bottom" style={styles.footer}>
-          {!this.props.testIsStarted && (
-            <Navbar.Text className="justify-content-end">
-              <button
-                id="unit-test-start-btn"
-                type="button"
-                className="btn btn-success"
-                onClick={this.props.startTest}
-              >
-                {LOCALIZE.commons.startTest}
-              </button>
-            </Navbar.Text>
-          )}
-          {this.props.testIsStarted && (
-            <Navbar.Text className="justify-content-end">
-              <button
-                id="unit-test-submit-btn"
-                type="button"
-                className="btn btn-success"
-                onClick={this.props.submitTest}
-              >
-                {LOCALIZE.commons.submitTestButton}
-              </button>
-            </Navbar.Text>
-          )}
+          <div style={styles.content}>
+            {!this.props.testIsStarted && (
+              <div style={styles.button}>
+                <button
+                  id="unit-test-start-btn"
+                  type="button"
+                  className="btn btn-success"
+                  onClick={this.props.startTest}
+                >
+                  {LOCALIZE.commons.startTest}
+                </button>
+              </div>
+            )}
+            {this.props.testIsStarted && (
+              <div style={styles.button}>
+                <button
+                  id="unit-test-submit-btn"
+                  type="button"
+                  className="btn btn-success"
+                  onClick={this.props.submitTest}
+                >
+                  {LOCALIZE.commons.submitTestButton}
+                </button>
+              </div>
+            )}
+          </div>
         </Navbar>
       </div>
     );

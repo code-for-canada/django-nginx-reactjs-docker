@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
 // Display
-export const HEADER_HEIGHT = 125;
-export const FOOTER_HEIGHT = 60;
+export const HEADER_HEIGHT = 119;
+export const FOOTER_HEIGHT = 55;
 
 // Data structures
 
