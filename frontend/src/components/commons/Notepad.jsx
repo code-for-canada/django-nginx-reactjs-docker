@@ -4,8 +4,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import "../../css/emib-tabs.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT } from "../eMIB/constants";
 
-const NOTEPAD_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
-const SECTION_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 53}px)`;
+const NOTEPAD_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT - 5}px)`;
+const SECTION_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 40}px)`;
 
 const styles = {
   windowPadding: {
@@ -36,7 +36,7 @@ const styles = {
   },
   content: {
     backgroundColor: "white",
-    borderWidth: "1px 1px 0 1px",
+    borderWidth: 1,
     borderStyle: "solid",
     borderColor: "#00565e",
     minWidth: 300,
