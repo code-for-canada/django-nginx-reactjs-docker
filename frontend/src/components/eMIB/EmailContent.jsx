@@ -8,7 +8,6 @@ const styles = {
     color: "#00565E"
   },
   dataBodyDivider: {
-    width: "100%",
     borderTop: "1px solid #96a8b2",
     margin: "12px 0 12px 0"
   },
