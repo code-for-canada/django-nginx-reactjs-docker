@@ -13,6 +13,6 @@ class Item(models.Model):
         "self", on_delete=models.CASCADE, null=True, blank=True)
     item_type_id = models.ForeignKey(ItemType, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
-    date_created = models.DateTimeField()
-    date_from = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True, blank=True)
+    date_from = models.DateTimeField(auto_now_add=True, blank=True)
     date_to = models.DateTimeField(null=True, blank=True)
