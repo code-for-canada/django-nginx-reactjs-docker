@@ -57,9 +57,6 @@ const styles = {
       width: "100%",
       height: 125,
       resize: "none"
-    },
-    textAreaMargin: {
-      marginRight: 12
     }
   },
   reasonsForAction: {
@@ -89,9 +86,6 @@ const styles = {
       width: "100%",
       height: 100,
       resize: "none"
-    },
-    textAreaMargin: {
-      marginRight: 12
     }
   }
 };
@@ -174,7 +168,7 @@ class EditTask extends Component {
                   onBlur={this.onTaskTooltipBlur}
                 />
               </OverlayTrigger>
-              <div style={styles.tasks.textAreaMargin}>
+              <div>
                 <textarea
                   id="your-tasks-text-area"
                   maxLength={MAX_TASK}
@@ -219,7 +213,7 @@ class EditTask extends Component {
                   onBlur={this.onReasonsForActionTooltipBlur}
                 />
               </OverlayTrigger>
-              <div style={styles.reasonsForAction.textAreaMargin}>
+              <div>
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}

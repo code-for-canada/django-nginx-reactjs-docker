@@ -178,8 +178,6 @@ p {
 
 /* formatting for sizing of drop down menus */
 .rrs {
-  padding: 0px 6px;
-  margin-right: 6px;
   width: calc(100% - 35px);
   float: right;
   margin-bottom: 12px;

@@ -38,7 +38,8 @@ const styles = {
     maxHeight: "calc(100vh - 300px)",
     overflow: "auto",
     width: 700,
-    paddingBottom: 12
+    paddingBottom: 12,
+    paddingRight: 12
   },
   originalEmail: {
     padding: 12,

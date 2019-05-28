@@ -73,9 +73,6 @@ const styles = {
       width: "100%",
       height: 225,
       resize: "none"
-    },
-    textAreaMargin: {
-      marginRight: 12
     }
   },
   textCounter: {
@@ -84,7 +81,7 @@ const styles = {
     paddingRight: 12
   },
   hr: {
-    margin: "12px 12px 12px 0"
+    margin: "12px 0px"
   },
   reasonsForAction: {
     textArea: {
@@ -94,9 +91,6 @@ const styles = {
       width: "100%",
       height: 150,
       resize: "none"
-    },
-    textAreaMargin: {
-      marginRight: 12
     }
   }
 };
@@ -308,7 +302,7 @@ class EditEmail extends Component {
               <label htmlFor="your-response-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.response}
               </label>
-              <div style={styles.response.textAreaMargin}>
+              <div>
                 <textarea
                   id="your-response-text-area"
                   maxLength={MAX_RESPONSE}
@@ -329,7 +323,7 @@ class EditEmail extends Component {
               <label htmlFor="reasons-for-action-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction}
               </label>
-              <div style={styles.reasonsForAction.textAreaMargin}>
+              <div>
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}
