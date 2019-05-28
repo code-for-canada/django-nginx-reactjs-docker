@@ -40,4 +40,4 @@ const testStatus = (state = initialState, action) => {
 };
 
 export default testStatus;
-export { activateTest, initialState, deactivateTest };
+export { activateTest, initialState, deactivateTest, PAGES };

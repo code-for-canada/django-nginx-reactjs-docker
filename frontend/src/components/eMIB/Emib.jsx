@@ -8,16 +8,10 @@ import TestFooter from "../commons/TestFooter";
 import LOCALIZE from "../../text_resources";
 import ContentContainer from "../commons/ContentContainer";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
-import { activateTest, deactivateTest } from "../../modules/TestStatusRedux";
+import { activateTest, deactivateTest, PAGES } from "../../modules/TestStatusRedux";
 import ConfirmStartTest from "../commons/ConfirmStartTest";
 import EmibIntroductionPage from "./EmibIntroductionPage";
 import { Helmet } from "react-helmet";
-
-const PAGES = {
-  preTest: "preTest",
-  emibTabs: "emibTabs",
-  confirm: "confirm"
-};
 
 class Emib extends Component {
   static propTypes = {
@@ -117,7 +111,7 @@ class Emib extends Component {
     );
   }
 }
-export { PAGES };
+
 export { Emib as UnconnectedEmib };
 
 const mapStateToProps = (state, ownProps) => {
