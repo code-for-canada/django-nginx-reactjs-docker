@@ -85,7 +85,7 @@ class QuitTest extends Component {
               onClick={this.openQuitPopup}
               aria-label={LOCALIZE.emibTest.testFooter.quitTestPopupBox.title}
             >
-              <i className="fas fa-eject" />
+              <i className="fas fa-sign-out-alt" />
             </Button>
             <PopupBox
               show={this.state.showQuitPopup}

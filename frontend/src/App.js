@@ -14,6 +14,7 @@ import Translation from "./components/commons/Translation";
 import LOCALIZE from "./text_resources";
 import psc_logo from "./images/psc_logo.png";
 import psc_logo_light from "./images/psc_logo_light.png";
+import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
 
@@ -41,18 +42,33 @@ class App extends Component {
         <Router>
           <div>
             {!isTestActive && (
-              <Navbar bg="light" variant="light">
-                <Navbar.Brand href="/">
-                  <img alt="" src={psc_logo} width="370" className="d-inline-block align-top" />
-                </Navbar.Brand>
-                <Nav className="mr-auto">
-                  <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
-                  <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
-                </Nav>
-                <LoginButton />
-                <Settings variant="secondary" />
-                <Translation variant="secondary" />
-              </Navbar>
+              <div>
+                <Navbar bg="light" variant="light" style={{ justifyContent: "space-between" }}>
+                  <img
+                    alt="Public Service Commission"
+                    src={psc_logo}
+                    width="370"
+                    className="d-inline-block align-top"
+                  />
+                  <img
+                    alt="Canada"
+                    src={canada_logo}
+                    width="120"
+                    className="d-inline-block align-top"
+                  />
+                </Navbar>
+                <Navbar bg="light" variant="light" style={{ justifyContent: "space-between" }}>
+                  <Nav>
+                    <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                    <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
+                  </Nav>
+                  <Nav>
+                    <LoginButton />
+                    <Settings variant="secondary" />
+                    <Translation variant="secondary" />
+                  </Nav>
+                </Navbar>
+              </div>
             )}
             {isTestActive && (
               <Navbar bg="dark" variant="dark">
