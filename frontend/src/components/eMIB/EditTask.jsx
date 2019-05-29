@@ -177,7 +177,7 @@ class EditTask extends Component {
                   onChange={this.onTaskContentChange}
                 />
               </div>
-              <div style={styles.textCounter}>
+              <div style={styles.textCounter} id="unit-test-task-response">
                 {this.state.task === undefined ? 0 : this.state.task.length}/{MAX_TASK}
               </div>
             </div>
@@ -222,9 +222,9 @@ class EditTask extends Component {
                   onChange={this.onReasonsForActionChange}
                 />
               </div>
-              <div style={styles.textCounter}>
-                {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction}/
-                {MAX_REASON}
+              <div style={styles.textCounter} id="unit-test-task-rfa">
+                {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}
+                /{MAX_REASON}
               </div>
             </div>
           </div>
