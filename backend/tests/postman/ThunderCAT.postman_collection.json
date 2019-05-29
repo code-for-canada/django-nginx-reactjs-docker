@@ -268,9 +268,9 @@
 					"script": {
 						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
 						"exec": [
-							"// request successful\r",
-							"pm.test(\"Request successful\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"// request fails\r",
+							"pm.test(\"Request fails, since default users shouldn't be able to access the users list\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -297,6 +297,12 @@
 						"key": "Authorization",
 						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 2f8d848ea76208576d21ecd2f0647fd0f6921297",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"url": {
@@ -647,7 +653,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"value": "basic YWRtaW46UGFzc3dvcmQxMjM0IQ==",
 						"type": "text"
 					}
 				],
