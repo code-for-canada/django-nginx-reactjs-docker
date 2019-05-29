@@ -643,7 +643,7 @@
 							"});*/\r",
 							"\r",
 							"// request fails (expected status code: 403)\r",
-							"pm.test(\"fail to delete api-test2 account, since a default user shouldn't be able to delete other accounts\", function () {\r",
+							"pm.test(\"Request fails (delete api-test2 account), since a default user shouldn't be able to delete other accounts\", function () {\r",
 							"    pm.response.to.have.status(403);\r",
 							"});"
 						],
