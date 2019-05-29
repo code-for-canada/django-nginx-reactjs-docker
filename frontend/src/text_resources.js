@@ -253,6 +253,8 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
+        orgChartInstructions:
+          "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
           title: "Background Information",
           paragraph1:
@@ -787,6 +789,8 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
+        orgChartInstructions:
+          "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
           title: "Contexte",
           paragraph1:
