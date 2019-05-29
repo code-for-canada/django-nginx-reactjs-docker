@@ -28,8 +28,6 @@ matrix:
       before_script:
         - docker-compose up -d --build
         - npm install frontend/
-        - cd backend/
-        - echo "from custom_models.user_models import User; User.objects.create_superuser('admin', 'admin@email.ca', 'Password1234!')" | python manage.py shell
       script:
         - newman run backend/tests/postman/ThunderCAT.postman_collection.json -e backend/tests/postman/environments/local/ThunderCAT.local.postman_environment.json
 
