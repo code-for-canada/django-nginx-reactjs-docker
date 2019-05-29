@@ -18,6 +18,12 @@ import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
 
+const styles = {
+  nav: {
+    justifyContent: "space-between"
+  }
+};
+
 const PATH = {
   home: "/",
   status: "/status",
@@ -43,21 +49,21 @@ class App extends Component {
           <div>
             {!isTestActive && (
               <div>
-                <Navbar bg="light" variant="light" style={{ justifyContent: "space-between" }}>
+                <Navbar bg="light" variant="light" style={styles.nav}>
                   <img
-                    alt="Public Service Commission"
+                    alt={LOCALIZE.mainTabs.psc}
                     src={psc_logo}
                     width="370"
                     className="d-inline-block align-top"
                   />
                   <img
-                    alt="Canada"
+                    alt={LOCALIZE.mainTabs.canada}
                     src={canada_logo}
                     width="120"
                     className="d-inline-block align-top"
                   />
                 </Navbar>
-                <Navbar bg="light" variant="light" style={{ justifyContent: "space-between" }}>
+                <Navbar bg="light" variant="light" style={styles.nav}>
                   <Nav>
                     <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
                     <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
