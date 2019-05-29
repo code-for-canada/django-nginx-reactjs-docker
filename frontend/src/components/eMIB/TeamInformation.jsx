@@ -94,7 +94,12 @@ class TeamInformation extends Component {
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
           title={LOCALIZE.emibTest.background.teamInformation.dialog.title}
-          description={<TreeNode nodes={treeView} />}
+          description={
+            <div>
+              <p>{LOCALIZE.emibTest.background.orgChartInstructions}</p>
+              <TreeNode nodes={treeView} />
+            </div>
+          }
           rightButtonType={BUTTON_TYPE.secondary}
           rightButtonTitle={LOCALIZE.commons.close}
         />

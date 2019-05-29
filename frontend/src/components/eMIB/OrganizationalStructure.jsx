@@ -125,7 +125,12 @@ class OrganizationalStructure extends Component {
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
           title={LOCALIZE.emibTest.background.organizationalStructure.dialog.title}
-          description={<TreeNode nodes={treeView} />}
+          description={
+            <div>
+              <p>{LOCALIZE.emibTest.background.orgChartInstructions}</p>
+              <TreeNode nodes={treeView} />
+            </div>
+          }
           rightButtonType={BUTTON_TYPE.secondary}
           rightButtonTitle={LOCALIZE.commons.close}
         />
