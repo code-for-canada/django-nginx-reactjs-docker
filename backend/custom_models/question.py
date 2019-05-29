@@ -10,6 +10,6 @@ class Question(models.Model):
     question_type_id = models.ForeignKey(
         QuestionType, on_delete=models.CASCADE)
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
-    date_created = models.DateTimeField()
-    date_from = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True, blank=True)
+    date_from = models.DateTimeField(auto_now_add=True, blank=True)
     date_to = models.DateTimeField(null=True, blank=True)
