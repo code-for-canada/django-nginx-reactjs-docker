@@ -36,6 +36,10 @@ def upload_emib_sample(apps, schema_editor):
     it_body = item_type(type_desc="body")
     it_body.save()
 
+    # create quesion_types; do not use bulk_create since we need these objects later on
+    qt_email = question_type(question_type_desc="email")
+    qt_email.save()
+
     # TODO create
 
 
@@ -64,8 +68,14 @@ def destroy_emi_sample(apps, schema_editor):
     it_to = item_type.objects.using(db_alias).filter(type_desc="to").last()
     it_date = item_type.objects.using(db_alias).filter(type_desc="date").last()
     it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
+    # get question_type objects
+    qt_email = question_type.objects.using(
+        db_alias).filter(question_type_desc="email").last()
 
     # TODO roll back
+
+    # destroy question_types
+    qt_email.delete()
 
     # destroy item_types
     it_test.delete()
