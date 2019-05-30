@@ -58,7 +58,7 @@ class LoginForm extends Component {
           this.setState({ wrongCredentials: true });
         } else {
           this.setState({ wrongCredentials: false });
-          this.props.authenticateAction(true);
+          this.props.authenticateAction(response, this.props.dispatch, "/", "/");
         }
       });
     event.preventDefault();
@@ -137,14 +137,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      loginAction,
-      authenticateAction
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => ({
+  loginAction: data => dispatch(loginAction(data)),
+  authenticateAction: (userData, dispatch, location, push) =>
+    dispatch(authenticateAction(userData, dispatch, location, push)),
+  dispatch
+});
 
 export default connect(
   mapStateToProps,

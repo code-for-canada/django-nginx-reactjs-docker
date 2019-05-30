@@ -8,8 +8,18 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-// Simplified version of the authentication action (temporary)
-const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
+function authenticateAction(userData, dispatch, location, push) {
+  return async function() {
+    if (navigator.cookieEnabled) {
+      localStorage.setItem("ecom_token", userData.token);
+    }
+
+    if (location === "/login") {
+      push("/");
+    }
+    return dispatch({ type: AUTHENTICATED });
+  };
+}
 
 function registerAction(data) {
   return async function() {
@@ -54,10 +64,7 @@ const initialState = {
 const login = (state = initialState, action) => {
   switch (action.type) {
     case AUTHENTICATED:
-      return {
-        ...state,
-        authenticated: action.authenticated
-      };
+      return { authenticated: true };
     case UNAUTHENTICATED:
       return { authenticated: false };
 
