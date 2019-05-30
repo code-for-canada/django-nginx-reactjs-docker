@@ -1,7 +1,7 @@
 from django.db import models
 from .item import Item
 from .language import Language
-MAX_CHAR_LEN = 100
+MAX_CHAR_LEN = 3000
 
 # Item Text model. Stores the "display name" of an item, the item id, and the language.
 # this can be the name of a test, a text identifier of a question set, the text of a question or answer
