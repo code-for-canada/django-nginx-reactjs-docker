@@ -20,6 +20,22 @@ def upload_emib_sample(apps, schema_editor):
     l_french = language(ISO_Code_1="fr", ISO_Code_2="fr-ca")
     l_french.save()
 
+    # create item_types; do not use bulk_create since we need these objects later on
+    it_test = item_type(type_desc="test")
+    it_test.save()
+    it_question = item_type(type_desc="question")
+    it_question.save()
+    it_subject = item_type(type_desc="subject")
+    it_subject.save()
+    it_from = item_type(type_desc="from")
+    it_from.save()
+    it_to = item_type(type_desc="to")
+    it_to.save()
+    it_date = item_type(type_desc="date")
+    it_date.save()
+    it_body = item_type(type_desc="body")
+    it_body.save()
+
     # TODO create
 
 
@@ -38,7 +54,27 @@ def destroy_emi_sample(apps, schema_editor):
         ISO_Code_1="en", ISO_Code_2="en-ca").last()
     l_french = language.objects.using(db_alias).filter(
         ISO_Code_1="fr", ISO_Code_2="fr-ca").last()
+    # get item_type objects
+    it_test = item_type.objects.using(db_alias).filter(type_desc="test").last()
+    it_question = item_type.objects.using(
+        db_alias).filter(type_desc="question").last()
+    it_subject = item_type.objects.using(
+        db_alias).filter(type_desc="subject").last()
+    it_from = item_type.objects.using(db_alias).filter(type_desc="from").last()
+    it_to = item_type.objects.using(db_alias).filter(type_desc="to").last()
+    it_date = item_type.objects.using(db_alias).filter(type_desc="date").last()
+    it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
+
     # TODO roll back
+
+    # destroy item_types
+    it_test.delete()
+    it_question.delete()
+    it_subject.delete()
+    it_from.delete()
+    it_to.delete()
+    it_date.delete()
+    it_body.delete()
 
     # destroy languages
     l_english.delete()
