@@ -268,9 +268,9 @@
 					"script": {
 						"id": "9b149cd8-ca54-4559-a5cb-86798cd9077f",
 						"exec": [
-							"// request successful\r",
-							"pm.test(\"Request successful\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"// request fails (expected status code: 403)\r",
+							"pm.test(\"Request fails, since default users shouldn't be able to access the users list\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -297,6 +297,12 @@
 						"key": "Authorization",
 						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
 						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 2f8d848ea76208576d21ecd2f0647fd0f6921297",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"url": {
@@ -630,9 +636,15 @@
 					"script": {
 						"id": "aef27e12-f010-43f8-958f-d8d3a0e71397",
 						"exec": [
-							"// making sure that the api-test2 account has been deleted (expects status code: 204)\r",
+							"// TODO: find a way to create a superuser in travis config file and use this superuser to delete an account\r",
+							"/* making sure that the api-test2 account has been deleted (expects status code: 204)\r",
 							"pm.test(\"api-test2 account has been deleted successfully\", function () {\r",
 							"    pm.response.to.have.status(204);\r",
+							"});*/\r",
+							"\r",
+							"// request fails (expected status code: 403)\r",
+							"pm.test(\"Request fails (delete api-test2 account), since a default user shouldn't be able to delete other accounts\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -647,7 +659,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"value": "basic YWRtaW46UGFzc3dvcmQxMjM0IQ==",
 						"type": "text"
 					}
 				],

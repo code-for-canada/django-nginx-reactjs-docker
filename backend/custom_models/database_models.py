@@ -5,6 +5,7 @@ from django.db import models
 ##################################################################################
 
 # Creates a simple model that allow us to test the connection between the app and the DB
+# NEVER PUT PROTECTED DATA HERE, SINCE THIS MODEL IS ONLY USED FOR THE STATUS PAGE
 class DatabaseCheckManager(models.Manager):
     def create_database_entry(self, name):
         database_entry = self.create(name=name)
