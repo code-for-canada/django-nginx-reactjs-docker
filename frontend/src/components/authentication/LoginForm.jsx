@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { loginAction, authenticateAction } from "../../modules/LoginRedux";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import history from "./history";
 
 const styles = {
   loginContent: {
@@ -58,7 +58,12 @@ class LoginForm extends Component {
           this.setState({ wrongCredentials: true });
         } else {
           this.setState({ wrongCredentials: false });
-          this.props.authenticateAction(response, this.props.dispatch, "/", "/");
+          this.props.authenticateAction(
+            response,
+            this.props.dispatch,
+            window.location.pathname,
+            history.push
+          );
         }
       });
     event.preventDefault();

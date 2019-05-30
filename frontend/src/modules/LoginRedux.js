@@ -1,3 +1,5 @@
+import { PATH } from "../App";
+
 // Action Types
 // AUTH ACTIONS
 export const AUTHENTICATED = "AUTHENTICATED";
@@ -8,14 +10,23 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-function authenticateAction(userData, dispatch, location, push) {
+// verify if the user is already authenticated
+function isAuthenticated() {
+  if (typeof localStorage.token !== "undefined" && localStorage.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function authenticateAction(response, dispatch, location, push) {
   return async function() {
     if (navigator.cookieEnabled) {
-      localStorage.setItem("ecom_token", userData.token);
+      localStorage.setItem("token", response.auth_token);
     }
 
-    if (location === "/login") {
-      push("/");
+    if (location === PATH.login) {
+      push(PATH.dashboard);
     }
     return dispatch({ type: AUTHENTICATED });
   };
@@ -51,13 +62,13 @@ function loginAction(data) {
 
 // JWT tokens are not stored in our DB
 function logoutAction() {
-  localStorage.removeItem("ecom_token");
+  localStorage.removeItem("token");
   return { type: UNAUTHENTICATED };
 }
 
 // Initial State
 const initialState = {
-  authenticated: false
+  authenticated: isAuthenticated()
 };
 
 // Reducer
