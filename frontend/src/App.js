@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import "./css/lib/aurora.min.css";
 import "./css/cat-theme.css";
 import { Helmet } from "react-helmet";
@@ -17,6 +17,7 @@ import psc_logo_light from "./images/psc_logo_light.png";
 import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
+import history from "./components/authentication/history";
 
 const styles = {
   nav: {
@@ -25,7 +26,8 @@ const styles = {
 };
 
 const PATH = {
-  home: "/",
+  login: "/login",
+  dashboard: "/dashboard",
   status: "/status",
   emibSampleTest: "/emib-sample"
 };
@@ -45,7 +47,7 @@ class App extends Component {
           <html lang={this.props.currentLanguage} />
           <title>{LOCALIZE.titles.CAT}</title>
         </Helmet>
-        <Router>
+        <Router history={history}>
           <div>
             {!isTestActive && (
               <div>
@@ -65,7 +67,7 @@ class App extends Component {
                 </Navbar>
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <Nav>
-                    <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                    <Nav.Link href="/login">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
                     <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
                   </Nav>
                   <Nav>
@@ -92,7 +94,8 @@ class App extends Component {
                 <Translation variant="outline-light" />
               </Navbar>
             )}
-            <Route exact path={PATH.home} component={Home} />
+            <Route exact path={PATH.login} component={Home} />
+            {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
             <Route path={PATH.status} component={Status} />
             <Route path={PATH.emibSampleTest} component={Emib} />
           </div>
@@ -106,7 +109,8 @@ export { PATH };
 const mapStateToProps = (state, ownProps) => {
   return {
     currentLanguage: state.localize.language,
-    isTestActive: state.testStatus.isTestActive
+    isTestActive: state.testStatus.isTestActive,
+    authenticated: state.login.authenticated
   };
 };
 
