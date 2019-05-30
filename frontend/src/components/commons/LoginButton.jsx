@@ -31,14 +31,14 @@ class LoginButton extends Component {
     return (
       <div>
         {!this.props.authenticated && (
-          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.home}>
+          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.login}>
             <button className="btn btn-primary" style={styles.button}>
               {LOCALIZE.commons.login}
             </button>
           </NavLink>
         )}
         {this.props.authenticated && (
-          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.home}>
+          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.login}>
             <button
               type="button"
               className="btn btn-primary"
