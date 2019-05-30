@@ -91,9 +91,9 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
-        "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     ),
 }
 
@@ -132,5 +132,25 @@ SWAGGER_SETTINGS = {
     "LOGOUT_URL": "rest_framework:logout",
 }
 
-# Djoser settings for Rest Login
-DJOSER = {"SET_PASSWORD_RETYPE": True}
+# Djoser settings for Rest Login (https://djoser.readthedocs.io/en/latest/settings.html)
+DJOSER = {
+    "SET_PASSWORD_RETYPE": True,
+    "SEND_ACTIVATION_EMAIL": False,
+    "PERMISSIONS": {
+        # Admin Only
+        "activation": ["rest_framework.permissions.IsAdminUser"],  #
+        "set_username": ["rest_framework.permissions.IsAdminUser"],
+        "user_delete": ["rest_framework.permissions.IsAdminUser"],
+        "user_list": ["rest_framework.permissions.IsAdminUser"],
+        "password_reset": ["rest_framework.permissions.IsAdminUser"],
+        "user": ["rest_framework.permissions.IsAdminUser"],
+        # Authenticated
+        "token_destroy": ["rest_framework.permissions.IsAuthenticated"],
+        # Current User or Admin
+        "set_password": ["djoser.permissions.CurrentUserOrAdmin"],
+        # Any
+        "password_reset_confirm": ["rest_framework.permissions.AllowAny"],
+        "user_create": ["rest_framework.permissions.AllowAny"],
+        "token_create": ["rest_framework.permissions.AllowAny"],
+    },
+}
