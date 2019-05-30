@@ -5,11 +5,29 @@ from django.db import migrations
 
 
 def upload_emib_sample(apps, schema_editor):
-    pass
+    # get models
+    language = apps.get_model("custom_models", "Language")
+    item_type = apps.get_model("custom_models", "ItemType")
+    question_type = apps.get_model("custom_models", "QuestionType")
+    item = apps.get_model("custom_models", "Item")
+    item_text = apps.get_model("custom_models", "ItemText")
+    question = apps.get_model("custom_models", "Question")
+    # get db alias
+    db_alias = schema_editor.connection.alias
+    # TODO create
 
 
 def destroy_emi_sample(apps, schema_editor):
-    pass
+    # get models
+    language = apps.get_model("custom_models", "Language")
+    item_type = apps.get_model("custom_models", "ItemType")
+    question_type = apps.get_model("custom_models", "QuestionType")
+    item = apps.get_model("custom_models", "Item")
+    item_text = apps.get_model("custom_models", "ItemText")
+    question = apps.get_model("custom_models", "Question")
+    # get db alias
+    db_alias = schema_editor.connection.alias
+    # TODO roll back
 
 
 class Migration(migrations.Migration):
