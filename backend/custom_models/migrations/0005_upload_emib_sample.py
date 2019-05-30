@@ -19,6 +19,9 @@ def upload_emib_sample(apps, schema_editor):
         language(ISO_Code_1="en", ISO_Code_2="en-ca"),
         language(ISO_Code_1="fr", ISO_Code_2="fr-ca"),
     ])
+    # get language objects
+    l_english = get_language(language, db_alias, "en", "en-ca")
+    l_french = get_language(language, db_alias, "fr", "fr-ca")
     # TODO create
 
 
@@ -32,15 +35,18 @@ def destroy_emi_sample(apps, schema_editor):
     question = apps.get_model("custom_models", "Question")
     # get db alias
     db_alias = schema_editor.connection.alias
+    # get language objects
+    l_english = get_language(language, db_alias, "en", "en-ca")
+    l_french = get_language(language, db_alias, "fr", "fr-ca")
     # TODO roll back
 
     # destroy languages
-    get_language(language, db_alias, "en", "en-ca").delete()
-    get_language(language, db_alias, "fr", "fr-ca").delete()
+    l_english.delete()
+    l_french.delete()
 
 
 def get_language(language, db_alias, iso_1, iso_2):
-    return language.objects.using(db_alias).filter(ISO_Code_1=iso_1, ISO_Code_2=iso_2)
+    return language.objects.using(db_alias).filter(ISO_Code_1=iso_1, ISO_Code_2=iso_2).last()
 
 
 class Migration(migrations.Migration):
