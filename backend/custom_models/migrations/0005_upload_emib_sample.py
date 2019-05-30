@@ -120,6 +120,13 @@ def upload_emib_sample(apps, schema_editor):
                      item_type_id=it_body, order=5)
     i_q3_body.save()
 
+    # bulk create questions
+    question.objects.using(db_alias).bulk_create([
+        question(question_type_id=qt_email, item_id=i_q1),
+        question(question_type_id=qt_email, item_id=i_q2),
+        question(question_type_id=qt_email, item_id=i_q3)
+    ])
+
 
 def destroy_emi_sample(apps, schema_editor):
     # get models
@@ -188,6 +195,14 @@ def destroy_emi_sample(apps, schema_editor):
         parent_id=i_q3, item_type_id=it_date, order=4).last()
     i_q3_body = item.objects.using(db_alias).filter(
         parent_id=i_q3, item_type_id=it_body, order=5).last()
+
+    # destroy questions
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q1).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q2).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q3).delete()
 
     # TODO roll back
 
