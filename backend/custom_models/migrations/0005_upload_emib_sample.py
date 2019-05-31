@@ -196,7 +196,7 @@ def upload_emib_sample(apps, schema_editor):
     ])
 
 
-def destroy_emi_sample(apps, schema_editor):
+def destroy_emib_sample(apps, schema_editor):
     # get models
     language = apps.get_model("custom_models", "Language")
     item_type = apps.get_model("custom_models", "ItemType")
@@ -357,5 +357,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(upload_emib_sample, destroy_emi_sample),
+        migrations.RunPython(upload_emib_sample, destroy_emib_sample),
     ]
