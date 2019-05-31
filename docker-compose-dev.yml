@@ -17,7 +17,7 @@ services:
   nginx:
     build:
       context: ./
-      dockerfile: Dockerfile-server.dev
+      dockerfile: dockerfile-frontend-server.dev
     ports:
       - 443:443
     depends_on:
