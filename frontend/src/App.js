@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { updateAuthenticatedState, logoutAction } from "./modules/LoginRedux";
+import { bindActionCreators } from "redux";
 import { Router, Route } from "react-router-dom";
 import "./css/lib/aurora.min.css";
 import "./css/cat-theme.css";
@@ -36,7 +38,32 @@ class App extends Component {
   static propTypes = {
     // Props from Redux
     currentLanguage: PropTypes.string,
-    isTestActive: PropTypes.bool.isRequired
+    isTestActive: PropTypes.bool.isRequired,
+    updateAuthenticatedState: PropTypes.func,
+    logoutAction: PropTypes.func
+  };
+
+  componentDidMount = () => {
+    // getting the token from the local storage
+    const token = localStorage.token;
+
+    // checks if the token is still valid
+    fetch("/api/auth/jwt/verify_token/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ token: token })
+    }).then(response => {
+      // if valid, update the authenticated redux state to true
+      if (response.status === 200) {
+        this.props.updateAuthenticatedState();
+        // if not valid, logout and redirect to login page
+      } else {
+        this.props.logoutAction();
+        history.push(PATH.login);
+      }
+    });
   };
 
   render() {
@@ -119,7 +146,16 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      updateAuthenticatedState,
+      logoutAction
+    },
+    dispatch
+  );
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(App);
