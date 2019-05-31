@@ -2,8 +2,15 @@
 
 version: "3"
 
-services:
-  
+#services:
+#  emib-db:
+#    image: postgres
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=emib_db
+#      - POSTGRES_USER=emib
+#      - POSTGRES_PASSWORD=Password1
+
   backend:
     build: ./backend
     volumes:
@@ -12,13 +19,22 @@ services:
     command: sh entrypoint.sh
     ports:
       - 8000:8000
+    environment:
+      - ENVIRONMENT=dev
+      - DATABASE_NAME=
+      - DATABASE_USER=
+      - DATABASE_PASSWORD=
+      - DATABASE_HOST=
+      - DATABASE_PORT=
 
   nginx:
     build: 
-      context: ./frontend/
-      dockerfile: Dockerfile.dev
+      context: ./
+      dockerfile: Dockerfile-server.dev
     ports:
       - 443:443
+    depends_on:
+      - backend
 
 
 
