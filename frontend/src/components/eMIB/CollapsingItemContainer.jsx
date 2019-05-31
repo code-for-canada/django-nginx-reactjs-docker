@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "../../css/collapsing-item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faAngleUp, faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   container: {
@@ -34,13 +34,13 @@ const styles = {
 };
 
 export const ICON_TYPE = {
-  email: "fas fa-envelope",
-  task: "fas fa-tasks"
+  email: faEnvelope,
+  task: faTasks
 };
 
 class CollapsingItemContainer extends Component {
   static propTypes = {
-    iconType: PropTypes.string,
+    iconType: PropTypes.object,
     title: PropTypes.string.isRequired,
     body: PropTypes.object.isRequired
   };

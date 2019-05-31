@@ -23,7 +23,8 @@ const styles = {
       padding: 6,
       border: "1px solid #00565E",
       borderRadius: 4,
-      cursor: "pointer"
+      cursor: "pointer",
+      fontSize: 24
     },
     responseTypeIconsSelected: {
       backgroundColor: "#00565E",

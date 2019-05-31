@@ -31,7 +31,8 @@ const styles = {
       padding: 3,
       backgroundColor: "#00565E",
       border: "3px solid #009FAE",
-      borderRadius: 4
+      borderRadius: 4,
+      fontSize: 24
     },
     attribute: {
       color: "#00565E",
