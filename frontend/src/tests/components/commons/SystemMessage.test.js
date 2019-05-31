@@ -5,13 +5,14 @@ import SystemMessage, {
   CLASS_NAME,
   styles
 } from "../../../components/commons/SystemMessage";
+import { faTimesCircle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 it("renders warning message", () => {
   const wrapper = mount(
     <SystemMessage messageType={MESSAGE_TYPE.warning} title={"title"} message={"message"} />
   );
   const warningAlertClassName = "alert-icon alert-warning";
-  const warningIconClassName = "fas fa-exclamation-circle";
+  const warningIconClassName = faExclamationCircle;
   const title = <h5 style={styles.h5}>title</h5>;
   const message = <p>message</p>;
   expect(warningAlertClassName === CLASS_NAME.alert).toEqual(true);
@@ -25,7 +26,7 @@ it("renders default message (warning)", () => {
     <SystemMessage messageType={"hello world"} title={"title"} message={"message"} />
   );
   const warningAlertClassName = "alert-icon alert-warning";
-  const warningIconClassName = "fas fa-exclamation-circle";
+  const warningIconClassName = faExclamationCircle;
   const title = <h5 style={styles.h5}>title</h5>;
   const message = <p>message</p>;
   expect(warningAlertClassName === CLASS_NAME.alert).toEqual(true);
@@ -39,7 +40,7 @@ it("renders error message", () => {
     <SystemMessage messageType={MESSAGE_TYPE.error} title={"title"} message={"message"} />
   );
   const errorAlertClassName = "alert-icon alert-danger";
-  const errorIconClassName = "far fa-times-circle";
+  const errorIconClassName = faTimesCircle;
   const title = <h5 style={styles.h5}>title</h5>;
   const message = <p>message</p>;
   expect(errorAlertClassName === CLASS_NAME.alert).toEqual(true);

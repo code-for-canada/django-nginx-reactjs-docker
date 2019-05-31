@@ -4,6 +4,8 @@ import { UnconnectedEditActionDialog as EditActionDialog } from "../../../compon
 import { ACTION_TYPE, EDIT_MODE, EMAIL_TYPE } from "../../../components/eMIB/constants";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
   emibInbox: {
@@ -74,39 +76,27 @@ function testCore(actionType, editMode) {
   );
 
   // The components to test; these should only be present when the proper parameters are passed in
-  const emailIcon = "fas fa-envelope";
-  const taskIcon = "fas fa-tasks";
+  const emailIcon = faEnvelope;
+  const taskIcon = faTasks;
 
   // Check if it is an email or a task
   if (actionType === ACTION_TYPE.email) {
     expect(
       wrapper
-        .find("i")
+        .find(FontAwesomeIcon)
         .first()
-        .hasClass(emailIcon)
-    ).toEqual(true);
-    expect(
-      wrapper
-        .find("i")
-        .first()
-        .hasClass(taskIcon)
-    ).toEqual(false);
+        .props().icon
+    ).toEqual(emailIcon);
     // verify that the empty emailType is overridden to be a reply
     expect(wrapper.state("action").emailType).toEqual(EMAIL_TYPE.reply);
   }
   if (actionType === ACTION_TYPE.task) {
     expect(
       wrapper
-        .find("i")
+        .find(FontAwesomeIcon)
         .first()
-        .hasClass(emailIcon)
-    ).toEqual(false);
-    expect(
-      wrapper
-        .find("i")
-        .first()
-        .hasClass(taskIcon)
-    ).toEqual(true);
+        .props().icon
+    ).toEqual(taskIcon);
   }
 
   //Check that the button click triggers the function
