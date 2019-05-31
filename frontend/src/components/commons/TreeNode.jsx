@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "../../css/lib/tree.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 // Largely based on src/js/aria.js (https://github.com/psw58/aria-tree-react/blob/master/src/js/aria.jsx)
 // From aria-tree-react project (https://github.com/psw58/aria-tree-react)
@@ -383,9 +385,9 @@ class TreeNode extends Component {
         <span className={elem.focus ? "focus" : ""} id={"span" + elem.id} data-id={elem.id}>
           <span style={{ float: "left" }}>
             {elem.expanded ? (
-              <i className="fas fa-chevron-down root" aria-hidden="true" />
+              <FontAwesomeIcon icon={faChevronDown} aria-hidden="true" />
             ) : (
-              <i className="fas fa-chevron-right root" aria-hidden="true" />
+              <FontAwesomeIcon icon={faChevronRight} aria-hidden="true" />
             )}
           </span>
           <span className="wrapper">
@@ -436,9 +438,9 @@ class TreeNode extends Component {
         >
           <span style={{ float: "left" }}>
             {this.state.nodes[elem].expanded ? (
-              <i className="fas fa-chevron-down group" aria-hidden="true" />
+              <FontAwesomeIcon icon={faChevronDown} aria-hidden="true" />
             ) : (
-              <i className="fas fa-chevron-right group" aria-hidden="true" />
+              <FontAwesomeIcon icon={faChevronRight} aria-hidden="true" />
             )}
           </span>
           <span className="wrapper">
