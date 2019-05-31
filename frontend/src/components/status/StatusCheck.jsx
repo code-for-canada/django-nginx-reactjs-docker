@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   passing: {
@@ -28,13 +30,13 @@ class StatusCheck extends React.PureComponent {
         <td>
           {isPassing && (
             <div style={styles.passing}>
-              <i className="fas fa-check-circle" />
+              <FontAwesomeIcon icon={faCheckCircle} />
               <span> {LOCALIZE.commons.passStatus}</span>
             </div>
           )}
           {!isPassing && (
             <div style={styles.failing}>
-              <i className="fas fa-times-circle" />
+              <FontAwesomeIcon icon={faTimesCircle} />
               <span> {LOCALIZE.commons.failStatus}</span>
             </div>
           )}

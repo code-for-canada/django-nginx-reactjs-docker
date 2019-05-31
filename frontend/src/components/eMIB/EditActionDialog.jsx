@@ -16,6 +16,8 @@ import {
   readEmail
 } from "../../modules/EmibInboxRedux";
 import Modal from "react-modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const customStyles = {
   content: {
@@ -175,7 +177,7 @@ class EditActionDialog extends Component {
           <div>
             {actionType === ACTION_TYPE.email && (
               <div>
-                <i style={styles.icon} className="fas fa-envelope" />
+                <FontAwesomeIcon style={styles.icon} icon={faEnvelope} />
                 <h2>
                   {editMode === EDIT_MODE.create &&
                     LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
@@ -186,7 +188,7 @@ class EditActionDialog extends Component {
             )}
             {actionType === ACTION_TYPE.task && (
               <div>
-                <i style={styles.icon} className="fas fa-tasks" />
+                <FontAwesomeIcon style={styles.icon} icon={faTasks} />
                 <h2>
                   {editMode === EDIT_MODE.create &&
                     LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
