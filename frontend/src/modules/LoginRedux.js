@@ -10,19 +10,10 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-// verify if the user is already authenticated
-function isAuthenticated() {
-  if (typeof localStorage.token !== "undefined" && localStorage.length > 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 function authenticateAction(response, dispatch, location, push) {
   return async function() {
     if (navigator.cookieEnabled) {
-      localStorage.setItem("token", response.auth_token);
+      localStorage.setItem("token", response.token);
     }
 
     if (location === PATH.login) {
@@ -30,6 +21,10 @@ function authenticateAction(response, dispatch, location, push) {
     }
     return dispatch({ type: AUTHENTICATED });
   };
+}
+
+function updateAuthenticatedState() {
+  return { type: AUTHENTICATED };
 }
 
 function registerAction(data) {
@@ -48,7 +43,7 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
-    let response = await fetch("/api/auth/token/create/", {
+    let response = await fetch("/api/auth/jwt/create_token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -68,7 +63,7 @@ function logoutAction() {
 
 // Initial State
 const initialState = {
-  authenticated: isAuthenticated()
+  authenticated: false
 };
 
 // Reducer
@@ -85,4 +80,11 @@ const login = (state = initialState, action) => {
 };
 
 export default login;
-export { initialState, registerAction, loginAction, authenticateAction, logoutAction };
+export {
+  initialState,
+  registerAction,
+  loginAction,
+  authenticateAction,
+  logoutAction,
+  updateAuthenticatedState
+};
