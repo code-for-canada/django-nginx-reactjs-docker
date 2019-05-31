@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import LOCALIZE from "../../text_resources";
 import scrollToTop from "../../helpers/scrollToTop";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   displayedButton: {
@@ -52,7 +54,7 @@ class BackToTop extends Component {
               className="btn btn-backtotop"
               onClick={() => scrollToTop()}
             >
-              <i className="fa fa-arrow-up icon" />
+              <FontAwesomeIcon icon={faArrowUp} />
               &nbsp;{LOCALIZE.commons.backToTop}
             </a>
           </div>

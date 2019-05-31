@@ -7,6 +7,8 @@ import PopupBox, { BUTTON_TYPE, BUTTON_STATE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import LOCALIZE from "../../text_resources";
 import { deactivateTest } from "../../modules/TestStatusRedux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   button: {
@@ -85,7 +87,7 @@ class QuitTest extends Component {
               onClick={this.openQuitPopup}
               aria-label={LOCALIZE.emibTest.testFooter.quitTestPopupBox.title}
             >
-              <i className="fas fa-sign-out-alt" />
+              <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
             <PopupBox
               show={this.state.showQuitPopup}
