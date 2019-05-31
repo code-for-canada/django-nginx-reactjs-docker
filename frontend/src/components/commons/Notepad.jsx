@@ -3,6 +3,8 @@ import LOCALIZE from "../../text_resources";
 import TextareaAutosize from "react-textarea-autosize";
 import "../../css/emib-tabs.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT } from "../eMIB/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const NOTEPAD_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT - 5}px)`;
 const SECTION_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT + 40}px)`;
@@ -107,13 +109,13 @@ class Notepad extends Component {
             >
               {!notepadHidden && (
                 <span>
-                  <i style={styles.hideNotepadBtnIcon} className="fas fa-minus-circle" />
+                  <FontAwesomeIcon style={styles.hideNotepadBtnIcon} icon={faMinusCircle} />
                   {LOCALIZE.commons.notepad.hideButton}
                 </span>
               )}
               {notepadHidden && (
                 <span style={styles.openText}>
-                  <i style={styles.hideNotepadBtnIcon} className="fas fa-plus-circle" />
+                  <FontAwesomeIcon style={styles.hideNotepadBtnIcon} icon={faPlusCircle} />
                   {LOCALIZE.commons.notepad.openButton}
                 </span>
               )}

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { emailShape } from "./constants";
 import "../../css/inbox.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faEnvelope, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   //buttons
@@ -112,15 +114,15 @@ class EmailPreview extends Component {
         <div className={this.props.isSelected ? "" : "email-preview-button"} style={buttonStyle}>
           <div id={this.props.isRead ? "read-email-preview" : "unread-email-preview"}>
             {this.props.isRead ? (
-              <i className="far fa-envelope-open" style={imageStyle} />
+              <FontAwesomeIcon icon={faEnvelopeOpen} style={imageStyle} />
             ) : (
-              <i className="fas fa-envelope" style={imageStyle} />
+              <FontAwesomeIcon icon={faEnvelope} style={imageStyle} />
             )}
             &nbsp;
             {LOCALIZE.emibTest.inboxPage.emailId}
             {email.id + 1}
             {this.props.isRepliedTo && (
-              <i className="fas fa-sign-out-alt" style={{ float: "right", ...imageStyle }} />
+              <FontAwesomeIcon icon={faSignOutAlt} style={{ float: "right", ...imageStyle }} />
             )}
           </div>
           <div style={subject}>{email.subject}</div>

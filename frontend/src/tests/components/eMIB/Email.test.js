@@ -3,6 +3,8 @@ import { shallow } from "enzyme";
 import { UnconnectedEmail as Email } from "../../../components/eMIB/Email";
 import CollapsingItemContainer from "../../../components/eMIB/CollapsingItemContainer";
 import { EMAIL_TYPE, ACTION_TYPE } from "../../../components/eMIB/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const emailStub = {
   id: 0,
@@ -13,7 +15,7 @@ const emailStub = {
   body: "Body 1"
 };
 
-const hasAction = <i className="fas fa-sign-out-alt" style={{ color: "#00565E" }} />;
+const hasAction = <FontAwesomeIcon icon={faSignOutAlt} style={{ color: "#00565E" }} />;
 
 it("default email renders with subject as an h3", () => {
   const wrapper = shallow(

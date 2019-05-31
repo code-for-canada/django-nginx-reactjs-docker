@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "../../css/collapsing-item.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp, faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   container: {
@@ -32,13 +34,13 @@ const styles = {
 };
 
 export const ICON_TYPE = {
-  email: "fas fa-envelope",
-  task: "fas fa-tasks"
+  email: faEnvelope,
+  task: faTasks
 };
 
 class CollapsingItemContainer extends Component {
   static propTypes = {
-    iconType: PropTypes.string,
+    iconType: PropTypes.object,
     title: PropTypes.string.isRequired,
     body: PropTypes.object.isRequired
   };
@@ -58,21 +60,25 @@ class CollapsingItemContainer extends Component {
 
     if (isCollapsed) {
       buttonClass = "btn btn-secondary";
-      iconClass = "fas fa-angle-down blue-expand-icon";
+      iconClass = faAngleDown;
       containerClass = "";
     } else if (!isCollapsed) {
       buttonClass = "btn btn-primary expanded-button-style";
-      iconClass = "fas fa-angle-up white-expand-icon";
+      iconClass = faAngleUp;
       containerClass = "expanded-container-style";
     }
 
     return (
       <div className={`${containerClass} collapsing-item-container`} style={styles.container}>
         <button className={buttonClass} style={styles.button} onClick={this.expandItem}>
-          <i className={iconType} style={styles.emailAndTaskIcon} />
+          <FontAwesomeIcon icon={iconType} style={styles.emailAndTaskIcon} />
           <span style={styles.title}>{title}</span>
         </button>
-        <i id="white-expand-icon-on-hover" className={iconClass} style={styles.expandIcon} />
+        <FontAwesomeIcon
+          id="white-expand-icon-on-hover"
+          icon={iconClass}
+          style={styles.expandIcon}
+        />
         {!isCollapsed && <div style={styles.contentContainer}>{body}</div>}
       </div>
     );

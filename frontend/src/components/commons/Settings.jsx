@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   button: {
@@ -32,7 +34,7 @@ class Settings extends Component {
           onClick={this.toggleDialog}
           aria-label="System settings"
         >
-          <i className="fas fa-cog" />
+          <FontAwesomeIcon icon={faCog} />
         </Button>
         <PopupBox
           show={this.state.isDialogOpen}

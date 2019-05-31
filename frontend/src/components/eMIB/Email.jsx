@@ -9,6 +9,8 @@ import ActionViewEmail from "./ActionViewEmail";
 import ActionViewTask from "./ActionViewTask";
 import CollapsingItemContainer, { ICON_TYPE } from "./CollapsingItemContainer";
 import EmailContent from "./EmailContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   header: {
@@ -87,7 +89,7 @@ class Email extends Component {
           </div>
           {hasTakenAction && (
             <div className="font-weight-bold" style={styles.replyStatus}>
-              <i className="fas fa-sign-out-alt" style={styles.replyIcon} />
+              <FontAwesomeIcon icon={faSignOutAlt} style={styles.replyIcon} />
               {LOCALIZE.formatString(
                 LOCALIZE.emibTest.inboxPage.yourActions,
                 emailCount,
@@ -108,7 +110,7 @@ class Email extends Component {
               className="btn btn-primary"
               onClick={this.showAddEmailDialog}
             >
-              <i className="fas fa-envelope" />
+              <FontAwesomeIcon icon={faEnvelope} />
               &emsp;
               {LOCALIZE.emibTest.inboxPage.addReply}
             </button>
@@ -119,7 +121,7 @@ class Email extends Component {
               className="btn btn-primary"
               onClick={this.showAddTaskDialog}
             >
-              <i className="fas fa-tasks" />
+              <FontAwesomeIcon icon={faTasks} />
               &emsp;
               {LOCALIZE.emibTest.inboxPage.addTask}
             </button>

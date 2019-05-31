@@ -11,6 +11,8 @@ import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { contactShape } from "./constants";
 import { contactNameFromId } from "../../helpers/transformations";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   type: {
@@ -29,7 +31,8 @@ const styles = {
       padding: 3,
       backgroundColor: "#00565E",
       border: "3px solid #009FAE",
-      borderRadius: 4
+      borderRadius: 4,
+      fontSize: 24
     },
     attribute: {
       color: "#00565E",
@@ -110,7 +113,7 @@ class ActionViewEmail extends Component {
             </span>
             {action.emailType === EMAIL_TYPE.reply && (
               <>
-                <i className="fas fa-reply" style={styles.responseType.icon} />
+                <FontAwesomeIcon icon={faReply} style={styles.responseType.icon} />
                 <span style={styles.responseType.attribute}>
                   {LOCALIZE.emibTest.inboxPage.emailCommons.reply}
                 </span>
@@ -119,7 +122,7 @@ class ActionViewEmail extends Component {
 
             {action.emailType === EMAIL_TYPE.replyAll && (
               <>
-                <i className="fas fa-reply-all" style={styles.responseType.icon} />
+                <FontAwesomeIcon icon={faReplyAll} style={styles.responseType.icon} />
                 <span style={styles.responseType.attribute}>
                   {LOCALIZE.emibTest.inboxPage.emailCommons.replyAll}
                 </span>
@@ -127,7 +130,7 @@ class ActionViewEmail extends Component {
             )}
             {action.emailType === EMAIL_TYPE.forward && (
               <>
-                <i className="fas fa-share-square" style={styles.responseType.icon} />
+                <FontAwesomeIcon icon={faShareSquare} style={styles.responseType.icon} />
                 <span style={styles.responseType.attribute}>
                   {LOCALIZE.emibTest.inboxPage.emailCommons.forward}
                 </span>

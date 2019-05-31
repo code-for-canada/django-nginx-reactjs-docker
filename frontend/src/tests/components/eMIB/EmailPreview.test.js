@@ -1,6 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
 import EmailPreview from "../../../components/eMIB/EmailPreview";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faEnvelopeOpen, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const emailStub = {
   id: 1,
@@ -57,10 +59,10 @@ function testCore(isRead, isRepliedTo, isSelected) {
   if (isSelected) {
     symbolColor = "#D3FCFF";
   }
-  const unread = <i className="fas fa-envelope" style={{ color: symbolColor }} />;
-  const read = <i className="far fa-envelope-open" style={{ color: symbolColor }} />;
+  const unread = <FontAwesomeIcon icon={faEnvelope} style={{ color: symbolColor }} />;
+  const read = <FontAwesomeIcon icon={faEnvelopeOpen} style={{ color: symbolColor }} />;
   const reply = (
-    <i className="fas fa-sign-out-alt" style={{ float: "right", color: symbolColor }} />
+    <FontAwesomeIcon icon={faSignOutAlt} style={{ float: "right", color: symbolColor }} />
   );
   if (isRead) {
     expect(wrapper.contains(read)).toEqual(true);
