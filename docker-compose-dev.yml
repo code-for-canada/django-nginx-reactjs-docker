@@ -1,16 +1,8 @@
-#This script is for temporary dev server use only. Please do not deploy it in production in its current stage.
+#This script is for dev server use.
 
 version: "3"
 
-#services:
-#  emib-db:
-#    image: postgres
-#    restart: always
-#    environment:
-#      - POSTGRES_DB=emib_db
-#      - POSTGRES_USER=emib
-#      - POSTGRES_PASSWORD=Password1
-
+services:
   backend:
     build: ./backend
     volumes:
@@ -28,13 +20,10 @@ version: "3"
       - DATABASE_PORT=
 
   nginx:
-    build: 
+    build:
       context: ./
       dockerfile: Dockerfile-server.dev
     ports:
       - 443:443
     depends_on:
       - backend
-
-
-
