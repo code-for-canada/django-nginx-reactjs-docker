@@ -54,7 +54,7 @@ class LoginForm extends Component {
     this.props
       .loginAction({ username: this.state.username, password: this.state.password })
       .then(response => {
-        if (response.non_field_errors || typeof response.auth_token === "undefined") {
+        if (response.non_field_errors || typeof response.token === "undefined") {
           this.setState({ wrongCredentials: true });
         } else {
           this.setState({ wrongCredentials: false });
