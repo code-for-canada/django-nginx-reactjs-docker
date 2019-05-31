@@ -11,13 +11,8 @@ services:
     command: sh entrypoint.sh
     ports:
       - 8000:8000
-    environment:
-      - ENVIRONMENT=dev
-      - DATABASE_NAME=
-      - DATABASE_USER=
-      - DATABASE_PASSWORD=
-      - DATABASE_HOST=
-      - DATABASE_PORT=
+    env_file:
+      - ./.env
 
   nginx:
     build:
