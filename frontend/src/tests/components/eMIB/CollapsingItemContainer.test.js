@@ -4,9 +4,12 @@ import CollapsingItemContainer, {
   ICON_TYPE
 } from "../../../components/eMIB/CollapsingItemContainer";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faTasks, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+
 describe("Icons content types", () => {
-  const emailIcon = <i className="fas fa-envelope" />;
-  const taskIcon = <i className="fas fa-tasks" />;
+  const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
+  const taskIcon = <FontAwesomeIcon icon={faTasks} />;
 
   it("renders email icon", () => {
     const emailWrapper = shallow(
@@ -30,8 +33,8 @@ describe("Icons collapsing types", () => {
     <CollapsingItemContainer iconType={ICON_TYPE.email} title={"title"} body={<div>body</div>} />
   );
 
-  const arrowDownIconDisplayed = <i className="fas fa-angle-down blue-expand-icon" />;
-  const arrowUpIconDisplayed = <i className="fas fa-angle-up white-expand-icon" />;
+  const arrowDownIconDisplayed = <FontAwesomeIcon icon={faAngleDown} />;
+  const arrowUpIconDisplayed = <FontAwesomeIcon icon={faAngleUp} />;
 
   it("renders arrow up icon", () => {
     wrapper.setState({ isCollapsed: true });

@@ -3,6 +3,8 @@ import { shallow } from "enzyme";
 import { UnconnectedActionViewEmail } from "../../../components/eMIB/ActionViewEmail";
 import { EMAIL_TYPE, ACTION_TYPE } from "../../../components/eMIB/constants";
 import { transformContactName } from "../../../helpers/transformations";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReply, faReplyAll, faShareSquare, faShare } from "@fortawesome/free-solid-svg-icons";
 
 const addressBook = [
   { id: 0, name: "Joe", role: "Developer" },
@@ -25,9 +27,9 @@ const emailStub = {
 };
 
 describe("Response types", () => {
-  const reply = <i className="fas fa-reply" />;
-  const replyAll = <i className="fas fa-reply-all" />;
-  const forward = <i className="fas fa-share-square" />;
+  const reply = <FontAwesomeIcon icon={faReply} />;
+  const replyAll = <FontAwesomeIcon icon={faReplyAll} />;
+  const forward = <FontAwesomeIcon icon={faShareSquare} />;
 
   it("renders reply response", () => {
     const wrapper = genWrapper(EMAIL_TYPE.reply, ccValue);

@@ -6,6 +6,8 @@ import { EMAIL_TYPE, actionShape } from "./constants";
 import ReactResponsiveSelect from "react-responsive-select";
 import { transformAddressBook } from "../../helpers/transformations";
 import { contactShape } from "./constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -192,8 +194,8 @@ class EditEmail extends Component {
                         : styles.header.radioTextUnselected
                     }
                   >
-                    <i
-                      className="fas fa-reply"
+                    <FontAwesomeIcon
+                      icon={faReply}
                       style={{
                         ...styles.header.responseTypeIcons,
                         ...(replyChecked ? styles.header.responseTypeIconsSelected : {})
@@ -221,8 +223,8 @@ class EditEmail extends Component {
                         : styles.header.radioTextUnselected
                     }
                   >
-                    <i
-                      className="fas fa-reply-all"
+                    <FontAwesomeIcon
+                      icon={faReplyAll}
                       style={{
                         ...styles.header.responseTypeIcons,
                         ...(replyAllChecked ? styles.header.responseTypeIconsSelected : {})
@@ -250,8 +252,8 @@ class EditEmail extends Component {
                         : styles.header.radioTextUnselected
                     }
                   >
-                    <i
-                      className="fas fa-share-square"
+                    <FontAwesomeIcon
+                      icon={faShareSquare}
                       style={{
                         ...styles.header.responseTypeIcons,
                         ...(forwardChecked ? styles.header.responseTypeIconsSelected : {})
