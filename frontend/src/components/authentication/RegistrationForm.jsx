@@ -192,9 +192,9 @@ class RegistrationForm extends Component {
               <div className="names-grid">
                 <div className="names-grid-first-name">
                   <div style={styles.inputTitle}>
-                    <span>
+                    <label htmlFor={"first-name-field"}>
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
-                    </span>
+                    </label>
                   </div>
                   {isValidFirstName && (
                     <span className="far fa-check-circle" style={styles.iconForNames} />
@@ -205,6 +205,7 @@ class RegistrationForm extends Component {
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
+                    id="first-name-field"
                     type="text"
                     placeholder={
                       LOCALIZE.authentication.createAccount.content.inputs.firstNamePlaceholder
@@ -216,9 +217,9 @@ class RegistrationForm extends Component {
                 </div>
                 <div className="names-grid-last-name">
                   <div style={styles.inputTitle}>
-                    <span style={styles.inputTitle}>
+                    <label htmlFor={"last-name-field"}>
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
-                    </span>
+                    </label>
                   </div>
                   {isValidLastName && (
                     <span className="far fa-check-circle" style={styles.iconForNames} />
@@ -226,6 +227,7 @@ class RegistrationForm extends Component {
                   <input
                     aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
+                    id="last-name-field"
                     type="text"
                     placeholder={
                       LOCALIZE.authentication.createAccount.content.inputs.lastNamePlaceholder
@@ -238,7 +240,9 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <span>{LOCALIZE.authentication.createAccount.content.inputs.emailTitle}</span>
+                  <label htmlFor={"email-address-field"}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
+                  </label>
                 </div>
                 {isValidEmail && (
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
@@ -246,6 +250,7 @@ class RegistrationForm extends Component {
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  id="email-address-field"
                   type="text"
                   placeholder={
                     LOCALIZE.authentication.createAccount.content.inputs.emailPlaceholder
@@ -262,7 +267,9 @@ class RegistrationForm extends Component {
               )}
               <div>
                 <div style={styles.inputTitle}>
-                  <span>{LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}</span>
+                  <label htmlFor={"password-field"}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
+                  </label>
                 </div>
                 {isValidPassword && (
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
@@ -270,6 +277,7 @@ class RegistrationForm extends Component {
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  id="password-field"
                   type="password"
                   placeholder={
                     LOCALIZE.authentication.createAccount.content.inputs.passwordPlaceholder
@@ -317,9 +325,9 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <span>
+                  <label htmlFor={"password-confirmation-field"}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
-                  </span>
+                  </label>
                 </div>
                 {isValidPasswordConfirmation && (
                   <span className="far fa-check-circle" style={styles.iconForOtherFields} />
@@ -331,6 +339,7 @@ class RegistrationForm extends Component {
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
+                  id="password-confirmation-field"
                   type="password"
                   placeholder={
                     LOCALIZE.authentication.createAccount.content.inputs
