@@ -26,7 +26,9 @@ const styles = {
     margin: "24px auto"
   },
   loginError: {
-    color: "red"
+    marginTop: 12,
+    color: "#923534",
+    fontWeight: "bold"
   },
   validationError: {
     color: "red",
@@ -46,7 +48,8 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    wrongCredentials: false
+    wrongCredentials: false,
+    passwordFieldAriaLabel: LOCALIZE.authentication.login.content.inputs.passwordTitle
   };
 
   // TODO(fnormand): encrypt passwords
@@ -54,8 +57,17 @@ class LoginForm extends Component {
     this.props
       .loginAction({ username: this.state.username, password: this.state.password })
       .then(response => {
+        // credentials are wrong
         if (response.non_field_errors || typeof response.token === "undefined") {
-          this.setState({ wrongCredentials: true });
+          this.setState({
+            wrongCredentials: true,
+            passwordFieldAriaLabel:
+              LOCALIZE.authentication.login.invalidCredentials +
+              LOCALIZE.authentication.login.passwordFieldSelected
+          });
+          // focus on password field
+          document.getElementById("password").focus();
+          // right authentication
         } else {
           this.setState({ wrongCredentials: false });
           this.props.handleAuthResponseAndState(
@@ -109,7 +121,8 @@ class LoginForm extends Component {
                     </label>
                   </div>
                   <input
-                    aria-label={LOCALIZE.authentication.login.content.inputs.passwordTitle}
+                    aria-label={this.state.passwordFieldAriaLabel}
+                    aria-invalid={this.state.wrongCredentials}
                     type="password"
                     placeholder={LOCALIZE.authentication.login.content.inputs.passwordPlaceholder}
                     id="password"
@@ -120,9 +133,9 @@ class LoginForm extends Component {
                 </div>
                 <div>
                   {this.state.wrongCredentials && (
-                    <p style={styles.loginError}>
+                    <label htmlFor={"password"} style={styles.loginError}>
                       {LOCALIZE.authentication.login.invalidCredentials}
-                    </p>
+                    </label>
                   )}
                 </div>
                 <input
