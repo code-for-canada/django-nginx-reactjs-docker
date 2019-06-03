@@ -32,7 +32,7 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Email Address:",
-            passwordTitle: "Password:",
+            passwordTitle: "Password:"
           }
         },
         button: "Login",
@@ -489,7 +489,9 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "email options",
       taskOptions: "task options",
       taskTooltip: "task tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip"
+      reasonsForActionTooltip: "reasons for action tooltip",
+      passwordCreationRequirements:
+        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)"
     },
 
     //Commons
@@ -561,7 +563,7 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Adresse courriel :",
-            passwordTitle: "Mot de passe :",
+            passwordTitle: "Mot de passe :"
           }
         },
         button: "Connexion",
@@ -1023,7 +1025,9 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "options de messagerie",
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
-      reasonsForActionTooltip: "infobulle des motifs de l'action"
+      reasonsForActionTooltip: "infobulle des motifs de l'action",
+      passwordCreationRequirements:
+        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)"
     },
 
     //Commons

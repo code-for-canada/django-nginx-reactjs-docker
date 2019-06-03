@@ -274,7 +274,7 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
+                  aria-label={LOCALIZE.ariaLabel.passwordCreationRequirements}
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-invalid={!this.state.isValidPassword}
                   aria-required={"true"}
@@ -285,7 +285,7 @@ class RegistrationForm extends Component {
                   onChange={this.passwordValidation}
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
-                  <div>
+                  <label htmlFor={"password-field"}>
                     <p style={styles.validationError}>
                       {
                         LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
@@ -318,7 +318,7 @@ class RegistrationForm extends Component {
                         {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
                       </li>
                     </ul>
-                  </div>
+                  </label>
                 )}
               </div>
               <div>
