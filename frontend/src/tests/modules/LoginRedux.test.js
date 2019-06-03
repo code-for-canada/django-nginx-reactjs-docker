@@ -4,7 +4,7 @@ import login, {
   logoutAction
 } from "../../modules/LoginRedux";
 
-// authenticateAction
+// updateAuthenticateState action
 describe("authenticate action", () => {
   it("should update authenticated state to true", () => {
     const action = updateAuthenticatedState();
