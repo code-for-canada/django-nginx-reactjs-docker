@@ -58,8 +58,9 @@ class App extends Component {
       // if valid, update the authenticated redux state to true
       if (response.status === 200) {
         this.props.updateAuthenticatedState();
-        // if not valid, logout and redirect to login page
-      } else {
+      }
+      // if not valid and not the eMIB sample url, logout and redirect to login page
+      if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
         this.props.logoutAction();
         history.push(PATH.login);
       }
