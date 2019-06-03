@@ -32,9 +32,7 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Password:",
-            passwordPlaceholder: "Password"
           }
         },
         button: "Login",
@@ -563,9 +561,7 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Mot de passe :",
-            passwordPlaceholder: "Mot de passe"
           }
         },
         button: "Connexion",

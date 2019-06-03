@@ -107,7 +107,6 @@ class LoginForm extends Component {
                   <input
                     aria-label={LOCALIZE.authentication.login.content.inputs.emailTitle}
                     type="text"
-                    placeholder={LOCALIZE.authentication.login.content.inputs.emailPlaceholder}
                     id="username"
                     style={styles.inputs}
                     onChange={this.handleUsernameChange}
@@ -124,7 +123,6 @@ class LoginForm extends Component {
                     aria-label={this.state.passwordFieldAriaLabel}
                     aria-invalid={this.state.wrongCredentials}
                     type="password"
-                    placeholder={LOCALIZE.authentication.login.content.inputs.passwordPlaceholder}
                     id="password"
                     style={styles.inputs}
                     onChange={this.handlePasswordChange}
