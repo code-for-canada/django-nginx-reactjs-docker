@@ -207,6 +207,7 @@ class RegistrationForm extends Component {
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
+                    aria-invalid={!this.state.isValidFirstName}
                     id="first-name-field"
                     type="text"
                     placeholder={
@@ -229,6 +230,7 @@ class RegistrationForm extends Component {
                   <input
                     aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
+                    aria-invalid={!this.state.isValidLastName}
                     id="last-name-field"
                     type="text"
                     placeholder={
@@ -252,6 +254,7 @@ class RegistrationForm extends Component {
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-invalid={!this.state.isValidEmail}
                   id="email-address-field"
                   type="text"
                   placeholder={
@@ -279,6 +282,7 @@ class RegistrationForm extends Component {
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-invalid={!this.state.isValidPassword}
                   id="password-field"
                   type="password"
                   placeholder={
@@ -341,6 +345,7 @@ class RegistrationForm extends Component {
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
+                  aria-invalid={!this.state.isValidPasswordConfirmation}
                   id="password-confirmation-field"
                   type="password"
                   placeholder={
