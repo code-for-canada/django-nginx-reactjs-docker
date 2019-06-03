@@ -29,7 +29,6 @@ def upload_emib_sample(apps, schema_editor):
 
 
 def destroy_emib_sample(apps, schema_editor):
-    pass
     # get models
     test = apps.get_model("custom_models", "Test")
     # get db alias
