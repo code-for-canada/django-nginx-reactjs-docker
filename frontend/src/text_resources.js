@@ -49,13 +49,9 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "First Name:",
-            firstNamePlaceholder: "John",
             lastNameTitle: "Last Name:",
-            lastNamePlaceholder: "Smith",
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Password (must be between 5-15 characters):",
-            passwordPlaceholder: "Password",
             passwordErrors: {
               description: "Your password must satisfy the following:",
               upperCase: "At least one upper case",
@@ -65,7 +61,6 @@ let LOCALIZE = new LocalizedStrings({
               length: "Minimum of 5 characters and maximum of 15"
             },
             passwordConfirmationTitle: "Confirm Password:",
-            passwordConfirmationPlaceholder: "Password",
             passwordConfirmationError: "Must match the Password"
           }
         },
@@ -585,13 +580,9 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
-            firstNamePlaceholder: "John",
             lastNameTitle: "Nom de famille :",
-            lastNamePlaceholder: "Smith",
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
-            passwordPlaceholder: "Mot de passe",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
               upperCase: "Au moins une majuscule",
@@ -601,7 +592,6 @@ let LOCALIZE = new LocalizedStrings({
               length: "Au moins 5 caractères et maximum 15"
             },
             passwordConfirmationTitle: "Confirmer le mot de passe :",
-            passwordConfirmationPlaceholder: "Mot de passe",
             passwordConfirmationError: "Doit correspondre au mot de passe"
           }
         },

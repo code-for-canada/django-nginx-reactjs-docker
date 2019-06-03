@@ -210,9 +210,6 @@ class RegistrationForm extends Component {
                     aria-invalid={!this.state.isValidFirstName}
                     id="first-name-field"
                     type="text"
-                    placeholder={
-                      LOCALIZE.authentication.createAccount.content.inputs.firstNamePlaceholder
-                    }
                     value={firstNameContent}
                     style={styles.inputForNames}
                     onChange={this.firstNameValidation}
@@ -233,9 +230,6 @@ class RegistrationForm extends Component {
                     aria-invalid={!this.state.isValidLastName}
                     id="last-name-field"
                     type="text"
-                    placeholder={
-                      LOCALIZE.authentication.createAccount.content.inputs.lastNamePlaceholder
-                    }
                     value={lastNameContent}
                     style={styles.inputForNames}
                     onChange={this.lastNameValidation}
@@ -257,9 +251,6 @@ class RegistrationForm extends Component {
                   aria-invalid={!this.state.isValidEmail}
                   id="email-address-field"
                   type="text"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs.emailPlaceholder
-                  }
                   value={emailContent}
                   style={styles.inputs}
                   onChange={this.emailValidation}
@@ -285,9 +276,6 @@ class RegistrationForm extends Component {
                   aria-invalid={!this.state.isValidPassword}
                   id="password-field"
                   type="password"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs.passwordPlaceholder
-                  }
                   value={passwordContent}
                   style={styles.inputs}
                   onChange={this.passwordValidation}
@@ -348,10 +336,6 @@ class RegistrationForm extends Component {
                   aria-invalid={!this.state.isValidPasswordConfirmation}
                   id="password-confirmation-field"
                   type="password"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs
-                      .passwordConfirmationPlaceholder
-                  }
                   value={passwordConfirmationContent}
                   style={styles.inputs}
                   onChange={this.passwordConfirmationValidation}
