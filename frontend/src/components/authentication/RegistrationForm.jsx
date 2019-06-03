@@ -45,11 +45,11 @@ const styles = {
     margin: "24px auto"
   },
   validationError: {
-    color: "red",
+    color: "#923534",
     marginTop: 6
   },
   errorMessage: {
-    color: "red",
+    color: "#923534",
     fontWeight: "bold",
     padding: 0,
     marginTop: 12

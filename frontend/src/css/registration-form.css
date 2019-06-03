@@ -23,7 +23,7 @@ registration-form.css is used for the RegistrationForm.jsx styles that cannot be
 }
 
 .invalid-field {
-  border: 3px solid red;
+  border: 3px solid #923534;
 }
 
 /* this removes the 'clear field (X)' button in IE */
