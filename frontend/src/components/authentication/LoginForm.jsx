@@ -106,6 +106,7 @@ class LoginForm extends Component {
                   </div>
                   <input
                     aria-label={LOCALIZE.authentication.login.content.inputs.emailTitle}
+                    aria-required={"true"}
                     type="text"
                     id="username"
                     style={styles.inputs}
@@ -122,6 +123,7 @@ class LoginForm extends Component {
                   <input
                     aria-label={this.state.passwordFieldAriaLabel}
                     aria-invalid={this.state.wrongCredentials}
+                    aria-required={"true"}
                     type="password"
                     id="password"
                     style={styles.inputs}
