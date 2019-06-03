@@ -7,6 +7,8 @@ import { registerAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   createAccountContent: {
@@ -197,7 +199,7 @@ class RegistrationForm extends Component {
                     </label>
                   </div>
                   {isValidFirstName && (
-                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
 
                   <input
@@ -222,7 +224,7 @@ class RegistrationForm extends Component {
                     </label>
                   </div>
                   {isValidLastName && (
-                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
                   <input
                     aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
@@ -245,7 +247,7 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidEmail && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
@@ -272,7 +274,7 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidPassword && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
@@ -330,7 +332,7 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidPasswordConfirmation && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
                   aria-label={
