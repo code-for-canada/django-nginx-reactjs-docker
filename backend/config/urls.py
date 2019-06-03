@@ -5,6 +5,11 @@ from django.contrib import admin
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from views import views, database_check_view
+from rest_framework_jwt.views import (
+    obtain_jwt_token,
+    refresh_jwt_token,
+    verify_jwt_token,
+)
 
 
 schema_view = get_swagger_view(title="ThunderCAT APIs")
@@ -19,8 +24,10 @@ urlpatterns = [
     url(r"^api/auth/", include("djoser.urls.authtoken")),
     path(r"api/backend-status", views.index, name="index"),
     path("", include(router.urls)),
-    # Browsable API
     url(r"^api/auth/", include("rest_framework.urls", namespace="rest_framework")),
+    url(r"^api/auth/jwt/create_token/", obtain_jwt_token),
+    url(r"^api/auth/jwt/refresh_token/", refresh_jwt_token),
+    url(r"^api/auth/jwt/verify_token/", verify_jwt_token),
 ]
 
 if settings.DEBUG:

@@ -1,3 +1,5 @@
+import { PATH } from "../App";
+
 // Action Types
 // AUTH ACTIONS
 export const AUTHENTICATED = "AUTHENTICATED";
@@ -8,7 +10,21 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-// Simplified version of the authentication action (temporary)
+// saves the authentication token in local storage, redirects to dashbord page and update authenticated state to true
+function handleAuthResponseAndState(response, dispatch, location, push) {
+  return async function() {
+    if (navigator.cookieEnabled) {
+      localStorage.setItem("auth_token", response.token);
+    }
+
+    if (location === PATH.login) {
+      push(PATH.dashboard);
+    }
+    return dispatch(authenticateAction(true));
+  };
+}
+
+// updates authenticated state
 const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
 
 function registerAction(data) {
@@ -27,7 +43,7 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
-    let response = await fetch("/api/auth/token/create/", {
+    let response = await fetch("/api/auth/jwt/create_token/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -41,7 +57,7 @@ function loginAction(data) {
 
 // JWT tokens are not stored in our DB
 function logoutAction() {
-  localStorage.removeItem("ecom_token");
+  localStorage.removeItem("auth_token");
   return { type: UNAUTHENTICATED };
 }
 
@@ -67,4 +83,11 @@ const login = (state = initialState, action) => {
 };
 
 export default login;
-export { initialState, registerAction, loginAction, authenticateAction, logoutAction };
+export {
+  initialState,
+  registerAction,
+  loginAction,
+  authenticateAction,
+  handleAuthResponseAndState,
+  logoutAction
+};

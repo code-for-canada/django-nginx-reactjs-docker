@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { authenticateAction, logoutAction } from "./modules/LoginRedux";
+import { bindActionCreators } from "redux";
+import { Router, Route } from "react-router-dom";
 import "./css/lib/aurora.min.css";
 import "./css/cat-theme.css";
 import { Helmet } from "react-helmet";
@@ -17,6 +19,7 @@ import psc_logo_light from "./images/psc_logo_light.png";
 import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
+import history from "./components/authentication/history";
 
 const styles = {
   nav: {
@@ -25,7 +28,8 @@ const styles = {
 };
 
 const PATH = {
-  home: "/",
+  login: "/login",
+  dashboard: "/dashboard",
   status: "/status",
   emibSampleTest: "/emib-sample"
 };
@@ -34,7 +38,34 @@ class App extends Component {
   static propTypes = {
     // Props from Redux
     currentLanguage: PropTypes.string,
-    isTestActive: PropTypes.bool.isRequired
+    isTestActive: PropTypes.bool.isRequired,
+    authenticateAction: PropTypes.func,
+    logoutAction: PropTypes.func
+  };
+
+  componentDidMount = () => {
+    // getting the authentication token from the local storage
+    const auth_token = localStorage.auth_token;
+
+    // checks if the token is still valid
+    fetch("/api/auth/jwt/verify_token/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ token: auth_token })
+    }).then(response => {
+      // if valid, update the authenticated redux state to true
+      if (response.status === 200) {
+        this.props.authenticateAction(true);
+      }
+      // if not valid and not the eMIB sample url, logout and redirect to login page
+      if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
+        this.props.authenticateAction(false);
+        this.props.logoutAction();
+        history.push(PATH.login);
+      }
+    });
   };
 
   render() {
@@ -45,7 +76,7 @@ class App extends Component {
           <html lang={this.props.currentLanguage} />
           <title>{LOCALIZE.titles.CAT}</title>
         </Helmet>
-        <Router>
+        <Router history={history}>
           <div>
             {!isTestActive && (
               <div>
@@ -65,7 +96,12 @@ class App extends Component {
                 </Navbar>
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <Nav>
-                    <Nav.Link href="/">{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                    {!this.props.authenticated && (
+                      <Nav.Link href={PATH.login}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                    )}
+                    {this.props.authenticated && (
+                      <Nav.Link href={PATH.dashboard}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                    )}
                     <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
                   </Nav>
                   <Nav>
@@ -92,7 +128,8 @@ class App extends Component {
                 <Translation variant="outline-light" />
               </Navbar>
             )}
-            <Route exact path={PATH.home} component={Home} />
+            <Route exact path={PATH.login} component={Home} />
+            {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
             <Route path={PATH.status} component={Status} />
             <Route path={PATH.emibSampleTest} component={Emib} />
           </div>
@@ -106,11 +143,21 @@ export { PATH };
 const mapStateToProps = (state, ownProps) => {
   return {
     currentLanguage: state.localize.language,
-    isTestActive: state.testStatus.isTestActive
+    isTestActive: state.testStatus.isTestActive,
+    authenticated: state.login.authenticated
   };
 };
 
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      authenticateAction,
+      logoutAction
+    },
+    dispatch
+  );
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(App);

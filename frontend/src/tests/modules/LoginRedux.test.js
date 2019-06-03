@@ -28,5 +28,3 @@ describe("logout action", () => {
     expect(action).toEqual({ type: "UNAUTHENTICATED" });
   });
 });
-
-// TODO(fnormand): Add tests for registerAction

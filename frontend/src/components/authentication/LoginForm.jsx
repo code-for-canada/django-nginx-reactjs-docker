@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
-import { loginAction, authenticateAction } from "../../modules/LoginRedux";
-import { bindActionCreators } from "redux";
+import { loginAction, handleAuthResponseAndState } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
+import history from "./history";
 
 const styles = {
   loginContent: {
@@ -38,7 +38,7 @@ class LoginForm extends Component {
   static propTypes = {
     // Props from Redux
     loginAction: PropTypes.func,
-    authenticateAction: PropTypes.func,
+    handleAuthResponseAndState: PropTypes.func,
     setLoginState: PropTypes.func,
     authenticated: PropTypes.bool
   };
@@ -54,11 +54,16 @@ class LoginForm extends Component {
     this.props
       .loginAction({ username: this.state.username, password: this.state.password })
       .then(response => {
-        if (response.non_field_errors || typeof response.auth_token === "undefined") {
+        if (response.non_field_errors || typeof response.token === "undefined") {
           this.setState({ wrongCredentials: true });
         } else {
           this.setState({ wrongCredentials: false });
-          this.props.authenticateAction(true);
+          this.props.handleAuthResponseAndState(
+            response,
+            this.props.dispatch,
+            window.location.pathname,
+            history.push
+          );
         }
       });
     event.preventDefault();
@@ -141,14 +146,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      loginAction,
-      authenticateAction
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => ({
+  loginAction: data => dispatch(loginAction(data)),
+  handleAuthResponseAndState: (userData, dispatch, location, push) =>
+    dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
+  dispatch
+});
 
 export default connect(
   mapStateToProps,
