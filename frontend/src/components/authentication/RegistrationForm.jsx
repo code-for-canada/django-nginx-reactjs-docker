@@ -208,6 +208,7 @@ class RegistrationForm extends Component {
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
                     aria-invalid={!this.state.isValidFirstName}
+                    aria-required={"true"}
                     id="first-name-field"
                     type="text"
                     value={firstNameContent}
@@ -228,6 +229,7 @@ class RegistrationForm extends Component {
                     aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
                     aria-invalid={!this.state.isValidLastName}
+                    aria-required={"true"}
                     id="last-name-field"
                     type="text"
                     value={lastNameContent}
@@ -249,6 +251,7 @@ class RegistrationForm extends Component {
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-invalid={!this.state.isValidEmail}
+                  aria-required={"true"}
                   id="email-address-field"
                   type="text"
                   value={emailContent}
@@ -274,6 +277,7 @@ class RegistrationForm extends Component {
                   aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-invalid={!this.state.isValidPassword}
+                  aria-required={"true"}
                   id="password-field"
                   type="password"
                   value={passwordContent}
@@ -334,6 +338,7 @@ class RegistrationForm extends Component {
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
                   aria-invalid={!this.state.isValidPasswordConfirmation}
+                  aria-required={"true"}
                   id="password-confirmation-field"
                   type="password"
                   value={passwordConfirmationContent}
