@@ -44,8 +44,8 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    // getting the token from the local storage
-    const token = localStorage.token;
+    // getting the authentication token from the local storage
+    const auth_token = localStorage.auth_token;
 
     // checks if the token is still valid
     fetch("/api/auth/jwt/verify_token/", {
@@ -53,7 +53,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ token: token })
+      body: JSON.stringify({ token: auth_token })
     }).then(response => {
       // if valid, update the authenticated redux state to true
       if (response.status === 200) {

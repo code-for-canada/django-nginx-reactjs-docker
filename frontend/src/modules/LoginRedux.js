@@ -13,7 +13,7 @@ export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 function authenticateAction(response, dispatch, location, push) {
   return async function() {
     if (navigator.cookieEnabled) {
-      localStorage.setItem("token", response.token);
+      localStorage.setItem("auth_token", response.token);
     }
 
     if (location === PATH.login) {
@@ -57,7 +57,7 @@ function loginAction(data) {
 
 // JWT tokens are not stored in our DB
 function logoutAction() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("auth_token");
   return { type: UNAUTHENTICATED };
 }
 
