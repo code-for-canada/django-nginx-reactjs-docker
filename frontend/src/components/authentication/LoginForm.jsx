@@ -83,7 +83,9 @@ class LoginForm extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.authentication.login.content.inputs.emailTitle}</span>
+                    <label htmlFor={"username"}>
+                      {LOCALIZE.authentication.login.content.inputs.emailTitle}
+                    </label>
                   </div>
                   <input
                     aria-label={LOCALIZE.authentication.login.content.inputs.emailTitle}
@@ -97,7 +99,9 @@ class LoginForm extends Component {
                 </div>
                 <div>
                   <div style={styles.inputTitles}>
-                    <span>{LOCALIZE.authentication.login.content.inputs.passwordTitle}</span>
+                    <label htmlFor={"password"}>
+                      {LOCALIZE.authentication.login.content.inputs.passwordTitle}
+                    </label>
                   </div>
                   <input
                     aria-label={LOCALIZE.authentication.login.content.inputs.passwordTitle}
