@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { updateAuthenticatedState, logoutAction } from "./modules/LoginRedux";
+import { authenticateAction, logoutAction } from "./modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { Router, Route } from "react-router-dom";
 import "./css/lib/aurora.min.css";
@@ -39,7 +39,7 @@ class App extends Component {
     // Props from Redux
     currentLanguage: PropTypes.string,
     isTestActive: PropTypes.bool.isRequired,
-    updateAuthenticatedState: PropTypes.func,
+    authenticateAction: PropTypes.func,
     logoutAction: PropTypes.func
   };
 
@@ -57,10 +57,11 @@ class App extends Component {
     }).then(response => {
       // if valid, update the authenticated redux state to true
       if (response.status === 200) {
-        this.props.updateAuthenticatedState();
+        this.props.authenticateAction(true);
       }
       // if not valid and not the eMIB sample url, logout and redirect to login page
       if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
+        this.props.authenticateAction(false);
         this.props.logoutAction();
         history.push(PATH.login);
       }
@@ -150,7 +151,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      updateAuthenticatedState,
+      authenticateAction,
       logoutAction
     },
     dispatch

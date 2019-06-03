@@ -1,15 +1,17 @@
-import login, {
-  updateAuthenticatedState,
-  initialState,
-  logoutAction
-} from "../../modules/LoginRedux";
+import login, { authenticateAction, initialState, logoutAction } from "../../modules/LoginRedux";
 
-// updateAuthenticateState action
+// authenticateAction
 describe("authenticate action", () => {
   it("should update authenticated state to true", () => {
-    const action = updateAuthenticatedState();
+    const action = authenticateAction(true);
     expect(login(initialState, action)).toEqual({
       authenticated: true
+    });
+  });
+  it("should update authenticated state to false", () => {
+    const action = authenticateAction(false);
+    expect(login(initialState, action)).toEqual({
+      authenticated: false
     });
   });
 });

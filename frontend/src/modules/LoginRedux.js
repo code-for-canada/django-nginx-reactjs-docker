@@ -10,7 +10,8 @@ export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
 export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE";
 
-function authenticateAction(response, dispatch, location, push) {
+// saves the authentication token in local storage, redirects to dashbord page and update authenticated state to true
+function handleAuthResponseAndState(response, dispatch, location, push) {
   return async function() {
     if (navigator.cookieEnabled) {
       localStorage.setItem("auth_token", response.token);
@@ -19,13 +20,12 @@ function authenticateAction(response, dispatch, location, push) {
     if (location === PATH.login) {
       push(PATH.dashboard);
     }
-    return dispatch({ type: AUTHENTICATED });
+    return dispatch(authenticateAction(true));
   };
 }
 
-function updateAuthenticatedState() {
-  return { type: AUTHENTICATED };
-}
+// updates authenticated state
+const authenticateAction = authenticated => ({ type: AUTHENTICATED, authenticated });
 
 function registerAction(data) {
   return async function() {
@@ -70,7 +70,10 @@ const initialState = {
 const login = (state = initialState, action) => {
   switch (action.type) {
     case AUTHENTICATED:
-      return { authenticated: true };
+      return {
+        ...state,
+        authenticated: action.authenticated
+      };
     case UNAUTHENTICATED:
       return { authenticated: false };
 
@@ -85,6 +88,6 @@ export {
   registerAction,
   loginAction,
   authenticateAction,
-  logoutAction,
-  updateAuthenticatedState
+  handleAuthResponseAndState,
+  logoutAction
 };

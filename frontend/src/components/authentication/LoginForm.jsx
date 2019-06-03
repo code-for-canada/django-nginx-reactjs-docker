@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
-import { loginAction, authenticateAction } from "../../modules/LoginRedux";
+import { loginAction, handleAuthResponseAndState } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import history from "./history";
 
@@ -38,7 +38,7 @@ class LoginForm extends Component {
   static propTypes = {
     // Props from Redux
     loginAction: PropTypes.func,
-    authenticateAction: PropTypes.func,
+    handleAuthResponseAndState: PropTypes.func,
     setLoginState: PropTypes.func,
     authenticated: PropTypes.bool
   };
@@ -58,7 +58,7 @@ class LoginForm extends Component {
           this.setState({ wrongCredentials: true });
         } else {
           this.setState({ wrongCredentials: false });
-          this.props.authenticateAction(
+          this.props.handleAuthResponseAndState(
             response,
             this.props.dispatch,
             window.location.pathname,
@@ -144,8 +144,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
-  authenticateAction: (userData, dispatch, location, push) =>
-    dispatch(authenticateAction(userData, dispatch, location, push)),
+  handleAuthResponseAndState: (userData, dispatch, location, push) =>
+    dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
   dispatch
 });
 
