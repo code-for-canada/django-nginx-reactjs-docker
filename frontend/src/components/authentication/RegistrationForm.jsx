@@ -150,6 +150,8 @@ class RegistrationForm extends Component {
         // account already exists
         if (response.username[0] === "A user with that username already exists.") {
           this.setState({ accountExistsError: true });
+          // focus on password field
+          document.getElementById("email-address-field").focus();
           // account successfully created
         } else {
           this.setState({ showDialog: true, accountExistsError: false });
@@ -172,7 +174,8 @@ class RegistrationForm extends Component {
       isValidPassword,
       isFirstPasswordLoad,
       passwordConfirmationContent,
-      isValidPasswordConfirmation
+      isValidPasswordConfirmation,
+      accountExistsError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -248,7 +251,12 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
+                  aria-label={
+                    accountExistsError
+                      ? LOCALIZE.authentication.createAccount.content.inputs.emailTitle +
+                        LOCALIZE.authentication.createAccount.accountAlreadyExistsError
+                      : LOCALIZE.authentication.createAccount.content.inputs.emailTitle
+                  }
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-invalid={!this.state.isValidEmail}
                   aria-required={"true"}
