@@ -10,7 +10,6 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ItemSerializer
     # allows only GET requests
     permission_classes = [permissions.IsAdminUser]
-    print("DIRE LORD 2")
 
     def get_queryset(self):
         queryset = Item.objects.all()
