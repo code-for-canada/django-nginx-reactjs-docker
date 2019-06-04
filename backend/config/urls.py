@@ -29,7 +29,7 @@ urlpatterns = [
     url(r"^api/auth/jwt/create_token/", obtain_jwt_token),
     url(r"^api/auth/jwt/refresh_token/", refresh_jwt_token),
     url(r"^api/auth/jwt/verify_token/", verify_jwt_token),
-    url('^api/test-check/(?P<item_id>.+)/$', test_view.TestSet),
+    url('^api/test-check/(?P<test_name>.+)/$', test_view.TestSet),
 ]
 
 if settings.DEBUG:
