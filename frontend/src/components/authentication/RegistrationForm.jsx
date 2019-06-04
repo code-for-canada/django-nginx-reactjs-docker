@@ -332,7 +332,12 @@ class RegistrationForm extends Component {
                 )}
                 <input
                   aria-label={
-                    LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle
+                    isValidPasswordConfirmation
+                      ? LOCALIZE.authentication.createAccount.content.inputs
+                          .passwordConfirmationTitle
+                      : LOCALIZE.authentication.createAccount.content.inputs
+                          .passwordConfirmationTitle +
+                        LOCALIZE.ariaLabel.passwordConfirmationRequirements
                   }
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
@@ -346,9 +351,9 @@ class RegistrationForm extends Component {
                   onChange={this.passwordConfirmationValidation}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <p style={styles.validationError}>
+                  <label htmlFor={"password-confirmation-field"} style={styles.validationError}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
-                  </p>
+                  </label>
                 )}
               </div>
               <button
