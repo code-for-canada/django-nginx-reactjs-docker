@@ -16,19 +16,22 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
         # get the querysets
         item_queryset = Item.objects.all()
         test_queryset = Test.objects.all()
+        # default the return sets:
+        test_returnset = None
+        item_test_returnset = None
         # get the test_name from the parameter
         filter_value = self.request.query_params.get('test_name', None)
         # if there is a value, look it up
         if filter_value is not None:
-            test_queryset = test_queryset.filter(test_name=filter_value)
+            test_returnset = test_queryset.filter(test_name=filter_value)
 
         # get the item id and look up the item (if possible)
-        item_id = test_queryset.last().item_id_id
+        item_id = test_returnset.last().item_id_id
         if item_id is not None:
-            item_queryset = item_queryset.filter(item_id=item_id)
-        print(item_queryset.last())
+            item_test_returnset = item_queryset.filter(item_id=item_id)
+        print(item_test_returnset.last())
         # return the result
-        return test_queryset
+        return test_returnset
 
 # http://localhost/api/test-check/?item_id=<item_id>
 # http://localhost/api/test-check/?test_name=emibSampleTest
