@@ -154,24 +154,25 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = event => {
-    this.props
-      .registerAction({
-        username: this.state.emailContent,
-        email: this.state.emailContent,
-        password: this.state.passwordContent
-      })
-      .then(response => {
-        // account already exists
-        if (response.username[0] === "A user with that username already exists.") {
-          this.setState({ accountExistsError: true });
-          // focus on password field
-          document.getElementById("email-address-field").focus();
-          // account successfully created
-        } else {
-          this.setState({ showDialog: true, accountExistsError: false });
-        }
-      });
-
+    if (this.areAllFieldsValid()) {
+      this.props
+        .registerAction({
+          username: this.state.emailContent,
+          email: this.state.emailContent,
+          password: this.state.passwordContent
+        })
+        .then(response => {
+          // account already exists
+          if (response.username[0] === "A user with that username already exists.") {
+            this.setState({ accountExistsError: true });
+            // focus on password field
+            document.getElementById("email-address-field").focus();
+            // account successfully created
+          } else {
+            this.setState({ showDialog: true, accountExistsError: false });
+          }
+        });
+    }
     event.preventDefault();
   };
 
@@ -195,12 +196,6 @@ class RegistrationForm extends Component {
     const validFieldClass = "valid-field";
     const invalidFieldClass = "invalid-field";
 
-    const submitButtonEnabled =
-      isValidFirstName &&
-      isValidLastName &&
-      isValidEmail &&
-      isValidPassword &&
-      isValidPasswordConfirmation;
     return (
       <div>
         <div>
@@ -382,12 +377,7 @@ class RegistrationForm extends Component {
                   </label>
                 )}
               </div>
-              <button
-                disabled={!submitButtonEnabled}
-                style={styles.loginBtn}
-                className="btn btn-primary"
-                type="submit"
-              >
+              <button style={styles.loginBtn} className="btn btn-primary" type="submit">
                 {LOCALIZE.authentication.createAccount.button}
               </button>
             </form>
