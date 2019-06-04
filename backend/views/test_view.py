@@ -20,6 +20,10 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
             queryset = queryset.filter(test_name=filter_value)
 
         print(queryset.last())
+        item_id = queryset.last().item_id_id
+        if item_id is not None:
+            queryset2 = queryset2.filter(item_id=item_id)
+        print(queryset2.last())
         return queryset
 
 # http://localhost/api/test-check/?item_id=<item_id>
