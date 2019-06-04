@@ -32,13 +32,12 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Password:",
-            passwordPlaceholder: "Password"
+            passwordTitle: "Password:"
           }
         },
         button: "Login",
-        invalidCredentials: "Invalid credentials!"
+        invalidCredentials: "Invalid credentials!",
+        passwordFieldSelected: "Password field selected."
       },
       createAccount: {
         title: "CREATE AN ACCOUNT",
@@ -48,13 +47,9 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "First Name:",
-            firstNamePlaceholder: "John",
             lastNameTitle: "Last Name:",
-            lastNamePlaceholder: "Smith",
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Password (must be between 5-15 characters):",
-            passwordPlaceholder: "Password",
             passwordErrors: {
               description: "Your password must satisfy the following:",
               upperCase: "At least one upper case",
@@ -64,7 +59,6 @@ let LOCALIZE = new LocalizedStrings({
               length: "Minimum of 5 characters and maximum of 15"
             },
             passwordConfirmationTitle: "Confirm Password:",
-            passwordConfirmationPlaceholder: "Password",
             passwordConfirmationError: "Must match the Password"
           }
         },
@@ -495,7 +489,10 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "email options",
       taskOptions: "task options",
       taskTooltip: "task tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip"
+      reasonsForActionTooltip: "reasons for action tooltip",
+      passwordCreationRequirements:
+        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "It must match your password"
     },
 
     //Commons
@@ -567,13 +564,12 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Mot de passe :",
-            passwordPlaceholder: "Mot de passe"
+            passwordTitle: "Mot de passe :"
           }
         },
         button: "Connexion",
-        invalidCredentials: "FR Invalid credentials!"
+        invalidCredentials: "FR Invalid credentials!",
+        passwordFieldSelected: "FR Password field selected."
       },
       createAccount: {
         title: "CRÉER UN COMPTE",
@@ -583,13 +579,9 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
-            firstNamePlaceholder: "John",
             lastNameTitle: "Nom de famille :",
-            lastNamePlaceholder: "Smith",
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
             passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
-            passwordPlaceholder: "Mot de passe",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
               upperCase: "Au moins une majuscule",
@@ -599,7 +591,6 @@ let LOCALIZE = new LocalizedStrings({
               length: "Au moins 5 caractères et maximum 15"
             },
             passwordConfirmationTitle: "Confirmer le mot de passe :",
-            passwordConfirmationPlaceholder: "Mot de passe",
             passwordConfirmationError: "Doit correspondre au mot de passe"
           }
         },
@@ -1035,7 +1026,10 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "options de messagerie",
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
-      reasonsForActionTooltip: "infobulle des motifs de l'action"
+      reasonsForActionTooltip: "infobulle des motifs de l'action",
+      passwordCreationRequirements:
+        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "FR It must match your password"
     },
 
     //Commons

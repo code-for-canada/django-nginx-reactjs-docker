@@ -7,6 +7,8 @@ import { registerAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
   createAccountContent: {
@@ -43,11 +45,11 @@ const styles = {
     margin: "24px auto"
   },
   validationError: {
-    color: "red",
+    color: "#923534",
     marginTop: 6
   },
   errorMessage: {
-    color: "red",
+    color: "#923534",
     fontWeight: "bold",
     padding: 0,
     marginTop: 12
@@ -148,6 +150,8 @@ class RegistrationForm extends Component {
         // account already exists
         if (response.username[0] === "A user with that username already exists.") {
           this.setState({ accountExistsError: true });
+          // focus on password field
+          document.getElementById("email-address-field").focus();
           // account successfully created
         } else {
           this.setState({ showDialog: true, accountExistsError: false });
@@ -170,7 +174,8 @@ class RegistrationForm extends Component {
       isValidPassword,
       isFirstPasswordLoad,
       passwordConfirmationContent,
-      isValidPasswordConfirmation
+      isValidPasswordConfirmation,
+      accountExistsError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -197,7 +202,7 @@ class RegistrationForm extends Component {
                     </label>
                   </div>
                   {isValidFirstName && (
-                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
 
                   <input
@@ -205,11 +210,10 @@ class RegistrationForm extends Component {
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
+                    aria-invalid={!this.state.isValidFirstName}
+                    aria-required={"true"}
                     id="first-name-field"
                     type="text"
-                    placeholder={
-                      LOCALIZE.authentication.createAccount.content.inputs.firstNamePlaceholder
-                    }
                     value={firstNameContent}
                     style={styles.inputForNames}
                     onChange={this.firstNameValidation}
@@ -222,16 +226,15 @@ class RegistrationForm extends Component {
                     </label>
                   </div>
                   {isValidLastName && (
-                    <span className="far fa-check-circle" style={styles.iconForNames} />
+                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
                   <input
                     aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
+                    aria-invalid={!this.state.isValidLastName}
+                    aria-required={"true"}
                     id="last-name-field"
                     type="text"
-                    placeholder={
-                      LOCALIZE.authentication.createAccount.content.inputs.lastNamePlaceholder
-                    }
                     value={lastNameContent}
                     style={styles.inputForNames}
                     onChange={this.lastNameValidation}
@@ -245,16 +248,20 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidEmail && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
+                  aria-label={
+                    accountExistsError
+                      ? LOCALIZE.authentication.createAccount.content.inputs.emailTitle +
+                        LOCALIZE.authentication.createAccount.accountAlreadyExistsError
+                      : LOCALIZE.authentication.createAccount.content.inputs.emailTitle
+                  }
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-invalid={!this.state.isValidEmail}
+                  aria-required={"true"}
                   id="email-address-field"
                   type="text"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs.emailPlaceholder
-                  }
                   value={emailContent}
                   style={styles.inputs}
                   onChange={this.emailValidation}
@@ -272,22 +279,25 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidPassword && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
+                  aria-label={
+                    isValidPassword
+                      ? LOCALIZE.authentication.createAccount.content.inputs.passwordTitle
+                      : LOCALIZE.ariaLabel.passwordCreationRequirements
+                  }
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-invalid={!this.state.isValidPassword}
+                  aria-required={"true"}
                   id="password-field"
                   type="password"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs.passwordPlaceholder
-                  }
                   value={passwordContent}
                   style={styles.inputs}
                   onChange={this.passwordValidation}
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
-                  <div>
+                  <label htmlFor={"password-field"}>
                     <p style={styles.validationError}>
                       {
                         LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
@@ -320,7 +330,7 @@ class RegistrationForm extends Component {
                         {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
                       </li>
                     </ul>
-                  </div>
+                  </label>
                 )}
               </div>
               <div>
@@ -330,29 +340,32 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidPasswordConfirmation && (
-                  <span className="far fa-check-circle" style={styles.iconForOtherFields} />
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
                   aria-label={
-                    LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle
+                    isValidPasswordConfirmation
+                      ? LOCALIZE.authentication.createAccount.content.inputs
+                          .passwordConfirmationTitle
+                      : LOCALIZE.authentication.createAccount.content.inputs
+                          .passwordConfirmationTitle +
+                        LOCALIZE.ariaLabel.passwordConfirmationRequirements
                   }
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
+                  aria-invalid={!this.state.isValidPasswordConfirmation}
+                  aria-required={"true"}
                   id="password-confirmation-field"
                   type="password"
-                  placeholder={
-                    LOCALIZE.authentication.createAccount.content.inputs
-                      .passwordConfirmationPlaceholder
-                  }
                   value={passwordConfirmationContent}
                   style={styles.inputs}
                   onChange={this.passwordConfirmationValidation}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <p style={styles.validationError}>
+                  <label htmlFor={"password-confirmation-field"} style={styles.validationError}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
-                  </p>
+                  </label>
                 )}
               </div>
               <button
