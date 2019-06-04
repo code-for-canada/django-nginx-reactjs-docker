@@ -282,7 +282,11 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={LOCALIZE.ariaLabel.passwordCreationRequirements}
+                  aria-label={
+                    isValidPassword
+                      ? LOCALIZE.authentication.createAccount.content.inputs.passwordTitle
+                      : LOCALIZE.ariaLabel.passwordCreationRequirements
+                  }
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-invalid={!this.state.isValidPassword}
                   aria-required={"true"}
