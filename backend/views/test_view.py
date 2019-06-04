@@ -13,18 +13,22 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
-        queryset2 = Item.objects.all()
-        queryset = Test.objects.all()
+        # get the querysets
+        item_queryset = Item.objects.all()
+        test_queryset = Test.objects.all()
+        # get the test_name from the parameter
         filter_value = self.request.query_params.get('test_name', None)
+        # if there is a value, look it up
         if filter_value is not None:
-            queryset = queryset.filter(test_name=filter_value)
+            test_queryset = test_queryset.filter(test_name=filter_value)
 
-        print(queryset.last())
-        item_id = queryset.last().item_id_id
+        # get the item id and look up the item (if possible)
+        item_id = test_queryset.last().item_id_id
         if item_id is not None:
-            queryset2 = queryset2.filter(item_id=item_id)
-        print(queryset2.last())
-        return queryset
+            item_queryset = item_queryset.filter(item_id=item_id)
+        print(item_queryset.last())
+        # return the result
+        return test_queryset
 
 # http://localhost/api/test-check/?item_id=<item_id>
 # http://localhost/api/test-check/?test_name=emibSampleTest
