@@ -48,8 +48,7 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    wrongCredentials: false,
-    passwordFieldAriaLabel: LOCALIZE.authentication.login.content.inputs.passwordTitle
+    wrongCredentials: false
   };
 
   // TODO(fnormand): encrypt passwords
@@ -60,10 +59,7 @@ class LoginForm extends Component {
         // credentials are wrong
         if (response.non_field_errors || typeof response.token === "undefined") {
           this.setState({
-            wrongCredentials: true,
-            passwordFieldAriaLabel:
-              LOCALIZE.authentication.login.invalidCredentials +
-              LOCALIZE.authentication.login.passwordFieldSelected
+            wrongCredentials: true
           });
           // focus on password field
           document.getElementById("password").focus();
@@ -121,7 +117,12 @@ class LoginForm extends Component {
                     </label>
                   </div>
                   <input
-                    aria-label={this.state.passwordFieldAriaLabel}
+                    aria-label={
+                      this.state.wrongCredentials
+                        ? LOCALIZE.authentication.login.invalidCredentials +
+                          LOCALIZE.authentication.login.passwordFieldSelected
+                        : LOCALIZE.authentication.login.content.inputs.passwordTitle
+                    }
                     aria-invalid={this.state.wrongCredentials}
                     aria-required={"true"}
                     type="password"
