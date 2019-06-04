@@ -4,8 +4,8 @@ import LOCALIZE from "../../text_resources";
 import { logoutAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { PATH } from "../../App";
+import { Nav } from "react-bootstrap";
 
 const styles = {
   button: {
@@ -31,14 +31,16 @@ class LoginButton extends Component {
     return (
       <div>
         {!this.props.authenticated && (
-          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.login}>
-            <button className="btn btn-primary" style={styles.button}>
-              {LOCALIZE.commons.login}
-            </button>
-          </NavLink>
+          <Nav.Link tabIndex="-1" href={PATH.login} style={styles.navlink}>
+            {window.location.pathname !== PATH.login && (
+              <button className="btn btn-primary" style={styles.button}>
+                {LOCALIZE.commons.login}
+              </button>
+            )}
+          </Nav.Link>
         )}
         {this.props.authenticated && (
-          <NavLink tabIndex="-1" style={styles.navlink} to={PATH.login}>
+          <Nav.Link tabIndex="-1" href={PATH.login} style={styles.navlink}>
             <button
               type="button"
               className="btn btn-primary"
@@ -47,7 +49,7 @@ class LoginButton extends Component {
             >
               {LOCALIZE.commons.logout}
             </button>
-          </NavLink>
+          </Nav.Link>
         )}
       </div>
     );
