@@ -139,6 +139,20 @@ class RegistrationForm extends Component {
     this.setState({ showDialog: false });
   };
 
+  areAllFieldsValid = () => {
+    if (
+      this.state.isValidFirstName &&
+      this.state.isValidLastName &&
+      this.state.isValidEmail &&
+      this.state.isValidPassword &&
+      this.state.isValidPasswordConfirmation
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   handleSubmit = event => {
     this.props
       .registerAction({
