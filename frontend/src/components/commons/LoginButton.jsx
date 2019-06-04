@@ -5,14 +5,10 @@ import { logoutAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { PATH } from "../../App";
-import { Nav } from "react-bootstrap";
 
 const styles = {
-  button: {
-    marginRight: 15
-  },
   navlink: {
-    all: "unset"
+    marginRight: 15
   }
 };
 
@@ -31,25 +27,27 @@ class LoginButton extends Component {
     return (
       <div>
         {!this.props.authenticated && (
-          <Nav.Link tabIndex="-1" href={PATH.login} style={styles.navlink}>
+          <div>
             {window.location.pathname !== PATH.login && (
-              <button className="btn btn-primary" style={styles.button}>
-                {LOCALIZE.commons.login}
-              </button>
+              <a tabIndex="-1" href={PATH.login}>
+                <button style={styles.navlink} className="btn btn-primary">
+                  {LOCALIZE.commons.login}
+                </button>
+              </a>
             )}
-          </Nav.Link>
+          </div>
         )}
         {this.props.authenticated && (
-          <Nav.Link tabIndex="-1" href={PATH.login} style={styles.navlink}>
+          <a tabIndex="-1" href={PATH.login}>
             <button
               type="button"
               className="btn btn-primary"
-              style={styles.button}
+              style={styles.navlink}
               onClick={this.handleLogout}
             >
               {LOCALIZE.commons.logout}
             </button>
-          </Nav.Link>
+          </a>
         )}
       </div>
     );
