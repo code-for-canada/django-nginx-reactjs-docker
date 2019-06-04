@@ -159,6 +159,7 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = event => {
+    // if all fields are valid, execute API errors validation
     if (this.areAllFieldsValid()) {
       this.props
         .registerAction({
@@ -166,11 +167,12 @@ class RegistrationForm extends Component {
           email: this.state.emailContent,
           password: this.state.passwordContent
         })
+        // API errors validation
         .then(response => {
           // account already exists
           if (response.username[0] === "A user with that username already exists.") {
             this.setState({ accountExistsError: true });
-            // focus on password field
+            // focus on email address field
             document.getElementById("email-address-field").focus();
             // account successfully created
           } else {
