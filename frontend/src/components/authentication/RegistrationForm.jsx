@@ -39,10 +39,13 @@ const styles = {
     position: "absolute",
     margin: "8px 0 0 484px"
   },
-  loginBtn: {
+  createAccountBtn: {
     width: 150,
     display: "block",
     margin: "24px auto"
+  },
+  enableButtonDesc: {
+    marginBottom: 24
   },
   validationError: {
     color: "#923534",
@@ -370,12 +373,17 @@ class RegistrationForm extends Component {
               </div>
               <button
                 disabled={!submitButtonEnabled}
-                style={styles.loginBtn}
+                style={styles.createAccountBtn}
                 className="btn btn-primary"
                 type="submit"
               >
                 {LOCALIZE.authentication.createAccount.button}
               </button>
+              {!submitButtonEnabled && (
+                <div tabIndex="0" style={styles.enableButtonDesc}>
+                  <p>{LOCALIZE.authentication.createAccount.enableButtonDescription}</p>
+                </div>
+              )}
             </form>
           </div>
         </div>

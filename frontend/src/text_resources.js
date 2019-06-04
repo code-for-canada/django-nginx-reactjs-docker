@@ -68,6 +68,8 @@ let LOCALIZE = new LocalizedStrings({
           description: "You have just created a new account!"
         },
         button: "Create account",
+        enableButtonDescription:
+          'The "Create account" button will be enabled when all the required fields will be valid.',
         accountAlreadyExistsError: "An account is already associated to this email address."
       }
     },
@@ -600,6 +602,8 @@ let LOCALIZE = new LocalizedStrings({
           description: "FR You have just created a new account!"
         },
         button: "Créer compte",
+        enableButtonDescription:
+          "FR The « Create account » button will be enabled when all the required fields will be valid.",
         accountAlreadyExistsError: "FR An account is already associated to this email address."
       }
     },
