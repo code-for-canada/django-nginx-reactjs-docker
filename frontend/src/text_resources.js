@@ -52,7 +52,7 @@ let LOCALIZE = new LocalizedStrings({
             lastNameError: "Must be a valid last name",
             emailTitle: "Email Address:",
             emailError: "Must be a valid email address",
-            passwordTitle: "Password (must be between 5-15 characters):",
+            passwordTitle: "Password:",
             passwordErrors: {
               description: "Your password must satisfy the following:",
               upperCase: "At least one uppercase",
@@ -584,7 +584,7 @@ let LOCALIZE = new LocalizedStrings({
             lastNameError: "FR Must be a valid last name",
             emailTitle: "Adresse courriel :",
             emailError: "FR Must be a valid email address",
-            passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
+            passwordTitle: "Mot de passe :",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
               upperCase: "Au moins une majuscule",
