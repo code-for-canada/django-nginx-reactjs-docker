@@ -127,6 +127,7 @@ class RegistrationForm extends Component {
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
+      accountExistsError: false,
       isValidFirstName: isValidFirstName,
       isValidLastName: isValidLastName,
       isValidEmail: isValidEmail,
@@ -197,7 +198,8 @@ class RegistrationForm extends Component {
       isValidPassword,
       isFirstPasswordLoad,
       passwordConfirmationContent,
-      isValidPasswordConfirmation
+      isValidPasswordConfirmation,
+      accountExistsError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -290,7 +292,7 @@ class RegistrationForm extends Component {
                   </label>
                 )}
               </div>
-              {this.state.accountExistsError && (
+              {accountExistsError && (
                 <label htmlFor={"email-address-field"} style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
                 </label>
