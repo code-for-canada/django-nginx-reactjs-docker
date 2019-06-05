@@ -492,10 +492,7 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "email options",
       taskOptions: "task options",
       taskTooltip: "task tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip",
-      passwordCreationRequirements:
-        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "It must match your password"
+      reasonsForActionTooltip: "reasons for action tooltip"
     },
 
     //Commons
@@ -1032,10 +1029,7 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "options de messagerie",
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
-      reasonsForActionTooltip: "infobulle des motifs de l'action",
-      passwordCreationRequirements:
-        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "FR It must match your password"
+      reasonsForActionTooltip: "infobulle des motifs de l'action"
     },
 
     //Commons
