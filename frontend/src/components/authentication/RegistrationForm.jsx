@@ -256,9 +256,14 @@ class RegistrationForm extends Component {
                     <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
                   <input
-                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
+                    aria-label={
+                      isValidLastName || isFirstLoad
+                        ? LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle
+                        : LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle +
+                          LOCALIZE.authentication.createAccount.content.inputs.lastNameError
+                    }
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
-                    aria-invalid={!this.state.isValidLastName}
+                    aria-invalid={!this.state.isValidLastName && !isFirstLoad}
                     aria-required={"true"}
                     id="last-name-field"
                     type="text"
@@ -267,9 +272,9 @@ class RegistrationForm extends Component {
                     onChange={this.getLastNameContent}
                   />
                   {!isValidLastName && !isFirstLoad && (
-                    <p style={styles.errorMessage}>
+                    <label htmlFor={"last-name-field"} style={styles.errorMessage}>
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameError}
-                    </p>
+                    </label>
                   )}
                 </div>
               </div>
