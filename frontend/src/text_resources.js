@@ -89,13 +89,6 @@ let LOCALIZE = new LocalizedStrings({
       description: "Here is your dashboard..."
     },
 
-    //Prototype Page
-    prototypePage: {
-      title: "Prototype",
-      welcomeMsg: "This page will be used to test out experimental UIs.",
-      startEmibSampleTest: "Start eMIB Sample Test"
-    },
-
     //Status Page
     statusPage: {
       title: "CAT Status",
@@ -623,13 +616,6 @@ let LOCALIZE = new LocalizedStrings({
     dashboard: {
       title: "FR Welcome to your dashboard",
       description: "FR Here is your dashboard..."
-    },
-
-    //Prototype Page
-    prototypePage: {
-      title: "Prototype",
-      welcomeMsg: "Cette page sera utilisée pour tester des interfaces utilisateur expérimentales.",
-      startEmibSampleTest: "Démarrer le test pratique eMIB"
     },
 
     //Status Page
