@@ -120,7 +120,11 @@ class EditTask extends Component {
                   </Popover>
                 }
               >
-                <Button style={styles.tooltipButton} variant="link">
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.taskTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
                   ?
                 </Button>
               </OverlayTrigger>
@@ -155,7 +159,11 @@ class EditTask extends Component {
                   </Popover>
                 }
               >
-                <Button style={styles.tooltipButton} variant="link">
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
                   ?
                 </Button>
               </OverlayTrigger>
