@@ -136,8 +136,6 @@ class RegistrationForm extends Component {
   };
 
   isFormValid = () => {
-    // running all fields validation
-    this.validateForm();
     // if all fields are valid
     if (
       this.state.isValidFirstName &&
@@ -161,8 +159,9 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = event => {
+    const validForm = this.isFormValid();
     // if all fields are valid, execute API errors validation
-    if (this.isFormValid()) {
+    if (validForm) {
       this.props
         .registerAction({
           username: this.state.emailContent,
@@ -401,7 +400,12 @@ class RegistrationForm extends Component {
                   </label>
                 )}
               </div>
-              <button style={styles.loginBtn} className="btn btn-primary" type="submit">
+              <button
+                style={styles.loginBtn}
+                className="btn btn-primary"
+                type="submit"
+                onClick={this.validateForm}
+              >
                 {LOCALIZE.authentication.createAccount.button}
               </button>
             </form>
