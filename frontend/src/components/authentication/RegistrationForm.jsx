@@ -223,11 +223,16 @@ class RegistrationForm extends Component {
                   )}
 
                   <input
-                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
+                    aria-label={
+                      isValidFirstName || isFirstLoad
+                        ? LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle
+                        : LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle +
+                          LOCALIZE.authentication.createAccount.content.inputs.firstNameError
+                    }
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
-                    aria-invalid={!this.state.isValidFirstName}
+                    aria-invalid={!this.state.isValidFirstName && !isFirstLoad}
                     aria-required={"true"}
                     id="first-name-field"
                     type="text"
@@ -236,9 +241,9 @@ class RegistrationForm extends Component {
                     onChange={this.getFirstNameContent}
                   />
                   {!isValidFirstName && !isFirstLoad && (
-                    <p style={styles.errorMessage}>
+                    <label htmlFor={"first-name-field"} style={styles.errorMessage}>
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameError}
-                    </p>
+                    </label>
                   )}
                 </div>
                 <div className="names-grid-last-name">
