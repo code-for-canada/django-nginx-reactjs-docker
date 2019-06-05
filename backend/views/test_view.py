@@ -34,22 +34,34 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
             return [{"error", "no associated item"}]
         item_test_returnset = item_queryset.filter(item_id=item_id)
         obj_array.extend(item_test_returnset)
-        self.get_children(item_id)
+        obj_array.extend(self.get_children(item_id))
+        json_return = serialize('json', obj_array)
         print(item_test_returnset)
         print(item_test_returnset.last())
+        print(json_return)
         # return the result
         print("-----------")
-        print(serialize('json', obj_array))
+        for item in obj_array:
+            print(item)
         print("-----------")
         return test_returnset
 
     def get_children(self, item_id):
         child_arr = []
-        print("Looking for", item_id)
         # get the querysets
         item_queryset = Item.objects.all()
+        # get all children of item_id
         item_child_returnset = item_queryset.filter(parent_id=item_id)
-        print(item_child_returnset)
+        # if there are no children, return the empty list
+        if item_child_returnset is None:
+            return []
+        # otherwise, add children to the child_array
+        child_arr.extend(item_child_returnset)
+        # for each child, recursively call this function
+        for child in item_child_returnset:
+            child_arr.extend(self.get_children(child.item_id))
+        # return the array
+        return child_arr
 
 
 def extend_array(array1, array2):
@@ -66,3 +78,6 @@ def extend_array(array1, array2):
 # more functions?
 # other API calls?
 # other views all point here, adding props?
+
+
+# for each time, get the item_type and item_text.....
