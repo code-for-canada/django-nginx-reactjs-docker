@@ -170,19 +170,24 @@ class RegistrationForm extends Component {
 
   // checking password requirements that are not satisfied
   findMissingPasswordRequirements = passwordErrorsArray => {
-    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.UPPERCASE)) {
+    const indexOfUppercase = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.UPPERCASE);
+    if (indexOfUppercase >= 0) {
       this.setState({ atLeastOneUppercase: false });
     }
-    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.LOWERCASE)) {
+    const indexOfLowercase = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.LOWERCASE);
+    if (indexOfLowercase >= 0) {
       this.setState({ atLeastOneLowercase: false });
     }
-    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.DIGIT)) {
+    const indexOfDigit = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.DIGIT);
+    if (indexOfDigit >= 0) {
       this.setState({ atLeastOneDigit: false });
     }
-    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.SPECIAL_CHARS)) {
+    const indexOfSpecialChar = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.SPECIAL_CHARS);
+    if (indexOfSpecialChar >= 0) {
       this.setState({ atLeastOneSpecialChar: false });
     }
-    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS)) {
+    const indexOfNumberOfChars = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS);
+    if (indexOfNumberOfChars >= 0) {
       this.setState({ betweenMinAndMaxChar: false });
     }
   };
