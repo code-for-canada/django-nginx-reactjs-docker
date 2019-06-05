@@ -305,13 +305,8 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    isValidPassword
-                      ? LOCALIZE.authentication.createAccount.content.inputs.passwordTitle
-                      : LOCALIZE.ariaLabel.passwordCreationRequirements
-                  }
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
-                  aria-invalid={!this.state.isValidPassword}
+                  aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
                   type="password"
@@ -366,18 +361,10 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    isValidPasswordConfirmation
-                      ? LOCALIZE.authentication.createAccount.content.inputs
-                          .passwordConfirmationTitle
-                      : LOCALIZE.authentication.createAccount.content.inputs
-                          .passwordConfirmationTitle +
-                        LOCALIZE.ariaLabel.passwordConfirmationRequirements
-                  }
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
-                  aria-invalid={!this.state.isValidPasswordConfirmation}
+                  aria-invalid={!isValidPasswordConfirmation && !isFirstLoad}
                   aria-required={"true"}
                   id="password-confirmation-field"
                   type="password"
