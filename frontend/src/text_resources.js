@@ -1039,6 +1039,7 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "options de messagerie",
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
+      emailResponseTooltip: "FR email response tooltip",
       reasonsForActionTooltip: "infobulle des motifs de l'action",
       passwordCreationRequirements:
         "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
