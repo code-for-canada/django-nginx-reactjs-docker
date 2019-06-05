@@ -170,6 +170,7 @@ class RegistrationForm extends Component {
 
   // checking password requirements that are not satisfied
   findMissingPasswordRequirements = passwordErrorsArray => {
+    // using indexOf instead of includes, since IE is not compatible with it
     const indexOfUppercase = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.UPPERCASE);
     if (indexOfUppercase >= 0) {
       this.setState({ atLeastOneUppercase: false });
