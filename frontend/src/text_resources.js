@@ -47,8 +47,11 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "First Name:",
+            firstNameError: "Must be a valid first name",
             lastNameTitle: "Last Name:",
+            lastNameError: "Must be a valid last name",
             emailTitle: "Email Address:",
+            emailError: "Must be a valid email address",
             passwordTitle: "Password (must be between 5-15 characters):",
             passwordErrors: {
               description: "Your password must satisfy the following:",
@@ -59,7 +62,7 @@ let LOCALIZE = new LocalizedStrings({
               length: "Minimum of 5 characters and maximum of 15"
             },
             passwordConfirmationTitle: "Confirm Password:",
-            passwordConfirmationError: "Must match the Password"
+            passwordConfirmationError: "Your password confirmation must match the Password"
           }
         },
         //temporary
@@ -579,8 +582,11 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
+            firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
+            lastNameError: "FR Must be a valid last name",
             emailTitle: "Adresse courriel :",
+            emailError: "FR Must be a valid email address",
             passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
@@ -591,7 +597,7 @@ let LOCALIZE = new LocalizedStrings({
               length: "Au moins 5 caractères et maximum 15"
             },
             passwordConfirmationTitle: "Confirmer le mot de passe :",
-            passwordConfirmationError: "Doit correspondre au mot de passe"
+            passwordConfirmationError: "FR Your password confirmation must match the Password"
           }
         },
         //temporary

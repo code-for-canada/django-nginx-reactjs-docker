@@ -44,15 +44,16 @@ const styles = {
     display: "block",
     margin: "24px auto"
   },
-  validationError: {
+  passwordRequirementsError: {
     color: "#923534",
-    marginTop: 6
+    marginTop: 6,
+    fontWeight: "bold"
   },
   errorMessage: {
     color: "#923534",
     fontWeight: "bold",
     padding: 0,
-    marginTop: 12
+    marginTop: 6
   }
 };
 
@@ -74,8 +75,8 @@ class RegistrationForm extends Component {
     isValidEmail: false,
     passwordContent: "",
     isValidPassword: false,
-    passwordConfirmationContent: "",
     isFirstPasswordLoad: true,
+    passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
     // PopupBox
     showDialog: false,
@@ -83,53 +84,67 @@ class RegistrationForm extends Component {
     accountExistsError: false
   };
 
-  firstNameValidation = event => {
-    const updatedFirstNameValue = event.target.value;
-    const isValid = validateName(updatedFirstNameValue);
+  getFirstNameContent = event => {
+    const firstNameContent = event.target.value;
     this.setState({
-      isFirstLoad: false,
-      firstNameContent: updatedFirstNameValue,
-      isValidFirstName: isValid
+      firstNameContent: firstNameContent
     });
   };
 
-  lastNameValidation = event => {
-    const updatedLastNameValue = event.target.value;
-    const isValid = validateName(updatedLastNameValue);
+  getLastNameContent = event => {
+    const lastNameContent = event.target.value;
     this.setState({
-      isFirstLoad: false,
-      lastNameContent: updatedLastNameValue,
-      isValidLastName: isValid
+      lastNameContent: lastNameContent
     });
   };
 
-  emailValidation = event => {
-    const updatedEmailValue = event.target.value;
-    const isValid = validateEmail(updatedEmailValue);
-    this.setState({ isFirstLoad: false, emailContent: updatedEmailValue, isValidEmail: isValid });
+  getEmailContent = event => {
+    const emailContent = event.target.value;
+    this.setState({ emailContent: emailContent });
   };
 
-  passwordValidation = event => {
-    const updatedPasswordValue = event.target.value;
-    const passwordConfirmationValue = this.state.passwordConfirmationContent;
-    const isValid = validatePassword(updatedPasswordValue);
+  getPasswordContent = event => {
+    const passwordContent = event.target.value;
+    this.setState({
+      passwordContent: passwordContent
+    });
+  };
+
+  getPasswordConfirmationContent = event => {
+    const passwordConfirmationContent = event.target.value;
+    this.setState({
+      passwordConfirmationContent: passwordConfirmationContent
+    });
+  };
+
+  validateForm = () => {
+    const isValidFirstName = validateName(this.state.firstNameContent);
+    const isValidLastName = validateName(this.state.lastNameContent);
+    const isValidEmail = validateEmail(this.state.emailContent);
+    const isValidPassword = validatePassword(this.state.passwordContent);
+    const passwordContent = this.state.passwordContent;
+    const passwordConfirmationContent = this.state.passwordConfirmationContent;
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
-      passwordContent: updatedPasswordValue,
-      isValidPassword: isValid,
-      isValidPasswordConfirmation: updatedPasswordValue === passwordConfirmationValue
+      accountExistsError: false,
+      isValidFirstName: isValidFirstName,
+      isValidLastName: isValidLastName,
+      isValidEmail: isValidEmail,
+      isValidPassword: isValidPassword,
+      isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
     });
   };
 
-  passwordConfirmationValidation = event => {
-    const updatedPasswordConfirmationValue = event.target.value;
-    const passwordValue = this.state.passwordContent;
-    this.setState({
-      isFirstLoad: false,
-      passwordConfirmationContent: updatedPasswordConfirmationValue,
-      isValidPasswordConfirmation: updatedPasswordConfirmationValue === passwordValue
-    });
+  // checks if all fields are valid
+  isFormValid = () => {
+    return (
+      this.state.isValidFirstName &&
+      this.state.isValidLastName &&
+      this.state.isValidEmail &&
+      this.state.isValidPassword &&
+      this.state.isValidPasswordConfirmation
+    );
   };
 
   redirectToLoginPage = () => {
@@ -140,24 +155,28 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = event => {
-    this.props
-      .registerAction({
-        username: this.state.emailContent,
-        email: this.state.emailContent,
-        password: this.state.passwordContent
-      })
-      .then(response => {
-        // account already exists
-        if (response.username[0] === "A user with that username already exists.") {
-          this.setState({ accountExistsError: true });
-          // focus on password field
-          document.getElementById("email-address-field").focus();
-          // account successfully created
-        } else {
-          this.setState({ showDialog: true, accountExistsError: false });
-        }
-      });
-
+    const validForm = this.isFormValid();
+    // if all fields are valid, execute API errors validation
+    if (validForm) {
+      this.props
+        .registerAction({
+          username: this.state.emailContent,
+          email: this.state.emailContent,
+          password: this.state.passwordContent
+        })
+        // API errors validation
+        .then(response => {
+          // account already exists
+          if (response.username[0] === "A user with that username already exists.") {
+            this.setState({ accountExistsError: true });
+            // focus on email address field
+            document.getElementById("email-address-field").focus();
+            // account successfully created
+          } else {
+            this.setState({ showDialog: true, accountExistsError: false });
+          }
+        });
+    }
     event.preventDefault();
   };
 
@@ -181,12 +200,6 @@ class RegistrationForm extends Component {
     const validFieldClass = "valid-field";
     const invalidFieldClass = "invalid-field";
 
-    const submitButtonEnabled =
-      isValidFirstName &&
-      isValidLastName &&
-      isValidEmail &&
-      isValidPassword &&
-      isValidPasswordConfirmation;
     return (
       <div>
         <div>
@@ -206,18 +219,22 @@ class RegistrationForm extends Component {
                   )}
 
                   <input
-                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
-                    aria-invalid={!this.state.isValidFirstName}
+                    aria-invalid={!this.state.isValidFirstName && !isFirstLoad}
                     aria-required={"true"}
                     id="first-name-field"
                     type="text"
                     value={firstNameContent}
                     style={styles.inputForNames}
-                    onChange={this.firstNameValidation}
+                    onChange={this.getFirstNameContent}
                   />
+                  {!isValidFirstName && !isFirstLoad && (
+                    <label htmlFor={"first-name-field"} style={styles.errorMessage}>
+                      {LOCALIZE.authentication.createAccount.content.inputs.firstNameError}
+                    </label>
+                  )}
                 </div>
                 <div className="names-grid-last-name">
                   <div style={styles.inputTitle}>
@@ -229,16 +246,20 @@ class RegistrationForm extends Component {
                     <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
                   <input
-                    aria-label={LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
-                    aria-invalid={!this.state.isValidLastName}
+                    aria-invalid={!this.state.isValidLastName && !isFirstLoad}
                     aria-required={"true"}
                     id="last-name-field"
                     type="text"
                     value={lastNameContent}
                     style={styles.inputForNames}
-                    onChange={this.lastNameValidation}
+                    onChange={this.getLastNameContent}
                   />
+                  {!isValidLastName && !isFirstLoad && (
+                    <label htmlFor={"last-name-field"} style={styles.errorMessage}>
+                      {LOCALIZE.authentication.createAccount.content.inputs.lastNameError}
+                    </label>
+                  )}
                 </div>
               </div>
               <div>
@@ -251,26 +272,25 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    accountExistsError
-                      ? LOCALIZE.authentication.createAccount.content.inputs.emailTitle +
-                        LOCALIZE.authentication.createAccount.accountAlreadyExistsError
-                      : LOCALIZE.authentication.createAccount.content.inputs.emailTitle
-                  }
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
-                  aria-invalid={!this.state.isValidEmail}
+                  aria-invalid={!this.state.isValidEmail && !isFirstLoad}
                   aria-required={"true"}
                   id="email-address-field"
                   type="text"
                   value={emailContent}
                   style={styles.inputs}
-                  onChange={this.emailValidation}
+                  onChange={this.getEmailContent}
                 />
+                {!isValidEmail && !isFirstLoad && (
+                  <label htmlFor={"email-address-field"} style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.emailError}
+                  </label>
+                )}
               </div>
-              {this.state.accountExistsError && (
-                <p style={styles.errorMessage}>
+              {accountExistsError && (
+                <label htmlFor={"email-address-field"} style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
-                </p>
+                </label>
               )}
               <div>
                 <div style={styles.inputTitle}>
@@ -282,29 +302,24 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    isValidPassword
-                      ? LOCALIZE.authentication.createAccount.content.inputs.passwordTitle
-                      : LOCALIZE.ariaLabel.passwordCreationRequirements
-                  }
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
-                  aria-invalid={!this.state.isValidPassword}
+                  aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
                   type="password"
                   value={passwordContent}
                   style={styles.inputs}
-                  onChange={this.passwordValidation}
+                  onChange={this.getPasswordContent}
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <label htmlFor={"password-field"}>
-                    <p style={styles.validationError}>
+                    <p style={styles.errorMessage}>
                       {
                         LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
                           .description
                       }
                     </p>
-                    <ul style={styles.validationError}>
+                    <ul style={styles.passwordRequirementsError}>
                       <li>
                         {
                           LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
@@ -343,36 +358,28 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    isValidPasswordConfirmation
-                      ? LOCALIZE.authentication.createAccount.content.inputs
-                          .passwordConfirmationTitle
-                      : LOCALIZE.authentication.createAccount.content.inputs
-                          .passwordConfirmationTitle +
-                        LOCALIZE.ariaLabel.passwordConfirmationRequirements
-                  }
                   className={
                     isValidPasswordConfirmation || isFirstLoad ? validFieldClass : invalidFieldClass
                   }
-                  aria-invalid={!this.state.isValidPasswordConfirmation}
+                  aria-invalid={!isValidPasswordConfirmation && !isFirstLoad}
                   aria-required={"true"}
                   id="password-confirmation-field"
                   type="password"
                   value={passwordConfirmationContent}
                   style={styles.inputs}
-                  onChange={this.passwordConfirmationValidation}
+                  onChange={this.getPasswordConfirmationContent}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <label htmlFor={"password-confirmation-field"} style={styles.validationError}>
+                  <label htmlFor={"password-confirmation-field"} style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
                   </label>
                 )}
               </div>
               <button
-                disabled={!submitButtonEnabled}
                 style={styles.loginBtn}
                 className="btn btn-primary"
                 type="submit"
+                onClick={this.validateForm}
               >
                 {LOCALIZE.authentication.createAccount.button}
               </button>
