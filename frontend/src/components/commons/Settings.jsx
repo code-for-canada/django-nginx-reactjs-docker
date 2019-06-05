@@ -42,58 +42,46 @@ class Settings extends Component {
           title={LOCALIZE.settings.systemSettings}
           description={
             <div>
-              <h3>Zoom (+/-)</h3>
+              <h3>{LOCALIZE.settings.zoom.title}</h3>
               <ol>
-                <li>Select the View button at the top left bar in Internet Explorer</li>
-                <li>Select Zoom.</li>
-                <li>
-                  You can select a predefined zoom level, or a custom level by selecting Custom and
-                  entering a zoom value.
-                </li>
-                <li>
-                  Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom
-                  in or out.
-                </li>
+                <li>{LOCALIZE.settings.zoom.instructionsListItem1}</li>
+                <li>{LOCALIZE.settings.zoom.instructionsListItem2}</li>
+                <li>{LOCALIZE.settings.zoom.instructionsListItem3}</li>
+                <li>{LOCALIZE.settings.zoom.instructionsListItem4}</li>
               </ol>
-              <h3>Text size</h3>
+              <h3>{LOCALIZE.settings.textSize.title}</h3>
               <ol>
-                <li>Select the View button at the top left bar in Internet Explorer</li>
-                <li>Select Text size.</li>
-                <li>Choose to make text larger or smaller than the size on the screen.</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem1}</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem2}</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem3}</li>
               </ol>
-              If the text size has not changed:
+              {LOCALIZE.settings.textSize.notChanged}
               <ol>
-                <li>
-                  Select the Tools button, and select General tab, and then, under Appearance,
-                  select Accessibility.
-                </li>
-                <li>Select the Ignore font sizes specified on webpages on the check box.</li>
-                <li>Select OK, and then select OK again.</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem4}</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem5}</li>
+                <li>{LOCALIZE.settings.textSize.instructionsListItem6}</li>
               </ol>
-              <h3>Font style</h3>
+              <h3>{LOCALIZE.settings.fontStyle.title}</h3>
               <ol>
-                <li>Select the Tools button at the top left bar in Internet Explorer.</li>
-                <li>Select Internet options.</li>
-                <li>In the General tab, under Appearance, select Accessibility. </li>
-                <li>Select the Ignore font styles specified on webpages on the check box. </li>
-                <li>Select OK.</li>
-                <li>In the General tab, under Appearance, select Fonts.</li>
-                <li>Select the fonts you want to use.</li>
-                <li>Select OK, and then select OK again.</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem1}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem2}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem3}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem4}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem5}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem6}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem7}</li>
+                <li>{LOCALIZE.settings.fontStyle.instructionsListItem8}</li>
               </ol>
-              <h3>Text and background colour</h3>
+              <h3>{LOCALIZE.settings.color.title}</h3>
               <ol>
-                <li>Select the Tools button and select Internet options.</li>
-                <li>In the General tab, under Appearance, select Accessibility. </li>
-                <li>Select the Ignore colors specified on webpages on the check box. </li>
-                <li>Select OK.</li>
-                <li>In the General tab, under Appearance, select Colors.</li>
-                <li>Uncheck the Use Windows colors check box.</li>
-                <li>
-                  For each color that you want to change, select the color box, select a new color,
-                  and then select OK.
-                </li>
-                <li>Select OK, and then select OK again.</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem1}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem2}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem3}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem4}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem5}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem6}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem7}</li>
+                <li>{LOCALIZE.settings.color.instructionsListItem8}</li>
               </ol>
             </div>
           }

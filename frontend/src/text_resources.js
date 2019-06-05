@@ -113,7 +113,52 @@ let LOCALIZE = new LocalizedStrings({
     // Settings Dialog
     settings: {
       systemSettings: "System settings",
-      okay: "Okay"
+      okay: "Okay",
+      zoom: {
+        title: "Zoom (+/-)",
+        instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Zoom.",
+        instructionsListItem3:
+          "You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+        instructionsListItem4:
+          "Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+      },
+      textSize: {
+        title: "Text size",
+        instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Text size.",
+        instructionsListItem3: "Choose to make text larger or smaller than the size on the screen.",
+        instructionsListItem4:
+          "Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+        instructionsListItem5:
+          "Select the Ignore font sizes specified on webpages on the check box.",
+        instructionsListItem6: "Select OK, and then select OK again.",
+        notChanged: "If the text size has not changed:"
+      },
+      fontStyle: {
+        title: "Font style",
+        instructionsListItem1: "Select the Tools button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Internet options.",
+        instructionsListItem3: "In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem4:
+          "Select the Ignore font styles specified on webpages on the check box.",
+        instructionsListItem5: "Select OK.",
+        instructionsListItem6: "In the General tab, under Appearance, select Fonts.",
+        instructionsListItem7: "Select the fonts you want to use.",
+        instructionsListItem8: "Select OK, and then select OK again."
+      },
+      color: {
+        title: "Text and background colour",
+        instructionsListItem1: "Select the Tools button and select Internet options.",
+        instructionsListItem2: "In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem3: "Select the Ignore colors specified on webpages on the check box.",
+        instructionsListItem4: "Select OK.",
+        instructionsListItem5: "In the General tab, under Appearance, select Colors.",
+        instructionsListItem6: "Uncheck the Use Windows colors check box.",
+        instructionsListItem7:
+          "For each color that you want to change, select the color box, select a new color, and then select OK.",
+        instructionsListItem8: "Select OK, and then select OK again."
+      }
     },
 
     //eMIB Test
@@ -648,7 +693,57 @@ let LOCALIZE = new LocalizedStrings({
     // Settings Dialog
     settings: {
       systemSettings: "FR System settings",
-      okay: "FR Okay"
+      okay: "FR Okay",
+      zoom: {
+        title: "FR Zoom (+/-)",
+        instructionsListItem1:
+          "FR Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Zoom.",
+        instructionsListItem3:
+          "FR You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+        instructionsListItem4:
+          "FR Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+      },
+      textSize: {
+        title: "FR Text size",
+        instructionsListItem1:
+          "FR Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Text size.",
+        instructionsListItem3:
+          "FR Choose to make text larger or smaller than the size on the screen.",
+        instructionsListItem4:
+          "FR Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+        instructionsListItem5:
+          "FR Select the Ignore font sizes specified on webpages on the check box.",
+        instructionsListItem6: "FR Select OK, and then select OK again.",
+        notChanged: "FR If the text size has not changed:"
+      },
+      fontStyle: {
+        title: "FR Font style",
+        instructionsListItem1:
+          "FR Select the Tools button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Internet options.",
+        instructionsListItem3: "FR In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem4:
+          "FR Select the Ignore font styles specified on webpages on the check box.",
+        instructionsListItem5: "FR Select OK.",
+        instructionsListItem6: "FR In the General tab, under Appearance, select Fonts.",
+        instructionsListItem7: "FR Select the fonts you want to use.",
+        instructionsListItem8: "FR Select OK, and then select OK again."
+      },
+      color: {
+        title: "FR Text and background colour",
+        instructionsListItem1: "FR Select the Tools button and select Internet options.",
+        instructionsListItem2: "FR In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem3:
+          "FR Select the Ignore colors specified on webpages on the check box.",
+        instructionsListItem4: "FR Select OK.",
+        instructionsListItem5: "FR In the General tab, under Appearance, select Colors.",
+        instructionsListItem6: "FR Uncheck the Use Windows colors check box.",
+        instructionsListItem7:
+          "FR For each color that you want to change, select the color box, select a new color, and then select OK.",
+        instructionsListItem8: "FR Select OK, and then select OK again."
+      }
     },
 
     //eMIB Test
