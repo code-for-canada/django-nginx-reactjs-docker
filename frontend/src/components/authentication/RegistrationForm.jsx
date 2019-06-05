@@ -136,20 +136,15 @@ class RegistrationForm extends Component {
     });
   };
 
+  // checks if all fields are valid
   isFormValid = () => {
-    // if all fields are valid
-    if (
+    return (
       this.state.isValidFirstName &&
       this.state.isValidLastName &&
       this.state.isValidEmail &&
       this.state.isValidPassword &&
       this.state.isValidPasswordConfirmation
-    ) {
-      return true;
-      // one or more fields are invalid
-    } else {
-      return false;
-    }
+    );
   };
 
   redirectToLoginPage = () => {
