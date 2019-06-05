@@ -222,12 +222,6 @@ class RegistrationForm extends Component {
                   )}
 
                   <input
-                    aria-label={
-                      isValidFirstName || isFirstLoad
-                        ? LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle
-                        : LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle +
-                          LOCALIZE.authentication.createAccount.content.inputs.firstNameError
-                    }
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
@@ -255,12 +249,6 @@ class RegistrationForm extends Component {
                     <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
                   )}
                   <input
-                    aria-label={
-                      isValidLastName || isFirstLoad
-                        ? LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle
-                        : LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle +
-                          LOCALIZE.authentication.createAccount.content.inputs.lastNameError
-                    }
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
                     aria-invalid={!this.state.isValidLastName && !isFirstLoad}
                     aria-required={"true"}
