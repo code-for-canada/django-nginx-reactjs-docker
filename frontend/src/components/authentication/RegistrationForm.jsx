@@ -133,34 +133,18 @@ class RegistrationForm extends Component {
     const isValidLastName = validateName(this.state.lastNameContent);
     const isValidEmail = validateEmail(this.state.emailContent);
     const passwordErrorsArray = validatePassword(this.state.passwordContent);
+    const passwordContent = this.state.passwordContent;
+    const passwordConfirmationContent = this.state.passwordConfirmationContent;
     let isValidPassword = false;
+
+    // checking the password validity
     if (passwordErrorsArray.length === 0) {
       isValidPassword = true;
     } else {
-      if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.UPPERCASE)) {
-        this.setState({ atLeastOneUppercase: false });
-        isValidPassword = false;
-      }
-      if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.LOWERCASE)) {
-        this.setState({ atLeastOneLowercase: false });
-        isValidPassword = false;
-      }
-      if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.DIGIT)) {
-        this.setState({ atLeastOneDigit: false });
-        isValidPassword = false;
-      }
-      if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.SPECIAL_CHARS)) {
-        this.setState({ atLeastOneSpecialChar: false });
-        isValidPassword = false;
-      }
-      if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS)) {
-        this.setState({ betweenMinAndMaxChar: false });
-        isValidPassword = false;
-      }
+      this.findMissingPasswordRequirements(passwordErrorsArray);
+      isValidPassword = false;
     }
 
-    const passwordContent = this.state.passwordContent;
-    const passwordConfirmationContent = this.state.passwordConfirmationContent;
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
@@ -182,6 +166,25 @@ class RegistrationForm extends Component {
       atLeastOneSpecialChar: true,
       betweenMinAndMaxChar: true
     });
+  };
+
+  // checking password requirements that are not satisfied
+  findMissingPasswordRequirements = passwordErrorsArray => {
+    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.UPPERCASE)) {
+      this.setState({ atLeastOneUppercase: false });
+    }
+    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.LOWERCASE)) {
+      this.setState({ atLeastOneLowercase: false });
+    }
+    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.DIGIT)) {
+      this.setState({ atLeastOneDigit: false });
+    }
+    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.SPECIAL_CHARS)) {
+      this.setState({ atLeastOneSpecialChar: false });
+    }
+    if (passwordErrorsArray.includes(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS)) {
+      this.setState({ betweenMinAndMaxChar: false });
+    }
   };
 
   // checks if all fields are valid
