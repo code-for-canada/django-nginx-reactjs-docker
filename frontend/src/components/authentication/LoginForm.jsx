@@ -101,7 +101,6 @@ class LoginForm extends Component {
                     </label>
                   </div>
                   <input
-                    aria-label={LOCALIZE.authentication.login.content.inputs.emailTitle}
                     aria-required={"true"}
                     type="text"
                     id="username"
