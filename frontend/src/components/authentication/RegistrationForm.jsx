@@ -197,8 +197,7 @@ class RegistrationForm extends Component {
       isValidPassword,
       isFirstPasswordLoad,
       passwordConfirmationContent,
-      isValidPasswordConfirmation,
-      accountExistsError
+      isValidPasswordConfirmation
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -288,14 +287,8 @@ class RegistrationForm extends Component {
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
                 )}
                 <input
-                  aria-label={
-                    accountExistsError
-                      ? LOCALIZE.authentication.createAccount.content.inputs.emailTitle +
-                        LOCALIZE.authentication.createAccount.accountAlreadyExistsError
-                      : LOCALIZE.authentication.createAccount.content.inputs.emailTitle
-                  }
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
-                  aria-invalid={!this.state.isValidEmail}
+                  aria-invalid={!this.state.isValidEmail && !isFirstLoad}
                   aria-required={"true"}
                   id="email-address-field"
                   type="text"
@@ -304,15 +297,15 @@ class RegistrationForm extends Component {
                   onChange={this.getEmailContent}
                 />
                 {!isValidEmail && !isFirstLoad && (
-                  <p style={styles.errorMessage}>
+                  <label htmlFor={"email-address-field"} style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.emailError}
-                  </p>
+                  </label>
                 )}
               </div>
               {this.state.accountExistsError && (
-                <p style={styles.errorMessage}>
+                <label htmlFor={"email-address-field"} style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
-                </p>
+                </label>
               )}
               <div>
                 <div style={styles.inputTitle}>
