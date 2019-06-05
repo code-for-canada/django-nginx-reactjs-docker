@@ -25,14 +25,14 @@ const styles = {
     borderRadius: 4
   },
   inputForNames: {
-    width: 190,
+    width: 240,
     padding: "3px 6px 3px 6px",
     borderRadius: 4
   },
   iconForNames: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 170px"
+    margin: "8px 0 0 220px"
   },
   iconForOtherFields: {
     color: "#278400",
