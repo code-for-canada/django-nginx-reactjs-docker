@@ -43,16 +43,6 @@ const styles = {
       width: 15,
       cursor: "pointer"
     },
-    tooltipContainer: {
-      marginLeft: 6,
-      padding: 6,
-      maxWidth: 550,
-      borderColor: "#00565E"
-    },
-    tooltipContent: {
-      color: "#00565E",
-      margin: 0
-    },
     textArea: {
       padding: "6px 12px",
       border: "1px solid #00565E",
@@ -71,16 +61,6 @@ const styles = {
       color: "#00565E",
       marginTop: "4px",
       cursor: "pointer"
-    },
-    tooltipContainer: {
-      marginLeft: 6,
-      padding: 8,
-      maxWidth: 360,
-      borderColor: "#00565E"
-    },
-    tooltipContent: {
-      color: "#00565E",
-      margin: 0
     },
     textArea: {
       padding: "6px 12px",
@@ -132,14 +112,10 @@ class EditTask extends Component {
                 trigger="focus"
                 placement="right"
                 overlay={
-                  <Popover style={styles.tasks.tooltipContainer}>
+                  <Popover>
                     <div>
-                      <p style={styles.tasks.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}
-                      </p>
-                      <p style={styles.tasks.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}
-                      </p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}</p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}</p>
                     </div>
                   </Popover>
                 }
@@ -172,14 +148,9 @@ class EditTask extends Component {
                 trigger="focus"
                 placement="right"
                 overlay={
-                  <Popover
-                    id="reasons-for-action-tooltip"
-                    style={styles.reasonsForAction.tooltipContainer}
-                  >
+                  <Popover id="reasons-for-action-tooltip">
                     <div>
-                      <p style={styles.reasonsForAction.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}
-                      </p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}</p>
                     </div>
                   </Popover>
                 }
