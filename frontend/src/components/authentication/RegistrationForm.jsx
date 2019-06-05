@@ -29,6 +29,12 @@ const styles = {
     padding: "3px 6px 3px 6px",
     borderRadius: 4
   },
+  dobFields: {
+    width: 40,
+    padding: "3px 6px 3px 6px",
+    borderRadius: 4,
+    textAlign: "center"
+  },
   iconForNames: {
     color: "#278400",
     position: "absolute",
@@ -76,6 +82,8 @@ class RegistrationForm extends Component {
     isValidFirstName: false,
     lastNameContent: "",
     isValidLastName: false,
+    dobDayContent: "",
+    isValidDobDay: false,
     emailContent: "",
     isValidEmail: false,
     passwordContent: "",
@@ -103,6 +111,16 @@ class RegistrationForm extends Component {
     });
   };
 
+  getDobDayContent = event => {
+    const dobDayContent = event.target.value;
+    const regex = /^[0-9]{1,2}$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        dobDayContent: dobDayContent
+      });
+    }
+  };
+
   getEmailContent = event => {
     const emailContent = event.target.value;
     this.setState({ emailContent: emailContent });
@@ -125,6 +143,7 @@ class RegistrationForm extends Component {
   validateForm = () => {
     const isValidFirstName = validateName(this.state.firstNameContent);
     const isValidLastName = validateName(this.state.lastNameContent);
+    const isValidDobDay = this.state.dobDayContent.length === 2;
     const isValidEmail = validateEmail(this.state.emailContent);
     const isValidPassword = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
@@ -135,6 +154,7 @@ class RegistrationForm extends Component {
       accountExistsError: false,
       isValidFirstName: isValidFirstName,
       isValidLastName: isValidLastName,
+      isValidDobDay: isValidDobDay,
       isValidEmail: isValidEmail,
       isValidPassword: isValidPassword,
       isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
@@ -192,6 +212,8 @@ class RegistrationForm extends Component {
       isValidFirstName,
       lastNameContent,
       isValidLastName,
+      dobDayContent,
+      isValidDobDay,
       emailContent,
       isValidEmail,
       passwordContent,
@@ -268,6 +290,20 @@ class RegistrationForm extends Component {
                     </label>
                   )}
                 </div>
+              </div>
+              <div>
+                <div style={styles.inputTitle}>
+                  <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
+                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
+                </div>
+                <input
+                  className={isValidDobDay || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-required={"true"}
+                  id="dob-day-field"
+                  value={dobDayContent}
+                  style={styles.dobFields}
+                  onChange={this.getDobDayContent}
+                />
               </div>
               <div>
                 <div style={styles.inputTitle}>
