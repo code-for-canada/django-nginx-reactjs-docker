@@ -44,15 +44,16 @@ const styles = {
     display: "block",
     margin: "24px auto"
   },
-  validationError: {
+  passwordRequirementsError: {
     color: "#923534",
-    marginTop: 6
+    marginTop: 6,
+    fontWeight: "bold"
   },
   errorMessage: {
     color: "#923534",
     fontWeight: "bold",
     padding: 0,
-    marginTop: 12
+    marginTop: 6
   }
 };
 
@@ -235,6 +236,11 @@ class RegistrationForm extends Component {
                     style={styles.inputForNames}
                     onChange={this.getFirstNameContent}
                   />
+                  {!isValidFirstName && !isFirstLoad && (
+                    <p style={styles.errorMessage}>
+                      {LOCALIZE.authentication.createAccount.content.inputs.firstNameError}
+                    </p>
+                  )}
                 </div>
                 <div className="names-grid-last-name">
                   <div style={styles.inputTitle}>
@@ -256,6 +262,11 @@ class RegistrationForm extends Component {
                     style={styles.inputForNames}
                     onChange={this.getLastNameContent}
                   />
+                  {!isValidLastName && !isFirstLoad && (
+                    <p style={styles.errorMessage}>
+                      {LOCALIZE.authentication.createAccount.content.inputs.lastNameError}
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
@@ -283,6 +294,11 @@ class RegistrationForm extends Component {
                   style={styles.inputs}
                   onChange={this.getEmailContent}
                 />
+                {!isValidEmail && !isFirstLoad && (
+                  <p style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.emailError}
+                  </p>
+                )}
               </div>
               {this.state.accountExistsError && (
                 <p style={styles.errorMessage}>
@@ -315,13 +331,13 @@ class RegistrationForm extends Component {
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <label htmlFor={"password-field"}>
-                    <p style={styles.validationError}>
+                    <p style={styles.errorMessage}>
                       {
                         LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
                           .description
                       }
                     </p>
-                    <ul style={styles.validationError}>
+                    <ul style={styles.passwordRequirementsError}>
                       <li>
                         {
                           LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
@@ -380,7 +396,7 @@ class RegistrationForm extends Component {
                   onChange={this.getPasswordConfirmationContent}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <label htmlFor={"password-confirmation-field"} style={styles.validationError}>
+                  <label htmlFor={"password-confirmation-field"} style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
                   </label>
                 )}
