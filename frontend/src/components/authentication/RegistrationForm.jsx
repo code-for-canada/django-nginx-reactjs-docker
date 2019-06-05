@@ -66,11 +66,16 @@ class RegistrationForm extends Component {
     // Ensures no errors are shown on page load
     isFirstLoad: true,
     // Form content and validation
+    firstNameContent: "",
     isValidFirstName: false,
+    lastNameContent: "",
     isValidLastName: false,
+    emailContent: "",
     isValidEmail: false,
+    passwordContent: "",
     isValidPassword: false,
     isFirstPasswordLoad: true,
+    passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
     // PopupBox
     showDialog: false,
@@ -78,71 +83,60 @@ class RegistrationForm extends Component {
     accountExistsError: false
   };
 
-  firstNameValidation = () => {
-    const firstNameContent = document.getElementById("first-name-field").value;
-    const isValid = validateName(firstNameContent);
+  getFirstNameContent = event => {
+    const firstNameContent = event.target.value;
     this.setState({
-      isFirstLoad: false,
-      firstNameContent: firstNameContent,
-      isValidFirstName: isValid
+      firstNameContent: firstNameContent
     });
   };
 
-  lastNameValidation = () => {
-    const lastNameContent = document.getElementById("last-name-field").value;
-    const isValid = validateName(lastNameContent);
+  getLastNameContent = event => {
+    const lastNameContent = event.target.value;
     this.setState({
-      isFirstLoad: false,
-      lastNameContent: lastNameContent,
-      isValidLastName: isValid
+      lastNameContent: lastNameContent
     });
   };
 
-  emailValidation = () => {
-    const emailContent = document.getElementById("email-address-field").value;
-    const isValid = validateEmail(emailContent);
-    this.setState({ isFirstLoad: false, emailContent: emailContent, isValidEmail: isValid });
+  getEmailContent = event => {
+    const emailContent = event.target.value;
+    this.setState({ emailContent: emailContent });
   };
 
-  passwordValidation = () => {
-    const passwordContent = document.getElementById("password-field").value;
-    const passwordConfirmationContent = document.getElementById("password-confirmation-field")
-      .value;
-    const isValid = validatePassword(passwordContent);
+  getPasswordContent = event => {
+    const passwordContent = event.target.value;
+    this.setState({
+      passwordContent: passwordContent
+    });
+  };
+
+  getPasswordConfirmationContent = event => {
+    const passwordConfirmationContent = event.target.value;
+    this.setState({
+      passwordConfirmationContent: passwordConfirmationContent
+    });
+  };
+
+  validateForm = () => {
+    const isValidFirstName = validateName(this.state.firstNameContent);
+    const isValidLastName = validateName(this.state.lastNameContent);
+    const isValidEmail = validateEmail(this.state.emailContent);
+    const isValidPassword = validatePassword(this.state.passwordContent);
+    const passwordContent = this.state.passwordContent;
+    const passwordConfirmationContent = this.state.passwordConfirmationContent;
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
-      passwordContent: passwordContent,
-      isValidPassword: isValid,
+      isValidFirstName: isValidFirstName,
+      isValidLastName: isValidLastName,
+      isValidEmail: isValidEmail,
+      isValidPassword: isValidPassword,
       isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
     });
   };
 
-  passwordConfirmationValidation = () => {
-    const passwordConfirmationContent = document.getElementById("password-confirmation-field")
-      .value;
-    const passwordValue = document.getElementById("password-field").value;
-    this.setState({
-      isFirstLoad: false,
-      passwordConfirmationContent: passwordConfirmationContent,
-      isValidPasswordConfirmation: passwordConfirmationContent === passwordValue
-    });
-  };
-
-  redirectToLoginPage = () => {
-    // refresh the page in order to show the login form
-    window.location.reload();
-    // close dialog
-    this.setState({ showDialog: false });
-  };
-
-  areAllFieldsValid = () => {
+  isFormValid = () => {
     // running all fields validation
-    this.firstNameValidation();
-    this.lastNameValidation();
-    this.emailValidation();
-    this.passwordValidation();
-    this.passwordConfirmationValidation();
+    this.validateForm();
     // if all fields are valid
     if (
       this.state.isValidFirstName &&
@@ -158,9 +152,16 @@ class RegistrationForm extends Component {
     }
   };
 
+  redirectToLoginPage = () => {
+    // refresh the page in order to show the login form
+    window.location.reload();
+    // close dialog
+    this.setState({ showDialog: false });
+  };
+
   handleSubmit = event => {
     // if all fields are valid, execute API errors validation
-    if (this.areAllFieldsValid()) {
+    if (this.isFormValid()) {
       this.props
         .registerAction({
           username: this.state.emailContent,
@@ -186,11 +187,16 @@ class RegistrationForm extends Component {
   render() {
     const {
       isFirstLoad,
+      firstNameContent,
       isValidFirstName,
+      lastNameContent,
       isValidLastName,
+      emailContent,
       isValidEmail,
+      passwordContent,
       isValidPassword,
       isFirstPasswordLoad,
+      passwordConfirmationContent,
       isValidPasswordConfirmation,
       accountExistsError
     } = this.state;
@@ -225,7 +231,9 @@ class RegistrationForm extends Component {
                     aria-required={"true"}
                     id="first-name-field"
                     type="text"
+                    value={firstNameContent}
                     style={styles.inputForNames}
+                    onChange={this.getFirstNameContent}
                   />
                 </div>
                 <div className="names-grid-last-name">
@@ -244,7 +252,9 @@ class RegistrationForm extends Component {
                     aria-required={"true"}
                     id="last-name-field"
                     type="text"
+                    value={lastNameContent}
                     style={styles.inputForNames}
+                    onChange={this.getLastNameContent}
                   />
                 </div>
               </div>
@@ -269,7 +279,9 @@ class RegistrationForm extends Component {
                   aria-required={"true"}
                   id="email-address-field"
                   type="text"
+                  value={emailContent}
                   style={styles.inputs}
+                  onChange={this.getEmailContent}
                 />
               </div>
               {this.state.accountExistsError && (
@@ -297,7 +309,9 @@ class RegistrationForm extends Component {
                   aria-required={"true"}
                   id="password-field"
                   type="password"
+                  value={passwordContent}
                   style={styles.inputs}
+                  onChange={this.getPasswordContent}
                 />
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <label htmlFor={"password-field"}>
@@ -361,7 +375,9 @@ class RegistrationForm extends Component {
                   aria-required={"true"}
                   id="password-confirmation-field"
                   type="password"
+                  value={passwordConfirmationContent}
                   style={styles.inputs}
+                  onChange={this.getPasswordConfirmationContent}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
                   <label htmlFor={"password-confirmation-field"} style={styles.validationError}>
