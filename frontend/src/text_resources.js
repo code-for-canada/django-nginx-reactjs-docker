@@ -110,6 +110,12 @@ let LOCALIZE = new LocalizedStrings({
       }
     },
 
+    // Settings Dialog
+    settings: {
+      systemSettings: "System settings",
+      okay: "Okay"
+    },
+
     //eMIB Test
     emibTest: {
       //Home Page
@@ -637,6 +643,12 @@ let LOCALIZE = new LocalizedStrings({
         browsers: "IE 9+, Firefox, Chrome",
         screenResolution: "Résolution d'écran minimum de 800 x 600"
       }
+    },
+
+    // Settings Dialog
+    settings: {
+      systemSettings: "FR System settings",
+      okay: "FR Okay"
     },
 
     //eMIB Test

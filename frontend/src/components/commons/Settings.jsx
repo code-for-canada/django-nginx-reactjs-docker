@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+import LOCALIZE from "../../text_resources";
 
 const styles = {
   button: {
@@ -25,24 +26,34 @@ class Settings extends Component {
   };
 
   render() {
-    // TODO(caleybrock) - Fill in context and localize.
     return (
       <div>
         <Button
           style={styles.button}
           variant={this.props.variant}
           onClick={this.toggleDialog}
-          aria-label="System settings"
+          aria-label={LOCALIZE.settings.systemSettings}
         >
           <FontAwesomeIcon icon={faCog} />
         </Button>
         <PopupBox
           show={this.state.isDialogOpen}
           handleClose={this.toggleDialog}
-          title={"System settings"}
-          description={<div>TODO: Information about system settings will go here.</div>}
+          title={LOCALIZE.settings.systemSettings}
+          description={
+            <div>
+              <h3>Zoom (+/-)</h3>
+              <p>Info</p>
+              <h3>Text size</h3>
+              <p>Info</p>
+              <h3>Font style</h3>
+              <p>Info</p>
+              <h3>Text and background colour</h3>
+              <p>Info</p>
+            </div>
+          }
           rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={"Okay"}
+          rightButtonTitle={LOCALIZE.settings.okay}
           rightButtonAction={this.toggleDialog}
         />
       </div>
