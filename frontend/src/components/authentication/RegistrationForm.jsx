@@ -365,6 +365,7 @@ class RegistrationForm extends Component {
                 )}
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-live="polite"
                   aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
