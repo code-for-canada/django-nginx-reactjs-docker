@@ -28,7 +28,11 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    overflow: "initial"
+    backgroundColor: "#F5FAFB",
+    overflow: "initial",
+    padding: 0,
+    borderColor: "#00565E",
+    borderRadius: 2
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.7)"
@@ -36,12 +40,27 @@ const customStyles = {
 };
 
 const styles = {
+  header: {
+    height: 65,
+    padding: "15px 15px 5px 15px",
+    backgroundColor: "#00565e",
+    color: "#FFFFFF",
+    borderRadiusTopLeft: 2,
+    borderRadiusTopRight: 2
+  },
+  title: {
+    color: "#FFFFFF",
+    fontSize: 28
+  },
   container: {
     maxHeight: "calc(100vh - 300px)",
     overflow: "auto",
     width: 700,
-    paddingBottom: 12,
-    paddingRight: 12
+    padding: "10px 15px"
+  },
+  footer: {
+    padding: 15,
+    height: 70
   },
   originalEmail: {
     padding: 12,
@@ -51,12 +70,9 @@ const styles = {
   },
   icon: {
     float: "left",
-    marginTop: 14,
+    marginTop: 10,
     marginRight: 8,
     fontSize: 24
-  },
-  buttons: {
-    paddingTop: 10
   },
   rightButton: {
     float: "right"
@@ -64,7 +80,10 @@ const styles = {
   dataBodyDivider: {
     width: "100%",
     borderTop: "1px solid #96a8b2",
-    margin: "12px 0 12px 0"
+    margin: 0
+  },
+  hr: {
+    margin: 0
   }
 };
 
@@ -173,68 +192,68 @@ class EditActionDialog extends Component {
         shouldCloseOnOverlayClick={false}
         ariaHideApp={ariaHideApp}
       >
-        <div>
-          <div>
-            {actionType === ACTION_TYPE.email && (
-              <div>
-                <FontAwesomeIcon style={styles.icon} icon={faEnvelope} />
-                <h2>
-                  {editMode === EDIT_MODE.create &&
-                    LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
-                  {editMode === EDIT_MODE.update &&
-                    LOCALIZE.emibTest.inboxPage.editActionDialog.editEmail}
-                </h2>
-              </div>
-            )}
-            {actionType === ACTION_TYPE.task && (
-              <div>
-                <FontAwesomeIcon style={styles.icon} icon={faTasks} />
-                <h2>
-                  {editMode === EDIT_MODE.create &&
-                    LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
-                  {editMode === EDIT_MODE.update &&
-                    LOCALIZE.emibTest.inboxPage.editActionDialog.editTask}
-                </h2>
-              </div>
-            )}
+        {actionType === ACTION_TYPE.email && (
+          <div style={styles.header}>
+            <FontAwesomeIcon style={styles.icon} icon={faEnvelope} />
+            <h2 style={styles.title}>
+              {editMode === EDIT_MODE.create &&
+                LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
+              {editMode === EDIT_MODE.update &&
+                LOCALIZE.emibTest.inboxPage.editActionDialog.editEmail}
+            </h2>
           </div>
-          <div style={styles.container}>
-            <CollapsingItemContainer
-              title={LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}
-              body={<EmailContent email={this.props.email} />}
-              iconType={ICON_TYPE.email}
+        )}
+        {actionType === ACTION_TYPE.task && (
+          <div style={styles.header}>
+            <FontAwesomeIcon style={styles.icon} icon={faTasks} />
+            <h2 style={styles.title}>
+              {editMode === EDIT_MODE.create &&
+                LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
+              {editMode === EDIT_MODE.update &&
+                LOCALIZE.emibTest.inboxPage.editActionDialog.editTask}
+            </h2>
+          </div>
+        )}
+
+        <div style={styles.container}>
+          <CollapsingItemContainer
+            title={LOCALIZE.emibTest.inboxPage.emailCommons.originalEmail}
+            body={<EmailContent email={this.props.email} />}
+            iconType={ICON_TYPE.email}
+          />
+          <hr style={styles.dataBodyDivider} />
+          <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
+          {actionType === ACTION_TYPE.email && (
+            <EditEmail
+              onChange={this.editAction}
+              action={editMode === EDIT_MODE.update ? this.props.action : null}
             />
-            <hr style={styles.dataBodyDivider} />
-            <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
-            {actionType === ACTION_TYPE.email && (
-              <EditEmail
-                onChange={this.editAction}
-                action={editMode === EDIT_MODE.update ? this.props.action : null}
-              />
-            )}
-            {actionType === ACTION_TYPE.task && (
-              <EditTask
-                emailNumber={this.props.email.id}
-                emailSubject={this.props.email.subject}
-                onChange={this.editAction}
-                action={editMode === EDIT_MODE.update ? this.props.action : null}
-              />
-            )}
-          </div>
-          <div style={styles.buttons}>
-            <button className={"btn btn-danger"} onClick={this.handleClose}>
-              {LOCALIZE.commons.cancelResponse}
-            </button>
-            <button
-              style={styles.rightButton}
-              id="unit-test-email-response-button"
-              type="button"
-              className="btn btn-primary"
-              onClick={this.handleSave}
-            >
-              {LOCALIZE.emibTest.inboxPage.editActionDialog.save}
-            </button>
-          </div>
+          )}
+          {actionType === ACTION_TYPE.task && (
+            <EditTask
+              emailNumber={this.props.email.id}
+              emailSubject={this.props.email.subject}
+              onChange={this.editAction}
+              action={editMode === EDIT_MODE.update ? this.props.action : null}
+            />
+          )}
+        </div>
+
+        <hr style={styles.hr} />
+
+        <div style={styles.footer}>
+          <button className={"btn btn-danger"} onClick={this.handleClose}>
+            {LOCALIZE.commons.cancelResponse}
+          </button>
+          <button
+            style={styles.rightButton}
+            id="unit-test-email-response-button"
+            type="button"
+            className="btn btn-primary"
+            onClick={this.handleSave}
+          >
+            {LOCALIZE.emibTest.inboxPage.editActionDialog.save}
+          </button>
         </div>
       </Modal>
     );

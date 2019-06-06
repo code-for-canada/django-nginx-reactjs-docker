@@ -1,4 +1,8 @@
-import validateName, { validateEmail, validatePassword } from "../../../helpers/regexValidator";
+import validateName, {
+  validateEmail,
+  validatePassword,
+  PASSWORD_REQUIREMENTS
+} from "../../../helpers/regexValidator";
 
 //First and Last names validation
 it("returns true for well formatted names", () => {
@@ -58,10 +62,10 @@ it("returns true for well formatted passwords", () => {
   const password2 = "&1pAssword";
   const password3 = "Ab12@";
   const password4 = "abcdefG1234567%";
-  expect(validatePassword(password1)).toBe(true);
-  expect(validatePassword(password2)).toBe(true);
-  expect(validatePassword(password3)).toBe(true);
-  expect(validatePassword(password4)).toBe(true);
+  expect(validatePassword(password1).length === 0).toBe(true);
+  expect(validatePassword(password2).length === 0).toBe(true);
+  expect(validatePassword(password3).length === 0).toBe(true);
+  expect(validatePassword(password4).length === 0).toBe(true);
 });
 
 it("returns false for wrong formatted passwords", () => {
@@ -71,10 +75,14 @@ it("returns false for wrong formatted passwords", () => {
   const password4 = "Password1";
   const password5 = "Ab1$";
   const password6 = "Password1!Password1!Password1!";
-  expect(validatePassword(password1)).toBe(false);
-  expect(validatePassword(password2)).toBe(false);
-  expect(validatePassword(password3)).toBe(false);
-  expect(validatePassword(password4)).toBe(false);
-  expect(validatePassword(password5)).toBe(false);
-  expect(validatePassword(password6)).toBe(false);
+  expect(validatePassword(password1).indexOf(PASSWORD_REQUIREMENTS.UPPERCASE) >= 0).toBe(true);
+  expect(validatePassword(password2).indexOf(PASSWORD_REQUIREMENTS.LOWERCASE) >= 0).toBe(true);
+  expect(validatePassword(password3).indexOf(PASSWORD_REQUIREMENTS.DIGIT) >= 0).toBe(true);
+  expect(validatePassword(password4).indexOf(PASSWORD_REQUIREMENTS.SPECIAL_CHARS) >= 0).toBe(true);
+  expect(validatePassword(password5).indexOf(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS) >= 0).toBe(
+    true
+  );
+  expect(validatePassword(password6).indexOf(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS) >= 0).toBe(
+    true
+  );
 });
