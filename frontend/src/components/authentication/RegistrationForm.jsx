@@ -113,7 +113,7 @@ class RegistrationForm extends Component {
 
   getDobDayContent = event => {
     const dobDayContent = event.target.value;
-    const regex = /^[0-9]{1,2}$/;
+    const regex = /^(3[01]|[12][0-9]|[1-9])$/;
     if (event.target.value === "" || regex.test(event.target.value)) {
       this.setState({
         dobDayContent: dobDayContent
@@ -143,7 +143,7 @@ class RegistrationForm extends Component {
   validateForm = () => {
     const isValidFirstName = validateName(this.state.firstNameContent);
     const isValidLastName = validateName(this.state.lastNameContent);
-    const isValidDobDay = this.state.dobDayContent.length === 2;
+    const isValidDobDay = this.state.dobDayContent.length > 0;
     const isValidEmail = validateEmail(this.state.emailContent);
     const isValidPassword = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
