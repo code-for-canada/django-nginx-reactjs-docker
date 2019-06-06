@@ -8,6 +8,7 @@ import { transformAddressBook } from "../../helpers/transformations";
 import { contactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
+import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -305,6 +306,25 @@ class EditEmail extends Component {
               <label htmlFor="your-response-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.response}
               </label>
+              <OverlayTrigger
+                trigger="focus"
+                placement="right"
+                overlay={
+                  <Popover id="reasons-for-action-tooltip">
+                    <div>
+                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}</p>
+                    </div>
+                  </Popover>
+                }
+              >
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.emailResponseTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
+              </OverlayTrigger>
               <div>
                 <textarea
                   id="your-response-text-area"
@@ -326,6 +346,25 @@ class EditEmail extends Component {
               <label htmlFor="reasons-for-action-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction}
               </label>
+              <OverlayTrigger
+                trigger="focus"
+                placement="right"
+                overlay={
+                  <Popover id="reasons-for-action-tooltip">
+                    <div>
+                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}</p>
+                    </div>
+                  </Popover>
+                }
+              >
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
+              </OverlayTrigger>
               <div>
                 <textarea
                   id="reasons-for-action-text-area"
