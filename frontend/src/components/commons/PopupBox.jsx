@@ -33,7 +33,7 @@ const customStyles = {
 const styles = {
   contentPadding: {
     padding: "10px 15px",
-    overflow: "scroll",
+    overflow: "auto",
     maxHeight: "calc(100vh - 300px)"
   },
   headerPadding: {
