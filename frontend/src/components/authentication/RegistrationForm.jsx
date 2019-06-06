@@ -120,7 +120,8 @@ class RegistrationForm extends Component {
     isFirstPasswordLoad: true,
     passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
-    isCreateAccountButtonDisabled: true,
+    isCheckboxChecked: false,
+    isValidPrivacyNotice: false,
     // PopupBox
     showCreatedAccountDialog: false,
     showPrivacyNoticeDialog: false,
@@ -219,6 +220,7 @@ class RegistrationForm extends Component {
     const isValidPassword = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
     const passwordConfirmationContent = this.state.passwordConfirmationContent;
+    const isValidPrivacyNotice = this.state.isCheckboxChecked;
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
@@ -231,7 +233,8 @@ class RegistrationForm extends Component {
       isValidEmail: isValidEmail,
       isValidPriOrMilitaryNbr: isValidPriOrMilitaryNbr,
       isValidPassword: isValidPassword,
-      isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
+      isValidPasswordConfirmation: passwordContent === passwordConfirmationContent,
+      isValidPrivacyNotice: isValidPrivacyNotice
     });
   };
 
@@ -240,9 +243,14 @@ class RegistrationForm extends Component {
     return (
       this.state.isValidFirstName &&
       this.state.isValidLastName &&
+      this.state.isValidDobDay &&
+      this.state.isValidDobMonth &&
+      this.state.isValidDobYear &&
       this.state.isValidEmail &&
+      this.state.isValidPriOrMilitaryNbr &&
       this.state.isValidPassword &&
-      this.state.isValidPasswordConfirmation
+      this.state.isValidPasswordConfirmation &&
+      this.state.isValidPrivacyNotice
     );
   };
 
@@ -287,8 +295,8 @@ class RegistrationForm extends Component {
     this.setState({ showPrivacyNoticeDialog: false });
   };
 
-  changeCreateAccountBtnStatus = () => {
-    this.setState({ isCreateAccountButtonDisabled: !this.state.isCreateAccountButtonDisabled });
+  changeCheckboxStatus = () => {
+    this.setState({ isCheckboxChecked: !this.state.isCheckboxChecked });
   };
 
   render() {
@@ -314,7 +322,7 @@ class RegistrationForm extends Component {
       passwordConfirmationContent,
       isValidPasswordConfirmation,
       accountExistsError,
-      isCreateAccountButtonDisabled
+      isValidPrivacyNotice
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -630,7 +638,7 @@ class RegistrationForm extends Component {
                     id="privacy-notice-checkbox"
                     type="checkbox"
                     style={styles.checkbox}
-                    onChange={this.changeCreateAccountBtnStatus}
+                    onChange={this.changeCheckboxStatus}
                   />
                 </div>
                 <div className="privacy-notice-grid-description">
@@ -642,11 +650,15 @@ class RegistrationForm extends Component {
                   </p>
                 </div>
               </div>
+              {!isValidPrivacyNotice && !isFirstLoad && (
+                <label htmlFor={"privacy-notice-checkbox"} style={styles.errorMessage}>
+                  {LOCALIZE.authentication.createAccount.privacyNoticeError}
+                </label>
+              )}
               <button
                 style={styles.loginBtn}
                 className="btn btn-primary"
                 type="submit"
-                disabled={isCreateAccountButtonDisabled}
                 onClick={this.validateForm}
               >
                 {LOCALIZE.authentication.createAccount.button}
