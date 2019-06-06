@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
         privacyNotice:
           "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
         privacyNoticeLink: "privacy notice",
-        privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox above",
+        privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "Account Created",
@@ -620,8 +620,7 @@ let LOCALIZE = new LocalizedStrings({
         privacyNotice:
           "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
         privacyNoticeLink: "FR privacy notice",
-        privacyNoticeError:
-          "FR You must accept the privacy notice by clicking on the checkbox above",
+        privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "FR Account Created",

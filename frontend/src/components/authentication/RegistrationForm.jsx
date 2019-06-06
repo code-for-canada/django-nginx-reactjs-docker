@@ -287,8 +287,9 @@ class RegistrationForm extends Component {
     event.preventDefault();
   };
 
-  showPrivacyNoticePopup = () => {
+  showPrivacyNoticePopup = event => {
     this.setState({ showPrivacyNoticeDialog: true });
+    event.preventDefault();
   };
 
   closePrivacyNoticePopup = () => {
@@ -635,6 +636,16 @@ class RegistrationForm extends Component {
               <div className="privacy-notice-grid" style={styles.privacyNoticeZone}>
                 <div className="privacy-notice-grid-checkbox">
                   <input
+                    aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
+                    aria-required={"true"}
+                    aria-label={
+                      isValidPrivacyNotice || isFirstLoad
+                        ? LOCALIZE.authentication.createAccount.privacyNotice +
+                          LOCALIZE.authentication.createAccount.privacyNoticeLink
+                        : LOCALIZE.authentication.createAccount.privacyNoticeError +
+                          LOCALIZE.authentication.createAccount.privacyNotice +
+                          LOCALIZE.authentication.createAccount.privacyNoticeLink
+                    }
                     id="privacy-notice-checkbox"
                     type="checkbox"
                     style={styles.checkbox}
@@ -643,10 +654,17 @@ class RegistrationForm extends Component {
                 </div>
                 <div className="privacy-notice-grid-description">
                   <p>
-                    {LOCALIZE.authentication.createAccount.privacyNotice}
-                    <span onClick={this.showPrivacyNoticePopup} style={styles.privacyNoticeLink}>
-                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                    </span>
+                    <label htmlFor="privacy-notice-checkbox">
+                      {LOCALIZE.authentication.createAccount.privacyNotice}
+                      <span
+                        tabIndex="0"
+                        onClick={this.showPrivacyNoticePopup}
+                        style={styles.privacyNoticeLink}
+                      >
+                        {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                      </span>
+                      .
+                    </label>
                   </p>
                 </div>
               </div>
