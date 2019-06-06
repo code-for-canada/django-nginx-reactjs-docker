@@ -52,11 +52,11 @@ let LOCALIZE = new LocalizedStrings({
             lastNameError: "Must be a valid last name",
             emailTitle: "Email Address:",
             emailError: "Must be a valid email address",
-            passwordTitle: "Password (must be between 5-15 characters):",
+            passwordTitle: "Password:",
             passwordErrors: {
               description: "Your password must satisfy the following:",
-              upperCase: "At least one upper case",
-              lowerCase: "At least one lower case",
+              upperCase: "At least one uppercase",
+              lowerCase: "At least one lowercase",
               digit: "At least one digit",
               specialCharacter: "At least one special character",
               length: "Minimum of 5 characters and maximum of 15"
@@ -539,10 +539,7 @@ let LOCALIZE = new LocalizedStrings({
       taskOptions: "task options",
       taskTooltip: "task tooltip",
       emailResponseTooltip: "email response tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip",
-      passwordCreationRequirements:
-        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "It must match your password"
+      reasonsForActionTooltip: "reasons for action tooltip"
     },
 
     //Commons
@@ -634,7 +631,7 @@ let LOCALIZE = new LocalizedStrings({
             lastNameError: "FR Must be a valid last name",
             emailTitle: "Adresse courriel :",
             emailError: "FR Must be a valid email address",
-            passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
+            passwordTitle: "Mot de passe :",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
               upperCase: "Au moins une majuscule",
@@ -1131,10 +1128,7 @@ let LOCALIZE = new LocalizedStrings({
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
       emailResponseTooltip: "FR email response tooltip",
-      reasonsForActionTooltip: "infobulle des motifs de l'action",
-      passwordCreationRequirements:
-        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "FR It must match your password"
+      reasonsForActionTooltip: "infobulle des motifs de l'action"
     },
 
     //Commons

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
-import validateName, { validateEmail, validatePassword } from "../../helpers/regexValidator";
+import validateName, {
+  validateEmail,
+  validatePassword,
+  PASSWORD_REQUIREMENTS
+} from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
 import { registerAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
@@ -78,6 +82,12 @@ class RegistrationForm extends Component {
     isFirstPasswordLoad: true,
     passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
+    // password requirements
+    atLeastOneUppercase: false,
+    atLeastOneLowercase: false,
+    atLeastOneDigit: false,
+    atLeastOneSpecialChar: false,
+    betweenMinAndMaxChar: false,
     // PopupBox
     showDialog: false,
     // handle errors
@@ -118,12 +128,23 @@ class RegistrationForm extends Component {
   };
 
   validateForm = () => {
+    this.resetPasswordRequirementsStates();
     const isValidFirstName = validateName(this.state.firstNameContent);
     const isValidLastName = validateName(this.state.lastNameContent);
     const isValidEmail = validateEmail(this.state.emailContent);
-    const isValidPassword = validatePassword(this.state.passwordContent);
+    const passwordErrorsArray = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
     const passwordConfirmationContent = this.state.passwordConfirmationContent;
+    let isValidPassword = false;
+
+    // checking the password validity
+    if (passwordErrorsArray.length === 0) {
+      isValidPassword = true;
+    } else {
+      this.findMissingPasswordRequirements(passwordErrorsArray);
+      isValidPassword = false;
+    }
+
     this.setState({
       isFirstLoad: false,
       isFirstPasswordLoad: false,
@@ -134,6 +155,42 @@ class RegistrationForm extends Component {
       isValidPassword: isValidPassword,
       isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
     });
+  };
+
+  // resetting all password requirements states to true
+  resetPasswordRequirementsStates = () => {
+    this.setState({
+      atLeastOneUppercase: true,
+      atLeastOneLowercase: true,
+      atLeastOneDigit: true,
+      atLeastOneSpecialChar: true,
+      betweenMinAndMaxChar: true
+    });
+  };
+
+  // checking password requirements that are not satisfied
+  findMissingPasswordRequirements = passwordErrorsArray => {
+    // using indexOf instead of includes, since IE is not compatible with it
+    const indexOfUppercase = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.UPPERCASE);
+    if (indexOfUppercase >= 0) {
+      this.setState({ atLeastOneUppercase: false });
+    }
+    const indexOfLowercase = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.LOWERCASE);
+    if (indexOfLowercase >= 0) {
+      this.setState({ atLeastOneLowercase: false });
+    }
+    const indexOfDigit = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.DIGIT);
+    if (indexOfDigit >= 0) {
+      this.setState({ atLeastOneDigit: false });
+    }
+    const indexOfSpecialChar = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.SPECIAL_CHARS);
+    if (indexOfSpecialChar >= 0) {
+      this.setState({ atLeastOneSpecialChar: false });
+    }
+    const indexOfNumberOfChars = passwordErrorsArray.indexOf(PASSWORD_REQUIREMENTS.NUMBER_OF_CHARS);
+    if (indexOfNumberOfChars >= 0) {
+      this.setState({ betweenMinAndMaxChar: false });
+    }
   };
 
   // checks if all fields are valid
@@ -194,7 +251,12 @@ class RegistrationForm extends Component {
       isFirstPasswordLoad,
       passwordConfirmationContent,
       isValidPasswordConfirmation,
-      accountExistsError
+      accountExistsError,
+      atLeastOneUppercase,
+      atLeastOneLowercase,
+      atLeastOneDigit,
+      atLeastOneSpecialChar,
+      betweenMinAndMaxChar
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -303,6 +365,7 @@ class RegistrationForm extends Component {
                 )}
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-live="polite"
                   aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
@@ -320,30 +383,46 @@ class RegistrationForm extends Component {
                       }
                     </p>
                     <ul style={styles.passwordRequirementsError}>
-                      <li>
-                        {
-                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
-                            .upperCase
-                        }
-                      </li>
-                      <li>
-                        {
-                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
-                            .lowerCase
-                        }
-                      </li>
-                      <li>
-                        {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.digit}
-                      </li>
-                      <li>
-                        {
-                          LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
-                            .specialCharacter
-                        }
-                      </li>
-                      <li>
-                        {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
-                      </li>
+                      {!atLeastOneUppercase && (
+                        <li>
+                          {
+                            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                              .upperCase
+                          }
+                        </li>
+                      )}
+                      {!atLeastOneLowercase && (
+                        <li>
+                          {
+                            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                              .lowerCase
+                          }
+                        </li>
+                      )}
+                      {!atLeastOneDigit && (
+                        <li>
+                          {
+                            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                              .digit
+                          }
+                        </li>
+                      )}
+                      {!atLeastOneSpecialChar && (
+                        <li>
+                          {
+                            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                              .specialCharacter
+                          }
+                        </li>
+                      )}
+                      {!betweenMinAndMaxChar && (
+                        <li>
+                          {
+                            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                              .length
+                          }
+                        </li>
+                      )}
                     </ul>
                   </label>
                 )}
