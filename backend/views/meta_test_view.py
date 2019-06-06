@@ -1,19 +1,14 @@
+from rest_framework.views import APIView
+from rest_framework import permissions
+from rest_framework.response import Response
 from custom_models.item import Item
 from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
-from rest_framework import viewsets, permissions
-from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
-from django.core.serializers import serialize
-from django.http import HttpResponse
-from rest_framework.views import APIView
 
 
 class MetaTestSet(APIView):
-    #permission_classes = [permissions.IsAdminUser]
     # Can only be accessed by Admin
-    #renderer_classes = (JSONRenderer, )
     permission_classes = [permissions.IsAdminUser]
 
     def get(self, request):
@@ -37,29 +32,17 @@ class MetaTestSet(APIView):
         print(en_id)
         print(fr_id)
         en_name = ItemText.objects.get(
-            item_id=item_id, language=en_id)  # .text_detail
+            item_id=item_id, language=en_id).text_detail
         fr_name = ItemText.objects.get(
-            item_id=item_id, language=fr_id)  # .text_detail
-        print(en_name)
-        print(fr_name)
-
-        # create the return value
-        #meta_test = MetaTest(test, en_name, fr_name)
-        #meta_test.test_internal_name = test.test_name
-        #meta_test.test_en_name = en_name
-        #meta_test.test_fr_name = fr_name
-        #meta_test.is_public = test.is_public
-        #meta_test.default_time = test.default_time
-        #meta_test.test_type = Test.test_type
+            item_id=item_id, language=fr_id).text_detail
         print(test)
-        # print(meta_test)
         # TODO put in central file
         # TODO stop at meta, and pre
         # TODO different return types accordingly
 
         ret = {'test_internal_name': test.test_name,
-               'test_en_name': en_name.text_detail,
-               'meta_test.test_fr_name': fr_name.text_detail,
+               'test_en_name': en_name,
+               'meta_test.test_fr_name': fr_name,
                'meta_test.is_public': test.is_public,
                'meta_test.default_time': test.default_time,
                'meta_test.test_type': test.test_type}
