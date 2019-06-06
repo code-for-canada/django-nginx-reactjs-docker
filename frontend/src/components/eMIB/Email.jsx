@@ -39,6 +39,12 @@ const styles = {
     width: "100%",
     borderTop: "1px solid #00565E",
     margin: "16px 0 12px 0"
+  },
+  actionIcon: {
+    marginRight: 5
+  },
+  addEmailButton: {
+    marginRight: 20
   }
 };
 
@@ -109,20 +115,18 @@ class Email extends Component {
               type="button"
               className="btn btn-primary"
               onClick={this.showAddEmailDialog}
+              style={styles.addEmailButton}
             >
-              <FontAwesomeIcon icon={faEnvelope} />
-              &emsp;
+              <FontAwesomeIcon icon={faEnvelope} style={styles.actionIcon} />
               {LOCALIZE.emibTest.inboxPage.addReply}
             </button>
-            &emsp;
             <button
               id="unit-test-email-task-button"
               type="button"
               className="btn btn-primary"
               onClick={this.showAddTaskDialog}
             >
-              <FontAwesomeIcon icon={faTasks} />
-              &emsp;
+              <FontAwesomeIcon icon={faTasks} style={styles.actionIcon} />
               {LOCALIZE.emibTest.inboxPage.addTask}
             </button>
           </div>
