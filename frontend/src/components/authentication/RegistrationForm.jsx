@@ -330,6 +330,15 @@ class RegistrationForm extends Component {
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 <input
+                  aria-label={
+                    isValidDobDay || isFirstLoad
+                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.ariaLabel.dobDayField
+                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+                        LOCALIZE.ariaLabel.dobDayField
+                  }
+                  aria-invalid={!this.state.isValidDobDay && !isFirstLoad}
                   className={isValidDobDay || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
                   id="dob-day-field"
@@ -338,6 +347,15 @@ class RegistrationForm extends Component {
                   onChange={this.getDobDayContent}
                 />
                 <input
+                  aria-label={
+                    isValidDobMonth || isFirstLoad
+                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.ariaLabel.dobMonthField
+                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+                        LOCALIZE.ariaLabel.dobMonthField
+                  }
+                  aria-invalid={!this.state.isValidDobMonth && !isFirstLoad}
                   className={isValidDobMonth || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
                   id="dob-month-field"
@@ -346,6 +364,15 @@ class RegistrationForm extends Component {
                   onChange={this.getDobMonthContent}
                 />
                 <input
+                  aria-label={
+                    isValidDobYear || isFirstLoad
+                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.ariaLabel.dobYearField
+                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+                        LOCALIZE.ariaLabel.dobYearField
+                  }
+                  aria-invalid={!this.state.isValidDobYear && !isFirstLoad}
                   className={isValidDobYear || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
                   id="dob-year-field"

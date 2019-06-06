@@ -497,7 +497,10 @@ let LOCALIZE = new LocalizedStrings({
       reasonsForActionTooltip: "reasons for action tooltip",
       passwordCreationRequirements:
         "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "It must match your password"
+      passwordConfirmationRequirements: "It must match your password",
+      dobDayField: "Day field selected",
+      dobMonthField: "Month field selected",
+      dobYearField: "Year field selected"
     },
 
     //Commons
@@ -1039,7 +1042,10 @@ let LOCALIZE = new LocalizedStrings({
       reasonsForActionTooltip: "infobulle des motifs de l'action",
       passwordCreationRequirements:
         "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
-      passwordConfirmationRequirements: "FR It must match your password"
+      passwordConfirmationRequirements: "FR It must match your password",
+      dobDayField: "FR Day field selected",
+      dobMonthField: "FR Month field selected",
+      dobYearField: "FR Year field selected"
     },
 
     //Commons
