@@ -1,3 +1,4 @@
+from datetime import datetime
 from rest_framework.response import Response
 from custom_models.item import Item
 from custom_models.item_text import ItemText
@@ -17,6 +18,10 @@ def retieve_test_data(request, request_type):
     # if there is a test_name, look it up
     if filter_value is None:
         return Response({"error", "no 'test_name' parameter"})
+    # TODO add logic to pass time as a prop?
+    query_date_time = datetime.now()
+    print(query_date_time)
+    # TODO filter using query_date_time
     test = Test.objects.get(test_name=filter_value)
     # get the associated item
     item_id = test.item_id_id
