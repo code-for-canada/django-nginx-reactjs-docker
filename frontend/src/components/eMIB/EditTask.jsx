@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 import LOCALIZE from "../../text_resources";
 import { actionShape } from "./constants";
 import "../../css/inbox.css";
@@ -13,6 +13,9 @@ const MAX_TASK = "650";
 const MAX_REASON = "650";
 
 const styles = {
+  tooltipButton: {
+    padding: 0
+  },
   header: {
     color: "#00565E",
     paddingTop: 12
@@ -40,16 +43,6 @@ const styles = {
       width: 15,
       cursor: "pointer"
     },
-    tooltipContainer: {
-      marginLeft: 6,
-      padding: 6,
-      maxWidth: 550,
-      borderColor: "#00565E"
-    },
-    tooltipContent: {
-      color: "#00565E",
-      margin: 0
-    },
     textArea: {
       padding: "6px 12px",
       border: "1px solid #00565E",
@@ -69,16 +62,6 @@ const styles = {
       marginTop: "4px",
       cursor: "pointer"
     },
-    tooltipContainer: {
-      marginLeft: 6,
-      padding: 8,
-      maxWidth: 360,
-      borderColor: "#00565E"
-    },
-    tooltipContent: {
-      color: "#00565E",
-      margin: 0
-    },
     textArea: {
       padding: "6px 12px",
       border: "1px solid #00565E",
@@ -93,9 +76,7 @@ const styles = {
 class EditTask extends Component {
   state = {
     task: !this.props.action ? "" : this.props.action.task,
-    taskTooltipIcon: "far fa-question-circle",
-    reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction,
-    reasonsForActionTooltipIcon: "far fa-question-circle"
+    reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction
   };
 
   static propTypes = {
@@ -115,24 +96,8 @@ class EditTask extends Component {
     this.props.onChange({ ...this.state, reasonsForAction: newReasonForAction });
   };
 
-  onTaskTooltipFocus = () => {
-    this.setState({ taskTooltipIcon: "fas fa-question-circle" });
-  };
-
-  onTaskTooltipBlur = () => {
-    this.setState({ taskTooltipIcon: "far fa-question-circle" });
-  };
-
-  onReasonsForActionTooltipFocus = () => {
-    this.setState({ reasonsForActionTooltipIcon: "fas fa-question-circle" });
-  };
-
-  onReasonsForActionTooltipBlur = () => {
-    this.setState({ reasonsForActionTooltipIcon: "far fa-question-circle" });
-  };
-
   render() {
-    const { task, taskTooltipIcon, reasonsForAction, reasonsForActionTooltipIcon } = this.state;
+    const { task, reasonsForAction } = this.state;
 
     return (
       <div style={styles.container}>
@@ -147,26 +112,21 @@ class EditTask extends Component {
                 trigger="focus"
                 placement="right"
                 overlay={
-                  <Popover id="task-tooltip" style={styles.tasks.tooltipContainer}>
+                  <Popover>
                     <div>
-                      <p style={styles.tasks.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}
-                      </p>
-                      <p style={styles.tasks.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}
-                      </p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}</p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}</p>
                     </div>
                   </Popover>
                 }
               >
-                <i
-                  id="task-tooltip"
+                <Button
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
-                  className={taskTooltipIcon}
-                  style={styles.tasks.icon}
-                  onFocus={this.onTaskTooltipFocus}
-                  onBlur={this.onTaskTooltipBlur}
-                />
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
               </OverlayTrigger>
               <div>
                 <textarea
@@ -192,26 +152,20 @@ class EditTask extends Component {
                 trigger="focus"
                 placement="right"
                 overlay={
-                  <Popover
-                    id="reasons-for-action-tooltip"
-                    style={styles.reasonsForAction.tooltipContainer}
-                  >
+                  <Popover id="reasons-for-action-tooltip">
                     <div>
-                      <p style={styles.reasonsForAction.tooltipContent}>
-                        {LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}
-                      </p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}</p>
                     </div>
                   </Popover>
                 }
               >
-                <i
-                  id="reasons-for-action-tooltip"
+                <Button
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
-                  className={reasonsForActionTooltipIcon}
-                  style={styles.reasonsForAction.icon}
-                  onFocus={this.onReasonsForActionTooltipFocus}
-                  onBlur={this.onReasonsForActionTooltipBlur}
-                />
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
               </OverlayTrigger>
               <div>
                 <textarea
