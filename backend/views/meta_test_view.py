@@ -13,6 +13,7 @@ class MetaTestSet(APIView):
 
     def get(self, request):
         # TODO check that everything is active (current time between start/end times)
+        # TODO handle errors/test errors
         # get the test_name from the parameter
         filter_value = self.request.query_params.get('test_name', None)
         # if there is a test_name, look it up
@@ -22,7 +23,7 @@ class MetaTestSet(APIView):
         # get the associated item
         item_id = test.item_id_id
         if item_id is None:
-            return [{"error", "no associated item"}]
+            return Response({"error", "no associated item"})
         item = Item.objects.get(pk=item_id)
         print(item)
         # get item text (visible test names)
@@ -38,7 +39,6 @@ class MetaTestSet(APIView):
         print(test)
         # TODO put in central file
         # TODO stop at meta, and pre
-        # TODO different return types accordingly
 
         ret = {'test_internal_name': test.test_name,
                'test_en_name': en_name,
