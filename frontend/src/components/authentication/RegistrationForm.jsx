@@ -120,6 +120,7 @@ class RegistrationForm extends Component {
     isFirstPasswordLoad: true,
     passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
+    isCreateAccountButtonDisabled: true,
     // PopupBox
     showCreatedAccountDialog: false,
     showPrivacyNoticeDialog: false,
@@ -286,6 +287,10 @@ class RegistrationForm extends Component {
     this.setState({ showPrivacyNoticeDialog: false });
   };
 
+  changeCreateAccountBtnStatus = () => {
+    this.setState({ isCreateAccountButtonDisabled: !this.state.isCreateAccountButtonDisabled });
+  };
+
   render() {
     const {
       isFirstLoad,
@@ -308,7 +313,8 @@ class RegistrationForm extends Component {
       isFirstPasswordLoad,
       passwordConfirmationContent,
       isValidPasswordConfirmation,
-      accountExistsError
+      accountExistsError,
+      isCreateAccountButtonDisabled
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -620,7 +626,12 @@ class RegistrationForm extends Component {
               </div>
               <div className="privacy-notice-grid" style={styles.privacyNoticeZone}>
                 <div className="privacy-notice-grid-checkbox">
-                  <input type="checkbox" style={styles.checkbox} />
+                  <input
+                    id="privacy-notice-checkbox"
+                    type="checkbox"
+                    style={styles.checkbox}
+                    onChange={this.changeCreateAccountBtnStatus}
+                  />
                 </div>
                 <div className="privacy-notice-grid-description">
                   <p>
@@ -635,6 +646,7 @@ class RegistrationForm extends Component {
                 style={styles.loginBtn}
                 className="btn btn-primary"
                 type="submit"
+                disabled={isCreateAccountButtonDisabled}
                 onClick={this.validateForm}
               >
                 {LOCALIZE.authentication.createAccount.button}
