@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework import permissions
-from .retrieve_test_view import META_TEST, retieve_test_data
+from views.retrieve_test_view import META_TEST, retieve_test_data
 
 
 class MetaTestSet(APIView):
