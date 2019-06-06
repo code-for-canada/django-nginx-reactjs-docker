@@ -16,8 +16,6 @@ schema_view = get_swagger_view(title="ThunderCAT APIs")
 
 router = routers.DefaultRouter()
 router.register(r"api/database-check", database_check_view.DatabaseViewSet)
-# router.register(r"api/meta-test",
-#                meta_test_view.MetaTestSet.as_view())
 
 urlpatterns = [
     url(r"^$", schema_view),
@@ -32,8 +30,8 @@ urlpatterns = [
     url(r"^api/auth/jwt/verify_token/", verify_jwt_token),
     url(r"^api/meta-test",
         meta_test_view.MetaTestSet.as_view()),
-    # url(r"^api/meta-test/(?P<test_name>.+)/$",
-    #    meta_test_view.MetaTestSet.as_view()),
+    url(r"^api/meta-test/(?P<test_name>.+)/$",
+        meta_test_view.MetaTestSet.as_view()),
 ]
 
 if settings.DEBUG:
