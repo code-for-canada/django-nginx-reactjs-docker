@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from custom_models.item import Item
+from custom_models.meta_test_return import MetaTest
 
 # Serializers define the API representation
 
 
-class ItemSerializer(serializers.ModelSerializer):
+class MetaTestSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
+        model = MetaTest
         fields = "__all__"

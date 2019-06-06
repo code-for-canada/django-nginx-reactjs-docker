@@ -4,6 +4,7 @@ from serializers.test_serializer import TestSerializer
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from django.core.serializers import serialize
+from django.http import HttpResponse
 
 
 class TestSet(viewsets.ReadOnlyModelViewSet):
@@ -44,7 +45,8 @@ class TestSet(viewsets.ReadOnlyModelViewSet):
         for item in obj_array:
             print(item)
         print("-----------")
-        return test_returnset
+        return HttpResponse(json_return, content_type='application/json')
+        # return test_returnset
 
     def get_children(self, item_id):
         child_arr = []
