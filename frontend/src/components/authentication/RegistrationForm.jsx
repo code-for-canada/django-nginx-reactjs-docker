@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 
 const styles = {
   createAccountContent: {
@@ -35,6 +36,10 @@ const styles = {
     borderRadius: 4,
     textAlign: "center",
     marginRight: 12
+  },
+  tooltipButton: {
+    padding: 0,
+    marginLeft: 6
   },
   iconForNames: {
     color: "#278400",
@@ -328,6 +333,28 @@ class RegistrationForm extends Component {
                 <div style={styles.inputTitle}>
                   <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
+                  <OverlayTrigger
+                    trigger="focus"
+                    placement="right"
+                    overlay={
+                      <Popover>
+                        <div>
+                          <p>{LOCALIZE.authentication.createAccount.content.inputs.dobTooltip}</p>
+                        </div>
+                      </Popover>
+                    }
+                  >
+                    <Button
+                      aria-label={
+                        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip
+                      }
+                      style={styles.tooltipButton}
+                      variant="link"
+                    >
+                      ?
+                    </Button>
+                  </OverlayTrigger>
                 </div>
                 <input
                   aria-label={
