@@ -73,6 +73,19 @@ const styles = {
   },
   mandatoryMark: {
     color: "#923534"
+  },
+  privacyNoticeZone: {
+    marginTop: 24
+  },
+  checkbox: {
+    width: 24,
+    height: 24,
+    marginTop: 8
+  },
+  privacyNoticeLink: {
+    textDecoration: "underline",
+    color: "#0278A4",
+    cursor: "pointer"
   }
 };
 
@@ -108,7 +121,8 @@ class RegistrationForm extends Component {
     passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
     // PopupBox
-    showDialog: false,
+    showCreatedAccountDialog: false,
+    showPrivacyNoticeDialog: false,
     // handle errors
     accountExistsError: false
   };
@@ -235,7 +249,7 @@ class RegistrationForm extends Component {
     // refresh the page in order to show the login form
     window.location.reload();
     // close dialog
-    this.setState({ showDialog: false });
+    this.setState({ showCreatedAccountDialog: false });
   };
 
   handleSubmit = event => {
@@ -257,11 +271,19 @@ class RegistrationForm extends Component {
             document.getElementById("email-address-field").focus();
             // account successfully created
           } else {
-            this.setState({ showDialog: true, accountExistsError: false });
+            this.setState({ showCreatedAccountDialog: true, accountExistsError: false });
           }
         });
     }
     event.preventDefault();
+  };
+
+  showPrivacyNoticePopup = () => {
+    this.setState({ showPrivacyNoticeDialog: true });
+  };
+
+  closePrivacyNoticePopup = () => {
+    this.setState({ showPrivacyNoticeDialog: false });
   };
 
   render() {
@@ -596,6 +618,19 @@ class RegistrationForm extends Component {
                   </label>
                 )}
               </div>
+              <div className="privacy-notice-grid" style={styles.privacyNoticeZone}>
+                <div className="privacy-notice-grid-checkbox">
+                  <input type="checkbox" style={styles.checkbox} />
+                </div>
+                <div className="privacy-notice-grid-description">
+                  <p>
+                    {LOCALIZE.authentication.createAccount.privacyNotice}
+                    <span onClick={this.showPrivacyNoticePopup} style={styles.privacyNoticeLink}>
+                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                    </span>
+                  </p>
+                </div>
+              </div>
               <button
                 style={styles.loginBtn}
                 className="btn btn-primary"
@@ -610,7 +645,22 @@ class RegistrationForm extends Component {
         <PopupBox
           isCloseButtonVisible={false}
           isBackdropStatic={true}
-          show={this.state.showDialog}
+          show={this.state.showPrivacyNoticeDialog}
+          handleClose={this.closePrivacyNoticePopup}
+          title={"TITLE HERE (TODO)"}
+          description={
+            <div>
+              <p>DESCRIPTION HERE (TODO)</p>
+            </div>
+          }
+          rightButtonType={BUTTON_TYPE.primary}
+          rightButtonTitle={LOCALIZE.commons.ok}
+          rightButtonAction={this.closePrivacyNoticePopup}
+        />
+        <PopupBox
+          isCloseButtonVisible={false}
+          isBackdropStatic={true}
+          show={this.state.showCreatedAccountDialog}
           handleClose={this.redirectToLoginPage}
           title={LOCALIZE.authentication.createAccount.popupBox.title}
           description={

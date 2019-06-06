@@ -21,6 +21,23 @@ registration-form.css is used for the RegistrationForm.jsx styles that cannot be
   margin-left: 12px;
 }
 
+.privacy-notice-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+.privacy-notice-grid-checkbox {
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.privacy-notice-grid-description {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  width: 450px;
+  margin-left: 12px;
+}
+
 .valid-field {
   border: 1px solid #00565e;
 }

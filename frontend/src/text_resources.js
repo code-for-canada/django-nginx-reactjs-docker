@@ -70,6 +70,9 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "privacy notice",
         //temporary
         popupBox: {
           title: "Account Created",
@@ -613,6 +616,9 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "FR Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "FR privacy notice",
         //temporary
         popupBox: {
           title: "FR Account Created",
