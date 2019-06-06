@@ -86,7 +86,7 @@ class Settings extends Component {
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={LOCALIZE.settings.okay}
+          rightButtonTitle={LOCALIZE.commons.ok}
           rightButtonAction={this.toggleDialog}
         />
       </div>

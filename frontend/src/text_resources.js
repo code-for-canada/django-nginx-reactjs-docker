@@ -113,7 +113,6 @@ let LOCALIZE = new LocalizedStrings({
     // Settings Dialog
     settings: {
       systemSettings: "System settings",
-      okay: "Okay",
       zoom: {
         title: "Zoom (+/-)",
         instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
@@ -693,7 +692,6 @@ let LOCALIZE = new LocalizedStrings({
     // Settings Dialog
     settings: {
       systemSettings: "FR System settings",
-      okay: "FR Okay",
       zoom: {
         title: "FR Zoom (+/-)",
         instructionsListItem1:
