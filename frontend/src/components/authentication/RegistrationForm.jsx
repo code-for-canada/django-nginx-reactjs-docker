@@ -87,6 +87,8 @@ class RegistrationForm extends Component {
     isValidDobDay: false,
     dobMonthContent: "",
     isValidDobMonth: false,
+    dobYearContent: "",
+    isValidDobYear: false,
     emailContent: "",
     isValidEmail: false,
     passwordContent: "",
@@ -134,6 +136,16 @@ class RegistrationForm extends Component {
     }
   };
 
+  getDobYearContent = event => {
+    const dobYearContent = event.target.value;
+    const regex = /^[0-9]$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        dobYearContent: dobYearContent
+      });
+    }
+  };
+
   getEmailContent = event => {
     const emailContent = event.target.value;
     this.setState({ emailContent: emailContent });
@@ -158,6 +170,7 @@ class RegistrationForm extends Component {
     const isValidLastName = validateName(this.state.lastNameContent);
     const isValidDobDay = this.state.dobDayContent.length > 0;
     const isValidDobMonth = this.state.dobMonthContent.length > 0;
+    const isValidDobYear = this.state.dobYearContent.length > 0;
     const isValidEmail = validateEmail(this.state.emailContent);
     const isValidPassword = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
@@ -170,6 +183,7 @@ class RegistrationForm extends Component {
       isValidLastName: isValidLastName,
       isValidDobDay: isValidDobDay,
       isValidDobMonth: isValidDobMonth,
+      isValidDobYear: isValidDobYear,
       isValidEmail: isValidEmail,
       isValidPassword: isValidPassword,
       isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
@@ -228,9 +242,11 @@ class RegistrationForm extends Component {
       lastNameContent,
       isValidLastName,
       dobDayContent,
-      dobMonthContent,
       isValidDobDay,
+      dobMonthContent,
       isValidDobMonth,
+      dobYearContent,
+      isValidDobYear,
       emailContent,
       isValidEmail,
       passwordContent,
@@ -329,6 +345,21 @@ class RegistrationForm extends Component {
                   style={styles.dobFields}
                   onChange={this.getDobMonthContent}
                 />
+                <input
+                  className={isValidDobYear || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-required={"true"}
+                  id="dob-year-field"
+                  value={dobYearContent}
+                  style={styles.dobFields}
+                  onChange={this.getDobYearContent}
+                />
+                {!(isValidDobDay && isValidDobMonth && isValidDobYear) && !isFirstLoad && (
+                  <div>
+                    <label htmlFor={"dob-day-field"} style={styles.errorMessage}>
+                      {LOCALIZE.authentication.createAccount.content.inputs.dobError}
+                    </label>
+                  </div>
+                )}
               </div>
               <div>
                 <div style={styles.inputTitle}>
