@@ -637,7 +637,6 @@ class RegistrationForm extends Component {
                 <div className="privacy-notice-grid-checkbox">
                   <input
                     aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
-                    aria-required={"true"}
                     aria-label={
                       isValidPrivacyNotice || isFirstLoad
                         ? LOCALIZE.authentication.createAccount.privacyNotice +
