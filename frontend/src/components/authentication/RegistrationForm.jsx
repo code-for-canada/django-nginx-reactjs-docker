@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
-import validateName, { validateEmail, validatePassword } from "../../helpers/regexValidator";
+import validateName, {
+  validateEmail,
+  validatePassword,
+  validatePriOrMilitaryNbr
+} from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
 import { registerAction } from "../../modules/LoginRedux";
 import { bindActionCreators } from "redux";
@@ -96,6 +100,8 @@ class RegistrationForm extends Component {
     isValidDobYear: false,
     emailContent: "",
     isValidEmail: false,
+    priOrMilitaryNbrContent: "",
+    isValidPriOrMilitaryNbr: false,
     passwordContent: "",
     isValidPassword: false,
     isFirstPasswordLoad: true,
@@ -123,6 +129,7 @@ class RegistrationForm extends Component {
 
   getDobDayContent = event => {
     const dobDayContent = event.target.value;
+    // only 1 to 31 can be inserted into this field
     const regex = /^(3[01]|[12][0-9]|[1-9])$/;
     if (event.target.value === "" || regex.test(event.target.value)) {
       this.setState({
@@ -133,6 +140,7 @@ class RegistrationForm extends Component {
 
   getDobMonthContent = event => {
     const dobMonthContent = event.target.value;
+    // only 1 to 12 can be inserted into this field
     const regex = /^(1[0-2]|[1-9])$/;
     if (event.target.value === "" || regex.test(event.target.value)) {
       this.setState({
@@ -143,6 +151,7 @@ class RegistrationForm extends Component {
 
   getDobYearContent = event => {
     const dobYearContent = event.target.value;
+    // only 0 to 9 can be inserted into this field
     const regex = /^[0-9]$/;
     if (event.target.value === "" || regex.test(event.target.value)) {
       this.setState({
@@ -154,6 +163,20 @@ class RegistrationForm extends Component {
   getEmailContent = event => {
     const emailContent = event.target.value;
     this.setState({ emailContent: emailContent });
+  };
+
+  getPriOrMilitaryNbrContent = event => {
+    const priOrMilitaryNbrContent = event.target.value;
+    /* only the following can be inserted into this field:
+          - 1 letter followed by 0 to 6 numbers
+          - 0 to 9 numbers
+    */
+    const regex = /^(([A-Za-z]{1})([0-9]{0,6}))$|^([0-9]{0,9})$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        priOrMilitaryNbrContent: priOrMilitaryNbrContent
+      });
+    }
   };
 
   getPasswordContent = event => {
@@ -177,6 +200,7 @@ class RegistrationForm extends Component {
     const isValidDobMonth = this.state.dobMonthContent.length > 0;
     const isValidDobYear = this.state.dobYearContent.length > 0;
     const isValidEmail = validateEmail(this.state.emailContent);
+    const isValidPriOrMilitaryNbr = validatePriOrMilitaryNbr(this.state.priOrMilitaryNbrContent);
     const isValidPassword = validatePassword(this.state.passwordContent);
     const passwordContent = this.state.passwordContent;
     const passwordConfirmationContent = this.state.passwordConfirmationContent;
@@ -190,6 +214,7 @@ class RegistrationForm extends Component {
       isValidDobMonth: isValidDobMonth,
       isValidDobYear: isValidDobYear,
       isValidEmail: isValidEmail,
+      isValidPriOrMilitaryNbr: isValidPriOrMilitaryNbr,
       isValidPassword: isValidPassword,
       isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
     });
@@ -254,6 +279,8 @@ class RegistrationForm extends Component {
       isValidDobYear,
       emailContent,
       isValidEmail,
+      priOrMilitaryNbrContent,
+      isValidPriOrMilitaryNbr,
       passwordContent,
       isValidPassword,
       isFirstPasswordLoad,
@@ -457,6 +484,33 @@ class RegistrationForm extends Component {
                   {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
                 </label>
               )}
+              <div>
+                <div style={styles.inputTitle}>
+                  <label htmlFor={"pri-or-military-nbr-field"}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.priOrMilitaryNbrTitle}
+                  </label>
+                </div>
+                {isValidPriOrMilitaryNbr && (
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                )}
+                <input
+                  className={
+                    isValidPriOrMilitaryNbr || isFirstLoad ? validFieldClass : invalidFieldClass
+                  }
+                  aria-invalid={!this.state.isValidPriOrMilitaryNbr && !isFirstLoad}
+                  aria-required={"false"}
+                  id="pri-or-military-nbr-field"
+                  type="text"
+                  value={priOrMilitaryNbrContent}
+                  style={styles.inputs}
+                  onChange={this.getPriOrMilitaryNbrContent}
+                />
+                {!isValidPriOrMilitaryNbr && !isFirstLoad && (
+                  <label htmlFor={"pri-or-military-nbr-field"} style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.priOrMilitaryNbrError}
+                  </label>
+                )}
+              </div>
               <div>
                 <div style={styles.inputTitle}>
                   <label htmlFor={"password-field"}>
