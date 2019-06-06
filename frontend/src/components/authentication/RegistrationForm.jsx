@@ -409,7 +409,18 @@ class RegistrationForm extends Component {
                 />
                 {!(isValidDobDay && isValidDobMonth && isValidDobYear) && !isFirstLoad && (
                   <div>
-                    <label htmlFor={"dob-day-field"} style={styles.errorMessage}>
+                    <label
+                      htmlFor={
+                        !isValidDobDay
+                          ? "dob-day-field"
+                          : !isValidDobMonth
+                          ? "dob-month-field"
+                          : !isValidDobYear
+                          ? "dob-year-field"
+                          : ""
+                      }
+                      style={styles.errorMessage}
+                    >
                       {LOCALIZE.authentication.createAccount.content.inputs.dobError}
                     </label>
                   </div>
