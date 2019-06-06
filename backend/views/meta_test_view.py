@@ -19,40 +19,43 @@ class MetaTestSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         # TODO check that everything is active (current time between start/end times)
-        meta_test = MetaTest()
-        # get the querysets
-        item_queryset = Item.objects.all()
-        item_text = ItemText.objects.all()
-        test_queryset = Test.objects.all()
-        language_queryset = Language.objects.all()
         # get the test_name from the parameter
         filter_value = self.request.query_params.get('test_name', None)
         # if there is a test_name, look it up
         if filter_value is None:
             return [{"error", "no 'test_name' parameter"}]
-        test = test_queryset.filter(test_name=filter_value)
+        test = Test.objects.get(test_name=filter_value)
         # get the associated item
-        item_id = test.last().item_id_id
+        item_id = test.item_id_id
         if item_id is None:
             return [{"error", "no associated item"}]
-        item = item_queryset.filter(item_id=item_id)
-        print(item.last)
+        item = Item.objects.get(pk=item_id)
+        print(item)
 
         # get item text (visible test names)
         # get en and fr ids
-        en = language_queryset.filter(ISO_Code_2="en-ca").last().language_id
-        fr = language_queryset.filter(ISO_Code_2="fr-ca").last().language_id
-        print(en)
-        print(fr)
-        en_name = item_text.filter(
-            item_id=item_id, language=en).last().text_detail
-        fr_name = item_text.filter(
-            item_id=item_id, language=fr).last().text_detail
+        en_id = Language.objects.get(ISO_Code_2="en-ca").language_id
+        fr_id = Language.objects.get(ISO_Code_2="fr-ca").language_id
+        print(en_id)
+        print(fr_id)
+        en_name = ItemText.objects.get(
+            item_id=item_id, language=en_id)  # .text_detail
+        fr_name = ItemText.objects.get(
+            item_id=item_id, language=fr_id)  # .text_detail
         print(en_name)
         print(fr_name)
 
         # create the return value
+        meta_test = MetaTest(test, en_name, fr_name)
+        #meta_test.test_internal_name = test.test_name
+        #meta_test.test_en_name = en_name
+        #meta_test.test_fr_name = fr_name
+        #meta_test.is_public = test.is_public
+        #meta_test.default_time = test.default_time
+        #meta_test.test_type = Test.test_type
+        print(test)
+        # print(meta_test)
 
-        return
+        return [meta_test]
 
 # http://localhost/api/meta-test/?test_name=emibSampleTest
