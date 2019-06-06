@@ -78,9 +78,9 @@ const styles = {
     marginTop: 24
   },
   checkbox: {
-    width: 24,
-    height: 24,
-    marginTop: 8
+    width: 18,
+    height: 18,
+    marginTop: 10
   },
   privacyNoticeLink: {
     textDecoration: "underline",

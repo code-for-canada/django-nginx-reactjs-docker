@@ -34,7 +34,7 @@ registration-form.css is used for the RegistrationForm.jsx styles that cannot be
 .privacy-notice-grid-description {
   -ms-grid-column: 2;
   grid-column: 2;
-  width: 450px;
+  width: 470px;
   margin-left: 12px;
 }
 
