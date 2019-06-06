@@ -35,14 +35,18 @@ def retieve_test_data(request, request_type):
     fr_name = ItemText.objects.get(
         item_id=item_id, language=fr_id).text_detail
     print(test)
-    # TODO put in central file
-    # TODO stop at meta, and pre
+    if request_type == META_TEST:
+        ret = {'test_internal_name': test.test_name,
+               'test_en_name': en_name,
+               'meta_test.test_fr_name': fr_name,
+               'meta_test.is_public': test.is_public,
+               'meta_test.default_time': test.default_time,
+               'meta_test.test_type': test.test_type}
 
-    ret = {'test_internal_name': test.test_name,
-           'test_en_name': en_name,
-           'meta_test.test_fr_name': fr_name,
-           'meta_test.is_public': test.is_public,
-           'meta_test.default_time': test.default_time,
-           'meta_test.test_type': test.test_type}
+        return Response(ret)
 
-    return Response(ret)
+    if request_type == PRE_TEST:
+        # TODO write this logic
+        return Response()
+
+    return Response()
