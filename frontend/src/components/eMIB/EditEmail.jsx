@@ -98,6 +98,10 @@ const styles = {
       height: 150,
       resize: "none"
     }
+  },
+  tooltipButton: {
+    float: "right",
+    textDecoration: "underline"
   }
 };
 
@@ -300,7 +304,10 @@ class EditEmail extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">
-                {LOCALIZE.emibTest.inboxPage.addEmailResponse.response}
+                {LOCALIZE.formatString(
+                  LOCALIZE.emibTest.inboxPage.addEmailResponse.response,
+                  MAX_RESPONSE
+                )}
               </label>
               <OverlayTrigger
                 trigger="focus"
@@ -340,7 +347,10 @@ class EditEmail extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area">
-                {LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction}
+                {LOCALIZE.formatString(
+                  LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction,
+                  MAX_REASON
+                )}
               </label>
               <OverlayTrigger
                 trigger="focus"
