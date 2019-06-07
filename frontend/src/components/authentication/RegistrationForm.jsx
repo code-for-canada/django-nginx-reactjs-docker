@@ -139,7 +139,8 @@ class RegistrationForm extends Component {
     showPrivacyNoticeDialog: false,
 
     // API Errors Handler States
-    accountExistsError: false
+    accountExistsError: false,
+    passwordTooCommonError: false
   };
 
   getFirstNameContent = event => {
@@ -297,6 +298,22 @@ class RegistrationForm extends Component {
     }
   };
 
+  handleAccountAlreadyExistsError = response => {
+    if (response.username[0] === "A user with that username already exists.") {
+      this.setState({ accountExistsError: true });
+      // focus on email address field
+      document.getElementById("email-address-field").focus();
+    }
+  };
+
+  handlePasswordTooCommonError = response => {
+    if (response.password[0] === "This password is too common.") {
+      this.setState({ passwordTooCommonError: true });
+      // focus on password field
+      document.getElementById("password-field").focus();
+    }
+  };
+
   validateForm = () => {
     this.resetPasswordRequirementsStates();
     const isValidFirstName = validateName(this.state.firstNameContent);
@@ -324,6 +341,7 @@ class RegistrationForm extends Component {
       isFirstLoad: false,
       isFirstPasswordLoad: false,
       accountExistsError: false,
+      passwordTooCommonError: false,
       isValidFirstName: isValidFirstName,
       isValidLastName: isValidLastName,
       isValidDobDay: isValidDobDay,
@@ -408,14 +426,23 @@ class RegistrationForm extends Component {
         })
         // API errors validation
         .then(response => {
-          // account already exists
-          if (response.username[0] === "A user with that username already exists.") {
-            this.setState({ accountExistsError: true });
-            // focus on email address field
-            document.getElementById("email-address-field").focus();
+          // response returns email and username
+          if (
+            response.email === this.state.emailContent &&
+            response.username === this.state.emailContent
+          ) {
             // account successfully created
-          } else {
             this.setState({ showCreatedAccountDialog: true, accountExistsError: false });
+          }
+          // response gets username error(s)
+          if (typeof response.username !== "undefined") {
+            // account already exists error
+            this.handleAccountAlreadyExistsError(response);
+          }
+          // response gets password error(s)
+          if (typeof response.password !== "undefined") {
+            // password too common error
+            this.handlePasswordTooCommonError(response);
           }
         });
     }
@@ -467,7 +494,8 @@ class RegistrationForm extends Component {
       atLeastOneDigit,
       atLeastOneSpecialChar,
       betweenMinAndMaxChar,
-      accountExistsError
+      accountExistsError,
+      passwordTooCommonError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -742,6 +770,11 @@ class RegistrationForm extends Component {
                         </li>
                       )}
                     </ul>
+                  </label>
+                )}
+                {passwordTooCommonError && (
+                  <label htmlFor={"password-field"} style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.passwordTooCommonError}
                   </label>
                 )}
               </div>
