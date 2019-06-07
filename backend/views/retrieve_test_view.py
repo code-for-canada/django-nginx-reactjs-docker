@@ -94,11 +94,13 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == META_TEST:
         return return_dict
 
-    # TODO Add logic to get data for instructions pages when
+    # TODO jcherry Add logic to get data for instructions pages
+    # After instructions are actually stored in the DB
+    return_dict["instructions"] = []
     if request_type == PRE_TEST:
         return return_dict
 
-    # TODO write the logic for in-test
+    # TODO write the logic to get in-test data
     return return_dict
 
 
