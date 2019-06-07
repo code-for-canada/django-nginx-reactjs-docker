@@ -338,11 +338,9 @@ class EditEmail extends Component {
                 />
               </div>
               {this.state.emailBody.length >= MAX_RESPONSE && (
-                <p
-                  class="visually-hidden"
-                  aria-live="assertive"
-                  role="alert"
-                >{`Limit reached. You can only use ${MAX_RESPONSE} characters in this field.`}</p>
+                <p class="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_RESPONSE)}
+                </p>
               )}
               <div style={styles.textCounter}>
                 {this.state.emailBody === undefined ? 0 : this.state.emailBody.length}/
@@ -388,11 +386,9 @@ class EditEmail extends Component {
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
-                <p
-                  class="visually-hidden"
-                  aria-live="assertive"
-                  role="alert"
-                >{`Limit reached. You can only use ${MAX_REASON} characters in this field.`}</p>
+                <p class="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_REASON)}
+                </p>
               )}
               <div style={styles.textCounter}>
                 {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}

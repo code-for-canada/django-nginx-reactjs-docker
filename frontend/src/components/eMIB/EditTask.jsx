@@ -142,11 +142,9 @@ class EditTask extends Component {
                 />
               </div>
               {this.state.task.length >= MAX_TASK && (
-                <p
-                  class="visually-hidden"
-                  aria-live="assertive"
-                  role="alert"
-                >{`Limit reached. You can only use ${MAX_TASK} characters in this field.`}</p>
+                <p class="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_TASK)}
+                </p>
               )}
               <div style={styles.textCounter} id="unit-test-task-response">
                 {this.state.task === undefined ? 0 : this.state.task.length}/{MAX_TASK}
@@ -191,11 +189,9 @@ class EditTask extends Component {
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
-                <p
-                  class="visually-hidden"
-                  aria-live="assertive"
-                  role="alert"
-                >{`Limit reached. You can only use ${MAX_REASON} characters in this field.`}</p>
+                <p class="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_REASON)}
+                </p>
               )}
               <div style={styles.textCounter} id="unit-test-task-rfa">
                 {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}

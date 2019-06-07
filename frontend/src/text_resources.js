@@ -431,6 +431,7 @@ let LOCALIZE = new LocalizedStrings({
           editTask: "Edit task",
           save: "Save response"
         },
+        characterLimitReached: `Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "To:",
           cc: "Cc:",
@@ -1033,6 +1034,7 @@ let LOCALIZE = new LocalizedStrings({
           editTask: "FR Edit task",
           save: "FR Save response"
         },
+        characterLimitReached: `FR Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "À :",
           cc: "Cc :",
