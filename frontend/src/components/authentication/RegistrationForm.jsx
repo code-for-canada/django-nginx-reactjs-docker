@@ -140,7 +140,8 @@ class RegistrationForm extends Component {
 
     // API Errors Handler States
     accountExistsError: false,
-    passwordTooCommonError: false
+    passwordTooCommonError: false,
+    passwordTooSimilarToUsernameError: false
   };
 
   getFirstNameContent = event => {
@@ -306,12 +307,23 @@ class RegistrationForm extends Component {
     }
   };
 
-  handlePasswordTooCommonError = response => {
-    if (response.password[0] === "This password is too common.") {
+  handlePasswordErrors = response => {
+    const passwordTooCommonIndex = response.password.indexOf("This password is too common.");
+    const passwordTooSimilarToUsernameIndex = response.password.indexOf(
+      "The password is too similar to the username."
+    );
+
+    // password too common error
+    if (passwordTooCommonIndex >= 0) {
       this.setState({ passwordTooCommonError: true });
-      // focus on password field
-      document.getElementById("password-field").focus();
     }
+
+    // password too similar to username error
+    if (passwordTooSimilarToUsernameIndex >= 0) {
+      this.setState({ passwordTooSimilarToUsernameError: true });
+    }
+    // focus on password field
+    document.getElementById("password-field").focus();
   };
 
   validateForm = () => {
@@ -342,6 +354,7 @@ class RegistrationForm extends Component {
       isFirstPasswordLoad: false,
       accountExistsError: false,
       passwordTooCommonError: false,
+      passwordTooSimilarToUsernameError: false,
       isValidFirstName: isValidFirstName,
       isValidLastName: isValidLastName,
       isValidDobDay: isValidDobDay,
@@ -442,7 +455,7 @@ class RegistrationForm extends Component {
           // response gets password error(s)
           if (typeof response.password !== "undefined") {
             // password too common error
-            this.handlePasswordTooCommonError(response);
+            this.handlePasswordErrors(response);
           }
         });
     }
@@ -495,7 +508,8 @@ class RegistrationForm extends Component {
       atLeastOneSpecialChar,
       betweenMinAndMaxChar,
       accountExistsError,
-      passwordTooCommonError
+      passwordTooCommonError,
+      passwordTooSimilarToUsernameError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -775,6 +789,11 @@ class RegistrationForm extends Component {
                 {passwordTooCommonError && (
                   <label htmlFor={"password-field"} style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.passwordTooCommonError}
+                  </label>
+                )}
+                {passwordTooSimilarToUsernameError && (
+                  <label htmlFor={"password-field"} style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.passwordTooSimilarToUsernameError}
                   </label>
                 )}
               </div>

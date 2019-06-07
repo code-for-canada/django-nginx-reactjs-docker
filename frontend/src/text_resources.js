@@ -81,7 +81,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         button: "Create account",
         accountAlreadyExistsError: "An account is already associated to this email address",
-        passwordTooCommonError: "This password is too common"
+        passwordTooCommonError: "This password is too common",
+        passwordTooSimilarToUsernameError: "The password is too similar to the username"
       }
     },
 
@@ -676,7 +677,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         button: "Créer compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
-        passwordTooCommonError: "FR This password is too common"
+        passwordTooCommonError: "FR This password is too common",
+        passwordTooSimilarToUsernameError: "FR The password is too similar to the username"
       }
     },
 
