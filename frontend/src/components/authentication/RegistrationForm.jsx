@@ -101,38 +101,44 @@ class RegistrationForm extends Component {
   state = {
     // Ensures no errors are shown on page load
     isFirstLoad: true,
-    // Form content and validation
+
+    // Field Content States
     firstNameContent: "",
-    isValidFirstName: false,
     lastNameContent: "",
-    isValidLastName: false,
     dobDayContent: "",
-    isValidDobDay: false,
     dobMonthContent: "",
-    isValidDobMonth: false,
     dobYearContent: "",
-    isValidDobYear: false,
     emailContent: "",
-    isValidEmail: false,
     priOrMilitaryNbrContent: "",
-    isValidPriOrMilitaryNbr: false,
     passwordContent: "",
+    passwordConfirmationContent: "",
+
+    // Field Validation States
+    isValidFirstName: false,
+    isValidLastName: false,
+    isValidDobDay: false,
+    isValidDobMonth: false,
+    isValidDobYear: false,
+    isValidEmail: false,
+    isValidPriOrMilitaryNbr: false,
     isValidPassword: false,
     isFirstPasswordLoad: true,
-    passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
     isCheckboxChecked: false,
     isValidPrivacyNotice: false,
-    // password requirements
+
+    // Password Requirements States
     atLeastOneUppercase: false,
     atLeastOneLowercase: false,
     atLeastOneDigit: false,
     atLeastOneSpecialChar: false,
     betweenMinAndMaxChar: false,
-    // PopupBox
+
+    // PopupBox States
     showCreatedAccountDialog: false,
     showPrivacyNoticeDialog: false,
-    // handle errors
+
+    // API Errors Handler States
     accountExistsError: false
   };
 
