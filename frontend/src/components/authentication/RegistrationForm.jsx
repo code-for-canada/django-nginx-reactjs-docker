@@ -435,7 +435,9 @@ class RegistrationForm extends Component {
         .registerAction({
           first_name: this.state.firstNameContent,
           last_name: this.state.lastNameContent,
-          birth_date: "2000-01-01",
+          birth_date: `${this.state.dobDayContent}/${this.state.dobMonthContent}/---${
+            this.state.dobYearContent
+          }`,
           email: this.state.emailContent,
           pri_or_military_nbr: this.state.priOrMilitaryNbrContent,
           password: this.state.passwordContent,

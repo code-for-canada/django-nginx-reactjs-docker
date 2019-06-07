@@ -23,7 +23,9 @@ class User(AbstractUser):
     last_name = models.CharField(
         null=False, blank=False, max_length=150, verbose_name="last name"
     )
-    birth_date = models.DateField(null=False, blank=False)
+    birth_date = models.CharField(
+        null=False, blank=False, max_length=10, verbose_name="DOB (DD/MM/---Y)"
+    )
     pri_or_military_nbr = models.CharField(max_length=9, null=True, blank=True)
     REQUIRED_FIELDS = [
         "first_name",
