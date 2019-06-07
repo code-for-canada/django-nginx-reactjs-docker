@@ -84,22 +84,22 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
             fr_name = None
 
     # if only looking for the meta data, then return
+    return_dict = {'test_internal_name': test.test_name,
+                   'test_en_name': en_name,
+                   'meta_test.test_fr_name': fr_name,
+                   'meta_test.is_public': test.is_public,
+                   'meta_test.default_time': test.default_time,
+                   'meta_test.test_type': test.test_type}
+
     if request_type == META_TEST:
-        ret = {'test_internal_name': test.test_name,
-               'test_en_name': en_name,
-               'meta_test.test_fr_name': fr_name,
-               'meta_test.is_public': test.is_public,
-               'meta_test.default_time': test.default_time,
-               'meta_test.test_type': test.test_type}
+        return return_dict
 
-        return ret
-
+    # TODO Add logic to get data for instructions pages when
     if request_type == PRE_TEST:
-        # TODO write the logic for pre-test
-        return {}
+        return return_dict
 
     # TODO write the logic for in-test
-    return {}
+    return return_dict
 
 
 def get_language_ids(query_date_time):
