@@ -445,8 +445,8 @@ let LOCALIZE = new LocalizedStrings({
         addEmailResponse: {
           selectResponseType: "Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "Your response:",
-          reasonsForAction: "Add reasons for actions here (optional)",
+          response: "Your response: {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit",
           emailResponseTooltip: "Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -458,8 +458,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         addEmailTask: {
           header: "Email ID #{0}: {1}",
-          task: "Your task(s):",
-          reasonsForAction: "Add reasons for actions here (optional)"
+          task: "Your task(s): {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit"
         },
         taskContent: {
           task: "Your task(s):",
