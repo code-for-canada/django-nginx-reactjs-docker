@@ -222,6 +222,81 @@ class RegistrationForm extends Component {
     });
   };
 
+  // screen reader will read specific content depending on the following field conditions
+  dobDayAriaLabelCondition = () => {
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobDayField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobDayField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  dobMonthAriaLabelCondition = () => {
+    // DOB Day field is valid OR this is the first page load
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobMonthField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobMonthField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  dobYearAriaLabelCondition = () => {
+    // DOB Month field is valid OR this is the first page load
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobYearField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobYearField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  privacyNoticeAriaLabelCondition = () => {
+    // Privacy Notice field is valid OR this is the first page load
+    if (this.state.isValidPrivacyNotice || this.state.isFirstLoad) {
+      // returns privacy notice description and link
+      return (
+        LOCALIZE.authentication.createAccount.privacyNotice +
+        LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    } else {
+      // returns privacy notice error, description and link
+      return (
+        LOCALIZE.authentication.createAccount.privacyNoticeError +
+        LOCALIZE.authentication.createAccount.privacyNotice +
+        LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    }
+  };
+
   validateForm = () => {
     this.resetPasswordRequirementsStates();
     const isValidFirstName = validateName(this.state.firstNameContent);
@@ -486,14 +561,7 @@ class RegistrationForm extends Component {
                   </OverlayTrigger>
                 </div>
                 <input
-                  aria-label={
-                    isValidDobDay || isFirstLoad
-                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.ariaLabel.dobDayField
-                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
-                        LOCALIZE.ariaLabel.dobDayField
-                  }
+                  aria-label={this.dobDayAriaLabelCondition()}
                   aria-invalid={!this.state.isValidDobDay && !isFirstLoad}
                   className={isValidDobDay || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
@@ -503,14 +571,7 @@ class RegistrationForm extends Component {
                   onChange={this.getDobDayContent}
                 />
                 <input
-                  aria-label={
-                    isValidDobMonth || isFirstLoad
-                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.ariaLabel.dobMonthField
-                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
-                        LOCALIZE.ariaLabel.dobMonthField
-                  }
+                  aria-label={this.dobMonthAriaLabelCondition()}
                   aria-invalid={!this.state.isValidDobMonth && !isFirstLoad}
                   className={isValidDobMonth || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
@@ -520,14 +581,7 @@ class RegistrationForm extends Component {
                   onChange={this.getDobMonthContent}
                 />
                 <input
-                  aria-label={
-                    isValidDobYear || isFirstLoad
-                      ? LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.ariaLabel.dobYearField
-                      : LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.authentication.createAccount.content.inputs.dobError +
-                        LOCALIZE.ariaLabel.dobYearField
-                  }
+                  aria-label={this.dobYearAriaLabelCondition()}
                   aria-invalid={!this.state.isValidDobYear && !isFirstLoad}
                   className={isValidDobYear || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-required={"true"}
@@ -719,14 +773,7 @@ class RegistrationForm extends Component {
                 <div className="privacy-notice-grid-checkbox">
                   <input
                     aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
-                    aria-label={
-                      isValidPrivacyNotice || isFirstLoad
-                        ? LOCALIZE.authentication.createAccount.privacyNotice +
-                          LOCALIZE.authentication.createAccount.privacyNoticeLink
-                        : LOCALIZE.authentication.createAccount.privacyNoticeError +
-                          LOCALIZE.authentication.createAccount.privacyNotice +
-                          LOCALIZE.authentication.createAccount.privacyNoticeLink
-                    }
+                    aria-label={this.privacyNoticeAriaLabelCondition()}
                     id="privacy-notice-checkbox"
                     type="checkbox"
                     style={styles.checkbox}
