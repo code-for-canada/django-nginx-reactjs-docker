@@ -422,6 +422,10 @@ class RegistrationForm extends Component {
     event.preventDefault();
   };
 
+  /* 
+    we need that 'event' to avoid checkbox status updates if clicking on
+    the link in the privacy notice description
+  */
   showPrivacyNoticePopup = event => {
     this.setState({ showPrivacyNoticeDialog: true });
     event.preventDefault();
