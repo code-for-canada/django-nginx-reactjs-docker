@@ -11,21 +11,21 @@ FULL_TEST = "full_test"
 
 
 def retrieve_test_data(request, request_type):
-    # TODO check that everything is active (current time between start/end times)
-    # TODO handle errors/test errors
-    # get the test_name from the parameter
-    test_name = request.query_params.get('test_name', None)
     query_date_time = datetime.now()
-    return retrieve_response_from_name_date(test_name, query_date_time, request_type)
+    return retrieve_response_from_name_date(request, query_date_time, request_type)
 
 # Wrap the json in a Response; this makes testing easier
 
 
-def retrieve_response_from_name_date(test_name, query_date_time, request_type):
+def retrieve_response_from_name_date(request, query_date_time, request_type):
+    # get the test_name from the parameter
+    test_name = request.query_params.get('test_name', None)
     return Response(retrieve_json_from_name_date(test_name, query_date_time, request_type))
 
 
 def retrieve_json_from_name_date(test_name, query_date_time, request_type):
+    # TODO check that everything is active (current time between start/end times)
+    # TODO handle errors/test errors
     # if there is a test_name, look it up
     if test_name is None:
         return {"error", "no 'test_name' parameter"}
