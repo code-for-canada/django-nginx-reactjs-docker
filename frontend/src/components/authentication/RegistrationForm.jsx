@@ -81,7 +81,7 @@ const styles = {
   checkbox: {
     width: 18,
     height: 18,
-    marginTop: 10
+    marginTop: 3
   },
   privacyNoticeLink: {
     textDecoration: "underline",
@@ -785,19 +785,17 @@ class RegistrationForm extends Component {
                   />
                 </div>
                 <div className="privacy-notice-grid-description">
-                  <p>
-                    <label htmlFor="privacy-notice-checkbox">
-                      {LOCALIZE.authentication.createAccount.privacyNotice}
-                      <span
-                        tabIndex="0"
-                        onClick={this.showPrivacyNoticePopup}
-                        style={styles.privacyNoticeLink}
-                      >
-                        {LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                      </span>
-                      .
-                    </label>
-                  </p>
+                  <label htmlFor="privacy-notice-checkbox">
+                    {LOCALIZE.authentication.createAccount.privacyNotice}
+                    <span
+                      tabIndex="0"
+                      onClick={this.showPrivacyNoticePopup}
+                      style={styles.privacyNoticeLink}
+                    >
+                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                    </span>
+                    .
+                  </label>
                 </div>
               </div>
               {!isValidPrivacyNotice && !isFirstLoad && (
