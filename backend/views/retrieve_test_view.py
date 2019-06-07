@@ -24,32 +24,63 @@ def retrieve_response_from_name_date(request, query_date_time, request_type):
 
 
 def retrieve_json_from_name_date(test_name, query_date_time, request_type):
-    # TODO check that everything is active (current time between start/end times)
-    # TODO handle errors/test errors
-    # if there is a test_name, look it up
+    # if there is no test_name prop, then return an error
     if test_name is None:
         return {"error", "no 'test_name' parameter"}
-    print(query_date_time)
-    # TODO filter using query_date_time
-    # gametimedate__gte=
+    # if there is a test_name, look it up
     test = Test.objects.get(test_name=test_name)
     # get the associated item
     item_id = test.item_id_id
     if item_id is None:
-        return {"error", "no associated item"}
-    item = Item.objects.get(pk=item_id)
-    print(item)
+        return {"error", "no item id in test"}
+
+    # Ensure that the item with the same pk,
+    # is active (where the current date is between the from and to date)
+    try:
+        Item.objects.get(
+            pk=item_id, date_from__lte=query_date_time, date_to__gt=query_date_time)
+    except Item.DoesNotExist:
+        # if the above fails, try to get an item with the same id, after the from date
+        # and where the to date is null
+        try:
+            Item.objects.get(
+                pk=item_id, date_from__lte=query_date_time, date_to__isnull=True)
+        except Item.DoesNotExist:
+            return {"error", "no test item found"}
+
     # get item text (visible test names)
-    # get en and fr ids
-    en_id = Language.objects.get(ISO_Code_2="en-ca").language_id
-    fr_id = Language.objects.get(ISO_Code_2="fr-ca").language_id
-    print(en_id)
-    print(fr_id)
-    en_name = ItemText.objects.get(
-        item_id=item_id, language=en_id).text_detail
-    fr_name = ItemText.objects.get(
-        item_id=item_id, language=fr_id).text_detail
-    print(test)
+    en_id, fr_id = get_language_ids(query_date_time)
+
+    # get the user visible names, if they exist
+    try:
+        en_name = ItemText.objects.get(
+            item_id=item_id, language=en_id,
+            date_from__lte=query_date_time,
+            date_to__gt=query_date_time).text_detail
+    except ItemText.DoesNotExist:
+        try:
+            en_name = ItemText.objects.get(
+                item_id=item_id, language=en_id,
+                date_from__lte=query_date_time,
+                date_to__isnull=True).text_detail
+        except ItemText.DoesNotExist:
+            en_name = None
+
+    try:
+        fr_name = ItemText.objects.get(
+            item_id=item_id, language=fr_id,
+            date_from__lte=query_date_time,
+            date_to__gt=query_date_time).text_detail
+    except ItemText.DoesNotExist:
+        try:
+            fr_name = ItemText.objects.get(
+                item_id=item_id, language=fr_id,
+                date_from__lte=query_date_time,
+                date_to__isnull=True).text_detail
+        except ItemText.DoesNotExist:
+            fr_name = None
+
+    # if only looking for the meta data, then return
     if request_type == META_TEST:
         ret = {'test_internal_name': test.test_name,
                'test_en_name': en_name,
@@ -66,3 +97,34 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
 
     # TODO write the logic for in-test
     return {}
+
+
+def get_language_ids(query_date_time):
+    if query_date_time is None:
+        query_date_time = datetime.now()
+    # get en and fr ids
+    try:
+        en_id = Language.objects.get(
+            ISO_Code_2="en-ca", date_from__lte=query_date_time,
+            date_to__gt=query_date_time).language_id
+    except Language.DoesNotExist:
+        # if the above fails, try to get an item with the same id, after the from date, where the to date is null
+        try:
+            en_id = Language.objects.get(
+                ISO_Code_2="en-ca", date_from__lte=query_date_time,
+                date_to__isnull=True).language_id
+        except Language.DoesNotExist:
+            en_id = None
+    try:
+        fr_id = Language.objects.get(
+            ISO_Code_2="fr-ca", date_from__lte=query_date_time,
+            date_to__gt=query_date_time).language_id
+    except Language.DoesNotExist:
+        # if the above fails, try to get an item with the same id, after the from date, where the to date is null
+        try:
+            fr_id = Language.objects.get(
+                ISO_Code_2="fr-ca", date_from__lte=query_date_time,
+                date_to__isnull=True).language_id
+        except Language.DoesNotExist:
+            fr_id = None
+    return en_id, fr_id
