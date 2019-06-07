@@ -7,7 +7,7 @@ from custom_models.language import Language
 
 META_TEST = "meta_test"
 PRE_TEST = "pre_test"
-FULL_TEST = "full_test"
+IN_TEST = "full_test"
 
 
 def retrieve_test_data(request, request_type):
@@ -100,7 +100,9 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == PRE_TEST:
         return return_dict
 
-    # TODO write the logic to get in-test data
+    # TODO jcherry write the logic to get in-test data
+    # After merging the API PRs
+    return_dict["questions"] = []
     return return_dict
 
 
