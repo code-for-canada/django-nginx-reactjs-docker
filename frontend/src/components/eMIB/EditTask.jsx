@@ -143,7 +143,10 @@ class EditTask extends Component {
               </div>
               {this.state.task.length >= MAX_TASK && (
                 <p class="visually-hidden" aria-live="assertive" role="alert">
-                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_TASK)}
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_TASK
+                  )}
                 </p>
               )}
               <div style={styles.textCounter} id="unit-test-task-response">
@@ -190,7 +193,10 @@ class EditTask extends Component {
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
                 <p class="visually-hidden" aria-live="assertive" role="alert">
-                  {LOCALIZE.formatString(LOCALIZE.inboxPage.characterLimitReached, MAX_REASON)}
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_REASON
+                  )}
                 </p>
               )}
               <div style={styles.textCounter} id="unit-test-task-rfa">
