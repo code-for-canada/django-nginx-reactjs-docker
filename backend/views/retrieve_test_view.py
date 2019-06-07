@@ -28,7 +28,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if test_name is None:
         return {"error", "no 'test_name' parameter"}
     # if there is a test_name, look it up
-    test = Test.objects.get(test_name=test_name)
+    try:
+        test = Test.objects.get(test_name=test_name)
+    except Test.DoesNotExist:
+        return {"error", "no test with the given test_name"}
     # get the associated item
     item_id = test.item_id_id
     if item_id is None:

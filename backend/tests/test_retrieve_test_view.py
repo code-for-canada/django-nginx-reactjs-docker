@@ -16,3 +16,9 @@ class RetrieveTest(TestCase):
             "meta_test.test_type": "emib"
         }
         self.assertEqual(real_json, expected_json)
+
+    def test_get_nonexistant_test(self):
+        real_json = retrieve_json_from_name_date(
+            "IAmNotARealTest", timezone.now(), META_TEST)
+        expected_json = {"error", "no test with the given test_name"}
+        self.assertEqual(real_json, expected_json)
