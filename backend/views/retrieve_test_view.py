@@ -111,7 +111,8 @@ def get_language_ids(query_date_time):
             ISO_Code_2="en-ca", date_from__lte=query_date_time,
             date_to__gt=query_date_time).language_id
     except Language.DoesNotExist:
-        # if the above fails, try to get an item with the same id, after the from date, where the to date is null
+        # if the above fails, try to get an item with the same id,
+        # after the from date, where the to date is null
         try:
             en_id = Language.objects.get(
                 ISO_Code_2="en-ca", date_from__lte=query_date_time,
@@ -123,7 +124,8 @@ def get_language_ids(query_date_time):
             ISO_Code_2="fr-ca", date_from__lte=query_date_time,
             date_to__gt=query_date_time).language_id
     except Language.DoesNotExist:
-        # if the above fails, try to get an item with the same id, after the from date, where the to date is null
+        # if the above fails, try to get an item with the same id,
+        # after the from date, where the to date is null
         try:
             fr_id = Language.objects.get(
                 ISO_Code_2="fr-ca", date_from__lte=query_date_time,
