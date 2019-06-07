@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework import permissions
-from views.retrieve_test_view import META_TEST, retieve_test_data
+from views.retrieve_test_view import META_TEST, retrieve_test_data
 
 
 class MetaTestSet(APIView):
@@ -8,6 +8,6 @@ class MetaTestSet(APIView):
     permission_classes = [permissions.IsAdminUser]
 
     def get(self, request):
-        return retieve_test_data(self.request, META_TEST)
+        return retrieve_test_data(request, META_TEST)
 
 # http://localhost/api/meta-test/?test_name=emibSampleTest
