@@ -72,4 +72,26 @@ export function validatePassword(string) {
   }
 }
 
+/*
+Military Number Condition:
+  - starts with a letter and followed by 6 numbers
+
+PRI Condition:
+  - Contains 8 or 9 numbers
+*/
+export function validatePriOrMilitaryNbr(string) {
+  // valid if the field is empty (since this field is not mandatory)
+  if (string.length === 0) {
+    return true;
+    // if the string contains a letter ==> military number
+  } else if (string.match(/[A-Za-z]/)) {
+    // string must contains 7 characters (1 letter and 6 numbers)
+    return string.length === 7;
+    // else ==> pri
+  } else {
+    // string must contains 8 or 9 characters (8 or 9 numbers)
+    return string.length === 8 || string.length === 9;
+  }
+}
+
 export default validateName;

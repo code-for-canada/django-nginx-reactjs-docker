@@ -4,6 +4,7 @@ import LOCALIZE from "../../text_resources";
 import validateName, {
   validateEmail,
   validatePassword,
+  validatePriOrMilitaryNbr,
   PASSWORD_REQUIREMENTS
 } from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
@@ -13,6 +14,7 @@ import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 
 const styles = {
   createAccountContent: {
@@ -29,14 +31,25 @@ const styles = {
     borderRadius: 4
   },
   inputForNames: {
-    width: 190,
+    width: 240,
     padding: "3px 6px 3px 6px",
     borderRadius: 4
+  },
+  dobFields: {
+    width: 40,
+    padding: "3px 6px 3px 6px",
+    borderRadius: 4,
+    textAlign: "center",
+    marginRight: 12
+  },
+  tooltipButton: {
+    padding: 0,
+    marginLeft: 6
   },
   iconForNames: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 170px"
+    margin: "8px 0 0 220px"
   },
   iconForOtherFields: {
     color: "#278400",
@@ -58,8 +71,26 @@ const styles = {
     fontWeight: "bold",
     padding: 0,
     marginTop: 6
+  },
+  mandatoryMark: {
+    color: "#923534"
+  },
+  privacyNoticeZone: {
+    marginTop: 24
+  },
+  checkbox: {
+    width: 18,
+    height: 18,
+    marginTop: 3
+  },
+  privacyNoticeLink: {
+    textDecoration: "underline",
+    color: "#0278A4",
+    cursor: "pointer"
   }
 };
+
+const MANDATORY_MARK = " *";
 
 class RegistrationForm extends Component {
   static propTypes = {
@@ -70,27 +101,44 @@ class RegistrationForm extends Component {
   state = {
     // Ensures no errors are shown on page load
     isFirstLoad: true,
-    // Form content and validation
+
+    // Field Content States
     firstNameContent: "",
-    isValidFirstName: false,
     lastNameContent: "",
-    isValidLastName: false,
+    dobDayContent: "",
+    dobMonthContent: "",
+    dobYearContent: "",
     emailContent: "",
-    isValidEmail: false,
+    priOrMilitaryNbrContent: "",
     passwordContent: "",
+    passwordConfirmationContent: "",
+
+    // Field Validation States
+    isValidFirstName: false,
+    isValidLastName: false,
+    isValidDobDay: false,
+    isValidDobMonth: false,
+    isValidDobYear: false,
+    isValidEmail: false,
+    isValidPriOrMilitaryNbr: false,
     isValidPassword: false,
     isFirstPasswordLoad: true,
-    passwordConfirmationContent: "",
     isValidPasswordConfirmation: false,
-    // password requirements
+    isCheckboxChecked: false,
+    isValidPrivacyNotice: false,
+
+    // Password Requirements States
     atLeastOneUppercase: false,
     atLeastOneLowercase: false,
     atLeastOneDigit: false,
     atLeastOneSpecialChar: false,
     betweenMinAndMaxChar: false,
-    // PopupBox
-    showDialog: false,
-    // handle errors
+
+    // PopupBox States
+    showCreatedAccountDialog: false,
+    showPrivacyNoticeDialog: false,
+
+    // API Errors Handler States
     accountExistsError: false
   };
 
@@ -108,9 +156,56 @@ class RegistrationForm extends Component {
     });
   };
 
+  getDobDayContent = event => {
+    const dobDayContent = event.target.value;
+    // only 1 to 31 can be inserted into this field
+    const regex = /^(3[01]|[12][0-9]|[1-9])$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        dobDayContent: dobDayContent
+      });
+    }
+  };
+
+  getDobMonthContent = event => {
+    const dobMonthContent = event.target.value;
+    // only 1 to 12 can be inserted into this field
+    const regex = /^(1[0-2]|[1-9])$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        dobMonthContent: dobMonthContent
+      });
+    }
+  };
+
+  getDobYearContent = event => {
+    const dobYearContent = event.target.value;
+    // only 0 to 9 can be inserted into this field
+    const regex = /^[0-9]$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        dobYearContent: dobYearContent
+      });
+    }
+  };
+
   getEmailContent = event => {
     const emailContent = event.target.value;
     this.setState({ emailContent: emailContent });
+  };
+
+  getPriOrMilitaryNbrContent = event => {
+    const priOrMilitaryNbrContent = event.target.value;
+    /* only the following can be inserted into this field:
+          - 1 letter followed by 0 to 6 numbers
+          - 0 to 9 numbers
+    */
+    const regex = /^(([A-Za-z]{1})([0-9]{0,6}))$|^([0-9]{0,9})$/;
+    if (event.target.value === "" || regex.test(event.target.value)) {
+      this.setState({
+        priOrMilitaryNbrContent: priOrMilitaryNbrContent
+      });
+    }
   };
 
   getPasswordContent = event => {
@@ -127,14 +222,94 @@ class RegistrationForm extends Component {
     });
   };
 
+  // screen reader will read specific content depending on the following field conditions
+  dobDayAriaLabelCondition = () => {
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobDayField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobDayField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  dobMonthAriaLabelCondition = () => {
+    // DOB Day field is valid OR this is the first page load
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobMonthField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobMonthField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  dobYearAriaLabelCondition = () => {
+    // DOB Month field is valid OR this is the first page load
+    if (this.state.isValidDobDay || this.state.isFirstLoad) {
+      // returns the DOB field title and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.ariaLabel.dobYearField
+      );
+    } else {
+      // returns the DOB field title, the DOB error and the field selected
+      return (
+        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.ariaLabel.dobYearField
+      );
+    }
+  };
+
+  // screen reader will read specific content depending on the following field conditions
+  privacyNoticeAriaLabelCondition = () => {
+    // Privacy Notice field is valid OR this is the first page load
+    if (this.state.isValidPrivacyNotice || this.state.isFirstLoad) {
+      // returns privacy notice description and link
+      return (
+        LOCALIZE.authentication.createAccount.privacyNotice +
+        LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    } else {
+      // returns privacy notice error, description and link
+      return (
+        LOCALIZE.authentication.createAccount.privacyNoticeError +
+        LOCALIZE.authentication.createAccount.privacyNotice +
+        LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    }
+  };
+
   validateForm = () => {
     this.resetPasswordRequirementsStates();
     const isValidFirstName = validateName(this.state.firstNameContent);
     const isValidLastName = validateName(this.state.lastNameContent);
+    const isValidDobDay = this.state.dobDayContent.length > 0;
+    const isValidDobMonth = this.state.dobMonthContent.length > 0;
+    const isValidDobYear = this.state.dobYearContent.length > 0;
     const isValidEmail = validateEmail(this.state.emailContent);
-    const passwordErrorsArray = validatePassword(this.state.passwordContent);
+    const isValidPriOrMilitaryNbr = validatePriOrMilitaryNbr(this.state.priOrMilitaryNbrContent);
     const passwordContent = this.state.passwordContent;
     const passwordConfirmationContent = this.state.passwordConfirmationContent;
+    const isValidPrivacyNotice = this.state.isCheckboxChecked;
+    const passwordErrorsArray = validatePassword(this.state.passwordContent);
     let isValidPassword = false;
 
     // checking the password validity
@@ -151,9 +326,14 @@ class RegistrationForm extends Component {
       accountExistsError: false,
       isValidFirstName: isValidFirstName,
       isValidLastName: isValidLastName,
+      isValidDobDay: isValidDobDay,
+      isValidDobMonth: isValidDobMonth,
+      isValidDobYear: isValidDobYear,
       isValidEmail: isValidEmail,
+      isValidPriOrMilitaryNbr: isValidPriOrMilitaryNbr,
       isValidPassword: isValidPassword,
-      isValidPasswordConfirmation: passwordContent === passwordConfirmationContent
+      isValidPasswordConfirmation: passwordContent === passwordConfirmationContent,
+      isValidPrivacyNotice: isValidPrivacyNotice
     });
   };
 
@@ -198,9 +378,14 @@ class RegistrationForm extends Component {
     return (
       this.state.isValidFirstName &&
       this.state.isValidLastName &&
+      this.state.isValidDobDay &&
+      this.state.isValidDobMonth &&
+      this.state.isValidDobYear &&
       this.state.isValidEmail &&
+      this.state.isValidPriOrMilitaryNbr &&
       this.state.isValidPassword &&
-      this.state.isValidPasswordConfirmation
+      this.state.isValidPasswordConfirmation &&
+      this.state.isValidPrivacyNotice
     );
   };
 
@@ -208,7 +393,7 @@ class RegistrationForm extends Component {
     // refresh the page in order to show the login form
     window.location.reload();
     // close dialog
-    this.setState({ showDialog: false });
+    this.setState({ showCreatedAccountDialog: false });
   };
 
   handleSubmit = event => {
@@ -230,33 +415,59 @@ class RegistrationForm extends Component {
             document.getElementById("email-address-field").focus();
             // account successfully created
           } else {
-            this.setState({ showDialog: true, accountExistsError: false });
+            this.setState({ showCreatedAccountDialog: true, accountExistsError: false });
           }
         });
     }
     event.preventDefault();
   };
 
+  /* 
+    we need that 'event' to avoid checkbox status updates if clicking on
+    the link in the privacy notice description
+  */
+  showPrivacyNoticePopup = event => {
+    this.setState({ showPrivacyNoticeDialog: true });
+    event.preventDefault();
+  };
+
+  closePrivacyNoticePopup = () => {
+    this.setState({ showPrivacyNoticeDialog: false });
+  };
+
+  changeCheckboxStatus = () => {
+    this.setState({ isCheckboxChecked: !this.state.isCheckboxChecked });
+  };
+
   render() {
     const {
       isFirstLoad,
       firstNameContent,
-      isValidFirstName,
       lastNameContent,
-      isValidLastName,
+      dobDayContent,
+      dobMonthContent,
+      dobYearContent,
       emailContent,
-      isValidEmail,
+      priOrMilitaryNbrContent,
       passwordContent,
+      passwordConfirmationContent,
+      isValidFirstName,
+      isValidLastName,
+      isValidDobDay,
+      isValidDobMonth,
+      isValidDobYear,
+      isValidEmail,
+      isValidPriOrMilitaryNbr,
       isValidPassword,
       isFirstPasswordLoad,
-      passwordConfirmationContent,
       isValidPasswordConfirmation,
-      accountExistsError,
+      isValidPrivacyNotice,
       atLeastOneUppercase,
       atLeastOneLowercase,
       atLeastOneDigit,
       atLeastOneSpecialChar,
-      betweenMinAndMaxChar
+      betweenMinAndMaxChar,
+      accountExistsError
     } = this.state;
 
     const validFieldClass = "valid-field";
@@ -275,6 +486,7 @@ class RegistrationForm extends Component {
                     <label htmlFor={"first-name-field"}>
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
                     </label>
+                    <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidFirstName && (
                     <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
@@ -303,6 +515,7 @@ class RegistrationForm extends Component {
                     <label htmlFor={"last-name-field"}>
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     </label>
+                    <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidLastName && (
                     <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
@@ -326,9 +539,86 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
+                  <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
+                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
+                  <OverlayTrigger
+                    trigger="focus"
+                    placement="right"
+                    overlay={
+                      <Popover>
+                        <div>
+                          <p>{LOCALIZE.authentication.createAccount.content.inputs.dobTooltip}</p>
+                        </div>
+                      </Popover>
+                    }
+                  >
+                    <Button
+                      aria-label={
+                        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+                        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip
+                      }
+                      style={styles.tooltipButton}
+                      variant="link"
+                    >
+                      ?
+                    </Button>
+                  </OverlayTrigger>
+                </div>
+                <input
+                  aria-label={this.dobDayAriaLabelCondition()}
+                  aria-invalid={!this.state.isValidDobDay && !isFirstLoad}
+                  className={isValidDobDay || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-required={"true"}
+                  id="dob-day-field"
+                  value={dobDayContent}
+                  style={styles.dobFields}
+                  onChange={this.getDobDayContent}
+                />
+                <input
+                  aria-label={this.dobMonthAriaLabelCondition()}
+                  aria-invalid={!this.state.isValidDobMonth && !isFirstLoad}
+                  className={isValidDobMonth || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-required={"true"}
+                  id="dob-month-field"
+                  value={dobMonthContent}
+                  style={styles.dobFields}
+                  onChange={this.getDobMonthContent}
+                />
+                <input
+                  aria-label={this.dobYearAriaLabelCondition()}
+                  aria-invalid={!this.state.isValidDobYear && !isFirstLoad}
+                  className={isValidDobYear || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-required={"true"}
+                  id="dob-year-field"
+                  value={dobYearContent}
+                  style={styles.dobFields}
+                  onChange={this.getDobYearContent}
+                />
+                {!(isValidDobDay && isValidDobMonth && isValidDobYear) && !isFirstLoad && (
+                  <div>
+                    <label
+                      htmlFor={
+                        !isValidDobDay
+                          ? "dob-day-field"
+                          : !isValidDobMonth
+                          ? "dob-month-field"
+                          : !isValidDobYear
+                          ? "dob-year-field"
+                          : ""
+                      }
+                      style={styles.errorMessage}
+                    >
+                      {LOCALIZE.authentication.createAccount.content.inputs.dobError}
+                    </label>
+                  </div>
+                )}
+              </div>
+              <div>
+                <div style={styles.inputTitle}>
                   <label htmlFor={"email-address-field"}>
                     {LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   </label>
+                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidEmail && (
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
@@ -356,9 +646,37 @@ class RegistrationForm extends Component {
               )}
               <div>
                 <div style={styles.inputTitle}>
+                  <label htmlFor={"pri-or-military-nbr-field"}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.priOrMilitaryNbrTitle}
+                  </label>
+                </div>
+                {isValidPriOrMilitaryNbr && (
+                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                )}
+                <input
+                  className={
+                    isValidPriOrMilitaryNbr || isFirstLoad ? validFieldClass : invalidFieldClass
+                  }
+                  aria-invalid={!this.state.isValidPriOrMilitaryNbr && !isFirstLoad}
+                  aria-required={"false"}
+                  id="pri-or-military-nbr-field"
+                  type="text"
+                  value={priOrMilitaryNbrContent}
+                  style={styles.inputs}
+                  onChange={this.getPriOrMilitaryNbrContent}
+                />
+                {!isValidPriOrMilitaryNbr && !isFirstLoad && (
+                  <label htmlFor={"pri-or-military-nbr-field"} style={styles.errorMessage}>
+                    {LOCALIZE.authentication.createAccount.content.inputs.priOrMilitaryNbrError}
+                  </label>
+                )}
+              </div>
+              <div>
+                <div style={styles.inputTitle}>
                   <label htmlFor={"password-field"}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   </label>
+                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidPassword && (
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
@@ -432,6 +750,7 @@ class RegistrationForm extends Component {
                   <label htmlFor={"password-confirmation-field"}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
                   </label>
+                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidPasswordConfirmation && (
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
@@ -454,6 +773,36 @@ class RegistrationForm extends Component {
                   </label>
                 )}
               </div>
+              <div className="privacy-notice-grid" style={styles.privacyNoticeZone}>
+                <div className="privacy-notice-grid-checkbox">
+                  <input
+                    aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
+                    aria-label={this.privacyNoticeAriaLabelCondition()}
+                    id="privacy-notice-checkbox"
+                    type="checkbox"
+                    style={styles.checkbox}
+                    onChange={this.changeCheckboxStatus}
+                  />
+                </div>
+                <div className="privacy-notice-grid-description">
+                  <label htmlFor="privacy-notice-checkbox">
+                    {LOCALIZE.authentication.createAccount.privacyNotice}
+                    <span
+                      tabIndex="0"
+                      onClick={this.showPrivacyNoticePopup}
+                      style={styles.privacyNoticeLink}
+                    >
+                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                    </span>
+                    .
+                  </label>
+                </div>
+              </div>
+              {!isValidPrivacyNotice && !isFirstLoad && (
+                <label htmlFor={"privacy-notice-checkbox"} style={styles.errorMessage}>
+                  {LOCALIZE.authentication.createAccount.privacyNoticeError}
+                </label>
+              )}
               <button
                 style={styles.loginBtn}
                 className="btn btn-primary"
@@ -468,7 +817,22 @@ class RegistrationForm extends Component {
         <PopupBox
           isCloseButtonVisible={false}
           isBackdropStatic={true}
-          show={this.state.showDialog}
+          show={this.state.showPrivacyNoticeDialog}
+          handleClose={this.closePrivacyNoticePopup}
+          title={"TITLE HERE (TODO)"}
+          description={
+            <div>
+              <p>DESCRIPTION HERE (TODO)</p>
+            </div>
+          }
+          rightButtonType={BUTTON_TYPE.primary}
+          rightButtonTitle={LOCALIZE.commons.ok}
+          rightButtonAction={this.closePrivacyNoticePopup}
+        />
+        <PopupBox
+          isCloseButtonVisible={false}
+          isBackdropStatic={true}
+          show={this.state.showCreatedAccountDialog}
           handleClose={this.redirectToLoginPage}
           title={LOCALIZE.authentication.createAccount.popupBox.title}
           description={

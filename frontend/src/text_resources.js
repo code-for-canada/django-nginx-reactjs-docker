@@ -50,8 +50,13 @@ let LOCALIZE = new LocalizedStrings({
             firstNameError: "Must be a valid first name",
             lastNameTitle: "Last Name:",
             lastNameError: "Must be a valid last name",
+            dobDayTitle: "Date of birth: (DD / MM / ---Y):",
+            dobError: "Please fill out all fields related to the date of birth",
+            dobTooltip: "You will only need to provide the last digit for your year of birth.",
             emailTitle: "Email Address:",
             emailError: "Must be a valid email address",
+            priOrMilitaryNbrTitle: "PRI or Military number (if applicable):",
+            priOrMilitaryNbrError: "Must be a valid PRI or a valid Military number:",
             passwordTitle: "Password:",
             passwordErrors: {
               description: "Your password must satisfy the following:",
@@ -65,6 +70,10 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "privacy notice",
+        privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "Account Created",
@@ -539,7 +548,13 @@ let LOCALIZE = new LocalizedStrings({
       taskOptions: "task options",
       taskTooltip: "task tooltip",
       emailResponseTooltip: "email response tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip"
+      reasonsForActionTooltip: "reasons for action tooltip",
+      passwordCreationRequirements:
+        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "It must match your password",
+      dobDayField: "Day field selected",
+      dobMonthField: "Month field selected",
+      dobYearField: "Year field selected"
     },
 
     //Commons
@@ -629,8 +644,13 @@ let LOCALIZE = new LocalizedStrings({
             firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
             lastNameError: "FR Must be a valid last name",
+            dobDayTitle: "Date de naissance: (DD / MM / ---Y) :",
+            dobError: "FR Please fill out all fields related to the date of birth",
+            dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
             emailError: "FR Must be a valid email address",
+            priOrMilitaryNbrTitle: "FR PRI or Military number (if applicable) :",
+            priOrMilitaryNbrError: "FR Must be a valid PRI or a valid Military number:",
             passwordTitle: "Mot de passe :",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
@@ -644,6 +664,10 @@ let LOCALIZE = new LocalizedStrings({
             passwordConfirmationError: "FR Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "FR privacy notice",
+        privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "FR Account Created",
@@ -1128,7 +1152,13 @@ let LOCALIZE = new LocalizedStrings({
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
       emailResponseTooltip: "FR email response tooltip",
-      reasonsForActionTooltip: "infobulle des motifs de l'action"
+      reasonsForActionTooltip: "infobulle des motifs de l'action",
+      passwordCreationRequirements:
+        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "FR It must match your password",
+      dobDayField: "FR Day field selected",
+      dobMonthField: "FR Month field selected",
+      dobYearField: "FR Year field selected"
     },
 
     //Commons
