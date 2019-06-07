@@ -13,9 +13,6 @@ const MAX_TASK = "650";
 const MAX_REASON = "650";
 
 const styles = {
-  tooltipButton: {
-    padding: 0
-  },
   header: {
     color: "#00565E",
     paddingTop: 12
