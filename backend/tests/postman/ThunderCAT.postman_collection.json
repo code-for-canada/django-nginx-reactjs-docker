@@ -242,7 +242,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test1@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
@@ -402,7 +402,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test1@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
@@ -610,7 +610,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test2@email.ca\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
