@@ -5,9 +5,9 @@ from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
 
-META_TEST = "meta_test"
-PRE_TEST = "pre_test"
-FULL_TEST = "full_test"
+TEST_META_DATA = "test_meta_data"
+TEST_INSTRUCTIONS = "test_instructions"
+TEST_QUESTIONS = "test_questions"
 
 
 def retrieve_test_data(request, request_type):
@@ -91,11 +91,11 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
                    'default_time': test.default_time,
                    'test_type': test.test_type}
 
-    if request_type == META_TEST:
+    if request_type == TEST_META_DATA:
         return return_dict
 
     # TODO Add logic to get data for instructions pages when
-    if request_type == PRE_TEST:
+    if request_type == TEST_INSTRUCTIONS:
         return return_dict
 
     # TODO write the logic for in-test

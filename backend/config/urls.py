@@ -4,7 +4,7 @@ from django.urls import path, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from views import views, database_check_view, meta_test_view
+from views import views, database_check_view, test_meta_data_view
 from rest_framework_jwt.views import (
     obtain_jwt_token,
     refresh_jwt_token,
@@ -28,10 +28,10 @@ urlpatterns = [
     url(r"^api/auth/jwt/create_token/", obtain_jwt_token),
     url(r"^api/auth/jwt/refresh_token/", refresh_jwt_token),
     url(r"^api/auth/jwt/verify_token/", verify_jwt_token),
-    url(r"^api/meta-test",
-        meta_test_view.MetaTestSet.as_view()),
-    url(r"^api/meta-test/(?P<test_name>.+)/$",
-        meta_test_view.MetaTestSet.as_view()),
+    url(r"^api/test-meta-data",
+        test_meta_data_view.TestMetaDataSet.as_view()),
+    url(r"^api/test-meta-data/(?P<test_name>.+)/$",
+        test_meta_data_view.TestMetaDataSet.as_view()),
 ]
 
 if settings.DEBUG:
