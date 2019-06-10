@@ -17,15 +17,9 @@ class CustomUserManager(UserManager):
 
 class User(AbstractUser):
     objects = CustomUserManager()
-    first_name = models.CharField(
-        null=False, blank=False, max_length=30, verbose_name="first name"
-    )
-    last_name = models.CharField(
-        null=False, blank=False, max_length=150, verbose_name="last name"
-    )
-    birth_date = models.CharField(
-        null=False, blank=False, max_length=10, verbose_name="DOB (DD/MM/---Y)"
-    )
+    first_name = models.CharField(max_length=30, null=False, blank=False)
+    last_name = models.CharField(max_length=150, null=False, blank=False)
+    birth_date = models.CharField(max_length=10, null=False, blank=False)
     pri_or_military_nbr = models.CharField(max_length=9, null=True, blank=True)
     REQUIRED_FIELDS = [
         "first_name",
