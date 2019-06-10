@@ -11,6 +11,7 @@ TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
 
 
+# returns true if the test is public and false on the other hand
 def is_test_public(test_name):
     return Test.objects.get(test_name=test_name).is_public
 
