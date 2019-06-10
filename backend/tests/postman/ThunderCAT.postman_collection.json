@@ -156,7 +156,7 @@
 							"\r",
 							"// getting new email and username values\r",
 							"pm.test(\"Getting api-test1 email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test1@email.ca\",\"username\":\"api-test1\"');\r",
+							"    pm.expect(pm.response.text()).to.include('\"first_name\":\"Test\",\"last_name\":\"One\",\"birth_date\":\"1/2/---3\",\"email\":\"api-test1@email.ca\",\"pri_or_military_nbr\":\"12345679\",\"username\":\"api-test1@email.ca\"');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -480,7 +480,7 @@
 							"\r",
 							"// getting new email and username values\r",
 							"pm.test(\"Getting api-test2 email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
+							"    pm.expect(pm.response.text()).to.include('\"first_name\":\"Test\",\"last_name\":\"Two\",\"birth_date\":\"10/11/---0\",\"email\":\"api-test2@email.ca\",\"username\":\"api-test2@email.ca\"');\r",
 							"});"
 						],
 						"type": "text/javascript"
