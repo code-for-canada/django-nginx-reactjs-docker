@@ -34,8 +34,6 @@ urlpatterns = [
         test_instructions_view.TestInstructionsSet.as_view()),
     url(r"^api/test_questions",
         test_questions_view.TestQuestionsSet.as_view()),
-    url(r"^api/test_questions/(?P<test_name>.+)/$",
-        test_questions_view.TestQuestionsSet.as_view()),
 ]
 
 if settings.DEBUG:
