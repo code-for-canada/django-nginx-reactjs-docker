@@ -11,6 +11,10 @@ TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
 
 
+def is_test_public(test_name):
+    return Test.objects.get(test_name=test_name).is_public
+
+
 def retrieve_test_data(request, request_type):
     query_date_time = datetime.now()
     return retrieve_response_from_name_date(request, query_date_time, request_type)
