@@ -30,8 +30,6 @@ urlpatterns = [
     url(r"^api/auth/jwt/verify_token/", verify_jwt_token),
     url(r"^api/test-meta-data",
         test_meta_data_view.TestMetaDataSet.as_view()),
-    url(r"^api/test-meta-data/(?P<test_name>.+)/$",
-        test_meta_data_view.TestMetaDataSet.as_view()),
 ]
 
 if settings.DEBUG:
