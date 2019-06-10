@@ -5,9 +5,9 @@ from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
 
-META_TEST = "meta_test"
-PRE_TEST = "pre_test"
-IN_TEST = "full_test"
+TEST_META_DATA = "test_meta_data"
+TEST_INSTRUCTIONS = "test_instructions"
+TEST_QUESTIONS = "test_questions"
 
 
 def retrieve_test_data(request, request_type):
@@ -34,76 +34,50 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return {"error", "no test with the given test_name"}
     # get the associated item
     item_id = test.item_id_id
+
     if item_id is None:
         return {"error", "no item id in test"}
 
     # Ensure that the item with the same pk,
     # is active (where the current date is between the from and to date)
-    try:
-        Item.objects.get(
-            pk=item_id, date_from__lte=query_date_time, date_to__gt=query_date_time)
-    except Item.DoesNotExist:
-        # if the above fails, try to get an item with the same id, after the from date
-        # and where the to date is null
-        try:
-            Item.objects.get(
-                pk=item_id, date_from__lte=query_date_time, date_to__isnull=True)
-        except Item.DoesNotExist:
-            return {"error", "no test item found"}
+    if get_item_by_id(item_id, query_date_time) is None:
+        return {"error", "no test item found"}
 
     # get item text (visible test names)
     en_id, fr_id = get_language_ids(query_date_time)
 
-    # get the user visible names, if they exist
-    try:
-        en_name = ItemText.objects.get(
-            item_id=item_id, language=en_id,
-            date_from__lte=query_date_time,
-            date_to__gt=query_date_time).text_detail
-    except ItemText.DoesNotExist:
-        try:
-            en_name = ItemText.objects.get(
-                item_id=item_id, language=en_id,
-                date_from__lte=query_date_time,
-                date_to__isnull=True).text_detail
-        except ItemText.DoesNotExist:
-            en_name = None
+    # start the return dict with all common values
+    return_dict = {'test_internal_name': test.test_name}
 
-    try:
-        fr_name = ItemText.objects.get(
-            item_id=item_id, language=fr_id,
-            date_from__lte=query_date_time,
-            date_to__gt=query_date_time).text_detail
-    except ItemText.DoesNotExist:
-        try:
-            fr_name = ItemText.objects.get(
-                item_id=item_id, language=fr_id,
-                date_from__lte=query_date_time,
-                date_to__isnull=True).text_detail
-        except ItemText.DoesNotExist:
-            fr_name = None
+    # if only requesting meta data, then recover the data unique to this return
+    if request_type == TEST_META_DATA:
 
-    # if only looking for the meta data, then return
-    return_dict = {'test_internal_name': test.test_name,
-                   'test_en_name': en_name,
-                   'meta_test.test_fr_name': fr_name,
-                   'meta_test.is_public': test.is_public,
-                   'meta_test.default_time': test.default_time,
-                   'meta_test.test_type': test.test_type}
+        # populate the return dict with meta_data specific values
+        return_dict['test_en_name'] = get_text_detail(
+            item_id, en_id, query_date_time)
+        return_dict['test_fr_name'] = get_text_detail(
+            item_id, fr_id, query_date_time)
 
-    if request_type == META_TEST:
+        return_dict['is_public'] = test.is_public
+        return_dict['default_time'] = test.default_time
+        return_dict['test_type'] = test.test_type
         return return_dict
 
-    # TODO jcherry Add logic to get data for instructions pages
-    # After instructions are actually stored in the DB
-    return_dict["instructions"] = []
-    if request_type == PRE_TEST:
+    if request_type == TEST_INSTRUCTIONS:
+        # TODO jcherry Add logic to get data for instructions pages
+        # After instructions are actually stored in the DB
+        return_dict["instructions"] = []
         return return_dict
 
-    # TODO jcherry write the logic to get in-test data
-    # After merging the API PRs
-    return_dict["questions"] = []
-    return return_dict
+    # TODO write the logic for in-test
+    if request_type == TEST_QUESTIONS:
+        # TODO jcherry write the logic to get in-test data
+        # After merging the API PRs
+        return_dict["questions"] = []
+        return return_dict
+
+    # if it is not one of the above, then return nothing
+    return {}
 
 
 def get_language_ids(query_date_time):
@@ -137,3 +111,35 @@ def get_language_ids(query_date_time):
         except Language.DoesNotExist:
             fr_id = None
     return en_id, fr_id
+
+
+def get_text_detail(item_id, language_id, query_date_time):
+    try:
+        text_detail = ItemText.objects.get(
+            item_id=item_id, language=language_id,
+            date_from__lte=query_date_time,
+            date_to__gt=query_date_time).text_detail
+    except ItemText.DoesNotExist:
+        try:
+            text_detail = ItemText.objects.get(
+                item_id=item_id, language=language_id,
+                date_from__lte=query_date_time,
+                date_to__isnull=True).text_detail
+        except ItemText.DoesNotExist:
+            text_detail = None
+    return text_detail
+
+
+def get_item_by_id(item_id, query_date_time):
+    try:
+        item = Item.objects.get(
+            pk=item_id, date_from__lte=query_date_time, date_to__gt=query_date_time)
+    except Item.DoesNotExist:
+        # if the above fails, try to get an item with the same id, after the from date
+        # and where the to date is null
+        try:
+            item = Item.objects.get(
+                pk=item_id, date_from__lte=query_date_time, date_to__isnull=True)
+        except Item.DoesNotExist:
+            item = None
+    return item
