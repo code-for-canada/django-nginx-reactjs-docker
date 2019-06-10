@@ -433,9 +433,15 @@ class RegistrationForm extends Component {
     if (validForm) {
       this.props
         .registerAction({
-          username: this.state.emailContent,
+          first_name: this.state.firstNameContent,
+          last_name: this.state.lastNameContent,
+          birth_date: `${this.state.dobDayContent}/${this.state.dobMonthContent}/---${
+            this.state.dobYearContent
+          }`,
           email: this.state.emailContent,
-          password: this.state.passwordContent
+          pri_or_military_nbr: this.state.priOrMilitaryNbrContent,
+          password: this.state.passwordContent,
+          username: this.state.emailContent
         })
         // API errors validation
         .then(response => {
