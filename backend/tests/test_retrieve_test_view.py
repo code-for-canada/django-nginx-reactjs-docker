@@ -10,10 +10,10 @@ class RetrieveTest(TestCase):
         expected_json = {
             "test_internal_name": "emibSampleTest",
             "test_en_name": "eMiB Sample Test",
-            "meta_test.test_fr_name": "FR eMiB Sample Test",
-            "meta_test.is_public": True,
-            "meta_test.default_time": None,
-            "meta_test.test_type": "emib"
+            "test_fr_name": "FR eMiB Sample Test",
+            "is_public": True,
+            "default_time": None,
+            "test_type": "emib"
         }
         self.assertEqual(real_json, expected_json)
 

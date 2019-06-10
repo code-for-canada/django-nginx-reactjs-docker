@@ -86,10 +86,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     # if only looking for the meta data, then return
     return_dict = {'test_internal_name': test.test_name,
                    'test_en_name': en_name,
-                   'meta_test.test_fr_name': fr_name,
-                   'meta_test.is_public': test.is_public,
-                   'meta_test.default_time': test.default_time,
-                   'meta_test.test_type': test.test_type}
+                   'test_fr_name': fr_name,
+                   'is_public': test.is_public,
+                   'default_time': test.default_time,
+                   'test_type': test.test_type}
 
     if request_type == META_TEST:
         return return_dict
