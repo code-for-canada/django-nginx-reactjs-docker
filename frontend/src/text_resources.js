@@ -32,13 +32,12 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Password:",
-            passwordPlaceholder: "Password"
+            passwordTitle: "Password:"
           }
         },
         button: "Login",
-        invalidCredentials: "Invalid credentials!"
+        invalidCredentials: "Invalid credentials!",
+        passwordFieldSelected: "Password field selected."
       },
       createAccount: {
         title: "CREATE AN ACCOUNT",
@@ -48,33 +47,42 @@ let LOCALIZE = new LocalizedStrings({
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "First Name:",
-            firstNamePlaceholder: "John",
+            firstNameError: "Must be a valid first name",
             lastNameTitle: "Last Name:",
-            lastNamePlaceholder: "Smith",
+            lastNameError: "Must be a valid last name",
+            dobDayTitle: "Date of birth: (DD / MM / ---Y):",
+            dobError: "Please fill out all fields related to the date of birth",
+            dobTooltip: "You will only need to provide the last digit for your year of birth.",
             emailTitle: "Email Address:",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Password (must be between 5-15 characters):",
-            passwordPlaceholder: "Password",
+            emailError: "Must be a valid email address",
+            priOrMilitaryNbrTitle: "PRI or Military number (if applicable):",
+            priOrMilitaryNbrError: "Must be a valid PRI or a valid Military number:",
+            passwordTitle: "Password:",
             passwordErrors: {
               description: "Your password must satisfy the following:",
-              upperCase: "At least one upper case",
-              lowerCase: "At least one lower case",
+              upperCase: "At least one uppercase",
+              lowerCase: "At least one lowercase",
               digit: "At least one digit",
               specialCharacter: "At least one special character",
               length: "Minimum of 5 characters and maximum of 15"
             },
             passwordConfirmationTitle: "Confirm Password:",
-            passwordConfirmationPlaceholder: "Password",
-            passwordConfirmationError: "Must match the Password"
+            passwordConfirmationError: "Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "privacy notice",
+        privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "Account Created",
           description: "You have just created a new account!"
         },
         button: "Create account",
-        accountAlreadyExistsError: "An account is already associated to this email address."
+        accountAlreadyExistsError: "An account is already associated to this email address",
+        passwordTooCommonError: "This password is too common",
+        passwordTooSimilarToUsernameError: "The password is too similar to the username"
       }
     },
 
@@ -90,13 +98,6 @@ let LOCALIZE = new LocalizedStrings({
     dashboard: {
       title: "Welcome to your dashboard",
       description: "Here is your dashboard..."
-    },
-
-    //Prototype Page
-    prototypePage: {
-      title: "Prototype",
-      welcomeMsg: "This page will be used to test out experimental UIs.",
-      startEmibSampleTest: "Start eMIB Sample Test"
     },
 
     //Status Page
@@ -117,6 +118,56 @@ let LOCALIZE = new LocalizedStrings({
         javaScript: "JavaScript",
         browsers: "IE 9+, Chrome, Firefox",
         screenResolution: "Screen resolution minimum of 800 x 600"
+      }
+    },
+
+    // Settings Dialog
+    settings: {
+      systemSettings: "System settings",
+      zoom: {
+        title: "Zoom (+/-)",
+        instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Zoom.",
+        instructionsListItem3:
+          "You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+        instructionsListItem4:
+          "Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+      },
+      textSize: {
+        title: "Text size",
+        instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Text size.",
+        instructionsListItem3: "Choose to make text larger or smaller than the size on the screen.",
+        instructionsListItem4:
+          "Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+        instructionsListItem5:
+          "Select the Ignore font sizes specified on webpages on the check box.",
+        instructionsListItem6: "Select OK, and then select OK again.",
+        notChanged: "If the text size has not changed:"
+      },
+      fontStyle: {
+        title: "Font style",
+        instructionsListItem1: "Select the Tools button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "Select Internet options.",
+        instructionsListItem3: "In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem4:
+          "Select the Ignore font styles specified on webpages on the check box.",
+        instructionsListItem5: "Select OK.",
+        instructionsListItem6: "In the General tab, under Appearance, select Fonts.",
+        instructionsListItem7: "Select the fonts you want to use.",
+        instructionsListItem8: "Select OK, and then select OK again."
+      },
+      color: {
+        title: "Text and background colour",
+        instructionsListItem1: "Select the Tools button and select Internet options.",
+        instructionsListItem2: "In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem3: "Select the Ignore colors specified on webpages on the check box.",
+        instructionsListItem4: "Select OK.",
+        instructionsListItem5: "In the General tab, under Appearance, select Colors.",
+        instructionsListItem6: "Uncheck the Use Windows colors check box.",
+        instructionsListItem7:
+          "For each color that you want to change, select the color box, select a new color, and then select OK.",
+        instructionsListItem8: "Select OK, and then select OK again."
       }
     },
 
@@ -397,7 +448,10 @@ let LOCALIZE = new LocalizedStrings({
           selectResponseType: "Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "Your response:",
-          reasonsForAction: "Add reasons for actions here (optional)"
+          reasonsForAction: "Add reasons for actions here (optional)",
+          emailResponseTooltip: "Write a response to the email you recieved.",
+          reasonsForActionTooltip:
+            "Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
         },
         emailResponse: {
           description: "For this response, you've chosen to:",
@@ -495,7 +549,14 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "email options",
       taskOptions: "task options",
       taskTooltip: "task tooltip",
-      reasonsForActionTooltip: "reasons for action tooltip"
+      emailResponseTooltip: "email response tooltip",
+      reasonsForActionTooltip: "reasons for action tooltip",
+      passwordCreationRequirements:
+        "Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "It must match your password",
+      dobDayField: "Day field selected",
+      dobMonthField: "Month field selected",
+      dobYearField: "Year field selected"
     },
 
     //Commons
@@ -567,13 +628,12 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To log in, enter your credentials below.",
           inputs: {
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Mot de passe :",
-            passwordPlaceholder: "Mot de passe"
+            passwordTitle: "Mot de passe :"
           }
         },
         button: "Connexion",
-        invalidCredentials: "FR Invalid credentials!"
+        invalidCredentials: "FR Invalid credentials!",
+        passwordFieldSelected: "FR Password field selected."
       },
       createAccount: {
         title: "CRÉER UN COMPTE",
@@ -583,13 +643,17 @@ let LOCALIZE = new LocalizedStrings({
             "FR An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
-            firstNamePlaceholder: "John",
+            firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
-            lastNamePlaceholder: "Smith",
+            lastNameError: "FR Must be a valid last name",
+            dobDayTitle: "Date de naissance: (DD / MM / ---Y) :",
+            dobError: "FR Please fill out all fields related to the date of birth",
+            dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
-            emailPlaceholder: "john.smith@outlook.ca",
-            passwordTitle: "Mot de passe (doit contenir entre 5-15 caractères) :",
-            passwordPlaceholder: "Mot de passe",
+            emailError: "FR Must be a valid email address",
+            priOrMilitaryNbrTitle: "FR PRI or Military number (if applicable) :",
+            priOrMilitaryNbrError: "FR Must be a valid PRI or a valid Military number:",
+            passwordTitle: "Mot de passe :",
             passwordErrors: {
               description: "Votre mot de passe doit satisfaire les critères suivants :",
               upperCase: "Au moins une majuscule",
@@ -599,17 +663,22 @@ let LOCALIZE = new LocalizedStrings({
               length: "Au moins 5 caractères et maximum 15"
             },
             passwordConfirmationTitle: "Confirmer le mot de passe :",
-            passwordConfirmationPlaceholder: "Mot de passe",
-            passwordConfirmationError: "Doit correspondre au mot de passe"
+            passwordConfirmationError: "FR Your password confirmation must match the Password"
           }
         },
+        privacyNotice:
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+        privacyNoticeLink: "FR privacy notice",
+        privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         //temporary
         popupBox: {
           title: "FR Account Created",
           description: "FR You have just created a new account!"
         },
         button: "Créer compte",
-        accountAlreadyExistsError: "FR An account is already associated to this email address."
+        accountAlreadyExistsError: "FR An account is already associated to this email address",
+        passwordTooCommonError: "FR This password is too common",
+        passwordTooSimilarToUsernameError: "FR The password is too similar to the username"
       }
     },
 
@@ -626,13 +695,6 @@ let LOCALIZE = new LocalizedStrings({
     dashboard: {
       title: "FR Welcome to your dashboard",
       description: "FR Here is your dashboard..."
-    },
-
-    //Prototype Page
-    prototypePage: {
-      title: "Prototype",
-      welcomeMsg: "Cette page sera utilisée pour tester des interfaces utilisateur expérimentales.",
-      startEmibSampleTest: "Démarrer le test pratique eMIB"
     },
 
     //Status Page
@@ -653,6 +715,61 @@ let LOCALIZE = new LocalizedStrings({
         javaScript: "JavaScript",
         browsers: "IE 9+, Firefox, Chrome",
         screenResolution: "Résolution d'écran minimum de 800 x 600"
+      }
+    },
+
+    // Settings Dialog
+    settings: {
+      systemSettings: "FR System settings",
+      zoom: {
+        title: "FR Zoom (+/-)",
+        instructionsListItem1:
+          "FR Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Zoom.",
+        instructionsListItem3:
+          "FR You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+        instructionsListItem4:
+          "FR Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+      },
+      textSize: {
+        title: "FR Text size",
+        instructionsListItem1:
+          "FR Select the View button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Text size.",
+        instructionsListItem3:
+          "FR Choose to make text larger or smaller than the size on the screen.",
+        instructionsListItem4:
+          "FR Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+        instructionsListItem5:
+          "FR Select the Ignore font sizes specified on webpages on the check box.",
+        instructionsListItem6: "FR Select OK, and then select OK again.",
+        notChanged: "FR If the text size has not changed:"
+      },
+      fontStyle: {
+        title: "FR Font style",
+        instructionsListItem1:
+          "FR Select the Tools button at the top left bar in Internet Explorer.",
+        instructionsListItem2: "FR Select Internet options.",
+        instructionsListItem3: "FR In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem4:
+          "FR Select the Ignore font styles specified on webpages on the check box.",
+        instructionsListItem5: "FR Select OK.",
+        instructionsListItem6: "FR In the General tab, under Appearance, select Fonts.",
+        instructionsListItem7: "FR Select the fonts you want to use.",
+        instructionsListItem8: "FR Select OK, and then select OK again."
+      },
+      color: {
+        title: "FR Text and background colour",
+        instructionsListItem1: "FR Select the Tools button and select Internet options.",
+        instructionsListItem2: "FR In the General tab, under Appearance, select Accessibility.",
+        instructionsListItem3:
+          "FR Select the Ignore colors specified on webpages on the check box.",
+        instructionsListItem4: "FR Select OK.",
+        instructionsListItem5: "FR In the General tab, under Appearance, select Colors.",
+        instructionsListItem6: "FR Uncheck the Use Windows colors check box.",
+        instructionsListItem7:
+          "FR For each color that you want to change, select the color box, select a new color, and then select OK.",
+        instructionsListItem8: "FR Select OK, and then select OK again."
       }
     },
 
@@ -936,7 +1053,10 @@ let LOCALIZE = new LocalizedStrings({
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "FR Your response:",
-          reasonsForAction: "FR Add reasons for actions here (optional)"
+          reasonsForAction: "FR Add reasons for actions here (optional)",
+          emailResponseTooltip: "FR Write a response to the email you recieved.",
+          reasonsForActionTooltip:
+            "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
         },
         emailResponse: {
           description: "FR For this response, you've chosen to:",
@@ -1035,7 +1155,14 @@ let LOCALIZE = new LocalizedStrings({
       emailOptions: "options de messagerie",
       taskOptions: "options de tâche",
       taskTooltip: "infobulle de tâche",
-      reasonsForActionTooltip: "infobulle des motifs de l'action"
+      emailResponseTooltip: "FR email response tooltip",
+      reasonsForActionTooltip: "infobulle des motifs de l'action",
+      passwordCreationRequirements:
+        "FR Password (your password must satisfy the following: At least one upper case, at least one lower case, at least one digit, at least one special character, minimum of 5 characters and maximum of 15)",
+      passwordConfirmationRequirements: "FR It must match your password",
+      dobDayField: "FR Day field selected",
+      dobMonthField: "FR Month field selected",
+      dobYearField: "FR Year field selected"
     },
 
     //Commons

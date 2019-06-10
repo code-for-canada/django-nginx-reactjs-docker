@@ -21,7 +21,9 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#F5FAFB",
+    padding: 0
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.7)"
@@ -29,11 +31,23 @@ const customStyles = {
 };
 
 const styles = {
+  contentPadding: {
+    padding: "10px 15px",
+    overflow: "auto",
+    maxHeight: "calc(100vh - 300px)"
+  },
+  headerPadding: {
+    padding: "15px 15px 5px 15px"
+  },
+  footerPadding: {
+    padding: 15,
+    height: 70
+  },
   rightButton: {
     float: "right"
   },
-  description: {
-    padding: "16px 0px"
+  hr: {
+    margin: 0
   }
 };
 
@@ -111,31 +125,41 @@ class PopupBox extends Component {
         }}
         ariaHideApp={ariaHideApp}
       >
-        <h2 id="modal-heading">{title}</h2>
-        <div id="modal-description" style={styles.description}>
+        <div style={styles.headerPadding}>
+          <h2 id="modal-heading">{title}</h2>
+        </div>
+
+        <hr style={styles.hr} />
+
+        <div id="modal-description" style={styles.contentPadding}>
           {description}
         </div>
-        {leftButtonTitle && leftButtonType && (
-          <button
-            className={leftButtonType}
-            onClick={this.leftButtonCloseAndAction}
-            disabled={leftButtonState}
-            id="unit-test-left-btn"
-          >
-            {leftButtonTitle}
-          </button>
-        )}
-        {rightButtonTitle && rightButtonType && (
-          <button
-            style={styles.rightButton}
-            className={rightButtonType}
-            onClick={this.rightButtonCloseAndAction}
-            disabled={rightButtonState}
-            id="unit-test-right-btn"
-          >
-            {rightButtonTitle}
-          </button>
-        )}
+
+        <hr style={styles.hr} />
+
+        <div style={styles.footerPadding}>
+          {leftButtonTitle && leftButtonType && (
+            <button
+              className={leftButtonType}
+              onClick={this.leftButtonCloseAndAction}
+              disabled={leftButtonState}
+              id="unit-test-left-btn"
+            >
+              {leftButtonTitle}
+            </button>
+          )}
+          {rightButtonTitle && rightButtonType && (
+            <button
+              style={styles.rightButton}
+              className={rightButtonType}
+              onClick={this.rightButtonCloseAndAction}
+              disabled={rightButtonState}
+              id="unit-test-right-btn"
+            >
+              {rightButtonTitle}
+            </button>
+          )}
+        </div>
       </Modal>
     );
   }
