@@ -3,7 +3,7 @@ from rest_framework_jwt.views import (
     refresh_jwt_token,
     verify_jwt_token,
 )
-from views import views, database_check_view, test_meta_data_view, test_instructions_view, in_test_view
+from views import views, database_check_view, test_meta_data_view, test_instructions_view, test_questions_view
 from django.conf.urls import url
 from django.conf import settings
 from django.urls import path, include
@@ -36,10 +36,10 @@ urlpatterns = [
         test_instructions_view.TestInstructionsSet.as_view()),
     url(r"^api/test-instructions/(?P<test_name>.+)/$",
         test_instructions_view.TestInstructionsSet.as_view()),
-    url(r"^api/in-test",
-        in_test_view.InTestSet.as_view()),
-    url(r"^api/in-test/(?P<test_name>.+)/$",
-        in_test_view.InTestSet.as_view()),
+    url(r"^api/test_questions",
+        test_questions_view.TestQuestionsSet.as_view()),
+    url(r"^api/test_questions/(?P<test_name>.+)/$",
+        test_questions_view.TestQuestionsSet.as_view()),
 ]
 
 if settings.DEBUG:
