@@ -5,6 +5,7 @@ from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
 
+TEST_IS_PUBLIC = "test_is_public"
 TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
@@ -32,6 +33,9 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         test = Test.objects.get(test_name=test_name)
     except Test.DoesNotExist:
         return {"error", "no test with the given test_name"}
+
+    if request_type == TEST_IS_PUBLIC:
+        return {"is_public": test.is_public}
     # get the associated item
     item_id = test.item_id_id
 
