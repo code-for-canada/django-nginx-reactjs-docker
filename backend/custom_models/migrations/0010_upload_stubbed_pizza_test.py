@@ -47,7 +47,6 @@ def upload_stubbed_pizza(apps, schema_editor):
 def destroy_stubbed_pizza(apps, schema_editor):
     # get models
     language = apps.get_model("custom_models", "Language")
-    item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     test = apps.get_model("custom_models", "Test")
     item_text = apps.get_model("custom_models", "ItemText")
