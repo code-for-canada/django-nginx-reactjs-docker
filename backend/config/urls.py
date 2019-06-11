@@ -1,15 +1,15 @@
+from rest_framework_jwt.views import (
+    obtain_jwt_token,
+    refresh_jwt_token,
+    verify_jwt_token,
+)
+from views import views, database_check_view, test_meta_data_view, test_instructions_view, test_questions_view
 from django.conf.urls import url
 from django.conf import settings
 from django.urls import path, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from views import views, database_check_view, test_meta_data_view, test_instructions_view
-from rest_framework_jwt.views import (
-    obtain_jwt_token,
-    refresh_jwt_token,
-    verify_jwt_token,
-)
 
 
 schema_view = get_swagger_view(title="ThunderCAT APIs")
@@ -32,6 +32,8 @@ urlpatterns = [
         test_meta_data_view.TestMetaDataSet.as_view()),
     url(r"^api/test-instructions",
         test_instructions_view.TestInstructionsSet.as_view()),
+    url(r"^api/test_questions",
+        test_questions_view.TestQuestionsSet.as_view()),
 ]
 
 if settings.DEBUG:

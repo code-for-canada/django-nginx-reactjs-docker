@@ -78,8 +78,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return_dict["instructions"] = []
         return return_dict
 
-    # TODO write the logic for in-test
     if request_type == TEST_QUESTIONS:
+        # TODO jcherry write the logic to get question data
+        # After merging the API PRs
+        return_dict["questions"] = []
         return return_dict
 
     # if it is not one of the above, then return nothing

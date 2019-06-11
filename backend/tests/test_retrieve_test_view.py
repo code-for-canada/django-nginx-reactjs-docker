@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.test import TestCase
-from views.retrieve_test_view import retrieve_json_from_name_date, TEST_META_DATA, TEST_INSTRUCTIONS
+from views.retrieve_test_view import retrieve_json_from_name_date, TEST_META_DATA, TEST_INSTRUCTIONS, TEST_QUESTIONS
 
 
 class RetrieveMetaTest(TestCase):
@@ -53,5 +53,30 @@ class RetrievePreTest(TestCase):
         time = timezone.now() + timezone.timedelta(days=-1)
         real_json = retrieve_json_from_name_date(
             "emibSampleTest", time, TEST_INSTRUCTIONS)
+        expected_json = {'error', 'no test item found'}
+        self.assertEqual(real_json, expected_json)
+
+
+class RetrieveInTest(TestCase):
+    def test_get_real_sample(self):
+        real_json = retrieve_json_from_name_date(
+            "emibSampleTest", timezone.now(), TEST_QUESTIONS)
+        expected_json = {
+            "test_internal_name": "emibSampleTest",
+            "questions": []
+        }
+        self.assertEqual(real_json, expected_json)
+
+    def test_get_nonexistant_test(self):
+        real_json = retrieve_json_from_name_date(
+            "IAmNotARealTest", timezone.now(), TEST_QUESTIONS)
+        expected_json = {"error", "no test with the given test_name"}
+        self.assertEqual(real_json, expected_json)
+
+    def test_get_test_before(self):
+        time = timezone.datetime.strptime('01/01/1500', "%d/%m/%Y").date()
+        time = timezone.now() + timezone.timedelta(days=-1)
+        real_json = retrieve_json_from_name_date(
+            "emibSampleTest", time, TEST_QUESTIONS)
         expected_json = {'error', 'no test item found'}
         self.assertEqual(real_json, expected_json)
