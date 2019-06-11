@@ -72,8 +72,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return_dict["test_type"] = test.test_type
         return return_dict
 
-    # TODO Add logic to get data for instructions pages when
     if request_type == TEST_INSTRUCTIONS:
+        # TODO jcherry Add logic to get data for instructions pages
+        # After instructions are actually stored in the DB
+        return_dict["instructions"] = []
         return return_dict
 
     # TODO write the logic for in-test
