@@ -28,6 +28,7 @@ matrix:
       before_script:
         - docker-compose up -d --build
         - npm install frontend/
+        - docker exec -it project-thundercat_backend_1 shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username='admin', first_name='Admin', last_name='Account', birth_date='01/01/---1', pri_or_military_nbr='', email='admin@email.ca', password='Admin1234!');"
       script:
         - newman run backend/tests/postman/ThunderCAT.postman_collection.json -e backend/tests/postman/environments/local/ThunderCAT.local.postman_environment.json
 
