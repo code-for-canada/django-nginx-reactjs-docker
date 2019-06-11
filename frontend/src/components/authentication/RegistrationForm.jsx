@@ -86,7 +86,10 @@ const styles = {
   privacyNoticeLink: {
     textDecoration: "underline",
     color: "#0278A4",
-    cursor: "pointer"
+    cursor: "pointer",
+    backgroundColor: "transparent",
+    border: "none",
+    padding: 0
   }
 };
 
@@ -845,13 +848,13 @@ class RegistrationForm extends Component {
                 <div className="privacy-notice-grid-description">
                   <label htmlFor="privacy-notice-checkbox">
                     {LOCALIZE.authentication.createAccount.privacyNotice}
-                    <span
+                    <button
                       tabIndex="0"
                       onClick={this.showPrivacyNoticePopup}
                       style={styles.privacyNoticeLink}
                     >
                       {LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                    </span>
+                    </button>
                     .
                   </label>
                 </div>
