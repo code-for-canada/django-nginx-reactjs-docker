@@ -27,7 +27,6 @@ matrix:
         - npm install newman
       before_script:
         - docker-compose up -d --build
-        - docker ps
         - npm install frontend/
         # creating a superuser
         - docker exec -it projectthundercat_backend_1 python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username='admin', first_name='Admin', last_name='Account', birth_date='01/01/---1', pri_or_military_nbr='', email='admin@email.ca', password='Admin1234!');"
