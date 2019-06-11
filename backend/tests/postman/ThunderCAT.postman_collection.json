@@ -155,8 +155,8 @@
 							"});\r",
 							"\r",
 							"// getting new email and username values\r",
-							"pm.test(\"Getting api-test1 email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test1@email.ca\",\"username\":\"api-test1\"');\r",
+							"pm.test(\"Getting api-test1@email.ca account information\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"first_name\":\"Test\",\"last_name\":\"One\",\"birth_date\":\"1/2/---3\",\"email\":\"api-test1@email.ca\",\"pri_or_military_nbr\":\"12345679\",\"username\":\"api-test1@email.ca\"');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -178,7 +178,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"api-test1@email.ca\",\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"first_name\": \"Test\",\r\n  \"last_name\": \"One\",\r\n  \"birth_date\": \"1/2/---3\",\r\n  \"email\": \"api-test1@email.ca\",\r\n  \"pri_or_military_nbr\": \"12345679\",\r\n  \"username\": \"api-test1@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/create",
@@ -242,7 +242,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test1@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/create/",
@@ -345,7 +345,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"value": "basic YXBpLXRlc3QxQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
 						"type": "text"
 					}
 				],
@@ -402,7 +402,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test1\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test1@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
@@ -445,7 +445,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YXBpLXRlc3QxOlF3ZXJ0eTEyMzQh",
+						"value": "basic YXBpLXRlc3QxQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
 						"type": "text"
 					}
 				],
@@ -479,8 +479,8 @@
 							"});\r",
 							"\r",
 							"// getting new email and username values\r",
-							"pm.test(\"Getting api-test2 email and username values\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"email\":\"api-test2@email.ca\",\"username\":\"api-test2\"');\r",
+							"pm.test(\"Getting api-test2@email.ca account information\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"first_name\":\"Test\",\"last_name\":\"Two\",\"birth_date\":\"10/11/---0\",\"email\":\"api-test2@email.ca\",\"pri_or_military_nbr\":null,\"username\":\"api-test2@email.ca\"');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -502,7 +502,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
+					"raw": "{\r\n  \"first_name\": \"Test\",\r\n  \"last_name\": \"Two\",\r\n  \"birth_date\": \"10/11/---0\",\r\n  \"email\": \"api-test2@email.ca\",\r\n  \"username\": \"api-test2@email.ca\",\r\n  \"password\": \"Qwerty1234!\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
@@ -544,7 +544,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YXBpLXRlc3QyOlF3ZXJ0eTEyMzQh",
+						"value": "basic YXBpLXRlc3QyQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
 						"type": "text"
 					},
 					{
@@ -610,7 +610,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"api-test2\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
+					"raw": "{\r\n  \"username\": \"api-test2@email.ca\",\r\n  \"password\": \"Qwerty1234!NEW\"\r\n}"
 				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/login/",
@@ -659,7 +659,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "basic YWRtaW46UGFzc3dvcmQxMjM0IQ==",
+						"value": "basic YXBpLXRlc3QxQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
 						"type": "text"
 					}
 				],

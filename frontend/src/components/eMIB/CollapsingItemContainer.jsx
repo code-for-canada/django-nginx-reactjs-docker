@@ -70,7 +70,12 @@ class CollapsingItemContainer extends Component {
 
     return (
       <div className={`${containerClass} collapsing-item-container`} style={styles.container}>
-        <button className={buttonClass} style={styles.button} onClick={this.expandItem}>
+        <button
+          className={buttonClass}
+          style={styles.button}
+          onClick={this.expandItem}
+          aria-expanded={!this.state.isCollapsed}
+        >
           <FontAwesomeIcon icon={iconType} style={styles.emailAndTaskIcon} />
           <span style={styles.title}>{title}</span>
         </button>
@@ -78,6 +83,8 @@ class CollapsingItemContainer extends Component {
           id="white-expand-icon-on-hover"
           icon={iconClass}
           style={styles.expandIcon}
+          aria-hidden="true"
+          focusable="false"
         />
         {!isCollapsed && <div style={styles.contentContainer}>{body}</div>}
       </div>

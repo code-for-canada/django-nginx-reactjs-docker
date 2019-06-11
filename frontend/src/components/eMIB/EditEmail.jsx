@@ -8,6 +8,7 @@ import { transformAddressBook } from "../../helpers/transformations";
 import { contactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
+import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -44,13 +45,15 @@ const styles = {
     radioTextUnselected: {
       fontWeight: "normal",
       cursor: "pointer",
-      paddingRight: 20
+      paddingRight: 20,
+      color: "#00565E"
     },
     radioTextSelected: {
       fontWeight: "bold",
       textDecoration: "underline",
       cursor: "pointer",
-      paddingRight: 20
+      paddingRight: 20,
+      color: "#00565E"
     },
     fieldsetLegend: {
       fontSize: 16,
@@ -176,93 +179,87 @@ class EditEmail extends Component {
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.selectResponseType}
               </legend>
               <div style={styles.header.radioButtonZone} className="radio-button-hover">
-                <span style={styles.header.responseTypeRadio}>
-                  <input
-                    id="reply-radio"
-                    type="radio"
-                    name="responseTypeRadio"
-                    style={styles.header.radioPadding}
-                    onChange={this.onEmailTypeChange}
-                    value={EMAIL_TYPE.reply}
-                    checked={replyChecked}
-                    className="visually-hidden"
+                <input
+                  id="reply-radio"
+                  type="radio"
+                  name="responseTypeRadio"
+                  style={{ ...styles.header.radioPadding, ...styles.header.responseTypeRadio }}
+                  onChange={this.onEmailTypeChange}
+                  value={EMAIL_TYPE.reply}
+                  checked={replyChecked}
+                  className="visually-hidden"
+                />
+                <label
+                  htmlFor="reply-radio"
+                  style={
+                    replyChecked
+                      ? styles.header.radioTextSelected
+                      : styles.header.radioTextUnselected
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon={faReply}
+                    style={{
+                      ...styles.header.responseTypeIcons,
+                      ...(replyChecked ? styles.header.responseTypeIconsSelected : {})
+                    }}
                   />
-                  <label
-                    htmlFor="reply-radio"
-                    style={
-                      replyChecked
-                        ? styles.header.radioTextSelected
-                        : styles.header.radioTextUnselected
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon={faReply}
-                      style={{
-                        ...styles.header.responseTypeIcons,
-                        ...(replyChecked ? styles.header.responseTypeIconsSelected : {})
-                      }}
-                    />
-                    {LOCALIZE.emibTest.inboxPage.emailCommons.reply}
-                  </label>
-                </span>
-                <span style={styles.header.responseTypeRadio}>
-                  <input
-                    id="reply-all-radio"
-                    type="radio"
-                    name="responseTypeRadio"
-                    style={styles.header.radioPadding}
-                    onChange={this.onEmailTypeChange}
-                    value={EMAIL_TYPE.replyAll}
-                    checked={replyAllChecked}
-                    className="visually-hidden"
+                  {LOCALIZE.emibTest.inboxPage.emailCommons.reply}
+                </label>
+                <input
+                  id="reply-all-radio"
+                  type="radio"
+                  name="responseTypeRadio"
+                  style={{ ...styles.header.radioPadding, ...styles.header.responseTypeRadio }}
+                  onChange={this.onEmailTypeChange}
+                  value={EMAIL_TYPE.replyAll}
+                  checked={replyAllChecked}
+                  className="visually-hidden"
+                />
+                <label
+                  htmlFor="reply-all-radio"
+                  style={
+                    replyAllChecked
+                      ? styles.header.radioTextSelected
+                      : styles.header.radioTextUnselected
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon={faReplyAll}
+                    style={{
+                      ...styles.header.responseTypeIcons,
+                      ...(replyAllChecked ? styles.header.responseTypeIconsSelected : {})
+                    }}
                   />
-                  <label
-                    htmlFor="reply-all-radio"
-                    style={
-                      replyAllChecked
-                        ? styles.header.radioTextSelected
-                        : styles.header.radioTextUnselected
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon={faReplyAll}
-                      style={{
-                        ...styles.header.responseTypeIcons,
-                        ...(replyAllChecked ? styles.header.responseTypeIconsSelected : {})
-                      }}
-                    />
-                    {LOCALIZE.emibTest.inboxPage.emailCommons.replyAll}
-                  </label>
-                </span>
-                <span style={styles.header.responseTypeRadio}>
-                  <input
-                    id="forward-radio"
-                    type="radio"
-                    name="responseTypeRadio"
-                    style={styles.header.radioPadding}
-                    onChange={this.onEmailTypeChange}
-                    value={EMAIL_TYPE.forward}
-                    checked={forwardChecked}
-                    className="visually-hidden"
+                  {LOCALIZE.emibTest.inboxPage.emailCommons.replyAll}
+                </label>
+                <input
+                  id="forward-radio"
+                  type="radio"
+                  name="responseTypeRadio"
+                  style={{ ...styles.header.radioPadding, ...styles.header.responseTypeRadio }}
+                  onChange={this.onEmailTypeChange}
+                  value={EMAIL_TYPE.forward}
+                  checked={forwardChecked}
+                  className="visually-hidden"
+                />
+                <label
+                  htmlFor="forward-radio"
+                  style={
+                    forwardChecked
+                      ? styles.header.radioTextSelected
+                      : styles.header.radioTextUnselected
+                  }
+                >
+                  <FontAwesomeIcon
+                    icon={faShareSquare}
+                    style={{
+                      ...styles.header.responseTypeIcons,
+                      ...(forwardChecked ? styles.header.responseTypeIconsSelected : {})
+                    }}
                   />
-                  <label
-                    htmlFor="forward-radio"
-                    style={
-                      forwardChecked
-                        ? styles.header.radioTextSelected
-                        : styles.header.radioTextUnselected
-                    }
-                  >
-                    <FontAwesomeIcon
-                      icon={faShareSquare}
-                      style={{
-                        ...styles.header.responseTypeIcons,
-                        ...(forwardChecked ? styles.header.responseTypeIconsSelected : {})
-                      }}
-                    />
-                    {LOCALIZE.emibTest.inboxPage.emailCommons.forward}
-                  </label>
-                </span>
+                  {LOCALIZE.emibTest.inboxPage.emailCommons.forward}
+                </label>
               </div>
             </fieldset>
           </div>
@@ -305,6 +302,25 @@ class EditEmail extends Component {
               <label htmlFor="your-response-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.response}
               </label>
+              <OverlayTrigger
+                trigger="focus"
+                placement="right"
+                overlay={
+                  <Popover id="reasons-for-action-tooltip">
+                    <div>
+                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}</p>
+                    </div>
+                  </Popover>
+                }
+              >
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.emailResponseTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
+              </OverlayTrigger>
               <div>
                 <textarea
                   id="your-response-text-area"
@@ -326,6 +342,25 @@ class EditEmail extends Component {
               <label htmlFor="reasons-for-action-text-area">
                 {LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction}
               </label>
+              <OverlayTrigger
+                trigger="focus"
+                placement="right"
+                overlay={
+                  <Popover id="reasons-for-action-tooltip">
+                    <div>
+                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}</p>
+                    </div>
+                  </Popover>
+                }
+              >
+                <Button
+                  aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
+                  style={styles.tooltipButton}
+                  variant="link"
+                >
+                  ?
+                </Button>
+              </OverlayTrigger>
               <div>
                 <textarea
                   id="reasons-for-action-text-area"
