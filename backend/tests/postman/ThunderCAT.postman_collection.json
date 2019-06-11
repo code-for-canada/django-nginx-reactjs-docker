@@ -658,8 +658,18 @@
 						"value": "basic YWRtaW46QWRtaW4xMjM0IQ==",
 						"description": "superuser credentials",
 						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"Delete\",\r\n  \"last_name\": \"Delete\",\r\n  \"birth_date\": \"1/2/---3\",\r\n  \"email\": \"Delete@email.ca\",\r\n  \"pri_or_military_nbr\": \"Delete\",\r\n  \"username\": \"Delete\",\r\n  \"password\": \"Delete\"\r\n}"
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/1/",
 					"host": [
