@@ -671,7 +671,7 @@
 					"raw": "{\r\n  \"first_name\": \"Delete\",\r\n  \"last_name\": \"Delete\",\r\n  \"birth_date\": \"1/2/---3\",\r\n  \"email\": \"Delete@email.ca\",\r\n  \"pri_or_military_nbr\": \"Delete\",\r\n  \"username\": \"Delete\",\r\n  \"password\": \"Delete\"\r\n}"
 				},
 				"url": {
-					"raw": "{{THUNDERCAT_URL}}/api/auth/users/1/",
+					"raw": "{{THUNDERCAT_URL}}/api/auth/users/3/",
 					"host": [
 						"{{THUNDERCAT_URL}}"
 					],
@@ -679,7 +679,7 @@
 						"api",
 						"auth",
 						"users",
-						"1",
+						"3",
 						""
 					]
 				}
@@ -915,6 +915,7 @@
 				"method": "GET",
 				"header": [
 					{
+						"description": "superuser credentials",
 						"key": "Authorization",
 						"type": "text",
 						"value": "basic YWRtaW46QWRtaW4xMjM0IQ=="
