@@ -4,6 +4,8 @@ from custom_models.item import Item
 from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
+from custom_models.question_type import QuestionType
+from custom_models.item_type import ItemType
 
 TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
@@ -79,6 +81,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return return_dict
 
     if request_type == TEST_QUESTIONS:
+        item_map = gen_item_map()
+        question_map = gen_question_map()
+        print(item_map)
+        print(question_map)
         # TODO jcherry write the logic to get question data
         # After merging the API PRs
         return_dict["questions"] = []
@@ -86,6 +92,28 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
 
     # if it is not one of the above, then return nothing
     return {}
+
+
+def gen_item_map():
+    item_map = {}
+    # TODO add filtering for active types
+    item_types = ItemType.objects.all()
+    print("Arrrc")
+    for i_type in item_types:
+        item_map[i_type.item_type_id] = i_type.type_desc
+        item_map[i_type.type_desc] = i_type.item_type_id
+    return item_map
+
+
+def gen_question_map():
+    question_map = {}
+    # TODO add filtering for active types
+    question_types = QuestionType.objects.all()
+    print("Arrrc")
+    for q_type in question_types:
+        question_map[q_type.question_type_id] = q_type.question_type_desc
+        question_map[q_type.question_type_desc] = q_type.question_type_id
+    return question_map
 
 
 def get_language_ids(query_date_time):
