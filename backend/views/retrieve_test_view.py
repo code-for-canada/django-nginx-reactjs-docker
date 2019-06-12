@@ -106,7 +106,6 @@ SEARCH_CHILDREN_LIST = {
 
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time):
-    print(item_type_map)
     question_map = {}
     # get the parent id
     # get the string type to determine how to handle it
@@ -120,8 +119,10 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
             item_id=parent_id).question_type_id.question_type_id
         parent_type = question_type_map[question_type]
     children_list = SEARCH_CHILDREN_LIST[parent_type]
-    # TODO get all children items that are not expired
-    # TODO for each child
+    children_items = get_items_by_parent_id(parent_id, query_date_time)
+    print(children_items)
+    for child in children_items:
+        print(child)
     #   TODO check if in children_list
     #   TODO get text
     #   TODO add to map by type
@@ -135,9 +136,7 @@ def gen_item_map():
     # TODO add filtering for active types
     item_types = ItemType.objects.all()
     for i_type in item_types:
-        # TODO only get one if possible
         item_type_map[i_type.item_type_id] = i_type.type_desc
-        item_type_map[i_type.type_desc] = i_type.item_type_id
     return item_type_map
 
 
@@ -225,3 +224,14 @@ def get_item_by_id(item_id, query_date_time):
         except Item.DoesNotExist:
             item = None
     return item
+
+
+def get_items_by_parent_id(parent_id, query_date_time):
+    items = Item.objects.filter(
+        parent_id=parent_id, date_from__lte=query_date_time, date_to__gt=query_date_time
+    )
+    if not items:
+        items = Item.objects.filter(
+            parent_id=parent_id, date_from__lte=query_date_time, date_to__isnull=True
+        )
+    return items
