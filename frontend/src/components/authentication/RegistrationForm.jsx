@@ -442,6 +442,9 @@ class RegistrationForm extends Component {
         .then(response => {
           // response returns email and username
           if (
+            response.first_name === this.state.firstNameContent &&
+            response.last_name === this.state.lastNameContent &&
+            response.birth_date.length > 0 &&
             response.email === this.state.emailContent &&
             response.username === this.state.emailContent
           ) {
