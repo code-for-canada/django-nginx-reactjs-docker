@@ -4,6 +4,7 @@ from custom_models.item import Item
 from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
+from custom_models.question import Question
 from custom_models.question_type import QuestionType
 from custom_models.item_type import ItemType
 
@@ -51,7 +52,8 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
 
     # Ensure that the item with the same pk,
     # is active (where the current date is between the from and to date)
-    if get_item_by_id(item_id, query_date_time) is None:
+    item = get_item_by_id(item_id, query_date_time)
+    if item is None:
         return {"error", "no test item found"}
 
     # get item text (visible test names)
@@ -81,10 +83,12 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return return_dict
 
     if request_type == TEST_QUESTIONS:
-        item_map = gen_item_map()
-        question_map = gen_question_map()
-        print(item_map)
-        print(question_map)
+        item_type_map = gen_item_map()
+        question_type_map = gen_question_map()
+        print(item_type_map)
+        print(question_type_map)
+        question_map = get_items(
+            item, item_type_map, question_type_map, query_date_time)
         # TODO jcherry write the logic to get question data
         # After merging the API PRs
         return_dict["questions"] = []
@@ -94,26 +98,58 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     return {}
 
 
+# for this type, look for these children; this will be added to later
+SEARCH_CHILDREN_LIST = {
+    "test": ["question"],
+    "email": ["subject", "from", "to", "date", "body"]
+}
+
+
+def get_items(parent_item, item_type_map, question_type_map, query_date_time):
+    print(item_type_map)
+    question_map = {}
+    # get the parent id
+    # get the string type to determine how to handle it
+    parent_id = parent_item.item_id
+    parent_type_id = parent_item.item_type_id.item_type_id
+    print(parent_type_id)
+    parent_type = item_type_map[parent_type_id]
+    if parent_type == "question":
+        # TODO add time filter
+        question_type = Question.objects.get(
+            item_id=parent_id).question_type_id.question_type_id
+        parent_type = question_type_map[question_type]
+    children_list = SEARCH_CHILDREN_LIST[parent_type]
+    # TODO get all children items that are not expired
+    # TODO for each child
+    #   TODO check if in children_list
+    #   TODO get text
+    #   TODO add to map by type
+    #   TODO recursively call this to check for children?
+
+    return question_map
+
+
 def gen_item_map():
-    item_map = {}
+    item_type_map = {}
     # TODO add filtering for active types
     item_types = ItemType.objects.all()
-    print("Arrrc")
     for i_type in item_types:
-        item_map[i_type.item_type_id] = i_type.type_desc
-        item_map[i_type.type_desc] = i_type.item_type_id
-    return item_map
+        # TODO only get one if possible
+        item_type_map[i_type.item_type_id] = i_type.type_desc
+        item_type_map[i_type.type_desc] = i_type.item_type_id
+    return item_type_map
 
 
 def gen_question_map():
-    question_map = {}
+    question_type_map = {}
     # TODO add filtering for active types
     question_types = QuestionType.objects.all()
-    print("Arrrc")
     for q_type in question_types:
-        question_map[q_type.question_type_id] = q_type.question_type_desc
-        question_map[q_type.question_type_desc] = q_type.question_type_id
-    return question_map
+        # TODO only get one if possible
+        question_type_map[q_type.question_type_id] = q_type.question_type_desc
+        question_type_map[q_type.question_type_desc] = q_type.question_type_id
+    return question_type_map
 
 
 def get_language_ids(query_date_time):
