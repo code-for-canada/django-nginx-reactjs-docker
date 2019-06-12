@@ -138,7 +138,6 @@ class RegistrationForm extends Component {
     betweenMinAndMaxChar: false,
 
     // PopupBox States
-    showCreatedAccountDialog: false,
     showPrivacyNoticeDialog: false,
 
     // API Errors Handler States
@@ -423,13 +422,6 @@ class RegistrationForm extends Component {
     );
   };
 
-  redirectToLoginPage = () => {
-    // refresh the page in order to show the login form
-    window.location.reload();
-    // close dialog
-    this.setState({ showCreatedAccountDialog: false });
-  };
-
   handleSubmit = event => {
     const validForm = this.isFormValid();
     // if all fields are valid, execute API errors validation
@@ -454,7 +446,7 @@ class RegistrationForm extends Component {
             response.username === this.state.emailContent
           ) {
             // account successfully created
-            this.setState({ showCreatedAccountDialog: true, accountExistsError: false });
+            this.setState({ accountExistsError: false });
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -889,21 +881,6 @@ class RegistrationForm extends Component {
           rightButtonType={BUTTON_TYPE.primary}
           rightButtonTitle={LOCALIZE.commons.ok}
           rightButtonAction={this.closePrivacyNoticePopup}
-        />
-        <PopupBox
-          isCloseButtonVisible={false}
-          isBackdropStatic={true}
-          show={this.state.showCreatedAccountDialog}
-          handleClose={this.redirectToLoginPage}
-          title={LOCALIZE.authentication.createAccount.popupBox.title}
-          description={
-            <div>
-              <p>{LOCALIZE.authentication.createAccount.popupBox.description}</p>
-            </div>
-          }
-          rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={LOCALIZE.commons.ok}
-          rightButtonAction={this.redirectToLoginPage}
         />
       </div>
     );
