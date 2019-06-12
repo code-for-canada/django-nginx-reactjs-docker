@@ -838,6 +838,7 @@
 					{
 						"key": "Authorization",
 						"value": "basic YXBpLXRlc3QxQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
+						"description": "api-test1 credentials",
 						"type": "text"
 					}
 				],
@@ -929,6 +930,212 @@
 					"path": [
 						"api",
 						"test-meta-data",
+						""
+					],
+					"query": [
+						{
+							"key": "test_name",
+							"value": "emibPizzaTest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get sample instructions data (public test) - /api/test-instructions/?test_name=emibSampleTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d85a30b-ed4a-4972-93ce-63c0b960c9f0",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// getting test internal name\r",
+							"pm.test(\"Getting test internal name\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"test_internal_name\":\"emibSampleTest\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibSampleTest",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"test-instructions",
+						""
+					],
+					"query": [
+						{
+							"key": "test_name",
+							"value": "emibSampleTest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pizza test instructions data (non-public test + unauthenticated) - /api/test-instructions/?test_name=emibPizzaTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d85a30b-ed4a-4972-93ce-63c0b960c9f0",
+						"exec": [
+							"// fail request (expected: status 403)\r",
+							"pm.test(\"Fail request\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"// getting authentication message\r",
+							"pm.test(\"Getting 'Authentication credentials were not provided' message\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"detail\":\"Authentication credentials were not provided.\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"test-instructions",
+						""
+					],
+					"query": [
+						{
+							"key": "test_name",
+							"value": "emibPizzaTest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pizza test instructions data (non-public test + authenticated with default user) - /api/test-instructions/?test_name=emibPizzaTest Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d85a30b-ed4a-4972-93ce-63c0b960c9f0",
+						"exec": [
+							"// fail request (expected: status 403)\r",
+							"pm.test(\"Fail reques\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"// getting missing permission message\r",
+							"pm.test(\"Getting 'You do not have permission to perform this action' message\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"detail\":\"You do not have permission to perform this action.\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "basic YXBpLXRlc3QxQGVtYWlsLmNhOlF3ZXJ0eTEyMzQh",
+						"description": "api-test1 credentials",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"test-instructions",
+						""
+					],
+					"query": [
+						{
+							"key": "test_name",
+							"value": "emibPizzaTest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pizza test instructions data (non-public test + authenticated with admin user) - /api/test-instructions/?test_name=emibPizzaTest Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d85a30b-ed4a-4972-93ce-63c0b960c9f0",
+						"exec": [
+							"// successful request\r",
+							"pm.test(\"Successful request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// getting test internal name\r",
+							"pm.test(\"Getting test internal name\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('\"test_internal_name\":\"emibPizzaTest\"');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "superuser credentials",
+						"key": "Authorization",
+						"type": "text",
+						"value": "basic YWRtaW46QWRtaW4xMjM0IQ=="
+					}
+				],
+				"url": {
+					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
+					"host": [
+						"{{THUNDERCAT_URL}}"
+					],
+					"path": [
+						"api",
+						"test-instructions",
 						""
 					],
 					"query": [
