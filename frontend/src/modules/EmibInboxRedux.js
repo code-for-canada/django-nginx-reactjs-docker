@@ -76,6 +76,8 @@ const changeCurrentEmail = emailIndex => ({
 const initialState = {
   // Loads emails from a static JSON file until an API exists.
   emails: emailsJson.emailsEN,
+  emailsEN: emailsJson.emailsEN,
+  emailsFR: emailsJson.emailsFR,
   emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
   emailActions: initializeEmailActions(emailsJson.emailsEN.length),
   addressBook: addressBookJson.addressBookEN,
@@ -88,7 +90,7 @@ const emibInbox = (state = initialState, action) => {
     case SET_LANGUAGE:
       return {
         ...state,
-        emails: action.language === "fr" ? emailsJson.emailsFR : emailsJson.emailsEN,
+        emails: action.language === "fr" ? state.emailsFR : state.emailsEN,
         addressBook:
           action.language === "fr" ? addressBookJson.addressBookFR : addressBookJson.addressBookEN
       };

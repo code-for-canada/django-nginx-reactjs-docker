@@ -18,6 +18,8 @@ describe("EmibInboxRedux", () => {
   beforeEach(() => {
     stubbedInitialState = {
       emails: emailsJson.emailsEN,
+      emailsEN: emailsJson.emailsEN,
+      emailsFR: emailsJson.emailsFR,
       emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
       emailActions: [[], [], []],
       currentEmail: 0
