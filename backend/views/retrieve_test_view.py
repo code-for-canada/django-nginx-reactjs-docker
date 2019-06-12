@@ -120,14 +120,22 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
         parent_type = question_type_map[question_type]
     children_list = SEARCH_CHILDREN_LIST[parent_type]
     children_items = get_items_by_parent_id(parent_id, query_date_time)
-    print(children_items)
+    print(children_list)
     for child in children_items:
-        print(child)
-    #   TODO check if in children_list
+        child_type_id = child.item_type_id.item_type_id
+        child_type = item_type_map[child_type_id]
+        print(child_type)
+        if child_type in children_list:
+            # todo, handle based on type?
+            print("yes")
+            print(child)
+            question_map[child.order] = child
+            #get_items(child, item_type_map, question_type_map, query_date_time)
+            # TODO do stuff?
     #   TODO get text
     #   TODO add to map by type
     #   TODO recursively call this to check for children?
-
+    print(question_map)
     return question_map
 
 
@@ -147,7 +155,7 @@ def gen_question_map():
     for q_type in question_types:
         # TODO only get one if possible
         question_type_map[q_type.question_type_id] = q_type.question_type_desc
-        question_type_map[q_type.question_type_desc] = q_type.question_type_id
+        #question_type_map[q_type.question_type_desc] = q_type.question_type_id
     return question_type_map
 
 
