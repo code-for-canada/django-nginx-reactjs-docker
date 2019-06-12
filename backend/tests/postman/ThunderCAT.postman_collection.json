@@ -1329,7 +1329,7 @@
 							"\r",
 							"// getting test internal name\r",
 							"pm.test(\"Getting test internal name\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"test_internal_name\":\"emibSampleTest\"');\r",
+							"    pm.expect(pm.response.text()).to.include('\"test_internal_name\":\"emibPizzaTest\"');\r",
 							"});\r",
 							"\r",
 							"// getting test questions attribute\r",
