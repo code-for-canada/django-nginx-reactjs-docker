@@ -452,6 +452,7 @@ class RegistrationForm extends Component {
           ) {
             // account successfully created
             this.setState({ accountExistsError: false });
+            // login the user by using its credentials
             this.props
               .loginAction({
                 username: this.state.emailContent,
