@@ -8,13 +8,13 @@ import validateName, {
   PASSWORD_REQUIREMENTS
 } from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
-import { registerAction } from "../../modules/LoginRedux";
-import { bindActionCreators } from "redux";
+import { registerAction, handleAuthResponseAndState, loginAction } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
+import history from "./history";
 
 const styles = {
   createAccountContent: {
@@ -98,7 +98,9 @@ const MANDATORY_MARK = " *";
 class RegistrationForm extends Component {
   static propTypes = {
     // Props from Redux
-    registerAction: PropTypes.func
+    registerAction: PropTypes.func,
+    handleAuthResponseAndState: PropTypes.func,
+    loginAction: PropTypes.func
   };
 
   state = {
@@ -450,6 +452,19 @@ class RegistrationForm extends Component {
           ) {
             // account successfully created
             this.setState({ accountExistsError: false });
+            this.props
+              .loginAction({
+                username: this.state.emailContent,
+                password: this.state.passwordContent
+              })
+              .then(response => {
+                this.props.handleAuthResponseAndState(
+                  response,
+                  this.props.dispatch,
+                  window.location.pathname,
+                  history.push
+                );
+              });
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -890,13 +905,13 @@ class RegistrationForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      registerAction
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => ({
+  registerAction: data => dispatch(registerAction(data)),
+  loginAction: data => dispatch(loginAction(data)),
+  handleAuthResponseAndState: (userData, dispatch, location, push) =>
+    dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
+  dispatch
+});
 
 export default connect(
   null,
