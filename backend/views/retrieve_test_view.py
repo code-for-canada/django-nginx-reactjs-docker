@@ -132,6 +132,8 @@ def test_map_to_language_map(cur_map):
             child_type = cur_map[key][TYPE]
             child_map = cur_map[key][MAP]
             child_en, child_fr = test_map_to_language_map(child_map)
+            en_map = add_to_map(child_type, child_en, en_map)
+            fr_map = add_to_map(child_type, child_fr, fr_map)
             print("CHILDREN")
             print(child_type)
             print(child_en)
@@ -140,6 +142,14 @@ def test_map_to_language_map(cur_map):
             # TODO this should not ever really happen
             print(cur_map[key])
     return en_map, fr_map
+
+
+def add_to_map(child_type, child_language_map, language_map):
+    if child_type in language_map.keys():
+        language_map[child_type].append(child_language_map)
+    else:
+        language_map[child_type] = [child_language_map]
+    return language_map
 
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time,
