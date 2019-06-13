@@ -128,19 +128,16 @@ def test_map_to_language_map(cur_map):
     # otherwise parse through the keys
     for key in keys:
         print(key)
-        if isinstance(key, int):
-            child_type = cur_map[key][TYPE]
-            child_map = cur_map[key][MAP]
-            child_en, child_fr = test_map_to_language_map(child_map)
-            en_map = add_to_map(child_type, child_en, en_map)
-            fr_map = add_to_map(child_type, child_fr, fr_map)
-            print("CHILDREN")
-            print(child_type)
-            print(child_en)
-            print(child_fr)
-        else:
-            # TODO this should not ever really happen
-            print(cur_map[key])
+        child_type = cur_map[key][TYPE]
+        child_map = cur_map[key][MAP]
+        child_en, child_fr = test_map_to_language_map(child_map)
+        # add the key as id if it these are dicts
+        if isinstance(child_en, dict):
+            child_en["id"] = key
+        if isinstance(child_fr, dict):
+            child_fr["id"] = key
+        en_map = add_to_map(child_type, child_en, en_map)
+        fr_map = add_to_map(child_type, child_fr, fr_map)
     return en_map, fr_map
 
 
