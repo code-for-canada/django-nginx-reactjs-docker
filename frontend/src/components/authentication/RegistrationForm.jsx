@@ -66,6 +66,9 @@ const styles = {
     marginTop: 6,
     fontWeight: "bold"
   },
+  passwordRequirementsForScreenReader: {
+    display: "none"
+  },
   errorMessage: {
     color: "#923534",
     fontWeight: "bold",
@@ -300,6 +303,21 @@ class RegistrationForm extends Component {
         LOCALIZE.authentication.createAccount.privacyNoticeError +
         LOCALIZE.authentication.createAccount.privacyNotice +
         LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    }
+  };
+
+  getPasswordRequirements = () => {
+    if (this.state.isFirstLoad) {
+      return (
+        <span id="password-requirements" style={styles.passwordRequirementsForScreenReader}>
+          {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.description +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.upperCase +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.lowerCase +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.digit +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.specialCharacter +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
+        </span>
       );
     }
   };
@@ -730,6 +748,7 @@ class RegistrationForm extends Component {
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-live="polite"
+                  aria-describedby={"password-requirements"}
                   aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
@@ -738,6 +757,7 @@ class RegistrationForm extends Component {
                   style={styles.inputs}
                   onChange={this.getPasswordContent}
                 />
+                {this.getPasswordRequirements()}
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <label htmlFor={"password-field"}>
                     <p style={styles.errorMessage}>
