@@ -91,7 +91,7 @@ let LOCALIZE = new LocalizedStrings({
 
     //Dashboard Page
     dashboard: {
-      title: "Welcome to your dashboard",
+      title: "Welcome, {0}.",
       description:
         "You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test."
     },
@@ -684,7 +684,7 @@ let LOCALIZE = new LocalizedStrings({
 
     //Dashboard Page
     dashboard: {
-      title: "FR Welcome to your dashboard",
+      title: "FR Welcome, {0}.",
       description:
         "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test."
     },
