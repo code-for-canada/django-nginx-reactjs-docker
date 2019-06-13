@@ -98,19 +98,20 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         print(item_type_map)
         print(question_type_map)
         question_map = get_items(
-            item, item_type_map, question_type_map, query_date_time, QUESTION_CHILDREN_MAP)
+            item, item_type_map, question_type_map, query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
         # TODO jcherry write the logic to get question data
         # After merging the API PRs
-        return_dict["questions"] = []
+        return_dict["questions"] = question_map
         return return_dict
 
     # if it is not one of the above, then return nothing
     return {}
 
 
-def get_items(parent_item, item_type_map, question_type_map, query_date_time, children_map):
+def get_items(parent_item, item_type_map, question_type_map, query_date_time,
+              en_id, fr_id, children_map):
     print("get_items")
-    question_map = {}
+    return_map = {}
     # get the parent id
     # get the string type to determine how to handle it
     parent_id = parent_item.item_id
@@ -123,28 +124,28 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time, ch
             item_id=parent_id).question_type_id.question_type_id
         parent_type = question_type_map[question_type]
     try:
-        children_list = children_map[parent_type]
+        children_types = children_map[parent_type]
     except KeyError:
-        children_list = []
+        children_types = []
+    for child_type in children_types:
+        return_map[child_type] = []
     children_items = get_items_by_parent_id(parent_id, query_date_time)
-    print(children_list)
+    print(children_types)
     for child in children_items:
         child_type_id = child.item_type_id.item_type_id
         child_type = item_type_map[child_type_id]
         print(child_type)
-        if child_type in children_list:
-            # TODO, handle based on parent_type?
+        if child_type in children_types:
             print("yes")
             print(child)
-            #question_map[child.order] = child
-            question_map[child.order] = get_items(
-                child, item_type_map, question_type_map, query_date_time, children_map)
-            # TODO do stuff?
-    #   TODO get text
-    #   TODO add to map by type
-    #   TODO recursively call this to check for children?
-    print(question_map)
-    return question_map
+            return_map[child_type].append(get_items(
+                child, item_type_map, question_type_map, query_date_time,
+                en_id, fr_id, children_map))
+    if children_types == []:
+        return_map["en"] = get_text_detail(parent_id, en_id, query_date_time)
+        return_map["fr"] = get_text_detail(parent_id, fr_id, query_date_time)
+    print(return_map)
+    return return_map
 
 
 def gen_item_map():
