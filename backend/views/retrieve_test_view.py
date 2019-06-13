@@ -106,6 +106,7 @@ SEARCH_CHILDREN_LIST = {
 
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time):
+    print("get_items")
     question_map = {}
     # get the parent id
     # get the string type to determine how to handle it
@@ -118,7 +119,10 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
         question_type = Question.objects.get(
             item_id=parent_id).question_type_id.question_type_id
         parent_type = question_type_map[question_type]
-    children_list = SEARCH_CHILDREN_LIST[parent_type]
+    try:
+        children_list = SEARCH_CHILDREN_LIST[parent_type]
+    except KeyError:
+        children_list = []
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     print(children_list)
     for child in children_items:
@@ -126,11 +130,12 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
         child_type = item_type_map[child_type_id]
         print(child_type)
         if child_type in children_list:
-            # todo, handle based on type?
+            # TODO, handle based on parent_type?
             print("yes")
             print(child)
-            question_map[child.order] = child
-            #get_items(child, item_type_map, question_type_map, query_date_time)
+            #question_map[child.order] = child
+            question_map[child.order] = get_items(
+                child, item_type_map, question_type_map, query_date_time)
             # TODO do stuff?
     #   TODO get text
     #   TODO add to map by type
