@@ -143,10 +143,10 @@ DJOSER = {
         "user_delete": ["rest_framework.permissions.IsAdminUser"],
         "user_list": ["rest_framework.permissions.IsAdminUser"],
         "password_reset": ["rest_framework.permissions.IsAdminUser"],
-        "user": ["rest_framework.permissions.IsAdminUser"],
         # Authenticated
         "token_destroy": ["rest_framework.permissions.IsAuthenticated"],
         # Current User or Admin
+        "user": ["djoser.permissions.CurrentUserOrAdmin"],
         "set_password": ["djoser.permissions.CurrentUserOrAdmin"],
         # Any
         "password_reset_confirm": ["rest_framework.permissions.AllowAny"],
