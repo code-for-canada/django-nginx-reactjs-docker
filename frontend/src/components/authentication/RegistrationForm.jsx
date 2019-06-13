@@ -271,6 +271,7 @@ class RegistrationForm extends Component {
       // returns the DOB field title and the field selected
       return (
         LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     } else {
@@ -278,6 +279,7 @@ class RegistrationForm extends Component {
       return (
         LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     }
@@ -603,15 +605,7 @@ class RegistrationForm extends Component {
                       </Popover>
                     }
                   >
-                    <Button
-                      tabIndex="-1"
-                      aria-label={
-                        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip
-                      }
-                      style={styles.tooltipButton}
-                      variant="link"
-                    >
+                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
                       ?
                     </Button>
                   </OverlayTrigger>
