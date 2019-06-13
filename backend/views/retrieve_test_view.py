@@ -115,7 +115,6 @@ def gen_return_map(question_map):
 
 
 def test_map_to_language_map(cur_map):
-    print("----------")
     en_map = {}
     fr_map = {}
     # get and sort keys
@@ -127,7 +126,6 @@ def test_map_to_language_map(cur_map):
         return cur_map[EN], cur_map[FR]
     # otherwise parse through the keys
     for key in keys:
-        print(key)
         child_type = cur_map[key][TYPE]
         child_map = cur_map[key][MAP]
         child_en, child_fr = test_map_to_language_map(child_map)
