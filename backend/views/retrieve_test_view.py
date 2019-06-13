@@ -12,6 +12,16 @@ TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
 
+# when gathering insructions, look for these items under each type
+INSTRUCTION_CHILDREN_MAP = {
+}
+
+# when gathering questions, look for these items under each type
+QUESTION_CHILDREN_MAP = {
+    "test": ["question"],
+    "email": ["subject", "from", "to", "date", "body"]
+}
+
 
 # returns true if the test is public and false on the other hand
 def is_test_public(test_name):
@@ -88,7 +98,7 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         print(item_type_map)
         print(question_type_map)
         question_map = get_items(
-            item, item_type_map, question_type_map, query_date_time)
+            item, item_type_map, question_type_map, query_date_time, QUESTION_CHILDREN_MAP)
         # TODO jcherry write the logic to get question data
         # After merging the API PRs
         return_dict["questions"] = []
@@ -98,14 +108,7 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     return {}
 
 
-# for this type, look for these children; this will be added to later
-SEARCH_CHILDREN_LIST = {
-    "test": ["question"],
-    "email": ["subject", "from", "to", "date", "body"]
-}
-
-
-def get_items(parent_item, item_type_map, question_type_map, query_date_time):
+def get_items(parent_item, item_type_map, question_type_map, query_date_time, children_map):
     print("get_items")
     question_map = {}
     # get the parent id
@@ -120,7 +123,7 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
             item_id=parent_id).question_type_id.question_type_id
         parent_type = question_type_map[question_type]
     try:
-        children_list = SEARCH_CHILDREN_LIST[parent_type]
+        children_list = children_map[parent_type]
     except KeyError:
         children_list = []
     children_items = get_items_by_parent_id(parent_id, query_date_time)
@@ -135,7 +138,7 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time):
             print(child)
             #question_map[child.order] = child
             question_map[child.order] = get_items(
-                child, item_type_map, question_type_map, query_date_time)
+                child, item_type_map, question_type_map, query_date_time, children_map)
             # TODO do stuff?
     #   TODO get text
     #   TODO add to map by type
