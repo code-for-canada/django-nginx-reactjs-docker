@@ -18,7 +18,7 @@ INSTRUCTION_CHILDREN_MAP = {
 
 # when gathering questions, look for these items under each type
 QUESTION_CHILDREN_MAP = {
-    "test": ["question"],
+    "test": ["email"],
     "email": ["subject", "from", "to", "date", "body"]
 }
 
@@ -95,8 +95,6 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == TEST_QUESTIONS:
         item_type_map = gen_item_map()
         question_type_map = gen_question_map()
-        print(item_type_map)
-        print(question_type_map)
         question_map = get_items(
             item, item_type_map, question_type_map, query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
         return_dict["questions"] = question_map
@@ -112,15 +110,9 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
     return_map = {}
     # get the parent id
     # get the string type to determine how to handle it
-    parent_id = parent_item.item_id
-    parent_type_id = parent_item.item_type_id.item_type_id
-    print(parent_type_id)
-    parent_type = item_type_map[parent_type_id]
-    if parent_type == "question":
-        # TODO add time filter
-        question_type = Question.objects.get(
-            item_id=parent_id).question_type_id.question_type_id
-        parent_type = question_type_map[question_type]
+    # TODO seperate function
+    parent_id, parent_type = get_item_type(
+        parent_item, item_type_map, question_type_map)
     try:
         children_types = children_map[parent_type]
     except KeyError:
@@ -128,8 +120,8 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     print(children_types)
     for child in children_items:
-        child_type_id = child.item_type_id.item_type_id
-        child_type = item_type_map[child_type_id]
+        _, child_type = get_item_type(
+            child, item_type_map, question_type_map)
         print(child_type)
         if child_type in children_types:
             print("yes")
@@ -143,6 +135,19 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         return_map["fr"] = get_text_detail(parent_id, fr_id, query_date_time)
     print(return_map)
     return return_map
+
+# get the item id and item_type; or, if the item_type is question, get the question_type
+
+
+def get_item_type(item, item_type_map, question_type_map):
+    item_id = item.item_id
+    item_type = item_type_map[item.item_type_id.item_type_id]
+    if item_type == "question":
+        # TODO add time filter
+        question_type = Question.objects.get(
+            item_id=item_id).question_type_id.question_type_id
+        item_type = question_type_map[question_type]
+    return item_id, item_type
 
 
 def gen_item_map():
