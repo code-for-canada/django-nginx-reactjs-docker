@@ -307,7 +307,9 @@ class RegistrationForm extends Component {
     }
   };
 
+  // returns password requirements on password field selection for the screen reader users
   getPasswordRequirements = () => {
+    // only on first load, since the dynamic password requirements are handling that after the first page load
     if (this.state.isFirstLoad) {
       return (
         <span id="password-requirements" style={styles.passwordRequirementsForScreenReader}>
