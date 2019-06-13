@@ -604,6 +604,7 @@ class RegistrationForm extends Component {
                     }
                   >
                     <Button
+                      tabIndex="-1"
                       aria-label={
                         LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
                         LOCALIZE.authentication.createAccount.content.inputs.dobTooltip
