@@ -127,8 +127,8 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         children_types = children_map[parent_type]
     except KeyError:
         children_types = []
-    for child_type in children_types:
-        return_map[child_type] = []
+    # for child_type in children_types:
+    #    return_map[child_type] = []
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     print(children_types)
     for child in children_items:
@@ -138,9 +138,11 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         if child_type in children_types:
             print("yes")
             print(child)
-            return_map[child_type].append(get_items(
+            return_map[child.order] = {"type": child_type}
+            return_map[child.order].update(get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map))
+            #return_map[child.order]["type"] = child_type
     if children_types == []:
         return_map["en"] = get_text_detail(parent_id, en_id, query_date_time)
         return_map["fr"] = get_text_detail(parent_id, fr_id, query_date_time)
@@ -164,7 +166,7 @@ def gen_question_map():
     for q_type in question_types:
         # TODO only get one if possible
         question_type_map[q_type.question_type_id] = q_type.question_type_desc
-        #question_type_map[q_type.question_type_desc] = q_type.question_type_id
+        # question_type_map[q_type.question_type_desc] = q_type.question_type_id
     return question_type_map
 
 
