@@ -99,8 +99,6 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         print(question_type_map)
         question_map = get_items(
             item, item_type_map, question_type_map, query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
-        # TODO jcherry write the logic to get question data
-        # After merging the API PRs
         return_dict["questions"] = question_map
         return return_dict
 
@@ -127,8 +125,6 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         children_types = children_map[parent_type]
     except KeyError:
         children_types = []
-    # for child_type in children_types:
-    #    return_map[child_type] = []
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     print(children_types)
     for child in children_items:
@@ -142,7 +138,6 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
             return_map[child.order].update(get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map))
-            #return_map[child.order]["type"] = child_type
     if children_types == []:
         return_map["en"] = get_text_detail(parent_id, en_id, query_date_time)
         return_map["fr"] = get_text_detail(parent_id, fr_id, query_date_time)
