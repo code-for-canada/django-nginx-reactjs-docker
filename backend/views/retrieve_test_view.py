@@ -11,6 +11,10 @@ from custom_models.item_type import ItemType
 TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
+TYPE = "type"
+MAP = "map"
+EN = "en"
+FR = "fr"
 
 # when gathering insructions, look for these items under each type
 INSTRUCTION_CHILDREN_MAP = {
@@ -97,11 +101,45 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         question_type_map = gen_question_map(query_date_time)
         question_map = get_items(
             item, item_type_map, question_type_map, query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
-        return_dict["questions"] = question_map
+        return_map = gen_return_map(question_map)
+        return_dict["questions"] = return_map
         return return_dict
 
     # if it is not one of the above, then return nothing
     return {}
+
+
+def gen_return_map(question_map):
+    en_map, fr_map = test_map_to_language_map(question_map)
+    return {EN: en_map, FR: fr_map}
+
+
+def test_map_to_language_map(cur_map):
+    print("----------")
+    en_map = {}
+    fr_map = {}
+    # get and sort keys
+    keys = cur_map.keys()
+    keys = list(keys)
+    keys.sort()
+    # if the keys are just EN and FR, then return the values
+    if keys == [EN, FR]:
+        return cur_map[EN], cur_map[FR]
+    # otherwise parse through the keys
+    for key in keys:
+        print(key)
+        if isinstance(key, int):
+            child_type = cur_map[key][TYPE]
+            child_map = cur_map[key][MAP]
+            child_en, child_fr = test_map_to_language_map(child_map)
+            print("CHILDREN")
+            print(child_type)
+            print(child_en)
+            print(child_fr)
+        else:
+            # TODO this should not ever really happen
+            print(cur_map[key])
+    return en_map, fr_map
 
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time,
@@ -119,13 +157,13 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time)
         if child_type in children_types:
-            return_map[child.order] = {"type": child_type}
-            return_map[child.order].update(get_items(
+            return_map[child.order] = {TYPE: child_type}
+            return_map[child.order][MAP] = get_items(
                 child, item_type_map, question_type_map, query_date_time,
-                en_id, fr_id, children_map))
+                en_id, fr_id, children_map)
     if children_types == []:
-        return_map["en"] = get_text_detail(parent_id, en_id, query_date_time)
-        return_map["fr"] = get_text_detail(parent_id, fr_id, query_date_time)
+        return_map[EN] = get_text_detail(parent_id, en_id, query_date_time)
+        return_map[FR] = get_text_detail(parent_id, fr_id, query_date_time)
     return return_map
 
 # get the item id and item_type; or, if the item_type is question, get the question_type
