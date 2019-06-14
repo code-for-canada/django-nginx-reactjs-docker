@@ -134,9 +134,6 @@ def test_map_to_language_map(cur_map):
         child_type = cur_map[key][TYPE]
         child_map = cur_map[key][MAP]
         child_en, child_fr = test_map_to_language_map(child_map)
-        print(child_type)
-        print(child_en)
-        print(child_fr)
         # add the key as id if it these are dicts
         if isinstance(child_en, dict):
             child_en["id"] = key
