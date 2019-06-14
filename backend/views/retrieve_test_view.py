@@ -170,22 +170,29 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
 
 
 def get_item_type(item, item_type_map, question_type_map, query_date_time):
+    # get the id and the type
     item_id = item.item_id
     item_type = item_type_map[item.item_type_id.item_type_id]
+    # if the item type is a question, then get the type of question
     if item_type == "question":
+        # get all active questions with this item_id (there should really be only one)
         question = Question.objects.filter(
             item_id=item_id)
         question = exclude_inactive_objects(question, query_date_time)
         if not question:
             item_type = None
         else:
+            # get the last one
             question = question.last()
             question_type = question.question_type_id.question_type_id
+            # get the string version of the type
             item_type = question_type_map[question_type]
+    # if we have other items with seperate types, handle them here with elif's
     return item_id, item_type
 
 
 def gen_item_map(query_date_time):
+    # create a map of item_type_id to type_desc
     item_type_map = {}
     item_types = ItemType.objects.all()
     item_types = exclude_inactive_objects(item_types, query_date_time)
@@ -195,6 +202,7 @@ def gen_item_map(query_date_time):
 
 
 def gen_question_map(query_date_time):
+    # create a map of question_type_id to question_type_desc
     question_type_map = {}
     question_types = QuestionType.objects.all()
     question_types = exclude_inactive_objects(question_types, query_date_time)
@@ -204,6 +212,7 @@ def gen_question_map(query_date_time):
 
 
 def get_language_ids(query_date_time):
+    # get the active ids for en and fr
     if query_date_time is None:
         query_date_time = datetime.now()
     en_id = get_language("en-ca", query_date_time)
@@ -212,6 +221,7 @@ def get_language_ids(query_date_time):
 
 
 def get_language(iso_code_2, query_date_time):
+    # get the active language id for the given iso_code_2
     lang_id = Language.objects.filter(ISO_Code_2=iso_code_2)
     lang_id = exclude_inactive_objects(lang_id, query_date_time)
     if not lang_id:
@@ -220,6 +230,7 @@ def get_language(iso_code_2, query_date_time):
 
 
 def get_text_detail(item_id, language_id, query_date_time):
+    # get the itemtext object and text_detail for the given item_id and language
     item_text = ItemText.objects.filter(
         item_id=item_id,
         language=language_id
@@ -232,6 +243,7 @@ def get_text_detail(item_id, language_id, query_date_time):
 
 
 def get_item_by_id(item_id, query_date_time):
+    # get the item by id
     item = Item.objects.filter(pk=item_id)
     item = exclude_inactive_objects(item, query_date_time)
     if not item:
@@ -241,6 +253,7 @@ def get_item_by_id(item_id, query_date_time):
 
 
 def get_items_by_parent_id(parent_id, query_date_time):
+    # get all items with the given parent_id
     items = Item.objects.filter(parent_id=parent_id)
     items = exclude_inactive_objects(items, query_date_time)
     return items
