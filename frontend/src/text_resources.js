@@ -4,7 +4,8 @@ let LOCALIZE = new LocalizedStrings({
   en: {
     //Main Tabs
     mainTabs: {
-      homeTabTitle: "Home",
+      homeTabTitleUnauthenticated: "Home",
+      homeTabTitleAuthenticated: "Your tests",
       dashboardTabTitle: "Dashboard",
       sampleTest: "Sample eMIB",
       statusTabTitle: "Status",
@@ -601,7 +602,8 @@ let LOCALIZE = new LocalizedStrings({
   fr: {
     //Main Tabs
     mainTabs: {
-      homeTabTitle: "Accueil",
+      homeTabTitleUnauthenticated: "Accueil",
+      homeTabTitleAuthenticated: "FR Your tests",
       dashboardTabTitle: "Tableau de bord",
       sampleTest: "FR eMIB Sample",
       statusTabTitle: "Statut",
