@@ -43,6 +43,23 @@ function registerAction(data) {
 
 function loginAction(data) {
   return async function() {
+    // encrypting user' credentials using base64 encryption
+    const encryptedCredentials = new Buffer(data.username + ":" + data.password).toString("base64");
+    // getting user's information (id, first name, last name, birth date, email, username and pri or military number)
+    let accountInfo = await fetch("/api/auth/me/", {
+      method: "GET",
+      headers: {
+        Authorization: "basic " + encryptedCredentials,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        cache: "default"
+      }
+    });
+    let accountInfoResponseJson = await accountInfo.json();
+    // saving user's first name and last name in local storage
+    localStorage.setItem("first_name", accountInfoResponseJson.first_name);
+    localStorage.setItem("last_name", accountInfoResponseJson.last_name);
+    // getting user's token
     let response = await fetch("/api/auth/jwt/create_token/", {
       method: "POST",
       headers: {
@@ -58,6 +75,8 @@ function loginAction(data) {
 // JWT tokens are not stored in our DB
 function logoutAction() {
   localStorage.removeItem("auth_token");
+  localStorage.removeItem("first_name");
+  localStorage.removeItem("last_name");
   return { type: UNAUTHENTICATED };
 }
 
