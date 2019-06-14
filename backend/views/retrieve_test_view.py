@@ -26,8 +26,12 @@ QUESTION_CHILDREN_MAP = {
     "email": ["subject", "from", "to", "date", "body"]
 }
 
+# List of item types that should only return one item rather than a list
+SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 
 # returns true if the test is public and false on the other hand
+
+
 def is_test_public(test_name):
     return Test.objects.get(test_name=test_name).is_public
 
@@ -100,7 +104,8 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         item_type_map = gen_item_map(query_date_time)
         question_type_map = gen_question_map(query_date_time)
         question_map = get_items(
-            item, item_type_map, question_type_map, query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
+            item, item_type_map, question_type_map,
+            query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
         return_map = gen_return_map(question_map)
         return_dict["questions"] = return_map
         return return_dict
@@ -129,6 +134,9 @@ def test_map_to_language_map(cur_map):
         child_type = cur_map[key][TYPE]
         child_map = cur_map[key][MAP]
         child_en, child_fr = test_map_to_language_map(child_map)
+        print(child_type)
+        print(child_en)
+        print(child_fr)
         # add the key as id if it these are dicts
         if isinstance(child_en, dict):
             child_en["id"] = key
@@ -140,7 +148,9 @@ def test_map_to_language_map(cur_map):
 
 
 def add_to_map(child_type, child_language_map, language_map):
-    if child_type in language_map.keys():
+    if child_type in SINGLE_RETURN:
+        language_map[child_type] = child_language_map
+    elif child_type in language_map.keys():
         language_map[child_type].append(child_language_map)
     else:
         language_map[child_type] = [child_language_map]
