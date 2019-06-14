@@ -132,27 +132,36 @@ def get_items_map(parent_item, item_type_map, question_type_map, query_date_time
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time,
               en_id, fr_id, children_map):
-    en_map = {}
-    fr_map = {}
     # get the parent id, get the type to determine how to handle it
     parent_id, parent_type = get_item_type(
         parent_item, item_type_map, question_type_map, query_date_time)
     try:
         children_types = children_map[parent_type]
     except KeyError:
+        # if there the parent type does not have any children type to look up
+        # simply return the text_detail
         return get_text_detail(parent_id, en_id, query_date_time), get_text_detail(parent_id, fr_id, query_date_time)
+    # otherwise, initialize return maps
+    en_map = {}
+    fr_map = {}
+    # get all items with parent_id
     children_items = get_items_by_parent_id(parent_id, query_date_time)
+    # for each child
     for child in children_items:
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time)
+        # if the type is in the list of children to return
         if child_type in children_types:
+            # get the maps of their children
             child_en, child_fr = get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map)
+            # if they are dicts, add the id as a key/value pair
             if isinstance(child_en, dict):
                 child_en["id"] = child.order
             if isinstance(child_fr, dict):
                 child_fr["id"] = child.order
+            # add to the return map
             en_map = add_to_map(child_type, child_en, en_map)
             fr_map = add_to_map(child_type, child_fr, fr_map)
     return en_map, fr_map
