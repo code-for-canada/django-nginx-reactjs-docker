@@ -144,6 +144,9 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
     # otherwise, initialize return maps
     en_map = {}
     fr_map = {}
+    # a map to track the current id for a given child_type
+    # this also ensures that the id/order is sequential
+    order_map = {}
     # get all items with parent_id
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     # for each child
@@ -158,9 +161,13 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map)
             # if they are dicts, add the id as a key/value pair
             if isinstance(child_en, dict):
-                child_en["id"] = child.order
-            if isinstance(child_fr, dict):
-                child_fr["id"] = child.order
+                if child_type in order_map.keys():
+                    order_map[child_type] += 1
+                else:
+                    order_map[child_type] = 0
+                child_id = order_map[child_type]
+                child_en["id"] = child_id
+                child_fr["id"] = child_id
             # add to the return map
             en_map = add_to_map(child_type, child_en, en_map)
             fr_map = add_to_map(child_type, child_fr, fr_map)
