@@ -72,8 +72,12 @@ class Dashboard extends Component {
                   </button>
                 </td>
               </tr>
+              {/* ==================================================================================== */}
             </tbody>
           </table>
+          {/* temporary - to be removed in the future when we'll get assign test functionalities */}
+          <p>* This is a temporary row. It is just to show the global view of this page</p>
+          {/* ==================================================================================== */}
         </div>
       </div>
     );
