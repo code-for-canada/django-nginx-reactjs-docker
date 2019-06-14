@@ -103,11 +103,11 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == TEST_QUESTIONS:
         item_type_map = gen_item_map(query_date_time)
         question_type_map = gen_question_map(query_date_time)
-        question_map = get_items(
+        question_map = get_items_map(
             item, item_type_map, question_type_map,
             query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
-        return_map = gen_return_map(question_map)
-        return_dict["questions"] = return_map
+        #return_map = gen_return_map(question_map)
+        return_dict["questions"] = question_map
         return return_dict
 
     # if it is not one of the above, then return nothing
@@ -127,8 +127,8 @@ def test_map_to_language_map(cur_map):
     keys = list(keys)
     keys.sort()
     # if the keys are just EN and FR, then return the values
-    if keys == [EN, FR]:
-        return cur_map[EN], cur_map[FR]
+    # if keys == [EN, FR]:
+    #    return cur_map[EN], cur_map[FR]
     # otherwise parse through the keys
     for key in keys:
         child_type = cur_map[key][TYPE]
@@ -154,28 +154,41 @@ def add_to_map(child_type, child_language_map, language_map):
     return language_map
 
 
+def get_items_map(parent_item, item_type_map, question_type_map, query_date_time,
+                  en_id, fr_id, children_map):
+    en_map, fr_map = get_items(parent_item, item_type_map, question_type_map, query_date_time,
+                               en_id, fr_id, children_map)
+    return {EN: en_map, FR: fr_map}
+
+
 def get_items(parent_item, item_type_map, question_type_map, query_date_time,
               en_id, fr_id, children_map):
-    return_map = {}
+    #return_map = {}
+    en_map = {}
+    fr_map = {}
     # get the parent id, get the type to determine how to handle it
     parent_id, parent_type = get_item_type(
         parent_item, item_type_map, question_type_map, query_date_time)
     try:
         children_types = children_map[parent_type]
     except KeyError:
-        return_map[EN] = get_text_detail(parent_id, en_id, query_date_time)
-        return_map[FR] = get_text_detail(parent_id, fr_id, query_date_time)
-        return return_map
+        return get_text_detail(parent_id, en_id, query_date_time), get_text_detail(parent_id, fr_id, query_date_time)
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     for child in children_items:
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time)
         if child_type in children_types:
-            return_map[child.order] = {TYPE: child_type}
-            return_map[child.order][MAP] = get_items(
+            #return_map[child.order] = {TYPE: child_type}
+            child_en, child_fr = get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map)
-    return return_map
+            if isinstance(child_en, dict):
+                child_en["id"] = child.order
+            if isinstance(child_fr, dict):
+                child_fr["id"] = child.order
+            en_map = add_to_map(child_type, child_en, en_map)
+            fr_map = add_to_map(child_type, child_fr, fr_map)
+    return en_map, fr_map
 
 # get the item id and item_type; or, if the item_type is question, get the question_type
 
