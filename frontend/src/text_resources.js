@@ -74,11 +74,6 @@ let LOCALIZE = new LocalizedStrings({
           "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
-        //temporary
-        popupBox: {
-          title: "Account Created",
-          description: "You have just created a new account!"
-        },
         button: "Create account",
         accountAlreadyExistsError: "An account is already associated to this email address",
         passwordTooCommonError: "This password is too common",
@@ -670,11 +665,6 @@ let LOCALIZE = new LocalizedStrings({
           "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
         privacyNoticeLink: "FR privacy notice",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
-        //temporary
-        popupBox: {
-          title: "FR Account Created",
-          description: "FR You have just created a new account!"
-        },
         button: "Créer compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",

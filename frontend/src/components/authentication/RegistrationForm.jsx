@@ -8,13 +8,13 @@ import validateName, {
   PASSWORD_REQUIREMENTS
 } from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
-import { registerAction } from "../../modules/LoginRedux";
-import { bindActionCreators } from "redux";
+import { registerAction, handleAuthResponseAndState, loginAction } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
+import history from "./history";
 
 const styles = {
   createAccountContent: {
@@ -98,7 +98,9 @@ const MANDATORY_MARK = " *";
 class RegistrationForm extends Component {
   static propTypes = {
     // Props from Redux
-    registerAction: PropTypes.func
+    registerAction: PropTypes.func,
+    handleAuthResponseAndState: PropTypes.func,
+    loginAction: PropTypes.func
   };
 
   state = {
@@ -138,7 +140,6 @@ class RegistrationForm extends Component {
     betweenMinAndMaxChar: false,
 
     // PopupBox States
-    showCreatedAccountDialog: false,
     showPrivacyNoticeDialog: false,
 
     // API Errors Handler States
@@ -423,13 +424,6 @@ class RegistrationForm extends Component {
     );
   };
 
-  redirectToLoginPage = () => {
-    // refresh the page in order to show the login form
-    window.location.reload();
-    // close dialog
-    this.setState({ showCreatedAccountDialog: false });
-  };
-
   handleSubmit = event => {
     const validForm = this.isFormValid();
     // if all fields are valid, execute API errors validation
@@ -450,11 +444,28 @@ class RegistrationForm extends Component {
         .then(response => {
           // response returns email and username
           if (
+            response.first_name === this.state.firstNameContent &&
+            response.last_name === this.state.lastNameContent &&
+            response.birth_date.length > 0 &&
             response.email === this.state.emailContent &&
             response.username === this.state.emailContent
           ) {
             // account successfully created
-            this.setState({ showCreatedAccountDialog: true, accountExistsError: false });
+            this.setState({ accountExistsError: false });
+            // login the user by using its credentials
+            this.props
+              .loginAction({
+                username: this.state.emailContent,
+                password: this.state.passwordContent
+              })
+              .then(response => {
+                this.props.handleAuthResponseAndState(
+                  response,
+                  this.props.dispatch,
+                  window.location.pathname,
+                  history.push
+                );
+              });
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -890,33 +901,18 @@ class RegistrationForm extends Component {
           rightButtonTitle={LOCALIZE.commons.ok}
           rightButtonAction={this.closePrivacyNoticePopup}
         />
-        <PopupBox
-          isCloseButtonVisible={false}
-          isBackdropStatic={true}
-          show={this.state.showCreatedAccountDialog}
-          handleClose={this.redirectToLoginPage}
-          title={LOCALIZE.authentication.createAccount.popupBox.title}
-          description={
-            <div>
-              <p>{LOCALIZE.authentication.createAccount.popupBox.description}</p>
-            </div>
-          }
-          rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={LOCALIZE.commons.ok}
-          rightButtonAction={this.redirectToLoginPage}
-        />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      registerAction
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => ({
+  registerAction: data => dispatch(registerAction(data)),
+  loginAction: data => dispatch(loginAction(data)),
+  handleAuthResponseAndState: (userData, dispatch, location, push) =>
+    dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
+  dispatch
+});
 
 export default connect(
   null,
