@@ -163,7 +163,9 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
     try:
         children_types = children_map[parent_type]
     except KeyError:
-        children_types = []
+        return_map[EN] = get_text_detail(parent_id, en_id, query_date_time)
+        return_map[FR] = get_text_detail(parent_id, fr_id, query_date_time)
+        return return_map
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     for child in children_items:
         _, child_type = get_item_type(
@@ -173,9 +175,6 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
             return_map[child.order][MAP] = get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map)
-    if children_types == []:
-        return_map[EN] = get_text_detail(parent_id, en_id, query_date_time)
-        return_map[FR] = get_text_detail(parent_id, fr_id, query_date_time)
     return return_map
 
 # get the item id and item_type; or, if the item_type is question, get the question_type
