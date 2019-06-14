@@ -4,9 +4,19 @@ import Dashboard from "../Dashboard";
 import LOCALIZE from "../text_resources";
 
 describe("renders title and description", () => {
+  localStorage.setItem("first_name", "Hello");
+  localStorage.setItem("last_name", "World");
   it("renders title", () => {
     const wrapper = shallow(<Dashboard />);
-    const title = <h1>{LOCALIZE.dashboard.title}</h1>;
+    const title = (
+      <h1>
+        {LOCALIZE.formatString(
+          LOCALIZE.dashboard.title,
+          localStorage.first_name,
+          localStorage.last_name
+        )}
+      </h1>
+    );
     expect(wrapper.containsMatchingElement(title)).toEqual(true);
   });
 
