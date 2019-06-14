@@ -59,6 +59,16 @@ class App extends Component {
       if (response.status === 200) {
         this.props.authenticateAction(true);
       }
+      // if not a valid url (part of the PATH object) or login path, redirect to dashboard page
+      const pathValues = Object.keys(PATH).map(function(e) {
+        return PATH[e];
+      });
+      if (
+        pathValues.indexOf(window.location.pathname) < 0 ||
+        window.location.pathname === PATH.login
+      ) {
+        history.push(PATH.dashboard);
+      }
       // if not valid and not the eMIB sample url, logout and redirect to login page
       if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
         this.props.authenticateAction(false);
