@@ -106,42 +106,11 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         question_map = get_items_map(
             item, item_type_map, question_type_map,
             query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
-        #return_map = gen_return_map(question_map)
         return_dict["questions"] = question_map
         return return_dict
 
     # if it is not one of the above, then return nothing
     return {}
-
-
-def gen_return_map(question_map):
-    en_map, fr_map = test_map_to_language_map(question_map)
-    return {EN: en_map, FR: fr_map}
-
-
-def test_map_to_language_map(cur_map):
-    en_map = {}
-    fr_map = {}
-    # get and sort keys
-    keys = cur_map.keys()
-    keys = list(keys)
-    keys.sort()
-    # if the keys are just EN and FR, then return the values
-    # if keys == [EN, FR]:
-    #    return cur_map[EN], cur_map[FR]
-    # otherwise parse through the keys
-    for key in keys:
-        child_type = cur_map[key][TYPE]
-        child_map = cur_map[key][MAP]
-        child_en, child_fr = test_map_to_language_map(child_map)
-        # add the key as id if it these are dicts
-        if isinstance(child_en, dict):
-            child_en["id"] = key
-        if isinstance(child_fr, dict):
-            child_fr["id"] = key
-        en_map = add_to_map(child_type, child_en, en_map)
-        fr_map = add_to_map(child_type, child_fr, fr_map)
-    return en_map, fr_map
 
 
 def add_to_map(child_type, child_language_map, language_map):
@@ -163,7 +132,6 @@ def get_items_map(parent_item, item_type_map, question_type_map, query_date_time
 
 def get_items(parent_item, item_type_map, question_type_map, query_date_time,
               en_id, fr_id, children_map):
-    #return_map = {}
     en_map = {}
     fr_map = {}
     # get the parent id, get the type to determine how to handle it
@@ -178,7 +146,6 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time)
         if child_type in children_types:
-            #return_map[child.order] = {TYPE: child_type}
             child_en, child_fr = get_items(
                 child, item_type_map, question_type_map, query_date_time,
                 en_id, fr_id, children_map)
