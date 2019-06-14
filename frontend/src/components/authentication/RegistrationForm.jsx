@@ -66,6 +66,9 @@ const styles = {
     marginTop: 6,
     fontWeight: "bold"
   },
+  passwordRequirementsForScreenReader: {
+    display: "none"
+  },
   errorMessage: {
     color: "#923534",
     fontWeight: "bold",
@@ -272,6 +275,7 @@ class RegistrationForm extends Component {
       // returns the DOB field title and the field selected
       return (
         LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
+        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     } else {
@@ -279,6 +283,7 @@ class RegistrationForm extends Component {
       return (
         LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
+        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     }
@@ -299,6 +304,23 @@ class RegistrationForm extends Component {
         LOCALIZE.authentication.createAccount.privacyNoticeError +
         LOCALIZE.authentication.createAccount.privacyNotice +
         LOCALIZE.authentication.createAccount.privacyNoticeLink
+      );
+    }
+  };
+
+  // returns password requirements on password field selection for the screen reader users
+  getPasswordRequirements = () => {
+    // only on first load, since the dynamic password requirements are handling that after the first page load
+    if (this.state.isFirstLoad) {
+      return (
+        <span id="password-requirements" style={styles.passwordRequirementsForScreenReader}>
+          {LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.description +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.upperCase +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.lowerCase +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.digit +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.specialCharacter +
+            LOCALIZE.authentication.createAccount.content.inputs.passwordErrors.length}
+        </span>
       );
     }
   };
@@ -614,14 +636,7 @@ class RegistrationForm extends Component {
                       </Popover>
                     }
                   >
-                    <Button
-                      aria-label={
-                        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-                        LOCALIZE.authentication.createAccount.content.inputs.dobTooltip
-                      }
-                      style={styles.tooltipButton}
-                      variant="link"
-                    >
+                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
                       ?
                     </Button>
                   </OverlayTrigger>
@@ -746,6 +761,7 @@ class RegistrationForm extends Component {
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-live="polite"
+                  aria-describedby={"password-requirements"}
                   aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
@@ -754,6 +770,7 @@ class RegistrationForm extends Component {
                   style={styles.inputs}
                   onChange={this.getPasswordContent}
                 />
+                {this.getPasswordRequirements()}
                 {!isValidPassword && !isFirstPasswordLoad && (
                   <label htmlFor={"password-field"}>
                     <p style={styles.errorMessage}>
