@@ -6,8 +6,11 @@ import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 
 const styles = {
   loginComponent: {
-    maxWidth: 600,
-    marginBottom: 32
+    maxWidth: 600
+  },
+  row: {
+    display: "table",
+    margin: "0 auto"
   }
 };
 
@@ -28,7 +31,7 @@ class AuthenticationTabs extends Component {
     return (
       <div>
         <Container>
-          <Row className="justify-content-md-center">
+          <Row style={styles.row}>
             <Col style={styles.loginComponent}>
               <Tabs defaultActiveKey="login" id="login-tabs">
                 {TABS.map((tab, index) => {
