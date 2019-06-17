@@ -76,8 +76,6 @@ function getUserInformation(token) {
 // JWT tokens are not stored in our DB
 function logoutAction() {
   localStorage.removeItem("auth_token");
-  localStorage.removeItem("first_name");
-  localStorage.removeItem("last_name");
   return { type: UNAUTHENTICATED };
 }
 
