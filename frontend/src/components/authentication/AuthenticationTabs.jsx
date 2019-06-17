@@ -7,11 +7,14 @@ import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 const styles = {
   loginComponent: {
     maxWidth: 600,
-    marginBottom: 32
+    marginBottom: 32,
+    position: "absolute",
+    margin: "auto auto 32px auto",
+    left: 0,
+    right: 0
   },
   row: {
-    display: "table",
-    margin: "0 auto"
+    position: "relative"
   }
 };
 
