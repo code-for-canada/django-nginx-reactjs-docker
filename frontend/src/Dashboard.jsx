@@ -39,6 +39,8 @@ class Dashboard extends Component {
   }
 }
 
+export { Dashboard as UnconnectedDashboard };
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
