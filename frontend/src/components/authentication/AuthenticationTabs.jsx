@@ -6,7 +6,8 @@ import { Tabs, Tab, Container, Row, Col } from "react-bootstrap";
 
 const styles = {
   loginComponent: {
-    maxWidth: 600
+    maxWidth: 600,
+    marginBottom: 32
   },
   row: {
     display: "table",
