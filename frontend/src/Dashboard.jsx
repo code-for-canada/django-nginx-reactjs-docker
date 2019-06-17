@@ -18,9 +18,12 @@ class Dashboard extends Component {
 
   // calling the getUserInformation on page load to get the first name and last name and save them in local states
   componentDidMount = () => {
-    this.props.getUserInformation(localStorage.auth_token).then(response => {
-      this.setState({ first_name: response.first_name, last_name: response.last_name });
-    });
+    // should always be defined, except for unit tests
+    if (typeof this.props.getUserInformation !== "undefined") {
+      this.props.getUserInformation(localStorage.auth_token).then(response => {
+        this.setState({ first_name: response.first_name, last_name: response.last_name });
+      });
+    }
   };
 
   render() {
