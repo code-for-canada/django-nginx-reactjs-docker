@@ -111,10 +111,14 @@ class App extends Component {
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <Nav>
                     {!this.props.authenticated && (
-                      <Nav.Link href={PATH.login}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                      <Nav.Link href={PATH.login}>
+                        {LOCALIZE.mainTabs.homeTabTitleUnauthenticated}
+                      </Nav.Link>
                     )}
                     {this.props.authenticated && (
-                      <Nav.Link href={PATH.dashboard}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                      <Nav.Link href={PATH.dashboard}>
+                        {LOCALIZE.mainTabs.homeTabTitleAuthenticated}
+                      </Nav.Link>
                     )}
                     <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
                   </Nav>
