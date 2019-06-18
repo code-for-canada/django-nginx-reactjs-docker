@@ -18,7 +18,7 @@ const styles = {
 // Should be used whenever adding a new view to CAT.
 const ContentContainer = props => {
   return (
-    <div>
+    <div role="main">
       {!props.hideBanner && <img role="banner" src={mini_banner} alt="" style={styles.banner} />}
       <div style={styles.container}>{props.children}</div>
     </div>
