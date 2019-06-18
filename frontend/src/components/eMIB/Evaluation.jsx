@@ -9,63 +9,67 @@ class Evaluation extends Component {
           <h2>{LOCALIZE.emibTest.howToPage.evaluation.title}</h2>
           <p>{LOCALIZE.emibTest.howToPage.evaluation.description}</p>
           <div id="keyLeadershipCompetencies">
-            <h3>{LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.title}</h3>
-            <div>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para1Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para1}
-              </p>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para2Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para2}
-              </p>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para3Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para3}
-              </p>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para4Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para4}
-              </p>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para5Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para5}
-              </p>
-              <p>
-                <span className="font-weight-bold">
-                  {
-                    LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
-                      .para6Title
-                  }
-                </span>
-                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para6}
-              </p>
-            </div>
+            <section aria-labelledby="region1">
+              <h3 id="region1">
+                {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.title}
+              </h3>
+              <div>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para1Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para1}
+                </p>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para2Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para2}
+                </p>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para3Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para3}
+                </p>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para4Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para4}
+                </p>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para5Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para5}
+                </p>
+                <p>
+                  <span className="font-weight-bold">
+                    {
+                      LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection
+                        .para6Title
+                    }
+                  </span>
+                  {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.para6}
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </div>
