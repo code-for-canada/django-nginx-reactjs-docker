@@ -58,47 +58,71 @@ class TestInstructions extends Component {
             <p>{LOCALIZE.emibTest.howToPage.testInstructions.para1}</p>
           </div>
           <div>
-            <h3>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.title}</h3>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.description}</p>
-            <h4>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.title}</h4>
-            <div style={styles.disabledExampleComponentNoPadding}>
-              <Email email={exampleEmail} disabled={true} />
-            </div>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.para1}</p>
-            <h4>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.title}</h4>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para1}</p>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para2}</p>
-            <div style={styles.disabledExampleComponent}>
-              <ActionViewEmail
-                action={exampleEmailResponse}
-                actionId={1}
-                email={exampleEmail}
-                disabled={true}
-              />
-            </div>
-            <h4>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.title}</h4>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.para1}</p>
-            <div style={styles.disabledExampleComponent}>
-              <ActionViewTask
-                action={exampleTaskResponse}
-                actionId={1}
-                email={exampleEmail}
-                disabled={true}
-              />
-            </div>
-            <h4>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.title}</h4>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para1}</p>
-            <ol>
-              <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet1}</li>
-              <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet2}</li>
-              <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet3}</li>
-            </ol>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para2}</p>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para3}</p>
+            <section aria-labelledby="region1">
+              <h3 id="region1">
+                {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.title}
+              </h3>
+              <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.description}</p>
+              <section aria-labelledby="region1-sub-region1">
+                <h4 id="region1-sub-region1">
+                  {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.title}
+                </h4>
+                <div style={styles.disabledExampleComponentNoPadding}>
+                  <Email email={exampleEmail} disabled={true} />
+                </div>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.para1}</p>
+              </section>
+              <section aria-labelledby="region1-sub-region2">
+                <h4 id="region1-sub-region2">
+                  {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.title}
+                </h4>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para1}</p>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para2}</p>
+                <div style={styles.disabledExampleComponent}>
+                  <ActionViewEmail
+                    action={exampleEmailResponse}
+                    actionId={1}
+                    email={exampleEmail}
+                    disabled={true}
+                  />
+                </div>
+              </section>
+              <section aria-labelledby="region1-sub-region3">
+                <h4 id="region1-sub-region3">
+                  {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.title}
+                </h4>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.para1}</p>
+                <div style={styles.disabledExampleComponent}>
+                  <ActionViewTask
+                    action={exampleTaskResponse}
+                    actionId={1}
+                    email={exampleEmail}
+                    disabled={true}
+                  />
+                </div>
+              </section>
+              <section aria-labelledby="region1-sub-region4">
+                <h4 id="region1-sub-region4">
+                  {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.title}
+                </h4>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para1}</p>
+                <ol>
+                  <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet1}</li>
+                  <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet2}</li>
+                  <li>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.bullet3}</li>
+                </ol>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para2}</p>
+                <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para3}</p>
+              </section>
+            </section>
           </div>
           <div>
-            <h3>{LOCALIZE.emibTest.howToPage.testInstructions.step2Section.title}</h3>
-            <p>{LOCALIZE.emibTest.howToPage.testInstructions.step2Section.description}</p>
+            <section aria-labelledby="region2">
+              <h3 id="region2">
+                {LOCALIZE.emibTest.howToPage.testInstructions.step2Section.title}
+              </h3>
+              <p>{LOCALIZE.emibTest.howToPage.testInstructions.step2Section.description}</p>
+            </section>
           </div>
         </div>
       </div>
