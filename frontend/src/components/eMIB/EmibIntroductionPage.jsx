@@ -18,9 +18,11 @@ class EmibIntroductionPage extends Component {
     return (
       <div>
         <h1 className="green-divider">{LOCALIZE.emibTest.homePage.testTitle}</h1>
-        <h2>{LOCALIZE.emibTest.howToPage.introductionPage.title}</h2>
-        <p>{LOCALIZE.emibTest.howToPage.introductionPage.description1}</p>
-        <p>{LOCALIZE.emibTest.howToPage.introductionPage.description2}</p>
+        <section aria-labelledby="region1">
+          <h2 id="region1">{LOCALIZE.emibTest.howToPage.introductionPage.title}</h2>
+          <p>{LOCALIZE.emibTest.howToPage.introductionPage.description1}</p>
+          <p>{LOCALIZE.emibTest.howToPage.introductionPage.description2}</p>
+        </section>
         <div style={styles.startTestBtn}>
           <button type="button" className="btn btn-primary btn-wide" onClick={this.props.nextPage}>
             {LOCALIZE.commons.enterEmib}
