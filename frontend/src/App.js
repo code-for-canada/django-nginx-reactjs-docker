@@ -79,7 +79,7 @@ class App extends Component {
         <Router history={history}>
           <div>
             {!isTestActive && (
-              <div>
+              <div role="navigation">
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <img
                     alt={LOCALIZE.mainTabs.psc}

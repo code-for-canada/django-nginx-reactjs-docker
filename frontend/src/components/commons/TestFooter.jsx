@@ -28,7 +28,7 @@ class TestFooter extends Component {
 
   render() {
     return (
-      <div>
+      <div role="contentinfo">
         <Navbar fixed="bottom" style={styles.footer}>
           <div style={styles.content}>
             {!this.props.testIsStarted && (
