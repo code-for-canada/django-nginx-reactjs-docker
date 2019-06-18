@@ -41,6 +41,7 @@ function registerAction(data) {
   };
 }
 
+// getting user's token
 function loginAction(data) {
   return async function() {
     let response = await fetch("/api/auth/jwt/create_token/", {
@@ -52,6 +53,23 @@ function loginAction(data) {
     });
     let responseJson = await response.json();
     return responseJson;
+  };
+}
+
+// getting user's information (id, first name, last name, birth date, email, username and pri or military number)
+function getUserInformation(token) {
+  return async function() {
+    let accountInfo = await fetch("/api/auth/me/", {
+      method: "GET",
+      headers: {
+        Authorization: "JWT " + localStorage.auth_token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        cache: "default"
+      }
+    });
+    let accountInfoResponseJson = await accountInfo.json();
+    return accountInfoResponseJson;
   };
 }
 
@@ -89,5 +107,6 @@ export {
   loginAction,
   authenticateAction,
   handleAuthResponseAndState,
-  logoutAction
+  logoutAction,
+  getUserInformation
 };

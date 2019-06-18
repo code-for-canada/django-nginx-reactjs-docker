@@ -27,5 +27,4 @@ class User(AbstractUser):
         "birth_date",
         "email",
         "pri_or_military_nbr",
-        "password",
     ]
