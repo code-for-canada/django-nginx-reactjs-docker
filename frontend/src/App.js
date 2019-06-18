@@ -60,7 +60,11 @@ class App extends Component {
         this.props.authenticateAction(true);
       }
       // if not valid and not the eMIB sample url, logout and redirect to login page
-      if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
+      if (
+        response.status !== 200 &&
+        window.location.pathname !== PATH.emibSampleTest &&
+        window.location.pathname !== PATH.status
+      ) {
         this.props.authenticateAction(false);
         this.props.logoutAction();
         history.push(PATH.login);
