@@ -93,7 +93,12 @@ let LOCALIZE = new LocalizedStrings({
     dashboard: {
       title: "Welcome, {0} {1}.",
       description:
-        "You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test."
+        "You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
+      table: {
+        columnOne: "Name of test",
+        columnTwo: "Scheduled test date",
+        columnThree: "Action"
+      }
     },
 
     //Status Page
@@ -686,7 +691,12 @@ let LOCALIZE = new LocalizedStrings({
     dashboard: {
       title: "FR Welcome, {0} {1}.",
       description:
-        "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test."
+        "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
+      table: {
+        columnOne: "FR Name of test",
+        columnTwo: "FR Scheduled test date",
+        columnThree: "FR Action"
+      }
     },
 
     //Status Page
