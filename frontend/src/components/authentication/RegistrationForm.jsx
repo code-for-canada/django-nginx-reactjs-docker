@@ -559,7 +559,7 @@ class RegistrationForm extends Component {
 
     return (
       <div>
-        <div>
+        <div role="form">
           <div style={styles.createAccountContent}>
             <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>

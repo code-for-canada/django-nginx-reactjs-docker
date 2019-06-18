@@ -89,7 +89,7 @@ class LoginForm extends Component {
     return (
       <div>
         {!this.props.authenticated && (
-          <div>
+          <div role="form">
             <div style={styles.loginContent}>
               <h3>{LOCALIZE.authentication.login.content.title}</h3>
               <span>{LOCALIZE.authentication.login.content.description}</span>
