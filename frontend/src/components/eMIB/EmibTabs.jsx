@@ -61,7 +61,7 @@ class EmibTabs extends Component {
           <title>{LOCALIZE.titles.simulation}</title>
         </Helmet>
         <Row>
-          <Col>
+          <Col role="complementary">
             <Tabs
               defaultActiveKey="instructions"
               id="emib-tabs"
