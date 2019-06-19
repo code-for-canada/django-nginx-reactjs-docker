@@ -8,7 +8,12 @@ import validateName, {
   PASSWORD_REQUIREMENTS
 } from "../../helpers/regexValidator";
 import "../../css/registration-form.css";
-import { registerAction, handleAuthResponseAndState, loginAction } from "../../modules/LoginRedux";
+import {
+  registerAction,
+  handleAuthResponseAndState,
+  loginAction,
+  updateRegistrationErrorState
+} from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -102,7 +107,8 @@ class RegistrationForm extends Component {
     // Props from Redux
     registerAction: PropTypes.func,
     handleAuthResponseAndState: PropTypes.func,
-    loginAction: PropTypes.func
+    loginAction: PropTypes.func,
+    updateRegistrationErrorState: PropTypes.func
   };
 
   state = {
@@ -486,6 +492,9 @@ class RegistrationForm extends Component {
                   history.push
                 );
               });
+            this.props.updateRegistrationErrorState(true);
+          } else {
+            this.props.updateRegistrationErrorState(false);
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -498,6 +507,8 @@ class RegistrationForm extends Component {
             this.handlePasswordErrors(response);
           }
         });
+    } else {
+      this.props.updateRegistrationErrorState(false);
     }
     event.preventDefault();
   };
@@ -990,6 +1001,7 @@ const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
   handleAuthResponseAndState: (userData, dispatch, location, push) =>
     dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
+  updateRegistrationErrorState: bool => dispatch(updateRegistrationErrorState(bool)),
   dispatch
 });
 
