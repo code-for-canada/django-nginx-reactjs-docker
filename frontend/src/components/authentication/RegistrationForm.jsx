@@ -43,8 +43,7 @@ const styles = {
     marginRight: 12
   },
   tooltipButton: {
-    padding: 0,
-    marginLeft: 6
+    padding: 8
   },
   iconForNames: {
     color: "#278400",
