@@ -10,8 +10,8 @@ class OrganizationalInformation extends Component {
           <div>
             <p>{LOCALIZE.emibTest.background.organizationalInformation.description}</p>
           </div>
-          <div>
-            <h3>
+          <section aria-labelledby="info-about-odc-priorities">
+            <h3 id="info-about-odc-priorities">
               {LOCALIZE.emibTest.background.organizationalInformation.prioritiesSection.title}
             </h3>
             <ul>
@@ -28,13 +28,15 @@ class OrganizationalInformation extends Component {
                 {LOCALIZE.emibTest.background.organizationalInformation.prioritiesSection.bullet4}
               </li>
             </ul>
-          </div>
-          <div>
-            <h3>{LOCALIZE.emibTest.background.organizationalInformation.risksSection.title}</h3>
+          </section>
+          <section aria-labelledby="info-about-odc-risks">
+            <h3 id="info-about-odc-risks">
+              {LOCALIZE.emibTest.background.organizationalInformation.risksSection.title}
+            </h3>
             <ul>
               <li>{LOCALIZE.emibTest.background.organizationalInformation.risksSection.bullet1}</li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     );
