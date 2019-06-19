@@ -27,10 +27,9 @@ QUESTION_CHILDREN_MAP = {
 # List of item types that should only return one item rather than a list
 SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 
-# returns true if the test is public and false on the other hand
-
 
 def is_test_public(test_name):
+    # function that returns true if the test is public and false on the other hand
     return Test.objects.get(test_name=test_name).is_public
 
 
@@ -39,10 +38,8 @@ def retrieve_test_data(request, request_type):
     return retrieve_response_from_name_date(request, query_date_time, request_type)
 
 
-# Wrap the json in a Response; this makes testing easier
-
-
 def retrieve_response_from_name_date(request, query_date_time, request_type):
+    # function to Wrap the json in a Response; this makes testing easier
     # get the test_name from the parameter
     test_name = request.query_params.get("test_name", None)
     return Response(
@@ -171,10 +168,9 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
             fr_map = add_to_map(child_type, child_fr, fr_map)
     return en_map, fr_map
 
-# get the item id and item_type; or, if the item_type is question, get the question_type
-
 
 def get_item_type(item, item_type_map, question_type_map, query_date_time):
+    # function to get the item id and item_type; or, if the item_type is question, get the question_type
     # get the id and the type
     item_id = item.item_id
     item_type = item_type_map[item.item_type_id.item_type_id]
