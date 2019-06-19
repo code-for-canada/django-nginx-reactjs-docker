@@ -18,7 +18,7 @@ const getTestMetaData = testName => {
 
 // Initial State
 const initialState = {
-  testMetaData: ""
+  testMetaData: {}
 };
 
 // Reducer
