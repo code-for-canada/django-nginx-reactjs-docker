@@ -14,8 +14,10 @@ class TipsOnTest extends Component {
           <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part1.bullet2}</li>
           <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part1.bullet3}</li>
         </ul>
-        <section aria-labelledby="region1">
-          <h4 id="region1">{LOCALIZE.emibTest.howToPage.tipsOnTest.part2.title}</h4>
+        <section aria-labelledby="tips-other-important-notes">
+          <h4 id="tips-other-important-notes">
+            {LOCALIZE.emibTest.howToPage.tipsOnTest.part2.title}
+          </h4>
           <div>
             <ul>
               <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part2.bullet1}</li>

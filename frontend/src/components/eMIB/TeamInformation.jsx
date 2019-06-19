@@ -105,25 +105,25 @@ class TeamInformation extends Component {
         />
         <div>
           <h2>{LOCALIZE.emibTest.background.teamInformation.title}</h2>
-          <section aria-labelledby="region1">
-            <h3 id="region1">
+          <section aria-labelledby="info-about-qa-team-members">
+            <h3 id="info-about-qa-team-members">
               {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.title}
             </h3>
             <div>
-              <section aria-labelledby="region1-sub-region1">
-                <h4 id="region1-sub-region1">
+              <section aria-labelledby="team-members-director">
+                <h4 id="team-members-director">
                   {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1Title}
                 </h4>
                 <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1}</p>
               </section>
-              <section aria-labelledby="region1-sub-region2">
-                <h4 id="region1-sub-region2">
+              <section aria-labelledby="team-members-manager">
+                <h4 id="team-members-manager">
                   {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2Title}
                 </h4>
                 <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2}</p>
               </section>
-              <section aria-labelledby="region1-sub-region3">
-                <h4 id="region1-sub-region3">
+              <section aria-labelledby="team-members-qa-analyst">
+                <h4 id="team-members-qa-analyst">
                   {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3Title}
                 </h4>
                 <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3}</p>
@@ -174,8 +174,8 @@ class TeamInformation extends Component {
               </button>
             </div>
           </section>
-          <section aria-labelledby="region2">
-            <h3 id="region2">
+          <section aria-labelledby="qa-team-responsabilities">
+            <h3 id="qa-team-responsabilities">
               {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.title}
             </h3>
             <div>
@@ -214,8 +214,8 @@ class TeamInformation extends Component {
                   {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.item3}
                 </li>
               </ol>
-              <section aria-labelledby="region2-sub-region1">
-                <h4 id="region2-sub-region1">
+              <section aria-labelledby="qa-team-new-initiatives">
+                <h4 id="qa-team-new-initiatives">
                   {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1Title}
                 </h4>
                 <p>{LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1}</p>

@@ -18,8 +18,8 @@ class EmibIntroductionPage extends Component {
     return (
       <div>
         <h1 className="green-divider">{LOCALIZE.emibTest.homePage.testTitle}</h1>
-        <section aria-labelledby="region1">
-          <h2 id="region1">{LOCALIZE.emibTest.howToPage.introductionPage.title}</h2>
+        <section aria-labelledby="emib-overview">
+          <h2 id="emib-overview">{LOCALIZE.emibTest.howToPage.introductionPage.title}</h2>
           <p>{LOCALIZE.emibTest.howToPage.introductionPage.description1}</p>
           <p>{LOCALIZE.emibTest.howToPage.introductionPage.description2}</p>
         </section>

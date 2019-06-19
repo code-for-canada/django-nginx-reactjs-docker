@@ -58,13 +58,13 @@ class TestInstructions extends Component {
             <p>{LOCALIZE.emibTest.howToPage.testInstructions.para1}</p>
           </div>
           <div>
-            <section aria-labelledby="region1">
-              <h3 id="region1">
+            <section aria-labelledby="reponding-to-emails">
+              <h3 id="reponding-to-emails">
                 {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.title}
               </h3>
               <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.description}</p>
-              <section aria-labelledby="region1-sub-region1">
-                <h4 id="region1-sub-region1">
+              <section aria-labelledby="example-of-email">
+                <h4 id="example-of-email">
                   {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.title}
                 </h4>
                 <div style={styles.disabledExampleComponentNoPadding}>
@@ -72,8 +72,8 @@ class TestInstructions extends Component {
                 </div>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part1.para1}</p>
               </section>
-              <section aria-labelledby="region1-sub-region2">
-                <h4 id="region1-sub-region2">
+              <section aria-labelledby="reponding-with-email">
+                <h4 id="reponding-with-email">
                   {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.title}
                 </h4>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para1}</p>
@@ -87,8 +87,8 @@ class TestInstructions extends Component {
                   />
                 </div>
               </section>
-              <section aria-labelledby="region1-sub-region3">
-                <h4 id="region1-sub-region3">
+              <section aria-labelledby="adding-a-task">
+                <h4 id="adding-a-task">
                   {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.title}
                 </h4>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part3.para1}</p>
@@ -101,8 +101,8 @@ class TestInstructions extends Component {
                   />
                 </div>
               </section>
-              <section aria-labelledby="region1-sub-region4">
-                <h4 id="region1-sub-region4">
+              <section aria-labelledby="choosing-method-of-responding">
+                <h4 id="choosing-method-of-responding">
                   {LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.title}
                 </h4>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part4.para1}</p>
@@ -117,8 +117,8 @@ class TestInstructions extends Component {
             </section>
           </div>
           <div>
-            <section aria-labelledby="region2">
-              <h3 id="region2">
+            <section aria-labelledby="adding-reasons-for-action">
+              <h3 id="adding-reasons-for-action">
                 {LOCALIZE.emibTest.howToPage.testInstructions.step2Section.title}
               </h3>
               <p>{LOCALIZE.emibTest.howToPage.testInstructions.step2Section.description}</p>

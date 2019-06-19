@@ -10,8 +10,8 @@ class OrganizationalInformation extends Component {
           <div>
             <p>{LOCALIZE.emibTest.background.organizationalInformation.description}</p>
           </div>
-          <section aria-labelledby="region1">
-            <h3 id="region1">
+          <section aria-labelledby="info-about-odc-priorities">
+            <h3 id="info-about-odc-priorities">
               {LOCALIZE.emibTest.background.organizationalInformation.prioritiesSection.title}
             </h3>
             <ul>
@@ -29,8 +29,8 @@ class OrganizationalInformation extends Component {
               </li>
             </ul>
           </section>
-          <section aria-labelledby="region2">
-            <h3 id="region2">
+          <section aria-labelledby="info-about-odc-risks">
+            <h3 id="info-about-odc-risks">
               {LOCALIZE.emibTest.background.organizationalInformation.risksSection.title}
             </h3>
             <ul>

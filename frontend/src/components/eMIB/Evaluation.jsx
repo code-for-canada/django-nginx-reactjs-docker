@@ -9,8 +9,8 @@ class Evaluation extends Component {
           <h2>{LOCALIZE.emibTest.howToPage.evaluation.title}</h2>
           <p>{LOCALIZE.emibTest.howToPage.evaluation.description}</p>
           <div id="keyLeadershipCompetencies">
-            <section aria-labelledby="region1">
-              <h3 id="region1">
+            <section aria-labelledby="key-leadership-competencies">
+              <h3 id="key-leadership-competencies">
                 {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.title}
               </h3>
               <div>
