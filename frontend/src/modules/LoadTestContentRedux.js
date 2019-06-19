@@ -36,7 +36,7 @@ const getTestInstructions = testName => {
 
 // Initial State
 const initialState = {
-  testMetaData: "",
+  testMetaData: {},
   testInstructions: ""
 };
 
