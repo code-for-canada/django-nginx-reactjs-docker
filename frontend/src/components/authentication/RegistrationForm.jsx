@@ -283,6 +283,11 @@ class RegistrationForm extends Component {
     }
   };
 
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerDobTooltipClick = () => {
+    document.getElementById("dob-tooltip-button").click();
+  };
+
   // screen reader will read specific content depending on the following field conditions
   privacyNoticeAriaLabelCondition = () => {
     // Privacy Notice field is valid OR this is the first page load
@@ -620,7 +625,7 @@ class RegistrationForm extends Component {
                   <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   <OverlayTrigger
-                    trigger="focus"
+                    trigger="click"
                     placement="right"
                     overlay={
                       <Popover>
@@ -630,7 +635,13 @@ class RegistrationForm extends Component {
                       </Popover>
                     }
                   >
-                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
+                    <Button
+                      id="dob-tooltip-button"
+                      tabIndex="-1"
+                      style={styles.tooltipButton}
+                      variant="link"
+                      onBlur={this.triggerDobTooltipClick}
+                    >
                       ?
                     </Button>
                   </OverlayTrigger>
@@ -664,6 +675,8 @@ class RegistrationForm extends Component {
                   value={dobYearContent}
                   style={styles.dobFields}
                   onChange={this.getDobYearContent}
+                  onFocus={this.triggerDobTooltipClick}
+                  onBlur={this.triggerDobTooltipClick}
                 />
                 {!(isValidDobDay && isValidDobMonth && isValidDobYear) && !isFirstLoad && (
                   <div>
