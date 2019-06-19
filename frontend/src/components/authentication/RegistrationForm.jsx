@@ -254,14 +254,10 @@ class RegistrationForm extends Component {
     // DOB Day field is valid OR this is the first page load
     if (this.state.isValidDobDay || this.state.isFirstLoad) {
       // returns the DOB field title and the field selected
-      return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-        LOCALIZE.ariaLabel.dobMonthField
-      );
+      return LOCALIZE.ariaLabel.dobMonthField;
     } else {
       // returns the DOB field title, the DOB error and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
         LOCALIZE.ariaLabel.dobMonthField
       );
@@ -274,14 +270,12 @@ class RegistrationForm extends Component {
     if (this.state.isValidDobDay || this.state.isFirstLoad) {
       // returns the DOB field title and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     } else {
       // returns the DOB field title, the DOB error and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
         LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
