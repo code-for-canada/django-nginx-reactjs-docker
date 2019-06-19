@@ -11,8 +11,6 @@ from custom_models.item_type import ItemType
 TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
-TYPE = "type"
-MAP = "map"
 EN = "en"
 FR = "fr"
 
