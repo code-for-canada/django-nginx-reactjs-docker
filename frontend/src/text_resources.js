@@ -78,7 +78,33 @@ let LOCALIZE = new LocalizedStrings({
         button: "Create account",
         accountAlreadyExistsError: "An account is already associated to this email address",
         passwordTooCommonError: "This password is too common",
-        passwordTooSimilarToUsernameError: "The password is too similar to the username"
+        passwordTooSimilarToUsernameError: "The password is too similar to the username",
+        privacyNoticeDialog: {
+          title: "Privacy and Security",
+          privacyNoticeStatement: "Privacy Notice Statement",
+          privacyParagraph1:
+            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the Public Service Employment Act and is protected under the Privacy Act. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+          privacyParagraph2:
+            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+          privacyParagraph3:
+            "The Public Service Commission of Canada (PSC) is committed to protecting the privacy rights of individuals.",
+          privacyParagraph4:
+            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the Privacy Act for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
+          privacyParagraph5:
+            "Personal information collected by the PPC is protected from disclosure to unauthorized persons and/or agencies subject to the provisions of the Privacy Act. However personal information may be disclosed without your consent in certain specific circumstances, per section 8 of the Privacy Act. Additionally, certain demographic information will be used for analytical, research and development purposes.",
+          privacyParagraph6:
+            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s Access to Information and Privacy Protection Division to request corrections.",
+          privacyParagraph7:
+            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+          privacyParagraph8:
+            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+          reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
+          reproductionWarning:
+            "This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",
+          cheatingTitle: "Cheating",
+          cheatingWarning:
+            "Please note that suspected cheating will in all cases be referred to the responsible manager and the Personnel Psychology Centre for action. Suspected cheating may result in the invalidation of test results and may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police."
+        }
       }
     },
 
