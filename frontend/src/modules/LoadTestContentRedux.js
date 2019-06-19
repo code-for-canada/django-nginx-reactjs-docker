@@ -36,8 +36,8 @@ const getTestInstructions = testName => {
 
 // Initial State
 const initialState = {
-  testMetaData: "",
-  testInstructions: ""
+  testMetaData: {},
+  testInstructions: {}
 };
 
 // Reducer
