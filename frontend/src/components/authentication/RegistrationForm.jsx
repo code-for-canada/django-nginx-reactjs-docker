@@ -754,6 +754,62 @@ class RegistrationForm extends Component {
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
+                  <OverlayTrigger
+                    trigger="focus"
+                    placement="right"
+                    overlay={
+                      <Popover>
+                        <div>
+                          <p>
+                            {
+                              LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                .description
+                            }
+                          </p>
+                          <ul>
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .upperCase
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .lowerCase
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .digit
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .specialCharacter
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .length
+                              }
+                            </li>
+                          </ul>
+                        </div>
+                      </Popover>
+                    }
+                  >
+                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
+                      ?
+                    </Button>
+                  </OverlayTrigger>
                 </div>
                 {isValidPassword && (
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
