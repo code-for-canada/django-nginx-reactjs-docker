@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a8edf4b0-f3eb-438b-88d6-b1b342f9bf37",
+		"_postman_id": "81b8c890-a3ec-41f0-9066-6cc0b0d0a779",
 		"name": "ThunderCAT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -128,6 +128,10 @@
 						"value": "Bearer {{token}}"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth",
 					"host": [
@@ -306,6 +310,10 @@
 						"disabled": true
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/users/",
 					"host": [
@@ -350,6 +358,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/destroy/",
 					"host": [
@@ -450,6 +462,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/auth/token/logout/",
 					"host": [
@@ -815,6 +831,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-meta-data/?test_name=emibSampleTest",
 					"host": [
@@ -863,6 +883,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-meta-data/?test_name=emibPizzaTest",
 					"host": [
@@ -918,6 +942,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-meta-data/?test_name=emibPizzaTest",
 					"host": [
@@ -998,6 +1026,10 @@
 						"value": "basic YWRtaW46QWRtaW4xMjM0IQ=="
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-meta-data/?test_name=emibPizzaTest",
 					"host": [
@@ -1051,6 +1083,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibSampleTest",
 					"host": [
@@ -1099,6 +1135,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
 					"host": [
@@ -1154,6 +1194,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
 					"host": [
@@ -1214,6 +1258,10 @@
 						"value": "basic YWRtaW46QWRtaW4xMjM0IQ=="
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-instructions/?test_name=emibPizzaTest",
 					"host": [
@@ -1254,7 +1302,7 @@
 							"\r",
 							"// getting test questions attribute\r",
 							"pm.test(\"Getting test test questions attribute\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"questions\":[');\r",
+							"    pm.expect(pm.response.text()).to.include('\"questions\":{');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1267,6 +1315,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-questions/?test_name=emibSampleTest",
 					"host": [
@@ -1315,6 +1367,10 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-questions/?test_name=emibPizzaTest",
 					"host": [
@@ -1370,6 +1426,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-questions/?test_name=emibPizzaTest",
 					"host": [
@@ -1410,7 +1470,7 @@
 							"\r",
 							"// getting test questions attribute\r",
 							"pm.test(\"Getting test test questions attribute\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"questions\":[');\r",
+							"    pm.expect(pm.response.text()).to.include('\"questions\":{');\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1430,6 +1490,10 @@
 						"value": "basic YWRtaW46QWRtaW4xMjM0IQ=="
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{THUNDERCAT_URL}}/api/test-questions/?test_name=emibPizzaTest",
 					"host": [
