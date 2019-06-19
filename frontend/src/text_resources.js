@@ -702,7 +702,33 @@ let LOCALIZE = new LocalizedStrings({
         button: "Créer compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",
-        passwordTooSimilarToUsernameError: "FR The password is too similar to the username"
+        passwordTooSimilarToUsernameError: "FR The password is too similar to the username",
+        privacyNoticeDialog: {
+          title: "FR Privacy and Security",
+          privacyNoticeStatement: "Énoncé de confidentialité",
+          privacyParagraph1:
+            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la Loi sur l’emploi dans la fonction publique et protégés aux termes de la Loi sur la protection des renseignements personnels, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+          privacyParagraph2:
+            "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
+          privacyParagraph3:
+            "La Commission de la fonction publique du Canada (CFP) s’engage à protéger le droit des personnes à la vie privée.",
+          privacyParagraph4:
+            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la Loi sur la protection des renseignements personnels pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+          privacyParagraph5:
+            "Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+          privacyParagraph6:
+            "Conformément aux dispositions de la Loi sur la protection des renseignements personnels, les renseignements personnels recueillis par le CPP ne peuvent être divulgués à des personnes ou à des organismes non autorisés. Toutefois, conformément aux dispositions de l’article 8 de cette loi, vos renseignements personnels pourraient être divulgués sans votre consentement dans certains cas précis. De plus, certaines données démographiques seront utilisées à des fins d’analyse, de recherche et de développement.",
+          privacyParagraph7:
+            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la Division de l’Accès à l’information et de la protection des renseignements personnels du ministère concerné.",
+          privacyParagraph8:
+            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+          reproductionTitle: "FR Unauthorized Reproduction or Disclosure of Test Content",
+          reproductionWarning:
+            "FR This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",
+          cheatingTitle: "FR Cheating",
+          cheatingWarning:
+            "FR Please note that suspected cheating will in all cases be referred to the responsible manager and the Personnel Psychology Centre for action. Suspected cheating may result in the invalidation of test results and may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police."
+        }
       }
     },
 
