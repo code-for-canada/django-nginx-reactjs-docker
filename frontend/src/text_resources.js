@@ -20,7 +20,8 @@ let LOCALIZE = new LocalizedStrings({
       simulation: "eMIB Assessment Simulation",
       status: "CAT System Status",
       prototypes: "CAT Prototypes",
-      home: "CAT Home"
+      home: "CAT Home",
+      homeWithError: "Error - CAT Home"
     },
 
     //authentication
@@ -618,7 +619,8 @@ let LOCALIZE = new LocalizedStrings({
       simulation: "FR eMIB Assessment Simulation",
       status: "FR CAT System Status",
       prototypes: "FR CAT Prototypes",
-      home: "FR CAT Home"
+      home: "FR CAT Home",
+      homeWithError: "FR Error - CAT Home"
     },
 
     //authentication
