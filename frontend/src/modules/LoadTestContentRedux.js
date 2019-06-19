@@ -54,8 +54,8 @@ const getTestQuestions = testName => {
 
 // Initial State
 const initialState = {
-  testMetaData: "",
-  testInstructions: "",
+  testMetaData: {},
+  testInstructions: {},
   testQuestions: ""
 };
 
