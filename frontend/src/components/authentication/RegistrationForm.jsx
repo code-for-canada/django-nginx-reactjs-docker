@@ -450,6 +450,7 @@ class RegistrationForm extends Component {
     );
   };
 
+  // analyses field by field and focus on the highest error field
   focusOnHighestErrorField = () => {
     if (!this.state.isValidFirstName) {
       document.getElementById("first-name-field").focus();
