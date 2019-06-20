@@ -293,25 +293,6 @@ class RegistrationForm extends Component {
     document.getElementById("dob-tooltip-button").click();
   };
 
-  // screen reader will read specific content depending on the following field conditions
-  privacyNoticeAriaLabelCondition = () => {
-    // Privacy Notice field is valid OR this is the first page load
-    if (this.state.isValidPrivacyNotice || this.state.isFirstLoad) {
-      // returns privacy notice description and link
-      return (
-        LOCALIZE.authentication.createAccount.privacyNotice +
-        LOCALIZE.authentication.createAccount.privacyNoticeLink
-      );
-    } else {
-      // returns privacy notice error, description and link
-      return (
-        LOCALIZE.authentication.createAccount.privacyNoticeError +
-        LOCALIZE.authentication.createAccount.privacyNotice +
-        LOCALIZE.authentication.createAccount.privacyNoticeLink
-      );
-    }
-  };
-
   // returns password requirements on password field selection for the screen reader users
   getPasswordRequirements = () => {
     // only on first load, since the dynamic password requirements are handling that after the first page load
@@ -976,7 +957,7 @@ class RegistrationForm extends Component {
                 <div className="privacy-notice-grid-checkbox">
                   <input
                     aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
-                    aria-label={this.privacyNoticeAriaLabelCondition()}
+                    aria-labelledby={"privacy-notice-error privacy-notice-description"}
                     id="privacy-notice-checkbox"
                     type="checkbox"
                     style={styles.checkbox}
@@ -984,9 +965,10 @@ class RegistrationForm extends Component {
                   />
                 </div>
                 <div className="privacy-notice-grid-description">
-                  <label htmlFor="privacy-notice-checkbox">
+                  <label id="privacy-notice-description">
                     {LOCALIZE.authentication.createAccount.privacyNotice}
                     <button
+                      aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
                       tabIndex="0"
                       onClick={this.showPrivacyNoticePopup}
                       style={styles.privacyNoticeLink}
@@ -998,7 +980,7 @@ class RegistrationForm extends Component {
                 </div>
               </div>
               {!isValidPrivacyNotice && !isFirstLoad && (
-                <label htmlFor={"privacy-notice-checkbox"} style={styles.errorMessage}>
+                <label id="privacy-notice-error" style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.privacyNoticeError}
                 </label>
               )}
