@@ -1,6 +1,7 @@
 import loadTestContent, {
   initialState,
   updateTestMetaDataState,
+  getTestMetaData,
   updateTestQuestionsState
 } from "../../modules/LoadTestContentRedux";
 
@@ -16,7 +17,7 @@ describe("updateTestQuestionsState action", () => {
   });
 });
 
-// updateTestQuestionsState
+// updateTestMetaDataState
 describe("updateTestMetaDataState action", () => {
   it("should update testMetaData state with given data", () => {
     const action = updateTestMetaDataState("Hello World");
