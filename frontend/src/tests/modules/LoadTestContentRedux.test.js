@@ -1,7 +1,6 @@
 import loadTestContent, {
   initialState,
   updateTestMetaDataState,
-  getTestMetaData,
   updateTestQuestionsState
 } from "../../modules/LoadTestContentRedux";
 
