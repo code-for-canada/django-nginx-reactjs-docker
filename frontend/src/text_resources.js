@@ -726,54 +726,53 @@ let LOCALIZE = new LocalizedStrings({
     settings: {
       systemSettings: "FR System settings",
       zoom: {
-        title: "FR Zoom (+/-)",
+        title: "Zoom avant et zoom arrière (+ / -)",
         instructionsListItem1:
-          "FR Select the View button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Zoom.",
+          "Cliquer sur le bouton Visualiser dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Sélectionner Zoom.",
         instructionsListItem3:
-          "FR You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+          "Vous pouvez choisir un niveau de zoom prédéfini ou un niveau sur mesure (sélectionner Sur mesure avant de saisir une valeur de zoom).",
         instructionsListItem4:
-          "FR Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+          "Vous pouvez également appuyer simultanément sur les touches CTRL et + / - de votre clavier pour effectuer un zoom avant ou un zoom arrière."
       },
       textSize: {
-        title: "FR Text size",
+        title: "Taille de texte",
         instructionsListItem1:
-          "FR Select the View button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Text size.",
+          "Cliquer sur le bouton Visualiser dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Sélectionner Taille de texte.",
         instructionsListItem3:
-          "FR Choose to make text larger or smaller than the size on the screen.",
+          "Choisir d’agrandir ou de diminuer la taille du texte qui apparaît à l’écran.",
         instructionsListItem4:
-          "FR Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+          "Cliquer sur le bouton Outils, puis sélectionner l’onglet Général. Sous Apparence, sélectionner Accessibilité.",
         instructionsListItem5:
-          "FR Select the Ignore font sizes specified on webpages on the check box.",
-        instructionsListItem6: "FR Select OK, and then select OK again.",
-        notChanged: "FR If the text size has not changed:"
+          "Cocher la case Ignorer les tailles de police spécifiées sur les pages Web.",
+        instructionsListItem6: "Cliquer sur OK, puis encore une fois sur OK.",
+        notChanged: "Si la taille du texte n’a pas changé :"
       },
       fontStyle: {
-        title: "FR Font style",
+        title: "Police de caractères",
         instructionsListItem1:
-          "FR Select the Tools button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Internet options.",
-        instructionsListItem3: "FR In the General tab, under Appearance, select Accessibility.",
+          "Cliquer sur le bouton Outils dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Choisir Options Internet.",
+        instructionsListItem3: "Dans l’onglet Général, sous Apparence, sélectionner Accessibilité.",
         instructionsListItem4:
-          "FR Select the Ignore font styles specified on webpages on the check box.",
-        instructionsListItem5: "FR Select OK.",
-        instructionsListItem6: "FR In the General tab, under Appearance, select Fonts.",
-        instructionsListItem7: "FR Select the fonts you want to use.",
-        instructionsListItem8: "FR Select OK, and then select OK again."
+          "Cocher la case Ignorer les style de police spécifiées sur les pages Web. ",
+        instructionsListItem5: "Cliquer sur OK.",
+        instructionsListItem6: "Dans l’onglet Général, sous Apparence, sélectionner Polices.",
+        instructionsListItem7: "Choisir la police que vous désirez utiliser.",
+        instructionsListItem8: "Cliquer sur OK, puis encore une fois sur OK."
       },
       color: {
-        title: "FR Text and background colour",
-        instructionsListItem1: "FR Select the Tools button and select Internet options.",
-        instructionsListItem2: "FR In the General tab, under Appearance, select Accessibility.",
-        instructionsListItem3:
-          "FR Select the Ignore colors specified on webpages on the check box.",
-        instructionsListItem4: "FR Select OK.",
-        instructionsListItem5: "FR In the General tab, under Appearance, select Colors.",
-        instructionsListItem6: "FR Uncheck the Use Windows colors check box.",
+        title: "Couleur du texte et de l’arrière plan",
+        instructionsListItem1: "Cliquer sur le bouton Outils et sélectionner Options Internet.",
+        instructionsListItem2: "Dans l’onglet Général, sous Apparence, sélectionner Accessibilité.",
+        instructionsListItem3: "Cocher la case Ignorer les couleurs spécifiées sur les pages Web.",
+        instructionsListItem4: "Cliquer sur OK.",
+        instructionsListItem5: "Dans l’onglet Général, sous Apparence, sélectionner Couleurs.",
+        instructionsListItem6: "Décocher la case Utiliser les couleurs Windows.",
         instructionsListItem7:
-          "FR For each color that you want to change, select the color box, select a new color, and then select OK.",
-        instructionsListItem8: "FR Select OK, and then select OK again."
+          "Pour chaque couleur que vous désirez modifier, cliquer sur la case de couleur, choisir une nouvelle couleur et cliquer sur OK.",
+        instructionsListItem8: "Cliquer sur OK, puis encore une fois sur OK."
       }
     },
 
