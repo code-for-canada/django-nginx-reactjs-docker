@@ -1,5 +1,6 @@
 import loadTestContent, {
   initialState,
+  updateTestMetaDataState,
   updateTestQuestionsState
 } from "../../modules/LoadTestContentRedux";
 
@@ -11,6 +12,18 @@ describe("updateTestQuestionsState action", () => {
       testMetaData: {},
       testInstructions: {},
       testQuestions: "Hello World"
+    });
+  });
+});
+
+// updateTestQuestionsState
+describe("updateTestMetaDataState action", () => {
+  it("should update testMetaData state with given data", () => {
+    const action = updateTestMetaDataState("Hello World");
+    expect(loadTestContent(initialState, action)).toEqual({
+      testMetaData: "Hello World",
+      testInstructions: {},
+      testQuestions: {}
     });
   });
 });
