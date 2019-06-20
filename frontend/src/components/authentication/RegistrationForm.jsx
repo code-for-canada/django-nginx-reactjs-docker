@@ -530,6 +530,10 @@ class RegistrationForm extends Component {
     this.setState({ isCheckboxChecked: !this.state.isCheckboxChecked });
   };
 
+  componentDidMount = () => {
+    this.props.updateIsRegistrationFormValidState(true);
+  };
+
   render() {
     const {
       isFirstLoad,
@@ -565,10 +569,6 @@ class RegistrationForm extends Component {
 
     const validFieldClass = "valid-field";
     const invalidFieldClass = "invalid-field";
-
-    if (isFirstLoad) {
-      this.props.updateIsRegistrationFormValidState(true);
-    }
 
     return (
       <div>
