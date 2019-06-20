@@ -450,6 +450,30 @@ class RegistrationForm extends Component {
     );
   };
 
+  focusOnHighestErrorField = () => {
+    if (!this.state.isValidFirstName) {
+      document.getElementById("first-name-field").focus();
+    } else if (!this.state.isValidLastName) {
+      document.getElementById("last-name-field").focus();
+    } else if (!this.state.isValidDobDay) {
+      document.getElementById("dob-day-field").focus();
+    } else if (!this.state.isValidDobMonth) {
+      document.getElementById("dob-month-field").focus();
+    } else if (!this.state.isValidDobYear) {
+      document.getElementById("dob-year-field").focus();
+    } else if (!this.state.isValidEmail) {
+      document.getElementById("email-address-field").focus();
+    } else if (!this.state.isValidPriOrMilitaryNbr) {
+      document.getElementById("pri-or-military-nbr-field").focus();
+    } else if (!this.state.isValidPassword) {
+      document.getElementById("password-field").focus();
+    } else if (!this.state.isValidPasswordConfirmation) {
+      document.getElementById("password-confirmation-field").focus();
+    } else if (!this.state.isValidPrivacyNotice) {
+      document.getElementById("privacy-notice-checkbox").focus();
+    }
+  };
+
   handleSubmit = event => {
     const validForm = this.isFormValid();
     // if all fields are valid, execute API errors validation
@@ -509,6 +533,7 @@ class RegistrationForm extends Component {
         });
     } else {
       this.props.updateIsRegistrationFormValidState(false);
+      this.focusOnHighestErrorField();
     }
     event.preventDefault();
   };
