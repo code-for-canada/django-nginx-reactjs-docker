@@ -12,7 +12,7 @@ import {
   registerAction,
   handleAuthResponseAndState,
   loginAction,
-  updateRegistrationErrorState
+  updateIsRegistrationFormValidState
 } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -108,7 +108,7 @@ class RegistrationForm extends Component {
     registerAction: PropTypes.func,
     handleAuthResponseAndState: PropTypes.func,
     loginAction: PropTypes.func,
-    updateRegistrationErrorState: PropTypes.func
+    updateIsRegistrationFormValidState: PropTypes.func
   };
 
   state = {
@@ -492,9 +492,9 @@ class RegistrationForm extends Component {
                   history.push
                 );
               });
-            this.props.updateRegistrationErrorState(true);
+            this.props.updateIsRegistrationFormValidState(true);
           } else {
-            this.props.updateRegistrationErrorState(false);
+            this.props.updateIsRegistrationFormValidState(false);
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -508,7 +508,7 @@ class RegistrationForm extends Component {
           }
         });
     } else {
-      this.props.updateRegistrationErrorState(false);
+      this.props.updateIsRegistrationFormValidState(false);
     }
     event.preventDefault();
   };
@@ -565,6 +565,10 @@ class RegistrationForm extends Component {
 
     const validFieldClass = "valid-field";
     const invalidFieldClass = "invalid-field";
+
+    if (isFirstLoad) {
+      this.props.updateIsRegistrationFormValidState(true);
+    }
 
     return (
       <div>
@@ -1001,7 +1005,7 @@ const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
   handleAuthResponseAndState: (userData, dispatch, location, push) =>
     dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
-  updateRegistrationErrorState: bool => dispatch(updateRegistrationErrorState(bool)),
+  updateIsRegistrationFormValidState: bool => dispatch(updateIsRegistrationFormValidState(bool)),
   dispatch
 });
 

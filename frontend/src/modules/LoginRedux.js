@@ -43,7 +43,7 @@ function registerAction(data) {
 }
 
 // updates isRegistrationFormValid state
-const updateRegistrationErrorState = isRegistrationFormValid => ({
+const updateIsRegistrationFormValidState = isRegistrationFormValid => ({
   type: REGISTRATION,
   isRegistrationFormValid
 });
@@ -122,5 +122,5 @@ export {
   handleAuthResponseAndState,
   logoutAction,
   getUserInformation,
-  updateRegistrationErrorState
+  updateIsRegistrationFormValidState
 };
