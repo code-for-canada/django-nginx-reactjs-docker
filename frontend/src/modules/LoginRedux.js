@@ -61,7 +61,7 @@ function getUserInformation(token) {
     let accountInfo = await fetch("/api/auth/me/", {
       method: "GET",
       headers: {
-        Authorization: "JWT " + localStorage.auth_token,
+        Authorization: "JWT " + token,
         Accept: "application/json",
         "Content-Type": "application/json",
         cache: "default"
