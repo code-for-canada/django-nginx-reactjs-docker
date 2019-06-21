@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
-import { loginAction, handleAuthResponseAndState } from "../../modules/LoginRedux";
+import {
+  loginAction,
+  handleAuthResponseAndState,
+  updateIsRegistrationFormValidState
+} from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import history from "./history";
 
@@ -42,7 +46,8 @@ class LoginForm extends Component {
     loginAction: PropTypes.func,
     handleAuthResponseAndState: PropTypes.func,
     setLoginState: PropTypes.func,
-    authenticated: PropTypes.bool
+    authenticated: PropTypes.bool,
+    updateIsRegistrationFormValidState: PropTypes.func
   };
 
   state = {
@@ -61,6 +66,7 @@ class LoginForm extends Component {
           this.setState({
             wrongCredentials: true
           });
+          this.props.updateIsRegistrationFormValidState(false);
           // focus on password field
           document.getElementById("password").focus();
           // right authentication
@@ -72,6 +78,7 @@ class LoginForm extends Component {
             window.location.pathname,
             history.push
           );
+          this.props.updateIsRegistrationFormValidState(true);
         }
       });
     event.preventDefault();
@@ -163,6 +170,7 @@ const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
   handleAuthResponseAndState: (userData, dispatch, location, push) =>
     dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
+  updateIsRegistrationFormValidState: bool => dispatch(updateIsRegistrationFormValidState(bool)),
   dispatch
 });
 
