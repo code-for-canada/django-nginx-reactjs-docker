@@ -75,11 +75,11 @@ const changeCurrentEmail = emailIndex => ({
 // addressBook - repesents an array of contactShape objects in the currently selected language
 const initialState = {
   // Loads emails from a static JSON file until an API exists.
-  emails: emailsJson.emailsEN,
-  emailsEN: emailsJson.emailsEN,
-  emailsFR: emailsJson.emailsFR,
-  emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
-  emailActions: initializeEmailActions(emailsJson.emailsEN.length),
+  emails: emailsJson.questions.en.email,
+  emailsEN: emailsJson.questions.en.email,
+  emailsFR: emailsJson.questions.fr.email,
+  emailSummaries: initializeEmailSummaries(emailsJson.questions.en.email.length),
+  emailActions: initializeEmailActions(emailsJson.questions.en.email.length),
   addressBook: addressBookJson.addressBookEN,
   currentEmail: 0
 };

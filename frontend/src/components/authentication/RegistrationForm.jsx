@@ -970,10 +970,24 @@ class RegistrationForm extends Component {
           isBackdropStatic={true}
           show={this.state.showPrivacyNoticeDialog}
           handleClose={this.closePrivacyNoticePopup}
-          title={"TITLE HERE (TODO)"}
+          title={LOCALIZE.authentication.createAccount.privacyNoticeDialog.title}
           description={
             <div>
-              <p>DESCRIPTION HERE (TODO)</p>
+              <h3>
+                {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyNoticeStatement}
+              </h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph3}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph5}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8}</p>
+              <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}</h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionWarning}</p>
+              <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingTitle}</h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingWarning}</p>
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}
