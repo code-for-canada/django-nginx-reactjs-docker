@@ -4,6 +4,7 @@ import { PATH } from "../App";
 // AUTH ACTIONS
 export const AUTHENTICATED = "AUTHENTICATED";
 export const UNAUTHENTICATED = "UNAUTHENTICATED";
+export const REGISTRATION = "REGISTRATION";
 //CHANGE PASSWORD ACTIONS
 export const IS_CHANGING_PASSWORD = "IS_CHANGING_PASSWORD";
 export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS";
@@ -39,6 +40,12 @@ function registerAction(data) {
     return responseJson;
   };
 }
+
+// updates isRegistrationFormValid state
+const updateIsRegistrationFormValidState = isRegistrationFormValid => ({
+  type: REGISTRATION,
+  isRegistrationFormValid
+});
 
 // getting user's token
 function loginAction(data) {
@@ -80,7 +87,8 @@ function logoutAction() {
 
 // Initial State
 const initialState = {
-  authenticated: false
+  authenticated: false,
+  isRegistrationFormValid: false
 };
 
 // Reducer
@@ -93,6 +101,11 @@ const login = (state = initialState, action) => {
       };
     case UNAUTHENTICATED:
       return { authenticated: false };
+    case REGISTRATION:
+      return {
+        ...state,
+        isRegistrationFormValid: action.isRegistrationFormValid
+      };
 
     default:
       return state;
@@ -107,5 +120,6 @@ export {
   authenticateAction,
   handleAuthResponseAndState,
   logoutAction,
-  getUserInformation
+  getUserInformation,
+  updateIsRegistrationFormValidState
 };

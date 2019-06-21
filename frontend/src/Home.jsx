@@ -10,14 +10,16 @@ import { connect } from "react-redux";
 class Home extends Component {
   static propTypes = {
     // Props from Redux
-    authenticated: PropTypes.bool
+    authenticated: PropTypes.bool,
+    isRegistrationFormValid: PropTypes.bool
   };
 
   render() {
     return (
       <div className="app">
         <Helmet>
-          <title>{LOCALIZE.titles.home}</title>
+          {this.props.isRegistrationFormValid && <title>{LOCALIZE.titles.home}</title>}
+          {!this.props.isRegistrationFormValid && <title>{LOCALIZE.titles.homeWithError}</title>}
         </Helmet>
         <ContentContainer>
           {!this.props.authenticated && (
@@ -39,7 +41,8 @@ class Home extends Component {
 export { Home as UnconnectedHome };
 const mapStateToProps = (state, ownProps) => {
   return {
-    authenticated: state.login.authenticated
+    authenticated: state.login.authenticated,
+    isRegistrationFormValid: state.login.isRegistrationFormValid
   };
 };
 
