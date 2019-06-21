@@ -4,14 +4,32 @@ from custom_models.item import Item
 from custom_models.item_text import ItemText
 from custom_models.test import Test
 from custom_models.language import Language
+from custom_models.question import Question
+from custom_models.question_type import QuestionType
+from custom_models.item_type import ItemType
 
 TEST_META_DATA = "test_meta_data"
 TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
+EN = "en"
+FR = "fr"
+
+# when gathering insructions, look for these items under each type
+INSTRUCTION_CHILDREN_MAP = {
+}
+
+# when gathering questions, look for these items under each type
+QUESTION_CHILDREN_MAP = {
+    "test": ["email"],
+    "email": ["subject", "from", "to", "date", "body"]
+}
+
+# List of item types that should only return one item rather than a list
+SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 
 
-# returns true if the test is public and false on the other hand
 def is_test_public(test_name):
+    # function that returns true if the test is public and false on the other hand
     return Test.objects.get(test_name=test_name).is_public
 
 
@@ -20,10 +38,8 @@ def retrieve_test_data(request, request_type):
     return retrieve_response_from_name_date(request, query_date_time, request_type)
 
 
-# Wrap the json in a Response; this makes testing easier
-
-
 def retrieve_response_from_name_date(request, query_date_time, request_type):
+    # function to Wrap the json in a Response; this makes testing easier
     # get the test_name from the parameter
     test_name = request.query_params.get("test_name", None)
     return Response(
@@ -49,7 +65,8 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
 
     # Ensure that the item with the same pk,
     # is active (where the current date is between the from and to date)
-    if get_item_by_id(item_id, query_date_time) is None:
+    item = get_item_by_id(item_id, query_date_time)
+    if item is None:
         return {"error", "no test item found"}
 
     # get item text (visible test names)
@@ -79,85 +96,171 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return return_dict
 
     if request_type == TEST_QUESTIONS:
-        # TODO jcherry write the logic to get question data
-        # After merging the API PRs
-        return_dict["questions"] = []
+        item_type_map = gen_item_map(query_date_time)
+        question_type_map = gen_question_map(query_date_time)
+        question_map = get_items_map(
+            item, item_type_map, question_type_map,
+            query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
+        return_dict["questions"] = question_map
         return return_dict
 
     # if it is not one of the above, then return nothing
     return {}
 
 
+def add_to_map(child_type, child_language_map, language_map):
+    if child_type in SINGLE_RETURN:
+        language_map[child_type] = child_language_map
+    elif child_type in language_map.keys():
+        language_map[child_type].append(child_language_map)
+    else:
+        language_map[child_type] = [child_language_map]
+    return language_map
+
+
+def get_items_map(parent_item, item_type_map, question_type_map, query_date_time,
+                  en_id, fr_id, children_map):
+    en_map, fr_map = get_items(parent_item, item_type_map, question_type_map, query_date_time,
+                               en_id, fr_id, children_map)
+    return {EN: en_map, FR: fr_map}
+
+
+def get_items(parent_item, item_type_map, question_type_map, query_date_time,
+              en_id, fr_id, children_map):
+    # get the parent id, get the type to determine how to handle it
+    parent_id, parent_type = get_item_type(
+        parent_item, item_type_map, question_type_map, query_date_time)
+    try:
+        children_types = children_map[parent_type]
+    except KeyError:
+        # if there the parent type does not have any children type to look up
+        # simply return the text_detail
+        return get_text_detail(parent_id, en_id, query_date_time), get_text_detail(parent_id, fr_id, query_date_time)
+    # otherwise, initialize return maps
+    en_map = {}
+    fr_map = {}
+    # a map to track the current id for a given child_type
+    # this also ensures that the id/order is sequential
+    order_map = {}
+    # get all items with parent_id
+    children_items = get_items_by_parent_id(parent_id, query_date_time)
+    # for each child
+    for child in children_items:
+        _, child_type = get_item_type(
+            child, item_type_map, question_type_map, query_date_time)
+        # if the type is in the list of children to return
+        if child_type in children_types:
+            # get the maps of their children
+            child_en, child_fr = get_items(
+                child, item_type_map, question_type_map, query_date_time,
+                en_id, fr_id, children_map)
+            # if they are dicts, add the id as a key/value pair
+            if isinstance(child_en, dict):
+                if child_type in order_map.keys():
+                    order_map[child_type] += 1
+                else:
+                    order_map[child_type] = 0
+                child_id = order_map[child_type]
+                child_en["id"] = child_id
+                child_fr["id"] = child_id
+            # add to the return map
+            en_map = add_to_map(child_type, child_en, en_map)
+            fr_map = add_to_map(child_type, child_fr, fr_map)
+    return en_map, fr_map
+
+
+def get_item_type(item, item_type_map, question_type_map, query_date_time):
+    # function to get the item id and item_type; or, if the item_type is question, get the question_type
+    # get the id and the type
+    item_id = item.item_id
+    item_type = item_type_map[item.item_type_id.item_type_id]
+    # if the item type is a question, then get the type of question
+    if item_type == "question":
+        # get all active questions with this item_id (there should really be only one)
+        question = Question.objects.filter(
+            item_id=item_id)
+        question = exclude_inactive_objects(question, query_date_time)
+        if not question:
+            item_type = None
+        else:
+            # get the last one
+            question = question.last()
+            question_type = question.question_type_id.question_type_id
+            # get the string version of the type
+            item_type = question_type_map[question_type]
+    # if we have other items with seperate types, handle them here with elif's
+    return item_id, item_type
+
+
+def gen_item_map(query_date_time):
+    # create a map of item_type_id to type_desc
+    item_type_map = {}
+    item_types = ItemType.objects.all()
+    item_types = exclude_inactive_objects(item_types, query_date_time)
+    for i_type in item_types:
+        item_type_map[i_type.item_type_id] = i_type.type_desc
+    return item_type_map
+
+
+def gen_question_map(query_date_time):
+    # create a map of question_type_id to question_type_desc
+    question_type_map = {}
+    question_types = QuestionType.objects.all()
+    question_types = exclude_inactive_objects(question_types, query_date_time)
+    for q_type in question_types:
+        question_type_map[q_type.question_type_id] = q_type.question_type_desc
+    return question_type_map
+
+
 def get_language_ids(query_date_time):
+    # get the active ids for en and fr
     if query_date_time is None:
         query_date_time = datetime.now()
-    # get en and fr ids
-    try:
-        en_id = Language.objects.get(
-            ISO_Code_2="en-ca",
-            date_from__lte=query_date_time,
-            date_to__gt=query_date_time,
-        ).language_id
-    except Language.DoesNotExist:
-        # if the above fails, try to get an item with the same id,
-        # after the from date, where the to date is null
-        try:
-            en_id = Language.objects.get(
-                ISO_Code_2="en-ca", date_from__lte=query_date_time, date_to__isnull=True
-            ).language_id
-        except Language.DoesNotExist:
-            en_id = None
-    try:
-        fr_id = Language.objects.get(
-            ISO_Code_2="fr-ca",
-            date_from__lte=query_date_time,
-            date_to__gt=query_date_time,
-        ).language_id
-    except Language.DoesNotExist:
-        # if the above fails, try to get an item with the same id,
-        # after the from date, where the to date is null
-        try:
-            fr_id = Language.objects.get(
-                ISO_Code_2="fr-ca", date_from__lte=query_date_time, date_to__isnull=True
-            ).language_id
-        except Language.DoesNotExist:
-            fr_id = None
+    en_id = get_language("en-ca", query_date_time)
+    fr_id = get_language("fr-ca", query_date_time)
     return en_id, fr_id
 
 
+def get_language(iso_code_2, query_date_time):
+    # get the active language id for the given iso_code_2
+    lang_id = Language.objects.filter(ISO_Code_2=iso_code_2)
+    lang_id = exclude_inactive_objects(lang_id, query_date_time)
+    if not lang_id:
+        return None
+    return lang_id.last()
+
+
 def get_text_detail(item_id, language_id, query_date_time):
-    try:
-        text_detail = ItemText.objects.get(
-            item_id=item_id,
-            language=language_id,
-            date_from__lte=query_date_time,
-            date_to__gt=query_date_time,
-        ).text_detail
-    except ItemText.DoesNotExist:
-        try:
-            text_detail = ItemText.objects.get(
-                item_id=item_id,
-                language=language_id,
-                date_from__lte=query_date_time,
-                date_to__isnull=True,
-            ).text_detail
-        except ItemText.DoesNotExist:
-            text_detail = None
-    return text_detail
+    # get the itemtext object and text_detail for the given item_id and language
+    item_text = ItemText.objects.filter(
+        item_id=item_id,
+        language=language_id
+    )
+    item_text = exclude_inactive_objects(item_text, query_date_time)
+    if not item_text:
+        # if empty
+        return None
+    return item_text.last().text_detail
 
 
 def get_item_by_id(item_id, query_date_time):
-    try:
-        item = Item.objects.get(
-            pk=item_id, date_from__lte=query_date_time, date_to__gt=query_date_time
-        )
-    except Item.DoesNotExist:
-        # if the above fails, try to get an item with the same id, after the from date
-        # and where the to date is null
-        try:
-            item = Item.objects.get(
-                pk=item_id, date_from__lte=query_date_time, date_to__isnull=True
-            )
-        except Item.DoesNotExist:
-            item = None
-    return item
+    # get the item by id
+    item = Item.objects.filter(pk=item_id)
+    item = exclude_inactive_objects(item, query_date_time)
+    if not item:
+        # if empty
+        return None
+    return item.last()
+
+
+def get_items_by_parent_id(parent_id, query_date_time):
+    # get all items with the given parent_id
+    items = Item.objects.filter(parent_id=parent_id)
+    items = exclude_inactive_objects(items, query_date_time)
+    return items
+
+
+def exclude_inactive_objects(objects, query_date_time):
+    # exclude all with later date_from or earlier date_to
+    # however, exactly equal are acceptible
+    return objects.exclude(date_from__gt=query_date_time).exclude(date_to__lt=query_date_time)

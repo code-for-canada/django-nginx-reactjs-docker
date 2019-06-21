@@ -4,7 +4,8 @@ let LOCALIZE = new LocalizedStrings({
   en: {
     //Main Tabs
     mainTabs: {
-      homeTabTitle: "Home",
+      homeTabTitleUnauthenticated: "Home",
+      homeTabTitleAuthenticated: "Your tests",
       dashboardTabTitle: "Dashboard",
       sampleTest: "Sample eMIB",
       statusTabTitle: "Status",
@@ -77,7 +78,33 @@ let LOCALIZE = new LocalizedStrings({
         button: "Create account",
         accountAlreadyExistsError: "An account is already associated to this email address",
         passwordTooCommonError: "This password is too common",
-        passwordTooSimilarToUsernameError: "The password is too similar to the username"
+        passwordTooSimilarToUsernameError: "The password is too similar to the username",
+        privacyNoticeDialog: {
+          title: "Privacy and Security",
+          privacyNoticeStatement: "Privacy Notice Statement",
+          privacyParagraph1:
+            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the Public Service Employment Act and is protected under the Privacy Act. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+          privacyParagraph2:
+            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+          privacyParagraph3:
+            "The Public Service Commission of Canada (PSC) is committed to protecting the privacy rights of individuals.",
+          privacyParagraph4:
+            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the Privacy Act for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
+          privacyParagraph5:
+            "Personal information collected by the PPC is protected from disclosure to unauthorized persons and/or agencies subject to the provisions of the Privacy Act. However personal information may be disclosed without your consent in certain specific circumstances, per section 8 of the Privacy Act. Additionally, certain demographic information will be used for analytical, research and development purposes.",
+          privacyParagraph6:
+            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s Access to Information and Privacy Protection Division to request corrections.",
+          privacyParagraph7:
+            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+          privacyParagraph8:
+            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+          reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
+          reproductionWarning:
+            "This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",
+          cheatingTitle: "Cheating",
+          cheatingWarning:
+            "Please note that suspected cheating will in all cases be referred to the responsible manager and the Personnel Psychology Centre for action. Suspected cheating may result in the invalidation of test results and may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police."
+        }
       }
     },
 
@@ -91,8 +118,14 @@ let LOCALIZE = new LocalizedStrings({
 
     //Dashboard Page
     dashboard: {
-      title: "Welcome to your dashboard",
-      description: "Here is your dashboard..."
+      title: "Welcome, {0} {1}.",
+      description:
+        "You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
+      table: {
+        columnOne: "Name of test",
+        columnTwo: "Scheduled test date",
+        columnThree: "Action"
+      }
     },
 
     //Status Page
@@ -595,7 +628,8 @@ let LOCALIZE = new LocalizedStrings({
   fr: {
     //Main Tabs
     mainTabs: {
-      homeTabTitle: "Accueil",
+      homeTabTitleUnauthenticated: "Accueil",
+      homeTabTitleAuthenticated: "FR Your tests",
       dashboardTabTitle: "Tableau de bord",
       sampleTest: "FR eMIB Sample",
       statusTabTitle: "Statut",
@@ -668,7 +702,33 @@ let LOCALIZE = new LocalizedStrings({
         button: "Créer compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",
-        passwordTooSimilarToUsernameError: "FR The password is too similar to the username"
+        passwordTooSimilarToUsernameError: "FR The password is too similar to the username",
+        privacyNoticeDialog: {
+          title: "FR Privacy and Security",
+          privacyNoticeStatement: "Énoncé de confidentialité",
+          privacyParagraph1:
+            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la Loi sur l’emploi dans la fonction publique et protégés aux termes de la Loi sur la protection des renseignements personnels, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+          privacyParagraph2:
+            "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
+          privacyParagraph3:
+            "La Commission de la fonction publique du Canada (CFP) s’engage à protéger le droit des personnes à la vie privée.",
+          privacyParagraph4:
+            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la Loi sur la protection des renseignements personnels pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+          privacyParagraph5:
+            "Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+          privacyParagraph6:
+            "Conformément aux dispositions de la Loi sur la protection des renseignements personnels, les renseignements personnels recueillis par le CPP ne peuvent être divulgués à des personnes ou à des organismes non autorisés. Toutefois, conformément aux dispositions de l’article 8 de cette loi, vos renseignements personnels pourraient être divulgués sans votre consentement dans certains cas précis. De plus, certaines données démographiques seront utilisées à des fins d’analyse, de recherche et de développement.",
+          privacyParagraph7:
+            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la Division de l’Accès à l’information et de la protection des renseignements personnels du ministère concerné.",
+          privacyParagraph8:
+            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+          reproductionTitle: "Reproduction ou divulgation non autorisées du contenu de l'examen",
+          reproductionWarning:
+            "Cet examen et son contenu portent le niveau de sécurité Protégé B. La reproduction ou l'enregistrement du contenu de cet examen, sous quelque forme que ce soit, sont strictement interdits. Tous les documents liés à l'examen, y compris les brouillons, doivent être remis à l'administrateur de l'examen à la fin de celui-ci. La reproduction, l'enregistrement ou la divulgation non autorisées du contenu de l'examen contreviennent à la Politique du gouvernement sur la sécurité, et l'utilisation de renseignements obtenus ou transmis de manière inappropriée peut constituer une infraction à la Loi sur l'emploi dans la fonction publique (LEFP). Les parties impliquées dans la divulgation ou l'utilisation inappropriée de contenu d'examen protégé pourraient faire l'objet d'une enquête en vertu de la LEFP. Au terme de cette enquête, les personnes reconnues coupables de fraude pourraient faire l'objet d'une déclaration de culpabilité par procédure sommaire ou voir leur dossier renvoyé à la Gendarmerie royale du Canada.",
+          cheatingTitle: "Tricherie",
+          cheatingWarning:
+            "Veuillez prendre note que tous les cas présumés de tricherie seront renvoyés au gestionnaire responsable et au Centre de psychologie du personnel, qui prendront les mesures nécessaires. En cas de tricherie présumée, les résultats d'examen pourraient être invalidés, et les parties impliquées pourraient faire l'objet d'une enquête en vertu de la LEFP. Au terme de cette enquête, les personnes reconnues coupables de fraude pourraient faire l'objet d'une déclaration de culpabilité par procédure sommaire ou voir leur dossier renvoyé à la Gendarmerie royale du Canada."
+        }
       }
     },
 
@@ -683,8 +743,14 @@ let LOCALIZE = new LocalizedStrings({
 
     //Dashboard Page
     dashboard: {
-      title: "FR Welcome to your dashboard",
-      description: "FR Here is your dashboard..."
+      title: "FR Welcome, {0} {1}.",
+      description:
+        "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
+      table: {
+        columnOne: "FR Name of test",
+        columnTwo: "FR Scheduled test date",
+        columnThree: "FR Action"
+      }
     },
 
     //Status Page
@@ -712,54 +778,53 @@ let LOCALIZE = new LocalizedStrings({
     settings: {
       systemSettings: "FR System settings",
       zoom: {
-        title: "FR Zoom (+/-)",
+        title: "Zoom avant et zoom arrière (+ / -)",
         instructionsListItem1:
-          "FR Select the View button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Zoom.",
+          "Cliquer sur le bouton Visualiser dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Sélectionner Zoom.",
         instructionsListItem3:
-          "FR You can select a predefined zoom level, or a custom level by selecting Custom and entering a zoom value.",
+          "Vous pouvez choisir un niveau de zoom prédéfini ou un niveau sur mesure (sélectionner Sur mesure avant de saisir une valeur de zoom).",
         instructionsListItem4:
-          "FR Alternatively, you can hold down CTRL and the + / - keys on your keyboard to zoom in or out."
+          "Vous pouvez également appuyer simultanément sur les touches CTRL et + / - de votre clavier pour effectuer un zoom avant ou un zoom arrière."
       },
       textSize: {
-        title: "FR Text size",
+        title: "Taille de texte",
         instructionsListItem1:
-          "FR Select the View button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Text size.",
+          "Cliquer sur le bouton Visualiser dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Sélectionner Taille de texte.",
         instructionsListItem3:
-          "FR Choose to make text larger or smaller than the size on the screen.",
+          "Choisir d’agrandir ou de diminuer la taille du texte qui apparaît à l’écran.",
         instructionsListItem4:
-          "FR Select the Tools button, and select General tab, and then, under Appearance, select Accessibility.",
+          "Cliquer sur le bouton Outils, puis sélectionner l’onglet Général. Sous Apparence, sélectionner Accessibilité.",
         instructionsListItem5:
-          "FR Select the Ignore font sizes specified on webpages on the check box.",
-        instructionsListItem6: "FR Select OK, and then select OK again.",
-        notChanged: "FR If the text size has not changed:"
+          "Cocher la case Ignorer les tailles de police spécifiées sur les pages Web.",
+        instructionsListItem6: "Cliquer sur OK, puis encore une fois sur OK.",
+        notChanged: "Si la taille du texte n’a pas changé :"
       },
       fontStyle: {
-        title: "FR Font style",
+        title: "Police de caractères",
         instructionsListItem1:
-          "FR Select the Tools button at the top left bar in Internet Explorer.",
-        instructionsListItem2: "FR Select Internet options.",
-        instructionsListItem3: "FR In the General tab, under Appearance, select Accessibility.",
+          "Cliquer sur le bouton Outils dans la barre de menu supérieure à gauche dans Internet Explorer.",
+        instructionsListItem2: "Choisir Options Internet.",
+        instructionsListItem3: "Dans l’onglet Général, sous Apparence, sélectionner Accessibilité.",
         instructionsListItem4:
-          "FR Select the Ignore font styles specified on webpages on the check box.",
-        instructionsListItem5: "FR Select OK.",
-        instructionsListItem6: "FR In the General tab, under Appearance, select Fonts.",
-        instructionsListItem7: "FR Select the fonts you want to use.",
-        instructionsListItem8: "FR Select OK, and then select OK again."
+          "Cocher la case Ignorer les style de police spécifiées sur les pages Web. ",
+        instructionsListItem5: "Cliquer sur OK.",
+        instructionsListItem6: "Dans l’onglet Général, sous Apparence, sélectionner Polices.",
+        instructionsListItem7: "Choisir la police que vous désirez utiliser.",
+        instructionsListItem8: "Cliquer sur OK, puis encore une fois sur OK."
       },
       color: {
-        title: "FR Text and background colour",
-        instructionsListItem1: "FR Select the Tools button and select Internet options.",
-        instructionsListItem2: "FR In the General tab, under Appearance, select Accessibility.",
-        instructionsListItem3:
-          "FR Select the Ignore colors specified on webpages on the check box.",
-        instructionsListItem4: "FR Select OK.",
-        instructionsListItem5: "FR In the General tab, under Appearance, select Colors.",
-        instructionsListItem6: "FR Uncheck the Use Windows colors check box.",
+        title: "Couleur du texte et de l’arrière plan",
+        instructionsListItem1: "Cliquer sur le bouton Outils et sélectionner Options Internet.",
+        instructionsListItem2: "Dans l’onglet Général, sous Apparence, sélectionner Accessibilité.",
+        instructionsListItem3: "Cocher la case Ignorer les couleurs spécifiées sur les pages Web.",
+        instructionsListItem4: "Cliquer sur OK.",
+        instructionsListItem5: "Dans l’onglet Général, sous Apparence, sélectionner Couleurs.",
+        instructionsListItem6: "Décocher la case Utiliser les couleurs Windows.",
         instructionsListItem7:
-          "FR For each color that you want to change, select the color box, select a new color, and then select OK.",
-        instructionsListItem8: "FR Select OK, and then select OK again."
+          "Pour chaque couleur que vous désirez modifier, cliquer sur la case de couleur, choisir une nouvelle couleur et cliquer sur OK.",
+        instructionsListItem8: "Cliquer sur OK, puis encore une fois sur OK."
       }
     },
 

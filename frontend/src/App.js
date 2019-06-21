@@ -59,8 +59,22 @@ class App extends Component {
       if (response.status === 200) {
         this.props.authenticateAction(true);
       }
+      // if not a valid url (part of the PATH object) or login path, redirect to dashboard page
+      const pathValues = Object.keys(PATH).map(function(e) {
+        return PATH[e];
+      });
+      if (
+        pathValues.indexOf(window.location.pathname) < 0 ||
+        window.location.pathname === PATH.login
+      ) {
+        history.push(PATH.dashboard);
+      }
       // if not valid and not the eMIB sample url, logout and redirect to login page
-      if (response.status !== 200 && window.location.pathname !== PATH.emibSampleTest) {
+      if (
+        response.status !== 200 &&
+        window.location.pathname !== PATH.emibSampleTest &&
+        window.location.pathname !== PATH.status
+      ) {
         this.props.authenticateAction(false);
         this.props.logoutAction();
         history.push(PATH.login);
@@ -79,7 +93,7 @@ class App extends Component {
         <Router history={history}>
           <div>
             {!isTestActive && (
-              <div>
+              <div role="navigation">
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <img
                     alt={LOCALIZE.mainTabs.psc}
@@ -97,10 +111,14 @@ class App extends Component {
                 <Navbar bg="light" variant="light" style={styles.nav}>
                   <Nav>
                     {!this.props.authenticated && (
-                      <Nav.Link href={PATH.login}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                      <Nav.Link href={PATH.login}>
+                        {LOCALIZE.mainTabs.homeTabTitleUnauthenticated}
+                      </Nav.Link>
                     )}
                     {this.props.authenticated && (
-                      <Nav.Link href={PATH.dashboard}>{LOCALIZE.mainTabs.homeTabTitle}</Nav.Link>
+                      <Nav.Link href={PATH.dashboard}>
+                        {LOCALIZE.mainTabs.homeTabTitleAuthenticated}
+                      </Nav.Link>
                     )}
                     <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
                   </Nav>

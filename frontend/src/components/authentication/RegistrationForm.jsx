@@ -43,8 +43,7 @@ const styles = {
     marginRight: 12
   },
   tooltipButton: {
-    padding: 0,
-    marginLeft: 6
+    padding: 8
   },
   iconForNames: {
     color: "#278400",
@@ -254,14 +253,10 @@ class RegistrationForm extends Component {
     // DOB Day field is valid OR this is the first page load
     if (this.state.isValidDobDay || this.state.isFirstLoad) {
       // returns the DOB field title and the field selected
-      return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
-        LOCALIZE.ariaLabel.dobMonthField
-      );
+      return LOCALIZE.ariaLabel.dobMonthField;
     } else {
       // returns the DOB field title, the DOB error and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
         LOCALIZE.ariaLabel.dobMonthField
       );
@@ -274,19 +269,22 @@ class RegistrationForm extends Component {
     if (this.state.isValidDobDay || this.state.isFirstLoad) {
       // returns the DOB field title and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     } else {
       // returns the DOB field title, the DOB error and the field selected
       return (
-        LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle +
         LOCALIZE.authentication.createAccount.content.inputs.dobError +
         LOCALIZE.authentication.createAccount.content.inputs.dobTooltip +
         LOCALIZE.ariaLabel.dobYearField
       );
     }
+  };
+
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerDobTooltipClick = () => {
+    document.getElementById("dob-tooltip-button").click();
   };
 
   // screen reader will read specific content depending on the following field conditions
@@ -559,7 +557,7 @@ class RegistrationForm extends Component {
 
     return (
       <div>
-        <div>
+        <div role="form">
           <div style={styles.createAccountContent}>
             <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>
@@ -626,7 +624,7 @@ class RegistrationForm extends Component {
                   <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   <OverlayTrigger
-                    trigger="focus"
+                    trigger="click"
                     placement="right"
                     overlay={
                       <Popover>
@@ -636,7 +634,13 @@ class RegistrationForm extends Component {
                       </Popover>
                     }
                   >
-                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
+                    <Button
+                      id="dob-tooltip-button"
+                      tabIndex="-1"
+                      style={styles.tooltipButton}
+                      variant="link"
+                      onBlur={this.triggerDobTooltipClick}
+                    >
                       ?
                     </Button>
                   </OverlayTrigger>
@@ -670,6 +674,8 @@ class RegistrationForm extends Component {
                   value={dobYearContent}
                   style={styles.dobFields}
                   onChange={this.getDobYearContent}
+                  onFocus={this.triggerDobTooltipClick}
+                  onBlur={this.triggerDobTooltipClick}
                 />
                 {!(isValidDobDay && isValidDobMonth && isValidDobYear) && !isFirstLoad && (
                   <div>
@@ -754,6 +760,62 @@ class RegistrationForm extends Component {
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
+                  <OverlayTrigger
+                    trigger="focus"
+                    placement="right"
+                    overlay={
+                      <Popover>
+                        <div>
+                          <p>
+                            {
+                              LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                .description
+                            }
+                          </p>
+                          <ul>
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .upperCase
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .lowerCase
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .digit
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .specialCharacter
+                              }
+                            </li>
+
+                            <li>
+                              {
+                                LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
+                                  .length
+                              }
+                            </li>
+                          </ul>
+                        </div>
+                      </Popover>
+                    }
+                  >
+                    <Button tabIndex="-1" style={styles.tooltipButton} variant="link">
+                      ?
+                    </Button>
+                  </OverlayTrigger>
                 </div>
                 {isValidPassword && (
                   <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
@@ -908,10 +970,24 @@ class RegistrationForm extends Component {
           isBackdropStatic={true}
           show={this.state.showPrivacyNoticeDialog}
           handleClose={this.closePrivacyNoticePopup}
-          title={"TITLE HERE (TODO)"}
+          title={LOCALIZE.authentication.createAccount.privacyNoticeDialog.title}
           description={
             <div>
-              <p>DESCRIPTION HERE (TODO)</p>
+              <h3>
+                {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyNoticeStatement}
+              </h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph3}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph5}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7}</p>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8}</p>
+              <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}</h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionWarning}</p>
+              <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingTitle}</h3>
+              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingWarning}</p>
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}

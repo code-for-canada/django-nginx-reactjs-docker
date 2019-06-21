@@ -37,7 +37,7 @@ class SideNavigation extends Component {
     return (
       <Tab.Container id="left-tabs-navigation" defaultActiveKey="first">
         <Row>
-          <Col sm={3}>
+          <Col role="complementary" sm={3}>
             <Nav variant="pills" className="flex-column" style={styles.nav}>
               {specs.map((item, index) => {
                 return (
