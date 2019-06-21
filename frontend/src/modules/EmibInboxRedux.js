@@ -28,6 +28,8 @@ const UPDATE_TASK = "emibInbox/UPDATE_TASK";
 const DELETE_EMAIL = "emibInbox/DELETE_EMAIL";
 const DELETE_TASK = "emibInbox/DELETE_TASK";
 const CHANGE_CURRENT_EMAIL = "emibInbox/CHANGE_CURRENT_EMAIL";
+const GET_EN_EMAILS = "emibInbox/GET_EN_EMAILS";
+const GET_FR_EMAILS = "emibInbox/GET_FR_EMAILS";
 
 // Action Creators
 const readEmail = emailIndex => ({ type: READ_EMAIL, emailIndex });
@@ -68,6 +70,9 @@ const changeCurrentEmail = emailIndex => ({
   emailIndex
 });
 
+const updateEmailsEnState = emailsEN => ({ type: GET_EN_EMAILS, emailsEN });
+const updateEmailsFrState = emailsFR => ({ type: GET_FR_EMAILS, emailsFR });
+
 // Initial State
 // emails - represents an array of emailShape objects in the currently selected language.
 // emailSummaries - represents an array of objects indicating read state of each email.
@@ -75,9 +80,9 @@ const changeCurrentEmail = emailIndex => ({
 // addressBook - repesents an array of contactShape objects in the currently selected language
 const initialState = {
   // Loads emails from a static JSON file until an API exists.
-  emails: emailsJson.questions.en.email,
-  emailsEN: emailsJson.questions.en.email,
-  emailsFR: emailsJson.questions.fr.email,
+  emails: {},
+  emailsEN: {},
+  emailsFR: {},
   emailSummaries: initializeEmailSummaries(emailsJson.questions.en.email.length),
   emailActions: initializeEmailActions(emailsJson.questions.en.email.length),
   addressBook: addressBookJson.addressBookEN,
@@ -93,6 +98,16 @@ const emibInbox = (state = initialState, action) => {
         emails: action.language === "fr" ? state.emailsFR : state.emailsEN,
         addressBook:
           action.language === "fr" ? addressBookJson.addressBookFR : addressBookJson.addressBookEN
+      };
+    case GET_EN_EMAILS:
+      return {
+        ...state,
+        emailsEN: action.emailsEN
+      };
+    case GET_FR_EMAILS:
+      return {
+        ...state,
+        emailsFR: action.emailsFR
       };
     case READ_EMAIL:
       let updatedEmailSummaries = Array.from(state.emailSummaries);
@@ -198,5 +213,7 @@ export {
   deleteEmail,
   deleteTask,
   selectEmailActions,
-  changeCurrentEmail
+  changeCurrentEmail,
+  updateEmailsEnState,
+  updateEmailsFrState
 };

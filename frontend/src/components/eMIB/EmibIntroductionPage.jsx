@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
+import { connect } from "react-redux";
+import { updateEmailsEnState, updateEmailsFrState } from "../../modules/EmibInboxRedux";
+import { getTestQuestions, updateTestQuestionsState } from "../../modules/LoadTestContentRedux";
+import { bindActionCreators } from "redux";
+import { TEST_DEFINITION } from "../../testDefinition";
 
 const styles = {
   startTestBtn: {
@@ -11,7 +16,19 @@ const styles = {
 
 class EmibIntroductionPage extends Component {
   static propTypes = {
-    nextPage: PropTypes.func.isRequired
+    nextPage: PropTypes.func.isRequired,
+    // Props from Redux
+    updateEmailsEnState: PropTypes.func,
+    updateEmailsFrState: PropTypes.func,
+    getTestQuestions: PropTypes.func,
+    updateTestQuestionsState: PropTypes.func
+  };
+
+  componentDidMount = () => {
+    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      this.props.updateEmailsEnState(response.questions.en.email);
+      this.props.updateEmailsFrState(response.questions.fr.email);
+    });
   };
 
   render() {
@@ -33,4 +50,26 @@ class EmibIntroductionPage extends Component {
   }
 }
 
-export default EmibIntroductionPage;
+// export EmibIntroductionPage;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    testQuestions: state.loadTestContent.testQuestions,
+    emailsEN: state.emibInbox.emailsEN
+  };
+};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      updateEmailsEnState,
+      updateEmailsFrState,
+      getTestQuestions,
+      updateTestQuestionsState
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmibIntroductionPage);
