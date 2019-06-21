@@ -927,7 +927,7 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <label htmlFor={"password-confirmation-field"}>
+                  <label id="password-confirmation-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -941,6 +941,7 @@ class RegistrationForm extends Component {
                   }
                   aria-invalid={!isValidPasswordConfirmation && !isFirstLoad}
                   aria-required={"true"}
+                  aria-labelledby={"password-confirmation-title password-confirmation-error"}
                   id="password-confirmation-field"
                   type="password"
                   value={passwordConfirmationContent}
@@ -948,7 +949,7 @@ class RegistrationForm extends Component {
                   onChange={this.getPasswordConfirmationContent}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <label htmlFor={"password-confirmation-field"} style={styles.errorMessage}>
+                  <label id="password-confirmation-error" style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
                   </label>
                 )}
