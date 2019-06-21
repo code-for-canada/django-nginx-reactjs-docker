@@ -5,7 +5,7 @@ import { emailsJson } from "../../../modules/sampleEmibJson";
 import EmailPreview from "../../../components/eMIB/EmailPreview";
 import Email from "../../../components/eMIB/Email";
 
-const INBOX_SPECS = emailsJson.emailsEN;
+const INBOX_SPECS = emailsJson.questions.en.email;
 
 it("Displays 3 email previews when there are 3 emails", () => {
   const wrapper = shallow(

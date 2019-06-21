@@ -17,10 +17,10 @@ describe("EmibInboxRedux", () => {
   let stubbedInitialState;
   beforeEach(() => {
     stubbedInitialState = {
-      emails: emailsJson.emailsEN,
-      emailsEN: emailsJson.emailsEN,
-      emailsFR: emailsJson.emailsFR,
-      emailSummaries: initializeEmailSummaries(emailsJson.emailsEN.length),
+      emails: emailsJson.questions.en.email,
+      emailsEN: emailsJson.questions.en.email,
+      emailsFR: emailsJson.questions.fr.email,
+      emailSummaries: initializeEmailSummaries(emailsJson.questions.en.email.length),
       emailActions: [[], [], []],
       currentEmail: 0
     };
@@ -33,9 +33,9 @@ describe("EmibInboxRedux", () => {
   describe("setLanguage action", () => {
     it("should update emails to french or english", () => {
       const action1 = setLanguage("fr");
-      expect(emibInbox(stubbedInitialState, action1).emails).toEqual(emailsJson.emailsFR);
+      expect(emibInbox(stubbedInitialState, action1).emails).toEqual(emailsJson.questions.fr.email);
       const action2 = setLanguage("en");
-      expect(emibInbox(stubbedInitialState, action2).emails).toEqual(emailsJson.emailsEN);
+      expect(emibInbox(stubbedInitialState, action2).emails).toEqual(emailsJson.questions.en.email);
     });
   });
 
