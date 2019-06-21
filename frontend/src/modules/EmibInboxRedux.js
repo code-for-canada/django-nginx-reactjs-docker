@@ -28,10 +28,16 @@ const UPDATE_TASK = "emibInbox/UPDATE_TASK";
 const DELETE_EMAIL = "emibInbox/DELETE_EMAIL";
 const DELETE_TASK = "emibInbox/DELETE_TASK";
 const CHANGE_CURRENT_EMAIL = "emibInbox/CHANGE_CURRENT_EMAIL";
+const GET_EMAILS = "emibInbox/GET_EMAILS";
 const GET_EN_EMAILS = "emibInbox/GET_EN_EMAILS";
 const GET_FR_EMAILS = "emibInbox/GET_FR_EMAILS";
 
 // Action Creators
+// updating email states (emails, emailsEN and emailsFR)
+const updateEmailsEnState = emailsEN => ({ type: GET_EN_EMAILS, emailsEN });
+const updateEmailsFrState = emailsFR => ({ type: GET_FR_EMAILS, emailsFR });
+const updateEmailsState = emails => ({ type: GET_EMAILS, emails });
+
 const readEmail = emailIndex => ({ type: READ_EMAIL, emailIndex });
 // emailIndex refers to the index of the original parent email and emailAction is an actionShape
 const addEmail = (emailIndex, emailAction) => ({ type: ADD_EMAIL, emailIndex, emailAction });
@@ -70,9 +76,6 @@ const changeCurrentEmail = emailIndex => ({
   emailIndex
 });
 
-const updateEmailsEnState = emailsEN => ({ type: GET_EN_EMAILS, emailsEN });
-const updateEmailsFrState = emailsFR => ({ type: GET_FR_EMAILS, emailsFR });
-
 // Initial State
 // emails - represents an array of emailShape objects in the currently selected language.
 // emailSummaries - represents an array of objects indicating read state of each email.
@@ -98,6 +101,11 @@ const emibInbox = (state = initialState, action) => {
         emails: action.language === "fr" ? state.emailsFR : state.emailsEN,
         addressBook:
           action.language === "fr" ? addressBookJson.addressBookFR : addressBookJson.addressBookEN
+      };
+    case GET_EMAILS:
+      return {
+        ...state,
+        emails: action.emails
       };
     case GET_EN_EMAILS:
       return {
@@ -215,5 +223,6 @@ export {
   selectEmailActions,
   changeCurrentEmail,
   updateEmailsEnState,
-  updateEmailsFrState
+  updateEmailsFrState,
+  updateEmailsState
 };

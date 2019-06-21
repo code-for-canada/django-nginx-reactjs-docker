@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
-import { updateEmailsEnState, updateEmailsFrState } from "../../modules/EmibInboxRedux";
-import { getTestQuestions, updateTestQuestionsState } from "../../modules/LoadTestContentRedux";
+import {
+  updateEmailsEnState,
+  updateEmailsFrState,
+  updateEmailsState
+} from "../../modules/EmibInboxRedux";
+import { getTestQuestions } from "../../modules/LoadTestContentRedux";
 import { bindActionCreators } from "redux";
 import { TEST_DEFINITION } from "../../testDefinition";
 
@@ -20,14 +24,18 @@ class EmibIntroductionPage extends Component {
     // Props from Redux
     updateEmailsEnState: PropTypes.func,
     updateEmailsFrState: PropTypes.func,
-    getTestQuestions: PropTypes.func,
-    updateTestQuestionsState: PropTypes.func
+    updateEmailsState: PropTypes.func,
+    getTestQuestions: PropTypes.func
   };
 
   componentDidMount = () => {
+    // getting questions of the sample test from the api
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // saving questions content in emails, emailsEN and emailsFR states
       this.props.updateEmailsEnState(response.questions.en.email);
       this.props.updateEmailsFrState(response.questions.fr.email);
+      // TODO: default language is English for now, but we'll need to put the landing page selected language here instead
+      this.props.updateEmailsState(response.questions.en.email);
     });
   };
 
@@ -50,26 +58,18 @@ class EmibIntroductionPage extends Component {
   }
 }
 
-// export EmibIntroductionPage;
-const mapStateToProps = (state, ownProps) => {
-  return {
-    testQuestions: state.loadTestContent.testQuestions,
-    emailsEN: state.emibInbox.emailsEN
-  };
-};
-
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       updateEmailsEnState,
       updateEmailsFrState,
-      getTestQuestions,
-      updateTestQuestionsState
+      updateEmailsState,
+      getTestQuestions
     },
     dispatch
   );
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(EmibIntroductionPage);
