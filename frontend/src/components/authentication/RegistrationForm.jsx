@@ -293,25 +293,6 @@ class RegistrationForm extends Component {
     document.getElementById("dob-tooltip-button").click();
   };
 
-  // screen reader will read specific content depending on the following field conditions
-  privacyNoticeAriaLabelCondition = () => {
-    // Privacy Notice field is valid OR this is the first page load
-    if (this.state.isValidPrivacyNotice || this.state.isFirstLoad) {
-      // returns privacy notice description and link
-      return (
-        LOCALIZE.authentication.createAccount.privacyNotice +
-        LOCALIZE.authentication.createAccount.privacyNoticeLink
-      );
-    } else {
-      // returns privacy notice error, description and link
-      return (
-        LOCALIZE.authentication.createAccount.privacyNoticeError +
-        LOCALIZE.authentication.createAccount.privacyNotice +
-        LOCALIZE.authentication.createAccount.privacyNoticeLink
-      );
-    }
-  };
-
   // returns password requirements on password field selection for the screen reader users
   getPasswordRequirements = () => {
     // only on first load, since the dynamic password requirements are handling that after the first page load
@@ -606,7 +587,7 @@ class RegistrationForm extends Component {
               <div className="names-grid">
                 <div className="names-grid-first-name">
                   <div style={styles.inputTitle}>
-                    <label htmlFor={"first-name-field"}>
+                    <label id="first-name-title">
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
                     </label>
                     <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -619,6 +600,7 @@ class RegistrationForm extends Component {
                     className={
                       isValidFirstName || isFirstLoad ? validFieldClass : invalidFieldClass
                     }
+                    aria-labelledby={"first-name-title first-name-error"}
                     aria-invalid={!this.state.isValidFirstName && !isFirstLoad}
                     aria-required={"true"}
                     id="first-name-field"
@@ -628,14 +610,14 @@ class RegistrationForm extends Component {
                     onChange={this.getFirstNameContent}
                   />
                   {!isValidFirstName && !isFirstLoad && (
-                    <label htmlFor={"first-name-field"} style={styles.errorMessage}>
+                    <label id="first-name-error" style={styles.errorMessage}>
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameError}
                     </label>
                   )}
                 </div>
                 <div className="names-grid-last-name">
                   <div style={styles.inputTitle}>
-                    <label htmlFor={"last-name-field"}>
+                    <label id="last-name-title">
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     </label>
                     <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -645,6 +627,7 @@ class RegistrationForm extends Component {
                   )}
                   <input
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
+                    aria-labelledby={"last-name-title last-name-error"}
                     aria-invalid={!this.state.isValidLastName && !isFirstLoad}
                     aria-required={"true"}
                     id="last-name-field"
@@ -654,7 +637,7 @@ class RegistrationForm extends Component {
                     onChange={this.getLastNameContent}
                   />
                   {!isValidLastName && !isFirstLoad && (
-                    <label htmlFor={"last-name-field"} style={styles.errorMessage}>
+                    <label id="last-name-error" style={styles.errorMessage}>
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameError}
                     </label>
                   )}
@@ -739,7 +722,7 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <label htmlFor={"email-address-field"}>
+                  <label id="email-address-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -749,6 +732,9 @@ class RegistrationForm extends Component {
                 )}
                 <input
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
+                  aria-labelledby={
+                    "email-address-title email-address-error email-address-account-exists-error"
+                  }
                   aria-invalid={!this.state.isValidEmail && !isFirstLoad}
                   aria-required={"true"}
                   id="email-address-field"
@@ -758,13 +744,13 @@ class RegistrationForm extends Component {
                   onChange={this.getEmailContent}
                 />
                 {!isValidEmail && !isFirstLoad && (
-                  <label htmlFor={"email-address-field"} style={styles.errorMessage}>
+                  <label id="email-address-error" style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.emailError}
                   </label>
                 )}
               </div>
               {accountExistsError && (
-                <label htmlFor={"email-address-field"} style={styles.errorMessage}>
+                <label id="email-address-account-exists-error" style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.accountAlreadyExistsError}
                 </label>
               )}
@@ -797,7 +783,7 @@ class RegistrationForm extends Component {
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <label htmlFor={"password-field"}>
+                  <label id="password-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -864,7 +850,9 @@ class RegistrationForm extends Component {
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
                   aria-live="polite"
-                  aria-describedby={"password-requirements"}
+                  aria-labelledby={
+                    "password-title password-errors password-too-common-error password-too-similar-to-username"
+                  }
                   aria-invalid={!isValidPassword && !isFirstLoad}
                   aria-required={"true"}
                   id="password-field"
@@ -875,7 +863,7 @@ class RegistrationForm extends Component {
                 />
                 {this.getPasswordRequirements()}
                 {!isValidPassword && !isFirstPasswordLoad && (
-                  <label htmlFor={"password-field"}>
+                  <label id="password-errors">
                     <p style={styles.errorMessage}>
                       {
                         LOCALIZE.authentication.createAccount.content.inputs.passwordErrors
@@ -927,19 +915,19 @@ class RegistrationForm extends Component {
                   </label>
                 )}
                 {passwordTooCommonError && (
-                  <label htmlFor={"password-field"} style={styles.errorMessage}>
+                  <label id="password-too-common-error" style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.passwordTooCommonError}
                   </label>
                 )}
                 {passwordTooSimilarToUsernameError && (
-                  <label htmlFor={"password-field"} style={styles.errorMessage}>
+                  <label id="password-too-similar-to-username" style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.passwordTooSimilarToUsernameError}
                   </label>
                 )}
               </div>
               <div>
                 <div style={styles.inputTitle}>
-                  <label htmlFor={"password-confirmation-field"}>
+                  <label id="password-confirmation-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
                   </label>
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
@@ -953,6 +941,7 @@ class RegistrationForm extends Component {
                   }
                   aria-invalid={!isValidPasswordConfirmation && !isFirstLoad}
                   aria-required={"true"}
+                  aria-labelledby={"password-confirmation-title password-confirmation-error"}
                   id="password-confirmation-field"
                   type="password"
                   value={passwordConfirmationContent}
@@ -960,7 +949,7 @@ class RegistrationForm extends Component {
                   onChange={this.getPasswordConfirmationContent}
                 />
                 {!isValidPasswordConfirmation && !isFirstPasswordLoad && (
-                  <label htmlFor={"password-confirmation-field"} style={styles.errorMessage}>
+                  <label id="password-confirmation-error" style={styles.errorMessage}>
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationError}
                   </label>
                 )}
@@ -969,7 +958,7 @@ class RegistrationForm extends Component {
                 <div className="privacy-notice-grid-checkbox">
                   <input
                     aria-invalid={!isValidPrivacyNotice && !isFirstLoad}
-                    aria-label={this.privacyNoticeAriaLabelCondition()}
+                    aria-labelledby={"privacy-notice-error privacy-notice-description"}
                     id="privacy-notice-checkbox"
                     type="checkbox"
                     style={styles.checkbox}
@@ -977,9 +966,10 @@ class RegistrationForm extends Component {
                   />
                 </div>
                 <div className="privacy-notice-grid-description">
-                  <label htmlFor="privacy-notice-checkbox">
+                  <label id="privacy-notice-description">
                     {LOCALIZE.authentication.createAccount.privacyNotice}
                     <button
+                      aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
                       tabIndex="0"
                       onClick={this.showPrivacyNoticePopup}
                       style={styles.privacyNoticeLink}
@@ -991,7 +981,7 @@ class RegistrationForm extends Component {
                 </div>
               </div>
               {!isValidPrivacyNotice && !isFirstLoad && (
-                <label htmlFor={"privacy-notice-checkbox"} style={styles.errorMessage}>
+                <label id="privacy-notice-error" style={styles.errorMessage}>
                   {LOCALIZE.authentication.createAccount.privacyNoticeError}
                 </label>
               )}
