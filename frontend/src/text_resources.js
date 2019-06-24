@@ -452,7 +452,7 @@ let LOCALIZE = new LocalizedStrings({
         to: "To",
         from: "From",
         date: "Date",
-        addReply: "Add email Response",
+        addReply: "Add email response",
         addTask: "Create a task",
         yourActions: `You responded with {0} emails and {1} tasks`,
         editActionDialog: {
