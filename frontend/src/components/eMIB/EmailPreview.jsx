@@ -119,7 +119,7 @@ class EmailPreview extends Component {
               <FontAwesomeIcon icon={faEnvelope} style={imageStyle} />
             )}
             &nbsp;
-            {LOCALIZE.emibTest.inboxPage.emailId}
+            {LOCALIZE.emibTest.inboxPage.emailId.toUpperCase()}
             {email.id + 1}
             {this.props.isRepliedTo && (
               <FontAwesomeIcon icon={faSignOutAlt} style={{ float: "right", ...imageStyle }} />
