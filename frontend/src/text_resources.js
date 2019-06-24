@@ -111,7 +111,7 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "The Public Service Commission's Competency Assessment Tool",
+      title: "Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool.",
       description:
         "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
@@ -736,8 +736,7 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title:
-        "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
+      title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
         "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
