@@ -464,7 +464,7 @@ let LOCALIZE = new LocalizedStrings({
         },
         emailCommons: {
           to: "To:",
-          cc: "Cc:",
+          cc: "CC:",
           reply: "reply",
           replyAll: "reply all",
           forward: "forward",
