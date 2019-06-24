@@ -553,7 +553,7 @@ let LOCALIZE = new LocalizedStrings({
           descriptionPart1:
             "You are about to withdraw from this test. By proceeding, you acknowledge the following:",
           checkboxOne: "I voluntarily withdraw from this examination",
-          checkboxTwo: "my test will not be scored",
+          checkboxTwo: "My test will not be scored",
           checkboxThree:
             "I am aware that the retest period for this test may apply, should I wish to write this test again",
           descriptionPart2:
@@ -1185,10 +1185,10 @@ let LOCALIZE = new LocalizedStrings({
           },
           descriptionPart1:
             "Vous êtes sur le point de mettre fin à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
-          checkboxOne: "je me retire volontairement de ce test;",
-          checkboxTwo: "mon test ne sera pas noté;",
+          checkboxOne: "Je me retire volontairement de ce test;",
+          checkboxTwo: "Mon test ne sera pas noté;",
           checkboxThree:
-            "je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
+            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
           descriptionPart2:
             "Si vous êtes certain(e) de vouloir mettre fin à cette séance, cliquez sur le bouton « Quitter la séance test ». La séance de test sera fermée et vous recevrez des instructions sur la façon de vous retirer.",
           descriptionPart3: "Souhaitez-vous mettre fin à cette séance de test?"
