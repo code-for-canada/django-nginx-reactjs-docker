@@ -1079,7 +1079,7 @@ let LOCALIZE = new LocalizedStrings({
       //Inbox Page
       inboxPage: {
         emailId: " courriel # ",
-        subject: "FR Subject",
+        subject: "Sujet",
         to: "À",
         from: "Expéditeur",
         date: "Date",
