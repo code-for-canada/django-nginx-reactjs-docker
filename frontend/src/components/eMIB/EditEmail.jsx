@@ -338,7 +338,7 @@ class EditEmail extends Component {
                 />
               </div>
               {this.state.emailBody.length >= MAX_RESPONSE && (
-                <p class="visually-hidden" aria-live="assertive" role="alert">
+                <p className="visually-hidden" aria-live="assertive" role="alert">
                   {LOCALIZE.formatString(
                     LOCALIZE.emibTest.inboxPage.characterLimitReached,
                     MAX_RESPONSE
@@ -389,7 +389,7 @@ class EditEmail extends Component {
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
-                <p class="visually-hidden" aria-live="assertive" role="alert">
+                <p className="visually-hidden" aria-live="assertive" role="alert">
                   {LOCALIZE.formatString(
                     LOCALIZE.emibTest.inboxPage.characterLimitReached,
                     MAX_REASON

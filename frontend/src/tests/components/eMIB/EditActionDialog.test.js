@@ -257,25 +257,6 @@ it("clicking on the button only adds the email once", () => {
 });
 
 describe("edit action dialog helper file", () => {
-  // ============================== VARIABLES ==============================
-  // empty variables
-  const emptyEmailType = "";
-  const emptyEmailTo = "";
-  const emptyEmailCc = "";
-  const emptyEmailResponse = "";
-  const emptyReasonsForActionContent = "";
-  const emptyTaskContent = "";
-
-  // initial variables (for edit only)
-  const initialEmailType = EMAIL_TYPE.replyAll;
-  const initialEmailTo = ["to"];
-  const initialEmailCc = ["cc"];
-  const initialEmailResponse = "response";
-  const initialReasonsForActionContent = "reasons for action";
-  const initialTaskContent = "tasks";
-
-  // current variables
-  let stubbedCurrentVariables;
   beforeEach(() => {
     stubbedCurrentVariables = {
       emailType: EMAIL_TYPE.replyAll,
