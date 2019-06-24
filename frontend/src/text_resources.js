@@ -114,7 +114,7 @@ let LOCALIZE = new LocalizedStrings({
       title: "Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool.",
       description:
-        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
     },
 
     //Dashboard Page
@@ -739,7 +739,7 @@ let LOCALIZE = new LocalizedStrings({
       title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
-        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "FR Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
     },
 
     //Dashboard Page
