@@ -257,6 +257,8 @@ it("clicking on the button only adds the email once", () => {
 });
 
 describe("edit action dialog helper file", () => {
+  let stubbedCurrentVariables;
+
   beforeEach(() => {
     stubbedCurrentVariables = {
       emailType: EMAIL_TYPE.replyAll,
