@@ -27,7 +27,7 @@ let LOCALIZE = new LocalizedStrings({
     //authentication
     authentication: {
       login: {
-        title: "LOG IN",
+        title: "Login",
         content: {
           title: "Login",
           description:
@@ -42,7 +42,7 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "Password field selected."
       },
       createAccount: {
-        title: "CREATE AN ACCOUNT",
+        title: "Create and account",
         content: {
           title: "Create an account",
           description:
@@ -652,7 +652,7 @@ let LOCALIZE = new LocalizedStrings({
     //authentication
     authentication: {
       login: {
-        title: "SE CONNECTER",
+        title: "Se connecter",
         content: {
           title: "Connexion",
           description:
@@ -667,7 +667,7 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "FR Password field selected."
       },
       createAccount: {
-        title: "CRÉER UN COMPTE",
+        title: "Créer un compte",
         content: {
           title: "Créer un compte",
           description:
