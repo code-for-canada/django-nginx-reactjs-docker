@@ -477,7 +477,7 @@ let LOCALIZE = new LocalizedStrings({
           selectResponseType: "Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "Your response:",
-          reasonsForAction: "Add reasons for actions here (optional)",
+          reasonsForAction: "Your reasons for action (optional):",
           emailResponseTooltip: "Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -490,7 +490,7 @@ let LOCALIZE = new LocalizedStrings({
         addEmailTask: {
           header: "Email ID #{0}: {1}",
           task: "Your task(s):",
-          reasonsForAction: "Add reasons for actions here (optional)"
+          reasonsForAction: "Your reasons for action (optional):"
         },
         taskContent: {
           task: "Your task(s):",
@@ -1109,7 +1109,7 @@ let LOCALIZE = new LocalizedStrings({
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "FR Your response:",
-          reasonsForAction: "FR Add reasons for actions here (optional)",
+          reasonsForAction: "FR Your reasons for action (optional):",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -1122,7 +1122,7 @@ let LOCALIZE = new LocalizedStrings({
         addEmailTask: {
           header: "FR Email ID #{0}: {1}",
           task: "FR Your task(s):",
-          reasonsForAction: "FR Add reasons for actions here (optional)"
+          reasonsForAction: "FR Your reasons for action (optional):"
         },
         taskContent: {
           task: "FR Your task(s):",
