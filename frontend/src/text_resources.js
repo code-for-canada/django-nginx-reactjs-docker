@@ -343,7 +343,7 @@ let LOCALIZE = new LocalizedStrings({
             "In the following sections, you will find information about ODC and the QA Team. You will be able to access it throughout the test."
         },
         organizationalInformation: {
-          title: "Information about the Organizational Development Council (ODC)",
+          title: "About the Organizational Development Council (ODC)",
           description:
             "The ODC is an independent government agency that promotes organizational development across the public service. The ODC’s mandate is to provide training to all public service employees to maintain a productive and commendable workforce. The organization is responsible for: (1) the creation and evaluation of training programs; (2) research and innovation in learning, transfer of training, and technology; and (3) conducting audits on workplace behaviors in adherence to the ethical and professional standards of public service. With its headquarters located in the National Capital Region, the ODC currently employs approximately 100 individuals.",
           prioritiesSection: {
