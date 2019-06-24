@@ -218,7 +218,7 @@ let LOCALIZE = new LocalizedStrings({
             "The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
         },
         tipsOnTest: {
-          title: "Tips on taking the e-MIB",
+          title: "Tips for taking the e-MIB",
           part1: {
             description:
               "The e-MIB presents you with situations that will give you the opportunity to demonstrate the Key Leadership Competencies. Here are some tips that will help you provide assessors with the information they need to evaluate your performance on those competencies:",
