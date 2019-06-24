@@ -315,7 +315,10 @@ const emptyActionMount = actionType => {
         actionType={actionType}
         editMode={EDIT_MODE.update}
         action={{
-          actionType: actionType
+          actionType: actionType,
+          emailBody: "",
+          task: "",
+          reasonsForAction: ""
         }}
       />
     </Provider>
