@@ -288,7 +288,7 @@ let LOCALIZE = new LocalizedStrings({
             subject: "Preparing Mary for her assignment",
             date: "Friday, November 4",
             body:
-              "Hello Claude,\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\nLooking forward to getting your input,\nGeneviève"
+              "Hello Claude,\n\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\n\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\n\nLooking forward to getting your input,\nGeneviève"
           },
           exampleEmailResponse: {
             emailBody:
