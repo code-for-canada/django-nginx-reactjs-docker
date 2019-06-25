@@ -88,7 +88,8 @@ let LOCALIZE = new LocalizedStrings({
           publicServiceEmploymentActLink: "Public Service Employment Act",
           privacyActLink: "Privacy Act",
           privacyParagraph2:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
+          privacyCommissionerLink: "Privacy Commissioner of Canada",
           privacyParagraph3:
             "The Public Service Commission of Canada (PSC) is committed to protecting the privacy rights of individuals.",
           privacyParagraph4:
@@ -716,7 +717,8 @@ let LOCALIZE = new LocalizedStrings({
           publicServiceEmploymentActLink: "Loi sur l’emploi dans la fonction publique",
           privacyActLink: "Loi sur la protection des renseignements personnels",
           privacyParagraph2:
-            "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
+            "Toute personne a le droit de déposer une plainte auprès du {0} concernant le traitement de ses renseignements personnels par un ministère.",
+          privacyCommissionerLink: "commissaire à la protection de la vie privée du Canada",
           privacyParagraph3:
             "La Commission de la fonction publique du Canada (CFP) s’engage à protéger le droit des personnes à la vie privée.",
           privacyParagraph4:
