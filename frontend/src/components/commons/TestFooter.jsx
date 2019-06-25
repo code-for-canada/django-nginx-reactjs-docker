@@ -31,8 +31,8 @@ class TestFooter extends Component {
     return (
       <div role="contentinfo">
         <Navbar fixed="bottom" style={styles.footer}>
-          {this.props.testIsStarted && <Timer />}
           <div style={styles.content}>
+            {this.props.testIsStarted && <Timer />}
             {!this.props.testIsStarted && (
               <div style={styles.button}>
                 <button
