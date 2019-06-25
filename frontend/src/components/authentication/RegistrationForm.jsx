@@ -1034,7 +1034,14 @@ class RegistrationForm extends Component {
                 )}
               </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph3}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                    {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
+                  </a>
+                )}
+              </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph5}</p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6}</p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7}</p>
