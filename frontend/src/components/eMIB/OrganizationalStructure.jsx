@@ -151,10 +151,10 @@ class OrganizationalStructure extends Component {
         />
         <div>
           <div>
-            {this.props.currentLanguage === "en" && (
+            {this.props.currentLanguage === LANGUAGES.english && (
               <ReactMarkdown source={this.state.markdown_en} />
             )}
-            {this.props.currentLanguage === "fr" && (
+            {this.props.currentLanguage === LANGUAGES.french && (
               <ReactMarkdown source={this.state.markdown_fr} />
             )}
             <p>
