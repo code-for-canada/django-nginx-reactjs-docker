@@ -462,6 +462,7 @@ let LOCALIZE = new LocalizedStrings({
           editTask: "Edit task",
           save: "Save response"
         },
+        characterLimitReached: `Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "To:",
           cc: "Cc:",
@@ -476,8 +477,8 @@ let LOCALIZE = new LocalizedStrings({
         addEmailResponse: {
           selectResponseType: "Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "Your response:",
-          reasonsForAction: "Add reasons for actions here (optional)",
+          response: "Your response: {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit",
           emailResponseTooltip: "Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -489,8 +490,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         addEmailTask: {
           header: "Email ID #{0}: {1}",
-          task: "Your task(s):",
-          reasonsForAction: "Add reasons for actions here (optional)"
+          task: "Your task(s): {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit"
         },
         taskContent: {
           task: "Your task(s):",
@@ -1094,6 +1095,7 @@ let LOCALIZE = new LocalizedStrings({
           editTask: "FR Edit task",
           save: "FR Save response"
         },
+        characterLimitReached: `FR Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "À :",
           cc: "Cc :",
@@ -1109,8 +1111,8 @@ let LOCALIZE = new LocalizedStrings({
           selectResponseType:
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "FR Your response:",
-          reasonsForAction: "FR Add reasons for actions here (optional)",
+          response: "FR Your response: {0} character limit",
+          reasonsForAction: "FR Your reasons for actions (optional): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -1122,8 +1124,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         addEmailTask: {
           header: "FR Email ID #{0}: {1}",
-          task: "FR Your task(s):",
-          reasonsForAction: "FR Add reasons for actions here (optional)"
+          task: "FR Your task(s): {0} character limit",
+          reasonsForAction: "FR Reasons for actions (optional): {0} character limit"
         },
         taskContent: {
           task: "FR Your task(s):",

@@ -13,9 +13,6 @@ const MAX_TASK = "650";
 const MAX_REASON = "650";
 
 const styles = {
-  tooltipButton: {
-    padding: 0
-  },
   header: {
     color: "#00565E",
     paddingTop: 12
@@ -70,6 +67,10 @@ const styles = {
       height: 100,
       resize: "none"
     }
+  },
+  tooltipButton: {
+    float: "right",
+    textDecoration: "underline"
   }
 };
 
@@ -106,7 +107,7 @@ class EditTask extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-tasks-text-area" style={styles.tasks.title}>
-                {LOCALIZE.emibTest.inboxPage.addEmailTask.task}
+                {LOCALIZE.formatString(LOCALIZE.emibTest.inboxPage.addEmailTask.task, MAX_TASK)}
               </label>
               <OverlayTrigger
                 trigger="focus"
@@ -137,6 +138,14 @@ class EditTask extends Component {
                   onChange={this.onTaskContentChange}
                 />
               </div>
+              {this.state.task.length >= MAX_TASK && (
+                <p className="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_TASK
+                  )}
+                </p>
+              )}
               <div style={styles.textCounter} id="unit-test-task-response">
                 {this.state.task === undefined ? 0 : this.state.task.length}/{MAX_TASK}
               </div>
@@ -146,7 +155,10 @@ class EditTask extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area" style={styles.reasonsForAction.title}>
-                {LOCALIZE.emibTest.inboxPage.addEmailTask.reasonsForAction}
+                {LOCALIZE.formatString(
+                  LOCALIZE.emibTest.inboxPage.addEmailTask.reasonsForAction,
+                  MAX_REASON
+                )}
               </label>
               <OverlayTrigger
                 trigger="focus"
@@ -176,6 +188,14 @@ class EditTask extends Component {
                   onChange={this.onReasonsForActionChange}
                 />
               </div>
+              {this.state.reasonsForAction.length >= MAX_REASON && (
+                <p className="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_REASON
+                  )}
+                </p>
+              )}
               <div style={styles.textCounter} id="unit-test-task-rfa">
                 {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}
                 /{MAX_REASON}

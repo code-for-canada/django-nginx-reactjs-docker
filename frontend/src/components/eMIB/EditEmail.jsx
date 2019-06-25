@@ -98,6 +98,10 @@ const styles = {
       height: 150,
       resize: "none"
     }
+  },
+  tooltipButton: {
+    float: "right",
+    textDecoration: "underline"
   }
 };
 
@@ -300,7 +304,10 @@ class EditEmail extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">
-                {LOCALIZE.emibTest.inboxPage.addEmailResponse.response}
+                {LOCALIZE.formatString(
+                  LOCALIZE.emibTest.inboxPage.addEmailResponse.response,
+                  MAX_RESPONSE
+                )}
               </label>
               <OverlayTrigger
                 trigger="focus"
@@ -330,6 +337,14 @@ class EditEmail extends Component {
                   onChange={this.onEmailBodyChange}
                 />
               </div>
+              {this.state.emailBody.length >= MAX_RESPONSE && (
+                <p className="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_RESPONSE
+                  )}
+                </p>
+              )}
               <div style={styles.textCounter}>
                 {this.state.emailBody === undefined ? 0 : this.state.emailBody.length}/
                 {MAX_RESPONSE}
@@ -340,7 +355,10 @@ class EditEmail extends Component {
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area">
-                {LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction}
+                {LOCALIZE.formatString(
+                  LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction,
+                  MAX_REASON
+                )}
               </label>
               <OverlayTrigger
                 trigger="focus"
@@ -370,6 +388,14 @@ class EditEmail extends Component {
                   onChange={this.onReasonsForActionChange}
                 />
               </div>
+              {this.state.reasonsForAction.length >= MAX_REASON && (
+                <p className="visually-hidden" aria-live="assertive" role="alert">
+                  {LOCALIZE.formatString(
+                    LOCALIZE.emibTest.inboxPage.characterLimitReached,
+                    MAX_REASON
+                  )}
+                </p>
+              )}
               <div style={styles.textCounter}>
                 {this.state.reasonsForAction === undefined ? 0 : this.state.reasonsForAction.length}
                 /{MAX_REASON}
