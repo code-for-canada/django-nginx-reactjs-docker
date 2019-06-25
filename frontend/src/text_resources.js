@@ -103,7 +103,7 @@ let LOCALIZE = new LocalizedStrings({
             "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’s {0}. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
           infoSourceChapterLink: "Info Source Chapter",
           privacyParagraph8:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
           reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
           reproductionWarning:
             "This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",

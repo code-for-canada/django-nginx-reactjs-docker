@@ -1071,7 +1071,17 @@ class RegistrationForm extends Component {
                   </a>
                 )}
               </p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8,
+                  <a href="https://www.priv.gc.ca/en/" target="_blank">
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .privacyCommissionerLink
+                    }
+                  </a>
+                )}
+              </p>
               <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}</h3>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionWarning}</p>
               <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingTitle}</h3>
