@@ -636,18 +636,18 @@ let LOCALIZE = new LocalizedStrings({
       sampleTest: "FR eMIB Sample",
       statusTabTitle: "Statut",
       psc: "Commission de la fonction publique du Canada",
-      canada: "FR Government of Canada"
+      canada: "Gouvernement du canada"
     },
 
     //HTML Page Titles
     titles: {
-      CAT: "FR CAT - PSC",
+      CAT: "OEC - CFP",
       eMIB: "FR eMIB Assessment",
       simulation: "FR eMIB Assessment Simulation",
-      status: "FR CAT System Status",
+      status: "FR OÉC état du system",
       prototypes: "FR CAT Prototypes",
       home: "FR CAT Home",
-      homeWithError: "FR Error - CAT Home"
+      homeWithError: "Erreur - OÉC"
     },
 
     //authentication
@@ -702,7 +702,7 @@ let LOCALIZE = new LocalizedStrings({
           "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
         privacyNoticeLink: "FR privacy notice",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
-        button: "Créer compte",
+        button: "Créer un compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",
         passwordTooSimilarToUsernameError: "FR The password is too similar to the username",
@@ -740,12 +740,12 @@ let LOCALIZE = new LocalizedStrings({
       title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
-        "FR Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
+        "L’organisme Code for Canada et la Commission de la fonction publique travaillent sur cet outil qui servira à évaluer les candidats qui postulent à un emploi dans la fonction publique fédérale. On en est à la phase alpha, soit à l’étape où l’on met à l’essai le produit; donc, celui ci pourrait encore subir des modifications."
     },
 
     //Dashboard Page
     dashboard: {
-      title: "FR Welcome, {0} {1}.",
+      title: "Bienvenue, {0} {1}.",
       description:
         "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
       table: {
@@ -1014,19 +1014,19 @@ let LOCALIZE = new LocalizedStrings({
             link: "Description de l'image"
           },
           dialog: {
-            title: "FR The Organizational Chart of the ODC",
-            president: "FR Jenna Icard - President",
-            corpDirector: "FR Amari Kinsler - Corporate Affairs Director",
-            hr: "FR Marc Sheridan - Human Resources Manager",
-            finance: "FR Bob McNutt - Finance Manager",
-            it: "FR Lana Hussad - Information Technology Manager",
-            research: "FR Geneviève Bédard - Research and Innovations Director",
-            programDev: "FR Bartosz Greco - Program Development Director",
-            communications: "FR Nancy Ward - Services and Communications Director",
-            qa: "FR Claude Huard - Quality Assurance Manager (You)",
-            services: "FR Haydar Kalil - Services and Support Manager",
-            audits: "FR Geoffrey Hamma - Audits Manager",
-            training: "FR Lucy Trang - E-Training Manager"
+            title: "Organigramme (CDO)",
+            president: "Jenna Icard - Présidente",
+            corpDirector: "Amari Kinsler - Directeur, Affaires ministérielles",
+            hr: "Marc Sheridan - Gestionnaire, Ressources humaines",
+            finance: "Bob McNutt - Gestionnaire, Finances",
+            it: "Lana Hussad - Gestionnaire, Technologies de l'information ",
+            research: "Geneviève Bédard - Directrice, Recherche et innovations",
+            programDev: "Bartosz Greco - Directeur, Développement de programmes",
+            communications: "Nancy Ward - Directrice, Services et communications",
+            qa: "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+            services: "Haydar Kalil - Gestionnaire, Service et soutien",
+            audits: "Geoffrey Hamma - Gestionnaire, Vérifications",
+            training: "Lucy Trang - Gestionnaire, Formation en ligne"
           }
         },
         teamInformation: {
@@ -1044,18 +1044,18 @@ let LOCALIZE = new LocalizedStrings({
               "Les membres de votre équipe sont Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang et Jack Laurier. Tous les membres de l’équipe sont des analystes de l’assurance de la qualité et, par conséquent, des experts en documentation qui formulent des recommandations sur les documents de formation et le contenu en ligne."
           },
           teamChart: {
-            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ) Team",
+            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"
           },
           dialog: {
-            title: "FR The Organizational Chart of the QA Team",
-            manager: "FR Claude Huard - Manager (You)",
-            analyst1: "FR Danny McBride - QA Analyst",
-            analyst2: "FR Serge Duplessis - QA Analyst",
-            analyst3: "FR Marina Richter - QA Analyst",
-            analyst4: "FR Mary Woodside - QA Analyst",
-            analyst5: "FR Charlie Wang - QA Analyst",
-            analyst6: "FR Jack Laurier - QA Analyst"
+            title: "Organigramme Équipe de l'assurance de la qualité (AQ)",
+            manager: "Claude Huard - Gestionnaire (vous)",
+            analyst1: "Danny McBride - Analyste de l’assurance de la qualité",
+            analyst2: "Serge Duplessis - Analyste de l’assurance de la qualité",
+            analyst3: "Marina Richter - Analyste de l’assurance de la qualité",
+            analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
+            analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
+            analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
           },
           responsibilitiesSection: {
             title: "Responsabilités de l’Équipe de l’AQ",
@@ -1084,13 +1084,13 @@ let LOCALIZE = new LocalizedStrings({
         to: "À",
         from: "Expéditeur",
         date: "Date",
-        addReply: "FR Add email Response",
+        addReply: "Ajouter une réponse par courriel",
         addTask: "FR Add task list",
         yourActions: `FR You responded with {0} emails and {1} tasks`,
         editActionDialog: {
-          addEmail: "FR Add email response",
+          addEmail: "Ajouter une réponse par courriel",
           editEmail: "FR Edit email response",
-          addTask: "FR Add task list",
+          addTask: "Ajouter à la liste de tâches",
           editTask: "FR Edit task",
           save: "FR Save response"
         },
@@ -1104,22 +1104,22 @@ let LOCALIZE = new LocalizedStrings({
           editButton: "Modifier réponse",
           deleteButton: "Supprimer résponse",
           originalEmail: "FR Original email",
-          yourResponse: "FR Your response"
+          yourResponse: "Votre réponse"
         },
         addEmailResponse: {
           selectResponseType:
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "FR Your response: {0} character limit",
-          reasonsForAction: "FR Your reasons for actions (optional): {0} character limit",
+          response: "Votre réponse: {0} character limit",
+          reasonsForAction: "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
         },
         emailResponse: {
           description: "FR For this response, you've chosen to:",
-          response: "FR Your response:",
-          reasonsForAction: "FR Your reasons for action:"
+          response: "Votre réponse:",
+          reasonsForAction: "Votre justification des mesures prises ici (facultatif):"
         },
         addEmailTask: {
           header: "FR Email ID #{0}: {1}",
@@ -1132,7 +1132,7 @@ let LOCALIZE = new LocalizedStrings({
           taskTooltipPart2: "FR Example: Planning a meeting, asking a colleague for information.",
           reasonsForAction: "FR Your reasons for action:",
           reasonsForActionTooltip:
-            "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
+            "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
         },
         deleteResponseConfirmation: {
           title: "FR Are you sure you want to delete this response?",
@@ -1228,14 +1228,14 @@ let LOCALIZE = new LocalizedStrings({
       psc: "Commission de la fonction publique",
       nextButton: "Suivant",
       backButton: "Retour",
-      enterEmib: "FR Enter e-MIB",
+      enterEmib: "Entrez la BRG-e",
       startTest: "Commencer le test",
       confirmStartTest: {
-        aboutToStart: "FR You are about to start the test.",
+        aboutToStart: "Vous êtes sur le point de commencer le test.",
         timerWarning:
-          "FR Once you start the timer will begin, and you can only leave the test by submitting or quitting.",
+          "Le chronomètre se déclenchera lorsque vous commencerez le test. À partir de ce moment là, vous ne pourrez quitter le test qu’en soumettant votre test ou en quittant complètement la session de test. Vous aurez trois heures pour terminer le test.",
         instructionsAccess:
-          "FR You will have access to the instructions from within the test. Good luck!"
+          "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!"
       },
       submitTestButton: "Envoyer le test",
       quitTest: "Quitter la séance de test",
