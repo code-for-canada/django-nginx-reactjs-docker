@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         button: "Create account",
@@ -699,7 +699,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
         privacyNoticeLink: "FR privacy notice",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         button: "Créer compte",

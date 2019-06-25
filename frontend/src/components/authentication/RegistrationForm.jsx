@@ -967,16 +967,17 @@ class RegistrationForm extends Component {
                 </div>
                 <div className="privacy-notice-grid-description">
                   <label id="privacy-notice-description">
-                    {LOCALIZE.authentication.createAccount.privacyNotice}
-                    <button
-                      aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                      tabIndex="0"
-                      onClick={this.showPrivacyNoticePopup}
-                      style={styles.privacyNoticeLink}
-                    >
-                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                    </button>
-                    .
+                    {LOCALIZE.formatString(
+                      LOCALIZE.authentication.createAccount.privacyNotice,
+                      <button
+                        aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                        tabIndex="0"
+                        onClick={this.showPrivacyNoticePopup}
+                        style={styles.privacyNoticeLink}
+                      >
+                        {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                      </button>
+                    )}
                   </label>
                 </div>
               </div>
