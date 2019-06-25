@@ -18,7 +18,8 @@ const styles = {
     padding: 4,
     fontWeight: "bold",
     color: "#00565e",
-    fontSize: 18
+    fontSize: 18,
+    backgroundColor: "#FFFFFF"
   },
   toggleButton: {
     float: "left",
