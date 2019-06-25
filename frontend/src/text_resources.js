@@ -339,24 +339,7 @@ let LOCALIZE = new LocalizedStrings({
           title: "Background Information"
         },
         organizationalInformation: {
-          title: "Information about the Organizational Development Council (ODC)",
-          description:
-            "The ODC is an independent government agency that promotes organizational development across the public service. The ODC’s mandate is to provide training to all public service employees to maintain a productive and commendable workforce. The organization is responsible for: (1) the creation and evaluation of training programs; (2) research and innovation in learning, transfer of training, and technology; and (3) conducting audits on workplace behaviors in adherence to the ethical and professional standards of public service. With its headquarters located in the National Capital Region, the ODC currently employs approximately 100 individuals.",
-          prioritiesSection: {
-            title: "Priorities",
-            bullet1:
-              "To ensure that the organization continues to enhance productive workplace behaviors through policies of ethical and professional conduct.",
-            bullet2:
-              "To continuously evaluate the effectiveness and utility of training programs across the public service.",
-            bullet3:
-              "To deliver high-quality training programs across the public service, supporting the Government of Canada’s priorities.",
-            bullet4: "To manage the documentation and communication of client training activities."
-          },
-          risksSection: {
-            title: "Risks",
-            bullet1:
-              "The scope and complexity of training programs pose ongoing challenges for (1) their timely delivery and effectiveness in responding to new and emerging policy priorities; (2) maintaining partnerships that are essential for high-quality training program development, delivery, and evaluation; (3) keeping pace with the evolving demands of clients and with new learning technology."
-          }
+          title: "Information about the Organizational Development Council (ODC)"
         },
         organizationalStructure: {
           title: "Organizational Structure",
@@ -965,25 +948,7 @@ let LOCALIZE = new LocalizedStrings({
           title: "Contexte"
         },
         organizationalInformation: {
-          title: "Renseignements sur le Conseil du Développement Organisationnel  (CDO)",
-          description:
-            "Le CDO est un organisme gouvernemental indépendant qui œuvre à la promotion du développement organisationnel au sein de la fonction publique. Le mandat du CDO est d’offrir de la formation à tous les employés de la fonction publique afin de maintenir une main-d’œuvre productive et digne d’éloges. L’organisme est responsable de : (1) la création et l’évaluation des programmes de formation; (2) la recherche et l’innovation dans les domaines de l’apprentissage, du transfert de formation et de la technologie; (3) la réalisation de vérifications en matière de comportements en milieu de travail, conformément aux normes d’éthique et de conduite professionnelle de la fonction publique. Le CDO, dont l’administration centrale est située dans la région de la capitale nationale, compte actuellement environ 100 employés.",
-          prioritiesSection: {
-            title: "Priorités",
-            bullet1:
-              "Veiller à ce que l’organisme continue d’améliorer les comportements productifs au travail par la mise en place de politiques en matière de comportement éthique et professionnel.",
-            bullet2:
-              "Évaluer de façon continue l’efficacité et l’utilité des programmes de formation au sein de la fonction publique.",
-            bullet3:
-              "Offrir à l’échelle de la fonction publique des programmes de qualité supérieure qui appuient les priorités du gouvernement du Canada.",
-            bullet4:
-              "Gérer la documentation et la communication des activités de formation des clients."
-          },
-          risksSection: {
-            title: "Risques",
-            bullet1:
-              "La portée et la complexité des programmes de formation posent des défis continuels quant à : (1) leur livraison dans les délais prévus et leur efficacité à répondre aux priorités stratégiques nouvelles ou émergentes; (2) le maintien de partenariats essentiels à l’élaboration, à la livraison et à l’évaluation de programmes de formation de haute qualité; (3) la capacité de suivre le rythme des demandes changeantes des clients et la nouvelle technologie d’apprentissage."
-          }
+          title: "Renseignements sur le Conseil du Développement Organisationnel  (CDO)"
         },
         organizationalStructure: {
           title: "Structure organisationnelle",
