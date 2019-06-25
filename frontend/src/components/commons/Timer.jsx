@@ -54,11 +54,16 @@ class Timer extends Component {
       <div style={styles.container}>
         <div style={styles.timeContainer}>
           {hidden && (
-            <FontAwesomeIcon style={isTimeAlmostOut ? styles.timeOut : {}} icon={faClock} />
+            <span>
+              <span className="visually-hidden">
+                {LOCALIZE.emibTest.testFooter.timer.timerHidden}
+              </span>
+              <FontAwesomeIcon style={isTimeAlmostOut ? styles.timeOut : {}} icon={faClock} />
+            </span>
           )}
           {!hidden && (
             <div style={isTimeAlmostOut ? styles.timeOut : {}}>
-              <span className="visually-hidden">Time left in test session:</span>
+              <span className="visually-hidden">{LOCALIZE.emibTest.testFooter.timer.timeLeft}</span>
               <span>00:00:00</span>
             </div>
           )}
