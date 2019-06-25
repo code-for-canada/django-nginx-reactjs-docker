@@ -343,20 +343,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         organizationalStructure: {
           title: "Organizational Structure",
-          description:
-            "The ODC has an organizational structure consisting of four units including: Corporate Affairs, Research and Innovations, Training Program Development, and Services and Communications.",
-          para1Title: "Corporate affairs (CA). ",
-          para1:
-            "The CA unit is comprised of the Human Resources Team, the Finance Team and the Information Technology Team. Together these teams are responsible for the management of the workforce, the work environment, the finances, as well as the technology and information in ODC.",
-          para2Title: "Research and innovations (RI). ",
-          para2:
-            "The main goals of the RI unit are to conduct research initiatives in learning, transfer of training, and technology and to help develop innovative teaching techniques that promote employee productivity and general well-being. ",
-          para3Title: "Program development (PD).  ",
-          para3:
-            "The focus of the PD unit is to plan, develop and administer training programs across the public service. To do so, the unit establishes and maintains relationships with clients and partners, and conducts analyses of their organizational development training needs.",
-          para4Title: "Services and communications (SC). ",
-          para4:
-            "The main goals of the SC unit are to continuously evaluate training programs offered by organizations in the public service, conduct internal and external audits for partners and clients, and oversee the dissemination of information (e.g., content review for online tools, developing documentation for training programs). The SC unit is comprised of the Quality Assurance Team, the Service and support Team, the Audits Team, and the E-Training Team.",
           orgChart: {
             desciption: "Organizational Chart (ODC)",
             link: "Image Description"
@@ -952,20 +938,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         organizationalStructure: {
           title: "Structure organisationnelle",
-          description:
-            "Le CDO a une structure organisationnelle qui comporte les quatre unités suivantes : Affaires ministérielles, Recherche et innovations, Développement de programmes, et Services et communications.",
-          para1Title: "Affaires ministérielles (AM) ",
-          para1:
-            "L’Unité des AM est composée de l’Équipe des ressources humaines, l’Équipe des finances et l’Équipe de la technologie de l’information. Ensemble, ces équipes sont responsables de la gestion de la main-d’œuvre, de l’environnement de travail, des finances, ainsi que de la technologie et de l’information à l’intérieur du CDO.",
-          para2Title: "Recherche et innovations (RI). ",
-          para2:
-            "Les principaux objectifs de l’Unité de RI sont de mener des initiatives de recherche en apprentissage, en transfert de formation et en technologie; et de contribuer à l’élaboration de techniques d’enseignement novatrices, afin de promouvoir la productivité et le bien-être général des employés.",
-          para3Title: "Développement de programmes (DP). ",
-          para3:
-            "L’Unité du DP vise à planifier, à créer et à administrer les programmes de formation au sein de la fonction publique. Pour ce faire, l’unité établit et entretient des relations avec les clients et les partenaires, et analyse  leurs besoins de formation en développement organisationnel.",
-          para4Title: "Services et communications (SC). ",
-          para4:
-            "Les principaux objectifs de l’Unité des SC sont d’évaluer de façon continue les programmes de formation offerts par les organisations de la fonction publique, effectuer des vérifications internes et externes pour les partenaires et les clients, et surveiller la diffusion de l’information (p. ex., évaluer le contenu des outils en ligne, rédiger les documents relatifs aux programmes de formation). L’Unité des SC est composée de l’Équipe de l’assurance de la qualité, l’Équipe du service et soutien, l’Équipe des vérifications et de l’Équipe des formations en ligne.",
           orgChart: {
             desciption: "Organigramme (CDO)",
             link: "Description de l'image"

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import ReactMarkdown from "react-markdown";
+import markdown_en from "./markdown_files/OrganizationalStructure_en.md";
+import markdown_fr from "./markdown_files/OrganizationalStructure_fr.md";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -29,7 +32,9 @@ class OrganizationalStructure extends Component {
   };
 
   state = {
-    showPopupBox: false
+    showPopupBox: false,
+    markdown_en: "",
+    markdown_fr: ""
   };
 
   openPopup = () => {
@@ -38,6 +43,16 @@ class OrganizationalStructure extends Component {
 
   closePopup = () => {
     this.setState({ showPopupBox: false });
+  };
+
+  // loads the markdown files (english and french versions)
+  componentWillMount = () => {
+    fetch(markdown_en)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_en: text }));
+    fetch(markdown_fr)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_fr: text }));
   };
 
   render() {
@@ -135,33 +150,13 @@ class OrganizationalStructure extends Component {
           rightButtonTitle={LOCALIZE.commons.close}
         />
         <div>
-          <h2>{LOCALIZE.emibTest.background.organizationalStructure.title}</h2>
           <div>
-            <p>{LOCALIZE.emibTest.background.organizationalStructure.description}</p>
-            <p>
-              <span className="font-weight-bold">
-                {LOCALIZE.emibTest.background.organizationalStructure.para1Title}
-              </span>
-              {LOCALIZE.emibTest.background.organizationalStructure.para1}
-            </p>
-            <p>
-              <span className="font-weight-bold">
-                {LOCALIZE.emibTest.background.organizationalStructure.para2Title}
-              </span>
-              {LOCALIZE.emibTest.background.organizationalStructure.para2}
-            </p>
-            <p>
-              <span className="font-weight-bold">
-                {LOCALIZE.emibTest.background.organizationalStructure.para3Title}
-              </span>
-              {LOCALIZE.emibTest.background.organizationalStructure.para3}
-            </p>
-            <p>
-              <span className="font-weight-bold">
-                {LOCALIZE.emibTest.background.organizationalStructure.para4Title}
-              </span>
-              {LOCALIZE.emibTest.background.organizationalStructure.para4}
-            </p>
+            {this.props.currentLanguage === "en" && (
+              <ReactMarkdown source={this.state.markdown_en} />
+            )}
+            {this.props.currentLanguage === "fr" && (
+              <ReactMarkdown source={this.state.markdown_fr} />
+            )}
             <p>
               {currentLanguage === LANGUAGES.english && (
                 <ImageZoom
