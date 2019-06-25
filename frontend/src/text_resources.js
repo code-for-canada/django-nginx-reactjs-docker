@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personal information, as set out in the {0}.",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         button: "Create account",
@@ -636,9 +636,9 @@ let LOCALIZE = new LocalizedStrings({
     //Main Tabs
     mainTabs: {
       homeTabTitleUnauthenticated: "Accueil",
-      homeTabTitleAuthenticated: "FR Your tests",
+      homeTabTitleAuthenticated: "Votre tests",
       dashboardTabTitle: "Tableau de bord",
-      sampleTest: "FR eMIB Sample",
+      sampleTest: "BRG-e pratique",
       statusTabTitle: "Statut",
       psc: "Commission de la fonction publique du Canada",
       canada: "Gouvernement du canada"
@@ -649,9 +649,9 @@ let LOCALIZE = new LocalizedStrings({
       CAT: "OEC - CFP",
       eMIB: "FR eMIB Assessment",
       simulation: "FR eMIB Assessment Simulation",
-      status: "FR OÉC état du system",
-      prototypes: "FR CAT Prototypes",
-      home: "FR CAT Home",
+      status: "OÉC état du system",
+      prototypes: "OÉC rototypes",
+      home: "OÉC accueil",
       homeWithError: "Erreur - OÉC"
     },
 
@@ -662,7 +662,7 @@ let LOCALIZE = new LocalizedStrings({
         content: {
           title: "Connexion",
           description:
-            "FR An account is required to proceed further. To log in, enter your credentials below.",
+            "Un compte est nécessaire pour continuer. Pour ouvrir une session, entrez votre code d’utilisateur et votre mot de passe.",
           inputs: {
             emailTitle: "Adresse courriel :",
             passwordTitle: "Mot de passe :"
@@ -677,13 +677,13 @@ let LOCALIZE = new LocalizedStrings({
         content: {
           title: "Créer un compte",
           description:
-            "FR An account is required to proceed further. To create an account, fill out the following.",
+            "FR Un compte est nécessaire pour continuer. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
             firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
             lastNameError: "FR Must be a valid last name",
-            dobDayTitle: "Date de naissance: (DD / MM / ---Y) :",
+            dobDayTitle: "Date de naissance: (JJ / MM / ---A) :",
             dobError: "FR Please fill out all fields related to the date of birth",
             dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
@@ -705,14 +705,14 @@ let LOCALIZE = new LocalizedStrings({
         },
         privacyNotice:
           "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
-        privacyNoticeLink: "FR privacy notice",
+        privacyNoticeLink: "Avis de confidentialité",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         button: "Créer un compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",
         passwordTooSimilarToUsernameError: "FR The password is too similar to the username",
         privacyNoticeDialog: {
-          title: "FR Privacy and Security",
+          title: "Confidentialité et sécurité",
           privacyNoticeStatement: "Énoncé de confidentialité",
           privacyParagraph1:
             "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la {0} et protégés aux termes de la {1}, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
@@ -760,15 +760,15 @@ let LOCALIZE = new LocalizedStrings({
       description:
         "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
       table: {
-        columnOne: "FR Name of test",
-        columnTwo: "FR Scheduled test date",
-        columnThree: "FR Action"
+        columnOne: "Nom de test",
+        columnTwo: "Date prévue de test",
+        columnThree: "Action"
       }
     },
 
     //Status Page
     statusPage: {
-      title: "Statut de OEC",
+      title: "Statut de OÉC",
       logo: "Logo Thunder CAT",
       welcomeMsg:
         "Page de statut interne afin de déterminer rapidement l'état / la santé de l'Outil d'Évaluation des Compétences.",
@@ -846,7 +846,7 @@ let LOCALIZE = new LocalizedStrings({
       //Home Page
       homePage: {
         testTitle: "La BRG-e",
-        welcomeMsg: "Bienvenu dans le test pratique de eMIB"
+        welcomeMsg: "Bienvenue dans le test pratique de eMIB"
       },
 
       //HowTo Page
@@ -871,7 +871,7 @@ let LOCALIZE = new LocalizedStrings({
               "Utilisez uniquement l’information fournie dans les courriels et les informations contextuelles. Ne tirez aucune conclusion fondée sur la culture de votre propre organisation. Évitez de faire des suppositions qui ne sont pas raisonnablement corroborées par l’information contextuelle ou les courriels."
           },
           part2: {
-            title: "FR Other important notes",
+            title: "Autres notes importantes",
             bullet1:
               "Vous serez évalués en fonction des réponses aux courriels, des tâches et des justifications des mesures prises. Le contenu du bloc-notes ne sera pas évalué.",
             bullet2:
@@ -889,7 +889,7 @@ let LOCALIZE = new LocalizedStrings({
             description:
               "Vous pouvez répondre aux courriels que vous avez reçus de deux façons : en envoyant un courriel ou en ajoutant une tâche à votre liste de tâches. Les deux méthodes de réponse sont décrites ci-dessous, suivies d’exemples.",
             part1: {
-              title: "FR Example of an email you have received:",
+              title: "Exemple d’un courriel que vous avez reçu :",
               para1:
                 "Vous trouverez ci-dessous deux façons différentes de répondre au courriel. Comme il est mentionné précédemment, vous pouvez choisir l’une ou l’autre des deux options présentées ou combiner les deux. Veuillez noter que les réponses fournies n’ont pas été évaluées pour déterminer la mesure dans laquelle elles démontrent la compétence ciblée dans le courriel. Elles sont présentées ici uniquement pour illustrer comment utiliser chacune des deux façons de répondre."
             },
@@ -984,7 +984,7 @@ let LOCALIZE = new LocalizedStrings({
             "Dans les sections suivantes, vous trouverez de l’information sur le CDO et l’Équipe d’AQ. Vous serez en mesure d’y accéder tout au long du test."
         },
         organizationalInformation: {
-          title: "Renseignements sur le Conseil du Développement Organisationnel  (CDO)",
+          title: "Renseignements sur le Conseil du Développement Organisationnel (CDO)",
           description:
             "Le CDO est un organisme gouvernemental indépendant qui œuvre à la promotion du développement organisationnel au sein de la fonction publique. Le mandat du CDO est d’offrir de la formation à tous les employés de la fonction publique afin de maintenir une main-d’œuvre productive et digne d’éloges. L’organisme est responsable de : (1) la création et l’évaluation des programmes de formation; (2) la recherche et l’innovation dans les domaines de l’apprentissage, du transfert de formation et de la technologie; (3) la réalisation de vérifications en matière de comportements en milieu de travail, conformément aux normes d’éthique et de conduite professionnelle de la fonction publique. Le CDO, dont l’administration centrale est située dans la région de la capitale nationale, compte actuellement environ 100 employés.",
           prioritiesSection: {
@@ -1097,7 +1097,7 @@ let LOCALIZE = new LocalizedStrings({
         date: "Date",
         addReply: "Ajouter une réponse par courriel",
         addTask: "FR Add task list",
-        yourActions: `FR You responded with {0} emails and {1} tasks`,
+        yourActions: `Vous avez repondre avec {0} courriels et {1} tâches`,
         editActionDialog: {
           addEmail: "Ajouter une réponse par courriel",
           editEmail: "FR Edit email response",
@@ -1114,7 +1114,7 @@ let LOCALIZE = new LocalizedStrings({
           forward: "transmettre",
           editButton: "Modifier réponse",
           deleteButton: "Supprimer résponse",
-          originalEmail: "FR Original email",
+          originalEmail: "Courriel d’origine",
           yourResponse: "Votre réponse"
         },
         addEmailResponse: {
@@ -1126,7 +1126,7 @@ let LOCALIZE = new LocalizedStrings({
             "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
-            "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
+            "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
         },
         emailResponse: {
           description: "FR For this response, you've chosen to:",
@@ -1142,7 +1142,7 @@ let LOCALIZE = new LocalizedStrings({
           task: "FR Your task(s):",
           taskTooltipPart1: "FR An action you intend to take to address a situation in the emails.",
           taskTooltipPart2: "FR Example: Planning a meeting, asking a colleague for information.",
-          reasonsForAction: "FR Your reasons for action:",
+          reasonsForAction: "Votre justification des mesures prises ici (facultatif):",
           reasonsForActionTooltip:
             "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
         },
