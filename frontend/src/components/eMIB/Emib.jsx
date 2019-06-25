@@ -12,13 +12,24 @@ import { activateTest, deactivateTest, PAGES } from "../../modules/TestStatusRed
 import ConfirmStartTest from "../commons/ConfirmStartTest";
 import EmibIntroductionPage from "./EmibIntroductionPage";
 import { Helmet } from "react-helmet";
+import {
+  updateEmailsEnState,
+  updateEmailsFrState,
+  updateEmailsState
+} from "../../modules/EmibInboxRedux";
+import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { TEST_DEFINITION } from "../../testDefinition";
 
 class Emib extends Component {
   static propTypes = {
     // Provided by Redux
     activateTest: PropTypes.func.isRequired,
     deactivateTest: PropTypes.func.isRequired,
-    curPage: PropTypes.string.isRequired
+    curPage: PropTypes.string.isRequired,
+    updateEmailsEnState: PropTypes.func,
+    updateEmailsFrState: PropTypes.func,
+    updateEmailsState: PropTypes.func,
+    getTestQuestions: PropTypes.func
   };
 
   state = {
@@ -29,9 +40,19 @@ class Emib extends Component {
     showSubmitPopup: false
   };
 
-  // Within eMIB Tabs functions
+  /* Within eMIB Tabs functions
+  loading test questions from the APIs on test start */
   handleStartTest = () => {
-    this.setState({ testIsStarted: true, disabledTabs: [], currentTab: "background" });
+    // getting questions of the sample test from the api
+    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // TODO: default language is English for now, but we'll need to put the landing page selected language here instead
+      this.props.updateEmailsState(response.questions.en.email);
+      // saving questions content in emails, emailsEN and emailsFR states
+      this.props.updateEmailsEnState(response.questions.en.email);
+      this.props.updateEmailsFrState(response.questions.fr.email);
+
+      this.setState({ testIsStarted: true, disabledTabs: [], currentTab: "background" });
+    });
   };
 
   closePopup = () => {
@@ -124,7 +145,11 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       activateTest,
-      deactivateTest
+      deactivateTest,
+      updateEmailsEnState,
+      updateEmailsFrState,
+      updateEmailsState,
+      getTestQuestions
     },
     dispatch
   );
