@@ -97,7 +97,8 @@ let LOCALIZE = new LocalizedStrings({
           privacyParagraph5:
             "Personal information collected by the PPC is protected from disclosure to unauthorized persons and/or agencies subject to the provisions of the Privacy Act. However personal information may be disclosed without your consent in certain specific circumstances, per section 8 of the Privacy Act. Additionally, certain demographic information will be used for analytical, research and development purposes.",
           privacyParagraph6:
-            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s Access to Information and Privacy Protection Division to request corrections.",
+            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s {0} to request corrections.",
+          accessToInformationLink: "Access to Information and Privacy Protection Division",
           privacyParagraph7:
             "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
           privacyParagraph8:
@@ -727,8 +728,10 @@ let LOCALIZE = new LocalizedStrings({
             "Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
           privacyParagraph6:
             "Conformément aux dispositions de la Loi sur la protection des renseignements personnels, les renseignements personnels recueillis par le CPP ne peuvent être divulgués à des personnes ou à des organismes non autorisés. Toutefois, conformément aux dispositions de l’article 8 de cette loi, vos renseignements personnels pourraient être divulgués sans votre consentement dans certains cas précis. De plus, certaines données démographiques seront utilisées à des fins d’analyse, de recherche et de développement.",
+          accessToInformationLink:
+            "Division de l’Accès à l’information et de la protection des renseignements personnels",
           privacyParagraph7:
-            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la Division de l’Accès à l’information et de la protection des renseignements personnels du ministère concerné.",
+            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la {0} du ministère concerné.",
           privacyParagraph8:
             "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
           reproductionTitle: "Reproduction ou divulgation non autorisées du contenu de l'examen",

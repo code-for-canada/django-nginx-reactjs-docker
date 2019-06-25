@@ -1043,7 +1043,20 @@ class RegistrationForm extends Component {
                 )}
               </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph5}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6,
+                  <a
+                    href="https://www.canada.ca/en/public-service-commission/corporate/about-us/access-information-privacy-office.html"
+                    target="_blank"
+                  >
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .accessToInformationLink
+                    }
+                  </a>
+                )}
+              </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7}</p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8}</p>
               <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}</h3>
