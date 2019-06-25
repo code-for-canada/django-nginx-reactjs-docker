@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import markdown_en from "./markdown_files/BackgroundInformation_en.md";
 import markdown_fr from "./markdown_files/BackgroundInformation_fr.md";
+import { LANGUAGES } from "../commons/Translation";
 
 class BackgroundInformation extends Component {
   state = {
@@ -23,8 +24,12 @@ class BackgroundInformation extends Component {
   render() {
     return (
       <div>
-        {this.props.language === "en" && <ReactMarkdown source={this.state.markdown_en} />}
-        {this.props.language === "fr" && <ReactMarkdown source={this.state.markdown_fr} />}
+        {this.props.language === LANGUAGES.english && (
+          <ReactMarkdown source={this.state.markdown_en} />
+        )}
+        {this.props.language === LANGUAGES.french && (
+          <ReactMarkdown source={this.state.markdown_fr} />
+        )}
       </div>
     );
   }
