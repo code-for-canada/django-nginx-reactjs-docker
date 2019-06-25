@@ -100,7 +100,8 @@ let LOCALIZE = new LocalizedStrings({
             "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s {0} to request corrections.",
           accessToInformationLink: "Access to Information and Privacy Protection Division",
           privacyParagraph7:
-            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’s {0}. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+          infoSourceChapterLink: "Info Source Chapter",
           privacyParagraph8:
             "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
           reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
@@ -732,8 +733,9 @@ let LOCALIZE = new LocalizedStrings({
             "Division de l’Accès à l’information et de la protection des renseignements personnels",
           privacyParagraph7:
             "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la {0} du ministère concerné.",
+          infoSourceChapterLink: "chapitre d’Info Source",
           privacyParagraph8:
-            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le {0} concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
           reproductionTitle: "Reproduction ou divulgation non autorisées du contenu de l'examen",
           reproductionWarning:
             "Cet examen et son contenu portent le niveau de sécurité Protégé B. La reproduction ou l'enregistrement du contenu de cet examen, sous quelque forme que ce soit, sont strictement interdits. Tous les documents liés à l'examen, y compris les brouillons, doivent être remis à l'administrateur de l'examen à la fin de celui-ci. La reproduction, l'enregistrement ou la divulgation non autorisées du contenu de l'examen contreviennent à la Politique du gouvernement sur la sécurité, et l'utilisation de renseignements obtenus ou transmis de manière inappropriée peut constituer une infraction à la Loi sur l'emploi dans la fonction publique (LEFP). Les parties impliquées dans la divulgation ou l'utilisation inappropriée de contenu d'examen protégé pourraient faire l'objet d'une enquête en vertu de la LEFP. Au terme de cette enquête, les personnes reconnues coupables de fraude pourraient faire l'objet d'une déclaration de culpabilité par procédure sommaire ou voir leur dossier renvoyé à la Gendarmerie royale du Canada.",
