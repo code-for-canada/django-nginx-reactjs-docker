@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personal information, as set out in the ",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         button: "Create account",
