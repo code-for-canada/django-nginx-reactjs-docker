@@ -56,7 +56,12 @@ class Timer extends Component {
           {hidden && (
             <FontAwesomeIcon style={isTimeAlmostOut ? styles.timeOut : {}} icon={faClock} />
           )}
-          {!hidden && <div style={isTimeAlmostOut ? styles.timeOut : {}}>00:00:00</div>}
+          {!hidden && (
+            <div style={isTimeAlmostOut ? styles.timeOut : {}}>
+              <span className="visually-hidden">Time left in test session:</span>
+              <span>00:00:00</span>
+            </div>
+          )}
         </div>
         <Button style={styles.toggleButton} onClick={this.toggleVisibility}>
           <FontAwesomeIcon icon={hidden ? faPlusCircle : faMinusCircle} />
