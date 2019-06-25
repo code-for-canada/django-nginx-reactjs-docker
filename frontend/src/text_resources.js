@@ -27,7 +27,7 @@ let LOCALIZE = new LocalizedStrings({
     //authentication
     authentication: {
       login: {
-        title: "LOG IN",
+        title: "Login",
         content: {
           title: "Login",
           description:
@@ -42,7 +42,7 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "Password field selected."
       },
       createAccount: {
-        title: "CREATE AN ACCOUNT",
+        title: "Create and account",
         content: {
           title: "Create an account",
           description:
@@ -111,10 +111,10 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "The Public Service Commission's Competency Assessment Tool",
+      title: "Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool.",
       description:
-        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
     },
 
     //Dashboard Page
@@ -218,7 +218,7 @@ let LOCALIZE = new LocalizedStrings({
             "The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
         },
         tipsOnTest: {
-          title: "Tips on taking the e-MIB",
+          title: "Tips for taking the e-MIB",
           part1: {
             description:
               "The e-MIB presents you with situations that will give you the opportunity to demonstrate the Key Leadership Competencies. Here are some tips that will help you provide assessors with the information they need to evaluate your performance on those competencies:",
@@ -288,7 +288,7 @@ let LOCALIZE = new LocalizedStrings({
             subject: "Preparing Mary for her assignment",
             date: "Friday, November 4",
             body:
-              "Hello Claude,\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\nLooking forward to getting your input,\nGeneviève"
+              "Hello Claude,\n\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\n\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\n\nLooking forward to getting your input,\nGeneviève"
           },
           exampleEmailResponse: {
             emailBody:
@@ -343,7 +343,7 @@ let LOCALIZE = new LocalizedStrings({
             "In the following sections, you will find information about ODC and the QA Team. You will be able to access it throughout the test."
         },
         organizationalInformation: {
-          title: "Information about the Organizational Development Council (ODC)",
+          title: "About the Organizational Development Council (ODC)",
           description:
             "The ODC is an independent government agency that promotes organizational development across the public service. The ODC’s mandate is to provide training to all public service employees to maintain a productive and commendable workforce. The organization is responsible for: (1) the creation and evaluation of training programs; (2) research and innovation in learning, transfer of training, and technology; and (3) conducting audits on workplace behaviors in adherence to the ethical and professional standards of public service. With its headquarters located in the National Capital Region, the ODC currently employs approximately 100 individuals.",
           prioritiesSection: {
@@ -452,20 +452,20 @@ let LOCALIZE = new LocalizedStrings({
         to: "To",
         from: "From",
         date: "Date",
-        addReply: "Add email Response",
-        addTask: "Create a task",
+        addReply: "Add email response",
+        addTask: "Add task list",
         yourActions: `You responded with {0} emails and {1} tasks`,
         editActionDialog: {
           addEmail: "Add email response",
           editEmail: "Edit email response",
-          addTask: "Add task",
+          addTask: "Add task list",
           editTask: "Edit task",
           save: "Save response"
         },
         characterLimitReached: `Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "To:",
-          cc: "Cc:",
+          cc: "CC:",
           reply: "reply",
           replyAll: "reply all",
           forward: "forward",
@@ -554,7 +554,7 @@ let LOCALIZE = new LocalizedStrings({
           descriptionPart1:
             "You are about to withdraw from this test. By proceeding, you acknowledge the following:",
           checkboxOne: "I voluntarily withdraw from this examination",
-          checkboxTwo: "my test will not be scored",
+          checkboxTwo: "My test will not be scored",
           checkboxThree:
             "I am aware that the retest period for this test may apply, should I wish to write this test again",
           descriptionPart2:
@@ -613,7 +613,7 @@ let LOCALIZE = new LocalizedStrings({
       disabled: "Disabled",
       backToTop: "Back to top",
       notepad: {
-        title: "notepad",
+        title: "Notepad",
         placeholder: "Put your notes here...",
         hideButton: "Hide Notes",
         openButton: "Open Notes"
@@ -653,7 +653,7 @@ let LOCALIZE = new LocalizedStrings({
     //authentication
     authentication: {
       login: {
-        title: "SE CONNECTER",
+        title: "Se connecter",
         content: {
           title: "Connexion",
           description:
@@ -668,7 +668,7 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "FR Password field selected."
       },
       createAccount: {
-        title: "CRÉER UN COMPTE",
+        title: "Créer un compte",
         content: {
           title: "Créer un compte",
           description:
@@ -737,11 +737,10 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title:
-        "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
+      title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
-        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "FR Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
     },
 
     //Dashboard Page
@@ -1081,17 +1080,17 @@ let LOCALIZE = new LocalizedStrings({
       //Inbox Page
       inboxPage: {
         emailId: " courriel # ",
-        subject: "FR Subject",
+        subject: "Sujet",
         to: "À",
         from: "Expéditeur",
         date: "Date",
         addReply: "FR Add email Response",
-        addTask: "FR Create a task",
+        addTask: "FR Add task list",
         yourActions: `FR You responded with {0} emails and {1} tasks`,
         editActionDialog: {
           addEmail: "FR Add email response",
           editEmail: "FR Edit email response",
-          addTask: "FR Add task",
+          addTask: "FR Add task list",
           editTask: "FR Edit task",
           save: "FR Save response"
         },
@@ -1188,10 +1187,10 @@ let LOCALIZE = new LocalizedStrings({
           },
           descriptionPart1:
             "Vous êtes sur le point de mettre fin à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
-          checkboxOne: "je me retire volontairement de ce test;",
-          checkboxTwo: "mon test ne sera pas noté;",
+          checkboxOne: "Je me retire volontairement de ce test;",
+          checkboxTwo: "Mon test ne sera pas noté;",
           checkboxThree:
-            "je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
+            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
           descriptionPart2:
             "Si vous êtes certain(e) de vouloir mettre fin à cette séance, cliquez sur le bouton « Quitter la séance test ». La séance de test sera fermée et vous recevrez des instructions sur la façon de vous retirer.",
           descriptionPart3: "Souhaitez-vous mettre fin à cette séance de test?"
@@ -1248,10 +1247,10 @@ let LOCALIZE = new LocalizedStrings({
       disabled: "Désactivé",
       backToTop: "Haut de la page",
       notepad: {
-        title: "bloc-notes",
+        title: "Bloc-notes",
         placeholder: "Mettez vos notes ici...",
-        hideButton: "cacher notes",
-        openButton: "ouvrir notes"
+        hideButton: "Cacher notes",
+        openButton: "Ouvrir notes"
       },
       cancel: "Annuler",
       cancelResponse: "Annuler la réponse",

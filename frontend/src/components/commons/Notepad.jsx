@@ -96,9 +96,7 @@ class Notepad extends Component {
           <div style={notepadHidden ? {} : styles.headerSection}>
             {!notepadHidden && (
               <div style={styles.label}>
-                <label htmlFor={"text-area-notepad"}>
-                  {LOCALIZE.commons.notepad.title.toUpperCase()}
-                </label>
+                <label htmlFor={"text-area-notepad"}>{LOCALIZE.commons.notepad.title}</label>
               </div>
             )}
             <button
