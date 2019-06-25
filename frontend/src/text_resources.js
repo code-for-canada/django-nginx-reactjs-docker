@@ -534,6 +534,10 @@ let LOCALIZE = new LocalizedStrings({
 
       //Test Footer
       testFooter: {
+        timer: {
+          showTimer: "Show timer",
+          hideTimer: "Hide timer"
+        },
         submitTestPopupBox: {
           title: "Confirm test submission?",
           warning: {
@@ -1111,7 +1115,8 @@ let LOCALIZE = new LocalizedStrings({
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "Votre réponse: {0} character limit",
-          reasonsForAction: "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
+          reasonsForAction:
+            "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
@@ -1167,6 +1172,10 @@ let LOCALIZE = new LocalizedStrings({
 
       //Test Footer
       testFooter: {
+        timer: {
+          showTimer: "FR Show timer",
+          hideTimer: "FR Hide timer"
+        },
         submitTestPopupBox: {
           title: "Confirmer l’envoi du test?",
           warning: {

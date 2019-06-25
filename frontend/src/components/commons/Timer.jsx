@@ -45,7 +45,9 @@ class Timer extends Component {
           {!hidden && <div>00:00:00</div>}
         </div>
         <Button style={styles.toggleButton} onClick={this.toggleVisibility}>
-          {hidden ? "Show timer" : "Hide timer"}
+          {hidden
+            ? LOCALIZE.emibTest.testFooter.timer.showTimer
+            : LOCALIZE.emibTest.testFooter.timer.hideTimer}
         </Button>
       </div>
     );
