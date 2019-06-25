@@ -84,7 +84,9 @@ let LOCALIZE = new LocalizedStrings({
           title: "Privacy and Security",
           privacyNoticeStatement: "Privacy Notice Statement",
           privacyParagraph1:
-            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the Public Service Employment Act and is protected under the Privacy Act. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the {0} and is protected under the {1}. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+          publicServiceEmploymentActLink: "Public Service Employment Act",
+          privacyActLink: "Privacy Act",
           privacyParagraph2:
             "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
           privacyParagraph3:
@@ -710,7 +712,9 @@ let LOCALIZE = new LocalizedStrings({
           title: "FR Privacy and Security",
           privacyNoticeStatement: "Énoncé de confidentialité",
           privacyParagraph1:
-            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la Loi sur l’emploi dans la fonction publique et protégés aux termes de la Loi sur la protection des renseignements personnels, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la {0} et protégés aux termes de la {1}, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+          publicServiceEmploymentActLink: "Loi sur l’emploi dans la fonction publique",
+          privacyActLink: "Loi sur la protection des renseignements personnels",
           privacyParagraph2:
             "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
           privacyParagraph3:
@@ -1111,7 +1115,8 @@ let LOCALIZE = new LocalizedStrings({
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "Votre réponse: {0} character limit",
-          reasonsForAction: "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
+          reasonsForAction:
+            "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"

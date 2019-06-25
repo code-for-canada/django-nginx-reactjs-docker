@@ -1008,7 +1008,20 @@ class RegistrationForm extends Component {
               <h3>
                 {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyNoticeStatement}
               </h3>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/p-33.01/" target="_blank">
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .publicServiceEmploymentActLink
+                    }
+                  </a>,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                    {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
+                  </a>
+                )}
+              </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2}</p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph3}</p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4}</p>
