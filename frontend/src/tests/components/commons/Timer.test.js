@@ -9,6 +9,9 @@ it("defaults to showing the time", () => {
 
 it("hides the time on click", () => {
   const wrapper = mount(<Timer />);
-  wrapper.find("#unit-test-toggle-timer").simulate("click");
+  wrapper
+    .find("#unit-test-toggle-timer")
+    .first()
+    .simulate("click");
   expect(wrapper.find("#unit-test-time").exists()).toEqual(false);
 });
