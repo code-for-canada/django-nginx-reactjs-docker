@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "I have read and agreed to how the Public Service Commission collects, uses and discloses personal information, as set out in the ",
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personal information, as set out in the {0}.",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         button: "Create account",
@@ -84,21 +84,26 @@ let LOCALIZE = new LocalizedStrings({
           title: "Privacy and Security",
           privacyNoticeStatement: "Privacy Notice Statement",
           privacyParagraph1:
-            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the Public Service Employment Act and is protected under the Privacy Act. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the {0} and is protected under the {1}. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+          publicServiceEmploymentActLink: "Public Service Employment Act",
+          privacyActLink: "Privacy Act",
           privacyParagraph2:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
+          privacyCommissionerLink: "Privacy Commissioner of Canada",
           privacyParagraph3:
             "The Public Service Commission of Canada (PSC) is committed to protecting the privacy rights of individuals.",
           privacyParagraph4:
-            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the Privacy Act for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
+            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the {0} for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
           privacyParagraph5:
             "Personal information collected by the PPC is protected from disclosure to unauthorized persons and/or agencies subject to the provisions of the Privacy Act. However personal information may be disclosed without your consent in certain specific circumstances, per section 8 of the Privacy Act. Additionally, certain demographic information will be used for analytical, research and development purposes.",
           privacyParagraph6:
-            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s Access to Information and Privacy Protection Division to request corrections.",
+            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s {0} to request corrections.",
+          accessToInformationLink: "Access to Information and Privacy Protection Division",
           privacyParagraph7:
-            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’s {0}. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+          infoSourceChapterLink: "Info Source Chapter",
           privacyParagraph8:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
           reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
           reproductionWarning:
             "This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",
@@ -336,31 +341,10 @@ let LOCALIZE = new LocalizedStrings({
         orgChartInstructions:
           "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
-          title: "Background Information",
-          paragraph1:
-            "In this exercise, you are assuming the role of Claude Huard, the new manager of the Quality Assurance (QA) team. You are replacing Gary Severna, who recently retired. Your team is a part of the Services and Communications (SC) unit of a public service organisation called the Organizational Development Council (ODC). It is now 9:30 a.m. on Monday, November 7th.",
-          paragraph2:
-            "In the following sections, you will find information about ODC and the QA Team. You will be able to access it throughout the test."
+          title: "Background Information"
         },
         organizationalInformation: {
-          title: "About the Organizational Development Council (ODC)",
-          description:
-            "The ODC is an independent government agency that promotes organizational development across the public service. The ODC’s mandate is to provide training to all public service employees to maintain a productive and commendable workforce. The organization is responsible for: (1) the creation and evaluation of training programs; (2) research and innovation in learning, transfer of training, and technology; and (3) conducting audits on workplace behaviors in adherence to the ethical and professional standards of public service. With its headquarters located in the National Capital Region, the ODC currently employs approximately 100 individuals.",
-          prioritiesSection: {
-            title: "Priorities",
-            bullet1:
-              "To ensure that the organization continues to enhance productive workplace behaviors through policies of ethical and professional conduct.",
-            bullet2:
-              "To continuously evaluate the effectiveness and utility of training programs across the public service.",
-            bullet3:
-              "To deliver high-quality training programs across the public service, supporting the Government of Canada’s priorities.",
-            bullet4: "To manage the documentation and communication of client training activities."
-          },
-          risksSection: {
-            title: "Risks",
-            bullet1:
-              "The scope and complexity of training programs pose ongoing challenges for (1) their timely delivery and effectiveness in responding to new and emerging policy priorities; (2) maintaining partnerships that are essential for high-quality training program development, delivery, and evaluation; (3) keeping pace with the evolving demands of clients and with new learning technology."
-          }
+          title: "Information about the Organizational Development Council (ODC)"
         },
         organizationalStructure: {
           title: "Organizational Structure",
@@ -699,7 +683,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
         privacyNoticeLink: "Avis de confidentialité",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
         button: "Créer un compte",
@@ -710,21 +694,27 @@ let LOCALIZE = new LocalizedStrings({
           title: "Confidentialité et sécurité",
           privacyNoticeStatement: "Énoncé de confidentialité",
           privacyParagraph1:
-            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la Loi sur l’emploi dans la fonction publique et protégés aux termes de la Loi sur la protection des renseignements personnels, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la {0} et protégés aux termes de la {1}, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+          publicServiceEmploymentActLink: "Loi sur l’emploi dans la fonction publique",
+          privacyActLink: "Loi sur la protection des renseignements personnels",
           privacyParagraph2:
-            "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
+            "Toute personne a le droit de déposer une plainte auprès du {0} concernant le traitement de ses renseignements personnels par un ministère.",
+          privacyCommissionerLink: "commissaire à la protection de la vie privée du Canada",
           privacyParagraph3:
             "La Commission de la fonction publique du Canada (CFP) s’engage à protéger le droit des personnes à la vie privée.",
           privacyParagraph4:
-            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la Loi sur la protection des renseignements personnels pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la {0} pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
           privacyParagraph5:
-            "Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
-          privacyParagraph6:
             "Conformément aux dispositions de la Loi sur la protection des renseignements personnels, les renseignements personnels recueillis par le CPP ne peuvent être divulgués à des personnes ou à des organismes non autorisés. Toutefois, conformément aux dispositions de l’article 8 de cette loi, vos renseignements personnels pourraient être divulgués sans votre consentement dans certains cas précis. De plus, certaines données démographiques seront utilisées à des fins d’analyse, de recherche et de développement.",
+          privacyParagraph6:
+            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la {0} du ministère concerné.",
+          accessToInformationLink:
+            "Division de l’Accès à l’information et de la protection des renseignements personnels",
           privacyParagraph7:
-            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la Division de l’Accès à l’information et de la protection des renseignements personnels du ministère concerné.",
+            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le {0} concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+          infoSourceChapterLink: "chapitre d’Info Source",
           privacyParagraph8:
-            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+            "Toute personne a le droit de déposer une plainte auprès du {0} concernant le traitement de ses renseignements personnels par un ministère.",
           reproductionTitle: "Reproduction ou divulgation non autorisées du contenu de l'examen",
           reproductionWarning:
             "Cet examen et son contenu portent le niveau de sécurité Protégé B. La reproduction ou l'enregistrement du contenu de cet examen, sous quelque forme que ce soit, sont strictement interdits. Tous les documents liés à l'examen, y compris les brouillons, doivent être remis à l'administrateur de l'examen à la fin de celui-ci. La reproduction, l'enregistrement ou la divulgation non autorisées du contenu de l'examen contreviennent à la Politique du gouvernement sur la sécurité, et l'utilisation de renseignements obtenus ou transmis de manière inappropriée peut constituer une infraction à la Loi sur l'emploi dans la fonction publique (LEFP). Les parties impliquées dans la divulgation ou l'utilisation inappropriée de contenu d'examen protégé pourraient faire l'objet d'une enquête en vertu de la LEFP. Au terme de cette enquête, les personnes reconnues coupables de fraude pourraient faire l'objet d'une déclaration de culpabilité par procédure sommaire ou voir leur dossier renvoyé à la Gendarmerie royale du Canada.",
@@ -966,32 +956,10 @@ let LOCALIZE = new LocalizedStrings({
         orgChartInstructions:
           "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
-          title: "Contexte",
-          paragraph1:
-            "Dans cet exercice, vous jouez le rôle de Claude Huard, le nouveau gestionnaire de l’Équipe de l’assurance de la qualité (AQ). Vous remplacez Gary Severna, qui a récemment pris sa retraite. Votre équipe fait partie de l’Unité des services et communications (SC) d’un organisme de la fonction publique appelé Conseil du développement organisationnel (CDO). Il est 9 h 30 le lundi 7 novembre.",
-          paragraph2:
-            "Dans les sections suivantes, vous trouverez de l’information sur le CDO et l’Équipe d’AQ. Vous serez en mesure d’y accéder tout au long du test."
+          title: "Contexte"
         },
         organizationalInformation: {
-          title: "Renseignements sur le Conseil du Développement Organisationnel (CDO)",
-          description:
-            "Le CDO est un organisme gouvernemental indépendant qui œuvre à la promotion du développement organisationnel au sein de la fonction publique. Le mandat du CDO est d’offrir de la formation à tous les employés de la fonction publique afin de maintenir une main-d’œuvre productive et digne d’éloges. L’organisme est responsable de : (1) la création et l’évaluation des programmes de formation; (2) la recherche et l’innovation dans les domaines de l’apprentissage, du transfert de formation et de la technologie; (3) la réalisation de vérifications en matière de comportements en milieu de travail, conformément aux normes d’éthique et de conduite professionnelle de la fonction publique. Le CDO, dont l’administration centrale est située dans la région de la capitale nationale, compte actuellement environ 100 employés.",
-          prioritiesSection: {
-            title: "Priorités",
-            bullet1:
-              "Veiller à ce que l’organisme continue d’améliorer les comportements productifs au travail par la mise en place de politiques en matière de comportement éthique et professionnel.",
-            bullet2:
-              "Évaluer de façon continue l’efficacité et l’utilité des programmes de formation au sein de la fonction publique.",
-            bullet3:
-              "Offrir à l’échelle de la fonction publique des programmes de qualité supérieure qui appuient les priorités du gouvernement du Canada.",
-            bullet4:
-              "Gérer la documentation et la communication des activités de formation des clients."
-          },
-          risksSection: {
-            title: "Risques",
-            bullet1:
-              "La portée et la complexité des programmes de formation posent des défis continuels quant à : (1) leur livraison dans les délais prévus et leur efficacité à répondre aux priorités stratégiques nouvelles ou émergentes; (2) le maintien de partenariats essentiels à l’élaboration, à la livraison et à l’évaluation de programmes de formation de haute qualité; (3) la capacité de suivre le rythme des demandes changeantes des clients et la nouvelle technologie d’apprentissage."
-          }
+          title: "Renseignements sur le Conseil du Développement Organisationnel  (CDO)"
         },
         organizationalStructure: {
           title: "Structure organisationnelle",
@@ -1111,7 +1079,8 @@ let LOCALIZE = new LocalizedStrings({
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
           response: "Votre réponse: {0} character limit",
-          reasonsForAction: "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
+          reasonsForAction:
+            "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
