@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { setLanguage } from "../../modules/LocalizeRedux";
+import { setLanguage, LANGUAGES } from "../../modules/LocalizeRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
-
-const LANGUAGES = {
-  english: "en",
-  french: "fr"
-};
 
 class Translation extends Component {
   static propTypes = {

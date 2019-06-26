@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import markdown_en from "./sample_test_markdown/BackgroundInformation_en.md";
 import markdown_fr from "./sample_test_markdown/BackgroundInformation_fr.md";
-import { LANGUAGES } from "../commons/Translation";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 class BackgroundInformation extends Component {
   state = {

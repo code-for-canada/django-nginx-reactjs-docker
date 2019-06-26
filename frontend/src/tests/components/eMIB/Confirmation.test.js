@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Confirmation from "../../../components/eMIB/Confirmation";
-import { LANGUAGES } from "../../../components/commons/Translation";
+import { LANGUAGES } from "../../../modules/LocalizeRedux";
 import LOCALIZE from "../../../text_resources";
 
 it("renders confirmation message in English", () => {
