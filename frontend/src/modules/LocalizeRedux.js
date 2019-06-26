@@ -1,6 +1,6 @@
 import LOCALIZE from "../text_resources";
 
-const LANGUAGES = {
+export const LANGUAGES = {
   english: "en",
   french: "fr"
 };
@@ -10,17 +10,19 @@ export const SET_LANGUAGE = "localize/SET_LANGUAGE";
 
 // Action Creators
 const setLanguage = language => {
-  if (language === LANGUAGES.english) {
-    LOCALIZE.setLanguage(LANGUAGES.english);
-  } else {
-    LOCALIZE.setLanguage(LANGUAGES.french);
-  }
+  // Save the language preference in the browser so we don't have
+  // to ask again.
+  localStorage.setItem("catLanguage", language);
+  // Set the language of the string localizer.
+  LOCALIZE.setLanguage(language);
+  // Return the redux action object.
   return { type: SET_LANGUAGE, language };
 };
 
 // Initial State
+// language: string in LANGUAGES, initially empty until a language is selected
 const initialState = {
-  language: ""
+  language: localStorage.getItem("catLanguage") || ""
 };
 
 // Reducer
