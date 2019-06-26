@@ -85,8 +85,7 @@ class App extends Component {
 
   render() {
     const { isTestActive } = this.props;
-
-    // TODO: make this variable dependent on local storage
+    // Determine if user has already selected a language.
     const isLanguageSelected = this.props.currentLanguage !== "";
     return (
       <div>
