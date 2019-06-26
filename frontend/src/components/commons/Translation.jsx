@@ -11,31 +11,26 @@ const LANGUAGES = {
 };
 
 class Translation extends Component {
-  state = {
-    currentLanguage: LANGUAGES.english
-  };
-
   static propTypes = {
+    variant: PropTypes.string,
     // Props from Redux
     setLanguage: PropTypes.func,
-    variant: PropTypes.string
+    currentLanguage: PropTypes.string
   };
 
   toggleLanguage = () => {
-    if (this.state.currentLanguage === LANGUAGES.english) {
-      this.setState({ currentLanguage: LANGUAGES.french });
+    if (this.props.currentLanguage === LANGUAGES.english) {
       this.props.setLanguage(LANGUAGES.french);
     } else {
-      this.setState({ currentLanguage: LANGUAGES.english });
       this.props.setLanguage(LANGUAGES.english);
     }
   };
 
   render() {
     const languageString =
-      this.state.currentLanguage === LANGUAGES.english ? "Français" : "English";
+      this.props.currentLanguage === LANGUAGES.english ? "Français" : "English";
     const htmlLang =
-      this.state.currentLanguage === LANGUAGES.english ? LANGUAGES.french : LANGUAGES.english;
+      this.props.currentLanguage === LANGUAGES.english ? LANGUAGES.french : LANGUAGES.english;
     return (
       <div>
         <Button variant={this.props.variant} onClick={this.toggleLanguage} lang={htmlLang}>
@@ -47,6 +42,13 @@ class Translation extends Component {
 }
 
 export { LANGUAGES };
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentLanguage: state.localize.language
+  };
+};
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
@@ -56,6 +58,6 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Translation);
