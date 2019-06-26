@@ -12,5 +12,5 @@ printf "**** Complete backend tests ***\n"
 # Test the frontend
 printf "**** ${BLUE}Begin frontend tests${NC} ***\n"
 docker-compose run \
-  --rm frontend npm test -- --watchAll=false
+  --rm frontend npm test -- --watch
 printf "**** Complete frontend tests ***\n"
