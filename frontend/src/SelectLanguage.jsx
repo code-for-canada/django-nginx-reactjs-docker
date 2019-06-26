@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { Button } from "react-bootstrap";
 import psc_logo from "./images/psc_logo.png";
 import canada_logo from "./images/canada_logo.png";
-import { setLanguage } from "./modules/LocalizeRedux";
+import { setLanguage, LANGUAGES } from "./modules/LocalizeRedux";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -45,11 +45,11 @@ class SelectLanguage extends Component {
   };
 
   setLanguageToEnglish = () => {
-    this.props.setLanguage("en");
+    this.props.setLanguage(LANGUAGES.english);
   };
 
   setLanguageToFrench = () => {
-    this.props.setLanguage("fr");
+    this.props.setLanguage(LANGUAGES.french);
   };
 
   render() {
@@ -78,12 +78,16 @@ class SelectLanguage extends Component {
             </div>
             <h2>Competency Assessment Tool</h2>
             <hr />
-            <h2 lang={"fr"}>Outil d'évaluation des compétences</h2>
+            <h2 lang={LANGUAGES.french}>Outil d'évaluation des compétences</h2>
             <div style={styles.buttonsContainer}>
               <Button onClick={this.setLanguageToEnglish} style={styles.langButton}>
                 English
               </Button>
-              <Button lang={"fr"} onClick={this.setLanguageToFrench} style={styles.langButton}>
+              <Button
+                lang={LANGUAGES.french}
+                onClick={this.setLanguageToFrench}
+                style={styles.langButton}
+              >
                 Français
               </Button>
             </div>
