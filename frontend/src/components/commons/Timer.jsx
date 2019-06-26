@@ -64,7 +64,7 @@ class Timer extends Component {
           {!hidden && (
             <div style={isTimeAlmostOut ? styles.timeOut : {}}>
               <span className="visually-hidden">{LOCALIZE.emibTest.testFooter.timer.timeLeft}</span>
-              <span>00:00:00</span>
+              <span id="unit-test-time">00:00:00</span>
             </div>
           )}
         </div>
