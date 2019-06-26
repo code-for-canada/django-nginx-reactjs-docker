@@ -1011,13 +1011,21 @@ class RegistrationForm extends Component {
               <p>
                 {LOCALIZE.formatString(
                   LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1,
-                  <a href="https://laws-lois.justice.gc.ca/eng/acts/p-33.01/" target="_blank">
+                  <a
+                    href="https://laws-lois.justice.gc.ca/eng/acts/p-33.01/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {
                       LOCALIZE.authentication.createAccount.privacyNoticeDialog
                         .publicServiceEmploymentActLink
                     }
                   </a>,
-                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                  <a
+                    href="https://laws-lois.justice.gc.ca/eng/acts/P-21/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
                   </a>
                 )}
@@ -1025,7 +1033,7 @@ class RegistrationForm extends Component {
               <p>
                 {LOCALIZE.formatString(
                   LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2,
-                  <a href="https://www.priv.gc.ca/en/" target="_blank">
+                  <a href="https://www.priv.gc.ca/en/" target="_blank" rel="noopener noreferrer">
                     {
                       LOCALIZE.authentication.createAccount.privacyNoticeDialog
                         .privacyCommissionerLink
@@ -1037,7 +1045,11 @@ class RegistrationForm extends Component {
               <p>
                 {LOCALIZE.formatString(
                   LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4,
-                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                  <a
+                    href="https://laws-lois.justice.gc.ca/eng/acts/P-21/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
                   </a>
                 )}
@@ -1049,6 +1061,7 @@ class RegistrationForm extends Component {
                   <a
                     href="https://www.canada.ca/en/public-service-commission/corporate/about-us/access-information-privacy-office.html"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {
                       LOCALIZE.authentication.createAccount.privacyNoticeDialog
@@ -1063,6 +1076,7 @@ class RegistrationForm extends Component {
                   <a
                     href="https://www.canada.ca/en/public-service-commission/corporate/about-us/access-information-privacy-office/info-source-sources-federal-government-employee-information.html"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {
                       LOCALIZE.authentication.createAccount.privacyNoticeDialog
@@ -1074,7 +1088,7 @@ class RegistrationForm extends Component {
               <p>
                 {LOCALIZE.formatString(
                   LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8,
-                  <a href="https://www.priv.gc.ca/en/" target="_blank">
+                  <a href="https://www.priv.gc.ca/en/" target="_blank" rel="noopener noreferrer">
                     {
                       LOCALIZE.authentication.createAccount.privacyNoticeDialog
                         .privacyCommissionerLink
