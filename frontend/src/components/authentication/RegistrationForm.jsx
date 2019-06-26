@@ -967,16 +967,17 @@ class RegistrationForm extends Component {
                 </div>
                 <div className="privacy-notice-grid-description">
                   <label id="privacy-notice-description">
-                    {LOCALIZE.authentication.createAccount.privacyNotice}
-                    <button
-                      aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                      tabIndex="0"
-                      onClick={this.showPrivacyNoticePopup}
-                      style={styles.privacyNoticeLink}
-                    >
-                      {LOCALIZE.authentication.createAccount.privacyNoticeLink}
-                    </button>
-                    .
+                    {LOCALIZE.formatString(
+                      LOCALIZE.authentication.createAccount.privacyNotice,
+                      <button
+                        aria-label={LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                        tabIndex="0"
+                        onClick={this.showPrivacyNoticePopup}
+                        style={styles.privacyNoticeLink}
+                      >
+                        {LOCALIZE.authentication.createAccount.privacyNoticeLink}
+                      </button>
+                    )}
                   </label>
                 </div>
               </div>
@@ -1007,14 +1008,80 @@ class RegistrationForm extends Component {
               <h3>
                 {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyNoticeStatement}
               </h3>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/p-33.01/" target="_blank">
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .publicServiceEmploymentActLink
+                    }
+                  </a>,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                    {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
+                  </a>
+                )}
+              </p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph2,
+                  <a href="https://www.priv.gc.ca/en/" target="_blank">
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .privacyCommissionerLink
+                    }
+                  </a>
+                )}
+              </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph3}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph4,
+                  <a href="https://laws-lois.justice.gc.ca/eng/acts/P-21/" target="_blank">
+                    {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyActLink}
+                  </a>
+                )}
+              </p>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph5}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7}</p>
-              <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph6,
+                  <a
+                    href="https://www.canada.ca/en/public-service-commission/corporate/about-us/access-information-privacy-office.html"
+                    target="_blank"
+                  >
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .accessToInformationLink
+                    }
+                  </a>
+                )}
+              </p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph7,
+                  <a
+                    href="https://www.canada.ca/en/public-service-commission/corporate/about-us/access-information-privacy-office/info-source-sources-federal-government-employee-information.html"
+                    target="_blank"
+                  >
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .infoSourceChapterLink
+                    }
+                  </a>
+                )}
+              </p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph8,
+                  <a href="https://www.priv.gc.ca/en/" target="_blank">
+                    {
+                      LOCALIZE.authentication.createAccount.privacyNoticeDialog
+                        .privacyCommissionerLink
+                    }
+                  </a>
+                )}
+              </p>
               <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}</h3>
               <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionWarning}</p>
               <h3>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingTitle}</h3>
