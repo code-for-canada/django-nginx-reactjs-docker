@@ -44,7 +44,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "5.12.0",
+    "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.14.0",
