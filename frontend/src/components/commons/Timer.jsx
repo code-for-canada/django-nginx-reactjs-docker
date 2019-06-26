@@ -68,7 +68,11 @@ class Timer extends Component {
             </div>
           )}
         </div>
-        <Button style={styles.toggleButton} onClick={this.toggleVisibility}>
+        <Button
+          id="unit-test-toggle-timer"
+          style={styles.toggleButton}
+          onClick={this.toggleVisibility}
+        >
           <FontAwesomeIcon icon={hidden ? faPlusCircle : faMinusCircle} />
           <span style={styles.label}>
             {hidden
