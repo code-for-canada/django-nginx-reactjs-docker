@@ -134,7 +134,7 @@ class App extends Component {
               <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>
                   <img
-                    alt=""
+                    alt={LOCALIZE.mainTabs.psc}
                     src={psc_logo_light}
                     width="370"
                     className="d-inline-block align-top"
