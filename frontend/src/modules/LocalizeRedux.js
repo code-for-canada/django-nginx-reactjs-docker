@@ -19,10 +19,18 @@ const setLanguage = language => {
   return { type: SET_LANGUAGE, language };
 };
 
+const initializeLanguage = () => {
+  // Determine if a language is already saved to local storage.
+  const language = localStorage.getItem("catLanguage") || "";
+  // Set the default language of the string localizer.
+  LOCALIZE.setLanguage(language);
+  return language;
+};
+
 // Initial State
-// language: string in LANGUAGES, initially empty until a language is selected
+// language: string in LANGUAGES, initially empty until a language is selected.
 const initialState = {
-  language: localStorage.getItem("catLanguage") || ""
+  language: initializeLanguage()
 };
 
 // Reducer
