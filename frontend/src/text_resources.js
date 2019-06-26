@@ -27,7 +27,7 @@ let LOCALIZE = new LocalizedStrings({
     //authentication
     authentication: {
       login: {
-        title: "LOG IN",
+        title: "Login",
         content: {
           title: "Login",
           description:
@@ -42,7 +42,7 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "Password field selected."
       },
       createAccount: {
-        title: "CREATE AN ACCOUNT",
+        title: "Create and account",
         content: {
           title: "Create an account",
           description:
@@ -73,7 +73,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
+          "I have read and agreed to how the Public Service Commission collects, uses and discloses personal information, as set out in the {0}.",
         privacyNoticeLink: "privacy notice",
         privacyNoticeError: "You must accept the privacy notice by clicking on the checkbox",
         button: "Create account",
@@ -84,21 +84,26 @@ let LOCALIZE = new LocalizedStrings({
           title: "Privacy and Security",
           privacyNoticeStatement: "Privacy Notice Statement",
           privacyParagraph1:
-            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the Public Service Employment Act and is protected under the Privacy Act. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+            "The information pertaining to your results on this particular test will be disclosed to the requesting department or organization for staffing related matters. All information is collected under the authority of the {0} and is protected under the {1}. Personnel information concerning test results is accessible in Personal Information Bank numbers PSC-PPU-025/030/035.",
+          publicServiceEmploymentActLink: "Public Service Employment Act",
+          privacyActLink: "Privacy Act",
           privacyParagraph2:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
+          privacyCommissionerLink: "Privacy Commissioner of Canada",
           privacyParagraph3:
             "The Public Service Commission of Canada (PSC) is committed to protecting the privacy rights of individuals.",
           privacyParagraph4:
-            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the Privacy Act for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
+            "The definition of “personal information” is any information, in any form, about an identifiable individual. Refer to section 3 of the {0} for further details regarding personal information. Personal information is used to provide Assessment services to clients of the Personnel Psychology Centre (PPC); and is collected under the authority of sections 11, 30, 35 and 36 of the Public Service Employment Act. Provision of your personal information is voluntary. However, should you chose not to share your personal information, you will not be able to participate in PPC services.",
           privacyParagraph5:
             "Personal information collected by the PPC is protected from disclosure to unauthorized persons and/or agencies subject to the provisions of the Privacy Act. However personal information may be disclosed without your consent in certain specific circumstances, per section 8 of the Privacy Act. Additionally, certain demographic information will be used for analytical, research and development purposes.",
           privacyParagraph6:
-            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s Access to Information and Privacy Protection Division to request corrections.",
+            "Individuals have the right to the protection of and access to their personal information and to request corrections where the individual believes there is an error or omission. Individuals may contact the department’s {0} to request corrections.",
+          accessToInformationLink: "Access to Information and Privacy Protection Division",
           privacyParagraph7:
-            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’ Info Source Chapter. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+            "Personal information is collected and used as described in the Assessment by the Personnel Psychology Centre Personal Information Bank (PSC PCU 025), found in the PCS’s {0}. Hard copy files are retained for five years, and then destroyed. Candidate test results are kept indefinitely on computerized files.",
+          infoSourceChapterLink: "Info Source Chapter",
           privacyParagraph8:
-            "Individuals have the right to file a complaint with the Privacy Commissioner of Canada regarding the department’s handling of their personal information.",
+            "Individuals have the right to file a complaint with the {0} regarding the department’s handling of their personal information.",
           reproductionTitle: "Unauthorized Reproduction or Disclosure of Test Content",
           reproductionWarning:
             "This test and its contents are designated Protected B. Reproduction or recording in any form of the content of this test is strictly forbidden, and all material related to the test, including rough notes, must remain with the test administrator following the administration of the test. Any unauthorized reproduction, recording and/or disclosure of test content is in contravention of the Government Security Policy and the use of such improperly obtained or transmitted information could be found to contravene the provisions of the Public Service Employment Act (PSEA). Parties involved in the disclosure of or improper use of protected test content may be the subject of an investigation under the PSEA, where a finding of fraud may be punishable on summary conviction or may be referred to the Royal Canadian Mounted Police.",
@@ -111,10 +116,10 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "The Public Service Commission's Competency Assessment Tool",
+      title: "Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool.",
       description:
-        "Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
     },
 
     //Dashboard Page
@@ -218,7 +223,7 @@ let LOCALIZE = new LocalizedStrings({
             "The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
         },
         tipsOnTest: {
-          title: "Tips on taking the e-MIB",
+          title: "Tips for taking the e-MIB",
           part1: {
             description:
               "The e-MIB presents you with situations that will give you the opportunity to demonstrate the Key Leadership Competencies. Here are some tips that will help you provide assessors with the information they need to evaluate your performance on those competencies:",
@@ -288,7 +293,7 @@ let LOCALIZE = new LocalizedStrings({
             subject: "Preparing Mary for her assignment",
             date: "Friday, November 4",
             body:
-              "Hello Claude,\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\nLooking forward to getting your input,\nGeneviève"
+              "Hello Claude,\n\nI was pleased to hear that one of your quality assurance analysts, Mary Woodside, has accepted a six-month assignment with my team, starting on January 2. I understand she has experience in teaching and using modern teaching tools from her previous work as a college professor. My team needs help to develop innovative teaching techniques that promote employee productivity and general well-being. Therefore I think Mary’s experience will be a good asset for the team.\n\nIn order to maximize the benefits of the assignment for both our teams, are there any areas in which you might want Mary to gain more experience that could be of value when she returns to your team?\n\nLooking forward to getting your input,\nGeneviève"
           },
           exampleEmailResponse: {
             emailBody:
@@ -417,19 +422,20 @@ let LOCALIZE = new LocalizedStrings({
         to: "To",
         from: "From",
         date: "Date",
-        addReply: "Add email Response",
-        addTask: "Create a task",
+        addReply: "Add email response",
+        addTask: "Add task list",
         yourActions: `You responded with {0} emails and {1} tasks`,
         editActionDialog: {
           addEmail: "Add email response",
           editEmail: "Edit email response",
-          addTask: "Add task",
+          addTask: "Add task list",
           editTask: "Edit task",
           save: "Save response"
         },
+        characterLimitReached: `Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "To:",
-          cc: "Cc:",
+          cc: "CC:",
           reply: "reply",
           replyAll: "reply all",
           forward: "forward",
@@ -441,8 +447,8 @@ let LOCALIZE = new LocalizedStrings({
         addEmailResponse: {
           selectResponseType: "Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "Your response:",
-          reasonsForAction: "Add reasons for actions here (optional)",
+          response: "Your response: {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit",
           emailResponseTooltip: "Write a response to the email you recieved.",
           reasonsForActionTooltip:
             "Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
@@ -454,8 +460,8 @@ let LOCALIZE = new LocalizedStrings({
         },
         addEmailTask: {
           header: "Email ID #{0}: {1}",
-          task: "Your task(s):",
-          reasonsForAction: "Add reasons for actions here (optional)"
+          task: "Your task(s): {0} character limit",
+          reasonsForAction: "Your reasons for actions (optional): {0} character limit"
         },
         taskContent: {
           task: "Your task(s):",
@@ -518,7 +524,7 @@ let LOCALIZE = new LocalizedStrings({
           descriptionPart1:
             "You are about to withdraw from this test. By proceeding, you acknowledge the following:",
           checkboxOne: "I voluntarily withdraw from this examination",
-          checkboxTwo: "my test will not be scored",
+          checkboxTwo: "My test will not be scored",
           checkboxThree:
             "I am aware that the retest period for this test may apply, should I wish to write this test again",
           descriptionPart2:
@@ -577,7 +583,7 @@ let LOCALIZE = new LocalizedStrings({
       disabled: "Disabled",
       backToTop: "Back to top",
       notepad: {
-        title: "notepad",
+        title: "Notepad",
         placeholder: "Put your notes here...",
         hideButton: "Hide Notes",
         openButton: "Open Notes"
@@ -595,33 +601,33 @@ let LOCALIZE = new LocalizedStrings({
     //Main Tabs
     mainTabs: {
       homeTabTitleUnauthenticated: "Accueil",
-      homeTabTitleAuthenticated: "FR Your tests",
+      homeTabTitleAuthenticated: "Votre tests",
       dashboardTabTitle: "Tableau de bord",
-      sampleTest: "FR eMIB Sample",
+      sampleTest: "BRG-e pratique",
       statusTabTitle: "Statut",
       psc: "Commission de la fonction publique du Canada",
-      canada: "FR Government of Canada"
+      canada: "Gouvernement du canada"
     },
 
     //HTML Page Titles
     titles: {
-      CAT: "FR CAT - PSC",
+      CAT: "OEC - CFP",
       eMIB: "FR eMIB Assessment",
       simulation: "FR eMIB Assessment Simulation",
-      status: "FR CAT System Status",
-      prototypes: "FR CAT Prototypes",
-      home: "FR CAT Home",
-      homeWithError: "FR Error - CAT Home"
+      status: "OÉC état du system",
+      prototypes: "OÉC rototypes",
+      home: "OÉC accueil",
+      homeWithError: "Erreur - OÉC"
     },
 
     //authentication
     authentication: {
       login: {
-        title: "SE CONNECTER",
+        title: "Se connecter",
         content: {
           title: "Connexion",
           description:
-            "FR An account is required to proceed further. To log in, enter your credentials below.",
+            "Un compte est nécessaire pour continuer. Pour ouvrir une session, entrez votre code d’utilisateur et votre mot de passe.",
           inputs: {
             emailTitle: "Adresse courriel :",
             passwordTitle: "Mot de passe :"
@@ -632,17 +638,17 @@ let LOCALIZE = new LocalizedStrings({
         passwordFieldSelected: "FR Password field selected."
       },
       createAccount: {
-        title: "CRÉER UN COMPTE",
+        title: "Créer un compte",
         content: {
           title: "Créer un compte",
           description:
-            "FR An account is required to proceed further. To create an account, fill out the following.",
+            "FR Un compte est nécessaire pour continuer. To create an account, fill out the following.",
           inputs: {
             firstNameTitle: "Prénom :",
             firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
             lastNameError: "FR Must be a valid last name",
-            dobDayTitle: "Date de naissance: (DD / MM / ---Y) :",
+            dobDayTitle: "Date de naissance: (JJ / MM / ---A) :",
             dobError: "FR Please fill out all fields related to the date of birth",
             dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
@@ -663,32 +669,38 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         privacyNotice:
-          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the ",
-        privacyNoticeLink: "FR privacy notice",
+          "FR I have read and agreed to how the Public Service Commission collects, uses and discloses personnel information, as set out in the {0}.",
+        privacyNoticeLink: "Avis de confidentialité",
         privacyNoticeError: "FR You must accept the privacy notice by clicking on the checkbox",
-        button: "Créer compte",
+        button: "Créer un compte",
         accountAlreadyExistsError: "FR An account is already associated to this email address",
         passwordTooCommonError: "FR This password is too common",
         passwordTooSimilarToUsernameError: "FR The password is too similar to the username",
         privacyNoticeDialog: {
-          title: "FR Privacy and Security",
+          title: "Confidentialité et sécurité",
           privacyNoticeStatement: "Énoncé de confidentialité",
           privacyParagraph1:
-            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la Loi sur l’emploi dans la fonction publique et protégés aux termes de la Loi sur la protection des renseignements personnels, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+            "Les résultats que vous aurez obtenus à cet examen seront communiqués au ministère ou à l’organisme demandeur à des fins de dotation. Ils sont recueillis en vertu de la {0} et protégés aux termes de la {1}, et ils sont conservés dans les fichiers de renseignements personnels CFP PPU 025, 030 et 035.",
+          publicServiceEmploymentActLink: "Loi sur l’emploi dans la fonction publique",
+          privacyActLink: "Loi sur la protection des renseignements personnels",
           privacyParagraph2:
-            "Toute personne a le droit de déposer une plainte auprès du commissaire à la protection de la vie privée du Canada concernant le traitement de ses renseignements personnels par un ministère.",
+            "Toute personne a le droit de déposer une plainte auprès du {0} concernant le traitement de ses renseignements personnels par un ministère.",
+          privacyCommissionerLink: "commissaire à la protection de la vie privée du Canada",
           privacyParagraph3:
             "La Commission de la fonction publique du Canada (CFP) s’engage à protéger le droit des personnes à la vie privée.",
           privacyParagraph4:
-            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la Loi sur la protection des renseignements personnels pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
+            "Les « renseignements personnels » se définissent comme étant « les renseignements, quels que soient leur forme et leur support, concernant un individu identifiable […] ». Veuillez consulter l’article 3 de la {0} pour obtenir de plus amples détails concernant cette notion. Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
           privacyParagraph5:
-            "Les renseignements personnels servent à fournir des services d’évaluation aux clients du Centre de psychologie du personnel (CPP) et sont recueillis en vertu des articles 11, 30, 35 et 36 de la Loi sur l’emploi dans la fonction publique. La communication de vos renseignements personnels est volontaire. Si toutefois vous préférez ne pas les divulguer, vous ne pourrez pas utiliser les services du CPP.",
-          privacyParagraph6:
             "Conformément aux dispositions de la Loi sur la protection des renseignements personnels, les renseignements personnels recueillis par le CPP ne peuvent être divulgués à des personnes ou à des organismes non autorisés. Toutefois, conformément aux dispositions de l’article 8 de cette loi, vos renseignements personnels pourraient être divulgués sans votre consentement dans certains cas précis. De plus, certaines données démographiques seront utilisées à des fins d’analyse, de recherche et de développement.",
+          privacyParagraph6:
+            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la {0} du ministère concerné.",
+          accessToInformationLink:
+            "Division de l’Accès à l’information et de la protection des renseignements personnels",
           privacyParagraph7:
-            "Toute personne a droit à la protection et à la consultation de ses renseignements personnels, et a le droit de demander que des corrections y soient apportées si elle estime qu’il y a une erreur ou une omission. Pour demander des corrections, prière de communiquer avec la Division de l’Accès à l’information et de la protection des renseignements personnels du ministère concerné.",
+            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le {0} concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+          infoSourceChapterLink: "chapitre d’Info Source",
           privacyParagraph8:
-            "Les renseignements personnels sont recueillis et utilisés de la façon décrite dans le fichier de renseignements personnels CFP PCU 025, « Évaluation par le Centre de psychologie du personnel » (voir le chapitre d’Info Source concernant la CFP). Les fichiers imprimés sont conservés pendant cinq ans avant d’être détruits, et les résultats obtenus par les candidats aux examens sont conservés indéfiniment sous forme de fichiers informatisés.",
+            "Toute personne a le droit de déposer une plainte auprès du {0} concernant le traitement de ses renseignements personnels par un ministère.",
           reproductionTitle: "Reproduction ou divulgation non autorisées du contenu de l'examen",
           reproductionWarning:
             "Cet examen et son contenu portent le niveau de sécurité Protégé B. La reproduction ou l'enregistrement du contenu de cet examen, sous quelque forme que ce soit, sont strictement interdits. Tous les documents liés à l'examen, y compris les brouillons, doivent être remis à l'administrateur de l'examen à la fin de celui-ci. La reproduction, l'enregistrement ou la divulgation non autorisées du contenu de l'examen contreviennent à la Politique du gouvernement sur la sécurité, et l'utilisation de renseignements obtenus ou transmis de manière inappropriée peut constituer une infraction à la Loi sur l'emploi dans la fonction publique (LEFP). Les parties impliquées dans la divulgation ou l'utilisation inappropriée de contenu d'examen protégé pourraient faire l'objet d'une enquête en vertu de la LEFP. Au terme de cette enquête, les personnes reconnues coupables de fraude pourraient faire l'objet d'une déclaration de culpabilité par procédure sommaire ou voir leur dossier renvoyé à la Gendarmerie royale du Canada.",
@@ -701,28 +713,27 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title:
-        "Outil d'évaluation des compétences de la Commission de la fonction publique du Canada",
+      title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
       description:
-        "FR Code for Canada and PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently going through product testing and is subject to change."
+        "L’organisme Code for Canada et la Commission de la fonction publique travaillent sur cet outil qui servira à évaluer les candidats qui postulent à un emploi dans la fonction publique fédérale. On en est à la phase alpha, soit à l’étape où l’on met à l’essai le produit; donc, celui ci pourrait encore subir des modifications."
     },
 
     //Dashboard Page
     dashboard: {
-      title: "FR Welcome, {0} {1}.",
+      title: "Bienvenue, {0} {1}.",
       description:
         "FR You have successfully logged into your account. You should be able to see the test(s) that you have been assigned to below. If you have not been assigned to a test, please notify your test administrator. Please wait for your test administrator's instructions before starting the test.",
       table: {
-        columnOne: "FR Name of test",
-        columnTwo: "FR Scheduled test date",
-        columnThree: "FR Action"
+        columnOne: "Nom de test",
+        columnTwo: "Date prévue de test",
+        columnThree: "Action"
       }
     },
 
     //Status Page
     statusPage: {
-      title: "Statut de OEC",
+      title: "Statut de OÉC",
       logo: "Logo Thunder CAT",
       welcomeMsg:
         "Page de statut interne afin de déterminer rapidement l'état / la santé de l'Outil d'Évaluation des Compétences.",
@@ -800,7 +811,7 @@ let LOCALIZE = new LocalizedStrings({
       //Home Page
       homePage: {
         testTitle: "La BRG-e",
-        welcomeMsg: "Bienvenu dans le test pratique de eMIB"
+        welcomeMsg: "Bienvenue dans le test pratique de eMIB"
       },
 
       //HowTo Page
@@ -825,7 +836,7 @@ let LOCALIZE = new LocalizedStrings({
               "Utilisez uniquement l’information fournie dans les courriels et les informations contextuelles. Ne tirez aucune conclusion fondée sur la culture de votre propre organisation. Évitez de faire des suppositions qui ne sont pas raisonnablement corroborées par l’information contextuelle ou les courriels."
           },
           part2: {
-            title: "FR Other important notes",
+            title: "Autres notes importantes",
             bullet1:
               "Vous serez évalués en fonction des réponses aux courriels, des tâches et des justifications des mesures prises. Le contenu du bloc-notes ne sera pas évalué.",
             bullet2:
@@ -843,7 +854,7 @@ let LOCALIZE = new LocalizedStrings({
             description:
               "Vous pouvez répondre aux courriels que vous avez reçus de deux façons : en envoyant un courriel ou en ajoutant une tâche à votre liste de tâches. Les deux méthodes de réponse sont décrites ci-dessous, suivies d’exemples.",
             part1: {
-              title: "FR Example of an email you have received:",
+              title: "Exemple d’un courriel que vous avez reçu :",
               para1:
                 "Vous trouverez ci-dessous deux façons différentes de répondre au courriel. Comme il est mentionné précédemment, vous pouvez choisir l’une ou l’autre des deux options présentées ou combiner les deux. Veuillez noter que les réponses fournies n’ont pas été évaluées pour déterminer la mesure dans laquelle elles démontrent la compétence ciblée dans le courriel. Elles sont présentées ici uniquement pour illustrer comment utiliser chacune des deux façons de répondre."
             },
@@ -943,19 +954,19 @@ let LOCALIZE = new LocalizedStrings({
             link: "Description de l'image"
           },
           dialog: {
-            title: "FR The Organizational Chart of the ODC",
-            president: "FR Jenna Icard - President",
-            corpDirector: "FR Amari Kinsler - Corporate Affairs Director",
-            hr: "FR Marc Sheridan - Human Resources Manager",
-            finance: "FR Bob McNutt - Finance Manager",
-            it: "FR Lana Hussad - Information Technology Manager",
-            research: "FR Geneviève Bédard - Research and Innovations Director",
-            programDev: "FR Bartosz Greco - Program Development Director",
-            communications: "FR Nancy Ward - Services and Communications Director",
-            qa: "FR Claude Huard - Quality Assurance Manager (You)",
-            services: "FR Haydar Kalil - Services and Support Manager",
-            audits: "FR Geoffrey Hamma - Audits Manager",
-            training: "FR Lucy Trang - E-Training Manager"
+            title: "Organigramme (CDO)",
+            president: "Jenna Icard - Présidente",
+            corpDirector: "Amari Kinsler - Directeur, Affaires ministérielles",
+            hr: "Marc Sheridan - Gestionnaire, Ressources humaines",
+            finance: "Bob McNutt - Gestionnaire, Finances",
+            it: "Lana Hussad - Gestionnaire, Technologies de l'information ",
+            research: "Geneviève Bédard - Directrice, Recherche et innovations",
+            programDev: "Bartosz Greco - Directeur, Développement de programmes",
+            communications: "Nancy Ward - Directrice, Services et communications",
+            qa: "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+            services: "Haydar Kalil - Gestionnaire, Service et soutien",
+            audits: "Geoffrey Hamma - Gestionnaire, Vérifications",
+            training: "Lucy Trang - Gestionnaire, Formation en ligne"
           }
         },
         teamInformation: {
@@ -973,18 +984,18 @@ let LOCALIZE = new LocalizedStrings({
               "Les membres de votre équipe sont Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang et Jack Laurier. Tous les membres de l’équipe sont des analystes de l’assurance de la qualité et, par conséquent, des experts en documentation qui formulent des recommandations sur les documents de formation et le contenu en ligne."
           },
           teamChart: {
-            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ) Team",
+            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"
           },
           dialog: {
-            title: "FR The Organizational Chart of the QA Team",
-            manager: "FR Claude Huard - Manager (You)",
-            analyst1: "FR Danny McBride - QA Analyst",
-            analyst2: "FR Serge Duplessis - QA Analyst",
-            analyst3: "FR Marina Richter - QA Analyst",
-            analyst4: "FR Mary Woodside - QA Analyst",
-            analyst5: "FR Charlie Wang - QA Analyst",
-            analyst6: "FR Jack Laurier - QA Analyst"
+            title: "Organigramme Équipe de l'assurance de la qualité (AQ)",
+            manager: "Claude Huard - Gestionnaire (vous)",
+            analyst1: "Danny McBride - Analyste de l’assurance de la qualité",
+            analyst2: "Serge Duplessis - Analyste de l’assurance de la qualité",
+            analyst3: "Marina Richter - Analyste de l’assurance de la qualité",
+            analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
+            analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
+            analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
           },
           responsibilitiesSection: {
             title: "Responsabilités de l’Équipe de l’AQ",
@@ -1009,20 +1020,21 @@ let LOCALIZE = new LocalizedStrings({
       //Inbox Page
       inboxPage: {
         emailId: " courriel # ",
-        subject: "FR Subject",
+        subject: "Sujet",
         to: "À",
         from: "Expéditeur",
         date: "Date",
-        addReply: "FR Add email Response",
-        addTask: "FR Create a task",
-        yourActions: `FR You responded with {0} emails and {1} tasks`,
+        addReply: "Ajouter une réponse par courriel",
+        addTask: "FR Add task list",
+        yourActions: `Vous avez repondre avec {0} courriels et {1} tâches`,
         editActionDialog: {
-          addEmail: "FR Add email response",
+          addEmail: "Ajouter une réponse par courriel",
           editEmail: "FR Edit email response",
-          addTask: "FR Add task",
+          addTask: "Ajouter à la liste de tâches",
           editTask: "FR Edit task",
           save: "FR Save response"
         },
+        characterLimitReached: `FR Limit reached. You can only use {0} characters in this field.`,
         emailCommons: {
           to: "À :",
           cc: "Cc :",
@@ -1031,36 +1043,37 @@ let LOCALIZE = new LocalizedStrings({
           forward: "transmettre",
           editButton: "Modifier réponse",
           deleteButton: "Supprimer résponse",
-          originalEmail: "FR Original email",
-          yourResponse: "FR Your response"
+          originalEmail: "Courriel d’origine",
+          yourResponse: "Votre réponse"
         },
         addEmailResponse: {
           selectResponseType:
             "FR Please select how you would like to respond to the original email:",
           headerFieldPlaceholder: "JohnSmith",
-          response: "FR Your response:",
-          reasonsForAction: "FR Add reasons for actions here (optional)",
+          response: "Votre réponse: {0} character limit",
+          reasonsForAction:
+            "Ajoutez la justification des mesures prises ici (facultatif): {0} character limit",
           emailResponseTooltip: "FR Write a response to the email you recieved.",
           reasonsForActionTooltip:
-            "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
+            "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
         },
         emailResponse: {
           description: "FR For this response, you've chosen to:",
-          response: "FR Your response:",
-          reasonsForAction: "FR Your reasons for action:"
+          response: "Votre réponse:",
+          reasonsForAction: "Votre justification des mesures prises ici (facultatif):"
         },
         addEmailTask: {
           header: "FR Email ID #{0}: {1}",
-          task: "FR Your task(s):",
-          reasonsForAction: "FR Add reasons for actions here (optional)"
+          task: "FR Your task(s): {0} character limit",
+          reasonsForAction: "FR Reasons for actions (optional): {0} character limit"
         },
         taskContent: {
           task: "FR Your task(s):",
           taskTooltipPart1: "FR An action you intend to take to address a situation in the emails.",
           taskTooltipPart2: "FR Example: Planning a meeting, asking a colleague for information.",
-          reasonsForAction: "FR Your reasons for action:",
+          reasonsForAction: "Votre justification des mesures prises ici (facultatif):",
           reasonsForActionTooltip:
-            "FR Here, you can explain why you took a specific action in response to a situation if you feel you need to provide additional information"
+            "Dans cette section, vous pouvez expliquer pourquoi vous avez pris une certaine mesure en réponse à une situation, si vous souhaitez fournir des renseignements supplémentaires."
         },
         deleteResponseConfirmation: {
           title: "FR Are you sure you want to delete this response?",
@@ -1115,10 +1128,10 @@ let LOCALIZE = new LocalizedStrings({
           },
           descriptionPart1:
             "Vous êtes sur le point de mettre fin à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
-          checkboxOne: "je me retire volontairement de ce test;",
-          checkboxTwo: "mon test ne sera pas noté;",
+          checkboxOne: "Je me retire volontairement de ce test;",
+          checkboxTwo: "Mon test ne sera pas noté;",
           checkboxThree:
-            "je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
+            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
           descriptionPart2:
             "Si vous êtes certain(e) de vouloir mettre fin à cette séance, cliquez sur le bouton « Quitter la séance test ». La séance de test sera fermée et vous recevrez des instructions sur la façon de vous retirer.",
           descriptionPart3: "Souhaitez-vous mettre fin à cette séance de test?"
@@ -1156,14 +1169,14 @@ let LOCALIZE = new LocalizedStrings({
       psc: "Commission de la fonction publique",
       nextButton: "Suivant",
       backButton: "Retour",
-      enterEmib: "FR Enter e-MIB",
+      enterEmib: "Entrez la BRG-e",
       startTest: "Commencer le test",
       confirmStartTest: {
-        aboutToStart: "FR You are about to start the test.",
+        aboutToStart: "Vous êtes sur le point de commencer le test.",
         timerWarning:
-          "FR Once you start the timer will begin, and you can only leave the test by submitting or quitting.",
+          "Le chronomètre se déclenchera lorsque vous commencerez le test. À partir de ce moment là, vous ne pourrez quitter le test qu’en soumettant votre test ou en quittant complètement la session de test. Vous aurez trois heures pour terminer le test.",
         instructionsAccess:
-          "FR You will have access to the instructions from within the test. Good luck!"
+          "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!"
       },
       submitTestButton: "Envoyer le test",
       quitTest: "Quitter la séance de test",
@@ -1175,10 +1188,10 @@ let LOCALIZE = new LocalizedStrings({
       disabled: "Désactivé",
       backToTop: "Haut de la page",
       notepad: {
-        title: "bloc-notes",
+        title: "Bloc-notes",
         placeholder: "Mettez vos notes ici...",
-        hideButton: "cacher notes",
-        openButton: "ouvrir notes"
+        hideButton: "Cacher notes",
+        openButton: "Ouvrir notes"
       },
       cancel: "Annuler",
       cancelResponse: "Annuler la réponse",
