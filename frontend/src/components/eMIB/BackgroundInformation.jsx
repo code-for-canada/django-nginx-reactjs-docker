@@ -1,20 +1,47 @@
 import React, { Component } from "react";
-import LOCALIZE from "../../text_resources";
+import { connect } from "react-redux";
+import ReactMarkdown from "react-markdown";
+import markdown_en from "./markdown_files/BackgroundInformation_en.md";
+import markdown_fr from "./markdown_files/BackgroundInformation_fr.md";
+import { LANGUAGES } from "../commons/Translation";
 
 class BackgroundInformation extends Component {
+  state = {
+    markdown_en: "",
+    markdown_fr: ""
+  };
+
+  // loads the markdown files (english and french versions)
+  componentWillMount = () => {
+    fetch(markdown_en)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_en: text }));
+    fetch(markdown_fr)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_fr: text }));
+  };
+
   render() {
     return (
       <div>
-        <div>
-          <h2>{LOCALIZE.emibTest.background.backgroundInformation.title}</h2>
-          <div>
-            <p>{LOCALIZE.emibTest.background.backgroundInformation.paragraph1}</p>
-            <p>{LOCALIZE.emibTest.background.backgroundInformation.paragraph2}</p>
-          </div>
-        </div>
+        {this.props.language === LANGUAGES.english && (
+          <ReactMarkdown source={this.state.markdown_en} />
+        )}
+        {this.props.language === LANGUAGES.french && (
+          <ReactMarkdown source={this.state.markdown_fr} />
+        )}
       </div>
     );
   }
 }
 
-export default BackgroundInformation;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    language: state.localize.language
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(BackgroundInformation);

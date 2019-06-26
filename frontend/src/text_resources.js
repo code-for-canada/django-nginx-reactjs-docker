@@ -341,11 +341,7 @@ let LOCALIZE = new LocalizedStrings({
         orgChartInstructions:
           "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
-          title: "Background Information",
-          paragraph1:
-            "In this exercise, you are assuming the role of Claude Huard, the new manager of the Quality Assurance (QA) team. You are replacing Gary Severna, who recently retired. Your team is a part of the Services and Communications (SC) unit of a public service organisation called the Organizational Development Council (ODC). It is now 9:30 a.m. on Monday, November 7th.",
-          paragraph2:
-            "In the following sections, you will find information about ODC and the QA Team. You will be able to access it throughout the test."
+          title: "Background Information"
         },
         organizationalInformation: {
           title: "About the Organizational Development Council (ODC)",
@@ -977,11 +973,7 @@ let LOCALIZE = new LocalizedStrings({
         orgChartInstructions:
           "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
-          title: "Contexte",
-          paragraph1:
-            "Dans cet exercice, vous jouez le rôle de Claude Huard, le nouveau gestionnaire de l’Équipe de l’assurance de la qualité (AQ). Vous remplacez Gary Severna, qui a récemment pris sa retraite. Votre équipe fait partie de l’Unité des services et communications (SC) d’un organisme de la fonction publique appelé Conseil du développement organisationnel (CDO). Il est 9 h 30 le lundi 7 novembre.",
-          paragraph2:
-            "Dans les sections suivantes, vous trouverez de l’information sur le CDO et l’Équipe d’AQ. Vous serez en mesure d’y accéder tout au long du test."
+          title: "Contexte"
         },
         organizationalInformation: {
           title: "Renseignements sur le Conseil du Développement Organisationnel (CDO)",
