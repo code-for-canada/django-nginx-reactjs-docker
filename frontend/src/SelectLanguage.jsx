@@ -31,7 +31,8 @@ const styles = {
     margin: "10px 0px"
   },
   buttonsContainer: {
-    margin: "10px 0px"
+    margin: "10px 0px",
+    borderTop: "1px solid #CECECE"
   },
   langButton: {
     margin: 10
@@ -77,7 +78,6 @@ class SelectLanguage extends Component {
               />
             </div>
             <h2>Competency Assessment Tool</h2>
-            <hr />
             <h2 lang={LANGUAGES.french}>Outil d'évaluation des compétences</h2>
             <div style={styles.buttonsContainer}>
               <Button onClick={this.setLanguageToEnglish} style={styles.langButton}>
