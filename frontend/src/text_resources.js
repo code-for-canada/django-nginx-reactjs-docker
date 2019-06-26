@@ -370,18 +370,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         teamInformation: {
           title: "Information about the Quality Assurance (QA) Team",
-          teamMembersSection: {
-            title: "Team Members",
-            para1Title: "Director: Nancy Ward",
-            para1:
-              "Your Director is Nancy Ward. The director of the Services and Communications unit applies policies and oversees the creation, delivery, and evaluation of training programs and audits. The director is also responsible for overseeing all internal and external communication channels including web content.",
-            para2Title: "Manager: Claude Huard (you)",
-            para2:
-              "Your role as manager of the Quality Assurance Team is to oversee the content review and make final recommendations for training manuals, specifications, and other related training documents. The role also involves making staffing recommendations, managing the performance of team members, as well as coordinating the sharing of information and expertise with partners and stakeholders. The manager is also responsible for ensuring compliance to policy and professional standards and for delivering executive reports that include project updates, timelines, and budgetary implications.",
-            para3Title: "Quality Assurance Analysts",
-            para3:
-              "The members of your team are Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier. All team members are Quality Assurance Analysts and, as such, are experts in documentation and make recommendations on training documents and online content."
-          },
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
             link: "Image Description"
@@ -971,18 +959,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         teamInformation: {
           title: "Information sur l’Équipe de l’assurance de la qualité (AQ)",
-          teamMembersSection: {
-            title: "Membres de l’équipe",
-            para1Title: "Directrice : Nancy Ward",
-            para1:
-              "Votre directrice est Nancy Ward. La directrice de l’Unité des services et communications veille à l’application des politiques et supervise la création, l’exécution et l’évaluation des programmes de formation ainsi que les vérifications. Elle a également la responsabilité de superviser tous les canaux de communication internes et externes, y compris le contenu Web en ligne.",
-            para2Title: "Gestionnaire : Claude Huard (vous)",
-            para2:
-              "Votre rôle en tant que gestionnaire de l’Équipe de l’assurance de la qualité est de superviser la révision de contenu et de formuler des recommandations finales au sujet des manuels de formation, des spécifications de formation et d’autres documents de formation connexes. Votre rôle consiste également à formuler des recommandations en matière de dotation, gérer le rendement des membres de l’équipe ainsi que coordonner l’échange d’information et d’expertise avec les partenaires et les intervenants. Le gestionnaire est également responsable d’assurer la conformité à la politique et aux normes professionnelles et de présenter aux cadres des rapports, lesquels comprennent des mises à jour, des échéanciers et les incidences budgétaires des projets.",
-            para3Title: "Analystes de l’assurance de la qualité",
-            para3:
-              "Les membres de votre équipe sont Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang et Jack Laurier. Tous les membres de l’équipe sont des analystes de l’assurance de la qualité et, par conséquent, des experts en documentation qui formulent des recommandations sur les documents de formation et le contenu en ligne."
-          },
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"

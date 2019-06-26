@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import ReactMarkdown from "react-markdown";
+import markdown_section1_en from "./sample_test_markdown/TeamInformation_section1_en.md";
+import markdown_section1_fr from "./sample_test_markdown/TeamInformation_section1_fr.md";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -29,7 +32,9 @@ class TeamInformation extends Component {
   };
 
   state = {
-    showPopupBox: false
+    showPopupBox: false,
+    markdown_section1_en: "",
+    markdown_section1_fr: ""
   };
 
   openPopup = () => {
@@ -38,6 +43,16 @@ class TeamInformation extends Component {
 
   closePopup = () => {
     this.setState({ showPopupBox: false });
+  };
+
+  // loads the markdown files (english and french versions)
+  componentWillMount = () => {
+    fetch(markdown_section1_en)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_section1_en: text }));
+    fetch(markdown_section1_fr)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_section1_fr: text }));
   };
 
   render() {
@@ -104,76 +119,56 @@ class TeamInformation extends Component {
           rightButtonTitle={LOCALIZE.commons.close}
         />
         <div>
-          <h2>{LOCALIZE.emibTest.background.teamInformation.title}</h2>
-          <section aria-labelledby="info-about-qa-team-members">
-            <h3 id="info-about-qa-team-members">
-              {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.title}
-            </h3>
-            <div>
-              <section aria-labelledby="team-members-director">
-                <h4 id="team-members-director">
-                  {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1Title}
-                </h4>
-                <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para1}</p>
-              </section>
-              <section aria-labelledby="team-members-manager">
-                <h4 id="team-members-manager">
-                  {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2Title}
-                </h4>
-                <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para2}</p>
-              </section>
-              <section aria-labelledby="team-members-qa-analyst">
-                <h4 id="team-members-qa-analyst">
-                  {LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3Title}
-                </h4>
-                <p>{LOCALIZE.emibTest.background.teamInformation.teamMembersSection.para3}</p>
-              </section>
-            </div>
-            <div>
-              <p>
-                {currentLanguage === LANGUAGES.english && (
-                  <ImageZoom
-                    longdesc="#team-image-description"
-                    image={{
-                      src: emib_sample_test_example_team_chart_en,
-                      alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
-                      style: styles.testImage,
-                      className: "ie-zoom-cursor"
-                    }}
-                    zoomImage={{
-                      src: emib_sample_test_example_team_chart_en_zoomed,
-                      alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
-                      className: "ie-zoom-cursor"
-                    }}
-                  />
-                )}
-                {currentLanguage === LANGUAGES.french && (
-                  <ImageZoom
-                    longdesc="#team-image-description"
-                    image={{
-                      src: emib_sample_test_example_team_chart_fr,
-                      alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
-                      style: styles.testImage,
-                      className: "ie-zoom-cursor"
-                    }}
-                    zoomImage={{
-                      src: emib_sample_test_example_team_chart_fr_zoomed,
-                      alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
-                      className: "ie-zoom-cursor"
-                    }}
-                  />
-                )}
-              </p>
-              <button
-                id="team-image-description"
-                onClick={this.openPopup}
-                className="btn btn-secondary"
-                style={styles.button}
-              >
-                {LOCALIZE.emibTest.background.teamInformation.teamChart.link}
-              </button>
-            </div>
-          </section>
+          {this.props.currentLanguage === LANGUAGES.english && (
+            <ReactMarkdown source={this.state.markdown_section1_en} />
+          )}
+          {this.props.currentLanguage === LANGUAGES.french && (
+            <ReactMarkdown source={this.state.markdown_section1_fr} />
+          )}
+          <div>
+            <p>
+              {currentLanguage === LANGUAGES.english && (
+                <ImageZoom
+                  longdesc="#team-image-description"
+                  image={{
+                    src: emib_sample_test_example_team_chart_en,
+                    alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
+                    style: styles.testImage,
+                    className: "ie-zoom-cursor"
+                  }}
+                  zoomImage={{
+                    src: emib_sample_test_example_team_chart_en_zoomed,
+                    alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
+                    className: "ie-zoom-cursor"
+                  }}
+                />
+              )}
+              {currentLanguage === LANGUAGES.french && (
+                <ImageZoom
+                  longdesc="#team-image-description"
+                  image={{
+                    src: emib_sample_test_example_team_chart_fr,
+                    alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
+                    style: styles.testImage,
+                    className: "ie-zoom-cursor"
+                  }}
+                  zoomImage={{
+                    src: emib_sample_test_example_team_chart_fr_zoomed,
+                    alt: LOCALIZE.emibTest.background.teamInformation.teamChart.desciption,
+                    className: "ie-zoom-cursor"
+                  }}
+                />
+              )}
+            </p>
+            <button
+              id="team-image-description"
+              onClick={this.openPopup}
+              className="btn btn-secondary"
+              style={styles.button}
+            >
+              {LOCALIZE.emibTest.background.teamInformation.teamChart.link}
+            </button>
+          </div>
           <section aria-labelledby="qa-team-responsabilities">
             <h3 id="qa-team-responsabilities">
               {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.title}
