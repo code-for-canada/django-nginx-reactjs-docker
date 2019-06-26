@@ -370,18 +370,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         teamInformation: {
           title: "Information about the Quality Assurance (QA) Team",
-          teamMembersSection: {
-            title: "Team Members",
-            para1Title: "Director: Nancy Ward",
-            para1:
-              "Your Director is Nancy Ward. The director of the Services and Communications unit applies policies and oversees the creation, delivery, and evaluation of training programs and audits. The director is also responsible for overseeing all internal and external communication channels including web content.",
-            para2Title: "Manager: Claude Huard (you)",
-            para2:
-              "Your role as manager of the Quality Assurance Team is to oversee the content review and make final recommendations for training manuals, specifications, and other related training documents. The role also involves making staffing recommendations, managing the performance of team members, as well as coordinating the sharing of information and expertise with partners and stakeholders. The manager is also responsible for ensuring compliance to policy and professional standards and for delivering executive reports that include project updates, timelines, and budgetary implications.",
-            para3Title: "Quality Assurance Analysts",
-            para3:
-              "The members of your team are Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang, and Jack Laurier. All team members are Quality Assurance Analysts and, as such, are experts in documentation and make recommendations on training documents and online content."
-          },
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
             link: "Image Description"
@@ -395,22 +383,6 @@ let LOCALIZE = new LocalizedStrings({
             analyst4: "Mary Woodside - QA Analyst",
             analyst5: "Charlie Wang - QA Analyst",
             analyst6: "Jack Laurier - QA Analyst"
-          },
-          responsibilitiesSection: {
-            title: "QA Team Responsibilities",
-            listDescription: "The Quality Assurance Team is responsible for:",
-            item1Title: "Providing information management services. ",
-            item1:
-              "Responsibilities include ensuring that organizational development training programs across the public service are well documented. This priority includes synthesizing a large volume of information from various government organizations, ensuring adherence to information security policies, and providing appropriate accessibility to archived documents.",
-            item2Title: "Reviewing online content. ",
-            item2:
-              "Responsibilities include reviewing a large volume of information regarding organizational training programs from various clients and partners, ensuring adherence to internal and external communications policies, and making recommendations to executives for final approval before information dissemination.",
-            item3Title: "Reviewing training documentation. ",
-            item3:
-              "Responsibilities include ensuring the completeness and quality of content in all organizational development training- related documents. This priority includes reviewing training instructions, scoring manuals, training specifications, statistical reports, and other training-related materials.",
-            para1Title: "New initiatives",
-            para1:
-              "You have been mandated to make a recommendation on the adoption of an “off-the- shelf” online request processing system. The proposed system, called Serv, provides features that would facilitate the management of client and partner requests for content review and documentation services. This includes enhanced categorization and tracking of pending requests, customizable forms applications, and various report generators. The Information Technology (IT) Team of the ODC recently facilitated a pilot test with Serv that included Danny McBride, who is a member of the Quality Assurance Team. Danny came back with positive feedback on his experience with the Serv system. Your team has been discussing the proposal to introduce this new technology in hopes of improving your services."
           }
         }
       },
@@ -971,18 +943,6 @@ let LOCALIZE = new LocalizedStrings({
         },
         teamInformation: {
           title: "Information sur l’Équipe de l’assurance de la qualité (AQ)",
-          teamMembersSection: {
-            title: "Membres de l’équipe",
-            para1Title: "Directrice : Nancy Ward",
-            para1:
-              "Votre directrice est Nancy Ward. La directrice de l’Unité des services et communications veille à l’application des politiques et supervise la création, l’exécution et l’évaluation des programmes de formation ainsi que les vérifications. Elle a également la responsabilité de superviser tous les canaux de communication internes et externes, y compris le contenu Web en ligne.",
-            para2Title: "Gestionnaire : Claude Huard (vous)",
-            para2:
-              "Votre rôle en tant que gestionnaire de l’Équipe de l’assurance de la qualité est de superviser la révision de contenu et de formuler des recommandations finales au sujet des manuels de formation, des spécifications de formation et d’autres documents de formation connexes. Votre rôle consiste également à formuler des recommandations en matière de dotation, gérer le rendement des membres de l’équipe ainsi que coordonner l’échange d’information et d’expertise avec les partenaires et les intervenants. Le gestionnaire est également responsable d’assurer la conformité à la politique et aux normes professionnelles et de présenter aux cadres des rapports, lesquels comprennent des mises à jour, des échéanciers et les incidences budgétaires des projets.",
-            para3Title: "Analystes de l’assurance de la qualité",
-            para3:
-              "Les membres de votre équipe sont Danny McBride, Serge Duplessis, Marina Richter, Mary Woodside, Charlie Wang et Jack Laurier. Tous les membres de l’équipe sont des analystes de l’assurance de la qualité et, par conséquent, des experts en documentation qui formulent des recommandations sur les documents de formation et le contenu en ligne."
-          },
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"
@@ -996,23 +956,6 @@ let LOCALIZE = new LocalizedStrings({
             analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
             analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
             analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
-          },
-          responsibilitiesSection: {
-            title: "Responsabilités de l’Équipe de l’AQ",
-            listDescription:
-              "L’Équipe de l’assurance de la qualité doit s’acquitter de ce qui suit :",
-            item1Title: "Fournir des services de gestion de l’information. ",
-            item1:
-              "L’équipe doit veiller à ce que les programmes en développement organisationnel au sein de la fonction publique soient bien documentés. Cette priorité comprend : synthétiser un grand volume de renseignements provenant de divers organismes gouvernementaux, s’assurer que les politiques sur la sécurité de l’information sont respectées et donner un accès approprié aux documents archivés.",
-            item2Title: "Examiner le contenu en ligne. ",
-            item2:
-              "Les responsabilités de l’équipe comprennent les suivantes : Examiner un grand volume d’information sur les programmes de formation organisationnels de divers clients et partenaires, s’assurer que les politiques sur les communications internes et les communications externes sont respectées et formuler des recommandations aux cadres supérieurs aux fins d’approbation définitive avant la diffusion de l’information.",
-            item3Title: "Examiner les documents de formation. ",
-            item3:
-              "L’équipe doit s’assurer de l’intégralité et de la qualité du contenu de tous les documents liés à la formation en développement organisationnel. Cette priorité inclut l’examen des instructions de formation, des guides de correction, des spécifications de la formation, des rapports statistiques et d’autres documents de formation connexes.",
-            para1Title: "Nouvelles initiatives",
-            para1:
-              "Vous avez reçu le mandat de formuler une recommandation au sujet de l’adoption d’un système commercial de traitement des demandes en ligne. Le système proposé, appelé Serv, offre des fonctionnalités qui faciliteraient la gestion des demandes des clients et des partenaires qui cherchent à obtenir des services de révision du contenu et de gestion de la documentation. Cela inclut l’amélioration du processus de catégorisation et de suivi des demandes en attente, la personnalisation des formulaires de demande et divers générateurs de rapports. L’Équipe de la technologie de l’information (TI) du CDO a récemment fait un essai pilote de Serv auquel a participé Danny McBride, un des membres de l’Équipe de l’assurance de la qualité. Danny a donné des commentaires positifs sur son expérience avec le système Serv. Votre équipe discute actuellement de la proposition visant à introduire cette nouvelle technologie afin d’améliorer vos services."
           }
         }
       },
