@@ -5,6 +5,9 @@ import { Helmet } from "react-helmet";
 import { Button } from "react-bootstrap";
 import psc_logo from "./images/psc_logo.png";
 import canada_logo from "./images/canada_logo.png";
+import { setLanguage } from "./modules/LocalizeRedux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const styles = {
   logo: {
@@ -36,6 +39,19 @@ const styles = {
 };
 
 class SelectLanguage extends Component {
+  static propTypes = {
+    // Props from Redux
+    setLanguage: PropTypes.func.isRequired
+  };
+
+  setLanguageToEnglish = () => {
+    this.props.setLanguage("en");
+  };
+
+  setLanguageToFrench = () => {
+    this.props.setLanguage("fr");
+  };
+
   render() {
     return (
       <div className="app">
@@ -64,8 +80,12 @@ class SelectLanguage extends Component {
             <hr />
             <h2>Outil d'évaluation des compétences</h2>
             <div style={styles.buttonsContainer}>
-              <Button style={styles.langButton}>English</Button>
-              <Button style={styles.langButton}>Français</Button>
+              <Button onClick={this.setLanguageToEnglish} style={styles.langButton}>
+                English
+              </Button>
+              <Button onClick={this.setLanguageToFrench} style={styles.langButton}>
+                Français
+              </Button>
             </div>
           </div>
         </div>
@@ -74,4 +94,15 @@ class SelectLanguage extends Component {
   }
 }
 
-export default SelectLanguage;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      setLanguage
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SelectLanguage);
