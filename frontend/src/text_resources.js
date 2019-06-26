@@ -218,9 +218,13 @@ let LOCALIZE = new LocalizedStrings({
         introductionPage: {
           title: "Overview",
           description1:
-            "The e-MIB consists of an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies.",
+            "The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
           description2:
-            "The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
+            "The next section will allow you to:",
+          bullet1: 
+          "read detailed instructions on how to complete the test;",
+          bullet2:
+          "see examples of how to respond to emails within the simulated inbox." 
         },
         tipsOnTest: {
           title: "Tips for taking the e-MIB",
@@ -311,7 +315,7 @@ let LOCALIZE = new LocalizedStrings({
         evaluation: {
           title: "Evaluation",
           description:
-            "Both the actions you take and the explanations you give will be considered when evaluating your performance on each of the Key Leadership Competencies (described below). You will be assessed on the extent to which your actions demonstrate the Key Leadership Competencies. Your actions will be rated on effectiveness. Effectiveness is measured by whether your actions would have a positive or a negative impact in resolving the situations presented, and how widespread that impact would be. Your responses will also be evaluated for how well they meet the organizational objectives presented in the background information.",
+            "Both the actions you take and the explanations you give will be considered when evaluating your performance on each of the Key Leadership Competencies (described below). You will be assessed on the extent to which your actions demonstrate the Key Leadership Competencies. Your actions will be rated on effectiveness. Effectiveness is measured by whether your actions would have a positive or a negative impact in resolving the situations presented, and how widespread that impact would be",
           keyLeadershipCompetenciesSection: {
             title: "Key Leadership Competencies",
             para1Title: "Create Vision and Strategy: ",
