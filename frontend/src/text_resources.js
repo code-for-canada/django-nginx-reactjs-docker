@@ -383,22 +383,6 @@ let LOCALIZE = new LocalizedStrings({
             analyst4: "Mary Woodside - QA Analyst",
             analyst5: "Charlie Wang - QA Analyst",
             analyst6: "Jack Laurier - QA Analyst"
-          },
-          responsibilitiesSection: {
-            title: "QA Team Responsibilities",
-            listDescription: "The Quality Assurance Team is responsible for:",
-            item1Title: "Providing information management services. ",
-            item1:
-              "Responsibilities include ensuring that organizational development training programs across the public service are well documented. This priority includes synthesizing a large volume of information from various government organizations, ensuring adherence to information security policies, and providing appropriate accessibility to archived documents.",
-            item2Title: "Reviewing online content. ",
-            item2:
-              "Responsibilities include reviewing a large volume of information regarding organizational training programs from various clients and partners, ensuring adherence to internal and external communications policies, and making recommendations to executives for final approval before information dissemination.",
-            item3Title: "Reviewing training documentation. ",
-            item3:
-              "Responsibilities include ensuring the completeness and quality of content in all organizational development training- related documents. This priority includes reviewing training instructions, scoring manuals, training specifications, statistical reports, and other training-related materials.",
-            para1Title: "New initiatives",
-            para1:
-              "You have been mandated to make a recommendation on the adoption of an “off-the- shelf” online request processing system. The proposed system, called Serv, provides features that would facilitate the management of client and partner requests for content review and documentation services. This includes enhanced categorization and tracking of pending requests, customizable forms applications, and various report generators. The Information Technology (IT) Team of the ODC recently facilitated a pilot test with Serv that included Danny McBride, who is a member of the Quality Assurance Team. Danny came back with positive feedback on his experience with the Serv system. Your team has been discussing the proposal to introduce this new technology in hopes of improving your services."
           }
         }
       },
@@ -972,23 +956,6 @@ let LOCALIZE = new LocalizedStrings({
             analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
             analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
             analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
-          },
-          responsibilitiesSection: {
-            title: "Responsabilités de l’Équipe de l’AQ",
-            listDescription:
-              "L’Équipe de l’assurance de la qualité doit s’acquitter de ce qui suit :",
-            item1Title: "Fournir des services de gestion de l’information. ",
-            item1:
-              "L’équipe doit veiller à ce que les programmes en développement organisationnel au sein de la fonction publique soient bien documentés. Cette priorité comprend : synthétiser un grand volume de renseignements provenant de divers organismes gouvernementaux, s’assurer que les politiques sur la sécurité de l’information sont respectées et donner un accès approprié aux documents archivés.",
-            item2Title: "Examiner le contenu en ligne. ",
-            item2:
-              "Les responsabilités de l’équipe comprennent les suivantes : Examiner un grand volume d’information sur les programmes de formation organisationnels de divers clients et partenaires, s’assurer que les politiques sur les communications internes et les communications externes sont respectées et formuler des recommandations aux cadres supérieurs aux fins d’approbation définitive avant la diffusion de l’information.",
-            item3Title: "Examiner les documents de formation. ",
-            item3:
-              "L’équipe doit s’assurer de l’intégralité et de la qualité du contenu de tous les documents liés à la formation en développement organisationnel. Cette priorité inclut l’examen des instructions de formation, des guides de correction, des spécifications de la formation, des rapports statistiques et d’autres documents de formation connexes.",
-            para1Title: "Nouvelles initiatives",
-            para1:
-              "Vous avez reçu le mandat de formuler une recommandation au sujet de l’adoption d’un système commercial de traitement des demandes en ligne. Le système proposé, appelé Serv, offre des fonctionnalités qui faciliteraient la gestion des demandes des clients et des partenaires qui cherchent à obtenir des services de révision du contenu et de gestion de la documentation. Cela inclut l’amélioration du processus de catégorisation et de suivi des demandes en attente, la personnalisation des formulaires de demande et divers générateurs de rapports. L’Équipe de la technologie de l’information (TI) du CDO a récemment fait un essai pilote de Serv auquel a participé Danny McBride, un des membres de l’Équipe de l’assurance de la qualité. Danny a donné des commentaires positifs sur son expérience avec le système Serv. Votre équipe discute actuellement de la proposition visant à introduire cette nouvelle technologie afin d’améliorer vos services."
           }
         }
       },

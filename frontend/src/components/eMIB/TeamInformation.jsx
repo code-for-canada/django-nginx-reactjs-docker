@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import markdown_section1_en from "./sample_test_markdown/TeamInformation_section1_en.md";
 import markdown_section1_fr from "./sample_test_markdown/TeamInformation_section1_fr.md";
+import markdown_section2_en from "./sample_test_markdown/TeamInformation_section2_en.md";
+import markdown_section2_fr from "./sample_test_markdown/TeamInformation_section2_fr.md";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -34,7 +36,9 @@ class TeamInformation extends Component {
   state = {
     showPopupBox: false,
     markdown_section1_en: "",
-    markdown_section1_fr: ""
+    markdown_section1_fr: "",
+    markdown_section2_en: "",
+    markdown_section2_fr: ""
   };
 
   openPopup = () => {
@@ -53,6 +57,12 @@ class TeamInformation extends Component {
     fetch(markdown_section1_fr)
       .then(response => response.text())
       .then(text => this.setState({ markdown_section1_fr: text }));
+    fetch(markdown_section2_en)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_section2_en: text }));
+    fetch(markdown_section2_fr)
+      .then(response => response.text())
+      .then(text => this.setState({ markdown_section2_fr: text }));
   };
 
   render() {
@@ -169,54 +179,14 @@ class TeamInformation extends Component {
               {LOCALIZE.emibTest.background.teamInformation.teamChart.link}
             </button>
           </div>
-          <section aria-labelledby="qa-team-responsabilities">
-            <h3 id="qa-team-responsabilities">
-              {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.title}
-            </h3>
-            <div>
-              <p>
-                {
-                  LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection
-                    .listDescription
-                }
-              </p>
-              <ol>
-                <li>
-                  <span className="font-weight-bold">
-                    {
-                      LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection
-                        .item1Title
-                    }
-                  </span>
-                  {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.item1}
-                </li>
-                <li>
-                  <span className="font-weight-bold">
-                    {
-                      LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection
-                        .item2Title
-                    }
-                  </span>
-                  {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.item2}
-                </li>
-                <li>
-                  <span className="font-weight-bold">
-                    {
-                      LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection
-                        .item3Title
-                    }
-                  </span>
-                  {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.item3}
-                </li>
-              </ol>
-              <section aria-labelledby="qa-team-new-initiatives">
-                <h4 id="qa-team-new-initiatives">
-                  {LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1Title}
-                </h4>
-                <p>{LOCALIZE.emibTest.background.teamInformation.responsibilitiesSection.para1}</p>
-              </section>
-            </div>
-          </section>
+          <div>
+            {this.props.currentLanguage === LANGUAGES.english && (
+              <ReactMarkdown source={this.state.markdown_section2_en} />
+            )}
+            {this.props.currentLanguage === LANGUAGES.french && (
+              <ReactMarkdown source={this.state.markdown_section2_fr} />
+            )}
+          </div>
         </div>
       </div>
     );
