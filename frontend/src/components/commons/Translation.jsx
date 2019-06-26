@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import LOCALIZE from "../../text_resources";
 import { setLanguage } from "../../modules/LocalizeRedux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -24,11 +23,9 @@ class Translation extends Component {
 
   toggleLanguage = () => {
     if (this.state.currentLanguage === LANGUAGES.english) {
-      LOCALIZE.setLanguage(LANGUAGES.french);
       this.setState({ currentLanguage: LANGUAGES.french });
       this.props.setLanguage(LANGUAGES.french);
     } else {
-      LOCALIZE.setLanguage(LANGUAGES.english);
       this.setState({ currentLanguage: LANGUAGES.english });
       this.props.setLanguage(LANGUAGES.english);
     }

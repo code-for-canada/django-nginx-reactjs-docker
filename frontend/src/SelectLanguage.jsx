@@ -78,12 +78,12 @@ class SelectLanguage extends Component {
             </div>
             <h2>Competency Assessment Tool</h2>
             <hr />
-            <h2>Outil d'évaluation des compétences</h2>
+            <h2 lang={"fr"}>Outil d'évaluation des compétences</h2>
             <div style={styles.buttonsContainer}>
               <Button onClick={this.setLanguageToEnglish} style={styles.langButton}>
                 English
               </Button>
-              <Button onClick={this.setLanguageToFrench} style={styles.langButton}>
+              <Button lang={"fr"} onClick={this.setLanguageToFrench} style={styles.langButton}>
                 Français
               </Button>
             </div>
