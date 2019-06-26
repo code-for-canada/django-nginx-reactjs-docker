@@ -476,6 +476,12 @@ let LOCALIZE = new LocalizedStrings({
 
       //Test Footer
       testFooter: {
+        timer: {
+          showTimer: "Show timer",
+          hideTimer: "Hide timer",
+          timeLeft: "Time left in test session:",
+          timerHidden: "Timer hidden."
+        },
         submitTestPopupBox: {
           title: "Confirm test submission?",
           warning: {
@@ -1051,6 +1057,12 @@ let LOCALIZE = new LocalizedStrings({
 
       //Test Footer
       testFooter: {
+        timer: {
+          showTimer: "FR Show timer",
+          hideTimer: "FR Hide timer",
+          timeLeft: "FR Time left in test session:",
+          timerHidden: "FR Timer hidden."
+        },
         submitTestPopupBox: {
           title: "Confirmer l’envoi du test?",
           warning: {
