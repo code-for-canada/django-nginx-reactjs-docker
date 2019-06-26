@@ -39,6 +39,7 @@ matrix:
       provider: script
       before_script:
         - docker-compose up -d --build
+        - CI=true
         - npm install frontend/
       script:
-        - docker-compose run --rm frontend CI=true npm test src/tests/
+        - docker-compose run --rm frontend npm test src/tests/
