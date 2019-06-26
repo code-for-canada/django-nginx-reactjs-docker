@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactMarkdown from "react-markdown";
-import markdown_en from "./markdown_files/OrganizationalInformation_en.md";
-import markdown_fr from "./markdown_files/OrganizationalInformation_fr.md";
+import markdown_en from "./sample_test_markdown/OrganizationalInformation_en.md";
+import markdown_fr from "./sample_test_markdown/OrganizationalInformation_fr.md";
 import { LANGUAGES } from "../commons/Translation";
 
 class OrganizationalInformation extends Component {
