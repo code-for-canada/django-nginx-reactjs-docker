@@ -501,20 +501,12 @@ let LOCALIZE = new LocalizedStrings({
         },
         quitTestPopupBox: {
           title: "Are you sure you want to quit this test?",
-          warning: {
-            title: "Warning! Once you exit the test, you will not be able to get back in.",
-            message:
-              "You will not be able to recover your answers, and will be withdrawn from this test session. You may be retested at a later time."
-          },
-          descriptionPart1:
-            "You are about to withdraw from this test. By proceeding, you acknowledge the following:",
+          description:
+            "All answers will be deleted. You will not be able to recover your answers, and will forfeit from this assessment. To quit, you must acknowledge the following:",
           checkboxOne: "I voluntarily withdraw from this examination",
           checkboxTwo: "My test will not be scored",
           checkboxThree:
-            "I am aware that the retest period for this test may apply, should I wish to write this test again",
-          descriptionPart2:
-            "If you are certain that you want to quit this session, click the “Quit test” button. You will be exited out of this test session and provided instructions to complete your withdrawal.",
-          descriptionPart3: "Are you sure you want to quit this test?"
+            "I am aware that the retest period for this test may apply, should I wish to write this test again"
         }
       }
     },
@@ -1089,21 +1081,12 @@ let LOCALIZE = new LocalizedStrings({
         },
         quitTestPopupBox: {
           title: "Souhaitez-vous mettre fin à cette séance de test?",
-          warning: {
-            title:
-              "Avertissement : une fois la séance de test terminée, vous ne pourrez plus y retourner.",
-            message:
-              "Vous ne pourrez pas récupérer vos réponses et n’aurez plus accès à la séance de test. Vous pourrez reprendre le test à une date ultérieure."
-          },
-          descriptionPart1:
-            "Vous êtes sur le point de mettre fin à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
+          description:
+            "Vous ne pourrez pas récupérer vos réponses et n’aurez plus accès à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
           checkboxOne: "Je me retire volontairement de ce test;",
           checkboxTwo: "Mon test ne sera pas noté;",
           checkboxThree:
-            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
-          descriptionPart2:
-            "Si vous êtes certain(e) de vouloir mettre fin à cette séance, cliquez sur le bouton « Quitter la séance test ». La séance de test sera fermée et vous recevrez des instructions sur la façon de vous retirer.",
-          descriptionPart3: "Souhaitez-vous mettre fin à cette séance de test?"
+            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur."
         }
       }
     },
