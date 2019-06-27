@@ -34,7 +34,9 @@ const styles = {
   contentPadding: {
     padding: "10px 15px",
     overflow: "auto",
-    maxHeight: "calc(100vh - 300px)"
+    maxHeight: "calc(100vh - 300px)",
+    borderBottom: "1px solid #CECECE",
+    borderTop: "1px solid #CECECE"
   },
   headerPadding: {
     padding: "15px 15px 5px 15px"
@@ -129,13 +131,9 @@ class PopupBox extends Component {
           <h2 id="modal-heading">{title}</h2>
         </div>
 
-        <hr style={styles.hr} />
-
         <div id="modal-description" style={styles.contentPadding}>
           {description}
         </div>
-
-        <hr style={styles.hr} />
 
         <div style={styles.footerPadding}>
           {leftButtonTitle && leftButtonType && (
