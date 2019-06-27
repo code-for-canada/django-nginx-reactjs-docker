@@ -56,7 +56,9 @@ const styles = {
     maxHeight: "calc(100vh - 300px)",
     overflow: "auto",
     width: 700,
-    padding: "10px 15px"
+    padding: "10px 15px",
+    borderBottom: "1px solid #CECECE",
+    borderTop: "1px solid #CECECE"
   },
   footer: {
     padding: 15,
@@ -238,8 +240,6 @@ class EditActionDialog extends Component {
             />
           )}
         </div>
-
-        <hr style={styles.hr} />
 
         <div style={styles.footer}>
           <button className={"btn btn-danger"} onClick={this.handleClose}>
