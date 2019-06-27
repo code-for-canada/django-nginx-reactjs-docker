@@ -116,7 +116,6 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "Competency Assessment Tool",
       welcomeMsg: "Welcome to the Compotency Assessment Tool",
       description:
         "This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
@@ -691,7 +690,6 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "Outil d'évaluation des compétences",
       welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences",
       description:
         "FR This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
