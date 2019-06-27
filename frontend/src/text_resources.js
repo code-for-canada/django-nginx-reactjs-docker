@@ -116,7 +116,7 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      welcomeMsg: "Welcome to the Compotency Assessment Tool",
+      welcomeMsg: "Welcome to the Competency Assessment Tool",
       description:
         "This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
     },
@@ -138,7 +138,7 @@ let LOCALIZE = new LocalizedStrings({
       title: "CAT Status",
       logo: "Thunder CAT Logo",
       welcomeMsg:
-        "Internal status page to quickly determine the status / health of the Compotency Assessment Tool.",
+        "Internal status page to quickly determine the status / health of the Competency Assessment Tool.",
       gitHubRepoBtn: "GitHub Repository",
       serviceStatusTable: {
         title: "Service Status",
