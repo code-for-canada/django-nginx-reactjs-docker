@@ -558,11 +558,12 @@ let LOCALIZE = new LocalizedStrings({
       enterEmib: "Enter e-MIB",
       startTest: "Start test",
       confirmStartTest: {
-        aboutToStart: "You are about to start the test.",
+        aboutToStart: "You are about to start the timed test.",
         timerWarning:
-          "Once you start the timer will begin, and you can only leave the test by submitting or quitting.",
+          "After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
-          "You will have access to the instructions from within the test. Good luck!"
+          "You will have access to the instructions from within the test. Good luck!",
+        timeUnlimited: "unlimited time"
       },
       submitTestButton: "Submit test",
       quitTest: "Quit Test",
@@ -1152,11 +1153,12 @@ let LOCALIZE = new LocalizedStrings({
       enterEmib: "Entrez la BRG-e",
       startTest: "Commencer le test",
       confirmStartTest: {
-        aboutToStart: "Vous êtes sur le point de commencer le test.",
+        aboutToStart: "FR You are about to start the timed test.",
         timerWarning:
-          "Le chronomètre se déclenchera lorsque vous commencerez le test. À partir de ce moment là, vous ne pourrez quitter le test qu’en soumettant votre test ou en quittant complètement la session de test. Vous aurez trois heures pour terminer le test.",
+          "FR After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
-          "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!"
+          "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!",
+        timeUnlimited: "FR unlimited time"
       },
       submitTestButton: "Envoyer le test",
       quitTest: "Quitter la séance de test",
