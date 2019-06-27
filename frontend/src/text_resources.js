@@ -9,7 +9,7 @@ let LOCALIZE = new LocalizedStrings({
       dashboardTabTitle: "Dashboard",
       sampleTest: "Sample eMIB",
       statusTabTitle: "Status",
-      psc: "Public Service Commission",
+      psc: "Public Service Commission of Canada",
       canada: "Government of Canada"
     },
 
