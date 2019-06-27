@@ -83,10 +83,8 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == TEST_META_DATA:
 
         # populate the return dict with meta_data specific values
-        return_dict["test_en_name"] = get_text_detail(
-            item_id, en_id, query_date_time)
-        return_dict["test_fr_name"] = get_text_detail(
-            item_id, fr_id, query_date_time)
+        return_dict["test_en_name"] = get_text_detail(item_id, en_id, query_date_time)
+        return_dict["test_fr_name"] = get_text_detail(item_id, fr_id, query_date_time)
 
         return_dict["is_public"] = test.is_public
         return_dict["default_time"] = test.default_time
@@ -190,7 +188,7 @@ def get_items(
     # get all items with parent_id
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     # for each child
-   for child in children_items:
+    for child in children_items:
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time
         )
