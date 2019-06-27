@@ -21,7 +21,7 @@ class OrganizationalInformation extends Component {
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // saving the background information markdown content in local states
+      // saving the organizational information markdown content in local states
       this.setState({
         markdown_en: response.background.en.background[0].markdown[1].text,
         markdown_fr: response.background.fr.background[0].markdown[1].text
