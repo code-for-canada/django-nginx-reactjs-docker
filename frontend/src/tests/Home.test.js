@@ -6,7 +6,7 @@ import Dashboard from "../Dashboard";
 
 it("renders home page title if not authenticated", () => {
   const wrapper = shallow(<Home authenticated={false} />);
-  const homePageTitle = <h1>{LOCALIZE.homePage.title}</h1>;
+  const homePageTitle = <h1>{LOCALIZE.homePage.welcomeMsg}</h1>;
   expect(wrapper.containsMatchingElement(homePageTitle)).toEqual(true);
 });
 

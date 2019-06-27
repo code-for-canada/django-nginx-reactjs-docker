@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
 import LOCALIZE from "../../text_resources";
-import { LANGUAGES } from "../commons/Translation";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import emib_sample_test_example_team_chart_en from "../../images/emib_sample_test_example_team_chart_en.png";
 import emib_sample_test_example_team_chart_en_zoomed from "../../images/emib_sample_test_example_team_chart_en.png";

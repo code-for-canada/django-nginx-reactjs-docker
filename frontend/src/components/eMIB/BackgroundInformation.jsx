@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import { LANGUAGES } from "../commons/Translation";
 import { getTestQuestions } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 class BackgroundInformation extends Component {
   static propTypes = {

@@ -122,6 +122,7 @@ class Notepad extends Component {
             <div style={styles.notepadSection}>
               <TextareaAutosize
                 id="text-area-notepad"
+                aria-placeholder={LOCALIZE.commons.notepad.placeholder}
                 maxLength="3000"
                 className="text-area"
                 style={styles.textArea}

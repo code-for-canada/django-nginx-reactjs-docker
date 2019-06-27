@@ -41,4 +41,4 @@ matrix:
         - docker-compose up -d --build
         - npm install frontend/
       script:
-        - docker-compose run --rm frontend npm test src/tests/ -- --coverage
+        - docker-compose run -e CI=true --rm frontend npm test src/tests/ -- --coverage

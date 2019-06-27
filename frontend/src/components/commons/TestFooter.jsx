@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { Navbar } from "react-bootstrap";
+import Timer from "../commons/Timer";
 
 const styles = {
   footer: {
@@ -31,6 +32,7 @@ class TestFooter extends Component {
       <div role="contentinfo">
         <Navbar fixed="bottom" style={styles.footer}>
           <div style={styles.content}>
+            {this.props.testIsStarted && <Timer />}
             {!this.props.testIsStarted && (
               <div style={styles.button}>
                 <button
