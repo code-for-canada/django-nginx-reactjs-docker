@@ -209,7 +209,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
-        testTitle: "The eMIB",
+        testTitle: "The Sample eMIB Test",
         welcomeMsg: "Welcome to the eMIB Sample Test"
       },
 
@@ -219,12 +219,9 @@ let LOCALIZE = new LocalizedStrings({
           title: "Overview",
           description1:
             "The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
-          description2:
-            "The next section will allow you to:",
-          bullet1: 
-          "read detailed instructions on how to complete the test;",
-          bullet2:
-          "see examples of how to respond to emails within the simulated inbox." 
+          description2: "The next section will allow you to:",
+          bullet1: "read detailed instructions on how to complete the test;",
+          bullet2: "see examples of how to respond to emails within the simulated inbox."
         },
         tipsOnTest: {
           title: "Tips for taking the e-MIB",
@@ -828,8 +825,8 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
-        testTitle: "La BRG-e",
-        welcomeMsg: "Bienvenue dans le test pratique de eMIB"
+        testTitle: "La test pratique de BRG-e",
+        welcomeMsg: "Bienvenue dans le test pratique de BRG-e"
       },
 
       //HowTo Page
