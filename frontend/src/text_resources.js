@@ -465,7 +465,7 @@ let LOCALIZE = new LocalizedStrings({
       confirmationPage: {
         submissionConfirmedTitle: "Congratulations! Your test has been submitted.",
         feedbackSurvey:
-          "We would appreciate your feedback. Please fill out this optional {0} before logging out and leaving.",
+          "We would appreciate your feedback on the assessment. Please fill out this optional {0} before logging out and leaving.",
         optionalSurvey: "15 minute survey",
         logout:
           "For security reasons, please ensure you log out of your account in the top right corner of this page. You may quietly gather your belongings and leave the test session. If you have any questions or concerns about your test, please contact {0}.",
@@ -1061,7 +1061,7 @@ let LOCALIZE = new LocalizedStrings({
       confirmationPage: {
         submissionConfirmedTitle: "FR Congratulations! Your test has been submitted.",
         feedbackSurvey:
-          "FR We would appreciate your feedback. Please fill out this optional {0} before logging out and leaving.",
+          "FR We would appreciate your feedback on the assessment. Please fill out this optional {0} before logging out and leaving.",
         optionalSurvey: "FR 15 minute survey",
         logout:
           "FR For security reasons, please ensure you log out of your account in the top right corner of this page. You may quietly gather your belongings and leave the test session. If you have any questions or concerns about your test, please contact {0}.",

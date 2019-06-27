@@ -9,7 +9,7 @@ class Confirmation extends Component {
         <h1 className="green-divider">
           {LOCALIZE.emibTest.confirmationPage.submissionConfirmedTitle}
         </h1>
-        <p>
+        <p style={{ fontSize: 24 }}>
           {LOCALIZE.formatString(
             LOCALIZE.emibTest.confirmationPage.feedbackSurvey,
             <a href="https://www.canada.ca/home.html" target="_blank" rel="noopener noreferrer">
