@@ -4,7 +4,6 @@ import LOCALIZE from "./text_resources";
 import { Helmet } from "react-helmet";
 import { Button } from "react-bootstrap";
 import psc_logo_en from "./images/psc_logo_en.png";
-import psc_logo_fr from "./images/psc_logo_fr.png";
 import canada_logo from "./images/canada_logo.png";
 import { setLanguage, LANGUAGES } from "./modules/LocalizeRedux";
 import { connect } from "react-redux";
