@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import markdown_section1_en from "./sample_test_markdown/TeamInformation_section1_en.md";
-import markdown_section1_fr from "./sample_test_markdown/TeamInformation_section1_fr.md";
-import markdown_section2_en from "./sample_test_markdown/TeamInformation_section2_en.md";
-import markdown_section2_fr from "./sample_test_markdown/TeamInformation_section2_fr.md";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -16,6 +13,8 @@ import emib_sample_test_example_team_chart_fr_zoomed from "../../images/emib_sam
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
+import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { TEST_DEFINITION } from "../../testDefinition";
 
 const styles = {
   testImage: {
@@ -30,7 +29,8 @@ const styles = {
 class TeamInformation extends Component {
   static propTypes = {
     // Props from Redux
-    currentLanguage: PropTypes.string
+    currentLanguage: PropTypes.string,
+    getTestQuestions: PropTypes.func
   };
 
   state = {
@@ -49,20 +49,17 @@ class TeamInformation extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // loads the markdown files (english and french versions)
+  // loads the markdown content (english and french versions)
   componentWillMount = () => {
-    fetch(markdown_section1_en)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_section1_en: text }));
-    fetch(markdown_section1_fr)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_section1_fr: text }));
-    fetch(markdown_section2_en)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_section2_en: text }));
-    fetch(markdown_section2_fr)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_section2_fr: text }));
+    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // saving the team information markdown content in local states
+      this.setState({
+        markdown_section1_en: response.background.en.background[0].markdown[3].text,
+        markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
+        markdown_section2_en: response.background.en.background[0].markdown[4].text,
+        markdown_section2_fr: response.background.fr.background[0].markdown[4].text
+      });
+    });
   };
 
   render() {
@@ -199,7 +196,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getTestQuestions
+    },
+    dispatch
+  );
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(TeamInformation);
