@@ -38,16 +38,16 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
   - Linting Configuration
     - Pylint:
       1.  Open '_.\project-thundercat\.vscode\settings.json_' file
-      2.  Make sure that you have the following setting: _"python.linting.pylintEnabled": true_
+      2.  Add the following setting: _"python.linting.pylintEnabled": true_
       3.  Now, you can edit the desired settings from _.pylintrc_ file (to disable messages, see line 54 of the config file)
       4.  Click [here](http://pylint-messages.wikidot.com/all-messages) for more details on most of the Pylint errors/warnings
     - ESLint:
       1.  Open '_.\project-thundercat\.vscode\settings.json_' file
-      2.  Search for 'eslint.enable' and make sure it is set to 'true' (User and Workspace settings)
-      3.  Insert "editor.formatOnSave": true into your User Settings in VSCode.
-      4.  Select 'USER SETTINGS' tab in the right hand side window of the settings file
-      5.  Add the following parameter: "eslint.options": {"configFile": "<path_of_your_project_root>\\\\frontend\\\\.eslintrc.json"}
-      6.  ESLint is now installed and configured
+      2.  Add the following setting:
+          - _"eslint.enable": true_
+          - _"editor.formatOnSave": true_
+          - _"eslint.options": {"configFile": "<path_of_your_project_root>\\\\frontend\\\\.eslintrc.json"}_
+      3.  ESLint is now installed and configured
           - If ESLint is not working, do the following steps:
             1. Close Docker: Right Click on Docker icon + Quit Docker
             2. Navigate in your Windows explorer and delete the folder called '_node_modules_' under '.\\\\project-thundercat\\\\frontend'
@@ -55,8 +55,8 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
             4. Open a powershell window and do a '_docker-compose up_'
             5. Wait a couple minutes to make sure that all packages have been downloaded
             6. Restart VS Code
-      7.  You can also add/edit/remove rules from _.prettierrc.json_ file
-      8.  Click [here](https://eslint.org/) for more details about **ESLint** or [here](https://github.com/airbnb/javascript/tree/master/react#basic-rules) to know more about the Airbnb React style
+      4.  You can also add/edit/remove rules from _.prettierrc.json_ file
+      5.  Click [here](https://eslint.org/) for more details about **ESLint** or [here](https://github.com/airbnb/javascript/tree/master/react#basic-rules) to know more about the Airbnb React style
 
 * Snyk
 
