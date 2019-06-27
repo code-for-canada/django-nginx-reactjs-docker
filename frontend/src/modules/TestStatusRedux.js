@@ -1,15 +1,18 @@
 // Action Types
 const ACTIVATE_TEST = "testStatus/ACTIVATE_TEST";
 const DEACTIVATE_TEST = "testStatus/DEACTIVATE_TEST";
+const QUIT_TEST = "testStatus/QUIT_TEST";
 
 // Action Creators
 const activateTest = () => ({ type: ACTIVATE_TEST });
 const deactivateTest = () => ({ type: DEACTIVATE_TEST });
+const quitTest = () => ({ type: QUIT_TEST });
 
 const PAGES = {
   preTest: "preTest",
   emibTabs: "emibTabs",
-  confirm: "confirm"
+  confirm: "confirm",
+  quit: "quit"
 };
 
 // Initial State
@@ -33,6 +36,12 @@ const testStatus = (state = initialState, action) => {
         isTestActive: false,
         currentPage: PAGES.confirm
       };
+    case QUIT_TEST:
+      return {
+        ...state,
+        isTestActive: false,
+        currentPage: PAGES.quit
+      };
 
     default:
       return state;
@@ -40,4 +49,4 @@ const testStatus = (state = initialState, action) => {
 };
 
 export default testStatus;
-export { activateTest, initialState, deactivateTest, PAGES };
+export { activateTest, initialState, deactivateTest, quitTest, PAGES };

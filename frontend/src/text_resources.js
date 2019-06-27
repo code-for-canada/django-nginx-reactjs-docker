@@ -466,6 +466,15 @@ let LOCALIZE = new LocalizedStrings({
         submissionConfirmed: "Submission confirmed"
       },
 
+      //Quit Confirmation Page
+      quitConfirmationPage: {
+        title: "You have quit the test",
+        instructionsRaiseHand:
+          "Please raise your hand to signal to your test administrator for further instructions.",
+        instructionsEmail:
+          "If you have any questions or concerns about your test, please contact {0}."
+      },
+
       //Test tabs
       tabs: {
         instructionsTabTitle: "Instructions",
@@ -1045,6 +1054,15 @@ let LOCALIZE = new LocalizedStrings({
       //Confirmation Page
       confirmationPage: {
         submissionConfirmed: "Soumission Confirmée"
+      },
+
+      //Quit Confirmation Page
+      quitConfirmationPage: {
+        title: "FR You have quit the test",
+        instructionsRaiseHand:
+          "FR Please raise your hand to signal to your test administrator for further instructions.",
+        instructionsEmail:
+          "FR If you have any questions or concerns about your test, please contact {0}."
       },
 
       //Test tabs
