@@ -469,7 +469,22 @@ let LOCALIZE = new LocalizedStrings({
 
       //Confirmation Page
       confirmationPage: {
-        submissionConfirmed: "Submission confirmed"
+        submissionConfirmedTitle: "Congratulations! Your test has been submitted.",
+        feedbackSurvey:
+          "We would appreciate your feedback on the assessment. Please fill out this optional {0} before logging out and leaving.",
+        optionalSurvey: "15 minute survey",
+        logout:
+          "For security reasons, please ensure you log out of your account in the top right corner of this page. You may quietly gather your belongings and leave the test session. If you have any questions or concerns about your test, please contact {0}.",
+        thankYou: "Thank you for completing your assessment. Good luck!"
+      },
+
+      //Quit Confirmation Page
+      quitConfirmationPage: {
+        title: "You have quit the test",
+        instructionsRaiseHand:
+          "Please raise your hand to signal to your test administrator for further instructions.",
+        instructionsEmail:
+          "If you have any questions or concerns about your test, please contact {0}."
       },
 
       //Test tabs
@@ -1048,7 +1063,22 @@ let LOCALIZE = new LocalizedStrings({
 
       //Confirmation Page
       confirmationPage: {
-        submissionConfirmed: "Soumission Confirmée"
+        submissionConfirmedTitle: "FR Congratulations! Your test has been submitted.",
+        feedbackSurvey:
+          "FR We would appreciate your feedback on the assessment. Please fill out this optional {0} before logging out and leaving.",
+        optionalSurvey: "FR 15 minute survey",
+        logout:
+          "FR For security reasons, please ensure you log out of your account in the top right corner of this page. You may quietly gather your belongings and leave the test session. If you have any questions or concerns about your test, please contact {0}.",
+        thankYou: "FR Thank you for completing your assessment. Good luck!"
+      },
+
+      //Quit Confirmation Page
+      quitConfirmationPage: {
+        title: "FR You have quit the test",
+        instructionsRaiseHand:
+          "FR Please raise your hand to signal to your test administrator for further instructions.",
+        instructionsEmail:
+          "FR If you have any questions or concerns about your test, please contact {0}."
       },
 
       //Test tabs

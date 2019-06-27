@@ -2,6 +2,7 @@ import testStatus, {
   activateTest,
   initialState,
   deactivateTest,
+  quitTest,
   PAGES
 } from "../../modules/TestStatusRedux";
 
@@ -18,6 +19,13 @@ describe("test activation state and moves to emib tabs", () => {
     expect(testStatus(initialState, action2)).toEqual({
       isTestActive: false,
       currentPage: PAGES.confirm
+    });
+  });
+  it("test quits the test and moves to quit page", () => {
+    const action3 = quitTest();
+    expect(testStatus(initialState, action3)).toEqual({
+      isTestActive: false,
+      currentPage: PAGES.quit
     });
   });
 });

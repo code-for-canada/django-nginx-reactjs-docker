@@ -19,6 +19,7 @@ import {
 } from "../../modules/EmibInboxRedux";
 import { getTestQuestions } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
+import QuitConfirmation from "../commons/QuitConfirmation";
 
 class Emib extends Component {
   static propTypes = {
@@ -96,6 +97,7 @@ class Emib extends Component {
             )}
 
             {this.props.curPage === PAGES.confirm && <Confirmation />}
+            {this.props.curPage === PAGES.quit && <QuitConfirmation />}
           </ContentContainer>
         )}
         {this.props.curPage === PAGES.emibTabs && (
