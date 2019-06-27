@@ -54,6 +54,7 @@ class QuitTest extends Component {
   };
 
   openQuitPopup = () => {
+    this.setState({ quitConditions: quitConditions() });
     this.setState({ showQuitPopup: true });
   };
 
