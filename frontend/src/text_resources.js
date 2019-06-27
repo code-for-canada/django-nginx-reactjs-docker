@@ -117,9 +117,9 @@ let LOCALIZE = new LocalizedStrings({
     //Home Page
     homePage: {
       title: "Competency Assessment Tool",
-      welcomeMsg: "Welcome to the Compotency Assessment Tool.",
+      welcomeMsg: "Welcome to the Compotency Assessment Tool",
       description:
-        "Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
+        "This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
     },
 
     //Dashboard Page
@@ -692,9 +692,9 @@ let LOCALIZE = new LocalizedStrings({
     //Home Page
     homePage: {
       title: "Outil d'évaluation des compétences",
-      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
+      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences",
       description:
-        "L’organisme Code for Canada et la Commission de la fonction publique travaillent sur cet outil qui servira à évaluer les candidats qui postulent à un emploi dans la fonction publique fédérale. On en est à la phase alpha, soit à l’étape où l’on met à l’essai le produit; donc, celui ci pourrait encore subir des modifications."
+        "FR This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
     },
 
     //Dashboard Page
