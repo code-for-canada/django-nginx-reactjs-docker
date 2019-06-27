@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import markdown_en from "./sample_test_markdown/OrganizationalStructure_en.md";
-import markdown_fr from "./sample_test_markdown/OrganizationalStructure_fr.md";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../commons/Translation";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -14,6 +13,8 @@ import emib_sample_test_example_org_chart_fr_zoomed from "../../images/emib_samp
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
+import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { TEST_DEFINITION } from "../../testDefinition";
 
 const styles = {
   testImage: {
@@ -28,7 +29,8 @@ const styles = {
 class OrganizationalStructure extends Component {
   static propTypes = {
     // Props from Redux
-    currentLanguage: PropTypes.string
+    currentLanguage: PropTypes.string,
+    getTestQuestions: PropTypes.func
   };
 
   state = {
@@ -45,14 +47,15 @@ class OrganizationalStructure extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // loads the markdown files (english and french versions)
+  // loads the markdown content (english and french versions)
   componentWillMount = () => {
-    fetch(markdown_en)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_en: text }));
-    fetch(markdown_fr)
-      .then(response => response.text())
-      .then(text => this.setState({ markdown_fr: text }));
+    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // saving the background information markdown content in local states
+      this.setState({
+        markdown_en: response.background.en.background[0].markdown[2].text,
+        markdown_fr: response.background.fr.background[0].markdown[2].text
+      });
+    });
   };
 
   render() {
@@ -210,7 +213,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getTestQuestions
+    },
+    dispatch
+  );
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(OrganizationalStructure);
