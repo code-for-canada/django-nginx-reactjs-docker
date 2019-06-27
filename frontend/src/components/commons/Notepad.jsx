@@ -59,15 +59,16 @@ const styles = {
     border: "none"
   },
   openNotepadBtn: {
-    width: 60,
+    width: 63,
     height: NOTEPAD_HEIGHT,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     cursor: "pointer",
     whiteSpace: "normal",
-    padding: 8,
+    padding: 2,
     backgroundColor: "#00565e",
-    borderColor: "#00565e"
+    borderColor: "#00565e",
+    overflow: "wrap"
   },
   openText: {
     color: "#FFFFFF"
