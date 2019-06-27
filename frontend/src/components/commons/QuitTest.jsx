@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Button } from "react-bootstrap";
 import PopupBox, { BUTTON_TYPE, BUTTON_STATE } from "../commons/PopupBox";
-import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import LOCALIZE from "../../text_resources";
 import { quitTest } from "../../modules/TestStatusRedux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -55,6 +54,9 @@ class QuitTest extends Component {
   };
 
   openQuitPopup = () => {
+    // Ensure language state is reset.
+    this.setState({ quitConditions: quitConditions() });
+    // Open the dialog.
     this.setState({ showQuitPopup: true });
   };
 
@@ -95,16 +97,7 @@ class QuitTest extends Component {
               title={LOCALIZE.emibTest.testFooter.quitTestPopupBox.title}
               description={
                 <div>
-                  <div>
-                    <SystemMessage
-                      messageType={MESSAGE_TYPE.error}
-                      title={LOCALIZE.emibTest.testFooter.quitTestPopupBox.warning.title}
-                      message={LOCALIZE.emibTest.testFooter.quitTestPopupBox.warning.message}
-                    />
-                  </div>
-                  <p className="font-weight-bold">
-                    {LOCALIZE.emibTest.testFooter.quitTestPopupBox.descriptionPart1}
-                  </p>
+                  <p>{LOCALIZE.emibTest.testFooter.quitTestPopupBox.description}</p>
                   <div>
                     {this.state.quitConditions.map((condition, id) => {
                       return (
@@ -127,13 +120,6 @@ class QuitTest extends Component {
                       );
                     })}
                   </div>
-                  <hr style={styles.hr} />
-                  <p className="font-weight-bold">
-                    {LOCALIZE.emibTest.testFooter.quitTestPopupBox.descriptionPart2}
-                  </p>
-                  <p className="font-weight-bold">
-                    {LOCALIZE.emibTest.testFooter.quitTestPopupBox.descriptionPart3}
-                  </p>
                 </div>
               }
               leftButtonType={BUTTON_TYPE.danger}

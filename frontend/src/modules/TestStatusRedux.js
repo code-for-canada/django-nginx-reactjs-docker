@@ -31,6 +31,8 @@ const testStatus = (state = initialState, action) => {
         currentPage: PAGES.emibTabs
       };
     case DEACTIVATE_TEST:
+      // Ensure local storage is cleaned up once test is complete.
+      localStorage.removeItem("catLanguage");
       return {
         ...state,
         isTestActive: false,

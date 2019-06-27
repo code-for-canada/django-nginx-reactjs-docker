@@ -20,6 +20,7 @@ import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
 import history from "./components/authentication/history";
+import SelectLanguage from "./SelectLanguage";
 
 const styles = {
   nav: {
@@ -84,74 +85,81 @@ class App extends Component {
 
   render() {
     const { isTestActive } = this.props;
+    // Determine if user has already selected a language.
+    const isLanguageSelected = this.props.currentLanguage !== "";
     return (
       <div>
-        <Helmet>
-          <html lang={this.props.currentLanguage} />
-          <title>{LOCALIZE.titles.CAT}</title>
-        </Helmet>
-        <Router history={history}>
+        {!isLanguageSelected && <SelectLanguage />}
+        {isLanguageSelected && (
           <div>
-            {!isTestActive && (
-              <div role="navigation">
-                <Navbar bg="light" variant="light" style={styles.nav}>
-                  <img
-                    alt={LOCALIZE.mainTabs.psc}
-                    src={psc_logo}
-                    width="370"
-                    className="d-inline-block align-top"
-                  />
-                  <img
-                    alt={LOCALIZE.mainTabs.canada}
-                    src={canada_logo}
-                    width="120"
-                    className="d-inline-block align-top"
-                  />
-                </Navbar>
-                <Navbar bg="light" variant="light" style={styles.nav}>
-                  <Nav>
-                    {!this.props.authenticated && (
-                      <Nav.Link href={PATH.login}>
-                        {LOCALIZE.mainTabs.homeTabTitleUnauthenticated}
-                      </Nav.Link>
-                    )}
-                    {this.props.authenticated && (
-                      <Nav.Link href={PATH.dashboard}>
-                        {LOCALIZE.mainTabs.homeTabTitleAuthenticated}
-                      </Nav.Link>
-                    )}
-                    <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
-                  </Nav>
-                  <Nav>
-                    <LoginButton />
-                    <Settings variant="secondary" />
-                    <Translation variant="secondary" />
-                  </Nav>
-                </Navbar>
+            <Helmet>
+              <html lang={this.props.currentLanguage} />
+              <title>{LOCALIZE.titles.CAT}</title>
+            </Helmet>
+            <Router history={history}>
+              <div>
+                {!isTestActive && (
+                  <div role="navigation">
+                    <Navbar bg="light" variant="light" style={styles.nav}>
+                      <img
+                        alt={LOCALIZE.mainTabs.psc}
+                        src={psc_logo}
+                        width="370"
+                        className="d-inline-block align-top"
+                      />
+                      <img
+                        alt={LOCALIZE.mainTabs.canada}
+                        src={canada_logo}
+                        width="120"
+                        className="d-inline-block align-top"
+                      />
+                    </Navbar>
+                    <Navbar bg="light" variant="light" style={styles.nav}>
+                      <Nav>
+                        {!this.props.authenticated && (
+                          <Nav.Link href={PATH.login}>
+                            {LOCALIZE.mainTabs.homeTabTitleUnauthenticated}
+                          </Nav.Link>
+                        )}
+                        {this.props.authenticated && (
+                          <Nav.Link href={PATH.dashboard}>
+                            {LOCALIZE.mainTabs.homeTabTitleAuthenticated}
+                          </Nav.Link>
+                        )}
+                        <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
+                      </Nav>
+                      <Nav>
+                        <LoginButton />
+                        <Settings variant="secondary" />
+                        <Translation variant="secondary" />
+                      </Nav>
+                    </Navbar>
+                  </div>
+                )}
+                {isTestActive && (
+                  <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand>
+                      <img
+                        alt=""
+                        src={psc_logo_light}
+                        width="370"
+                        className="d-inline-block align-top"
+                      />
+                    </Navbar.Brand>
+                    <Nav className="mr-auto" />
+                    <QuitTest />
+                    <Settings variant="outline-light" />
+                    <Translation variant="outline-light" />
+                  </Navbar>
+                )}
+                <Route exact path={PATH.login} component={Home} />
+                {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
+                <Route path={PATH.status} component={Status} />
+                <Route path={PATH.emibSampleTest} component={Emib} />
               </div>
-            )}
-            {isTestActive && (
-              <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>
-                  <img
-                    alt=""
-                    src={psc_logo_light}
-                    width="370"
-                    className="d-inline-block align-top"
-                  />
-                </Navbar.Brand>
-                <Nav className="mr-auto" />
-                <QuitTest />
-                <Settings variant="outline-light" />
-                <Translation variant="outline-light" />
-              </Navbar>
-            )}
-            <Route exact path={PATH.login} component={Home} />
-            {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
-            <Route path={PATH.status} component={Status} />
-            <Route path={PATH.emibSampleTest} component={Emib} />
+            </Router>
           </div>
-        </Router>
+        )}
       </div>
     );
   }

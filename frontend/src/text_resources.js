@@ -9,7 +9,7 @@ let LOCALIZE = new LocalizedStrings({
       dashboardTabTitle: "Dashboard",
       sampleTest: "Sample eMIB",
       statusTabTitle: "Status",
-      psc: "Public Service Commission",
+      psc: "Public Service Commission of Canada",
       canada: "Government of Canada"
     },
 
@@ -116,10 +116,9 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "Competency Assessment Tool",
-      welcomeMsg: "Welcome to the Compotency Assessment Tool.",
+      welcomeMsg: "Welcome to the Compotency Assessment Tool",
       description:
-        "Code for Canada and the PSC are working on this tool to help assess managerial canadiates for the federal public service. It is in the alpha phase which means it is currently undergoing product testing and is subject to change."
+        "This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
     },
 
     //Dashboard Page
@@ -157,7 +156,7 @@ let LOCALIZE = new LocalizedStrings({
 
     // Settings Dialog
     settings: {
-      systemSettings: "System Settings",
+      systemSettings: "Display Settings Using IE Browser Tools",
       zoom: {
         title: "Zoom (+/-)",
         instructionsListItem1: "Select the View button at the top left bar in Internet Explorer.",
@@ -209,7 +208,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
-        testTitle: "The eMIB",
+        testTitle: "The Sample eMIB Test",
         welcomeMsg: "Welcome to the eMIB Sample Test"
       },
 
@@ -218,9 +217,16 @@ let LOCALIZE = new LocalizedStrings({
         introductionPage: {
           title: "Overview",
           description1:
-            "The e-MIB consists of an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies.",
-          description2:
-            "The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
+            "The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
+          description2: "The next section will allow you to:",
+          bullet1: "Read detailed instructions on how to complete the test;",
+          bullet2: "See examples of how to respond to emails within the simulated inbox;",
+          bullet3: "Explore the test environment before taking the real test.",
+          differencesTitle: "Differences between the sample test and the real test",
+          differencesBullet1:
+            "There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
+          differencesBullet2:
+            "The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
         },
         tipsOnTest: {
           title: "Tips for taking the e-MIB",
@@ -311,7 +317,7 @@ let LOCALIZE = new LocalizedStrings({
         evaluation: {
           title: "Evaluation",
           description:
-            "Both the actions you take and the explanations you give will be considered when evaluating your performance on each of the Key Leadership Competencies (described below). You will be assessed on the extent to which your actions demonstrate the Key Leadership Competencies. Your actions will be rated on effectiveness. Effectiveness is measured by whether your actions would have a positive or a negative impact in resolving the situations presented, and how widespread that impact would be. Your responses will also be evaluated for how well they meet the organizational objectives presented in the background information.",
+            "Both the actions you take and the explanations you give will be considered when evaluating your performance on each of the Key Leadership Competencies (described below). You will be assessed on the extent to which your actions demonstrate the Key Leadership Competencies. Your actions will be rated on effectiveness. Effectiveness is measured by whether your actions would have a positive or a negative impact in resolving the situations presented, and how widespread that impact would be",
           keyLeadershipCompetenciesSection: {
             title: "Key Leadership Competencies",
             para1Title: "Create vision and strategy: ",
@@ -509,20 +515,12 @@ let LOCALIZE = new LocalizedStrings({
         },
         quitTestPopupBox: {
           title: "Are you sure you want to quit this test?",
-          warning: {
-            title: "Warning! Once you exit the test, you will not be able to get back in.",
-            message:
-              "You will not be able to recover your answers, and will be withdrawn from this test session. You may be retested at a later time."
-          },
-          descriptionPart1:
-            "You are about to withdraw from this test. By proceeding, you acknowledge the following:",
+          description:
+            "All answers will be deleted. You will not be able to recover your answers, and will forfeit from this assessment. To quit, you must acknowledge the following:",
           checkboxOne: "I voluntarily withdraw from this examination",
           checkboxTwo: "My test will not be scored",
           checkboxThree:
-            "I am aware that the retest period for this test may apply, should I wish to write this test again",
-          descriptionPart2:
-            "If you are certain that you want to quit this session, click the “Quit test” button. You will be exited out of this test session and provided instructions to complete your withdrawal.",
-          descriptionPart3: "Are you sure you want to quit this test?"
+            "I am aware that the retest period for this test may apply, should I wish to write this test again"
         }
       }
     },
@@ -706,10 +704,9 @@ let LOCALIZE = new LocalizedStrings({
 
     //Home Page
     homePage: {
-      title: "Outil d'évaluation des compétences",
-      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences.",
+      welcomeMsg: "Bienvenue dans l'outil d'évaluation des compétences",
       description:
-        "L’organisme Code for Canada et la Commission de la fonction publique travaillent sur cet outil qui servira à évaluer les candidats qui postulent à un emploi dans la fonction publique fédérale. On en est à la phase alpha, soit à l’étape où l’on met à l’essai le produit; donc, celui ci pourrait encore subir des modifications."
+        "FR This website is used to assess candidates for positions in the federal public service. To access your tests, you must login below. If you do not have an account, you may register for one using your email address."
     },
 
     //Dashboard Page
@@ -747,7 +744,7 @@ let LOCALIZE = new LocalizedStrings({
 
     // Settings Dialog
     settings: {
-      systemSettings: "FR System settings",
+      systemSettings: "FR Display Settings Using IE Browser Tools",
       zoom: {
         title: "Zoom avant et zoom arrière (+ / -)",
         instructionsListItem1:
@@ -803,8 +800,8 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
-        testTitle: "La BRG-e",
-        welcomeMsg: "Bienvenue dans le test pratique de eMIB"
+        testTitle: "La test pratique de BRG-e",
+        welcomeMsg: "Bienvenue dans le test pratique de BRG-e"
       },
 
       //HowTo Page
@@ -812,9 +809,16 @@ let LOCALIZE = new LocalizedStrings({
         introductionPage: {
           title: "Aperçu général",
           description1:
-            "FR The e-MIB consists of an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies.",
-          description2:
-            "FR The next page will let you access the test instructions for the e-MIB test. When you are ready, you may enter the e-MIB test environment."
+            "FR The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
+          description2: "FR The next section will allow you to:",
+          bullet1: "FR Read detailed instructions on how to complete the test;",
+          bullet2: "FR See examples of how to respond to emails within the simulated inbox;",
+          bullet3: "FR Explore the test environment before taking the real test.",
+          differencesTitle: "FR Differences between the sample test and the real test",
+          differencesBullet1:
+            "FR There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
+          differencesBullet2:
+            "FR The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
         },
         tipsOnTest: {
           title: "Conseils pour répondre à la BRG-e",
@@ -1105,21 +1109,12 @@ let LOCALIZE = new LocalizedStrings({
         },
         quitTestPopupBox: {
           title: "Souhaitez-vous mettre fin à cette séance de test?",
-          warning: {
-            title:
-              "Avertissement : une fois la séance de test terminée, vous ne pourrez plus y retourner.",
-            message:
-              "Vous ne pourrez pas récupérer vos réponses et n’aurez plus accès à la séance de test. Vous pourrez reprendre le test à une date ultérieure."
-          },
-          descriptionPart1:
-            "Vous êtes sur le point de mettre fin à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
+          description:
+            "Vous ne pourrez pas récupérer vos réponses et n’aurez plus accès à la séance de test. Ce faisant, vous affirmez et reconnaissez :",
           checkboxOne: "Je me retire volontairement de ce test;",
           checkboxTwo: "Mon test ne sera pas noté;",
           checkboxThree:
-            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur.",
-          descriptionPart2:
-            "Si vous êtes certain(e) de vouloir mettre fin à cette séance, cliquez sur le bouton « Quitter la séance test ». La séance de test sera fermée et vous recevrez des instructions sur la façon de vous retirer.",
-          descriptionPart3: "Souhaitez-vous mettre fin à cette séance de test?"
+            "Je suis conscient(e) que la période d'attente pour ce test peut s’appliquer, si je veux écrire ce test de nouveau dans le futur."
         }
       }
     },

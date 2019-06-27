@@ -24,7 +24,7 @@ class Home extends Component {
         <ContentContainer>
           {!this.props.authenticated && (
             <div>
-              <h1>{LOCALIZE.homePage.title}</h1>
+              <h1>{LOCALIZE.homePage.welcomeMsg}</h1>
               <p>{LOCALIZE.homePage.description}</p>
               <div>
                 <AuthenticationTabs />
