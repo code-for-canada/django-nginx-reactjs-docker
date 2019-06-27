@@ -106,7 +106,11 @@ class App extends Component {
                     <Navbar bg="light" variant="light" style={styles.nav}>
                       <img
                         alt={LOCALIZE.mainTabs.psc}
-                        src={psc_logo_en}
+                        src={
+                          this.props.currentLanguage === LANGUAGES.french
+                            ? psc_logo_fr
+                            : psc_logo_en
+                        }
                         width="370"
                         className="d-inline-block align-top"
                       />
@@ -144,7 +148,11 @@ class App extends Component {
                     <Navbar.Brand>
                       <img
                         alt=""
-                        src={psc_logo_light_en}
+                        src={
+                          this.props.currentLanguage === LANGUAGES.french
+                            ? psc_logo_light_fr
+                            : psc_logo_light_en
+                        }
                         width="370"
                         className="d-inline-block align-top"
                       />
