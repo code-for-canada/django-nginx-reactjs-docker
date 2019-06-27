@@ -54,7 +54,9 @@ class QuitTest extends Component {
   };
 
   openQuitPopup = () => {
+    // Ensure language state is reset.
     this.setState({ quitConditions: quitConditions() });
+    // Open the dialog.
     this.setState({ showQuitPopup: true });
   };
 
