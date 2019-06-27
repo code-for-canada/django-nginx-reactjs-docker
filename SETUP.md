@@ -57,6 +57,10 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
             6. Restart VS Code
       4.  You can also add/edit/remove rules from _.prettierrc.json_ file
       5.  Click [here](https://eslint.org/) for more details about **ESLint** or [here](https://github.com/airbnb/javascript/tree/master/react#basic-rules) to know more about the Airbnb React style
+  - Other Useful Configurations
+    - Add the following settings to your _settings.json_ file:
+      - _"explorer.confirmDragAndDrop": false,_
+      - _"javascript.updateImportsOnFileMove.enabled": "always",_
 
 * Snyk
 
