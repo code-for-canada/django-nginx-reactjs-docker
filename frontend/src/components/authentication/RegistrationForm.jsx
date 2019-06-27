@@ -1115,7 +1115,7 @@ class RegistrationForm extends Component {
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}
-          rightButtonTitle={LOCALIZE.commons.ok}
+          rightButtonTitle={LOCALIZE.commons.close}
           rightButtonAction={this.closePrivacyNoticePopup}
         />
       </div>
