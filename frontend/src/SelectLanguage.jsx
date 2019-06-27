@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import LOCALIZE from "./text_resources";
 import { Helmet } from "react-helmet";
 import { Button } from "react-bootstrap";
-import psc_logo from "./images/psc_logo.png";
+import psc_logo_en from "./images/psc_logo_en.png";
 import canada_logo from "./images/canada_logo.png";
 import { setLanguage, LANGUAGES } from "./modules/LocalizeRedux";
 import { connect } from "react-redux";
@@ -64,7 +64,7 @@ class SelectLanguage extends Component {
             <div style={styles.imageContainer}>
               <img
                 alt={LOCALIZE.mainTabs.psc}
-                src={psc_logo}
+                src={psc_logo_en}
                 width="370"
                 className="d-inline-block align-top"
                 style={styles.logo}

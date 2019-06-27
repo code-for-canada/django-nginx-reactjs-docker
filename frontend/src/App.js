@@ -14,13 +14,16 @@ import LoginButton from "./components/commons/LoginButton";
 import Settings from "./components/commons/Settings";
 import Translation from "./components/commons/Translation";
 import LOCALIZE from "./text_resources";
-import psc_logo from "./images/psc_logo.png";
-import psc_logo_light from "./images/psc_logo_light.png";
+import psc_logo_en from "./images/psc_logo_en.png";
+//import psc_logo_fr from "./images/psc_logo_fr.png";
+import psc_logo_light_en from "./images/psc_logo_light_en.png";
+//import psc_logo_light_fr from "./images/psc_logo_light_fr.png";
 import canada_logo from "./images/canada_logo.png";
 import { Navbar, Nav } from "react-bootstrap";
 import QuitTest from "./components/commons/QuitTest";
 import history from "./components/authentication/history";
 import SelectLanguage from "./SelectLanguage";
+import { LANGUAGES } from "./modules/LocalizeRedux";
 
 const styles = {
   nav: {
@@ -103,7 +106,7 @@ class App extends Component {
                     <Navbar bg="light" variant="light" style={styles.nav}>
                       <img
                         alt={LOCALIZE.mainTabs.psc}
-                        src={psc_logo}
+                        src={psc_logo_en}
                         width="370"
                         className="d-inline-block align-top"
                       />
@@ -141,7 +144,7 @@ class App extends Component {
                     <Navbar.Brand>
                       <img
                         alt=""
-                        src={psc_logo_light}
+                        src={psc_logo_light_en}
                         width="370"
                         className="d-inline-block align-top"
                       />
