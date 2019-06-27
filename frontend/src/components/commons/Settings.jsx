@@ -42,47 +42,55 @@ class Settings extends Component {
           title={LOCALIZE.settings.systemSettings}
           description={
             <div>
-              <h3>{LOCALIZE.settings.zoom.title}</h3>
-              <ol>
-                <li>{LOCALIZE.settings.zoom.instructionsListItem1}</li>
-                <li>{LOCALIZE.settings.zoom.instructionsListItem2}</li>
-                <li>{LOCALIZE.settings.zoom.instructionsListItem3}</li>
-                <li>{LOCALIZE.settings.zoom.instructionsListItem4}</li>
-              </ol>
-              <h3>{LOCALIZE.settings.textSize.title}</h3>
-              <ol>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem1}</li>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem2}</li>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem3}</li>
-              </ol>
-              {LOCALIZE.settings.textSize.notChanged}
-              <ol>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem4}</li>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem5}</li>
-                <li>{LOCALIZE.settings.textSize.instructionsListItem6}</li>
-              </ol>
-              <h3>{LOCALIZE.settings.fontStyle.title}</h3>
-              <ol>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem1}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem2}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem3}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem4}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem5}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem6}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem7}</li>
-                <li>{LOCALIZE.settings.fontStyle.instructionsListItem8}</li>
-              </ol>
-              <h3>{LOCALIZE.settings.color.title}</h3>
-              <ol>
-                <li>{LOCALIZE.settings.color.instructionsListItem1}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem2}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem3}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem4}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem5}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem6}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem7}</li>
-                <li>{LOCALIZE.settings.color.instructionsListItem8}</li>
-              </ol>
+              <section aria-labelledby="zoom-instructions">
+                <h3 id="zoom-instructions">{LOCALIZE.settings.zoom.title}</h3>
+                <ol>
+                  <li>{LOCALIZE.settings.zoom.instructionsListItem1}</li>
+                  <li>{LOCALIZE.settings.zoom.instructionsListItem2}</li>
+                  <li>{LOCALIZE.settings.zoom.instructionsListItem3}</li>
+                  <li>{LOCALIZE.settings.zoom.instructionsListItem4}</li>
+                </ol>
+              </section>
+              <section aria-labelledby="text-size-instructions">
+                <h3 id="text-size-instructions">{LOCALIZE.settings.textSize.title}</h3>
+                <ol>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem1}</li>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem2}</li>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem3}</li>
+                </ol>
+                {LOCALIZE.settings.textSize.notChanged}
+                <ol>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem4}</li>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem5}</li>
+                  <li>{LOCALIZE.settings.textSize.instructionsListItem6}</li>
+                </ol>
+              </section>
+              <section aria-labelledby="font-instructions">
+                <h3 id="font-instructions">{LOCALIZE.settings.fontStyle.title}</h3>
+                <ol>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem1}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem2}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem3}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem4}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem5}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem6}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem7}</li>
+                  <li>{LOCALIZE.settings.fontStyle.instructionsListItem8}</li>
+                </ol>
+              </section>
+              <section aria-labelledby="color-instructions">
+                <h3 id="color-instructions">{LOCALIZE.settings.color.title}</h3>
+                <ol>
+                  <li>{LOCALIZE.settings.color.instructionsListItem1}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem2}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem3}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem4}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem5}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem6}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem7}</li>
+                  <li>{LOCALIZE.settings.color.instructionsListItem8}</li>
+                </ol>
+              </section>
             </div>
           }
           rightButtonType={BUTTON_TYPE.primary}
