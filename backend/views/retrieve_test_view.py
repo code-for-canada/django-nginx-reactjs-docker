@@ -15,17 +15,18 @@ EN = "en"
 FR = "fr"
 
 # when gathering insructions, look for these items under each type
-INSTRUCTION_CHILDREN_MAP = {
-}
+INSTRUCTION_CHILDREN_MAP = {}
 
 # when gathering questions, look for these items under each type
 QUESTION_CHILDREN_MAP = {
     "test": ["email"],
-    "email": ["subject", "from", "to", "date", "body"]
+    "email": ["subject", "from", "to", "date", "body"],
 }
 
+BACKGROUND_MAP = {"test": ["background"], "background": ["markdown"]}
+
 # List of item types that should only return one item rather than a list
-SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
+SINGLE_RETURN = ["subject", "from", "to", "date", "body", "markdown"]
 
 
 def is_test_public(test_name):
@@ -79,10 +80,8 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == TEST_META_DATA:
 
         # populate the return dict with meta_data specific values
-        return_dict["test_en_name"] = get_text_detail(
-            item_id, en_id, query_date_time)
-        return_dict["test_fr_name"] = get_text_detail(
-            item_id, fr_id, query_date_time)
+        return_dict["test_en_name"] = get_text_detail(item_id, en_id, query_date_time)
+        return_dict["test_fr_name"] = get_text_detail(item_id, fr_id, query_date_time)
 
         return_dict["is_public"] = test.is_public
         return_dict["default_time"] = test.default_time
@@ -99,9 +98,25 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         item_type_map = gen_item_map(query_date_time)
         question_type_map = gen_question_map(query_date_time)
         question_map = get_items_map(
-            item, item_type_map, question_type_map,
-            query_date_time, en_id, fr_id, QUESTION_CHILDREN_MAP)
+            item,
+            item_type_map,
+            question_type_map,
+            query_date_time,
+            en_id,
+            fr_id,
+            QUESTION_CHILDREN_MAP,
+        )
         return_dict["questions"] = question_map
+        background_map = get_items_map(
+            item,
+            item_type_map,
+            question_type_map,
+            query_date_time,
+            en_id,
+            fr_id,
+            BACKGROUND_MAP,
+        )
+        return_dict["background"] = background_map
         return return_dict
 
     # if it is not one of the above, then return nothing
@@ -118,24 +133,49 @@ def add_to_map(child_type, child_language_map, language_map):
     return language_map
 
 
-def get_items_map(parent_item, item_type_map, question_type_map, query_date_time,
-                  en_id, fr_id, children_map):
-    en_map, fr_map = get_items(parent_item, item_type_map, question_type_map, query_date_time,
-                               en_id, fr_id, children_map)
+def get_items_map(
+    parent_item,
+    item_type_map,
+    question_type_map,
+    query_date_time,
+    en_id,
+    fr_id,
+    children_map,
+):
+    en_map, fr_map = get_items(
+        parent_item,
+        item_type_map,
+        question_type_map,
+        query_date_time,
+        en_id,
+        fr_id,
+        children_map,
+    )
     return {EN: en_map, FR: fr_map}
 
 
-def get_items(parent_item, item_type_map, question_type_map, query_date_time,
-              en_id, fr_id, children_map):
+def get_items(
+    parent_item,
+    item_type_map,
+    question_type_map,
+    query_date_time,
+    en_id,
+    fr_id,
+    children_map,
+):
     # get the parent id, get the type to determine how to handle it
     parent_id, parent_type = get_item_type(
-        parent_item, item_type_map, question_type_map, query_date_time)
+        parent_item, item_type_map, question_type_map, query_date_time
+    )
     try:
         children_types = children_map[parent_type]
     except KeyError:
         # if there the parent type does not have any children type to look up
         # simply return the text_detail
-        return get_text_detail(parent_id, en_id, query_date_time), get_text_detail(parent_id, fr_id, query_date_time)
+        return (
+            get_text_detail(parent_id, en_id, query_date_time),
+            get_text_detail(parent_id, fr_id, query_date_time),
+        )
     # otherwise, initialize return maps
     en_map = {}
     fr_map = {}
@@ -147,13 +187,20 @@ def get_items(parent_item, item_type_map, question_type_map, query_date_time,
     # for each child
     for child in children_items:
         _, child_type = get_item_type(
-            child, item_type_map, question_type_map, query_date_time)
+            child, item_type_map, question_type_map, query_date_time
+        )
         # if the type is in the list of children to return
         if child_type in children_types:
             # get the maps of their children
             child_en, child_fr = get_items(
-                child, item_type_map, question_type_map, query_date_time,
-                en_id, fr_id, children_map)
+                child,
+                item_type_map,
+                question_type_map,
+                query_date_time,
+                en_id,
+                fr_id,
+                children_map,
+            )
             # if they are dicts, add the id as a key/value pair
             if isinstance(child_en, dict):
                 if child_type in order_map.keys():
@@ -177,8 +224,7 @@ def get_item_type(item, item_type_map, question_type_map, query_date_time):
     # if the item type is a question, then get the type of question
     if item_type == "question":
         # get all active questions with this item_id (there should really be only one)
-        question = Question.objects.filter(
-            item_id=item_id)
+        question = Question.objects.filter(item_id=item_id)
         question = exclude_inactive_objects(question, query_date_time)
         if not question:
             item_type = None
@@ -232,10 +278,7 @@ def get_language(iso_code_2, query_date_time):
 
 def get_text_detail(item_id, language_id, query_date_time):
     # get the itemtext object and text_detail for the given item_id and language
-    item_text = ItemText.objects.filter(
-        item_id=item_id,
-        language=language_id
-    )
+    item_text = ItemText.objects.filter(item_id=item_id, language=language_id)
     item_text = exclude_inactive_objects(item_text, query_date_time)
     if not item_text:
         # if empty
@@ -263,4 +306,7 @@ def get_items_by_parent_id(parent_id, query_date_time):
 def exclude_inactive_objects(objects, query_date_time):
     # exclude all with later date_from or earlier date_to
     # however, exactly equal are acceptible
-    return objects.exclude(date_from__gt=query_date_time).exclude(date_to__lt=query_date_time)
+    return objects.exclude(date_from__gt=query_date_time).exclude(
+        date_to__lt=query_date_time
+    )
+
