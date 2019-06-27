@@ -347,10 +347,10 @@ let LOCALIZE = new LocalizedStrings({
         orgChartInstructions:
           "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
-          title: "Background Information"
+          title: "Overview"
         },
         organizationalInformation: {
-          title: "Information about the Organizational Development Council (ODC)"
+          title: "Your organization"
         },
         organizationalStructure: {
           title: "Organizational Structure",
@@ -375,7 +375,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         teamInformation: {
-          title: "Information about the Quality Assurance (QA) Team",
+          title: "Your team",
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
             link: "Image Description"
@@ -942,7 +942,7 @@ let LOCALIZE = new LocalizedStrings({
           title: "Contexte"
         },
         organizationalInformation: {
-          title: "Renseignements sur le Conseil du Développement Organisationnel  (CDO)"
+          title: "FR Your organization"
         },
         organizationalStructure: {
           title: "Structure organisationnelle",
@@ -967,7 +967,7 @@ let LOCALIZE = new LocalizedStrings({
           }
         },
         teamInformation: {
-          title: "Information sur l’Équipe de l’assurance de la qualité (AQ)",
+          title: "FR Your team",
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"
