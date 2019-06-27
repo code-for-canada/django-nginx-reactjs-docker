@@ -26,7 +26,10 @@ QUESTION_CHILDREN_MAP = {
 BACKGROUND_MAP = {"test": ["background"], "background": ["markdown"]}
 
 # List of item types that should only return one item rather than a list
-SINGLE_RETURN = ["subject", "from", "to", "date", "body", "markdown"]
+SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
+
+# list of items that are leaves in the item tree, but will have multiple siblings
+MULTI_CHILD_LEAF_LIST = ["markdown"]
 
 
 def is_test_public(test_name):
@@ -80,8 +83,10 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     if request_type == TEST_META_DATA:
 
         # populate the return dict with meta_data specific values
-        return_dict["test_en_name"] = get_text_detail(item_id, en_id, query_date_time)
-        return_dict["test_fr_name"] = get_text_detail(item_id, fr_id, query_date_time)
+        return_dict["test_en_name"] = get_text_detail(
+            item_id, en_id, query_date_time)
+        return_dict["test_fr_name"] = get_text_detail(
+            item_id, fr_id, query_date_time)
 
         return_dict["is_public"] = test.is_public
         return_dict["default_time"] = test.default_time
@@ -185,7 +190,7 @@ def get_items(
     # get all items with parent_id
     children_items = get_items_by_parent_id(parent_id, query_date_time)
     # for each child
-    for child in children_items:
+   for child in children_items:
         _, child_type = get_item_type(
             child, item_type_map, question_type_map, query_date_time
         )
@@ -201,6 +206,10 @@ def get_items(
                 fr_id,
                 children_map,
             )
+            # check if it is in this list; if so, add it to a dict
+            if child_type in MULTI_CHILD_LEAF_LIST:
+                child_en = {"text": child_en}
+                child_fr = {"text": child_fr}
             # if they are dicts, add the id as a key/value pair
             if isinstance(child_en, dict):
                 if child_type in order_map.keys():
