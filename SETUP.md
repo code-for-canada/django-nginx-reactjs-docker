@@ -38,7 +38,7 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
   - Linting Configuration
     - Pylint:
       1.  Open '_.\project-thundercat\.vscode\settings.json_' file
-      2.  Search for 'python.linting.pylintEnabled' and make sure it is set to 'true' (User and Workspace settings)
+      2.  Make sure that you have the following setting: _"python.linting.pylintEnabled": true_
       3.  Now, you can edit the desired settings from _.pylintrc_ file (to disable messages, see line 54 of the config file)
       4.  Click [here](http://pylint-messages.wikidot.com/all-messages) for more details on most of the Pylint errors/warnings
     - ESLint:
