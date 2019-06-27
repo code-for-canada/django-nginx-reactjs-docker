@@ -19,7 +19,9 @@ const styles = {
 const ContentContainer = props => {
   return (
     <div role="main">
-      {!props.hideBanner && <img role="banner" src={mini_banner} alt="" style={styles.banner} />}
+      {!props.hideBanner && (
+        <img role="presentation" src={mini_banner} alt="" style={styles.banner} />
+      )}
       <div style={styles.container}>{props.children}</div>
     </div>
   );
