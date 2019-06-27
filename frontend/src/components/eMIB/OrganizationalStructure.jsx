@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import markdown_en from "./sample_test_markdown/OrganizationalStructure_en.md";
 import markdown_fr from "./sample_test_markdown/OrganizationalStructure_fr.md";
 import LOCALIZE from "../../text_resources";
-import { LANGUAGES } from "../commons/Translation";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import emib_sample_test_example_org_chart_en from "../../images/emib_sample_test_example_org_chart_en.png";
 import emib_sample_test_example_org_chart_en_zoomed from "../../images/emib_sample_test_example_org_chart_en.png";
