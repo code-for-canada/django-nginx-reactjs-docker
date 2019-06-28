@@ -9062,6 +9062,11 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-super-select@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/react-super-select/-/react-super-select-1.0.20.tgz#93d8d68430134081078aa66053695bb939960069"
+  integrity sha512-fAMOBNjcvVnAxN46wJK0YAp9XUJCKZQ7FTHFxhPZAQ2hke1ruax3eVXyeXHDU4F0simKU4lm6gccoRr+l7Cesg==
+
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.7.0:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.8.6.tgz#188d8029b8c39c786f998aa3efd3ffe7642d5ba1"
