@@ -581,7 +581,7 @@ class RegistrationForm extends Component {
       <div>
         <div role="form">
           <div style={styles.createAccountContent}>
-            <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
+            <h2>{LOCALIZE.authentication.createAccount.content.title}</h2>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>
             <form onSubmit={this.handleSubmit}>
               <div className="names-grid">
