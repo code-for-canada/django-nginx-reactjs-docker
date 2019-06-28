@@ -86,9 +86,6 @@ const styles = {
     textAlign: "right",
     paddingRight: 12
   },
-  hr: {
-    margin: "12px 0px"
-  },
   reasonsForAction: {
     textArea: {
       padding: "6px 12px",
@@ -351,7 +348,6 @@ class EditEmail extends Component {
               </div>
             </div>
           </div>
-          <hr style={styles.hr} />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area">

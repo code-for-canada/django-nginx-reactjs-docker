@@ -22,13 +22,6 @@ const styles = {
     textAlign: "right",
     paddingRight: 12
   },
-  hrOne: {
-    margin: "12px 12px 12px 0",
-    borderColor: "#00565E"
-  },
-  hrTwo: {
-    margin: "12px 12px 12px 0"
-  },
   tasks: {
     title: {
       float: "left",
@@ -103,7 +96,6 @@ class EditTask extends Component {
     return (
       <div style={styles.container}>
         <form>
-          <hr style={styles.hrOne} />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-tasks-text-area" style={styles.tasks.title}>
@@ -151,7 +143,6 @@ class EditTask extends Component {
               </div>
             </div>
           </div>
-          <hr style={styles.hrTwo} />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area" style={styles.reasonsForAction.title}>
