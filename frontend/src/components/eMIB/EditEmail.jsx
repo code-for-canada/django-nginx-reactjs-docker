@@ -63,13 +63,12 @@ const styles = {
       paddingTop: 12
     },
     titleStyle: {
-      float: "left",
       width: 28,
       height: 32,
       lineHeight: "2.1em",
       paddingRight: 4,
       marginTop: 5,
-      marginBottom: 18
+      marginBottom: 5
     }
   },
   response: {
@@ -283,6 +282,7 @@ class EditEmail extends Component {
               onChange={this.onEmailToChange}
               keepOpenOnSelection={true}
               tags={true}
+              style={{ width: "80%", float: "right" }}
             />
           </div>
           <hr />
@@ -298,6 +298,7 @@ class EditEmail extends Component {
               onChange={this.onEmailCcChange}
               keepOpenOnSelection={true}
               tags={true}
+              style={{ width: "80%", float: "right" }}
             />
           </div>
           <hr />
