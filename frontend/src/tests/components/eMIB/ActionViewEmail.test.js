@@ -14,7 +14,7 @@ const addressBook = [
   { id: 4, name: "Richard", role: "Lionheart" },
   { id: 5, name: "Robert", role: "The Bruce" }
 ];
-const ccValue = addressBook[3].id;
+const ccValue = addressBook[3];
 const ccText = transformContactName(addressBook[3]);
 
 const emailStub = {
@@ -32,7 +32,7 @@ describe("Response types", () => {
   const forward = <FontAwesomeIcon icon={faShareSquare} />;
 
   it("renders reply response", () => {
-    const wrapper = genWrapper(EMAIL_TYPE.reply, ccValue);
+    const wrapper = genWrapper(EMAIL_TYPE.reply, [ccValue]);
 
     expect(wrapper.containsMatchingElement(reply)).toEqual(true);
     expect(wrapper.containsMatchingElement(replyAll)).toEqual(false);
@@ -40,7 +40,7 @@ describe("Response types", () => {
   });
 
   it("renders reply all response", () => {
-    const wrapper = genWrapper(EMAIL_TYPE.replyAll, ccValue);
+    const wrapper = genWrapper(EMAIL_TYPE.replyAll, [ccValue]);
 
     expect(wrapper.containsMatchingElement(reply)).toEqual(false);
     expect(wrapper.containsMatchingElement(replyAll)).toEqual(true);
@@ -48,27 +48,11 @@ describe("Response types", () => {
   });
 
   it("renders forward response", () => {
-    const wrapper = genWrapper(EMAIL_TYPE.forward, ccValue);
+    const wrapper = genWrapper(EMAIL_TYPE.forward, [ccValue]);
 
     expect(wrapper.containsMatchingElement(reply)).toEqual(false);
     expect(wrapper.containsMatchingElement(replyAll)).toEqual(false);
     expect(wrapper.containsMatchingElement(forward)).toEqual(true);
-  });
-});
-
-describe("Email header", () => {
-  const headerWithCc = <span>{ccText}</span>;
-
-  it("renders email's header with cc)", () => {
-    const wrapper = genWrapper(EMAIL_TYPE.reply, ccValue);
-
-    expect(wrapper.containsMatchingElement(headerWithCc)).toEqual(true);
-  });
-
-  it("renders email's header without cc)", () => {
-    const wrapper = genWrapper(EMAIL_TYPE.reply, null);
-
-    expect(wrapper.containsMatchingElement(headerWithCc)).toEqual(false);
   });
 });
 
@@ -77,7 +61,7 @@ describe("check that the disabled prop works as expected", () => {
     actionType: ACTION_TYPE.email,
     reasonsForAction: "reasons",
     emailType: EMAIL_TYPE.reply,
-    emailTo: [0],
+    emailTo: [addressBook[0]],
     emailCc: [],
     emailBody: "reasons"
   };
@@ -135,8 +119,8 @@ function createWrapper(responseType, cc, deleteEmail) {
     actionType: ACTION_TYPE.email,
     reasonsForAction: "reasons",
     emailType: responseType,
-    emailTo: [0],
-    emailCc: [cc],
+    emailTo: [{ id: 0, name: "Joe (Developer)" }],
+    emailCc: cc,
     emailBody: "reasons"
   };
 
