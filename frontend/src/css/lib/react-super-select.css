@@ -115,7 +115,7 @@
 }
 .r-ss-trigger .r-ss-selection-clear {
   top: 13px;
-  right: 32px;
+  left: 10px;
   opacity: 0.25;
   position: absolute;
   width: 14px;
@@ -351,7 +351,7 @@
   display: inline-block;
   position: relative;
   padding: 0 20px 0 7px;
-  margin: 0 0 0.25rem 0.95rem;
+  margin: 0 0 0.25rem 1.95rem;
   background-color: #ededed;
   color: #424242;
   max-width: 95%;
