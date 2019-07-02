@@ -127,32 +127,16 @@ class EditEmail extends Component {
     this.props.onChange({ ...this.state, emailType: newEmailType });
   };
 
-  // Extract just the value
-  // This is all that is needed for saving and loading
-  getOptionValues(options) {
-    return Array.from(options, opt => opt.value);
-  }
-
-  onEmailToChange = event => {
-    // If the value has not changed, return
-    // can prevent infinite render loop
-    if (!event.altered) {
-      return;
-    }
-    const newEmailTo = this.getOptionValues(event.options);
-    this.setState({ emailTo: newEmailTo });
-    this.props.onChange({ ...this.state, emailTo: newEmailTo });
+  onEmailToChange = options => {
+    //this.setState({ emailTo: newEmailTo });
+    //this.props.onChange({ ...this.state, emailTo: newEmailTo });
+    console.log(options);
   };
 
-  onEmailCcChange = event => {
-    // If the value has not changed, return
-    // can prevent infinite render loop
-    if (!event.altered) {
-      return;
-    }
-    const newEmailCc = this.getOptionValues(event.options);
-    this.setState({ emailCc: newEmailCc });
-    this.props.onChange({ ...this.state, emailCc: newEmailCc });
+  onEmailCcChange = options => {
+    //this.setState({ emailCc: newEmailCc });
+    //this.props.onChange({ ...this.state, emailCc: newEmailCc });
+    console.log(options);
   };
 
   onEmailBodyChange = event => {
