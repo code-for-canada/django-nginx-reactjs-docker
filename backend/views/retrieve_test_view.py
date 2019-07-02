@@ -26,14 +26,14 @@ QUESTION_CHILDREN_MAP = {
 BACKGROUND_MAP = {
     "test": ["background"],
     "background": ["markdown", "tree-view"],
-    "tree-view": ["tree-child"],
+    "tree-view": ["organizational-structure-tree-child", "team-information-tree-child"],
 }
 
 # List of item types that should only return one item rather than a list
 SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 
 # list of items that are leaves in the item tree, but will have multiple siblings
-MULTI_CHILD_LEAF_LIST = ["markdown", "tree-child"]
+MULTI_CHILD_LEAF_LIST = ["markdown", "organizational-structure-tree-child", "team-information-tree-child"]
 
 
 def is_test_public(test_name):
