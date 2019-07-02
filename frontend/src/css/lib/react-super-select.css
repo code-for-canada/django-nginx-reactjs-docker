@@ -154,14 +154,14 @@
   right: 0.25rem;
   height: 0;
   width: 0;
-  border: 11px solid transparent;
+  border: 9px solid transparent;
 }
 .r-ss-trigger .carat.up {
   bottom: 14px;
   border-color: transparent transparent #424242 transparent;
 }
 .r-ss-trigger .carat.down {
-  bottom: 1px;
+  bottom: 4px;
   border-color: #424242 transparent transparent transparent;
 }
 .r-ss-search-aria-label {
