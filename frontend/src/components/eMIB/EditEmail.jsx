@@ -114,6 +114,8 @@ class EditEmail extends Component {
   state = {
     emailType: !this.props.action ? EMAIL_TYPE.reply : this.props.action.emailType,
     emailBody: !this.props.action ? "" : this.props.action.emailBody,
+    emailTo: !this.props.action ? [] : this.props.action.emailTo,
+    emailCc: !this.props.action ? [] : this.props.action.emailCc,
     reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction,
     // Provided by redux
     addressBook: PropTypes.arrayOf(contactShape)
@@ -153,7 +155,6 @@ class EditEmail extends Component {
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
     const options = transformAddressBook(this.props.addressBook);
-
     return (
       <div style={styles.container}>
         <form>
