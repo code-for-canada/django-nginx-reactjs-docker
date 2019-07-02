@@ -50,7 +50,6 @@ const styles = {
     },
     radioTextSelected: {
       fontWeight: "bold",
-      textDecoration: "underline",
       cursor: "pointer",
       paddingRight: 20,
       color: "#00565E"
