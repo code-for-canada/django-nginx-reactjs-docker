@@ -39,7 +39,7 @@ export const emailShape = PropTypes.shape({
 });
 
 // The stucture of a contact in the to/cc feilds
-export const sendShape = PropTypes.shape({
+export const sendContactShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired
 });
@@ -50,14 +50,14 @@ export const actionShape = PropTypes.shape({
   reasonsForAction: PropTypes.string,
   task: PropTypes.string,
   emailType: PropTypes.oneOf(Object.keys(EMAIL_TYPE)),
-  emailTo: PropTypes.arrayOf(sendShape),
-  emailCc: PropTypes.arrayOf(sendShape),
+  emailTo: PropTypes.arrayOf(sendContactShape),
+  emailCc: PropTypes.arrayOf(sendContactShape),
   emailBody: PropTypes.string
 });
 
 // The stucture of a contact in the addressbook
-export const contactShape = PropTypes.shape({
+export const addressBookContactShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  role: PropTypes.string
+  role: PropTypes.string.isRequired
 });

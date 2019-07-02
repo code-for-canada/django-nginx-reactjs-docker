@@ -9,7 +9,7 @@ import { bindActionCreators } from "redux";
 import { deleteEmail } from "../../modules/EmibInboxRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
-import { contactShape } from "./constants";
+import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -57,7 +57,7 @@ class ActionViewEmail extends Component {
     // optional prop to disable the entire component
     disabled: PropTypes.bool,
     // Props from Redux
-    addressBook: PropTypes.arrayOf(contactShape),
+    addressBook: PropTypes.arrayOf(addressBookContactShape),
     deleteEmail: PropTypes.func
   };
 
@@ -84,10 +84,10 @@ class ActionViewEmail extends Component {
 
   // generate a string of contacts and their roles for display purposes
   // (namely in the To/CC fields)
-  // contactIdList is a list of ids+names
-  // and transformed into a string that will be displayed to the candidate
-  // the return is a string in the following format:
+  // contactIdList is a list of ids+names and transformed into a string
+  // that will be displayed in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
+  // Note the "name" feild already contains the string with the role.
   generateEmailNameList(sendList) {
     if (sendList === undefined) {
       return "";

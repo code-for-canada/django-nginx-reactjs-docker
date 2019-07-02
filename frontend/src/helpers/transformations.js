@@ -1,4 +1,4 @@
-// transform addressBook (list of contactShapes) into a list of display names (optionShapes)
+// transform addressBook (list of addressBookContactShape) into a list of display names (optionShapes)
 export function transformAddressBook(addressBook) {
   let options = [];
   for (let contact of addressBook) {
@@ -7,12 +7,12 @@ export function transformAddressBook(addressBook) {
   return options;
 }
 
-// transform contactShape into optionShapes
+// transform addressBookContactShape into optionShapes
 export function transformContact(contact) {
   return { name: transformContactName(contact), id: contact.id };
 }
 
-// transform contactShape a display name for the optionShape
+// transform addressBookContactShape a display name for the optionShape
 export function transformContactName(contact) {
   return contact.name + " (" + contact.role + ")";
 }

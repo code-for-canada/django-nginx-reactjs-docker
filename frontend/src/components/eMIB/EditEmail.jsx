@@ -4,7 +4,7 @@ import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { EMAIL_TYPE, actionShape } from "./constants";
 import { transformAddressBook } from "../../helpers/transformations";
-import { contactShape } from "./constants";
+import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
@@ -118,7 +118,7 @@ class EditEmail extends Component {
     emailCc: !this.props.action ? [] : this.props.action.emailCc,
     reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction,
     // Provided by redux
-    addressBook: PropTypes.arrayOf(contactShape)
+    addressBook: PropTypes.arrayOf(addressBookContactShape)
   };
 
   onEmailTypeChange = event => {
