@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { EMAIL_TYPE, actionShape } from "./constants";
-import ReactResponsiveSelect from "react-responsive-select";
 import { transformAddressBook } from "../../helpers/transformations";
 import { contactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
+import ReactSuperSelect from "react-super-select";
+import "../../css/lib/react-super-select.css";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -168,11 +169,14 @@ class EditEmail extends Component {
   };
 
   render() {
-    const { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
+    // emailTo, emailCc,
+    const { emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
     const options = transformAddressBook(this.props.addressBook);
+
+    console.log(options);
 
     return (
       <div style={styles.container}>
@@ -267,40 +271,36 @@ class EditEmail extends Component {
               </div>
             </fieldset>
           </div>
-          <div>
-            <div className="font-weight-bold form-group" style={styles.header.toAndCcFieldPadding}>
-              <label htmlFor="to-field" style={styles.header.titleStyle}>
-                {LOCALIZE.emibTest.inboxPage.emailCommons.to}
-              </label>
-              <span>
-                <ReactResponsiveSelect
-                  id="to-field"
-                  multiselect
-                  name="to"
-                  options={options}
-                  selectedValues={emailTo}
-                  onChange={this.onEmailToChange}
-                />
-              </span>
-            </div>
+          <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
+            <label htmlFor="to-field" style={styles.header.titleStyle}>
+              {LOCALIZE.emibTest.inboxPage.emailCommons.to}
+            </label>
+            <ReactSuperSelect
+              id="to-field"
+              multiple={true}
+              name="to"
+              dataSource={options}
+              onChange={this.onEmailToChange}
+              keepOpenOnSelection={true}
+              tags={true}
+            />
           </div>
-          <div>
-            <div className="font-weight-bold form-group" style={styles.header.toAndCcFieldPadding}>
-              <label htmlFor="cc-field" style={styles.header.titleStyle}>
-                {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
-              </label>
-              <span>
-                <ReactResponsiveSelect
-                  id="cc-field"
-                  multiselect
-                  name="cc"
-                  options={options}
-                  selectedValues={emailCc}
-                  onChange={this.onEmailCcChange}
-                />
-              </span>
-            </div>
+          <hr />
+          <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
+            <label htmlFor="cc-field" style={styles.header.titleStyle}>
+              {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
+            </label>
+            <ReactSuperSelect
+              id="cc-field"
+              multiple={true}
+              name="cc"
+              dataSource={options}
+              onChange={this.onEmailCcChange}
+              keepOpenOnSelection={true}
+              tags={true}
+            />
           </div>
+          <hr />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">
