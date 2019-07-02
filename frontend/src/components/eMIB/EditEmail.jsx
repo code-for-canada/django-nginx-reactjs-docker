@@ -113,8 +113,6 @@ class EditEmail extends Component {
 
   state = {
     emailType: !this.props.action ? EMAIL_TYPE.reply : this.props.action.emailType,
-    emailTo: !this.props.action ? [] : this.props.action.emailTo,
-    emailCc: !this.props.action ? [] : this.props.action.emailCc,
     emailBody: !this.props.action ? "" : this.props.action.emailBody,
     reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction,
     // Provided by redux
@@ -128,15 +126,14 @@ class EditEmail extends Component {
   };
 
   onEmailToChange = options => {
-    //this.setState({ emailTo: newEmailTo });
-    //this.props.onChange({ ...this.state, emailTo: newEmailTo });
-    console.log(options);
+    // Filter options into an array of ids
+    this.setState({ emailTo: options });
+    this.props.onChange({ ...this.state, emailTo: options });
   };
 
   onEmailCcChange = options => {
-    //this.setState({ emailCc: newEmailCc });
-    //this.props.onChange({ ...this.state, emailCc: newEmailCc });
-    console.log(options);
+    this.setState({ emailCc: options });
+    this.props.onChange({ ...this.state, emailCc: options });
   };
 
   onEmailBodyChange = event => {
@@ -153,13 +150,13 @@ class EditEmail extends Component {
 
   render() {
     // emailTo, emailCc,
-    const { emailBody, reasonsForAction } = this.state;
+    const { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
     const options = transformAddressBook(this.props.addressBook);
 
-    console.log(options);
+    // convert emailTo and emailCc (arrays of ids into something useful)
 
     return (
       <div style={styles.container}>
@@ -260,9 +257,10 @@ class EditEmail extends Component {
             </label>
             <ReactSuperSelect
               placeholder="Select from address book"
-              id="to-field"
+              controlId="to-field"
               multiple={true}
               name="to"
+              initialValue={emailTo}
               dataSource={options}
               onChange={this.onEmailToChange}
               keepOpenOnSelection={true}
@@ -276,9 +274,10 @@ class EditEmail extends Component {
             </label>
             <ReactSuperSelect
               placeholder="Select from address book"
-              id="cc-field"
+              controlId="cc-field"
               multiple={true}
               name="cc"
+              initialValue={emailCc}
               dataSource={options}
               onChange={this.onEmailCcChange}
               keepOpenOnSelection={true}

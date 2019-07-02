@@ -9,7 +9,7 @@ export function transformAddressBook(addressBook) {
 
 // transform contactShape into optionShapes
 export function transformContact(contact) {
-  return { name: transformContactName(contact), id: contact.id, size: "medium" };
+  return { name: transformContactName(contact), id: contact.id };
 }
 
 // transform contactShape a display name for the optionShape

@@ -10,7 +10,6 @@ import { deleteEmail } from "../../modules/EmibInboxRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { contactShape } from "./constants";
-import { contactNameFromId } from "../../helpers/transformations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -62,6 +61,10 @@ class ActionViewEmail extends Component {
     deleteEmail: PropTypes.func
   };
 
+  componentDidMount = () => {
+    console.log(this.props.action);
+  };
+
   state = {
     showEmailDialog: false,
     showDeleteConfirmationDialog: false
@@ -89,13 +92,14 @@ class ActionViewEmail extends Component {
   // and transformed into a string that will be displayed to the candidate
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
-  generateEmailNameList(contactIdList) {
-    if (contactIdList === undefined) {
+  generateEmailNameList(sendList) {
+    if (sendList === undefined) {
       return "";
     }
     let visibleContactNames = [];
-    for (let id of contactIdList) {
-      visibleContactNames.push(contactNameFromId(this.props.addressBook, id));
+    for (let contact of sendList) {
+      console.log(contact);
+      visibleContactNames.push(contact.name);
     }
     return visibleContactNames.join(", ");
   }
