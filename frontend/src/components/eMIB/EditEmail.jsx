@@ -275,6 +275,7 @@ class EditEmail extends Component {
               {LOCALIZE.emibTest.inboxPage.emailCommons.to}
             </label>
             <ReactSuperSelect
+              placeholder="Select from address book"
               id="to-field"
               multiple={true}
               name="to"
@@ -282,7 +283,6 @@ class EditEmail extends Component {
               onChange={this.onEmailToChange}
               keepOpenOnSelection={true}
               tags={true}
-              style={{ width: "80%", float: "right" }}
             />
           </div>
           <hr />
@@ -291,6 +291,7 @@ class EditEmail extends Component {
               {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
             </label>
             <ReactSuperSelect
+              placeholder="Select from address book"
               id="cc-field"
               multiple={true}
               name="cc"
@@ -298,7 +299,6 @@ class EditEmail extends Component {
               onChange={this.onEmailCcChange}
               keepOpenOnSelection={true}
               tags={true}
-              style={{ width: "80%", float: "right" }}
             />
           </div>
           <hr />

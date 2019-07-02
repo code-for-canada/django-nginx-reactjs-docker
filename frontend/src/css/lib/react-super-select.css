@@ -66,8 +66,8 @@
   display: block;
   line-height: 30px;
   padding: 0.25rem 50px 0.25rem 0.25rem;
-  border-color: #333;
-  border: 1px solid rgba(51, 51, 51, 0.45);
+  border-color: #00565e;
+  border: 1px solid #00565e;
   text-decoration: none;
   color: #333;
   -webkit-border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
@@ -79,6 +79,7 @@
   cursor: pointer;
   outline: none;
   word-wrap: break-word;
+  background-color: #fff;
 }
 .r-ss-trigger .r-ss-selected-label {
   padding: 0 0.5rem;
