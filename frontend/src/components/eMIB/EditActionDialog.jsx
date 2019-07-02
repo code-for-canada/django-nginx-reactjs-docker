@@ -197,23 +197,23 @@ class EditActionDialog extends Component {
         {actionType === ACTION_TYPE.email && (
           <div style={styles.header}>
             <FontAwesomeIcon style={styles.icon} icon={faEnvelope} />
-            <h2 style={styles.title}>
+            <h1 style={styles.title}>
               {editMode === EDIT_MODE.create &&
                 LOCALIZE.emibTest.inboxPage.editActionDialog.addEmail}
               {editMode === EDIT_MODE.update &&
                 LOCALIZE.emibTest.inboxPage.editActionDialog.editEmail}
-            </h2>
+            </h1>
           </div>
         )}
         {actionType === ACTION_TYPE.task && (
           <div style={styles.header}>
             <FontAwesomeIcon style={styles.icon} icon={faTasks} />
-            <h2 style={styles.title}>
+            <h1 style={styles.title}>
               {editMode === EDIT_MODE.create &&
                 LOCALIZE.emibTest.inboxPage.editActionDialog.addTask}
               {editMode === EDIT_MODE.update &&
                 LOCALIZE.emibTest.inboxPage.editActionDialog.editTask}
-            </h2>
+            </h1>
           </div>
         )}
 
@@ -223,8 +223,7 @@ class EditActionDialog extends Component {
             body={<EmailContent email={this.props.email} />}
             iconType={ICON_TYPE.email}
           />
-          <hr style={styles.dataBodyDivider} />
-          <h4>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h4>
+          <h2>{LOCALIZE.emibTest.inboxPage.emailCommons.yourResponse}</h2>
           {actionType === ACTION_TYPE.email && (
             <EditEmail
               onChange={this.editAction}
