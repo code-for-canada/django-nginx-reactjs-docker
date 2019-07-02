@@ -38,14 +38,20 @@ export const emailShape = PropTypes.shape({
   body: PropTypes.string
 });
 
+// The stucture of a contact in the to/cc feilds
+export const sendShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired
+});
+
 // Actions a candidate can take in response to an email.
 export const actionShape = PropTypes.shape({
   actionType: PropTypes.oneOf(Object.keys(ACTION_TYPE)).isRequired,
   reasonsForAction: PropTypes.string,
   task: PropTypes.string,
   emailType: PropTypes.oneOf(Object.keys(EMAIL_TYPE)),
-  emailTo: PropTypes.arrayOf(contactShape),
-  emailCc: PropTypes.arrayOf(contactShape),
+  emailTo: PropTypes.arrayOf(sendShape),
+  emailCc: PropTypes.arrayOf(sendShape),
   emailBody: PropTypes.string
 });
 

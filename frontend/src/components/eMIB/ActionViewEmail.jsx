@@ -61,10 +61,6 @@ class ActionViewEmail extends Component {
     deleteEmail: PropTypes.func
   };
 
-  componentDidMount = () => {
-    console.log(this.props.action);
-  };
-
   state = {
     showEmailDialog: false,
     showDeleteConfirmationDialog: false
@@ -88,7 +84,7 @@ class ActionViewEmail extends Component {
 
   // generate a string of contacts and their roles for display purposes
   // (namely in the To/CC fields)
-  // contactIdList is a list of ids that need to be looked up in the address book
+  // contactIdList is a list of ids+names
   // and transformed into a string that will be displayed to the candidate
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
@@ -98,7 +94,6 @@ class ActionViewEmail extends Component {
     }
     let visibleContactNames = [];
     for (let contact of sendList) {
-      console.log(contact);
       visibleContactNames.push(contact.name);
     }
     return visibleContactNames.join(", ");

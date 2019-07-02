@@ -36,7 +36,7 @@ class TestInstructions extends Component {
     const exampleEmailResponse = {
       actionType: ACTION_TYPE.email,
       emailType: EMAIL_TYPE.reply,
-      emailTo: [8], // Geneviève Bédard in the address book
+      emailTo: [{ name: "Geneviève Bédard (Research and Innovations Director)", id: 8 }],
       emailCc: [],
       emailBody: LOCALIZE.emibTest.howToPage.testInstructions.exampleEmailResponse.emailBody,
       reasonsForAction:

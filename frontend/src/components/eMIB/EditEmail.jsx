@@ -126,7 +126,6 @@ class EditEmail extends Component {
   };
 
   onEmailToChange = options => {
-    // Filter options into an array of ids
     this.setState({ emailTo: options });
     this.props.onChange({ ...this.state, emailTo: options });
   };
@@ -149,14 +148,11 @@ class EditEmail extends Component {
   };
 
   render() {
-    // emailTo, emailCc,
     const { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
     const options = transformAddressBook(this.props.addressBook);
-
-    // convert emailTo and emailCc (arrays of ids into something useful)
 
     return (
       <div style={styles.container}>
