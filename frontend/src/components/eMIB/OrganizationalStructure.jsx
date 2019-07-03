@@ -35,6 +35,7 @@ class OrganizationalStructure extends Component {
 
   state = {
     showPopupBox: false,
+    isLoadingComplete: false,
     markdown_en: "",
     markdown_fr: "",
     treeViewContent_en: [],
@@ -76,95 +77,163 @@ class OrganizationalStructure extends Component {
   };
 
   // loads the markdown and tree view content (english and french versions)
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+      this.populateTreeArray(response);
       // saving the organizational structure markdown and tree view content in local states
       this.setState({
         markdown_en: response.background.en.background[0].markdown[2].text,
-        markdown_fr: response.background.fr.background[0].markdown[2].text
+        markdown_fr: response.background.fr.background[0].markdown[2].text,
+        isLoadingComplete: true
       });
-      this.populateTreeArray(response);
     });
   };
 
   render() {
     const { currentLanguage } = this.props;
-    const treeView = [
-      {
-        id: 0,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.president,
-        groups: [1, 5, 6, 7],
-        level: 1
-      },
-      {
-        id: 1,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.corpDirector,
-        parent: 0,
-        groups: [2, 3, 4],
-        level: 2
-      },
-      {
-        id: 2,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.hr,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 3,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.finance,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 4,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.it,
-        parent: 1,
-        level: 3
-      },
-      {
-        id: 5,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.research,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 6,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.programDev,
-        parent: 0,
-        level: 2
-      },
-      {
-        id: 7,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.communications,
-        parent: 0,
-        groups: [8, 9, 10, 11],
-        level: 2
-      },
-      {
-        id: 8,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.qa,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 9,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.services,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 10,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.audits,
-        parent: 7,
-        level: 3
-      },
-      {
-        id: 11,
-        name: LOCALIZE.emibTest.background.organizationalStructure.dialog.training,
-        parent: 7,
-        level: 3
-      }
-    ];
+    const { treeViewContent_en, treeViewContent_fr } = this.state;
+    let treeView = [];
+    // waiting for tree view content data loading
+    if (this.state.isLoadingComplete) {
+      treeView = [
+        {
+          id: 0,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.text
+              : treeViewContent_fr.text
+          }`,
+          groups: [1, 5, 6, 7],
+          level: 1
+        },
+        {
+          id: 1,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[0].text
+              : treeViewContent_fr.organizational_structure_tree_child[0].text
+          }`,
+          parent: 0,
+          groups: [2, 3, 4],
+          level: 2
+        },
+        {
+          id: 2,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[0].text
+              : treeViewContent_fr.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[0].text
+          }`,
+          parent: 1,
+          level: 3
+        },
+        {
+          id: 3,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[1].text
+              : treeViewContent_fr.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[1].text
+          }`,
+          parent: 1,
+          level: 3
+        },
+        {
+          id: 4,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[2].text
+              : treeViewContent_fr.organizational_structure_tree_child[0]
+                  .organizational_structure_tree_child[2].text
+          }`,
+          parent: 1,
+          level: 3
+        },
+        {
+          id: 5,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[1].text
+              : treeViewContent_fr.organizational_structure_tree_child[1].text
+          }`,
+          parent: 0,
+          level: 2
+        },
+        {
+          id: 6,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[2].text
+              : treeViewContent_fr.organizational_structure_tree_child[2].text
+          }`,
+          parent: 0,
+          level: 2
+        },
+        {
+          id: 7,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[3].text
+              : treeViewContent_fr.organizational_structure_tree_child[3].text
+          }`,
+          parent: 0,
+          groups: [8, 9, 10, 11],
+          level: 2
+        },
+        {
+          id: 8,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[0].text
+              : treeViewContent_fr.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[0].text
+          }`,
+          parent: 7,
+          level: 3
+        },
+        {
+          id: 9,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[1].text
+              : treeViewContent_fr.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[1].text
+          }`,
+          parent: 7,
+          level: 3
+        },
+        {
+          id: 10,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[2].text
+              : treeViewContent_fr.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[2].text
+          }`,
+          parent: 7,
+          level: 3
+        },
+        {
+          id: 11,
+          name: `${
+            currentLanguage === LANGUAGES.english
+              ? treeViewContent_en.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[3].text
+              : treeViewContent_fr.organizational_structure_tree_child[3]
+                  .organizational_structure_tree_child[3].text
+          }`,
+          parent: 7,
+          level: 3
+        }
+      ];
+    }
 
     return (
       <div>
