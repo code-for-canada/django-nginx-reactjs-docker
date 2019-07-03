@@ -14,8 +14,7 @@ const addressBook = [
   { id: 4, name: "Richard", role: "Lionheart" },
   { id: 5, name: "Robert", role: "The Bruce" }
 ];
-const ccValue = addressBook[3];
-const ccText = transformContactName(addressBook[3]);
+const ccValue = addressBook[3].id;
 
 const emailStub = {
   id: 0,
@@ -61,7 +60,7 @@ describe("check that the disabled prop works as expected", () => {
     actionType: ACTION_TYPE.email,
     reasonsForAction: "reasons",
     emailType: EMAIL_TYPE.reply,
-    emailTo: [addressBook[0]],
+    emailTo: [0],
     emailCc: [],
     emailBody: "reasons"
   };
@@ -119,7 +118,7 @@ function createWrapper(responseType, cc, deleteEmail) {
     actionType: ACTION_TYPE.email,
     reasonsForAction: "reasons",
     emailType: responseType,
-    emailTo: [{ id: 0, name: "Joe (Developer)" }],
+    emailTo: [0],
     emailCc: cc,
     emailBody: "reasons"
   };

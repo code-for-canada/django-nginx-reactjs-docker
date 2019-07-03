@@ -27,8 +27,11 @@ export function contactNameFromId(addressBook, id) {
   return "";
 }
 
+// From an array of ids, create an options list for the
+// to and cc feilds.
 export function optionsFromIds(addressBook, ids) {
   let options = [];
+  ids = ids || [];
   for (let id of ids) {
     const name = contactNameFromId(addressBook, id);
     options.push({ name: name, id: id });
