@@ -38,9 +38,24 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
   - Linting Configuration
     - Pylint:
       1.  Open '_.\project-thundercat\.vscode\settings.json_' file
-      2.  Add the following setting: _"python.linting.pylintEnabled": true_
-      3.  Now, you can edit the desired settings from _.pylintrc_ file (to disable messages, see line 54 of the config file)
-      4.  Click [here](http://pylint-messages.wikidot.com/all-messages) for more details on most of the Pylint errors/warnings
+      2.  Add the following settings:
+          - _"python.pythonPath": "C:\\Users\\<your_user>\\AppData\\Local\\Programs\\Python\\Python36\\python.exe"_
+          - _"python.testing.unittestArgs": ["-v", "-s", "./backend", "-p", "*_test.py"]_
+          - _"editor.tabCompletion": "on"_
+          - _"python.formatting.provider": "black"_
+      3.  Open the other _settings.json_ file using the following path: _C:\Users\<your_user>\AppData\Roaming\Code\User\settings.json_
+      4.  Add the following settings:
+          - _"explorer.confirmDragAndDrop": false_
+          - _"eslint.enable": true_
+          - _"editor.formatOnSave": true_
+          - _"eslint.options": {"configFile": C:\\\_DEV\\IdeaProjects\\thundercat\\project-thundercat\\frontend\\.eslintrc.json"}_
+          - _"javascript.updateImportsOnFileMove.enabled": "always"_
+          - _"window.zoomLevel": 0_
+          - _"editor.accessibilitySupport": "off"_
+          - _"python.linting.pylintEnabled": true_
+      5.  Open a python file, hit save and there should be a popup saying that _Linter pylint is not installed_. Hit _Install_.
+      6.  Now, you can edit the desired settings from _.pylintrc_ file (to disable messages, see line 54 of the config file)
+      7.  Click [here](http://pylint-messages.wikidot.com/all-messages) for more details on most of the Pylint errors/warnings
     - ESLint:
       1.  Open '_.\project-thundercat\.vscode\settings.json_' file
       2.  Add the following setting:
