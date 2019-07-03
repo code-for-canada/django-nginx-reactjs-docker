@@ -27,11 +27,19 @@ def upload_background_tree_view_info(apps, schema_editor):
         .filter(ISO_Code_1="fr", ISO_Code_2="fr-ca")
         .last()
     )
-    background_id = (
+    emib_sample_item_id = (
         item_text.objects.using(db_alias)
-        .filter(text_detail="Background", language=l_english)
+        .filter(text_detail="eMiB Sample Test", language=l_english)
         .last()
-        .item_id
+        .item_id.item_id
+    )
+    it_background = (
+        item_type.objects.using(db_alias).filter(type_desc="background").last()
+    )
+    background_id = (
+        item.objects.using(db_alias)
+        .filter(parent_id=emib_sample_item_id, item_type_id=it_background, order=0)
+        .last()
     )
 
     # create item_types; do not use bulk_create since we need these objects later on
@@ -363,11 +371,19 @@ def destroy_background_tree_view_info(apps, schema_editor):
     )
 
     # get item objects
-    background_id = (
+    emib_sample_item_id = (
         item_text.objects.using(db_alias)
-        .filter(text_detail="Background", language=l_english)
+        .filter(text_detail="eMiB Sample Test", language=l_english)
         .last()
-        .item_id
+        .item_id.item_id
+    )
+    it_background = (
+        item_type.objects.using(db_alias).filter(type_desc="background").last()
+    )
+    background_id = (
+        item.objects.using(db_alias)
+        .filter(parent_id=emib_sample_item_id, item_type_id=it_background, order=0)
+        .last()
     )
     i_tree_view_of_org_structure = (
         item.objects.using(db_alias)
