@@ -26,3 +26,12 @@ export function contactNameFromId(addressBook, id) {
   }
   return "";
 }
+
+export function optionsFromIds(addressBook, ids) {
+  let options = [];
+  for (let id of ids) {
+    const name = contactNameFromId(addressBook, id);
+    options.push({ name: name, id: id });
+  }
+  return options;
+}

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { EMAIL_TYPE, actionShape } from "./constants";
-import { transformAddressBook } from "../../helpers/transformations";
+import { transformAddressBook, optionsFromIds } from "../../helpers/transformations";
 import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
@@ -128,13 +128,21 @@ class EditEmail extends Component {
   };
 
   onEmailToChange = options => {
-    this.setState({ emailTo: options });
-    this.props.onChange({ ...this.state, emailTo: options });
+    // TODO(caleybrock) - convert options to an array of indexes
+    const idsArray = options.map(option => {
+      return option.id;
+    });
+    this.setState({ emailTo: idsArray });
+    this.props.onChange({ ...this.state, emailTo: idsArray });
   };
 
   onEmailCcChange = options => {
-    this.setState({ emailCc: options });
-    this.props.onChange({ ...this.state, emailCc: options });
+    // TODO(caleybrock) - convert options to an array of indexes
+    const idsArray = options.map(option => {
+      return option.id;
+    });
+    this.setState({ emailCc: idsArray });
+    this.props.onChange({ ...this.state, emailCc: idsArray });
   };
 
   onEmailBodyChange = event => {
@@ -150,11 +158,18 @@ class EditEmail extends Component {
   };
 
   render() {
-    const { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
+    let { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
+
+    // Get localized to/cc options from the address book.
     const options = transformAddressBook(this.props.addressBook);
+
+    // TODO(caleybrock) - convert emailTo and emailCC from array of indexes to options.
+    emailTo = optionsFromIds(this.props.addressBook, emailTo);
+    emailCc = optionsFromIds(this.props.addressBook, emailCc);
+    console.log(emailTo);
     return (
       <div style={styles.container}>
         <form>

@@ -33,10 +33,11 @@ class TestInstructions extends Component {
       body: LOCALIZE.emibTest.howToPage.testInstructions.exampleEmail.body
     };
 
+    // TODO(caleybrock) - remove hard coding
     const exampleEmailResponse = {
       actionType: ACTION_TYPE.email,
       emailType: EMAIL_TYPE.reply,
-      emailTo: [{ name: "Geneviève Bédard (Research and Innovations Director)", id: 8 }],
+      emailTo: [8],
       emailCc: [],
       emailBody: LOCALIZE.emibTest.howToPage.testInstructions.exampleEmailResponse.emailBody,
       reasonsForAction:

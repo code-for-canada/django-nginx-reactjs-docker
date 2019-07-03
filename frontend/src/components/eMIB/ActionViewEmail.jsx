@@ -12,6 +12,7 @@ import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
 import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
+import { contactNameFromId } from "../../helpers/transformations";
 
 const styles = {
   type: {
@@ -88,13 +89,13 @@ class ActionViewEmail extends Component {
   // that will be displayed in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
   // Note the "name" field already contains the string with the role.
-  generateEmailNameList(sendList) {
-    if (sendList === undefined) {
+  generateEmailNameList(contactIdList) {
+    if (contactIdList === undefined) {
       return "";
     }
     let visibleContactNames = [];
-    for (let contact of sendList) {
-      visibleContactNames.push(contact.name);
+    for (let id of contactIdList) {
+      visibleContactNames.push(contactNameFromId(this.props.addressBook, id));
     }
     return visibleContactNames.join(", ");
   }

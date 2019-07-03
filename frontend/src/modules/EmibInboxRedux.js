@@ -125,6 +125,8 @@ const emibInbox = (state = initialState, action) => {
         emailSummaries: updatedEmailSummaries
       };
     case ADD_EMAIL:
+      console.log(action);
+      console.log(state);
       let modifiedEmailSummaries = Array.from(state.emailSummaries);
       modifiedEmailSummaries[action.emailIndex].emailCount++;
 
