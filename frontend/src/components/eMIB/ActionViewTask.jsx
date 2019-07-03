@@ -77,19 +77,19 @@ class ActionViewTask extends Component {
             <hr style={styles.hr} />
             <div aria-label={LOCALIZE.ariaLabel.taskOptions}>
               <button
+                id="unit-test-view-task-delete-button"
+                className="btn btn-danger"
+                onClick={this.showDeleteConfirmationDialog}
+              >
+                {LOCALIZE.emibTest.inboxPage.emailCommons.deleteButton}
+              </button>
+              <button
                 id="unit-test-view-task-edit-button"
                 className="btn btn-primary"
                 style={styles.editButton}
                 onClick={this.showTaskDialog}
               >
                 {LOCALIZE.emibTest.inboxPage.emailCommons.editButton}
-              </button>
-              <button
-                id="unit-test-view-task-delete-button"
-                className="btn btn-danger"
-                onClick={this.showDeleteConfirmationDialog}
-              >
-                {LOCALIZE.emibTest.inboxPage.emailCommons.deleteButton}
               </button>
               <PopupBox
                 show={this.state.showDeleteConfirmationDialog}
