@@ -83,12 +83,12 @@ class ActionViewEmail extends Component {
     this.setState({ showDeleteConfirmationDialog: false });
   };
 
-  // Generates a string of contacts and their roles for display purposes
-  // (namely in the To/CC fields).
-  // param sendList - a list of ids+names and transformed into a string
-  // that will be displayed in the following format:
+  // generate a string of contacts and their roles for display purposes
+  // (namely in the To/CC fields)
+  // contactIdList is a list of ids that need to be looked up in the address book
+  // and transformed into a string that will be displayed to the candidate
+  // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
-  // Note the "name" field already contains the string with the role.
   generateEmailNameList(contactIdList) {
     if (contactIdList === undefined) {
       return "";
