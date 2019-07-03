@@ -28,9 +28,7 @@ BACKGROUND_MAP = {
     "background": ["markdown", "tree-view"],
     "tree-view": ["organizational-structure-tree-child", "team-information-tree-child"],
     "organizational-structure-tree-child": ["organizational-structure-tree-child"],
-    # "organizational-structure-tree-child-name": [
-    #     "organizational-structure-tree-child-of-child-name"
-    # ],
+    "team-information-tree-child": ["team-information-tree-child"],
 }
 
 # List of item types that should only return one item rather than a list
@@ -41,9 +39,13 @@ MULTI_CHILD_LEAF_LIST = [
     "markdown",
     "organizational-structure-tree-child",
     "team-information-tree-child",
+    "team-information-tree-child",
 ]
 
-ALWAYS_SHOW_TEXT = ["organizational-structure-tree-child"]
+ALWAYS_SHOW_TEXT = [
+    "organizational-structure-tree-child",
+    "team-information-tree-child",
+]
 
 
 def is_test_public(test_name):

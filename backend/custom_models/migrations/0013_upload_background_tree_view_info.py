@@ -111,27 +111,27 @@ def upload_background_tree_view_info(apps, schema_editor):
     )
     i_tree_view_of_team_info_person_1.save()
     i_tree_view_of_team_info_person_2 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=2
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=1
     )
     i_tree_view_of_team_info_person_2.save()
     i_tree_view_of_team_info_person_3 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=3
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=2
     )
     i_tree_view_of_team_info_person_3.save()
     i_tree_view_of_team_info_person_4 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=4
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=3
     )
     i_tree_view_of_team_info_person_4.save()
     i_tree_view_of_team_info_person_5 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=5
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=4
     )
     i_tree_view_of_team_info_person_5.save()
     i_tree_view_of_team_info_person_6 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=6
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=5
     )
     i_tree_view_of_team_info_person_6.save()
     i_tree_view_of_team_info_person_7 = item(
-        parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=7
+        parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=6
     )
     i_tree_view_of_team_info_person_7.save()
 
@@ -447,32 +447,32 @@ def destroy_background_tree_view_info(apps, schema_editor):
     )
     i_tree_view_of_team_info_person_2 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=2)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=1)
         .last()
     )
     i_tree_view_of_team_info_person_3 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=3)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=2)
         .last()
     )
     i_tree_view_of_team_info_person_4 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=4)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=3)
         .last()
     )
     i_tree_view_of_team_info_person_5 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=5)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=4)
         .last()
     )
     i_tree_view_of_team_info_person_6 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=6)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=5)
         .last()
     )
     i_tree_view_of_team_info_person_7 = (
         item.objects.using(db_alias)
-        .filter(parent_id=i_tree_view_of_team_info, item_type_id=it_team_information_tree_child, order=7)
+        .filter(parent_id=i_tree_view_of_team_info_person_1, item_type_id=it_team_information_tree_child, order=6)
         .last()
     )
 
