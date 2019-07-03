@@ -36,7 +36,9 @@ class OrganizationalStructure extends Component {
   state = {
     showPopupBox: false,
     markdown_en: "",
-    markdown_fr: ""
+    markdown_fr: "",
+    treeViewContent_en: [],
+    treeViewContent_fr: []
   };
 
   openPopup = () => {
@@ -47,14 +49,41 @@ class OrganizationalStructure extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // loads the markdown content (english and french versions)
+  // populates the tree view array with people names
+  populateTreeArray = response => {
+    const responsePrefixEn =
+      response.background.en.background[0].tree_view[0].organizational_structure_tree_child;
+    const responsePrefixFr =
+      response.background.fr.background[0].tree_view[0].organizational_structure_tree_child;
+    // populating names in English
+    for (let i = 0; i < responsePrefixEn.length; i++) {
+      this.setState({ treeViewContent_en: responsePrefixEn[i] });
+      for (let j = 0; j < responsePrefixEn[i]; j++) {
+        this.setState({
+          treeViewContent_en: responsePrefixEn[i].organizational_structure_tree_child[j]
+        });
+      }
+    }
+    // populating names in French
+    for (let i = 0; i < responsePrefixFr.length; i++) {
+      this.setState({ treeViewContent_fr: responsePrefixFr[i] });
+      for (let j = 0; j < responsePrefixFr[i]; j++) {
+        this.setState({
+          treeViewContent_fr: responsePrefixFr[i].organizational_structure_tree_child[j]
+        });
+      }
+    }
+  };
+
+  // loads the markdown and tree view content (english and french versions)
   componentWillMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // saving the organizational structure markdown content in local states
+      // saving the organizational structure markdown and tree view content in local states
       this.setState({
         markdown_en: response.background.en.background[0].markdown[2].text,
         markdown_fr: response.background.fr.background[0].markdown[2].text
       });
+      this.populateTreeArray(response);
     });
   };
 
