@@ -128,7 +128,8 @@ class EditEmail extends Component {
   };
 
   onEmailToChange = options => {
-    // TODO(caleybrock) - convert options to an array of indexes
+    // Convert options to an array of indexes
+    options = options || [];
     const idsArray = options.map(option => {
       return option.id;
     });
@@ -137,7 +138,8 @@ class EditEmail extends Component {
   };
 
   onEmailCcChange = options => {
-    // TODO(caleybrock) - convert options to an array of indexes
+    // onvert options to an array of indexes
+    options = options || [];
     const idsArray = options.map(option => {
       return option.id;
     });
@@ -166,10 +168,9 @@ class EditEmail extends Component {
     // Get localized to/cc options from the address book.
     const options = transformAddressBook(this.props.addressBook);
 
-    // TODO(caleybrock) - convert emailTo and emailCC from array of indexes to options.
+    // Convert emailTo and emailCC from array of indexes to options.
     emailTo = optionsFromIds(this.props.addressBook, emailTo);
     emailCc = optionsFromIds(this.props.addressBook, emailCc);
-    console.log(emailTo);
     return (
       <div style={styles.container}>
         <form>
