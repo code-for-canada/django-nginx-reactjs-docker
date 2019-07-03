@@ -23,6 +23,8 @@ class EmibIntroductionPage extends Component {
   };
 
   state = {
+    test_name_en: "",
+    test_name_fr: "",
     markdown_en: "",
     markdown_fr: ""
   };
@@ -32,6 +34,8 @@ class EmibIntroductionPage extends Component {
     this.props.getTestMetaData(TEST_DEFINITION.emib.sampleTest).then(response => {
       // saving the background information markdown content in local states
       this.setState({
+        test_name_en: response.test_en_name,
+        test_name_fr: response.test_fr_name,
         markdown_en: response.meta_text.en.overview[0],
         markdown_fr: response.meta_text.fr.overview[0]
       });
@@ -42,10 +46,16 @@ class EmibIntroductionPage extends Component {
     return (
       <div>
         {this.props.language === LANGUAGES.english && (
-          <ReactMarkdown source={this.state.markdown_en} />
+          <div>
+            <h1 className="green-divider">{this.state.test_name_en}</h1>
+            <ReactMarkdown source={this.state.markdown_en} />
+          </div>
         )}
         {this.props.language === LANGUAGES.french && (
-          <ReactMarkdown source={this.state.markdown_fr} />
+          <div>
+            <h1 className="green-divider">{this.state.test_name_fr}</h1>
+            <ReactMarkdown source={this.state.markdown_fr} />
+          </div>
         )}
         <div style={styles.startTestBtn}>
           <button type="button" className="btn btn-primary btn-wide" onClick={this.props.nextPage}>
