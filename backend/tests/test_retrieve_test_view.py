@@ -20,7 +20,7 @@ class RetrieveMetaTest(TestCase):
             "is_public": True,
             "default_time": None,
             "test_type": "emib",
-            "overview": {
+            "meta_text": {
                 "en": {
                     "overview": [
                         "## Overview\nThe electronic Managerial In-Box (e-MIB) simulates an email in-box containing a series of emails depicting situations typically encountered by managers in the federal public service. You must respond to these emails. The situations presented will provide you with the opportunity to demonstrate the Key Leadership Competencies.\n\n## About the sample test\nThe sample test has been designed to provide you with the opportunity to familiarize yourself with:\n* the components of the test (e.g., instructions, background information, email in-box and notepad); and\n* the features of the test interface (e.g., menu bars, buttons, etc.).\nThe background information includes a description of the organization and your role, as well as information on your employees, colleagues and the management team. The background information and the emails are only examples. They reflect neither the length nor the level of difficulty of the real test. More background information and emails are contained in the real test."

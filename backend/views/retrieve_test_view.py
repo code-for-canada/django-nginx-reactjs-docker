@@ -15,7 +15,7 @@ EN = "en"
 FR = "fr"
 
 # when gathering meta data, look for these items under each type
-OVERVIEW_CHILDREN_MAP = {"test": ["overview"]}
+META_CHILDREN_MAP = {"test": ["overview"]}
 
 # when gathering insructions, look for these items under each type
 INSTRUCTION_CHILDREN_MAP = {}
@@ -112,16 +112,16 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return_dict["default_time"] = test.default_time
         return_dict["test_type"] = test.test_type
         # get the overview
-        overview_map = get_items_map(
+        meta_map = get_items_map(
             item,
             item_type_map,
             question_type_map,
             query_date_time,
             en_id,
             fr_id,
-            OVERVIEW_CHILDREN_MAP,
+            META_CHILDREN_MAP,
         )
-        return_dict["overview"] = overview_map
+        return_dict["meta_text"] = meta_map
         return return_dict
 
     if request_type == TEST_INSTRUCTIONS:
