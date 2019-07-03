@@ -27,13 +27,23 @@ BACKGROUND_MAP = {
     "test": ["background"],
     "background": ["markdown", "tree-view"],
     "tree-view": ["organizational-structure-tree-child", "team-information-tree-child"],
+    "organizational-structure-tree-child": ["organizational-structure-tree-child"],
+    # "organizational-structure-tree-child-name": [
+    #     "organizational-structure-tree-child-of-child-name"
+    # ],
 }
 
 # List of item types that should only return one item rather than a list
 SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 
 # list of items that are leaves in the item tree, but will have multiple siblings
-MULTI_CHILD_LEAF_LIST = ["markdown", "organizational-structure-tree-child", "team-information-tree-child"]
+MULTI_CHILD_LEAF_LIST = [
+    "markdown",
+    "organizational-structure-tree-child",
+    "team-information-tree-child",
+]
+
+ALWAYS_SHOW_TEXT = ["organizational-structure-tree-child"]
 
 
 def is_test_public(test_name):
@@ -186,6 +196,10 @@ def get_items(
     # otherwise, initialize return maps
     en_map = {}
     fr_map = {}
+    # lookup the text for these items
+    if parent_type in ALWAYS_SHOW_TEXT:
+        en_map["text"] = get_text_detail(parent_id, en_id, query_date_time)
+        fr_map["text"] = get_text_detail(parent_id, fr_id, query_date_time)
     # a map to track the current id for a given child_type
     # this also ensures that the id/order is sequential
     order_map = {}
@@ -209,7 +223,7 @@ def get_items(
                 children_map,
             )
             # check if it is in this list; if so, add it to a dict
-            if child_type in MULTI_CHILD_LEAF_LIST:
+            if child_type in MULTI_CHILD_LEAF_LIST and not isinstance(child_en, dict):
                 child_en = {"text": child_en}
                 child_fr = {"text": child_fr}
             # if they are dicts, add the id as a key/value pair
@@ -224,6 +238,12 @@ def get_items(
             # add to the return map
             en_map = add_to_map(child_type, child_en, en_map)
             fr_map = add_to_map(child_type, child_fr, fr_map)
+    # if no children, just return the text
+    if not children_items:
+        return (
+            get_text_detail(parent_id, en_id, query_date_time),
+            get_text_detail(parent_id, fr_id, query_date_time),
+        )
     return en_map, fr_map
 
 
