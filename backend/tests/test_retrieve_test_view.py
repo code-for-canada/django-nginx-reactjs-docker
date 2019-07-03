@@ -156,87 +156,95 @@ class RetrieveInTest(TestCase):
                             ],
                             "tree-view": [
                                 {
-                                    "tree-child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - President",
+                                            "organizational-structure-tree-child": [
+                                                {
+                                                    "text": "Amari Kinsler - Corporate Affairs Director",
+                                                    "organizational-structure-tree-child": [
+                                                        {
+                                                            "text": "Marc Sheridan - Human Resources Manager",
+                                                            "id": 0
+                                                        },
+                                                        {
+                                                            "text": "Bob McNutt - Finance Manager",
+                                                            "id": 1
+                                                        },
+                                                        {
+                                                            "text": "Lana Hussad - Information Technology Manager",
+                                                            "id": 2
+                                                        }
+                                                    ],
+                                                    "id": 0
+                                                },
+                                                {
+                                                    "text": "Geneviève Bédard - Research and Innovations Director",
+                                                    "id": 1
+                                                },
+                                                {
+                                                    "text": "Bartosz Greco - Program Development Director",
+                                                    "id": 2
+                                                },
+                                                {
+                                                    "text": "Nancy Ward - Services and Communications Director",
+                                                    "organizational-structure-tree-child": [
+                                                        {
+                                                            "text": "Claude Huard - Quality Assurance Manager (You)",
+                                                            "id": 0
+                                                        },
+                                                        {
+                                                            "text": "Haydar Kalil - Services and Support Manager",
+                                                            "id": 1
+                                                        },
+                                                        {
+                                                            "text": "Geoffrey Hamma - Audits Manager",
+                                                            "id": 2
+                                                        },
+                                                        {
+                                                            "text": "Lucy Trang - E-Training Manager",
+                                                            "id": 3
+                                                        }
+                                                    ],
+                                                    "id": 3
+                                                }
+                                            ],
                                             "id": 0
-                                        },
-                                        {
-                                            "text": "Amari Kinsler - Corporate Affairs Director",
-                                            "id": 1
-                                        },
-                                        {
-                                            "text": "Marc Sheridan - Human Resources Manager",
-                                            "id": 2
-                                        },
-                                        {
-                                            "text": "Bob McNutt - Finance Manager",
-                                            "id": 3
-                                        },
-                                        {
-                                            "text": "Lana Hussad - Information Technology Manager",
-                                            "id": 4
-                                        },
-                                        {
-                                            "text": "Geneviève Bédard - Research and Innovations Director",
-                                            "id": 5
-                                        },
-                                        {
-                                            "text": "Bartosz Greco - Program Development Director",
-                                            "id": 6
-                                        },
-                                        {
-                                            "text": "Nancy Ward - Services and Communications Director",
-                                            "id": 7
-                                        },
-                                        {
-                                            "text": "Claude Huard - Quality Assurance Manager (You)",
-                                            "id": 8
-                                        },
-                                        {
-                                            "text": "Haydar Kalil - Services and Support Manager",
-                                            "id": 9
-                                        },
-                                        {
-                                            "text": "Geoffrey Hamma - Audits Manager",
-                                            "id": 10
-                                        },
-                                        {
-                                            "text": "Lucy Trang - E-Training Manager",
-                                            "id": 11
                                         }
                                     ],
                                     "id": 0
                                 },
                                 {
-                                    "tree-child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Manager (You)",
+                                            "team-information-tree-child": [
+                                                {
+                                                    "text": "Danny McBride - QA Analyst",
+                                                    "id": 0
+                                                },
+                                                {
+                                                    "text": "Serge Duplessis - QA Analyst",
+                                                    "id": 1
+                                                },
+                                                {
+                                                    "text": "Marina Richter - QA Analyst",
+                                                    "id": 2
+                                                },
+                                                {
+                                                    "text": "Mary Woodside - QA Analyst",
+                                                    "id": 3
+                                                },
+                                                {
+                                                    "text": "Charlie Wang - QA Analyst",
+                                                    "id": 4
+                                                },
+                                                {
+                                                    "text": "Jack Laurier - QA Analyst",
+                                                    "id": 5
+                                                }
+                                            ],
                                             "id": 0
-                                        },
-                                        {
-                                            "text": "Danny McBride - QA Analyst",
-                                            "id": 1
-                                        },
-                                        {
-                                            "text": "Serge Duplessis - QA Analyst",
-                                            "id": 2
-                                        },
-                                        {
-                                            "text": "Marina Richter - QA Analyst",
-                                            "id": 3
-                                        },
-                                        {
-                                            "text": "Mary Woodside - QA Analyst",
-                                            "id": 4
-                                        },
-                                        {
-                                            "text": "Charlie Wang - QA Analyst",
-                                            "id": 5
-                                        },
-                                        {
-                                            "text": "Jack Laurier - QA Analyst",
-                                            "id": 6
                                         }
                                     ],
                                     "id": 1
@@ -273,87 +281,95 @@ class RetrieveInTest(TestCase):
                             ],
                             "tree-view": [
                                 {
-                                    "tree-child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - Présidente",
+                                            "organizational-structure-tree-child": [
+                                                {
+                                                    "text": "Amari Kinsler - Directeur, Affaires ministérielles",
+                                                    "organizational-structure-tree-child": [
+                                                        {
+                                                            "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
+                                                            "id": 0
+                                                        },
+                                                        {
+                                                            "text": "Bob McNutt - Gestionnaire, Finances",
+                                                            "id": 1
+                                                        },
+                                                        {
+                                                            "text": "Lana Hussad - Gestionnaire, Technologies de l'information",
+                                                            "id": 2
+                                                        }
+                                                    ],
+                                                    "id": 0
+                                                },
+                                                {
+                                                    "text": "Geneviève Bédard - Directrice, Recherche et innovations",
+                                                    "id": 1
+                                                },
+                                                {
+                                                    "text": "Bartosz Greco - Directeur, Développement de programmes",
+                                                    "id": 2
+                                                },
+                                                {
+                                                    "text": "Nancy Ward - Directrice, Services et communications",
+                                                    "organizational-structure-tree-child": [
+                                                        {
+                                                            "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+                                                            "id": 0
+                                                        },
+                                                        {
+                                                            "text": "Haydar Kalil - Gestionnaire, Service et soutien",
+                                                            "id": 1
+                                                        },
+                                                        {
+                                                            "text": "Geoffrey Hamma - Gestionnaire, Vérifications",
+                                                            "id": 2
+                                                        },
+                                                        {
+                                                            "text": "Lucy Trang - Gestionnaire, Formation en ligne",
+                                                            "id": 3
+                                                        }
+                                                    ],
+                                                    "id": 3
+                                                }
+                                            ],
                                             "id": 0
-                                        },
-                                        {
-                                            "text": "Amari Kinsler - Directeur, Affaires ministérielles",
-                                            "id": 1
-                                        },
-                                        {
-                                            "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
-                                            "id": 2
-                                        },
-                                        {
-                                            "text": "Bob McNutt - Gestionnaire, Finances",
-                                            "id": 3
-                                        },
-                                        {
-                                            "text": "Lana Hussad - Gestionnaire, Technologies de l'information",
-                                            "id": 4
-                                        },
-                                        {
-                                            "text": "Geneviève Bédard - Directrice, Recherche et innovations",
-                                            "id": 5
-                                        },
-                                        {
-                                            "text": "Bartosz Greco - Directeur, Développement de programmes",
-                                            "id": 6
-                                        },
-                                        {
-                                            "text": "Nancy Ward - Directrice, Services et communications",
-                                            "id": 7
-                                        },
-                                        {
-                                            "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
-                                            "id": 8
-                                        },
-                                        {
-                                            "text": "Haydar Kalil - Gestionnaire, Service et soutien",
-                                            "id": 9
-                                        },
-                                        {
-                                            "text": "Geoffrey Hamma - Gestionnaire, Vérifications",
-                                            "id": 10
-                                        },
-                                        {
-                                            "text": "Lucy Trang - Gestionnaire, Formation en ligne",
-                                            "id": 11
                                         }
                                     ],
                                     "id": 0
                                 },
                                 {
-                                    "tree-child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Gestionnaire (vous)",
+                                            "team-information-tree-child": [
+                                                {
+                                                    "text": "Danny McBride - Analyste de l’assurance de la qualité",
+                                                    "id": 0
+                                                },
+                                                {
+                                                    "text": "Serge Duplessis - Analyste de l’assurance de la qualité",
+                                                    "id": 1
+                                                },
+                                                {
+                                                    "text": "Marina Richter - Analyste de l’assurance de la qualité",
+                                                    "id": 2
+                                                },
+                                                {
+                                                    "text": "Mary Woodside - Analyste de l’assurance de la qualité",
+                                                    "id": 3
+                                                },
+                                                {
+                                                    "text": "Charlie Wang - Analyste de l’assurance de la qualité",
+                                                    "id": 4
+                                                },
+                                                {
+                                                    "text": "Jack Laurier - Analyste de l’assurance de la qualité",
+                                                    "id": 5
+                                                }
+                                            ],
                                             "id": 0
-                                        },
-                                        {
-                                            "text": "Danny McBride - Analyste de l’assurance de la qualité",
-                                            "id": 1
-                                        },
-                                        {
-                                            "text": "Serge Duplessis - Analyste de l’assurance de la qualité",
-                                            "id": 2
-                                        },
-                                        {
-                                            "text": "Marina Richter - Analyste de l’assurance de la qualité",
-                                            "id": 3
-                                        },
-                                        {
-                                            "text": "Mary Woodside - Analyste de l’assurance de la qualité",
-                                            "id": 4
-                                        },
-                                        {
-                                            "text": "Charlie Wang - Analyste de l’assurance de la qualité",
-                                            "id": 5
-                                        },
-                                        {
-                                            "text": "Jack Laurier - Analyste de l’assurance de la qualité",
-                                            "id": 6
                                         }
                                     ],
                                     "id": 1
