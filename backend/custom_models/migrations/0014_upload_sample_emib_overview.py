@@ -51,6 +51,7 @@ The electronic Managerial In-Box (e-MIB) simulates an email in-box containing a 
 The sample test has been designed to provide you with the opportunity to familiarize yourself with:
 * the components of the test (e.g., instructions, background information, email in-box and notepad); and
 * the features of the test interface (e.g., menu bars, buttons, etc.).
+
 The background information includes a description of the organization and your role, as well as information on your employees, colleagues and the management team. The background information and the emails are only examples. They reflect neither the length nor the level of difficulty of the real test. More background information and emails are contained in the real test.""",
                 language=l_english,
             ),
@@ -63,6 +64,7 @@ La Boîte de réception pour la gestion électronique (BRG-e) simule une boîte 
 Cet échantillon de test a été conçu pour vous donner l’occasion de vous familiariser avec :
 * les volets du test (p. ex., instructions, information contextuelle, boîte de réception et bloc-notes);
 * les fonctionnalités de l’interface du test (p. ex., barres de menu, boutons, etc.).
+
 L’information contextuelle fournie comprend une description de l’organisation et de votre rôle, ainsi que de l’information sur vos employés, vos collègues et l’équipe de gestion. L’information contextuelle et les courriels fournis sont présentés à titre d’exemples seulement. Ils ne reflètent ni la longueur ni le niveau de difficulté du vrai test. Il y a une plus grande quantité d’information contextuelle et plus de courriels dans le vrai test.""",
                 language=l_french,
             ),
