@@ -14,6 +14,9 @@ TEST_QUESTIONS = "test_questions"
 EN = "en"
 FR = "fr"
 
+# when gathering meta data, look for these items under each type
+META_CHILDREN_MAP = {"test": ["overview"]}
+
 # when gathering insructions, look for these items under each type
 INSTRUCTION_CHILDREN_MAP = {}
 
@@ -95,6 +98,9 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     # start the return dict with all common values
     return_dict = {"test_internal_name": test.test_name}
 
+    item_type_map = gen_item_map(query_date_time)
+    question_type_map = gen_question_map(query_date_time)
+
     # if only requesting meta data, then recover the data unique to this return
     if request_type == TEST_META_DATA:
 
@@ -105,6 +111,17 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return_dict["is_public"] = test.is_public
         return_dict["default_time"] = test.default_time
         return_dict["test_type"] = test.test_type
+        # get the overview
+        meta_map = get_items_map(
+            item,
+            item_type_map,
+            question_type_map,
+            query_date_time,
+            en_id,
+            fr_id,
+            META_CHILDREN_MAP,
+        )
+        return_dict["meta_text"] = meta_map
         return return_dict
 
     if request_type == TEST_INSTRUCTIONS:
@@ -114,8 +131,6 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
         return return_dict
 
     if request_type == TEST_QUESTIONS:
-        item_type_map = gen_item_map(query_date_time)
-        question_type_map = gen_question_map(query_date_time)
         question_map = get_items_map(
             item,
             item_type_map,
