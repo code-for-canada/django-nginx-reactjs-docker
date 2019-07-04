@@ -80,7 +80,7 @@ const changeCurrentEmail = emailIndex => ({
 // emails - represents an array of emailShape objects in the currently selected language.
 // emailSummaries - represents an array of objects indicating read state of each email.
 // emailActions - represents an array of arrays, each array contains actionShape objects, representing an ACTION_TYPE.
-// addressBook - repesents an array of contactShape objects in the currently selected language
+// addressBook - repesents an array of addressBookContactShape objects in the currently selected language
 const initialState = {
   // Loads emails from a static JSON file until an API exists.
   emails: {},
