@@ -172,6 +172,7 @@ class TeamInformation extends Component {
               onClick={this.openPopup}
               className="btn btn-secondary"
               style={styles.button}
+              aria-label={LOCALIZE.emibTest.background.teamInformation.teamChart.ariaLabel}
             >
               {LOCALIZE.emibTest.background.teamInformation.teamChart.link}
             </button>
