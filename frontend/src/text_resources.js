@@ -208,11 +208,26 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "The Sample eMIB Test",
         welcomeMsg: "Welcome to the eMIB Sample Test"
       },
 
       //HowTo Page
       howToPage: {
+        introductionPage: {
+          title: "Overview",
+          description1:
+            "The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
+          description2: "The next section will allow you to:",
+          bullet1: "Read detailed instructions on how to complete the test;",
+          bullet2: "See examples of how to respond to emails within the simulated inbox;",
+          bullet3: "Explore the test environment before taking the real test.",
+          differencesTitle: "Differences between the sample test and the real test",
+          differencesBullet1:
+            "There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
+          differencesBullet2:
+            "The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
+        },
         tipsOnTest: {
           title: "Tips for taking the e-MIB",
           part1: {
@@ -345,19 +360,7 @@ let LOCALIZE = new LocalizedStrings({
             ariaLabel: "Image description of Organizational Chart (ODC)"
           },
           dialog: {
-            title: "The Organizational Chart of the ODC",
-            president: "Jenna Icard - President",
-            corpDirector: "Amari Kinsler - Corporate Affairs Director",
-            hr: "Marc Sheridan - Human Resources Manager",
-            finance: "Bob McNutt - Finance Manager",
-            it: "Lana Hussad - Information Technology Manager",
-            research: "Geneviève Bédard - Research and Innovations Director",
-            programDev: "Bartosz Greco - Program Development Director",
-            communications: "Nancy Ward - Services and Communications Director",
-            qa: "Claude Huard - Quality Assurance Manager (You)",
-            services: "Haydar Kalil - Services and Support Manager",
-            audits: "Geoffrey Hamma - Audits Manager",
-            training: "Lucy Trang - E-Training Manager"
+            title: "The Organizational Chart of the ODC"
           }
         },
         teamInformation: {
@@ -781,11 +784,26 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "La test pratique de BRG-e",
         welcomeMsg: "Bienvenue dans le test pratique de BRG-e"
       },
 
       //HowTo Page
       howToPage: {
+        introductionPage: {
+          title: "Aperçu général",
+          description1:
+            "FR The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
+          description2: "FR The next section will allow you to:",
+          bullet1: "FR Read detailed instructions on how to complete the test;",
+          bullet2: "FR See examples of how to respond to emails within the simulated inbox;",
+          bullet3: "FR Explore the test environment before taking the real test.",
+          differencesTitle: "FR Differences between the sample test and the real test",
+          differencesBullet1:
+            "FR There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
+          differencesBullet2:
+            "FR The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
+        },
         tipsOnTest: {
           title: "Conseils pour répondre à la BRG-e",
           part1: {
@@ -918,19 +936,7 @@ let LOCALIZE = new LocalizedStrings({
             ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
           },
           dialog: {
-            title: "Organigramme (CDO)",
-            president: "Jenna Icard - Présidente",
-            corpDirector: "Amari Kinsler - Directeur, Affaires ministérielles",
-            hr: "Marc Sheridan - Gestionnaire, Ressources humaines",
-            finance: "Bob McNutt - Gestionnaire, Finances",
-            it: "Lana Hussad - Gestionnaire, Technologies de l'information ",
-            research: "Geneviève Bédard - Directrice, Recherche et innovations",
-            programDev: "Bartosz Greco - Directeur, Développement de programmes",
-            communications: "Nancy Ward - Directrice, Services et communications",
-            qa: "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
-            services: "Haydar Kalil - Gestionnaire, Service et soutien",
-            audits: "Geoffrey Hamma - Gestionnaire, Vérifications",
-            training: "Lucy Trang - Gestionnaire, Formation en ligne"
+            title: "Organigramme (CDO)"
           }
         },
         teamInformation: {

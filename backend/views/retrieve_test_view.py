@@ -357,4 +357,3 @@ def exclude_inactive_objects(objects, query_date_time):
     return objects.exclude(date_from__gt=query_date_time).exclude(
         date_to__lt=query_date_time
     )
-
