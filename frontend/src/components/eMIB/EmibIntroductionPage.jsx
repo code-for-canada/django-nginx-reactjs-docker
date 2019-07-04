@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ReactMarkdown from "react-markdown";
+import { getTestMetaData } from "../../modules/LoadTestContentRedux";
+import { TEST_DEFINITION } from "../../testDefinition";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 const styles = {
   startTestBtn: {
@@ -11,32 +17,46 @@ const styles = {
 
 class EmibIntroductionPage extends Component {
   static propTypes = {
-    nextPage: PropTypes.func.isRequired
+    nextPage: PropTypes.func.isRequired,
+    // Provided by Redux
+    getTestMetaData: PropTypes.func
+  };
+
+  state = {
+    test_name_en: "",
+    test_name_fr: "",
+    markdown_en: "",
+    markdown_fr: ""
+  };
+
+  // loads the markdown content (english and french versions)
+  componentWillMount = () => {
+    this.props.getTestMetaData(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // saving the test name and overview information markdown content in local states
+      this.setState({
+        test_name_en: response.test_en_name,
+        test_name_fr: response.test_fr_name,
+        markdown_en: response.meta_text.en.overview[0],
+        markdown_fr: response.meta_text.fr.overview[0]
+      });
+    });
   };
 
   render() {
     return (
       <div>
-        <h1 className="green-divider">{LOCALIZE.emibTest.homePage.testTitle}</h1>
-        <section aria-labelledby="emib-overview">
-          <h2 id="emib-overview">{LOCALIZE.emibTest.howToPage.introductionPage.title}</h2>
-          <p>{LOCALIZE.emibTest.howToPage.introductionPage.description1}</p>
-          <p>{LOCALIZE.emibTest.howToPage.introductionPage.description2}</p>
-          <ul>
-            <li>{LOCALIZE.emibTest.howToPage.introductionPage.bullet1}</li>
-            <li>{LOCALIZE.emibTest.howToPage.introductionPage.bullet2}</li>
-            <li>{LOCALIZE.emibTest.howToPage.introductionPage.bullet3}</li>
-          </ul>
-        </section>
-        <section aria-labelledby="emib-differences">
-          <h2 id="emib-differences">
-            {LOCALIZE.emibTest.howToPage.introductionPage.differencesTitle}
-          </h2>
-          <ul>
-            <li>{LOCALIZE.emibTest.howToPage.introductionPage.differencesBullet1}</li>
-            <li>{LOCALIZE.emibTest.howToPage.introductionPage.differencesBullet2}</li>
-          </ul>
-        </section>
+        {this.props.language === LANGUAGES.english && (
+          <div>
+            <h1 className="green-divider">{this.state.test_name_en}</h1>
+            <ReactMarkdown source={this.state.markdown_en} />
+          </div>
+        )}
+        {this.props.language === LANGUAGES.french && (
+          <div>
+            <h1 className="green-divider">{this.state.test_name_fr}</h1>
+            <ReactMarkdown source={this.state.markdown_fr} />
+          </div>
+        )}
         <div style={styles.startTestBtn}>
           <button type="button" className="btn btn-primary btn-wide" onClick={this.props.nextPage}>
             {LOCALIZE.commons.enterEmib}
@@ -47,4 +67,21 @@ class EmibIntroductionPage extends Component {
   }
 }
 
-export default EmibIntroductionPage;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    language: state.localize.language
+  };
+};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getTestMetaData
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmibIntroductionPage);
