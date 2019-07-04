@@ -381,14 +381,7 @@ let LOCALIZE = new LocalizedStrings({
             link: "Image Description"
           },
           dialog: {
-            title: "The Organizational Chart of the QA Team",
-            manager: "Claude Huard - Manager (You)",
-            analyst1: "Danny McBride - QA Analyst",
-            analyst2: "Serge Duplessis - QA Analyst",
-            analyst3: "Marina Richter - QA Analyst",
-            analyst4: "Mary Woodside - QA Analyst",
-            analyst5: "Charlie Wang - QA Analyst",
-            analyst6: "Jack Laurier - QA Analyst"
+            title: "The Organizational Chart of the QA Team"
           }
         }
       },
@@ -973,14 +966,7 @@ let LOCALIZE = new LocalizedStrings({
             link: "Description de l'image"
           },
           dialog: {
-            title: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            manager: "Claude Huard - Gestionnaire (vous)",
-            analyst1: "Danny McBride - Analyste de l’assurance de la qualité",
-            analyst2: "Serge Duplessis - Analyste de l’assurance de la qualité",
-            analyst3: "Marina Richter - Analyste de l’assurance de la qualité",
-            analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
-            analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
-            analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
+            title: "Organigramme Équipe de l'assurance de la qualité (AQ)"
           }
         }
       },
