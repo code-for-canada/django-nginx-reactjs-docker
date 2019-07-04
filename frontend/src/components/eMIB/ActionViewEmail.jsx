@@ -165,7 +165,6 @@ class ActionViewEmail extends Component {
               <button
                 id="unit-test-view-email-edit-button"
                 className="btn btn-primary"
-                style={styles.editButton}
                 onClick={this.showEmailDialog}
               >
                 {LOCALIZE.emibTest.inboxPage.emailCommons.editButton}
@@ -173,6 +172,7 @@ class ActionViewEmail extends Component {
               <button
                 id="unit-test-view-email-delete-button"
                 className="btn btn-danger"
+                style={styles.editButton}
                 onClick={this.showDeleteConfirmationDialog}
               >
                 {LOCALIZE.emibTest.inboxPage.emailCommons.deleteButton}

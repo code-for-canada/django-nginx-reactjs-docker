@@ -79,7 +79,6 @@ class ActionViewTask extends Component {
               <button
                 id="unit-test-view-task-edit-button"
                 className="btn btn-primary"
-                style={styles.editButton}
                 onClick={this.showTaskDialog}
               >
                 {LOCALIZE.emibTest.inboxPage.emailCommons.editButton}
@@ -87,6 +86,7 @@ class ActionViewTask extends Component {
               <button
                 id="unit-test-view-task-delete-button"
                 className="btn btn-danger"
+                style={styles.editButton}
                 onClick={this.showDeleteConfirmationDialog}
               >
                 {LOCALIZE.emibTest.inboxPage.emailCommons.deleteButton}
