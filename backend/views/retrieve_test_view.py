@@ -348,7 +348,6 @@ def get_items_by_parent_id(parent_id, query_date_time):
     # get all items with the given parent_id
     items = Item.objects.filter(parent_id=parent_id)
     items = exclude_inactive_objects(items, query_date_time).order_by("order")
-    print(items)
     return items
 
 
