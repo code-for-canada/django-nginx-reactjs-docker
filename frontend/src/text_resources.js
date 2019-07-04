@@ -208,6 +208,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "The Sample eMIB Test",
         welcomeMsg: "Welcome to the eMIB Sample Test"
       },
 
@@ -341,39 +342,22 @@ let LOCALIZE = new LocalizedStrings({
           title: "Organizational Structure",
           orgChart: {
             desciption: "Organizational Chart (ODC)",
-            link: "Image Description"
+            link: "Image Description",
+            ariaLabel: "Image description of Organizational Chart (ODC)"
           },
           dialog: {
-            title: "The Organizational Chart of the ODC",
-            president: "Jenna Icard - President",
-            corpDirector: "Amari Kinsler - Corporate Affairs Director",
-            hr: "Marc Sheridan - Human Resources Manager",
-            finance: "Bob McNutt - Finance Manager",
-            it: "Lana Hussad - Information Technology Manager",
-            research: "Geneviève Bédard - Research and Innovations Director",
-            programDev: "Bartosz Greco - Program Development Director",
-            communications: "Nancy Ward - Services and Communications Director",
-            qa: "Claude Huard - Quality Assurance Manager (You)",
-            services: "Haydar Kalil - Services and Support Manager",
-            audits: "Geoffrey Hamma - Audits Manager",
-            training: "Lucy Trang - E-Training Manager"
+            title: "The Organizational Chart of the ODC"
           }
         },
         teamInformation: {
           title: "Your team",
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
-            link: "Image Description"
+            link: "Image Description",
+            ariaLabel: "Image description of Organizational Chart The Quality Assurance (QA) Team"
           },
           dialog: {
-            title: "The Organizational Chart of the QA Team",
-            manager: "Claude Huard - Manager (You)",
-            analyst1: "Danny McBride - QA Analyst",
-            analyst2: "Serge Duplessis - QA Analyst",
-            analyst3: "Marina Richter - QA Analyst",
-            analyst4: "Mary Woodside - QA Analyst",
-            analyst5: "Charlie Wang - QA Analyst",
-            analyst6: "Jack Laurier - QA Analyst"
+            title: "The Organizational Chart of the QA Team"
           }
         }
       },
@@ -786,6 +770,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "La test pratique de BRG-e",
         welcomeMsg: "Bienvenue dans le test pratique de BRG-e"
       },
 
@@ -919,39 +904,23 @@ let LOCALIZE = new LocalizedStrings({
           title: "Structure organisationnelle",
           orgChart: {
             desciption: "Organigramme (CDO)",
-            link: "Description de l'image"
+            link: "Description de l'image",
+            ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
           },
           dialog: {
-            title: "Organigramme (CDO)",
-            president: "Jenna Icard - Présidente",
-            corpDirector: "Amari Kinsler - Directeur, Affaires ministérielles",
-            hr: "Marc Sheridan - Gestionnaire, Ressources humaines",
-            finance: "Bob McNutt - Gestionnaire, Finances",
-            it: "Lana Hussad - Gestionnaire, Technologies de l'information ",
-            research: "Geneviève Bédard - Directrice, Recherche et innovations",
-            programDev: "Bartosz Greco - Directeur, Développement de programmes",
-            communications: "Nancy Ward - Directrice, Services et communications",
-            qa: "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
-            services: "Haydar Kalil - Gestionnaire, Service et soutien",
-            audits: "Geoffrey Hamma - Gestionnaire, Vérifications",
-            training: "Lucy Trang - Gestionnaire, Formation en ligne"
+            title: "Organigramme (CDO)"
           }
         },
         teamInformation: {
           title: "FR Your team",
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            link: "Description de l'image"
+            link: "Description de l'image",
+            ariaLabel:
+              "FR Description de l'image de l'Organigramme Équipe de l'assurance de la qualité (AQ)"
           },
           dialog: {
-            title: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            manager: "Claude Huard - Gestionnaire (vous)",
-            analyst1: "Danny McBride - Analyste de l’assurance de la qualité",
-            analyst2: "Serge Duplessis - Analyste de l’assurance de la qualité",
-            analyst3: "Marina Richter - Analyste de l’assurance de la qualité",
-            analyst4: "Mary Woodside - Analyste de l’assurance de la qualité",
-            analyst5: "Charlie Wang - Analyste de l’assurance de la qualité",
-            analyst6: "Jack Laurier - Analyste de l’assurance de la qualité"
+            title: "Organigramme Équipe de l'assurance de la qualité (AQ)"
           }
         }
       },
