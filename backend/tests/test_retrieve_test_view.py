@@ -23,12 +23,12 @@ class RetrieveMetaTest(TestCase):
             "meta_text": {
                 "en": {
                     "overview": [
-                        "## Overview\nThe electronic Managerial In-Box (e-MIB) simulates an email in-box containing a series of emails depicting situations typically encountered by managers in the federal public service. You must respond to these emails. The situations presented will provide you with the opportunity to demonstrate the Key Leadership Competencies.\n\n## About the sample test\nThe sample test has been designed to provide you with the opportunity to familiarize yourself with:\n* the components of the test (e.g., instructions, background information, email in-box and notepad); and\n* the features of the test interface (e.g., menu bars, buttons, etc.).\n\nThe background information includes a description of the organization and your role, as well as information on your employees, colleagues and the management team. The background information and the emails are only examples. They reflect neither the length nor the level of difficulty of the real test. More background information and emails are contained in the real test."
+                        "## Overview\nThe electronic Managerial In-Box (e-MIB) simulates an email in-box containing a series of emails depicting situations typically encountered by managers in the federal public service. You must respond to these emails. The situations presented will provide you with the opportunity to demonstrate the Key Leadership Competencies.\n\n## About the sample test\nThe sample test has been designed to provide you with the opportunity to familiarize yourself with:\n* the components of the test (e.g., instructions, background information, email in-box and notepad); and\n* the features of the test interface (e.g., menu bars, buttons, etc.).\nThe background information includes a description of the organization and your role, as well as information on your employees, colleagues and the management team. The background information and the emails are only examples. They reflect neither the length nor the level of difficulty of the real test. More background information and emails are contained in the real test."
                     ]
                 },
                 "fr": {
                     "overview": [
-                        "## Aperçu \nLa Boîte de réception pour la gestion électronique (BRG-e) simule une boîte de réception contenant une série de courriels auxquels vous devrez répondre. Ces courriels décrivent des situations auxquelles les gestionnaires de la fonction publique fédérale doivent habituellement faire face. Ces situations vous donneront l’occasion de démontrer les compétences clés en leadership.\n\n## À propos de l’échantillon de test\nCet échantillon de test a été conçu pour vous donner l’occasion de vous familiariser avec :\n* les volets du test (p. ex., instructions, information contextuelle, boîte de réception et bloc-notes);\n* les fonctionnalités de l’interface du test (p. ex., barres de menu, boutons, etc.).\n\nL’information contextuelle fournie comprend une description de l’organisation et de votre rôle, ainsi que de l’information sur vos employés, vos collègues et l’équipe de gestion. L’information contextuelle et les courriels fournis sont présentés à titre d’exemples seulement. Ils ne reflètent ni la longueur ni le niveau de difficulté du vrai test. Il y a une plus grande quantité d’information contextuelle et plus de courriels dans le vrai test."
+                        "## Aperçu \nLa Boîte de réception pour la gestion électronique (BRG-e) simule une boîte de réception contenant une série de courriels auxquels vous devrez répondre. Ces courriels décrivent des situations auxquelles les gestionnaires de la fonction publique fédérale doivent habituellement faire face. Ces situations vous donneront l’occasion de démontrer les compétences clés en leadership.\n\n## À propos de l’échantillon de test\nCet échantillon de test a été conçu pour vous donner l’occasion de vous familiariser avec :\n* les volets du test (p. ex., instructions, information contextuelle, boîte de réception et bloc-notes);\n* les fonctionnalités de l’interface du test (p. ex., barres de menu, boutons, etc.).\nL’information contextuelle fournie comprend une description de l’organisation et de votre rôle, ainsi que de l’information sur vos employés, vos collègues et l’équipe de gestion. L’information contextuelle et les courriels fournis sont présentés à titre d’exemples seulement. Ils ne reflètent ni la longueur ni le niveau de difficulté du vrai test. Il y a une plus grande quantité d’information contextuelle et plus de courriels dans le vrai test."
                     ]
                 }
             }
@@ -166,15 +166,15 @@ class RetrieveInTest(TestCase):
                                     "id": 4
                                 }
                             ],
-                            "tree-view": [
+                            "tree_view": [
                                 {
-                                    "organizational-structure-tree-child": [
+                                    "organizational_structure_tree_child": [
                                         {
                                             "text": "Jenna Icard - President",
-                                            "organizational-structure-tree-child": [
+                                            "organizational_structure_tree_child": [
                                                 {
                                                     "text": "Amari Kinsler - Corporate Affairs Director",
-                                                    "organizational-structure-tree-child": [
+                                                    "organizational_structure_tree_child": [
                                                         {
                                                             "text": "Marc Sheridan - Human Resources Manager",
                                                             "id": 0
@@ -200,7 +200,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Services and Communications Director",
-                                                    "organizational-structure-tree-child": [
+                                                    "organizational_structure_tree_child": [
                                                         {
                                                             "text": "Claude Huard - Quality Assurance Manager (You)",
                                                             "id": 0
@@ -227,10 +227,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team-information-tree-child": [
+                                    "team_information_tree_child": [
                                         {
                                             "text": "Claude Huard - Manager (You)",
-                                            "team-information-tree-child": [
+                                            "team_information_tree_child": [
                                                 {
                                                     "text": "Danny McBride - QA Analyst",
                                                     "id": 0
@@ -291,15 +291,15 @@ class RetrieveInTest(TestCase):
                                     "id": 4
                                 }
                             ],
-                            "tree-view": [
+                            "tree_view": [
                                 {
-                                    "organizational-structure-tree-child": [
+                                    "organizational_structure_tree_child": [
                                         {
                                             "text": "Jenna Icard - Présidente",
-                                            "organizational-structure-tree-child": [
+                                            "organizational_structure_tree_child": [
                                                 {
                                                     "text": "Amari Kinsler - Directeur, Affaires ministérielles",
-                                                    "organizational-structure-tree-child": [
+                                                    "organizational_structure_tree_child": [
                                                         {
                                                             "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
                                                             "id": 0
@@ -325,7 +325,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Directrice, Services et communications",
-                                                    "organizational-structure-tree-child": [
+                                                    "organizational_structure_tree_child": [
                                                         {
                                                             "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
                                                             "id": 0
@@ -352,10 +352,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team-information-tree-child": [
+                                    "team_information_tree_child": [
                                         {
                                             "text": "Claude Huard - Gestionnaire (vous)",
-                                            "team-information-tree-child": [
+                                            "team_information_tree_child": [
                                                 {
                                                     "text": "Danny McBride - Analyste de l’assurance de la qualité",
                                                     "id": 0

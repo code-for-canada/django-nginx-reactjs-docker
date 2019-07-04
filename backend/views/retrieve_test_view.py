@@ -28,10 +28,10 @@ QUESTION_CHILDREN_MAP = {
 
 BACKGROUND_MAP = {
     "test": ["background"],
-    "background": ["markdown", "tree-view"],
-    "tree-view": ["organizational-structure-tree-child", "team-information-tree-child"],
-    "organizational-structure-tree-child": ["organizational-structure-tree-child"],
-    "team-information-tree-child": ["team-information-tree-child"],
+    "background": ["markdown", "tree_view"],
+    "tree_view": ["organizational_structure_tree_child", "team_information_tree_child"],
+    "organizational_structure_tree_child": ["organizational_structure_tree_child"],
+    "team_information_tree_child": ["team_information_tree_child"],
 }
 
 # List of item types that should only return one item rather than a list
@@ -40,14 +40,14 @@ SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 # list of items that are leaves in the item tree, but will have multiple siblings
 MULTI_CHILD_LEAF_LIST = [
     "markdown",
-    "organizational-structure-tree-child",
-    "team-information-tree-child",
-    "team-information-tree-child",
+    "organizational_structure_tree_child",
+    "team_information_tree_child",
+    "team_information_tree_child",
 ]
 
 ALWAYS_SHOW_TEXT = [
-    "organizational-structure-tree-child",
-    "team-information-tree-child",
+    "organizational_structure_tree_child",
+    "team_information_tree_child",
 ]
 
 
@@ -357,4 +357,3 @@ def exclude_inactive_objects(objects, query_date_time):
     return objects.exclude(date_from__gt=query_date_time).exclude(
         date_to__lt=query_date_time
     )
-
