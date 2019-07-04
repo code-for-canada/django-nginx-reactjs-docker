@@ -40,6 +40,10 @@ class TeamInformation extends Component {
     markdown_section1_fr: "",
     markdown_section2_en: "",
     markdown_section2_fr: "",
+    popupMarkdownTitle_en: "",
+    popupMarkdownTitle_fr: "",
+    popupMarkdownDescription_en: "",
+    popupMarkdownDescription_fr: "",
     treeViewContent_en: [],
     treeViewContent_fr: []
   };
@@ -78,6 +82,10 @@ class TeamInformation extends Component {
         markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
         markdown_section2_en: response.background.en.background[0].markdown[4].text,
         markdown_section2_fr: response.background.fr.background[0].markdown[4].text,
+        popupMarkdownTitle_en: response.background.en.background[0].markdown[7].text,
+        popupMarkdownTitle_fr: response.background.fr.background[0].markdown[7].text,
+        popupMarkdownDescription_en: response.background.en.background[0].markdown[8].text,
+        popupMarkdownDescription_fr: response.background.fr.background[0].markdown[8].text,
         isLoadingComplete: true
       });
     });
@@ -169,10 +177,20 @@ class TeamInformation extends Component {
         <PopupBox
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
-          title={LOCALIZE.emibTest.background.teamInformation.dialog.title}
+          // only using the states here (without markdown), since the title must be a string
+          title={
+            this.props.currentLanguage === LANGUAGES.english
+              ? this.state.popupMarkdownTitle_en
+              : this.state.popupMarkdownTitle_fr
+          }
           description={
             <div>
-              <p>{LOCALIZE.emibTest.background.orgChartInstructions}</p>
+              {this.props.currentLanguage === LANGUAGES.english && (
+                <ReactMarkdown source={this.state.popupMarkdownDescription_en} />
+              )}
+              {this.props.currentLanguage === LANGUAGES.french && (
+                <ReactMarkdown source={this.state.popupMarkdownDescription_fr} />
+              )}
               <TreeNode nodes={treeView} />
             </div>
           }
@@ -226,7 +244,6 @@ class TeamInformation extends Component {
               onClick={this.openPopup}
               className="btn btn-secondary"
               style={styles.button}
-              aria-label={LOCALIZE.emibTest.background.teamInformation.teamChart.ariaLabel}
             >
               {LOCALIZE.emibTest.background.teamInformation.teamChart.link}
             </button>
