@@ -329,8 +329,6 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        orgChartInstructions:
-          "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
           title: "Overview"
         },
@@ -349,9 +347,6 @@ let LOCALIZE = new LocalizedStrings({
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
             link: "Image Description"
-          },
-          dialog: {
-            title: "The Organizational Chart of the QA Team"
           }
         }
       },
@@ -885,8 +880,6 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        orgChartInstructions:
-          "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
         backgroundInformation: {
           title: "Contexte"
         },
@@ -905,9 +898,6 @@ let LOCALIZE = new LocalizedStrings({
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
             link: "Description de l'image"
-          },
-          dialog: {
-            title: "Organigramme Équipe de l'assurance de la qualité (AQ)"
           }
         }
       },
