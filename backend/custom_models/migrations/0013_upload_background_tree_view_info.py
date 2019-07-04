@@ -43,11 +43,11 @@ def upload_background_tree_view_info(apps, schema_editor):
     )
 
     # create item_types; do not use bulk_create since we need these objects later on
-    it_tree_view = item_type(type_desc="tree_view")
+    it_tree_view = item_type(type_desc="tree-view")
     it_tree_view.save()
-    it_organizational_structure_tree_child = item_type(type_desc="organizational_structure_tree_child")
+    it_organizational_structure_tree_child = item_type(type_desc="organizational-structure-tree-child")
     it_organizational_structure_tree_child.save()
-    it_team_information_tree_child = item_type(type_desc="team_information_tree_child")
+    it_team_information_tree_child = item_type(type_desc="team-information-tree-child")
     it_team_information_tree_child.save()
 
     # create items; do not use bulk_create since we need these objects later on
@@ -361,13 +361,13 @@ def destroy_background_tree_view_info(apps, schema_editor):
     )
     # get item_type objects
     it_tree_view = (
-        item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
+        item_type.objects.using(db_alias).filter(type_desc="tree-view").last()
     )
     it_organizational_structure_tree_child = (
-        item_type.objects.using(db_alias).filter(type_desc="organizational_structure_tree_child").last()
+        item_type.objects.using(db_alias).filter(type_desc="organizational-structure-tree-child").last()
     )
     it_team_information_tree_child = (
-        item_type.objects.using(db_alias).filter(type_desc="team_information_tree_child").last()
+        item_type.objects.using(db_alias).filter(type_desc="team-information-tree-child").last()
     )
 
     # get item objects
