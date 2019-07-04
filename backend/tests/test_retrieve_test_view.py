@@ -164,33 +164,17 @@ class RetrieveInTest(TestCase):
                                 {
                                     "text": "### QA Team Responsibilities\n\nThe Quality Assurance Team is responsible for:\n\n1. **Providing information management services.** Responsibilities include ensuring that organizational development training programs across the public service are well documented. This priority includes synthesizing a large volume of information from various government organizations, ensuring adherence to information security policies, and providing appropriate accessibility to archived documents.\n2. **Reviewing online content.** Responsibilities include reviewing a large volume of information regarding organizational training programs from various clients and partners, ensuring adherence to internal and external communications policies, and making recommendations to executives for final approval before information dissemination.\n3. **Reviewing training documentation.** Responsibilities include ensuring the completeness and quality of content in all organizational development training- related documents. This priority includes reviewing training instructions, scoring manuals, training specifications, statistical reports, and other training-related materials.\n\n#### New initiatives\n\nYou have been mandated to make a recommendation on the adoption of an “off-the- shelf” online request processing system. The proposed system, called Serv, provides features that would facilitate the management of client and partner requests for content review and documentation services. This includes enhanced categorization and tracking of pending requests, customizable forms applications, and various report generators. The Information Technology (IT) Team of the ODC recently facilitated a pilot test with Serv that included Danny McBride, who is a member of the Quality Assurance Team. Danny came back with positive feedback on his experience with the Serv system. Your team has been discussing the proposal to introduce this new technology in hopes of improving your services.\n",
                                     "id": 4
-                                },
-                                {
-                                    "text": "The Organizational Chart of the ODC",
-                                    "id": 5
-                                },
-                                {
-                                    "text": "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 6
-                                },
-                                {
-                                    "text": "The Organizational Chart of the QA Team",
-                                    "id": 7
-                                },
-                                {
-                                    "text": "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 8
                                 }
                             ],
-                            "tree_view": [
+                            "tree-view": [
                                 {
-                                    "organizational_structure_tree_child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - President",
-                                            "organizational_structure_tree_child": [
+                                            "organizational-structure-tree-child": [
                                                 {
                                                     "text": "Amari Kinsler - Corporate Affairs Director",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Marc Sheridan - Human Resources Manager",
                                                             "id": 0
@@ -216,7 +200,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Services and Communications Director",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Claude Huard - Quality Assurance Manager (You)",
                                                             "id": 0
@@ -243,10 +227,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team_information_tree_child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Manager (You)",
-                                            "team_information_tree_child": [
+                                            "team-information-tree-child": [
                                                 {
                                                     "text": "Danny McBride - QA Analyst",
                                                     "id": 0
@@ -305,33 +289,17 @@ class RetrieveInTest(TestCase):
                                 {
                                     "text": "### Responsabilités de l’Équipe de l’AQ\n\nL’Équipe de l’assurance de la qualité doit s’acquitter de ce qui suit :\n\n1. **Fournir des services de gestion de l’information.** L’équipe doit veiller à ce que les programmes en développement organisationnel au sein de la fonction publique soient bien documentés. Cette priorité comprend : synthétiser un grand volume de renseignements provenant de divers organismes gouvernementaux, s’assurer que les politiques sur la sécurité de l’information sont respectées et donner un accès approprié aux documents archivés.\n2. **Examiner le contenu en ligne.** Les responsabilités de l’équipe comprennent les suivantes : Examiner un grand volume d’information sur les programmes de formation organisationnels de divers clients et partenaires, s’assurer que les politiques sur les communications internes et les communications externes sont respectées et formuler des recommandations aux cadres supérieurs aux fins d’approbation définitive avant la diffusion de l’information.\n3. **Examiner les documents de formation.** L’équipe doit s’assurer de l’intégralité et de la qualité du contenu de tous les documents liés à la formation en développement organisationnel. Cette priorité inclut l’examen des instructions de formation, des guides de correction, des spécifications de la formation, des rapports statistiques et d’autres documents de formation connexes.\n\n#### Nouvelles initiatives\n\nVous avez reçu le mandat de formuler une recommandation au sujet de l’adoption d’un système commercial de traitement des demandes en ligne. Le système proposé, appelé Serv, offre des fonctionnalités qui faciliteraient la gestion des demandes des clients et des partenaires qui cherchent à obtenir des services de révision du contenu et de gestion de la documentation. Cela inclut l’amélioration du processus de catégorisation et de suivi des demandes en attente, la personnalisation des formulaires de demande et divers générateurs de rapports. L’Équipe de la technologie de l’information (TI) du CDO a récemment fait un essai pilote de Serv auquel a participé Danny McBride, un des membres de l’Équipe de l’assurance de la qualité. Danny a donné des commentaires positifs sur son expérience avec le système Serv. Votre équipe discute actuellement de la proposition visant à introduire cette nouvelle technologie afin d’améliorer vos services.\n",
                                     "id": 4
-                                },
-                                {
-                                    "text": "Organigramme (CDO)",
-                                    "id": 5
-                                },
-                                {
-                                    "text": "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 6
-                                },
-                                {
-                                    "text": "Organigramme Équipe de l'assurance de la qualité (AQ)",
-                                    "id": 7
-                                },
-                                {
-                                    "text": "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 8
                                 }
                             ],
-                            "tree_view": [
+                            "tree-view": [
                                 {
-                                    "organizational_structure_tree_child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - Présidente",
-                                            "organizational_structure_tree_child": [
+                                            "organizational-structure-tree-child": [
                                                 {
                                                     "text": "Amari Kinsler - Directeur, Affaires ministérielles",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
                                                             "id": 0
@@ -357,7 +325,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Directrice, Services et communications",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
                                                             "id": 0
@@ -384,10 +352,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team_information_tree_child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Gestionnaire (vous)",
-                                            "team_information_tree_child": [
+                                            "team-information-tree-child": [
                                                 {
                                                     "text": "Danny McBride - Analyste de l’assurance de la qualité",
                                                     "id": 0
