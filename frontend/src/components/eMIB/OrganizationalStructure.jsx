@@ -313,6 +313,7 @@ class OrganizationalStructure extends Component {
               onClick={this.openPopup}
               className="btn btn-secondary"
               style={styles.button}
+              aria-label={LOCALIZE.emibTest.background.organizationalStructure.orgChart.ariaLabel}
             >
               {LOCALIZE.emibTest.background.organizationalStructure.orgChart.link}
             </button>
