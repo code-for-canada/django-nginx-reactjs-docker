@@ -344,9 +344,6 @@ let LOCALIZE = new LocalizedStrings({
             desciption: "Organizational Chart (ODC)",
             link: "Image Description",
             ariaLabel: "Image description of Organizational Chart (ODC)"
-          },
-          dialog: {
-            title: "The Organizational Chart of the ODC"
           }
         },
         teamInformation: {
@@ -906,9 +903,6 @@ let LOCALIZE = new LocalizedStrings({
             desciption: "Organigramme (CDO)",
             link: "Description de l'image",
             ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
-          },
-          dialog: {
-            title: "Organigramme (CDO)"
           }
         },
         teamInformation: {
