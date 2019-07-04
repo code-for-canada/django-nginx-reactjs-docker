@@ -32,7 +32,7 @@ class EmibIntroductionPage extends Component {
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
     this.props.getTestMetaData(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // saving the background information markdown content in local states
+      // saving the test name and overview information markdown content in local states
       this.setState({
         test_name_en: response.test_en_name,
         test_name_fr: response.test_fr_name,
