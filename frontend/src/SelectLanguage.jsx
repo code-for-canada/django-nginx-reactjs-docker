@@ -9,6 +9,15 @@ import { setLanguage, LANGUAGES } from "./modules/LocalizeRedux";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+// Strings won't get translated because they will always appear in both
+// languages because the user has not selected a language yet.
+const strings = {
+  cat: "Competency Assessment Tool",
+  oec: "Outil d'évaluation des compétences",
+  en: "English",
+  fr: "Français"
+};
+
 const styles = {
   logo: {
     padding: "10px 20px"
@@ -77,18 +86,18 @@ class SelectLanguage extends Component {
                 style={styles.logo}
               />
             </div>
-            <h2>Competency Assessment Tool</h2>
-            <h2 lang={LANGUAGES.french}>Outil d'évaluation des compétences</h2>
+            <h2>{strings.cat}</h2>
+            <h2 lang={LANGUAGES.french}>{strings.oec}</h2>
             <div style={styles.buttonsContainer}>
               <Button onClick={this.setLanguageToEnglish} style={styles.langButton}>
-                English
+                {strings.en}
               </Button>
               <Button
                 lang={LANGUAGES.french}
                 onClick={this.setLanguageToFrench}
                 style={styles.langButton}
               >
-                Français
+                {strings.fr}
               </Button>
             </div>
           </div>

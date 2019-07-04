@@ -11,6 +11,7 @@ class ConfirmStartTest extends Component {
   };
 
   render() {
+    //TODO: replace `timeUnlimited` with dynamic real time value to complete the test.
     return (
       <div>
         <PopupBox
@@ -19,7 +20,12 @@ class ConfirmStartTest extends Component {
           title={LOCALIZE.commons.confirmStartTest.aboutToStart}
           description={
             <div>
-              <p>{LOCALIZE.commons.confirmStartTest.timerWarning}</p>
+              <p>
+                {LOCALIZE.formatString(
+                  LOCALIZE.commons.confirmStartTest.timerWarning,
+                  LOCALIZE.commons.confirmStartTest.timeUnlimited
+                )}
+              </p>
               <p>{LOCALIZE.commons.confirmStartTest.instructionsAccess}</p>
             </div>
           }
