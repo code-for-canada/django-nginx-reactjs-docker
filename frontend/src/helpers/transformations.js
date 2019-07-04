@@ -28,7 +28,7 @@ export function contactNameFromId(addressBook, id) {
 }
 
 // From an array of ids, create an options list for the
-// to and cc feilds.
+// to and cc fields.
 export function optionsFromIds(addressBook, ids) {
   let options = [];
   ids = ids || [];
