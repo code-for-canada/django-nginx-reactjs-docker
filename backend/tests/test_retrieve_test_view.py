@@ -166,15 +166,15 @@ class RetrieveInTest(TestCase):
                                     "id": 4
                                 }
                             ],
-                            "tree_view": [
+                            "tree-view": [
                                 {
-                                    "organizational_structure_tree_child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - President",
-                                            "organizational_structure_tree_child": [
+                                            "organizational-structure-tree-child": [
                                                 {
                                                     "text": "Amari Kinsler - Corporate Affairs Director",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Marc Sheridan - Human Resources Manager",
                                                             "id": 0
@@ -200,7 +200,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Services and Communications Director",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Claude Huard - Quality Assurance Manager (You)",
                                                             "id": 0
@@ -227,10 +227,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team_information_tree_child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Manager (You)",
-                                            "team_information_tree_child": [
+                                            "team-information-tree-child": [
                                                 {
                                                     "text": "Danny McBride - QA Analyst",
                                                     "id": 0
@@ -291,15 +291,15 @@ class RetrieveInTest(TestCase):
                                     "id": 4
                                 }
                             ],
-                            "tree_view": [
+                            "tree-view": [
                                 {
-                                    "organizational_structure_tree_child": [
+                                    "organizational-structure-tree-child": [
                                         {
                                             "text": "Jenna Icard - Présidente",
-                                            "organizational_structure_tree_child": [
+                                            "organizational-structure-tree-child": [
                                                 {
                                                     "text": "Amari Kinsler - Directeur, Affaires ministérielles",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
                                                             "id": 0
@@ -325,7 +325,7 @@ class RetrieveInTest(TestCase):
                                                 },
                                                 {
                                                     "text": "Nancy Ward - Directrice, Services et communications",
-                                                    "organizational_structure_tree_child": [
+                                                    "organizational-structure-tree-child": [
                                                         {
                                                             "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
                                                             "id": 0
@@ -352,10 +352,10 @@ class RetrieveInTest(TestCase):
                                     "id": 0
                                 },
                                 {
-                                    "team_information_tree_child": [
+                                    "team-information-tree-child": [
                                         {
                                             "text": "Claude Huard - Gestionnaire (vous)",
-                                            "team_information_tree_child": [
+                                            "team-information-tree-child": [
                                                 {
                                                     "text": "Danny McBride - Analyste de l’assurance de la qualité",
                                                     "id": 0
