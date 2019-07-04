@@ -31,8 +31,8 @@ export const EMAIL_TYPE = {
 // Email test content. Won't be edited by a candidate.
 export const emailShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  to: PropTypes.string,
-  from: PropTypes.string,
+  to: PropTypes.arrayOf(PropTypes.number),
+  from: PropTypes.number,
   subject: PropTypes.string,
   date: PropTypes.string,
   body: PropTypes.string

@@ -38,3 +38,14 @@ export function optionsFromIds(addressBook, ids) {
   }
   return options;
 }
+
+// From an array of ids, create a single display string.
+export function displayStringFromIds(addressBook, ids) {
+  let displayString = "";
+  ids = ids || [];
+  for (let id of ids) {
+    const name = contactNameFromId(addressBook, id);
+    displayString = displayString + name;
+  }
+  return displayString;
+}

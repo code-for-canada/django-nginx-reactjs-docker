@@ -104,7 +104,8 @@ const styles = {
 class EditEmail extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    action: actionShape
+    action: actionShape,
+    addressBook: PropTypes.array
   };
 
   state = {

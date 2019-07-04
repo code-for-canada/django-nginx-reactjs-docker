@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import "../../css/inbox.css";
 import { emailShape } from "./constants";
+import { contactNameFromId, displayStringFromIds } from "../../helpers/transformations";
+import { connect } from "react-redux";
 
 const styles = {
   replyAndUser: {
@@ -21,7 +24,8 @@ const styles = {
 
 class EmailContent extends Component {
   static propTypes = {
-    email: emailShape
+    email: emailShape,
+    addressBook: PropTypes.array
   };
 
   render() {
@@ -32,10 +36,16 @@ class EmailContent extends Component {
           {LOCALIZE.emibTest.inboxPage.subject + ": " + email.subject}
         </div>
         <div>
-          {LOCALIZE.emibTest.inboxPage.from}: <span style={styles.replyAndUser}>{email.from}</span>
+          {LOCALIZE.emibTest.inboxPage.from}:{" "}
+          <span style={styles.replyAndUser}>
+            {contactNameFromId(this.props.addressBook, email.from)}
+          </span>
         </div>
         <div>
-          {LOCALIZE.emibTest.inboxPage.to}: <span style={styles.replyAndUser}>{email.to}</span>
+          {LOCALIZE.emibTest.inboxPage.to}:{" "}
+          <span style={styles.replyAndUser}>
+            {displayStringFromIds(this.props.addressBook, email.to)}
+          </span>
         </div>
         <div>
           {LOCALIZE.emibTest.inboxPage.date}: {email.date}
@@ -47,4 +57,15 @@ class EmailContent extends Component {
   }
 }
 
-export default EmailContent;
+export { EmailContent as UnconnectedEmailContent };
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    addressBook: state.emibInbox.addressBook
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(EmailContent);
