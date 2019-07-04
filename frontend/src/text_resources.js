@@ -341,7 +341,8 @@ let LOCALIZE = new LocalizedStrings({
           title: "Organizational Structure",
           orgChart: {
             desciption: "Organizational Chart (ODC)",
-            link: "Image Description"
+            link: "Image Description",
+            ariaLabel: "Image description of Organizational Chart (ODC)"
           },
           dialog: {
             title: "The Organizational Chart of the ODC",
@@ -363,7 +364,8 @@ let LOCALIZE = new LocalizedStrings({
           title: "Your team",
           teamChart: {
             desciption: "Organizational Chart The Quality Assurance (QA) Team",
-            link: "Image Description"
+            link: "Image Description",
+            ariaLabel: "Image description of Organizational Chart The Quality Assurance (QA) Team"
           },
           dialog: {
             title: "The Organizational Chart of the QA Team",
@@ -919,7 +921,8 @@ let LOCALIZE = new LocalizedStrings({
           title: "Structure organisationnelle",
           orgChart: {
             desciption: "Organigramme (CDO)",
-            link: "Description de l'image"
+            link: "Description de l'image",
+            ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
           },
           dialog: {
             title: "Organigramme (CDO)",
@@ -941,7 +944,9 @@ let LOCALIZE = new LocalizedStrings({
           title: "FR Your team",
           teamChart: {
             desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            link: "Description de l'image"
+            link: "Description de l'image",
+            ariaLabel:
+              "FR Description de l'image de l'Organigramme Équipe de l'assurance de la qualité (AQ)"
           },
           dialog: {
             title: "Organigramme Équipe de l'assurance de la qualité (AQ)",
