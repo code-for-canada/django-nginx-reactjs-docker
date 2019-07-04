@@ -17,7 +17,7 @@ const addressBook = [
 
 it("Check transformContact", () => {
   const contact = { id: 100, name: "Bob WhatHisName", role: "He Works Here" };
-  const option = { text: "Bob WhatHisName (He Works Here)", value: 100 };
+  const option = { name: "Bob WhatHisName (He Works Here)", id: 100 };
   expect(transformContact(contact)).toEqual(option);
 });
 
@@ -27,13 +27,12 @@ it("Check transformContactName", () => {
 
 it("Check transformAddressBook", () => {
   const options = [
-    { text: "None", value: null },
-    { text: "Joe (Developer)", value: 0 },
-    { text: "Bob (Developer)", value: 1 },
-    { text: "Smithers (Butler)", value: 2 },
-    { text: "Arthur (King of Britain)", value: 3 },
-    { text: "Richard (Lionheart)", value: 4 },
-    { text: "Robert (The Bruce)", value: 5 }
+    { name: "Joe (Developer)", id: 0 },
+    { name: "Bob (Developer)", id: 1 },
+    { name: "Smithers (Butler)", id: 2 },
+    { name: "Arthur (King of Britain)", id: 3 },
+    { name: "Richard (Lionheart)", id: 4 },
+    { name: "Robert (The Bruce)", id: 5 }
   ];
   expect(transformAddressBook(addressBook)).toEqual(options);
 });

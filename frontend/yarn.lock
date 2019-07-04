@@ -8960,15 +8960,6 @@ react-redux@^6.0.1:
     prop-types "^15.7.2"
     react-is "^16.8.2"
 
-react-responsive-select@4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/react-responsive-select/-/react-responsive-select-4.6.3.tgz#8730a59aecd6fc6f8134b8652829441cdf33d16d"
-  integrity sha512-MP0GGIzslw3q4J+hM03cU2ouG8kaJvdpSEBRDDEzARzqzURExRvTKsF2wfYyTYGc+V38Etgl5pyV/qNwIk1V6w==
-  dependencies:
-    lodash.isequal "^4.5.0"
-    prop-types "^15.6.1"
-    singleline "1.0.x"
-
 react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
@@ -9061,6 +9052,11 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-super-select@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/react-super-select/-/react-super-select-1.0.20.tgz#93d8d68430134081078aa66053695bb939960069"
+  integrity sha512-fAMOBNjcvVnAxN46wJK0YAp9XUJCKZQ7FTHFxhPZAQ2hke1ruax3eVXyeXHDU4F0simKU4lm6gccoRr+l7Cesg==
 
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.7.0:
   version "16.8.6"
@@ -9813,11 +9809,6 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
-
-singleline@1.0.x:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/singleline/-/singleline-1.0.0.tgz#9ce622776e452224b9584f3d0dad3eb3ecd7dcdb"
-  integrity sha1-nOYid25FIiS5WE89Da0+s+zX3Ns=
 
 sisteransi@^1.0.0:
   version "1.0.0"

@@ -50,7 +50,7 @@ export const actionShape = PropTypes.shape({
 });
 
 // The stucture of a contact in the addressbook
-export const contactShape = PropTypes.shape({
+export const addressBookContactShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired

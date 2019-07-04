@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { EMAIL_TYPE, actionShape } from "./constants";
-import ReactResponsiveSelect from "react-responsive-select";
-import { transformAddressBook } from "../../helpers/transformations";
-import { contactShape } from "./constants";
+import { transformAddressBook, optionsFromIds } from "../../helpers/transformations";
+import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
+import ReactSuperSelect from "react-super-select";
+import "../../css/lib/react-super-select.css";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -61,13 +62,12 @@ const styles = {
       paddingTop: 12
     },
     titleStyle: {
-      float: "left",
       width: 28,
       height: 32,
       lineHeight: "2.1em",
       paddingRight: 4,
       marginTop: 5,
-      marginBottom: 18
+      marginBottom: 5
     }
   },
   response: {
@@ -109,12 +109,12 @@ class EditEmail extends Component {
 
   state = {
     emailType: !this.props.action ? EMAIL_TYPE.reply : this.props.action.emailType,
+    emailBody: !this.props.action ? "" : this.props.action.emailBody,
     emailTo: !this.props.action ? [] : this.props.action.emailTo,
     emailCc: !this.props.action ? [] : this.props.action.emailCc,
-    emailBody: !this.props.action ? "" : this.props.action.emailBody,
     reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction,
     // Provided by redux
-    addressBook: PropTypes.arrayOf(contactShape)
+    addressBook: PropTypes.arrayOf(addressBookContactShape)
   };
 
   onEmailTypeChange = event => {
@@ -123,32 +123,24 @@ class EditEmail extends Component {
     this.props.onChange({ ...this.state, emailType: newEmailType });
   };
 
-  // Extract just the value
-  // This is all that is needed for saving and loading
-  getOptionValues(options) {
-    return Array.from(options, opt => opt.value);
-  }
-
-  onEmailToChange = event => {
-    // If the value has not changed, return
-    // can prevent infinite render loop
-    if (!event.altered) {
-      return;
-    }
-    const newEmailTo = this.getOptionValues(event.options);
-    this.setState({ emailTo: newEmailTo });
-    this.props.onChange({ ...this.state, emailTo: newEmailTo });
+  onEmailToChange = options => {
+    // Convert options to an array of indexes
+    options = options || [];
+    const idsArray = options.map(option => {
+      return option.id;
+    });
+    this.setState({ emailTo: idsArray });
+    this.props.onChange({ ...this.state, emailTo: idsArray });
   };
 
-  onEmailCcChange = event => {
-    // If the value has not changed, return
-    // can prevent infinite render loop
-    if (!event.altered) {
-      return;
-    }
-    const newEmailCc = this.getOptionValues(event.options);
-    this.setState({ emailCc: newEmailCc });
-    this.props.onChange({ ...this.state, emailCc: newEmailCc });
+  onEmailCcChange = options => {
+    // onvert options to an array of indexes
+    options = options || [];
+    const idsArray = options.map(option => {
+      return option.id;
+    });
+    this.setState({ emailCc: idsArray });
+    this.props.onChange({ ...this.state, emailCc: idsArray });
   };
 
   onEmailBodyChange = event => {
@@ -164,12 +156,17 @@ class EditEmail extends Component {
   };
 
   render() {
-    const { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
+    let { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
     const replyAllChecked = this.state.emailType === EMAIL_TYPE.replyAll;
     const forwardChecked = this.state.emailType === EMAIL_TYPE.forward;
+
+    // Get localized to/cc options from the address book.
     const options = transformAddressBook(this.props.addressBook);
 
+    // Convert emailTo and emailCC from array of indexes to options.
+    emailTo = optionsFromIds(this.props.addressBook, emailTo);
+    emailCc = optionsFromIds(this.props.addressBook, emailCc);
     return (
       <div style={styles.container}>
         <form>
@@ -263,40 +260,40 @@ class EditEmail extends Component {
               </div>
             </fieldset>
           </div>
-          <div>
-            <div className="font-weight-bold form-group" style={styles.header.toAndCcFieldPadding}>
-              <label htmlFor="to-field" style={styles.header.titleStyle}>
-                {LOCALIZE.emibTest.inboxPage.emailCommons.to}
-              </label>
-              <span>
-                <ReactResponsiveSelect
-                  id="to-field"
-                  multiselect
-                  name="to"
-                  options={options}
-                  selectedValues={emailTo}
-                  onChange={this.onEmailToChange}
-                />
-              </span>
-            </div>
+          <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
+            <label htmlFor="to-field" style={styles.header.titleStyle}>
+              {LOCALIZE.emibTest.inboxPage.emailCommons.to}
+            </label>
+            <ReactSuperSelect
+              placeholder="Select from address book"
+              controlId="to-field"
+              multiple={true}
+              name="to"
+              initialValue={emailTo}
+              dataSource={options}
+              onChange={this.onEmailToChange}
+              keepOpenOnSelection={true}
+              tags={true}
+            />
           </div>
-          <div>
-            <div className="font-weight-bold form-group" style={styles.header.toAndCcFieldPadding}>
-              <label htmlFor="cc-field" style={styles.header.titleStyle}>
-                {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
-              </label>
-              <span>
-                <ReactResponsiveSelect
-                  id="cc-field"
-                  multiselect
-                  name="cc"
-                  options={options}
-                  selectedValues={emailCc}
-                  onChange={this.onEmailCcChange}
-                />
-              </span>
-            </div>
+          <hr />
+          <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
+            <label htmlFor="cc-field" style={styles.header.titleStyle}>
+              {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
+            </label>
+            <ReactSuperSelect
+              placeholder="Select from address book"
+              controlId="cc-field"
+              multiple={true}
+              name="cc"
+              initialValue={emailCc}
+              dataSource={options}
+              onChange={this.onEmailCcChange}
+              keepOpenOnSelection={true}
+              tags={true}
+            />
           </div>
+          <hr />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">

@@ -152,7 +152,7 @@ function testMode(actionType, editMode) {
   // constants used to create the Dialog and to check that the values are present in the inputs later
   const reasonsForAction = "reasons";
   const emailTo = [0];
-  const emailCc = [1];
+  const emailCc = [0];
   const emailBody = "body of email";
   const task = "task";
   const emailType = EMAIL_TYPE.forward;
@@ -203,9 +203,6 @@ function testMode(actionType, editMode) {
       isReplyAllChecked = false;
       isForwardChecked = true;
     }
-
-    expect(wrapper.find("#to-field").props().selectedValues).toEqual(valEmailTo);
-    expect(wrapper.find("#cc-field").props().selectedValues).toEqual(valEmailCc);
     expect(wrapper.find("#your-response-text-area").props().value).toEqual(valEmailBody);
     expect(wrapper.find("#reasons-for-action-text-area").props().value).toEqual(
       valReasonsForAction
