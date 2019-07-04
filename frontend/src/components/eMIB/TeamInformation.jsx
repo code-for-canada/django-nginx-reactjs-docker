@@ -35,13 +35,10 @@ class TeamInformation extends Component {
 
   state = {
     showPopupBox: false,
-    isLoadingComplete: false,
     markdown_section1_en: "",
     markdown_section1_fr: "",
     markdown_section2_en: "",
-    markdown_section2_fr: "",
-    treeViewContent_en: [],
-    treeViewContent_fr: []
+    markdown_section2_fr: ""
   };
 
   openPopup = () => {
@@ -52,117 +49,66 @@ class TeamInformation extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // populates the tree view array with people names
-  populateTreeArray = response => {
-    const responsePrefixEn =
-      response.background.en.background[0].tree_view[1].team_information_tree_child;
-    const responsePrefixFr =
-      response.background.fr.background[0].tree_view[1].team_information_tree_child;
-    // populating names in English
-    for (let i = 0; i < responsePrefixEn.length; i++) {
-      this.setState({ treeViewContent_en: responsePrefixEn[i] });
-    }
-    // populating names in French
-    for (let i = 0; i < responsePrefixFr.length; i++) {
-      this.setState({ treeViewContent_fr: responsePrefixFr[i] });
-    }
-  };
-
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      this.populateTreeArray(response);
       // saving the team information markdown content in local states
       this.setState({
         markdown_section1_en: response.background.en.background[0].markdown[3].text,
         markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
         markdown_section2_en: response.background.en.background[0].markdown[4].text,
-        markdown_section2_fr: response.background.fr.background[0].markdown[4].text,
-        isLoadingComplete: true
+        markdown_section2_fr: response.background.fr.background[0].markdown[4].text
       });
     });
   };
 
   render() {
     const { currentLanguage } = this.props;
-    const { treeViewContent_en, treeViewContent_fr } = this.state;
-    let treeView = [];
-    // waiting for tree view content data loading
-    if (this.state.isLoadingComplete) {
-      treeView = [
-        {
-          id: 0,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.text
-              : treeViewContent_fr.text
-          }`,
-          groups: [1, 2, 3, 4, 5, 6],
-          level: 1
-        },
-        {
-          id: 1,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[0].text
-              : treeViewContent_fr.team_information_tree_child[0].text
-          }`,
-          parent: 0,
-          level: 2
-        },
+    const treeView = [
+      {
+        id: 0,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.manager,
+        groups: [1, 2, 3, 4, 5, 6],
+        level: 1
+      },
+      {
+        id: 1,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst1,
+        parent: 0,
+        level: 2
+      },
 
-        {
-          id: 2,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[1].text
-              : treeViewContent_fr.team_information_tree_child[1].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 3,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[2].text
-              : treeViewContent_fr.team_information_tree_child[2].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 4,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[3].text
-              : treeViewContent_fr.team_information_tree_child[3].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 5,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[4].text
-              : treeViewContent_fr.team_information_tree_child[4].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 6,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[5].text
-              : treeViewContent_fr.team_information_tree_child[5].text
-          }`,
-          parent: 0,
-          level: 2
-        }
-      ];
-    }
+      {
+        id: 2,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst2,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 3,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst3,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 4,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst4,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 5,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst5,
+        parent: 0,
+        level: 2
+      },
+      {
+        id: 6,
+        name: LOCALIZE.emibTest.background.teamInformation.dialog.analyst6,
+        parent: 0,
+        level: 2
+      }
+    ];
 
     return (
       <div>
