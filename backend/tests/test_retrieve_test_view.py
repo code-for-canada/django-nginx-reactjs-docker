@@ -172,14 +172,6 @@ class RetrieveInTest(TestCase):
                                 {
                                     "text": "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
                                     "id": 6
-                                },
-                                {
-                                    "text": "The Organizational Chart of the QA Team",
-                                    "id": 7
-                                },
-                                {
-                                    "text": "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 8
                                 }
                             ],
                             "tree_view": [
@@ -313,14 +305,6 @@ class RetrieveInTest(TestCase):
                                 {
                                     "text": "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
                                     "id": 6
-                                },
-                                {
-                                    "text": "Organigramme Équipe de l'assurance de la qualité (AQ)",
-                                    "id": 7
-                                },
-                                {
-                                    "text": "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information.",
-                                    "id": 8
                                 }
                             ],
                             "tree_view": [
