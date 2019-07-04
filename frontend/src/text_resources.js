@@ -342,6 +342,9 @@ let LOCALIZE = new LocalizedStrings({
           orgChart: {
             desciption: "Organizational Chart (ODC)",
             link: "Image Description"
+          },
+          dialog: {
+            title: "The Organizational Chart of the ODC"
           }
         },
         teamInformation: {
@@ -898,6 +901,9 @@ let LOCALIZE = new LocalizedStrings({
           orgChart: {
             desciption: "Organigramme (CDO)",
             link: "Description de l'image"
+          },
+          dialog: {
+            title: "Organigramme (CDO)"
           }
         },
         teamInformation: {
