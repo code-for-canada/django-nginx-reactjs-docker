@@ -208,6 +208,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "The Sample eMIB Test",
         welcomeMsg: "Welcome to the eMIB Sample Test"
       },
 
@@ -345,19 +346,7 @@ let LOCALIZE = new LocalizedStrings({
             ariaLabel: "Image description of Organizational Chart (ODC)"
           },
           dialog: {
-            title: "The Organizational Chart of the ODC",
-            president: "Jenna Icard - President",
-            corpDirector: "Amari Kinsler - Corporate Affairs Director",
-            hr: "Marc Sheridan - Human Resources Manager",
-            finance: "Bob McNutt - Finance Manager",
-            it: "Lana Hussad - Information Technology Manager",
-            research: "Geneviève Bédard - Research and Innovations Director",
-            programDev: "Bartosz Greco - Program Development Director",
-            communications: "Nancy Ward - Services and Communications Director",
-            qa: "Claude Huard - Quality Assurance Manager (You)",
-            services: "Haydar Kalil - Services and Support Manager",
-            audits: "Geoffrey Hamma - Audits Manager",
-            training: "Lucy Trang - E-Training Manager"
+            title: "The Organizational Chart of the ODC"
           }
         },
         teamInformation: {
@@ -788,6 +777,7 @@ let LOCALIZE = new LocalizedStrings({
     emibTest: {
       //Home Page
       homePage: {
+        testTitle: "La test pratique de BRG-e",
         welcomeMsg: "Bienvenue dans le test pratique de BRG-e"
       },
 
@@ -925,19 +915,7 @@ let LOCALIZE = new LocalizedStrings({
             ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
           },
           dialog: {
-            title: "Organigramme (CDO)",
-            president: "Jenna Icard - Présidente",
-            corpDirector: "Amari Kinsler - Directeur, Affaires ministérielles",
-            hr: "Marc Sheridan - Gestionnaire, Ressources humaines",
-            finance: "Bob McNutt - Gestionnaire, Finances",
-            it: "Lana Hussad - Gestionnaire, Technologies de l'information ",
-            research: "Geneviève Bédard - Directrice, Recherche et innovations",
-            programDev: "Bartosz Greco - Directeur, Développement de programmes",
-            communications: "Nancy Ward - Directrice, Services et communications",
-            qa: "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
-            services: "Haydar Kalil - Gestionnaire, Service et soutien",
-            audits: "Geoffrey Hamma - Gestionnaire, Vérifications",
-            training: "Lucy Trang - Gestionnaire, Formation en ligne"
+            title: "Organigramme (CDO)"
           }
         },
         teamInformation: {
