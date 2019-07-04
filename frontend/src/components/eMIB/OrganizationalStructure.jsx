@@ -38,6 +38,10 @@ class OrganizationalStructure extends Component {
     isLoadingComplete: false,
     markdown_en: "",
     markdown_fr: "",
+    popupMarkdownTitle_en: "",
+    popupMarkdownTitle_fr: "",
+    popupMarkdownDescription_en: "",
+    popupMarkdownDescription_fr: "",
     treeViewContent_en: [],
     treeViewContent_fr: []
   };
@@ -84,6 +88,10 @@ class OrganizationalStructure extends Component {
       this.setState({
         markdown_en: response.background.en.background[0].markdown[2].text,
         markdown_fr: response.background.fr.background[0].markdown[2].text,
+        popupMarkdownTitle_en: response.background.en.background[0].markdown[5].text,
+        popupMarkdownTitle_fr: response.background.fr.background[0].markdown[5].text,
+        popupMarkdownDescription_en: response.background.en.background[0].markdown[6].text,
+        popupMarkdownDescription_fr: response.background.fr.background[0].markdown[6].text,
         isLoadingComplete: true
       });
     });
@@ -240,10 +248,20 @@ class OrganizationalStructure extends Component {
         <PopupBox
           show={this.state.showPopupBox}
           handleClose={this.closePopup}
-          title={LOCALIZE.emibTest.background.organizationalStructure.dialog.title}
+          // only using the states here (without markdown), since the title must be a string
+          title={
+            this.props.currentLanguage === LANGUAGES.english
+              ? this.state.popupMarkdownTitle_en
+              : this.state.popupMarkdownTitle_fr
+          }
           description={
             <div>
-              <p>{LOCALIZE.emibTest.background.orgChartInstructions}</p>
+              {this.props.currentLanguage === LANGUAGES.english && (
+                <ReactMarkdown source={this.state.popupMarkdownDescription_en} />
+              )}
+              {this.props.currentLanguage === LANGUAGES.french && (
+                <ReactMarkdown source={this.state.popupMarkdownDescription_fr} />
+              )}
               <TreeNode nodes={treeView} />
             </div>
           }
