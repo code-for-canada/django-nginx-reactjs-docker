@@ -50,7 +50,6 @@ const styles = {
     },
     radioTextSelected: {
       fontWeight: "bold",
-      textDecoration: "underline",
       cursor: "pointer",
       paddingRight: 20,
       color: "#00565E"
@@ -85,9 +84,6 @@ const styles = {
     width: "100%",
     textAlign: "right",
     paddingRight: 12
-  },
-  hr: {
-    margin: "12px 0px"
   },
   reasonsForAction: {
     textArea: {
@@ -351,7 +347,6 @@ class EditEmail extends Component {
               </div>
             </div>
           </div>
-          <hr style={styles.hr} />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="reasons-for-action-text-area">

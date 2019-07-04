@@ -5,6 +5,13 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
 
+// Strings won't get translated because they will appear
+// in the opposite language of the one selected.
+const strings = {
+  en: "English",
+  fr: "Français"
+};
+
 class Translation extends Component {
   static propTypes = {
     variant: PropTypes.string,
@@ -23,7 +30,7 @@ class Translation extends Component {
 
   render() {
     const languageString =
-      this.props.currentLanguage === LANGUAGES.english ? "Français" : "English";
+      this.props.currentLanguage === LANGUAGES.english ? strings.fr : strings.en;
     const htmlLang =
       this.props.currentLanguage === LANGUAGES.english ? LANGUAGES.french : LANGUAGES.english;
     return (

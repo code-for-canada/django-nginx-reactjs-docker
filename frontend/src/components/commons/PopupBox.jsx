@@ -128,7 +128,7 @@ class PopupBox extends Component {
         ariaHideApp={ariaHideApp}
       >
         <div style={styles.headerPadding}>
-          <h2 id="modal-heading">{title}</h2>
+          <h1 id="modal-heading">{title}</h1>
         </div>
 
         <div id="modal-description" style={styles.contentPadding}>

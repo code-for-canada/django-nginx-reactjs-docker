@@ -98,7 +98,7 @@ class LoginForm extends Component {
         {!this.props.authenticated && (
           <div role="form">
             <div style={styles.loginContent}>
-              <h3>{LOCALIZE.authentication.login.content.title}</h3>
+              <h2>{LOCALIZE.authentication.login.content.title}</h2>
               <span>{LOCALIZE.authentication.login.content.description}</span>
               <form onSubmit={this.handleSubmit}>
                 <div>

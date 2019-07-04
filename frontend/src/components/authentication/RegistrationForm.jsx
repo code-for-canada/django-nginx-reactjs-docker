@@ -581,7 +581,7 @@ class RegistrationForm extends Component {
       <div>
         <div role="form">
           <div style={styles.createAccountContent}>
-            <h3>{LOCALIZE.authentication.createAccount.content.title}</h3>
+            <h2>{LOCALIZE.authentication.createAccount.content.title}</h2>
             <span>{LOCALIZE.authentication.createAccount.content.description}</span>
             <form onSubmit={this.handleSubmit}>
               <div className="names-grid">
@@ -1006,9 +1006,9 @@ class RegistrationForm extends Component {
           description={
             <div>
               <section aria-labelledby="privacy-notice-statement">
-                <h3 id="privacy-notice-statement">
+                <h2 id="privacy-notice-statement">
                   {LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyNoticeStatement}
-                </h3>
+                </h2>
                 <p>
                   {LOCALIZE.formatString(
                     LOCALIZE.authentication.createAccount.privacyNoticeDialog.privacyParagraph1,
@@ -1099,17 +1099,17 @@ class RegistrationForm extends Component {
                 </p>
               </section>
               <section aria-labelledby="reproduction-notice">
-                <h3 id="reproduction-notice">
+                <h2 id="reproduction-notice">
                   {LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionTitle}
-                </h3>
+                </h2>
                 <p>
                   {LOCALIZE.authentication.createAccount.privacyNoticeDialog.reproductionWarning}
                 </p>
               </section>
               <section aria-labelledby="cheating-notice">
-                <h3 id="cheating-notice">
+                <h2 id="cheating-notice">
                   {LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingTitle}
-                </h3>
+                </h2>
                 <p>{LOCALIZE.authentication.createAccount.privacyNoticeDialog.cheatingWarning}</p>
               </section>
             </div>

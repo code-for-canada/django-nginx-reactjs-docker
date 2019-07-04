@@ -43,7 +43,7 @@ class Settings extends Component {
           description={
             <div>
               <section aria-labelledby="zoom-instructions">
-                <h3 id="zoom-instructions">{LOCALIZE.settings.zoom.title}</h3>
+                <h2 id="zoom-instructions">{LOCALIZE.settings.zoom.title}</h2>
                 <ol>
                   <li>{LOCALIZE.settings.zoom.instructionsListItem1}</li>
                   <li>{LOCALIZE.settings.zoom.instructionsListItem2}</li>
@@ -52,7 +52,7 @@ class Settings extends Component {
                 </ol>
               </section>
               <section aria-labelledby="text-size-instructions">
-                <h3 id="text-size-instructions">{LOCALIZE.settings.textSize.title}</h3>
+                <h2 id="text-size-instructions">{LOCALIZE.settings.textSize.title}</h2>
                 <ol>
                   <li>{LOCALIZE.settings.textSize.instructionsListItem1}</li>
                   <li>{LOCALIZE.settings.textSize.instructionsListItem2}</li>
@@ -66,7 +66,7 @@ class Settings extends Component {
                 </ol>
               </section>
               <section aria-labelledby="font-instructions">
-                <h3 id="font-instructions">{LOCALIZE.settings.fontStyle.title}</h3>
+                <h2 id="font-instructions">{LOCALIZE.settings.fontStyle.title}</h2>
                 <ol>
                   <li>{LOCALIZE.settings.fontStyle.instructionsListItem1}</li>
                   <li>{LOCALIZE.settings.fontStyle.instructionsListItem2}</li>
@@ -79,7 +79,7 @@ class Settings extends Component {
                 </ol>
               </section>
               <section aria-labelledby="color-instructions">
-                <h3 id="color-instructions">{LOCALIZE.settings.color.title}</h3>
+                <h2 id="color-instructions">{LOCALIZE.settings.color.title}</h2>
                 <ol>
                   <li>{LOCALIZE.settings.color.instructionsListItem1}</li>
                   <li>{LOCALIZE.settings.color.instructionsListItem2}</li>
