@@ -214,20 +214,6 @@ let LOCALIZE = new LocalizedStrings({
 
       //HowTo Page
       howToPage: {
-        introductionPage: {
-          title: "Overview",
-          description1:
-            "The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
-          description2: "The next section will allow you to:",
-          bullet1: "Read detailed instructions on how to complete the test;",
-          bullet2: "See examples of how to respond to emails within the simulated inbox;",
-          bullet3: "Explore the test environment before taking the real test.",
-          differencesTitle: "Differences between the sample test and the real test",
-          differencesBullet1:
-            "There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
-          differencesBullet2:
-            "The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
-        },
         tipsOnTest: {
           title: "Tips for taking the e-MIB",
           part1: {
@@ -795,20 +781,6 @@ let LOCALIZE = new LocalizedStrings({
 
       //HowTo Page
       howToPage: {
-        introductionPage: {
-          title: "Aperçu général",
-          description1:
-            "FR The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.",
-          description2: "FR The next section will allow you to:",
-          bullet1: "FR Read detailed instructions on how to complete the test;",
-          bullet2: "FR See examples of how to respond to emails within the simulated inbox;",
-          bullet3: "FR Explore the test environment before taking the real test.",
-          differencesTitle: "FR Differences between the sample test and the real test",
-          differencesBullet1:
-            "FR There is no time limit in the sample test. Take your time to familiarize yourself with the interface. Please note that the real test will have a timer with a time limit of 3 hours.",
-          differencesBullet2:
-            "FR The sample test consists of 3 emails which you may respond to. In the real test, there will be approximately 10 emails."
-        },
         tipsOnTest: {
           title: "Conseils pour répondre à la BRG-e",
           part1: {
