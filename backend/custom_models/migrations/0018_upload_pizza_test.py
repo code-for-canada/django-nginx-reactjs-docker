@@ -110,12 +110,32 @@ def upload_pizza_test(apps, schema_editor):
     i_q3_body = item(parent_id=i_q3, item_type_id=it_body, order=5)
     i_q3_body.save()
 
+    # question 4 items
+    i_q4 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=3)
+    i_q4.save()
+
+    i_q4_subject = item(parent_id=i_q4, item_type_id=it_subject, order=1)
+    i_q4_subject.save()
+
+    i_q4_from = item(parent_id=i_q4, item_type_id=it_from, order=2)
+    i_q4_from.save()
+
+    i_q4_to = item(parent_id=i_q4, item_type_id=it_to, order=3)
+    i_q4_to.save()
+
+    i_q4_date = item(parent_id=i_q4, item_type_id=it_date, order=4)
+    i_q4_date.save()
+
+    i_q4_body = item(parent_id=i_q4, item_type_id=it_body, order=5)
+    i_q4_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
             question(question_type_id=qt_email, item_id=i_q1),
             question(question_type_id=qt_email, item_id=i_q2),
             question(question_type_id=qt_email, item_id=i_q3),
+            question(question_type_id=qt_email, item_id=i_q4),
         ]
     )
 
@@ -275,6 +295,57 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hi O.B.,\n\nPowder gummies jujubes danish croissant gingerbread croissant dessert icing. Jelly-o cheesecake sesame snaps dragée lemon drops dragée. Gingerbread powder marshmallow ice cream pie. Muffin danish tootsie roll. Pudding tart chocolate cake sesame snaps lollipop dragée. Tiramisu bonbon jelly-o soufflé brownie caramels. Fruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar jelly beans pudding. Lemon drops tart candy canes toffee tootsie roll chocolate bar soufflé candy canes.\n\nDragée cake halvah. Muffin jelly-o tart wafer chocolate cake topping soufflé gummi bears. Pastry gummi bears ice cream. Cake pudding bear claw pudding. Cake cupcake caramels danish soufflé dessert. Gingerbread powder marshmallow ice cream pie.\n\nFruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar?\n\nDet. McNulty",
                 language=l_french,
             ),
+            #4
+            item_text(item_id=i_q4, text_detail="Question 4", language=l_english),
+            item_text(item_id=i_q4, text_detail="FR Question 4", language=l_french),
+            item_text(
+                item_id=i_q4_subject,
+                text_detail="Working with Ska",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q4_subject,
+                text_detail="FR Working with Ska",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q4_from,
+                text_detail="Sterling Archer (Fencing Support Assistant, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q4_from,
+                text_detail="FR Sterling Archer (Fencing Support Assistant, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q4_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q4_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q4_date, text_detail="Wednesday, October 11", language=l_english
+            ),
+            item_text(
+                item_id=i_q4_date,
+                text_detail="FR Wednesday, October 11",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q4_body,
+                text_detail="Hi O.B.,\n\nI’m tired of listening to Ska. Lately, I’ve noticed Cloud bread kickstarter tumeric gastropub. Af gluten-free tofu flexitarian. Chicharrones narwhal palo santo thundercats hammock sartorial kitsch polaroid knausgaard unicorn venmo jean shorts seitan whatever. Banh mi readymade shabby chic biodiesel trust fund.\n\nHoodie activated charcoal snackwave. Taxidermy PBR&B lyft, prism swag food truck YOLO street art. Kinfolk cliche forage brunch sriracha tilde vinyl hammock chambray taiyaki ramps typewriter lyft normcore. Oh.\n\nSterling",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q4_body,
+                text_detail="FR Hi O.B.,\n\nI’m tired of listening to Ska. Lately, I’ve noticed Cloud bread kickstarter tumeric gastropub. Af gluten-free tofu flexitarian. Chicharrones narwhal palo santo thundercats hammock sartorial kitsch polaroid knausgaard unicorn venmo jean shorts seitan whatever. Banh mi readymade shabby chic biodiesel trust fund.\n\nHoodie activated charcoal snackwave. Taxidermy PBR&B lyft, prism swag food truck YOLO street art. Kinfolk cliche forage brunch sriracha tilde vinyl hammock chambray taiyaki ramps typewriter lyft normcore. Oh.\n\nSterling",
+                language=l_french,
+            ),
         ]
     )
 
@@ -416,6 +487,37 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=3)
+        .last()
+    )
+    i_q4_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q4, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q4_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q4, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q4_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q4, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q4_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q4, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q4_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q4, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
@@ -425,6 +527,9 @@ def destroy_pizza_test(apps, schema_editor):
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q3
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q4
     ).delete()
 
     # destroy item_text
@@ -527,7 +632,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q3_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q4, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q4, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q4_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q4_body.delete()
+    i_q4_date.delete()
+    i_q4_to.delete()
+    i_q4_from.delete()
+    i_q4_subject.delete()
+    i_q4.delete()
     i_q3_body.delete()
     i_q3_date.delete()
     i_q3_to.delete()
