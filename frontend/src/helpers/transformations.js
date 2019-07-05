@@ -38,3 +38,68 @@ export function optionsFromIds(addressBook, ids) {
   }
   return options;
 }
+
+// Returns an array of objects with the following properties
+// id (required): number in order indexed at 0
+// name (required): string displayed in the tree
+// groups: array of numbers of the children
+// parent: number id of the parent
+// level (required): number representing the level of the tree you are in
+export const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
+  let treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
+  let processedTree = [];
+
+  // Level counter.
+  let level = 1;
+  // Id counter - counts the number of names in the tree.
+  let id = 0;
+  // Id of the current parent node.
+  let parent = 0;
+
+  // For each node in the tree, process the node to the expected output for the tree view.
+  for (let i = 0; i < treeContent.length; i++) {
+    const treeNode = treeContent[i];
+
+    // If this node has children.
+    if (treeNode.team_information_tree_child) {
+      // Create an array of the ids of the children of this node.
+      const groupsArray = [...Array(treeNode.team_information_tree_child.length).keys()].map(
+        key => {
+          return key + id + 1;
+        }
+      );
+      processedTree.push({
+        id: id,
+        name: treeNode.text,
+        level: level,
+        groups: groupsArray
+      });
+      parent = id;
+      id++;
+
+      // Increase the level of the tree.
+      level++;
+      // Reset the currentTree to the current node.
+      const currentTree = treeNode.team_information_tree_child;
+      // Process the child nodes.
+      for (let j = 0; j < currentTree.length; j++) {
+        processedTree.push({
+          id: id,
+          name: currentTree[j].text,
+          level: level,
+          parent: parent
+        });
+        id++;
+      }
+    } else {
+      // This is a leaf node of the tree.
+      processedTree.push({
+        id: id,
+        name: treeNode.text,
+        level: level
+      });
+      id++;
+    }
+  }
+  return processedTree;
+};
