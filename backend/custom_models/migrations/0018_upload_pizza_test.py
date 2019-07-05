@@ -161,6 +161,25 @@ def upload_pizza_test(apps, schema_editor):
     i_q6_body = item(parent_id=i_q6, item_type_id=it_body, order=5)
     i_q6_body.save()
 
+    # question 7 items
+    i_q7 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=7)
+    i_q7.save()
+
+    i_q7_subject = item(parent_id=i_q7, item_type_id=it_subject, order=1)
+    i_q7_subject.save()
+
+    i_q7_from = item(parent_id=i_q7, item_type_id=it_from, order=2)
+    i_q7_from.save()
+
+    i_q7_to = item(parent_id=i_q7, item_type_id=it_to, order=3)
+    i_q7_to.save()
+
+    i_q7_date = item(parent_id=i_q7, item_type_id=it_date, order=4)
+    i_q7_date.save()
+
+    i_q7_body = item(parent_id=i_q7, item_type_id=it_body, order=5)
+    i_q7_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -170,6 +189,7 @@ def upload_pizza_test(apps, schema_editor):
             question(question_type_id=qt_email, item_id=i_q4),
             question(question_type_id=qt_email, item_id=i_q5),
             question(question_type_id=qt_email, item_id=i_q6),
+            question(question_type_id=qt_email, item_id=i_q7),
         ]
     )
 
@@ -482,6 +502,57 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hi O.B.,\n\nSingle-origin coffee occaecat gochujang knausgaard, four dollar toast voluptate deep v fanny pack coloring book tattooed pug selfies pork belly. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually.\n\n          1. 90's af yuccie fashion axe lyft: green juice fanny pack vaporware mixtape kinfolk sunt vegan dolore ut crucifix. Viral celiac organic neutra mixtape labore sunt yuccie trust fund.\n\n          2. Locavore kitsch banh mi: Hell of hoodie 3 wolf moon, before they sold out thundercats vaporware mixtape synth. Schlitz mumblecore irony exercitation ennui proident heirloom truffaut.\n\n          3. Ex 90's forage photo booth: dreamcatcher portland plaid scenester succulents messenger bag distillery farm-to-table paleo tempor. Schlitz knausgaard.\n\n          4. Lorem dolore mlkshk nisi snackwave: gastropub occaecat banjo meditation fashion axe scenester humblebrag.\n\nEtsy eiusmod. Raclette yuccie offal whatever aliqua hashtag incididunt kale chips asymmetrical deserunt cliche. Cillum sunt mumblecore.\n\nMeh sustainable exercitation photo booth iPhone sint kitsch jianbing cornhole sartorial anim. Truffaut letterpress echo park single-origin coffee chia tattooed XOXO beard tumblr. Sint eiusmod tbh snackwave, vegan eu kinfolk put a bird on it. Meditation viral ad listicle taxidermy brooklyn. Vinyl street art asymmetrical cold-pressed. Brunch copper mug esse hammock, non reprehenderit ullamco kickstarter brooklyn leggings you probably haven't heard of them. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually. Schlitz knausgaard.\n\nBest regards,\n\nMiranda",
                 language=l_french,
             ),
+            #7
+            item_text(item_id=i_q7, text_detail="Question 7", language=l_english),
+            item_text(item_id=i_q7, text_detail="FR Question 7", language=l_french),
+            item_text(
+                item_id=i_q7_subject,
+                text_detail="Community consultation",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q7_subject,
+                text_detail="FR Community consultation",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q7_from,
+                text_detail="Kelly Kapoor (Arts and Culture Enthusiast, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q7_from,
+                text_detail="FR Kelly Kapoor (Arts and Culture Enthusiast, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q7_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q7_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q7_date, text_detail="Thursday, October 12", language=l_english
+            ),
+            item_text(
+                item_id=i_q7_date,
+                text_detail="FR Thursday, October 12",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q7_body,
+                text_detail="Hi O.B.,\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin. Readymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo.\n\nFingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice.\n\nSucculents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki. Readymade lo-fi succulents godard lyft austin narwhal?\n\nKelly",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q7_body,
+                text_detail="FR Hi O.B.,\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin. Readymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo.\n\nFingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice.\n\nSucculents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki. Readymade lo-fi succulents godard lyft austin narwhal?\n\nKelly",
+                language=l_french,
+            ),
         ]
     )
 
@@ -716,6 +787,37 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=7)
+        .last()
+    )
+    i_q7_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q7, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q7_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q7, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q7_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q7, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q7_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q7, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q7_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q7, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
@@ -734,6 +836,9 @@ def destroy_pizza_test(apps, schema_editor):
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q6
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q7
     ).delete()
 
     # destroy item_text
@@ -935,7 +1040,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q6_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q7, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q7, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q7_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q7_body.delete()
+    i_q7_date.delete()
+    i_q7_to.delete()
+    i_q7_from.delete()
+    i_q7_subject.delete()
+    i_q7.delete()
     i_q6_body.delete()
     i_q6_date.delete()
     i_q6_to.delete()
