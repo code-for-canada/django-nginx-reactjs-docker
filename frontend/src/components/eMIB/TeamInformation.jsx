@@ -26,6 +26,15 @@ const styles = {
   }
 };
 
+const processTreeNodes = (treeNode, currentId, currentLevel) => {
+  // create an object with the contact with the name: text, and the id and level
+  return {
+    id: currentId,
+    name: treeNode.text,
+    level: currentLevel
+  };
+};
+
 // Returns an array of objects with the following properties
 // id (required): number in order indexed at 0
 // name (required): string displayed in the tree
@@ -33,52 +42,41 @@ const styles = {
 // parent: number id of the parent
 // level (required): number representing the level of the tree you are in
 const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
-  const treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
-  return [
-    {
-      id: 0,
-      name: treeContent.text,
-      groups: [1, 2, 3, 4, 5, 6],
-      level: 1
-    },
-    {
-      id: 1,
-      name: treeContent.team_information_tree_child[0].text,
-      parent: 0,
-      level: 2
-    },
+  let treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
+  let processedTree = [];
 
-    {
-      id: 2,
-      name: treeContent.team_information_tree_child[1].text,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 3,
-      name: treeContent.team_information_tree_child[2].text,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 4,
-      name: treeContent.team_information_tree_child[3].text,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 5,
-      name: treeContent.team_information_tree_child[4].text,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 6,
-      name: treeContent.team_information_tree_child[5].text,
-      parent: 0,
-      level: 2
+  // Level counter.
+  let level = 1;
+  // Id counter - counts the number of names in the tree.
+  let id = 0;
+
+  // for each node, process the node
+  for (let i = 0; i < treeContent.length; i++) {
+    const treeNode = treeContent[i];
+    processedTree.push({
+      id: id,
+      name: treeNode.text,
+      level: level,
+      groups: [1, 2, 3, 4, 5, 6]
+    });
+    // if there's another level, push more nodes
+    let parent = id;
+    id++;
+    level++;
+    if (treeNode.team_information_tree_child) {
+      const currentTree = treeNode.team_information_tree_child;
+      for (let j = 0; j < currentTree.length; j++) {
+        processedTree.push({
+          id: id,
+          name: currentTree[j].text,
+          level: level,
+          parent: parent
+        });
+        id++;
+      }
     }
-  ];
+  }
+  return processedTree;
 };
 
 class TeamInformation extends Component {
@@ -125,9 +123,9 @@ class TeamInformation extends Component {
         popupMarkdownDescription_en: response.background.en.background[0].markdown[8].text,
         popupMarkdownDescription_fr: response.background.fr.background[0].markdown[8].text,
         treeViewContent_en:
-          response.background.en.background[0].tree_view[1].team_information_tree_child[0],
+          response.background.en.background[0].tree_view[1].team_information_tree_child,
         treeViewContent_fr:
-          response.background.fr.background[0].tree_view[1].team_information_tree_child[0],
+          response.background.fr.background[0].tree_view[1].team_information_tree_child,
         isLoadingComplete: true
       });
     });
