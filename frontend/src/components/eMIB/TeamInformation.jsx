@@ -26,74 +26,55 @@ const styles = {
   }
 };
 
+// Returns an array of objects with the following properties
+// id (required): number in order indexed at 0
+// name (required): string displayed in the tree
+// groups: array of numbers of the children
+// parent: number id of the parent
+// level (required): number representing the level of the tree you are in
 const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
+  const treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
   return [
     {
       id: 0,
-      name: `${
-        currentLanguage === LANGUAGES.english ? treeViewContent_en.text : treeViewContent_fr.text
-      }`,
+      name: treeContent.text,
       groups: [1, 2, 3, 4, 5, 6],
       level: 1
     },
     {
       id: 1,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[0].text
-          : treeViewContent_fr.team_information_tree_child[0].text
-      }`,
+      name: treeContent.team_information_tree_child[0].text,
       parent: 0,
       level: 2
     },
 
     {
       id: 2,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[1].text
-          : treeViewContent_fr.team_information_tree_child[1].text
-      }`,
+      name: treeContent.team_information_tree_child[1].text,
       parent: 0,
       level: 2
     },
     {
       id: 3,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[2].text
-          : treeViewContent_fr.team_information_tree_child[2].text
-      }`,
+      name: treeContent.team_information_tree_child[2].text,
       parent: 0,
       level: 2
     },
     {
       id: 4,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[3].text
-          : treeViewContent_fr.team_information_tree_child[3].text
-      }`,
+      name: treeContent.team_information_tree_child[3].text,
       parent: 0,
       level: 2
     },
     {
       id: 5,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[4].text
-          : treeViewContent_fr.team_information_tree_child[4].text
-      }`,
+      name: treeContent.team_information_tree_child[4].text,
       parent: 0,
       level: 2
     },
     {
       id: 6,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.team_information_tree_child[5].text
-          : treeViewContent_fr.team_information_tree_child[5].text
-      }`,
+      name: treeContent.team_information_tree_child[5].text,
       parent: 0,
       level: 2
     }
