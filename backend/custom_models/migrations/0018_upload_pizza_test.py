@@ -72,62 +72,136 @@ def upload_pizza_test(apps, schema_editor):
     i_q1_body = item(parent_id=i_q1, item_type_id=it_body, order=5)
     i_q1_body.save()
 
+    # question 2 items
+    i_q2 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=2)
+    i_q2.save()
+
+    i_q2_subject = item(parent_id=i_q2, item_type_id=it_subject, order=1)
+    i_q2_subject.save()
+
+    i_q2_from = item(parent_id=i_q2, item_type_id=it_from, order=2)
+    i_q2_from.save()
+
+    i_q2_to = item(parent_id=i_q2, item_type_id=it_to, order=3)
+    i_q2_to.save()
+
+    i_q2_date = item(parent_id=i_q2, item_type_id=it_date, order=4)
+    i_q2_date.save()
+
+    i_q2_body = item(parent_id=i_q2, item_type_id=it_body, order=5)
+    i_q2_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
-        [question(question_type_id=qt_email, item_id=i_q1)]
+        [
+            question(question_type_id=qt_email, item_id=i_q1),
+            question(question_type_id=qt_email, item_id=i_q2),
+        ]
     )
 
     # bulk create item_text
     item_text.objects.using(db_alias).bulk_create(
         [
+            #1
             item_text(item_id=i_q1, text_detail="Question 1", language=l_english),
             item_text(item_id=i_q1, text_detail="FR Question 1", language=l_french),
             item_text(
                 item_id=i_q1_subject,
-                text_detail="Bad experience with Serv",
+                text_detail="Common sugar management software",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_subject,
-                text_detail="Mauvaise expérience avec Serv",
+                text_detail="FR Common sugar management software",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q1_from,
-                text_detail="Serge Duplessis (Quality Control Analyst, Quality Assurance Team)",
+                text_detail="Buster Bluth (Manager, Bluth Company)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_from,
-                text_detail="Serge Duplessis (analyste de l’assurance de la qualité, Équipe de l’assurance de la qualité)",
+                text_detail="FR Buster Bluth (Manager, Bluth Company)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="Claude Huard (Manager, Quality Assurance Team)",
+                text_detail="O.B Wan (Manager, Rebel Team)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="Claude Huard (gestionnaire, Équipe de l’assurance de la qualité)",
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
                 language=l_french,
+            ),
+            item_text(
+                item_id=i_q1_date, text_detail="Tuesday, October 10", language=l_english
             ),
             item_text(
                 item_id=i_q1_date,
-                text_detail="Thursday, November 3",
-                language=l_english,
-            ),
-            item_text(
-                item_id=i_q1_date, text_detail="Le jeudi 3 novembre", language=l_french
+                text_detail="FR Tuesday, October 10",
+                language=l_french,
             ),
             item_text(
                 item_id=i_q1_body,
-                text_detail="Hello Claude,\n\nAs you are settling into this position, I was hoping to share with you some of my thoughts about the proposed changes to our service requests and documentation practices.\n\nI have been working on the Quality Assurance team for over 12 years. I feel that, overall, we are quite successful in understanding and processing service requests. Switching to an automated, computerized system would take a very long time to adapt to and could jeopardize the quality of our service. For example, having a face-to-face or telephone conversation with a client can help us better understand the client’s issues in more depth because it allows us to ask probing questions and receive important information related to each case. By buying into this new technology, we risk having more IT problems and unexpected delays in the long-run.\n\nI have voiced my opinion in previous meetings but I do not feel that my opinions matter. Everyone else has been on the team for less than two years and I feel ignored because I’m the oldest member on the team. I urge you to consider my opinion so that we do not make a costly mistake.\n\nSerge",
+                text_detail="Hi O.B.,\n\nCupcake ipsum dolor sit amet apple pie topping. Lollipop jelly-o icing tootsie roll wafer sugar plum. Caramels lemon drops tootsie roll pie dragée brownie. Fruitcake pastry cake jelly beans. Jelly beans cupcake bonbon. Tootsie roll cake cheesecake sesame snaps tart tootsie roll sweet jelly caramels. Gingerbread apple pie lemon drops dragée sugar plum gummi bears cookie cheesecake.\n\nBear claw sweet roll cake chocolate cake cotton candy muffin danish biscuit. Lollipop danish cotton candy donut cookie.\n\nMuffin marzipan jelly-o marzipan cotton candy.\n\nBuster",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_body,
-                text_detail="Bonjour Claude.Alors que vous vous familiarisez avec vos nouvelles fonctions, j’aimerais vous faire part de certaines de mes opinions concernant les changements que l’on propose d’apporter à notre système de demandes de services et à nos pratiques en matière de documentation.\n\nJe travaille au sein de l’Équipe de l’assurance de la qualité depuis plus de 12 ans. J’estime que, dans l’ensemble, nous avons bien réussi à comprendre et à traiter les demandes de service. Le passage à un système automatisé et informatisé prendrait beaucoup de temps avant qu’on s’y adapte et pourrait compromettre la qualité de notre service. Par exemple, une conversation en personne ou par téléphone avec un client peut nous aider à mieux comprendre ses problèmes, car cela nous permet de poser des questions d’approfondissement et d’obtenir des renseignements importants sur chaque cas. En adoptant cette nouvelle technologie, nous risquons d’avoir plus de problèmes de TI et des retards imprévus à long terme.\n\nJ’ai déjà exprimé mon opinion lors de réunions précédentes, mais je n’ai pas l’impression que mes opinions comptent. Tous les autres sont dans l’équipe depuis moins de deux ans et je me sens ignoré parce que je suis le plus âgé de l’équipe. Je vous encourage à tenir compte de mon opinion afin que nous ne commettions pas une erreur coûteuse. \n\nSerge",
+                text_detail="FR Hi O.B.,\n\nCupcake ipsum dolor sit amet apple pie topping. Lollipop jelly-o icing tootsie roll wafer sugar plum. Caramels lemon drops tootsie roll pie dragée brownie. Fruitcake pastry cake jelly beans. Jelly beans cupcake bonbon. Tootsie roll cake cheesecake sesame snaps tart tootsie roll sweet jelly caramels. Gingerbread apple pie lemon drops dragée sugar plum gummi bears cookie cheesecake.\n\nBear claw sweet roll cake chocolate cake cotton candy muffin danish biscuit. Lollipop danish cotton candy donut cookie.\n\nMuffin marzipan jelly-o marzipan cotton candy.\n\nBuster",
+                language=l_french,
+            ),
+            #2
+            item_text(item_id=i_q2, text_detail="Question 2", language=l_english),
+            item_text(item_id=i_q2, text_detail="FR Question 2", language=l_french),
+            item_text(
+                item_id=i_q2_subject,
+                text_detail="Need for bananas",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q2_subject,
+                text_detail="FR Need for bananas",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q2_from,
+                text_detail="Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q2_from,
+                text_detail="FR Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q2_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q2_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q2_date, text_detail="Tuesday, October 10", language=l_english
+            ),
+            item_text(
+                item_id=i_q2_date,
+                text_detail="FR Tuesday, October 10",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q2_body,
+                text_detail="Hi O.B.,\n\nMan bun heirloom hell of YOLO iPhone twee. Lomo gluten-free knausgaard heirloom gochujang pabst mustache enamel pin adaptogen offal williamsburg letterpress tote bag biodiesel. Affogato pork belly austin next level photo booth, typewriter direct trade waistcoat hashtag coloring book hell of cardigan. Whatever artisan tofu vice thundercats retro. Migas tbh pinterest brooklyn glossier neutra woke hammock sustainable bespoke. Air plant yr iPhone bicycle rights\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin.\n\nReadymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo. Fingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice succulents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki.\n\nTim",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q2_body,
+                text_detail="FR Hi O.B.,\n\nMan bun heirloom hell of YOLO iPhone twee. Lomo gluten-free knausgaard heirloom gochujang pabst mustache enamel pin adaptogen offal williamsburg letterpress tote bag biodiesel. Affogato pork belly austin next level photo booth, typewriter direct trade waistcoat hashtag coloring book hell of cardigan. Whatever artisan tofu vice thundercats retro. Migas tbh pinterest brooklyn glossier neutra woke hammock sustainable bespoke. Air plant yr iPhone bicycle rights\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin.\n\nReadymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo. Fingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice succulents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki.\n\nTim",
                 language=l_french,
             ),
         ]
@@ -209,9 +283,43 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=2)
+        .last()
+    )
+    i_q2_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q2, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q2_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q2, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q2_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q2, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q2_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q2, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q2_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q2, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q2
     ).delete()
 
     # destroy item_text
@@ -248,7 +356,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q1_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q2, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q2, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q2_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q2_body.delete()
+    i_q2_date.delete()
+    i_q2_to.delete()
+    i_q2_from.delete()
+    i_q2_subject.delete()
+    i_q2.delete()
     i_q1_body.delete()
     i_q1_date.delete()
     i_q1_to.delete()
