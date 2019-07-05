@@ -91,11 +91,31 @@ def upload_pizza_test(apps, schema_editor):
     i_q2_body = item(parent_id=i_q2, item_type_id=it_body, order=5)
     i_q2_body.save()
 
+    # question 3 items
+    i_q3 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=3)
+    i_q3.save()
+
+    i_q3_subject = item(parent_id=i_q3, item_type_id=it_subject, order=1)
+    i_q3_subject.save()
+
+    i_q3_from = item(parent_id=i_q3, item_type_id=it_from, order=2)
+    i_q3_from.save()
+
+    i_q3_to = item(parent_id=i_q3, item_type_id=it_to, order=3)
+    i_q3_to.save()
+
+    i_q3_date = item(parent_id=i_q3, item_type_id=it_date, order=4)
+    i_q3_date.save()
+
+    i_q3_body = item(parent_id=i_q3, item_type_id=it_body, order=5)
+    i_q3_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
             question(question_type_id=qt_email, item_id=i_q1),
             question(question_type_id=qt_email, item_id=i_q2),
+            question(question_type_id=qt_email, item_id=i_q3),
         ]
     )
 
@@ -202,6 +222,57 @@ def upload_pizza_test(apps, schema_editor):
             item_text(
                 item_id=i_q2_body,
                 text_detail="FR Hi O.B.,\n\nMan bun heirloom hell of YOLO iPhone twee. Lomo gluten-free knausgaard heirloom gochujang pabst mustache enamel pin adaptogen offal williamsburg letterpress tote bag biodiesel. Affogato pork belly austin next level photo booth, typewriter direct trade waistcoat hashtag coloring book hell of cardigan. Whatever artisan tofu vice thundercats retro. Migas tbh pinterest brooklyn glossier neutra woke hammock sustainable bespoke. Air plant yr iPhone bicycle rights\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin.\n\nReadymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo. Fingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice succulents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki.\n\nTim",
+                language=l_french,
+            ),
+            #3
+            item_text(item_id=i_q3, text_detail="Question 3", language=l_english),
+            item_text(item_id=i_q3, text_detail="FR Question 3", language=l_french),
+            item_text(
+                item_id=i_q3_subject,
+                text_detail="New icing application sugaring methodology",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q3_subject,
+                text_detail="FR New icing application sugaring methodology",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q3_from,
+                text_detail="Det. McNulty (Outdoors Sector Analyst, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q3_from,
+                text_detail="FR Det. McNulty (Outdoors Sector Analyst, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q3_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q3_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q3_date, text_detail="Wednesday, October 11", language=l_english
+            ),
+            item_text(
+                item_id=i_q3_date,
+                text_detail="FR Wednesday, October 11",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q3_body,
+                text_detail="Hi O.B.,\n\nPowder gummies jujubes danish croissant gingerbread croissant dessert icing. Jelly-o cheesecake sesame snaps dragée lemon drops dragée. Gingerbread powder marshmallow ice cream pie. Muffin danish tootsie roll. Pudding tart chocolate cake sesame snaps lollipop dragée. Tiramisu bonbon jelly-o soufflé brownie caramels. Fruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar jelly beans pudding. Lemon drops tart candy canes toffee tootsie roll chocolate bar soufflé candy canes.\n\nDragée cake halvah. Muffin jelly-o tart wafer chocolate cake topping soufflé gummi bears. Pastry gummi bears ice cream. Cake pudding bear claw pudding. Cake cupcake caramels danish soufflé dessert. Gingerbread powder marshmallow ice cream pie.\n\nFruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar?\n\nDet. McNulty",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q3_body,
+                text_detail="FR Hi O.B.,\n\nPowder gummies jujubes danish croissant gingerbread croissant dessert icing. Jelly-o cheesecake sesame snaps dragée lemon drops dragée. Gingerbread powder marshmallow ice cream pie. Muffin danish tootsie roll. Pudding tart chocolate cake sesame snaps lollipop dragée. Tiramisu bonbon jelly-o soufflé brownie caramels. Fruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar jelly beans pudding. Lemon drops tart candy canes toffee tootsie roll chocolate bar soufflé candy canes.\n\nDragée cake halvah. Muffin jelly-o tart wafer chocolate cake topping soufflé gummi bears. Pastry gummi bears ice cream. Cake pudding bear claw pudding. Cake cupcake caramels danish soufflé dessert. Gingerbread powder marshmallow ice cream pie.\n\nFruitcake halvah liquorice pie marzipan carrot cake cookie. Fruitcake ice cream chocolate bar?\n\nDet. McNulty",
                 language=l_french,
             ),
         ]
@@ -314,12 +385,46 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=3)
+        .last()
+    )
+    i_q3_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q3, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q3_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q3, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q3_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q3, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q3_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q3, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q3_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q3, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q2
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q3
     ).delete()
 
     # destroy item_text
@@ -389,7 +494,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q2_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q3, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q3, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q3_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q3_body.delete()
+    i_q3_date.delete()
+    i_q3_to.delete()
+    i_q3_from.delete()
+    i_q3_subject.delete()
+    i_q3.delete()
     i_q2_body.delete()
     i_q2_date.delete()
     i_q2_to.delete()
