@@ -56,27 +56,10 @@ class TeamInformation extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // populates the tree view array with people names
-  populateTreeArray = response => {
-    const responsePrefixEn =
-      response.background.en.background[0].tree_view[1].team_information_tree_child;
-    const responsePrefixFr =
-      response.background.fr.background[0].tree_view[1].team_information_tree_child;
-    // populating names in English
-    for (let i = 0; i < responsePrefixEn.length; i++) {
-      this.setState({ treeViewContent_en: responsePrefixEn[i] });
-    }
-    // populating names in French
-    for (let i = 0; i < responsePrefixFr.length; i++) {
-      this.setState({ treeViewContent_fr: responsePrefixFr[i] });
-    }
-  };
-
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      this.populateTreeArray(response);
-      // saving the team information markdown content in local states
+      // Save the team information markdown content in local states.
       this.setState({
         markdown_section1_en: response.background.en.background[0].markdown[3].text,
         markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
@@ -86,6 +69,10 @@ class TeamInformation extends Component {
         popupMarkdownTitle_fr: response.background.fr.background[0].markdown[7].text,
         popupMarkdownDescription_en: response.background.en.background[0].markdown[8].text,
         popupMarkdownDescription_fr: response.background.fr.background[0].markdown[8].text,
+        treeViewContent_en:
+          response.background.en.background[0].tree_view[1].team_information_tree_child[0],
+        treeViewContent_fr:
+          response.background.fr.background[0].tree_view[1].team_information_tree_child[0],
         isLoadingComplete: true
       });
     });
@@ -94,6 +81,7 @@ class TeamInformation extends Component {
   render() {
     const { currentLanguage } = this.props;
     const { treeViewContent_en, treeViewContent_fr } = this.state;
+
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
