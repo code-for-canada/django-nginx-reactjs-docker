@@ -26,6 +26,80 @@ const styles = {
   }
 };
 
+const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
+  return [
+    {
+      id: 0,
+      name: `${
+        currentLanguage === LANGUAGES.english ? treeViewContent_en.text : treeViewContent_fr.text
+      }`,
+      groups: [1, 2, 3, 4, 5, 6],
+      level: 1
+    },
+    {
+      id: 1,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[0].text
+          : treeViewContent_fr.team_information_tree_child[0].text
+      }`,
+      parent: 0,
+      level: 2
+    },
+
+    {
+      id: 2,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[1].text
+          : treeViewContent_fr.team_information_tree_child[1].text
+      }`,
+      parent: 0,
+      level: 2
+    },
+    {
+      id: 3,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[2].text
+          : treeViewContent_fr.team_information_tree_child[2].text
+      }`,
+      parent: 0,
+      level: 2
+    },
+    {
+      id: 4,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[3].text
+          : treeViewContent_fr.team_information_tree_child[3].text
+      }`,
+      parent: 0,
+      level: 2
+    },
+    {
+      id: 5,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[4].text
+          : treeViewContent_fr.team_information_tree_child[4].text
+      }`,
+      parent: 0,
+      level: 2
+    },
+    {
+      id: 6,
+      name: `${
+        currentLanguage === LANGUAGES.english
+          ? treeViewContent_en.team_information_tree_child[5].text
+          : treeViewContent_fr.team_information_tree_child[5].text
+      }`,
+      parent: 0,
+      level: 2
+    }
+  ];
+};
+
 class TeamInformation extends Component {
   static propTypes = {
     // Props from Redux
@@ -85,79 +159,8 @@ class TeamInformation extends Component {
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
-      treeView = [
-        {
-          id: 0,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.text
-              : treeViewContent_fr.text
-          }`,
-          groups: [1, 2, 3, 4, 5, 6],
-          level: 1
-        },
-        {
-          id: 1,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[0].text
-              : treeViewContent_fr.team_information_tree_child[0].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-
-        {
-          id: 2,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[1].text
-              : treeViewContent_fr.team_information_tree_child[1].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 3,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[2].text
-              : treeViewContent_fr.team_information_tree_child[2].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 4,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[3].text
-              : treeViewContent_fr.team_information_tree_child[3].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 5,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[4].text
-              : treeViewContent_fr.team_information_tree_child[4].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 6,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[5].text
-              : treeViewContent_fr.team_information_tree_child[5].text
-          }`,
-          parent: 0,
-          level: 2
-        }
-      ];
+      //TODO(caleybrock) - process treeViewContent into treeView.
+      treeView = processTreeContent(currentLanguage, treeViewContent_en, treeViewContent_fr);
     }
 
     return (
