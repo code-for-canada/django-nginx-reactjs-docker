@@ -3,12 +3,6 @@
 
 from django.db import migrations
 
-ORIGINAL_ITEM_NAME_EN = "Pizza Test"
-NEW_ITEM_NAME_EN = "email"
-ORIGINAL_ITEM_NAME_FR = "FR Pizza Test"
-NEW_ITEM_NAME_FR = "email"
-
-
 def upload_pizza_test(apps, schema_editor):
     # get models
     language = apps.get_model("custom_models", "Language")
