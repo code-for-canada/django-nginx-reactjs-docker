@@ -15,6 +15,7 @@ import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
 import { getTestQuestions } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
+import { processTreeContent } from "../../helpers/transformations";
 
 const styles = {
   testImage: {
@@ -27,6 +28,14 @@ const styles = {
 };
 
 const process = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
+  processTreeContent(
+    currentLanguage,
+    treeViewContent_en,
+    treeViewContent_fr,
+    "organizational_structure_tree_child"
+  );
+  treeViewContent_en = treeViewContent_en[0];
+  treeViewContent_fr = treeViewContent_fr[0];
   return [
     {
       id: 0,
@@ -205,9 +214,9 @@ class OrganizationalStructure extends Component {
         popupMarkdownDescription_en: response.background.en.background[0].markdown[6].text,
         popupMarkdownDescription_fr: response.background.fr.background[0].markdown[6].text,
         treeViewContent_en:
-          response.background.en.background[0].tree_view[0].organizational_structure_tree_child[0],
+          response.background.en.background[0].tree_view[0].organizational_structure_tree_child,
         treeViewContent_fr:
-          response.background.fr.background[0].tree_view[0].organizational_structure_tree_child[0],
+          response.background.fr.background[0].tree_view[0].organizational_structure_tree_child,
         isLoadingComplete: true
       });
     });

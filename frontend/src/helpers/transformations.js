@@ -45,7 +45,12 @@ export function optionsFromIds(addressBook, ids) {
 // groups: array of numbers of the children
 // parent: number id of the parent
 // level (required): number representing the level of the tree you are in
-export const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
+export const processTreeContent = (
+  currentLanguage,
+  treeViewContent_en,
+  treeViewContent_fr,
+  treeType
+) => {
   let treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
   let processedTree = [];
 
@@ -61,13 +66,11 @@ export const processTreeContent = (currentLanguage, treeViewContent_en, treeView
     const treeNode = treeContent[i];
 
     // If this node has children.
-    if (treeNode.team_information_tree_child) {
+    if (treeNode[treeType]) {
       // Create an array of the ids of the children of this node.
-      const groupsArray = [...Array(treeNode.team_information_tree_child.length).keys()].map(
-        key => {
-          return key + id + 1;
-        }
-      );
+      const groupsArray = [...Array(treeNode[treeType].length).keys()].map(key => {
+        return key + id + 1;
+      });
       processedTree.push({
         id: id,
         name: treeNode.text,
@@ -80,7 +83,7 @@ export const processTreeContent = (currentLanguage, treeViewContent_en, treeView
       // Increase the level of the tree.
       level++;
       // Reset the currentTree to the current node.
-      const currentTree = treeNode.team_information_tree_child;
+      const currentTree = treeNode[treeType];
       // Process the child nodes.
       for (let j = 0; j < currentTree.length; j++) {
         processedTree.push({
@@ -101,5 +104,6 @@ export const processTreeContent = (currentLanguage, treeViewContent_en, treeView
       id++;
     }
   }
+  console.log(processedTree);
   return processedTree;
 };

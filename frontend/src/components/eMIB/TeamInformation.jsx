@@ -87,7 +87,12 @@ class TeamInformation extends Component {
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
       //TODO(caleybrock) - process treeViewContent into treeView.
-      treeView = processTreeContent(currentLanguage, treeViewContent_en, treeViewContent_fr);
+      treeView = processTreeContent(
+        currentLanguage,
+        treeViewContent_en,
+        treeViewContent_fr,
+        "team_information_tree_child"
+      );
     }
 
     return (
