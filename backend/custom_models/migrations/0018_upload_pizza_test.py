@@ -218,6 +218,25 @@ def upload_pizza_test(apps, schema_editor):
     i_q9_body = item(parent_id=i_q9, item_type_id=it_body, order=5)
     i_q9_body.save()
 
+    # question 10 items
+    i_q10 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=10)
+    i_q10.save()
+
+    i_q10_subject = item(parent_id=i_q10, item_type_id=it_subject, order=1)
+    i_q10_subject.save()
+
+    i_q10_from = item(parent_id=i_q10, item_type_id=it_from, order=2)
+    i_q10_from.save()
+
+    i_q10_to = item(parent_id=i_q10, item_type_id=it_to, order=3)
+    i_q10_to.save()
+
+    i_q10_date = item(parent_id=i_q10, item_type_id=it_date, order=4)
+    i_q10_date.save()
+
+    i_q10_body = item(parent_id=i_q10, item_type_id=it_body, order=5)
+    i_q10_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -230,6 +249,7 @@ def upload_pizza_test(apps, schema_editor):
             question(question_type_id=qt_email, item_id=i_q7),
             question(question_type_id=qt_email, item_id=i_q8),
             question(question_type_id=qt_email, item_id=i_q9),
+            question(question_type_id=qt_email, item_id=i_q10),
         ]
     )
 
@@ -696,6 +716,57 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hi O.B.,\n\nCliche pinterest jean shorts pop-up +1 taiyaki. Brooklyn tofu bitters synth 90's activated charcoal. Hashtag asymmetrical tote bag dreamcatcher shaman man braid. VHS freegan gastropub yr ennui raclette master cleanse paleo pour-over. Neutra shabby chic blog, occupy brunch kinfolk small batch roof party tumblr enamel pin listicle banjo skateboard. La croix disrupt retro iceland kombucha actually trust fund. Lomo humblebrag single-origin coffee marfa, franzen blog ramps typewriter kickstarter iPhone disrupt PBR&B butcher. La croix disrupt retro iceland kombucha actually trust fund. Kitsch raclette selvage vice. Master CLEANSE selfies messenger bag?\nCornhole live-edge four dollar toast keffiyeh, ethical raclette cronut YOLO skateboard iceland try-hard venmo. Swag meggings jean shorts XOXO readymade chia. Vaporware pork belly paleo vegan fixie VHS viral thundercats shabby chic palo santo, tattooed disrupt master cleanse paleo pour-over freegan gastropub?\n\nTim",
                 language=l_french,
             ),
+            #10
+            item_text(item_id=i_q10, text_detail="Question 10", language=l_english),
+            item_text(item_id=i_q10, text_detail="FR Question 10", language=l_french),
+            item_text(
+                item_id=i_q10_subject,
+                text_detail="Quality reports for Market Research",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q10_subject,
+                text_detail="FR Quality reports for Market Research",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q10_from,
+                text_detail="Michelle Obama (Manager, Market Research)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q10_from,
+                text_detail="FR Michelle Obama (Manager, Market Research)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q10_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q10_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q10_date, text_detail="Friday, October 13", language=l_english
+            ),
+            item_text(
+                item_id=i_q10_date,
+                text_detail="FR Friday, October 13",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q10_body,
+                text_detail="Hello everyone,\n\nLorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa deep v ennui. Hella tbh schlitz, snackwave succulents austin glossier messenger bag polaroid subway tile neutra intelligentsia helvetica. Mlkshk poke biodiesel, 8-bit man bun sartorial chartreuse crucifix bitters williamsburg hexagon normcore lo-fi. Direct trade neutra brunch, venmo hexagon pop-up post-ironic. Heirloom craft beer tattooed ennui, unicorn franzen vape. Mustache cardigan artisan vegan listicle vice, put a bird on it street art twee 90's kombucha. Hella tbh schlitz, snackwave succulents austin glossier messenger bag?\n\nO.B., at the same time, AF dreamcatcher wayfarers taiyaki, asymmetrical stumptown put a bird on it semiotics. Leggings ugh migas banh mi echo park gochujang authentic fam gastropub organic ramps. Shabby chic offal hot chicken drinking vinegar kitsch chicharrones. Brunch etsy leggings bicycle rights cliche. Lorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa.\n\nMichelle",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q10_body,
+                text_detail="FR Hello everyone,\n\nLorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa deep v ennui. Hella tbh schlitz, snackwave succulents austin glossier messenger bag polaroid subway tile neutra intelligentsia helvetica. Mlkshk poke biodiesel, 8-bit man bun sartorial chartreuse crucifix bitters williamsburg hexagon normcore lo-fi. Direct trade neutra brunch, venmo hexagon pop-up post-ironic. Heirloom craft beer tattooed ennui, unicorn franzen vape. Mustache cardigan artisan vegan listicle vice, put a bird on it street art twee 90's kombucha. Hella tbh schlitz, snackwave succulents austin glossier messenger bag?\n\nO.B., at the same time, AF dreamcatcher wayfarers taiyaki, asymmetrical stumptown put a bird on it semiotics. Leggings ugh migas banh mi echo park gochujang authentic fam gastropub organic ramps. Shabby chic offal hot chicken drinking vinegar kitsch chicharrones. Brunch etsy leggings bicycle rights cliche. Lorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa.\n\nMichelle",
+                language=l_french,
+            ),
         ]
     )
 
@@ -1023,6 +1094,37 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q10 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=10)
+        .last()
+    )
+    i_q10_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q10, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q10_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q10, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q10_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q10, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q10_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q10, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q10_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q10, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
@@ -1050,6 +1152,9 @@ def destroy_pizza_test(apps, schema_editor):
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q9
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q10
     ).delete()
 
     # destroy item_text
@@ -1350,7 +1455,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q9_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q10, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q10, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q10_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q10_body.delete()
+    i_q10_date.delete()
+    i_q10_to.delete()
+    i_q10_from.delete()
+    i_q10_subject.delete()
+    i_q10.delete()
     i_q9_body.delete()
     i_q9_date.delete()
     i_q9_to.delete()
