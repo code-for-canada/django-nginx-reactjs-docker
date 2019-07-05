@@ -26,15 +26,6 @@ const styles = {
   }
 };
 
-const processTreeNodes = (treeNode, currentId, currentLevel) => {
-  // create an object with the contact with the name: text, and the id and level
-  return {
-    id: currentId,
-    name: treeNode.text,
-    level: currentLevel
-  };
-};
-
 // Returns an array of objects with the following properties
 // id (required): number in order indexed at 0
 // name (required): string displayed in the tree
@@ -49,22 +40,33 @@ const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent
   let level = 1;
   // Id counter - counts the number of names in the tree.
   let id = 0;
+  // Id of the current parent node.
+  let parent = 0;
 
-  // for each node, process the node
+  // For each node in the tree, process the node to the expected output for the tree view.
   for (let i = 0; i < treeContent.length; i++) {
     const treeNode = treeContent[i];
-    processedTree.push({
-      id: id,
-      name: treeNode.text,
-      level: level,
-      groups: [1, 2, 3, 4, 5, 6]
-    });
-    // if there's another level, push more nodes
-    let parent = id;
-    id++;
-    level++;
+
+    // If this node has children.
     if (treeNode.team_information_tree_child) {
+      // Create an array of the ids of the children of this node.
+      const groupsArray = [...Array(treeNode.team_information_tree_child.length).keys()].map(
+        key => key + id + 1
+      );
+      processedTree.push({
+        id: id,
+        name: treeNode.text,
+        level: level,
+        groups: groupsArray
+      });
+      parent = id;
+      id++;
+
+      // Increase the level of the tree.
+      level++;
+      // Reset the currentTree to the current node.
       const currentTree = treeNode.team_information_tree_child;
+      // Process the child nodes.
       for (let j = 0; j < currentTree.length; j++) {
         processedTree.push({
           id: id,
@@ -74,6 +76,14 @@ const processTreeContent = (currentLanguage, treeViewContent_en, treeViewContent
         });
         id++;
       }
+    } else {
+      // This is a leaf node of the tree.
+      processedTree.push({
+        id: id,
+        name: treeNode.text,
+        level: level
+      });
+      id++;
     }
   }
   return processedTree;
