@@ -148,6 +148,25 @@ def upload_pizza_test(apps, schema_editor):
     i_q5_body = item(parent_id=i_q5, item_type_id=it_body, order=5)
     i_q5_body.save()
 
+    # question 6 items
+    i_q6 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=6)
+    i_q6.save()
+
+    i_q6_subject = item(parent_id=i_q6, item_type_id=it_subject, order=1)
+    i_q6_subject.save()
+
+    i_q6_from = item(parent_id=i_q6, item_type_id=it_from, order=2)
+    i_q6_from.save()
+
+    i_q6_to = item(parent_id=i_q6, item_type_id=it_to, order=3)
+    i_q6_to.save()
+
+    i_q6_date = item(parent_id=i_q6, item_type_id=it_date, order=4)
+    i_q6_date.save()
+
+    i_q6_body = item(parent_id=i_q6, item_type_id=it_body, order=5)
+    i_q6_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -156,6 +175,7 @@ def upload_pizza_test(apps, schema_editor):
             question(question_type_id=qt_email, item_id=i_q3),
             question(question_type_id=qt_email, item_id=i_q4),
             question(question_type_id=qt_email, item_id=i_q5),
+            question(question_type_id=qt_email, item_id=i_q6),
         ]
     )
 
@@ -417,6 +437,57 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hi O.B.,\n\nCupcake ipsum dolor sit amet cotton candy. Bonbon sweet roll marzipan. Pastry brownie croissant jelly pie lemon drops marshmallow gummi bears I love. Croissant cotton candy sesame snaps tart I love macaroon pastry. Biscuit caramels soufflé jelly beans topping. Tart tiramisu bear claw jelly beans sweet roll I love sweet roll pastry. I love candy canes?\n\nSandra",
                 language=l_french,
             ),
+            #6
+            item_text(item_id=i_q6, text_detail="Question 6", language=l_english),
+            item_text(item_id=i_q6, text_detail="FR Question 6", language=l_french),
+            item_text(
+                item_id=i_q6_subject,
+                text_detail="Software for the Rebel Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q6_subject,
+                text_detail="FR Software for the Rebel Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q6_from,
+                text_detail="Miranda Lambert (Manager, Information Technology)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q6_from,
+                text_detail="FR Miranda Lambert (Manager, Information Technology)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q6_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q6_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q6_date, text_detail="Thursday, October 12", language=l_english
+            ),
+            item_text(
+                item_id=i_q6_date,
+                text_detail="FR Thursday, October 12",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q6_body,
+                text_detail="Hi O.B.,\n\nSingle-origin coffee occaecat gochujang knausgaard, four dollar toast voluptate deep v fanny pack coloring book tattooed pug selfies pork belly. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually.\n\n          1. 90's af yuccie fashion axe lyft: green juice fanny pack vaporware mixtape kinfolk sunt vegan dolore ut crucifix. Viral celiac organic neutra mixtape labore sunt yuccie trust fund.\n\n          2. Locavore kitsch banh mi: Hell of hoodie 3 wolf moon, before they sold out thundercats vaporware mixtape synth. Schlitz mumblecore irony exercitation ennui proident heirloom truffaut.\n\n          3. Ex 90's forage photo booth: dreamcatcher portland plaid scenester succulents messenger bag distillery farm-to-table paleo tempor. Schlitz knausgaard.\n\n          4. Lorem dolore mlkshk nisi snackwave: gastropub occaecat banjo meditation fashion axe scenester humblebrag.\n\nEtsy eiusmod. Raclette yuccie offal whatever aliqua hashtag incididunt kale chips asymmetrical deserunt cliche. Cillum sunt mumblecore.\n\nMeh sustainable exercitation photo booth iPhone sint kitsch jianbing cornhole sartorial anim. Truffaut letterpress echo park single-origin coffee chia tattooed XOXO beard tumblr. Sint eiusmod tbh snackwave, vegan eu kinfolk put a bird on it. Meditation viral ad listicle taxidermy brooklyn. Vinyl street art asymmetrical cold-pressed. Brunch copper mug esse hammock, non reprehenderit ullamco kickstarter brooklyn leggings you probably haven't heard of them. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually. Schlitz knausgaard.\n\nBest regards,\n\nMiranda",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q6_body,
+                text_detail="FR Hi O.B.,\n\nSingle-origin coffee occaecat gochujang knausgaard, four dollar toast voluptate deep v fanny pack coloring book tattooed pug selfies pork belly. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually.\n\n          1. 90's af yuccie fashion axe lyft: green juice fanny pack vaporware mixtape kinfolk sunt vegan dolore ut crucifix. Viral celiac organic neutra mixtape labore sunt yuccie trust fund.\n\n          2. Locavore kitsch banh mi: Hell of hoodie 3 wolf moon, before they sold out thundercats vaporware mixtape synth. Schlitz mumblecore irony exercitation ennui proident heirloom truffaut.\n\n          3. Ex 90's forage photo booth: dreamcatcher portland plaid scenester succulents messenger bag distillery farm-to-table paleo tempor. Schlitz knausgaard.\n\n          4. Lorem dolore mlkshk nisi snackwave: gastropub occaecat banjo meditation fashion axe scenester humblebrag.\n\nEtsy eiusmod. Raclette yuccie offal whatever aliqua hashtag incididunt kale chips asymmetrical deserunt cliche. Cillum sunt mumblecore.\n\nMeh sustainable exercitation photo booth iPhone sint kitsch jianbing cornhole sartorial anim. Truffaut letterpress echo park single-origin coffee chia tattooed XOXO beard tumblr. Sint eiusmod tbh snackwave, vegan eu kinfolk put a bird on it. Meditation viral ad listicle taxidermy brooklyn. Vinyl street art asymmetrical cold-pressed. Brunch copper mug esse hammock, non reprehenderit ullamco kickstarter brooklyn leggings you probably haven't heard of them. Jean shorts +1 culpa, meditation meh jianbing eu everyday carry. Heirloom aesthetic vice deep v actually. Schlitz knausgaard.\n\nBest regards,\n\nMiranda",
+                language=l_french,
+            ),
         ]
     )
 
@@ -620,6 +691,37 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=6)
+        .last()
+    )
+    i_q6_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q6, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q6_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q6, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q6_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q6, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q6_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q6, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q6_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q6, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
@@ -635,6 +737,9 @@ def destroy_pizza_test(apps, schema_editor):
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q5
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q6
     ).delete()
 
     # destroy item_text
@@ -803,7 +908,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q5_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q6, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q6, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q6_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q6_body.delete()
+    i_q6_date.delete()
+    i_q6_to.delete()
+    i_q6_from.delete()
+    i_q6_subject.delete()
+    i_q6.delete()
     i_q5_body.delete()
     i_q5_date.delete()
     i_q5_to.delete()
