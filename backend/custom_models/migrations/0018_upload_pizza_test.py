@@ -180,6 +180,25 @@ def upload_pizza_test(apps, schema_editor):
     i_q7_body = item(parent_id=i_q7, item_type_id=it_body, order=5)
     i_q7_body.save()
 
+    # question 8 items
+    i_q8 = item(parent_id=pizza_test_item_id, item_type_id=it_question, order=8)
+    i_q8.save()
+
+    i_q8_subject = item(parent_id=i_q8, item_type_id=it_subject, order=1)
+    i_q8_subject.save()
+
+    i_q8_from = item(parent_id=i_q8, item_type_id=it_from, order=2)
+    i_q8_from.save()
+
+    i_q8_to = item(parent_id=i_q8, item_type_id=it_to, order=3)
+    i_q8_to.save()
+
+    i_q8_date = item(parent_id=i_q8, item_type_id=it_date, order=4)
+    i_q8_date.save()
+
+    i_q8_body = item(parent_id=i_q8, item_type_id=it_body, order=5)
+    i_q8_body.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -190,6 +209,7 @@ def upload_pizza_test(apps, schema_editor):
             question(question_type_id=qt_email, item_id=i_q5),
             question(question_type_id=qt_email, item_id=i_q6),
             question(question_type_id=qt_email, item_id=i_q7),
+            question(question_type_id=qt_email, item_id=i_q8),
         ]
     )
 
@@ -553,6 +573,58 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hi O.B.,\n\nThundercats snackwave taxidermy chillwave poutine readymade. Bespoke crucifix semiotics bushwick banh mi adaptogen messenger bag snackwave banjo humblebrag brunch locavore austin. Readymade lo-fi succulents godard lyft austin narwhal. Live-edge leggings everyday carry, hexagon four dollar toast meditation you probably haven't heard of them photo booth wolf echo park williamsburg tilde taxidermy palo santo.\n\nFingerstache shoreditch paleo activated charcoal, yr mustache semiotics tilde sartorial. Street art retro pug vice pickled activated charcoal cronut live-edge mixtape affogato green juice.\n\nSucculents. Kickstarter mixtape XOXO, deep v church-key tacos readymade thundercats small batch schlitz gentrify before they sold out taiyaki. Readymade lo-fi succulents godard lyft austin narwhal?\n\nKelly",
                 language=l_french,
             ),
+            #8
+            item_text(item_id=i_q8, text_detail="Question 8", language=l_english),
+            item_text(item_id=i_q8, text_detail="FR Question 8", language=l_french),
+            item_text(
+                item_id=i_q8_subject,
+                text_detail="Concerns over the impact of BADFOOD on local communities",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q8_subject,
+                text_detail="FR Concerns over the impact of BADFOOD on local communities",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q8_from,
+                text_detail="Ska Savesbro (Musical Support Assistant, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q8_from,
+                text_detail="FR Ska Savesbro (Musical Support Assistant, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q8_to,
+                text_detail="O.B Wan (Manager, Rebel Team)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q8_to,
+                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_q8_date, text_detail="Thursday, October 12", language=l_english
+            ),
+            item_text(
+                item_id=i_q8_date,
+                text_detail="FR Thursday, October 12",
+                language=l_french,
+            ),
+            # TODO (fnormand): make a decision on how we want to put an email template inside an email
+            item_text(
+                item_id=i_q8_body,
+                text_detail="Hi O.B.,\n\nPlaid food truck XOXO fam heirloom four dollar toast. Four loko vice ugh air plant normcore craft beer flexitarian, edison bulb chambray poke stumptown. Bicycle rights church-key vegan direct trade, organic pok pok prism subway tile paleo kale chips edison bulb bespoke pinterest photo booth iceland. Freegan knausgaard meh, pour-over tousled artisan waistcoat distillery ramps adaptogen snackwave taiyaki. Coloring book scenester jean shorts wayfarers, seitan fanny pack lomo?\n\nRamps williamsburg 8-bit turmeric cliche, copper mug kinfolk PBR&B?\n\nHi ________________,\nKitsch raclette selvage vice. Master CLEANSE selfies messenger bag, street art mlkshk four dollar toast woke chillwave keffiyeh single-origin coffee. Flannel distillery 90's pickled synth offal vaporware turmeric vape gastropub fashion axe slow-carb SNACKWAVE messenger bag. Four loko vice ugh air plant normcore flexitarian.\n\nSka",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_q8_body,
+                text_detail="FR Hi O.B.,\n\nPlaid food truck XOXO fam heirloom four dollar toast. Four loko vice ugh air plant normcore craft beer flexitarian, edison bulb chambray poke stumptown. Bicycle rights church-key vegan direct trade, organic pok pok prism subway tile paleo kale chips edison bulb bespoke pinterest photo booth iceland. Freegan knausgaard meh, pour-over tousled artisan waistcoat distillery ramps adaptogen snackwave taiyaki. Coloring book scenester jean shorts wayfarers, seitan fanny pack lomo?\n\nRamps williamsburg 8-bit turmeric cliche, copper mug kinfolk PBR&B?\n\nHi ________________,\nKitsch raclette selvage vice. Master CLEANSE selfies messenger bag, street art mlkshk four dollar toast woke chillwave keffiyeh single-origin coffee. Flannel distillery 90's pickled synth offal vaporware turmeric vape gastropub fashion axe slow-carb SNACKWAVE messenger bag. Four loko vice ugh air plant normcore flexitarian.\n\nSka",
+                language=l_french,
+            ),
         ]
     )
 
@@ -818,6 +890,37 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
 
+    i_q8 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_question, order=8)
+        .last()
+    )
+    i_q8_subject = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q8, item_type_id=it_subject, order=1)
+        .last()
+    )
+    i_q8_from = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q8, item_type_id=it_from, order=2)
+        .last()
+    )
+    i_q8_to = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q8, item_type_id=it_to, order=3)
+        .last()
+    )
+    i_q8_date = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q8, item_type_id=it_date, order=4)
+        .last()
+    )
+    i_q8_body = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_q8, item_type_id=it_body, order=5)
+        .last()
+    )
+
     # destroy questions
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q1
@@ -839,6 +942,9 @@ def destroy_pizza_test(apps, schema_editor):
     ).delete()
     question.objects.using(db_alias).filter(
         question_type_id=qt_email, item_id=i_q7
+    ).delete()
+    question.objects.using(db_alias).filter(
+        question_type_id=qt_email, item_id=i_q8
     ).delete()
 
     # destroy item_text
@@ -1073,7 +1179,46 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q7_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(item_id=i_q8, language=l_english).delete()
+    item_text.objects.using(db_alias).filter(item_id=i_q8, language=l_french).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_subject, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_subject, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_from, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_from, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_to, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_to, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_date, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_date, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_body, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_q8_body, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_q8_body.delete()
+    i_q8_date.delete()
+    i_q8_to.delete()
+    i_q8_from.delete()
+    i_q8_subject.delete()
+    i_q8.delete()
     i_q7_body.delete()
     i_q7_date.delete()
     i_q7_to.delete()
