@@ -39,7 +39,7 @@ export function optionsFromIds(addressBook, ids) {
   return options;
 }
 
-// Returns an array of objects with the following properties
+// Returns an array of objects (in the current language) with the following properties
 // id (required): number in order indexed at 0
 // name (required): string displayed in the tree
 // groups: array of numbers of the children
@@ -92,10 +92,11 @@ export const recursivelyProcessTree = (treeContent, treeType, level, id, parent)
       }
       newNode.groups = groupArray;
 
-      // Update the array
+      // Update the processed set of the tree.
       processedTree.push(newNode);
       processedTree = processedTree.concat(childNodes);
 
+      // Increase the id by 1 plus the number of children ids
       id = id + 1 + childNodes.length;
     } else {
       // This is a leaf node of the tree.
