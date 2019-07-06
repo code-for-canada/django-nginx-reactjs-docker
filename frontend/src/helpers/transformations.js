@@ -51,16 +51,13 @@ export const processTreeContent = (
   treeViewContent_fr,
   treeType
 ) => {
-  let treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
+  const treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
+  const tree = recursivelyProcessTree(treeContent, treeType, 1, 0);
+  return tree;
+};
+
+const recursivelyProcessTree = (treeContent, treeType, level, id, parent) => {
   let processedTree = [];
-
-  // Level counter.
-  let level = 1;
-  // Id counter - counts the number of names in the tree.
-  let id = 0;
-  // Id of the current parent node.
-  let parent = 0;
-
   // For each node in the tree, process the node to the expected output for the tree view.
   for (let i = 0; i < treeContent.length; i++) {
     let treeNode = treeContent[i];
@@ -68,82 +65,45 @@ export const processTreeContent = (
     // If this node has children.
     if (treeNode[treeType]) {
       // Create a groups array after processing children.
-      processedTree.push({
+      const newNode = {
         id: id,
         name: treeNode.text,
         level: level,
-        groups: []
-      });
-      parent = id;
-      id++;
+        parent: parent
+      };
 
-      // Increase the level of the tree.
-      level++;
-      // Reset the currentTree to the current node.
-      const currentTree = treeNode[treeType];
-      // Process the child nodes.
-      for (let j = 0; j < currentTree.length; j++) {
-        let currentNode = currentTree[j];
-        if (currentNode[treeType]) {
-          // Create an array of the ids of the children of this node.
-          const numChildren = currentNode[treeType].length;
-          const groupsArray = [...Array(numChildren).keys()].map(key => key + id + 1);
-          processedTree.push({
-            id: id,
-            name: currentNode.text,
-            level: level,
-            groups: groupsArray,
-            parent: parent
-          });
-          let currentParent = id;
-          id++;
-
-          // Increase the level of the tree.
-          level++;
-          currentNode = currentNode[treeType];
-          for (let k = 0; k < currentNode.length; k++) {
-            processedTree.push({
-              id: id,
-              name: currentNode[k].text,
-              level: level,
-              parent: currentParent
-            });
-            id++;
-          }
-          level--;
-        } else {
-          // This is a leaf node of the tree.
-          processedTree.push({
-            id: id,
-            name: currentNode.text,
-            level: level,
-            parent: parent
-          });
-          id++;
-        }
-      }
-      // Reset the level.
-      level--;
-
-      // Create a groups array for top level element.
-      // Grab the list of ids with parent === 0.
-      const groupArray = processedTree
+      const childNodes = recursivelyProcessTree(
+        treeNode[treeType],
+        treeType,
+        level + 1,
+        id + 1,
+        id
+      );
+      // Create a groups array for the latest element.
+      // Grab the list of ids with parent === id.
+      const groupArray = childNodes
         .filter(node => {
-          return node.parent === 0;
+          return node.parent === id;
         })
         .map(node => node.id);
-      processedTree[0].groups = groupArray;
+      newNode.groups = groupArray;
+
+      // Update the array
+      processedTree.push(newNode);
+      processedTree = processedTree.concat(childNodes);
+
+      id = id + 1 + childNodes.length;
     } else {
       // This is a leaf node of the tree.
       processedTree.push({
         id: id,
         name: treeNode.text,
-        level: level
+        level: level,
+        parent: parent
       });
       id++;
     }
   }
 
-  console.log(processedTree);
   return processedTree;
 };
