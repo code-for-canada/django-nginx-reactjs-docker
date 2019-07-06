@@ -122,7 +122,17 @@ export const processTreeContent = (
           id++;
         }
       }
+      // Reset the level.
       level--;
+
+      // Create a groups array for top level element.
+      // Grab the list of ids with parent === 0.
+      const groupArray = processedTree
+        .filter(node => {
+          return node.parent === 0;
+        })
+        .map(node => node.id);
+      processedTree[0].groups = groupArray;
     } else {
       // This is a leaf node of the tree.
       processedTree.push({
@@ -133,15 +143,6 @@ export const processTreeContent = (
       id++;
     }
   }
-
-  // Create a groups array for top level element.
-  // Grab the list of ids with parent === 0.
-  const groupArray = processedTree
-    .filter(node => {
-      return node.parent === 0;
-    })
-    .map(node => node.id);
-  processedTree[0].groups = groupArray;
 
   console.log(processedTree);
   return processedTree;
