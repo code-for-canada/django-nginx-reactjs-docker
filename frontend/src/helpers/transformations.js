@@ -63,7 +63,7 @@ export const processTreeContent = (
 
   // For each node in the tree, process the node to the expected output for the tree view.
   for (let i = 0; i < treeContent.length; i++) {
-    const treeNode = treeContent[i];
+    let treeNode = treeContent[i];
 
     // If this node has children.
     if (treeNode[treeType]) {
@@ -86,14 +86,47 @@ export const processTreeContent = (
       const currentTree = treeNode[treeType];
       // Process the child nodes.
       for (let j = 0; j < currentTree.length; j++) {
-        processedTree.push({
-          id: id,
-          name: currentTree[j].text,
-          level: level,
-          parent: parent
-        });
-        id++;
+        let currentNode = currentTree[j];
+        if (currentNode[treeType]) {
+          // Create an array of the ids of the children of this node.
+          const groupsArray = [...Array(currentNode[treeType].length).keys()].map(key => {
+            return key + id + 1;
+          });
+          processedTree.push({
+            id: id,
+            name: currentNode.text,
+            level: level,
+            groups: groupsArray,
+            parent: parent
+          });
+          parent = id;
+          id++;
+
+          // Increase the level of the tree.
+          level++;
+          // add a for loop
+          currentNode = currentNode[treeType];
+          for (let k = 0; k < currentNode.length; k++) {
+            processedTree.push({
+              id: id,
+              name: currentNode[k].text,
+              level: level,
+              parent: parent
+            });
+            id++;
+          }
+          level--;
+        } else {
+          processedTree.push({
+            id: id,
+            name: currentNode.text,
+            level: level,
+            parent: parent
+          });
+          id++;
+        }
       }
+      level--;
     } else {
       // This is a leaf node of the tree.
       processedTree.push({
