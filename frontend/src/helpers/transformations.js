@@ -58,7 +58,8 @@ export const processTreeContent = (
 
 // Recursively process tree from API into tree needed for accessible tree view
 // component.
-const recursivelyProcessTree = (treeContent, treeType, level, id, parent) => {
+// Exported only for tests.
+export const recursivelyProcessTree = (treeContent, treeType, level, id, parent) => {
   let processedTree = [];
   // For each node in the tree, process the node to the expected output for the tree view.
   for (let i = 0; i < treeContent.length; i++) {
