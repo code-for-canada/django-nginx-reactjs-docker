@@ -27,153 +27,6 @@ const styles = {
   }
 };
 
-const process = (currentLanguage, treeViewContent_en, treeViewContent_fr) => {
-  processTreeContent(
-    currentLanguage,
-    treeViewContent_en,
-    treeViewContent_fr,
-    "organizational_structure_tree_child"
-  );
-  treeViewContent_en = treeViewContent_en[0];
-  treeViewContent_fr = treeViewContent_fr[0];
-  return [
-    {
-      id: 0,
-      name: `${
-        currentLanguage === LANGUAGES.english ? treeViewContent_en.text : treeViewContent_fr.text
-      }`,
-      groups: [1, 5, 6, 7],
-      level: 1
-    },
-    {
-      id: 1,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[0].text
-          : treeViewContent_fr.organizational_structure_tree_child[0].text
-      }`,
-      parent: 0,
-      groups: [2, 3, 4],
-      level: 2
-    },
-    {
-      id: 2,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[0].text
-          : treeViewContent_fr.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[0].text
-      }`,
-      parent: 1,
-      level: 3
-    },
-    {
-      id: 3,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[1].text
-          : treeViewContent_fr.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[1].text
-      }`,
-      parent: 1,
-      level: 3
-    },
-    {
-      id: 4,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[2].text
-          : treeViewContent_fr.organizational_structure_tree_child[0]
-              .organizational_structure_tree_child[2].text
-      }`,
-      parent: 1,
-      level: 3
-    },
-    {
-      id: 5,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[1].text
-          : treeViewContent_fr.organizational_structure_tree_child[1].text
-      }`,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 6,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[2].text
-          : treeViewContent_fr.organizational_structure_tree_child[2].text
-      }`,
-      parent: 0,
-      level: 2
-    },
-    {
-      id: 7,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[3].text
-          : treeViewContent_fr.organizational_structure_tree_child[3].text
-      }`,
-      parent: 0,
-      groups: [8, 9, 10, 11],
-      level: 2
-    },
-    {
-      id: 8,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[0].text
-          : treeViewContent_fr.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[0].text
-      }`,
-      parent: 7,
-      level: 3
-    },
-    {
-      id: 9,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[1].text
-          : treeViewContent_fr.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[1].text
-      }`,
-      parent: 7,
-      level: 3
-    },
-    {
-      id: 10,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[2].text
-          : treeViewContent_fr.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[2].text
-      }`,
-      parent: 7,
-      level: 3
-    },
-    {
-      id: 11,
-      name: `${
-        currentLanguage === LANGUAGES.english
-          ? treeViewContent_en.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[3].text
-          : treeViewContent_fr.organizational_structure_tree_child[3]
-              .organizational_structure_tree_child[3].text
-      }`,
-      parent: 7,
-      level: 3
-    }
-  ];
-};
-
 class OrganizationalStructure extends Component {
   static propTypes = {
     // Props from Redux
@@ -228,7 +81,12 @@ class OrganizationalStructure extends Component {
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
-      treeView = process(currentLanguage, treeViewContent_en, treeViewContent_fr);
+      treeView = processTreeContent(
+        currentLanguage,
+        treeViewContent_en,
+        treeViewContent_fr,
+        "organizational_structure_tree_child"
+      );
     }
 
     return (

@@ -86,7 +86,6 @@ class TeamInformation extends Component {
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
-      //TODO(caleybrock) - process treeViewContent into treeView.
       treeView = processTreeContent(
         currentLanguage,
         treeViewContent_en,

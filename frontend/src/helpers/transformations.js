@@ -67,15 +67,12 @@ export const processTreeContent = (
 
     // If this node has children.
     if (treeNode[treeType]) {
-      // Create an array of the ids of the children of this node.
-      const groupsArray = [...Array(treeNode[treeType].length).keys()].map(key => {
-        return key + id + 1;
-      });
+      // Create a groups array after processing children.
       processedTree.push({
         id: id,
         name: treeNode.text,
         level: level,
-        groups: groupsArray
+        groups: []
       });
       parent = id;
       id++;
@@ -89,9 +86,8 @@ export const processTreeContent = (
         let currentNode = currentTree[j];
         if (currentNode[treeType]) {
           // Create an array of the ids of the children of this node.
-          const groupsArray = [...Array(currentNode[treeType].length).keys()].map(key => {
-            return key + id + 1;
-          });
+          const numChildren = currentNode[treeType].length;
+          const groupsArray = [...Array(numChildren).keys()].map(key => key + id + 1);
           processedTree.push({
             id: id,
             name: currentNode.text,
@@ -99,24 +95,24 @@ export const processTreeContent = (
             groups: groupsArray,
             parent: parent
           });
-          parent = id;
+          let currentParent = id;
           id++;
 
           // Increase the level of the tree.
           level++;
-          // add a for loop
           currentNode = currentNode[treeType];
           for (let k = 0; k < currentNode.length; k++) {
             processedTree.push({
               id: id,
               name: currentNode[k].text,
               level: level,
-              parent: parent
+              parent: currentParent
             });
             id++;
           }
           level--;
         } else {
+          // This is a leaf node of the tree.
           processedTree.push({
             id: id,
             name: currentNode.text,
@@ -137,6 +133,16 @@ export const processTreeContent = (
       id++;
     }
   }
+
+  // Create a groups array for top level element.
+  // Grab the list of ids with parent === 0.
+  const groupArray = processedTree
+    .filter(node => {
+      return node.parent === 0;
+    })
+    .map(node => node.id);
+  processedTree[0].groups = groupArray;
+
   console.log(processedTree);
   return processedTree;
 };
