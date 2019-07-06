@@ -81,11 +81,12 @@ const recursivelyProcessTree = (treeContent, treeType, level, id, parent) => {
       );
       // Create a groups array for the latest element.
       // Grab the list of ids with parent === id.
-      const groupArray = childNodes
-        .filter(node => {
-          return node.parent === id;
-        })
-        .map(node => node.id);
+      let groupArray = [];
+      for (let j = 0; j < childNodes.length; j++) {
+        if (childNodes[j].parent === id) {
+          groupArray.push(childNodes[j].id);
+        }
+      }
       newNode.groups = groupArray;
 
       // Update the array
