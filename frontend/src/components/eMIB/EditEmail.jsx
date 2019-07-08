@@ -98,6 +98,10 @@ const styles = {
   tooltipButton: {
     float: "right",
     textDecoration: "underline"
+  },
+  spacer: {
+    marginTop: "1rem",
+    marginBottom: "1rem"
   }
 };
 
@@ -276,7 +280,7 @@ class EditEmail extends Component {
               tags={true}
             />
           </div>
-          <hr />
+          <div style={styles.spacer} />
           <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
             <label htmlFor="cc-field" style={styles.header.titleStyle}>
               {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
@@ -293,7 +297,7 @@ class EditEmail extends Component {
               tags={true}
             />
           </div>
-          <hr />
+          <div style={styles.spacer} />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">
