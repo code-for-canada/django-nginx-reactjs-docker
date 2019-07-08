@@ -36,8 +36,6 @@ const styles = {
     color: "#00565E"
   },
   titleEmailDivider: {
-    width: "100%",
-    borderTop: "1px solid #00565E",
     margin: "16px 0 12px 0"
   },
   actionIcon: {
@@ -104,12 +102,12 @@ class Email extends Component {
             </div>
           )}
         </div>
-        <hr style={styles.titleEmailDivider} />
+        <div style={styles.titleEmailDivider} />
         <EmailContent email={email} />
 
         {!this.props.disabled && (
           <div>
-            <hr style={styles.titleEmailDivider} />
+            <div style={styles.titleEmailDivider} />
             <button
               id="unit-test-email-reply-button"
               type="button"
