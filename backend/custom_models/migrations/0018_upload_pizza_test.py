@@ -11,6 +11,7 @@ def upload_pizza_test(apps, schema_editor):
     item_text = apps.get_model("custom_models", "ItemText")
     question_type = apps.get_model("custom_models", "QuestionType")
     question = apps.get_model("custom_models", "Question")
+    test = apps.get_model("custom_models", "Test")
 
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -27,10 +28,7 @@ def upload_pizza_test(apps, schema_editor):
         .last()
     )
     pizza_test_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="Pizza Test", language=l_english)
-        .last()
-        .item_id
+        test.objects.using(db_alias).filter(test_name="emibPizzaTest").last().item_id
     )
 
     # getting item types
@@ -1525,6 +1523,7 @@ def destroy_pizza_test(apps, schema_editor):
     item_text = apps.get_model("custom_models", "ItemText")
     question_type = apps.get_model("custom_models", "QuestionType")
     question = apps.get_model("custom_models", "Question")
+    test = apps.get_model("custom_models", "Test")
 
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -1541,10 +1540,7 @@ def destroy_pizza_test(apps, schema_editor):
         .last()
     )
     pizza_test_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="Pizza Test", language=l_english)
-        .last()
-        .item_id
+        test.objects.using(db_alias).filter(test_name="emibPizzaTest").last().item_id
     )
 
     # getting item types
