@@ -69,8 +69,12 @@ const styles = {
 
 class EditTask extends Component {
   state = {
-    task: !this.props.action ? "" : this.props.action.task,
-    reasonsForAction: !this.props.action ? "" : this.props.action.reasonsForAction
+    task: !this.props.action ? "" : !this.props.action.task ? "" : this.props.action.task,
+    reasonsForAction: !this.props.action
+      ? ""
+      : !this.props.action.reasonsForAction
+      ? ""
+      : this.props.action.reasonsForAction
   };
 
   static propTypes = {
