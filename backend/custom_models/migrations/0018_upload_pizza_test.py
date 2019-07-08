@@ -250,8 +250,8 @@ def upload_pizza_test(apps, schema_editor):
     i_info_about_jokecan.save()
 
     # mandate item
-    # i_mandate = item(parent_id=i_background, item_type_id=it_markdown, order=2)
-    # i_mandate.save()
+    i_mandate = item(parent_id=i_background, item_type_id=it_markdown, order=2)
+    i_mandate.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -807,6 +807,24 @@ FR JOKECAN aims to have a positive social, economic, cultural and culinary impac
 """,
                 language=l_french,
             ),
+            item_text(
+            item_id=i_mandate,
+            text_detail="""## Mandate
+
+- To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
+- To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations).
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_mandate,
+                text_detail="""## FR Mandate
+
+- FR To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
+- FR To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations).
+""",
+                language=l_french,
+            ),
         ]
     )
 
@@ -1174,6 +1192,11 @@ def destroy_pizza_test(apps, schema_editor):
     i_info_about_jokecan = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    i_mandate = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=2)
         .last()
     )
 
@@ -1554,9 +1577,17 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_info_about_jokecan, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_mandate, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_mandate, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
-    i_background.delete()
+    i_mandate.delete()
     i_info_about_jokecan.delete()
+    i_background.delete()
     i_q10_body.delete()
     i_q10_date.delete()
     i_q10_to.delete()
