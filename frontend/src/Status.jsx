@@ -13,6 +13,13 @@ const headers = new Headers({
   "Content-Type": "application/json"
 });
 
+const styles = {
+  spacer: {
+    marginTop: "1rem",
+    marginBottom: "1rem"
+  }
+};
+
 // Valid browser other than IE
 export const VALID_BROWSERS = ["chrome", "firefox"];
 export const IE_STRING = "IE";
@@ -114,7 +121,7 @@ class Status extends Component {
         <div className={"jumbotron"}>
           <h1>{LOCALIZE.statusPage.title}</h1>
           <p>{LOCALIZE.statusPage.welcomeMsg}</p>
-          <hr />
+          <div style={styles.spacer} />
           <p>
             <a href="https://github.com/code-for-canada/project-thundercat">
               <button type="button" className="btn btn-primary">
@@ -151,7 +158,7 @@ class Status extends Component {
             </table>
           </div>
         </div>
-        <hr />
+        <div style={styles.spacer} />
         <div>
           <h3>{LOCALIZE.statusPage.systemStatusTable.title}</h3>
           <div>
