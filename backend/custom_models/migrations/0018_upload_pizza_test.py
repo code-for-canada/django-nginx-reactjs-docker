@@ -53,6 +53,8 @@ def upload_pizza_test(apps, schema_editor):
     # create item_types; do not use bulk_create since we need these objects later on
     it_pizza_organizational_structure_tree_child = item_type(type_desc="organizational_structure_tree_child")
     it_pizza_organizational_structure_tree_child.save()
+    it_pizza_team_information_tree_child = item_type(type_desc="team_information_tree_child")
+    it_pizza_team_information_tree_child.save()
 
     # create items; do not use bulk_create since we need these objects later on
     # question 1 items
@@ -357,6 +359,46 @@ def upload_pizza_test(apps, schema_editor):
         parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=4
     )
     i_tree_view_of_pizza_org_structure_person_14.save()
+
+    # pizza team information tree view
+    i_tree_view_of_pizza_team_info = item(parent_id=i_background, item_type_id=it_tree_view, order=2)
+    i_tree_view_of_pizza_team_info.save()
+
+    # pizza team information tree view children
+    i_tree_view_of_pizza_team_info_person_1 = item(
+        parent_id=i_tree_view_of_pizza_team_info, item_type_id=it_pizza_team_information_tree_child, order=1
+    )
+    i_tree_view_of_pizza_team_info_person_1.save()
+
+    i_tree_view_of_pizza_team_info_person_2 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_1, item_type_id=it_pizza_team_information_tree_child, order=1
+    )
+    i_tree_view_of_pizza_team_info_person_2.save()
+
+    i_tree_view_of_pizza_team_info_person_3 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=1
+    )
+    i_tree_view_of_pizza_team_info_person_3.save()
+
+    i_tree_view_of_pizza_team_info_person_4 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=2
+    )
+    i_tree_view_of_pizza_team_info_person_4.save()
+
+    i_tree_view_of_pizza_team_info_person_5 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=3
+    )
+    i_tree_view_of_pizza_team_info_person_5.save()
+
+    i_tree_view_of_pizza_team_info_person_6 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=4
+    )
+    i_tree_view_of_pizza_team_info_person_6.save()
+
+    i_tree_view_of_pizza_team_info_person_7 = item(
+        parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=5
+    )
+    i_tree_view_of_pizza_team_info_person_7.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -1401,6 +1443,76 @@ FR When instructed by the test administrator, you may select the "Continue to te
                 text_detail="FR Rebel Team",
                 language=l_french,
             ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_1,
+                text_detail="Sandra Oh (Director)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_1,
+                text_detail="FR Sandra Oh (Director)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_2,
+                text_detail="O.B. Wan (Manager - You)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_2,
+                text_detail="FR O.B. Wan (Manager - You)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_3,
+                text_detail="Tim Taylor (Quality Assurance Assistants)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_3,
+                text_detail="FR Tim Taylor (Quality Assurance Assistants)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_4,
+                text_detail="Kelly Kapoor (Quality Assurance Assistants)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_4,
+                text_detail="FR Kelly Kapoor (Quality Assurance Assistants)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_5,
+                text_detail="Det. McNulty (Quality Assurance Assistants)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_5,
+                text_detail="FR Det. McNulty (Quality Assurance Assistants)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_6,
+                text_detail="Sterling Archer (Funtimes Support Assistants)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_6,
+                text_detail="FR Sterling Archer (Funtimes Support Assistants)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_7,
+                text_detail="Ska Savesbro (Funtimes Support Assistants)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_team_info_person_7,
+                text_detail="FR Ska Savesbro (Funtimes Support Assistants)",
+                language=l_french,
+            ),
         ]
     )
 
@@ -1450,6 +1562,9 @@ def destroy_pizza_test(apps, schema_editor):
     # get item_type objects
     it_pizza_organizational_structure_tree_child = (
         item_type.objects.using(db_alias).filter(type_desc="organizational_structure_tree_child").last()
+    )
+    it_pizza_team_information_tree_child = (
+        item_type.objects.using(db_alias).filter(type_desc="team_information_tree_child").last()
     )
 
     # getting question types
@@ -1885,6 +2000,46 @@ def destroy_pizza_test(apps, schema_editor):
     i_tree_view_of_pizza_org_structure_person_14 = (
         item.objects.using(db_alias)
         .filter(parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=4)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_tree_view, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info, item_type_id=it_pizza_team_information_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_1, item_type_id=it_pizza_team_information_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=3)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=4)
+        .last()
+    )
+    i_tree_view_of_pizza_team_info_person_7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_team_info_person_2, item_type_id=it_pizza_team_information_tree_child, order=5)
         .last()
     )
 
@@ -2399,7 +2554,59 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_tree_view_of_pizza_org_structure_person_14, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_1, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_2, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_3, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_3, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_4, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_4, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_5, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_5, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_6, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_6, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_7, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_team_info_person_7, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_tree_view_of_pizza_team_info_person_1.delete()
+    i_tree_view_of_pizza_team_info_person_2.delete()
+    i_tree_view_of_pizza_team_info_person_3.delete()
+    i_tree_view_of_pizza_team_info_person_4.delete()
+    i_tree_view_of_pizza_team_info_person_5.delete()
+    i_tree_view_of_pizza_team_info_person_6.delete()
+    i_tree_view_of_pizza_team_info_person_7.delete()
+    i_tree_view_of_pizza_team_info.delete()
+    it_pizza_team_information_tree_child.delete()
     i_tree_view_of_pizza_org_structure_person_1.delete()
     i_tree_view_of_pizza_org_structure_person_2.delete()
     i_tree_view_of_pizza_org_structure_person_3.delete()
@@ -2415,6 +2622,7 @@ def destroy_pizza_test(apps, schema_editor):
     i_tree_view_of_pizza_org_structure_person_13.delete()
     i_tree_view_of_pizza_org_structure_person_14.delete()
     i_tree_view_of_pizza_org_structure.delete()
+    it_pizza_organizational_structure_tree_child.delete()
     i_overview_before_test.delete()
     i_special_event_2.delete()
     i_special_event_1.delete()
