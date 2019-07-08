@@ -15,6 +15,7 @@ import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
 import { getTestQuestions } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
+import { processTreeContent } from "../../helpers/transformations";
 
 const styles = {
   testImage: {
@@ -56,27 +57,10 @@ class TeamInformation extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // populates the tree view array with people names
-  populateTreeArray = response => {
-    const responsePrefixEn =
-      response.background.en.background[0].tree_view[1].team_information_tree_child;
-    const responsePrefixFr =
-      response.background.fr.background[0].tree_view[1].team_information_tree_child;
-    // populating names in English
-    for (let i = 0; i < responsePrefixEn.length; i++) {
-      this.setState({ treeViewContent_en: responsePrefixEn[i] });
-    }
-    // populating names in French
-    for (let i = 0; i < responsePrefixFr.length; i++) {
-      this.setState({ treeViewContent_fr: responsePrefixFr[i] });
-    }
-  };
-
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
     this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      this.populateTreeArray(response);
-      // saving the team information markdown content in local states
+      // Save the team information markdown content in local states.
       this.setState({
         markdown_section1_en: response.background.en.background[0].markdown[3].text,
         markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
@@ -86,6 +70,10 @@ class TeamInformation extends Component {
         popupMarkdownTitle_fr: response.background.fr.background[0].markdown[7].text,
         popupMarkdownDescription_en: response.background.en.background[0].markdown[8].text,
         popupMarkdownDescription_fr: response.background.fr.background[0].markdown[8].text,
+        treeViewContent_en:
+          response.background.en.background[0].tree_view[1].team_information_tree_child,
+        treeViewContent_fr:
+          response.background.fr.background[0].tree_view[1].team_information_tree_child,
         isLoadingComplete: true
       });
     });
@@ -97,79 +85,12 @@ class TeamInformation extends Component {
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
-      treeView = [
-        {
-          id: 0,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.text
-              : treeViewContent_fr.text
-          }`,
-          groups: [1, 2, 3, 4, 5, 6],
-          level: 1
-        },
-        {
-          id: 1,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[0].text
-              : treeViewContent_fr.team_information_tree_child[0].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-
-        {
-          id: 2,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[1].text
-              : treeViewContent_fr.team_information_tree_child[1].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 3,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[2].text
-              : treeViewContent_fr.team_information_tree_child[2].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 4,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[3].text
-              : treeViewContent_fr.team_information_tree_child[3].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 5,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[4].text
-              : treeViewContent_fr.team_information_tree_child[4].text
-          }`,
-          parent: 0,
-          level: 2
-        },
-        {
-          id: 6,
-          name: `${
-            currentLanguage === LANGUAGES.english
-              ? treeViewContent_en.team_information_tree_child[5].text
-              : treeViewContent_fr.team_information_tree_child[5].text
-          }`,
-          parent: 0,
-          level: 2
-        }
-      ];
+      treeView = processTreeContent(
+        currentLanguage,
+        treeViewContent_en,
+        treeViewContent_fr,
+        "team_information_tree_child"
+      );
     }
 
     return (

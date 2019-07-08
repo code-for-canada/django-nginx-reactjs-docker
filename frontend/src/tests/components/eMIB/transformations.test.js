@@ -3,7 +3,8 @@ import {
   transformAddressBook,
   transformContact,
   transformContactName,
-  contactNameFromId
+  contactNameFromId,
+  recursivelyProcessTree
 } from "../../../helpers/transformations";
 
 const addressBook = [
@@ -44,5 +45,46 @@ describe("Check contactNameFromId", () => {
 
   it("returns an empty string when the id is not in the address book", () => {
     expect(contactNameFromId(addressBook, 6)).toEqual("");
+  });
+});
+
+describe("recursivelyProcessTree", () => {
+  it("returns a processed array for single level tree", () => {
+    const treeContent = [
+      {
+        id: 0,
+        text: "Claude Huard - Manager",
+        team_information_tree_child: []
+      }
+    ];
+    const array = recursivelyProcessTree(treeContent, "team_information_tree_child", 1, 0);
+    expect(array).toEqual([
+      { id: 0, level: 1, name: "Claude Huard - Manager", groups: [], parent: undefined }
+    ]);
+  });
+
+  it("returns a processed array for double level tree", () => {
+    const treeContent = [
+      {
+        id: 0,
+        text: "Claude Huard - Manager",
+        team_information_tree_child: [
+          {
+            text: "Danny McBride - QA Analyst",
+            id: 0
+          },
+          {
+            text: "Serge Duplessis - QA Analyst",
+            id: 1
+          }
+        ]
+      }
+    ];
+    const array = recursivelyProcessTree(treeContent, "team_information_tree_child", 1, 0);
+    expect(array).toEqual([
+      { id: 0, level: 1, name: "Claude Huard - Manager", groups: [1, 2] },
+      { id: 1, level: 2, name: "Danny McBride - QA Analyst", parent: 0 },
+      { id: 2, level: 2, name: "Serge Duplessis - QA Analyst", parent: 0 }
+    ]);
   });
 });
