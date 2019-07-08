@@ -43,11 +43,16 @@ def upload_pizza_test(apps, schema_editor):
     it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
     it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
     it_overview = item_type.objects.using(db_alias).filter(type_desc="overview").last()
+    it_tree_view = item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
 
     # getting question types
     qt_email = (
         question_type.objects.using(db_alias).filter(question_type_desc="email").last()
     )
+
+    # create item_types; do not use bulk_create since we need these objects later on
+    it_pizza_organizational_structure_tree_child = item_type(type_desc="organizational_structure_tree_child")
+    it_pizza_organizational_structure_tree_child.save()
 
     # create items; do not use bulk_create since we need these objects later on
     # question 1 items
@@ -277,6 +282,81 @@ def upload_pizza_test(apps, schema_editor):
     # overview item (before starting the test)
     i_overview_before_test = item(parent_id=pizza_test_item_id, item_type_id=it_overview, order=0)
     i_overview_before_test.save()
+
+    # pizza organizational structure tree view
+    i_tree_view_of_pizza_org_structure = item(parent_id=i_background, item_type_id=it_tree_view, order=1)
+    i_tree_view_of_pizza_org_structure.save()
+
+    # pizza organizational structure tree view children
+    i_tree_view_of_pizza_org_structure_person_1 = item(
+        parent_id=i_tree_view_of_pizza_org_structure, item_type_id=it_pizza_organizational_structure_tree_child, order=1
+    )
+    i_tree_view_of_pizza_org_structure_person_1.save()
+
+    i_tree_view_of_pizza_org_structure_person_2 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=1
+    )
+    i_tree_view_of_pizza_org_structure_person_2.save()
+    
+    i_tree_view_of_pizza_org_structure_person_3 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=1
+    )
+    i_tree_view_of_pizza_org_structure_person_3.save()
+
+    i_tree_view_of_pizza_org_structure_person_4 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=2
+    )
+    i_tree_view_of_pizza_org_structure_person_4.save()
+
+    i_tree_view_of_pizza_org_structure_person_5 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=3
+    )
+    i_tree_view_of_pizza_org_structure_person_5.save()
+
+    i_tree_view_of_pizza_org_structure_person_6 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=2
+    )
+    i_tree_view_of_pizza_org_structure_person_6.save()
+
+    i_tree_view_of_pizza_org_structure_person_7 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=1
+    )
+    i_tree_view_of_pizza_org_structure_person_7.save()
+
+    i_tree_view_of_pizza_org_structure_person_8 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=2
+    )
+    i_tree_view_of_pizza_org_structure_person_8.save()
+
+    i_tree_view_of_pizza_org_structure_person_9 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=3
+    )
+    i_tree_view_of_pizza_org_structure_person_9.save()
+
+    i_tree_view_of_pizza_org_structure_person_10 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=3
+    )
+    i_tree_view_of_pizza_org_structure_person_10.save()
+
+    i_tree_view_of_pizza_org_structure_person_11 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=1
+    )
+    i_tree_view_of_pizza_org_structure_person_11.save()
+
+    i_tree_view_of_pizza_org_structure_person_12 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=2
+    )
+    i_tree_view_of_pizza_org_structure_person_12.save()
+
+    i_tree_view_of_pizza_org_structure_person_13 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=3
+    )
+    i_tree_view_of_pizza_org_structure_person_13.save()
+
+    i_tree_view_of_pizza_org_structure_person_14 = item(
+        parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=4
+    )
+    i_tree_view_of_pizza_org_structure_person_14.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -1181,6 +1261,146 @@ FR When instructed by the test administrator, you may select the "Continue to te
 """,
                 language=l_french,
             ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_1,
+                text_detail="JOKECAN",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_1,
+                text_detail="FR JOKECAN",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_2,
+                text_detail="Stuffed Crust Division",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_2,
+                text_detail="FR Stuffed Crust Division",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_3,
+                text_detail="Extra Pepperoni",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_3,
+                text_detail="FR Extra Pepperoni",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_4,
+                text_detail="Mushroom Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_4,
+                text_detail="FR Mushroom Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_5,
+                text_detail="Ingrdient Technology Team (IT)",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_5,
+                text_detail="FR Ingrdient Technology Team (IT)",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_6,
+                text_detail="Munching Division",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_6,
+                text_detail="FR Munching Division",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_7,
+                text_detail="Canadiana Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_7,
+                text_detail="FR Canadiana Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_8,
+                text_detail="Hot Pepper Evaluation Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_8,
+                text_detail="FR Hot Pepper Evaluation Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_9,
+                text_detail="Saucy Research Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_9,
+                text_detail="FR Saucy Research Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_10,
+                text_detail="Funtimes Division",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_10,
+                text_detail="FR Funtimes Division",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_11,
+                text_detail="Crustless Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_11,
+                text_detail="FR Crustless Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_12,
+                text_detail="Crunchy Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_12,
+                text_detail="FR Crunchy Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_13,
+                text_detail="Alliance Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_13,
+                text_detail="FR Alliance Team",
+                language=l_french,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_14,
+                text_detail="Rebel Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_tree_view_of_pizza_org_structure_person_14,
+                text_detail="FR Rebel Team",
+                language=l_french,
+            ),
         ]
     )
 
@@ -1225,6 +1445,12 @@ def destroy_pizza_test(apps, schema_editor):
     it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
     it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
     it_overview = item_type.objects.using(db_alias).filter(type_desc="overview").last()
+    it_tree_view = item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
+
+    # get item_type objects
+    it_pizza_organizational_structure_tree_child = (
+        item_type.objects.using(db_alias).filter(type_desc="organizational_structure_tree_child").last()
+    )
 
     # getting question types
     qt_email = (
@@ -1584,6 +1810,81 @@ def destroy_pizza_test(apps, schema_editor):
     i_overview_before_test = (
         item.objects.using(db_alias)
         .filter(parent_id=pizza_test_item_id, item_type_id=it_overview, order=0)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_tree_view, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure, item_type_id=it_pizza_organizational_structure_tree_child, order=1).
+        last()
+    )
+    i_tree_view_of_pizza_org_structure_person_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=1)
+        .last()
+    )   
+    i_tree_view_of_pizza_org_structure_person_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_2, item_type_id=it_pizza_organizational_structure_tree_child, order=3)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_8 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_9 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_6, item_type_id=it_pizza_organizational_structure_tree_child, order=3)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_10 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_1, item_type_id=it_pizza_organizational_structure_tree_child, order=3)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_11 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=1)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_12 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=2)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_13 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=3)
+        .last()
+    )
+    i_tree_view_of_pizza_org_structure_person_14 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_tree_view_of_pizza_org_structure_person_10, item_type_id=it_pizza_organizational_structure_tree_child, order=4)
         .last()
     )
 
@@ -2013,7 +2314,107 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_overview_before_test, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_1, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_2, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_3, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_3, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_4, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_4, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_5, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_5, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_6, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_6, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_7, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_7, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_8, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_8, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_9, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_9, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_10, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_10, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_11, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_11, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_12, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_12, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_13, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_13, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_14, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_tree_view_of_pizza_org_structure_person_14, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_tree_view_of_pizza_org_structure_person_1.delete()
+    i_tree_view_of_pizza_org_structure_person_2.delete()
+    i_tree_view_of_pizza_org_structure_person_3.delete()
+    i_tree_view_of_pizza_org_structure_person_4.delete()
+    i_tree_view_of_pizza_org_structure_person_5.delete()
+    i_tree_view_of_pizza_org_structure_person_6.delete()
+    i_tree_view_of_pizza_org_structure_person_7.delete()
+    i_tree_view_of_pizza_org_structure_person_8.delete()
+    i_tree_view_of_pizza_org_structure_person_9.delete()
+    i_tree_view_of_pizza_org_structure_person_10.delete()
+    i_tree_view_of_pizza_org_structure_person_11.delete()
+    i_tree_view_of_pizza_org_structure_person_12.delete()
+    i_tree_view_of_pizza_org_structure_person_13.delete()
+    i_tree_view_of_pizza_org_structure_person_14.delete()
+    i_tree_view_of_pizza_org_structure.delete()
     i_overview_before_test.delete()
     i_special_event_2.delete()
     i_special_event_1.delete()
