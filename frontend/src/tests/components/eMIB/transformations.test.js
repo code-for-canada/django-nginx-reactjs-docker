@@ -53,13 +53,19 @@ describe("recursivelyProcessTree", () => {
     const treeContent = [
       {
         id: 0,
-        text: "Claude Huard - Manager",
+        text: "Claude Huard (Quality Assurance Manager - You)",
         team_information_tree_child: []
       }
     ];
     const array = recursivelyProcessTree(treeContent, "team_information_tree_child", 1, 0);
     expect(array).toEqual([
-      { id: 0, level: 1, name: "Claude Huard - Manager", groups: [], parent: undefined }
+      {
+        id: 0,
+        level: 1,
+        name: "Claude Huard (Quality Assurance Manager - You)",
+        groups: [],
+        parent: undefined
+      }
     ]);
   });
 
@@ -67,14 +73,14 @@ describe("recursivelyProcessTree", () => {
     const treeContent = [
       {
         id: 0,
-        text: "Claude Huard - Manager",
+        text: "Claude Huard (Quality Assurance Manager - You)",
         team_information_tree_child: [
           {
-            text: "Danny McBride - QA Analyst",
+            text: "Danny McBride (QA Analyst)",
             id: 0
           },
           {
-            text: "Serge Duplessis - QA Analyst",
+            text: "Serge Duplessis (QA Analyst)",
             id: 1
           }
         ]
@@ -82,9 +88,9 @@ describe("recursivelyProcessTree", () => {
     ];
     const array = recursivelyProcessTree(treeContent, "team_information_tree_child", 1, 0);
     expect(array).toEqual([
-      { id: 0, level: 1, name: "Claude Huard - Manager", groups: [1, 2] },
-      { id: 1, level: 2, name: "Danny McBride - QA Analyst", parent: 0 },
-      { id: 2, level: 2, name: "Serge Duplessis - QA Analyst", parent: 0 }
+      { id: 0, level: 1, name: "Claude Huard (Quality Assurance Manager - You)", groups: [1, 2] },
+      { id: 1, level: 2, name: "Danny McBride (QA Analyst)", parent: 0 },
+      { id: 2, level: 2, name: "Serge Duplessis (QA Analyst)", parent: 0 }
     ]);
   });
 });
