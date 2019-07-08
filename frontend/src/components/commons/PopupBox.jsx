@@ -47,9 +47,6 @@ const styles = {
   },
   rightButton: {
     float: "right"
-  },
-  hr: {
-    margin: 0
   }
 };
 

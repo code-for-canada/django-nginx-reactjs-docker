@@ -14,6 +14,9 @@ const styles = {
   headings: {
     fontWeight: "bold"
   },
+  spacer: {
+    margin: "16px 0 16px 0"
+  },
   editButton: {
     float: "right"
   },
@@ -62,6 +65,7 @@ class ActionViewTask extends Component {
           <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.taskContent.task}</div>
           <p style={styles.preWrap}>{action.task}</p>
         </div>
+        <div style={styles.spacer} />
         <div>
           <div style={styles.headings}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
@@ -70,6 +74,7 @@ class ActionViewTask extends Component {
         </div>
         {!this.props.disabled && (
           <div>
+            <div style={styles.spacer} />
             <div aria-label={LOCALIZE.ariaLabel.taskOptions}>
               <button
                 id="unit-test-view-task-edit-button"

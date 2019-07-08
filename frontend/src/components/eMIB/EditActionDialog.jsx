@@ -83,9 +83,6 @@ const styles = {
     width: "100%",
     borderTop: "1px solid #96a8b2",
     margin: 0
-  },
-  hr: {
-    margin: 0
   }
 };
 
