@@ -51,6 +51,10 @@ class App extends Component {
     // getting the authentication token from the local storage
     const auth_token = localStorage.auth_token;
 
+    if (auth_token === undefined) {
+      return;
+    }
+
     // checks if the token is still valid
     fetch("/api/auth/jwt/verify_token/", {
       method: "POST",
