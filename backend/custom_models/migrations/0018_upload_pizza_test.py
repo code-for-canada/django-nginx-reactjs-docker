@@ -245,13 +245,13 @@ def upload_pizza_test(apps, schema_editor):
     )
     i_background.save()
 
-    # info about jokecan item
-    i_info_about_jokecan = item(parent_id=i_background, item_type_id=it_markdown, order=1)
-    i_info_about_jokecan.save()
+    # overview item
+    i_overview = item(parent_id=i_background, item_type_id=it_markdown, order=1)
+    i_overview.save()
 
-    # mandate item
-    i_mandate = item(parent_id=i_background, item_type_id=it_markdown, order=2)
-    i_mandate.save()
+    # information about jokecan item
+    i_info_about_jokecan = item(parent_id=i_background, item_type_id=it_markdown, order=2)
+    i_info_about_jokecan.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -786,7 +786,26 @@ def upload_pizza_test(apps, schema_editor):
             item_text(
                 item_id=i_background, text_detail="Background", language=l_english
             ),
-            item_text(item_id=i_background, text_detail="Contexte", language=l_french),
+            item_text(
+            item_id=i_overview,
+            text_detail="""## Overview
+
+**Argentina, and more specifically Buenos Aires, received a massive Italian immigration at the turn of the 19th century. Immigrants from Naples and Genoa opened the first pizza bars. Today is March 14th.**
+
+In the following sections, you will find information about JOKECAN and the Rebel Team. You will have access to this information throughout the test.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_overview,
+                text_detail="""## FR Overview
+
+**FR Argentina, and more specifically Buenos Aires, received a massive Italian immigration at the turn of the 19th century. Immigrants from Naples and Genoa opened the first pizza bars. Today is March 14th.**
+
+FR In the following sections, you will find information about JOKECAN and the Rebel Team. You will have access to this information throughout the test.
+""",
+                language=l_french,
+            ),
             item_text(
             item_id=i_info_about_jokecan,
             text_detail="""## Information about JOKECAN
@@ -794,6 +813,19 @@ def upload_pizza_test(apps, schema_editor):
 JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
 
 JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
+
+### Mandate
+
+- To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
+- To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations),
+
+### Priorities
+
+In April of the current year, JOKECAN established the following organizational priorities for the next three years.
+
+1. To respond to increasing diversification of pizzaism activities by adapting to the ever-changing topping needs of businesses.
+2. Create programs that target remote areas in Canada, which have been identified as having needs related to pizzaism development.
+3. Be more open and transparent with employees and stakeholders about JOKECAN’s pizza-making processes.
 """,
             language=l_english,
             ),
@@ -804,27 +836,22 @@ JOKECAN aims to have a positive social, economic, cultural and culinary impact o
 FR JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
 
 FR JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
-""",
-                language=l_french,
-            ),
-            item_text(
-            item_id=i_mandate,
-            text_detail="""## Mandate
 
-- To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
-- To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations).
-""",
-            language=l_english,
-            ),
-            item_text(
-                item_id=i_mandate,
-                text_detail="""## FR Mandate
+### FR Mandate
 
 - FR To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
-- FR To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations).
+- FR To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations),
+
+### FR Priorities
+
+FR In April of the current year, JOKECAN established the following organizational priorities for the next three years.
+
+1. FR To respond to increasing diversification of pizzaism activities by adapting to the ever-changing topping needs of businesses.
+2. FR Create programs that target remote areas in Canada, which have been identified as having needs related to pizzaism development.
+3. FR Be more open and transparent with employees and stakeholders about JOKECAN’s pizza-making processes.
 """,
                 language=l_french,
-            ),
+            )
         ]
     )
 
@@ -1189,12 +1216,12 @@ def destroy_pizza_test(apps, schema_editor):
         .filter(parent_id=pizza_test_item_id, item_type_id=it_background, order=0)
         .last()
     )
-    i_info_about_jokecan = (
+    i_overview = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=1)
         .last()
     )
-    i_mandate = (
+    i_info_about_jokecan = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=2)
         .last()
@@ -1570,6 +1597,13 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_background, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(   
+        item_id=i_overview, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_overview, language=l_french
+    ).delete()
+
     item_text.objects.using(db_alias).filter(
         item_id=i_info_about_jokecan, language=l_english
     ).delete()
@@ -1577,16 +1611,9 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_info_about_jokecan, language=l_french
     ).delete()
 
-    item_text.objects.using(db_alias).filter(
-        item_id=i_mandate, language=l_english
-    ).delete()
-    item_text.objects.using(db_alias).filter(
-        item_id=i_mandate, language=l_french
-    ).delete()
-
     # destroy items; inverted order as children must be deleted first
-    i_mandate.delete()
     i_info_about_jokecan.delete()
+    i_overview.delete()
     i_background.delete()
     i_q10_body.delete()
     i_q10_date.delete()
