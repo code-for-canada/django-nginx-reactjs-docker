@@ -12,6 +12,7 @@ def upload_background_tree_view_info(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
 
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -28,10 +29,7 @@ def upload_background_tree_view_info(apps, schema_editor):
         .last()
     )
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id.item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
     it_background = (
         item_type.objects.using(db_alias).filter(type_desc="background").last()
@@ -148,192 +146,192 @@ def upload_background_tree_view_info(apps, schema_editor):
         [
             item_text(
                 item_id=i_tree_view_of_org_structure_person_1,
-                text_detail="Jenna Icard - President",
+                text_detail="Jenna Icard (President)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_1,
-                text_detail="Jenna Icard - Présidente",
+                text_detail="Jenna Icard (Présidente)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_2,
-                text_detail="Amari Kinsler - Corporate Affairs Director",
+                text_detail="Amari Kinsler (Corporate Affairs Director)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_2,
-                text_detail="Amari Kinsler - Directeur, Affaires ministérielles",
+                text_detail="Amari Kinsler (Directeur, Affaires ministérielles)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_3,
-                text_detail="Marc Sheridan - Human Resources Manager",
+                text_detail="Marc Sheridan (Human Resources Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_3,
-                text_detail="Marc Sheridan - Gestionnaire, Ressources humaines",
+                text_detail="Marc Sheridan (Gestionnaire, Ressources humaines)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_4,
-                text_detail="Bob McNutt - Finance Manager",
+                text_detail="Bob McNutt (Finance Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_4,
-                text_detail="Bob McNutt - Gestionnaire, Finances",
+                text_detail="Bob McNutt (Gestionnaire, Finances)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_5,
-                text_detail="Lana Hussad - Information Technology Manager",
+                text_detail="Lana Hussad (Information Technology Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_5,
-                text_detail="Lana Hussad - Gestionnaire, Technologies de l'information",
+                text_detail="Lana Hussad (Gestionnaire, Technologies de l'information)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_6,
-                text_detail="Geneviève Bédard - Research and Innovations Director",
+                text_detail="Geneviève Bédard (Research and Innovations Director)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_6,
-                text_detail="Geneviève Bédard - Directrice, Recherche et innovations",
+                text_detail="Geneviève Bédard (Directrice, Recherche et innovations)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_7,
-                text_detail="Bartosz Greco - Program Development Director",
+                text_detail="Bartosz Greco (Program Development Director)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_7,
-                text_detail="Bartosz Greco - Directeur, Développement de programmes",
+                text_detail="Bartosz Greco (Directeur, Développement de programmes)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_8,
-                text_detail="Nancy Ward - Services and Communications Director",
+                text_detail="Nancy Ward (Services and Communications Director)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_8,
-                text_detail="Nancy Ward - Directrice, Services et communications",
+                text_detail="Nancy Ward (Directrice, Services et communications)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_9,
-                text_detail="Claude Huard - Quality Assurance Manager (You)",
+                text_detail="Claude Huard (Quality Assurance Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_9,
-                text_detail="Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+                text_detail="Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_10,
-                text_detail="Haydar Kalil - Services and Support Manager",
+                text_detail="Haydar Kalil (Services and Support Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_10,
-                text_detail="Haydar Kalil - Gestionnaire, Service et soutien",
+                text_detail="Haydar Kalil (Gestionnaire, Service et soutien)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_11,
-                text_detail="Geoffrey Hamma - Audits Manager",
+                text_detail="Geoffrey Hamma (Audits Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_11,
-                text_detail="Geoffrey Hamma - Gestionnaire, Vérifications",
+                text_detail="Geoffrey Hamma (Gestionnaire, Vérifications)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_12,
-                text_detail="Lucy Trang - E-Training Manager",
+                text_detail="Lucy Trang (E-Training Manager)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_12,
-                text_detail="Lucy Trang - Gestionnaire, Formation en ligne",
+                text_detail="Lucy Trang (Gestionnaire, Formation en ligne)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_1,
-                text_detail="Claude Huard - Manager (You)",
+                text_detail="Claude Huard (Quality Assurance Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_1,
-                text_detail="Claude Huard - Gestionnaire (vous)",
+                text_detail="Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_2,
-                text_detail="Danny McBride - QA Analyst",
+                text_detail="Danny McBride (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_2,
-                text_detail="Danny McBride - Analyste de l’assurance de la qualité",
+                text_detail="Danny McBride (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_3,
-                text_detail="Serge Duplessis - QA Analyst",
+                text_detail="Serge Duplessis (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_3,
-                text_detail="Serge Duplessis - Analyste de l’assurance de la qualité",
+                text_detail="Serge Duplessis (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_4,
-                text_detail="Marina Richter - QA Analyst",
+                text_detail="Marina Richter (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_4,
-                text_detail="Marina Richter - Analyste de l’assurance de la qualité",
+                text_detail="Marina Richter (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_5,
-                text_detail="Mary Woodside - QA Analyst",
+                text_detail="Mary Woodside (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_5,
-                text_detail="Mary Woodside - Analyste de l’assurance de la qualité",
+                text_detail="Mary Woodside (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_6,
-                text_detail="Charlie Wang - QA Analyst",
+                text_detail="Charlie Wang (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_6,
-                text_detail="Charlie Wang - Analyste de l’assurance de la qualité",
+                text_detail="Charlie Wang (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_7,
-                text_detail="Jack Laurier - QA Analyst",
+                text_detail="Jack Laurier (QA Analyst)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_7,
-                text_detail="Jack Laurier - Analyste de l’assurance de la qualité",
+                text_detail="Jack Laurier (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
         ]
@@ -346,6 +344,7 @@ def destroy_background_tree_view_info(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
     # get language objects
@@ -372,10 +371,7 @@ def destroy_background_tree_view_info(apps, schema_editor):
 
     # get item objects
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id.item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
     it_background = (
         item_type.objects.using(db_alias).filter(type_desc="background").last()
