@@ -10,6 +10,7 @@ def upload_background_markdown(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
 
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -26,10 +27,7 @@ def upload_background_markdown(apps, schema_editor):
         .last()
     )
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
 
     # create item_types; do not use bulk_create since we need these objects later on
@@ -252,6 +250,7 @@ def destroy_background_markdown(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
     # get language objects
@@ -273,10 +272,7 @@ def destroy_background_markdown(apps, schema_editor):
 
     # get item objects
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id.item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
     i_background = (
         item.objects.using(db_alias)

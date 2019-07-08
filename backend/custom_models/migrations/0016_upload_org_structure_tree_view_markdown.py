@@ -10,6 +10,7 @@ def upload_org_structure_tree_view_markdown(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
 
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -26,10 +27,7 @@ def upload_org_structure_tree_view_markdown(apps, schema_editor):
         .last()
     )
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
     it_background = (
         item_type.objects.using(db_alias).filter(type_desc="background").last()
@@ -86,6 +84,7 @@ def destroy_org_structure_tree_view_markdown(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
+    test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
     # get language objects
@@ -101,10 +100,7 @@ def destroy_org_structure_tree_view_markdown(apps, schema_editor):
     )
     # get item_type objects
     emib_sample_item_id = (
-        item_text.objects.using(db_alias)
-        .filter(text_detail="eMiB Sample Test", language=l_english)
-        .last()
-        .item_id
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
     )
     it_background = (
         item_type.objects.using(db_alias).filter(type_desc="background").last()
