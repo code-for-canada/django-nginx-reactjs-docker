@@ -1,3 +1,5 @@
+import { LANGUAGES } from "../modules/LocalizeRedux";
+
 // transform addressBook (list of addressBookContactShape) into a list of display names (optionShapes)
 export function transformAddressBook(addressBook) {
   let options = [];
@@ -51,7 +53,8 @@ export const processTreeContent = (
   treeViewContent_fr,
   treeType
 ) => {
-  const treeContent = currentLanguage === "en" ? treeViewContent_en : treeViewContent_fr;
+  const treeContent =
+    currentLanguage === LANGUAGES.english ? treeViewContent_en : treeViewContent_fr;
   const tree = recursivelyProcessTree(treeContent, treeType, 1, 0);
   return tree;
 };

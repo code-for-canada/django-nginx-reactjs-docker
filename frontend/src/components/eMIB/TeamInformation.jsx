@@ -82,7 +82,6 @@ class TeamInformation extends Component {
   render() {
     const { currentLanguage } = this.props;
     const { treeViewContent_en, treeViewContent_fr } = this.state;
-
     let treeView = [];
     // waiting for tree view content data loading
     if (this.state.isLoadingComplete) {
