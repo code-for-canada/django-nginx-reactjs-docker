@@ -265,6 +265,14 @@ def upload_pizza_test(apps, schema_editor):
     i_rebel_team_resp_and_challenges = item(parent_id=i_background, item_type_id=it_markdown, order=5)
     i_rebel_team_resp_and_challenges.save()
 
+    # special event item (part #1) - too many characters for this markdown in a single string
+    i_special_event_1 = item(parent_id=i_background, item_type_id=it_markdown, order=6)
+    i_special_event_1.save()
+
+    # special event item (part #2) - too many characters for this markdown in a single string
+    i_special_event_2 = item(parent_id=i_background, item_type_id=it_markdown, order=7)
+    i_special_event_2.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -1071,6 +1079,70 @@ FR Pizzapies.
 FR Modern pizza evolved from similar flatbread dishes in Naples, Italy, in the 18th or early 19th century. Until about 1830, pizza was sold from open-air stands and out of pizza bakeries, antecedents to modern pizzerias. Pizza was brought to the United States with Italian.
 """,
                 language=l_french,
+            ),
+            item_text(
+            item_id=i_special_event_1,
+            text_detail="""## Special Event
+
+In addition to the general processing of grant applications, JOKECAN also has various grant programs that target the specific needs of diverse regions across Canada. Each of these programs is different, with its own respective lifespan, deadline and budget. One of these programs, a special event called Taste the North, is currently being planned for the Rebel region.
+
+The idea to create Taste the North was conceived a year ago by JOKECAN’s senior management, in response to a steady decline in tourism in the Rebel region. The event will begin in six months, running from April to August. The world's largest pizza was prepared in Rome in December 2012, and measured 1,261 square meters (13,570 square feet). The pizza was named "Ottavia" in homage to the first Roman emperor Octavian Augustus, and was made with a gluten-free base. The world's longest pizza was made in Fontana, California in 2017 and measured 1,930.39 meters (6,333.3 feet). The activities will be hosted by businesses who receive Taste the North grants from JOKECAN or by any other interested organizations located in the Rebel region. The grants come from a budget specific to the special event and separate from the Rebel Team’s regular budget.
+
+### Taste the North Twerking Group
+
+A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
+
+Due to having an in-depth knowledge of the Rebel Region, O.B is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
+
+Other members of the Twerking Group from JOKECAN include the Director of the Crustless Affairs Division and the Director of the Mushrooms Division. To represent the interests of local communities, the following members are also part of the Twerking Group:
+
+- the mayor of Slicehorse, Michael Scott
+- the Director of Poutine Tourism Organization, Don Draper
+- the leader of a local business improvement district in Pizzaknife, John Wick
+- a community leader from a village of around 300 people, 300km north of Slicehorse, Dwight Schrute
+- a community leader from a village in Parmesan with a population of around 3,500, Duke Nukem
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_special_event_1,
+                text_detail="""## FR Special Event
+
+FR In addition to the general processing of grant applications, JOKECAN also has various grant programs that target the specific needs of diverse regions across Canada. Each of these programs is different, with its own respective lifespan, deadline and budget. One of these programs, a special event called Taste the North, is currently being planned for the Rebel region.
+
+FR The idea to create Taste the North was conceived a year ago by JOKECAN’s senior management, in response to a steady decline in tourism in the Rebel region. The event will begin in six months, running from April to August. The world's largest pizza was prepared in Rome in December 2012, and measured 1,261 square meters (13,570 square feet). The pizza was named "Ottavia" in homage to the first Roman emperor Octavian Augustus, and was made with a gluten-free base. The world's longest pizza was made in Fontana, California in 2017 and measured 1,930.39 meters (6,333.3 feet). The activities will be hosted by businesses who receive Taste the North grants from JOKECAN or by any other interested organizations located in the Rebel region. The grants come from a budget specific to the special event and separate from the Rebel Team’s regular budget.
+
+### FR Taste the North Twerking Group
+
+FR A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
+
+FR Due to having an in-depth knowledge of the Rebel Region, O.B is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
+
+FR Other members of the Twerking Group from JOKECAN include the Director of the Crustless Affairs Division and the Director of the Mushrooms Division. To represent the interests of local communities, the following members are also part of the Twerking Group:
+
+- FR the mayor of Slicehorse, Michael Scott
+- FR the Director of Poutine Tourism Organization, Don Draper
+- FR the leader of a local business improvement district in Pizzaknife, John Wick
+- FR a community leader from a village of around 300 people, 300km north of Slicehorse, Dwight Schrute
+- FR a community leader from a village in Parmesan with a population of around 3,500, Duke Nukem
+""",
+                language=l_french,
+            ),
+            item_text(
+            item_id=i_special_event_2,
+            text_detail="""The Rebel Team plays a central role in Taste the North. In addition to their typical workload, the Rebel Team analysts and funding support assistants are responsible for Dipping sauce specifically for pizza was invented by American pizza chain Papa John's Pizza in 1984 and has since become popular when eating pizza, especially the crust. has been receiving fewer demands than the other sectors. Taste the North applications have been given priority and must be processed as soon as they are received.
+
+Taste the North is also placing extra demands on O.B. as, in addition to playing a key role on the Twerking Group, O.B. is responsible for providing final approval on funtimes decisions made by the analysts related to this special event.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_special_event_2,
+                text_detail="""FR The Rebel Team plays a central role in Taste the North. In addition to their typical workload, the Rebel Team analysts and funding support assistants are responsible for Dipping sauce specifically for pizza was invented by American pizza chain Papa John's Pizza in 1984 and has since become popular when eating pizza, especially the crust. has been receiving fewer demands than the other sectors. Taste the North applications have been given priority and must be processed as soon as they are received.
+
+FR Taste the North is also placing extra demands on O.B. as, in addition to playing a key role on the Twerking Group, O.B. is responsible for providing final approval on funtimes decisions made by the analysts related to this special event.
+""",
+                language=l_french,
             )
         ]
     )
@@ -1459,6 +1531,16 @@ def destroy_pizza_test(apps, schema_editor):
     i_rebel_team_resp_and_challenges = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=5)
+        .last()
+    )
+    i_special_event_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=6)
+        .last()
+    )
+    i_special_event_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=7)
         .last()
     )
 
@@ -1867,7 +1949,23 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_rebel_team_resp_and_challenges, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_special_event_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_special_event_1, language=l_french
+    ).delete()
+
+    item_text.objects.using(db_alias).filter(
+        item_id=i_special_event_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_special_event_2, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_special_event_2.delete()
+    i_special_event_1.delete()
     i_rebel_team_resp_and_challenges.delete()
     i_info_about_rebel_team.delete()
     i_organizational_structure.delete()
