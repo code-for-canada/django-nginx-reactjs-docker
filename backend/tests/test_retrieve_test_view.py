@@ -115,24 +115,24 @@ class RetrieveInTest(TestCase):
                     "email": [
                         {
                             "subject": "Mauvaise expérience avec Serv",
-                            "from": "Serge Duplessis (analyste de l’assurance de la qualité, Équipe de l’assurance de la qualité)",
-                            "to": "Claude Huard (gestionnaire, Équipe de l’assurance de la qualité)",
+                            "from": "Serge Duplessis (Analyste de l’assurance de la qualité)",
+                            "to": "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                             "date": "Le jeudi 3 novembre",
                             "body": "Bonjour Claude.\n\nAlors que vous vous familiarisez avec vos nouvelles fonctions, j’aimerais vous faire part de certaines de mes opinions concernant les changements que l’on propose d’apporter à notre système de demandes de services et à nos pratiques en matière de documentation.\n\nJe travaille au sein de l’Équipe de l’assurance de la qualité depuis plus de 12 ans. J’estime que, dans l’ensemble, nous avons bien réussi à comprendre et à traiter les demandes de service. Le passage à un système automatisé et informatisé prendrait beaucoup de temps avant qu’on s’y adapte et pourrait compromettre la qualité de notre service. Par exemple, une conversation en personne ou par téléphone avec un client peut nous aider à mieux comprendre ses problèmes, car cela nous permet de poser des questions d’approfondissement et d’obtenir des renseignements importants sur chaque cas. En adoptant cette nouvelle technologie, nous risquons d’avoir plus de problèmes de TI et des retards imprévus à long terme.\n\nJ’ai déjà exprimé mon opinion lors de réunions précédentes, mais je n’ai pas l’impression que mes opinions comptent. Tous les autres sont dans l’équipe depuis moins de deux ans et je me sens ignoré parce que je suis le plus âgé de l’équipe. Je vous encourage à tenir compte de mon opinion afin que nous ne commettions pas une erreur coûteuse. \n\nSerge",
                             "id": 0
                         },
                         {
                             "subject": "Formation informelle sur Serv",
-                            "from": "Marina Richter (analyste de l’assurance de la qualité, Équipe de l’assurance de la qualité)",
-                            "to": "Claude Huard (gestionnaire, Équipe de l’assurance de la qualité)",
+                            "from": "Marina Richter (Analyste de l’assurance de la qualité)",
+                            "to": "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                             "date": "Le vendredi 4 novembre",
                             "body": "Bonjour Claude.\n\nLors de notre dernière réunion, Danny a indiqué qu’il avait beaucoup appris sur le système Serv  pendant l’exercice d’essai pilote avec l’Équipe des TI. En discutant avec d’autres membres de notre équipe, certains ont mentionné qu’ils avaient reçu une formation et avaient travaillé avec une ancienne version de Serv dans des emplois antérieurs. Cependant, certains d’entre nous ne l’ont jamais utilisée. J’aimerais savoir s’il y aurait des possibilités d’être formé sur Serv ?\n\nMarina",
                             "id": 1
                         },
                         {
                             "subject": "Date limite de dépôt du rapport",
-                            "from": "Charlie Wang (analyste de l’assurance de la qualité, Équipe de l’assurance de la qualité)",
-                            "to": "Claude Huard (gestionnaire, Équipe de l’assurance de la qualité)",
+                            "from": "Charlie Wang (Analyste de l’assurance de la qualité)",
+                            "to": "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                             "date": "Le vendredi 4 novembre",
                             "body": "Bonjour Claude.\n\nJe travaille avec Clara Farewell de l’Unité de recherche et innovations sur l’évaluation de la qualité d’une approche de formation et j’ai de la difficulté à la joindre. Je commence à m’inquiéter parce que j’attendais qu’elle termine sa partie du travail pour achever le rapport d’évaluation.\nAu cours des trois dernières semaines, nous avions prévu des rencontres de travail les vendredis après-midi et, après avoir annulé la première rencontre, elle était absente aux deux dernières, sans donner un préavis. Elle n’a pas non plus répondu à mes tentatives de communiquer avec elle par téléphone ou par courriel. Je m’inquiète de ne pas pouvoir terminer le rapport d’ici vendredi prochain sans sa part du travail.\n\nDans un autre ordre d’idées, un de mes collègues de l’Unité de développement des programmes m’a dit que son directeur, Bartosz Greco, inviterait des employés d’autres unités à les aider à créer un nouveau programme de formation. Ils veulent adopter une approche qui inclut des perspectives multiples. J’aimerais bien participer à ce processus. Comme d’habitude, la permission du gestionnaire est requise pour y participer. Je me demande ce que tu en penses.\n\nMerci,\nCharlie",
                             "id": 2
@@ -327,51 +327,51 @@ class RetrieveInTest(TestCase):
                                 {
                                     "organizational_structure_tree_child": [
                                         {
-                                            "text": "Jenna Icard - Présidente",
+                                            "text": "Jenna Icard (Présidente)",
                                             "organizational_structure_tree_child": [
                                                 {
-                                                    "text": "Amari Kinsler - Directeur, Affaires ministérielles",
+                                                    "text": "Amari Kinsler (Directeur, Affaires ministérielles)",
                                                     "organizational_structure_tree_child": [
                                                         {
-                                                            "text": "Marc Sheridan - Gestionnaire, Ressources humaines",
+                                                            "text": "Marc Sheridan (Gestionnaire, Ressources humaines)",
                                                             "id": 0
                                                         },
                                                         {
-                                                            "text": "Bob McNutt - Gestionnaire, Finances",
+                                                            "text": "Bob McNutt (Gestionnaire, Finances)",
                                                             "id": 1
                                                         },
                                                         {
-                                                            "text": "Lana Hussad - Gestionnaire, Technologies de l'information",
+                                                            "text": "Lana Hussad (Gestionnaire, Technologies de l'information)",
                                                             "id": 2
                                                         }
                                                     ],
                                                     "id": 0
                                                 },
                                                 {
-                                                    "text": "Geneviève Bédard - Directrice, Recherche et innovations",
+                                                    "text": "Geneviève Bédard (Directrice, Recherche et innovations)",
                                                     "id": 1
                                                 },
                                                 {
-                                                    "text": "Bartosz Greco - Directeur, Développement de programmes",
+                                                    "text": "Bartosz Greco (Directeur, Développement de programmes)",
                                                     "id": 2
                                                 },
                                                 {
-                                                    "text": "Nancy Ward - Directrice, Services et communications",
+                                                    "text": "Nancy Ward (Directrice, Services et communications)",
                                                     "organizational_structure_tree_child": [
                                                         {
-                                                            "text": "Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+                                                            "text": "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                                                             "id": 0
                                                         },
                                                         {
-                                                            "text": "Haydar Kalil - Gestionnaire, Service et soutien",
+                                                            "text": "Haydar Kalil (Gestionnaire, Service et soutien)",
                                                             "id": 1
                                                         },
                                                         {
-                                                            "text": "Geoffrey Hamma - Gestionnaire, Vérifications",
+                                                            "text": "Geoffrey Hamma (Gestionnaire, Vérifications)",
                                                             "id": 2
                                                         },
                                                         {
-                                                            "text": "Lucy Trang - Gestionnaire, Formation en ligne",
+                                                            "text": "Lucy Trang (Gestionnaire, Formation en ligne)",
                                                             "id": 3
                                                         }
                                                     ],
@@ -386,30 +386,30 @@ class RetrieveInTest(TestCase):
                                 {
                                     "team_information_tree_child": [
                                         {
-                                            "text": "Claude Huard - Gestionnaire (vous)",
+                                            "text": "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                                             "team_information_tree_child": [
                                                 {
-                                                    "text": "Danny McBride - Analyste de l’assurance de la qualité",
+                                                    "text": "Danny McBride (Analyste de l’assurance de la qualité)",
                                                     "id": 0
                                                 },
                                                 {
-                                                    "text": "Serge Duplessis - Analyste de l’assurance de la qualité",
+                                                    "text": "Serge Duplessis (Analyste de l’assurance de la qualité)",
                                                     "id": 1
                                                 },
                                                 {
-                                                    "text": "Marina Richter - Analyste de l’assurance de la qualité",
+                                                    "text": "Marina Richter (Analyste de l’assurance de la qualité)",
                                                     "id": 2
                                                 },
                                                 {
-                                                    "text": "Mary Woodside - Analyste de l’assurance de la qualité",
+                                                    "text": "Mary Woodside (Analyste de l’assurance de la qualité)",
                                                     "id": 3
                                                 },
                                                 {
-                                                    "text": "Charlie Wang - Analyste de l’assurance de la qualité",
+                                                    "text": "Charlie Wang (Analyste de l’assurance de la qualité)",
                                                     "id": 4
                                                 },
                                                 {
-                                                    "text": "Jack Laurier - Analyste de l’assurance de la qualité",
+                                                    "text": "Jack Laurier (Analyste de l’assurance de la qualité)",
                                                     "id": 5
                                                 }
                                             ],

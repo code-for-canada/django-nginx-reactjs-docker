@@ -151,7 +151,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_1,
-                text_detail="Jenna Icard - Présidente",
+                text_detail="Jenna Icard (Présidente)",
                 language=l_french,
             ),
             item_text(
@@ -161,7 +161,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_2,
-                text_detail="Amari Kinsler - Directeur, Affaires ministérielles",
+                text_detail="Amari Kinsler (Directeur, Affaires ministérielles)",
                 language=l_french,
             ),
             item_text(
@@ -171,7 +171,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_3,
-                text_detail="Marc Sheridan - Gestionnaire, Ressources humaines",
+                text_detail="Marc Sheridan (Gestionnaire, Ressources humaines)",
                 language=l_french,
             ),
             item_text(
@@ -181,7 +181,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_4,
-                text_detail="Bob McNutt - Gestionnaire, Finances",
+                text_detail="Bob McNutt (Gestionnaire, Finances)",
                 language=l_french,
             ),
             item_text(
@@ -191,7 +191,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_5,
-                text_detail="Lana Hussad - Gestionnaire, Technologies de l'information",
+                text_detail="Lana Hussad (Gestionnaire, Technologies de l'information)",
                 language=l_french,
             ),
             item_text(
@@ -201,7 +201,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_6,
-                text_detail="Geneviève Bédard - Directrice, Recherche et innovations",
+                text_detail="Geneviève Bédard (Directrice, Recherche et innovations)",
                 language=l_french,
             ),
             item_text(
@@ -211,7 +211,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_7,
-                text_detail="Bartosz Greco - Directeur, Développement de programmes",
+                text_detail="Bartosz Greco (Directeur, Développement de programmes)",
                 language=l_french,
             ),
             item_text(
@@ -221,7 +221,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_8,
-                text_detail="Nancy Ward - Directrice, Services et communications",
+                text_detail="Nancy Ward (Directrice, Services et communications)",
                 language=l_french,
             ),
             item_text(
@@ -231,7 +231,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_9,
-                text_detail="Claude Huard - Gestionnaire, Assurance de la qualité (vous)",
+                text_detail="Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                 language=l_french,
             ),
             item_text(
@@ -241,7 +241,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_10,
-                text_detail="Haydar Kalil - Gestionnaire, Service et soutien",
+                text_detail="Haydar Kalil (Gestionnaire, Service et soutien)",
                 language=l_french,
             ),
             item_text(
@@ -251,7 +251,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_11,
-                text_detail="Geoffrey Hamma - Gestionnaire, Vérifications",
+                text_detail="Geoffrey Hamma (Gestionnaire, Vérifications)",
                 language=l_french,
             ),
             item_text(
@@ -261,7 +261,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_12,
-                text_detail="Lucy Trang - Gestionnaire, Formation en ligne",
+                text_detail="Lucy Trang (Gestionnaire, Formation en ligne)",
                 language=l_french,
             ),
             item_text(
@@ -271,7 +271,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_1,
-                text_detail="Claude Huard - Gestionnaire (vous)",
+                text_detail="Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
                 language=l_french,
             ),
             item_text(
@@ -281,7 +281,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_2,
-                text_detail="Danny McBride - Analyste de l’assurance de la qualité",
+                text_detail="Danny McBride (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
@@ -291,7 +291,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_3,
-                text_detail="Serge Duplessis - Analyste de l’assurance de la qualité",
+                text_detail="Serge Duplessis (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
@@ -301,7 +301,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_4,
-                text_detail="Marina Richter - Analyste de l’assurance de la qualité",
+                text_detail="Marina Richter (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
@@ -311,7 +311,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_5,
-                text_detail="Mary Woodside - Analyste de l’assurance de la qualité",
+                text_detail="Mary Woodside (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
@@ -321,7 +321,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_6,
-                text_detail="Charlie Wang - Analyste de l’assurance de la qualité",
+                text_detail="Charlie Wang (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
             item_text(
@@ -331,7 +331,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_7,
-                text_detail="Jack Laurier - Analyste de l’assurance de la qualité",
+                text_detail="Jack Laurier (Analyste de l’assurance de la qualité)",
                 language=l_french,
             ),
         ]
