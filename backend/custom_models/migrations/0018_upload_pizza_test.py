@@ -42,6 +42,7 @@ def upload_pizza_test(apps, schema_editor):
     it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
     it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
     it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
+    it_overview = item_type.objects.using(db_alias).filter(type_desc="overview").last()
 
     # getting question types
     qt_email = (
@@ -272,6 +273,10 @@ def upload_pizza_test(apps, schema_editor):
     # special event item (part #2) - too many characters for this markdown in a single string
     i_special_event_2 = item(parent_id=i_background, item_type_id=it_markdown, order=7)
     i_special_event_2.save()
+
+    # overview item (before starting the test)
+    i_overview_before_test = item(parent_id=pizza_test_item_id, item_type_id=it_overview, order=0)
+    i_overview_before_test.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -1143,7 +1148,39 @@ Taste the North is also placing extra demands on O.B. as, in addition to playing
 FR Taste the North is also placing extra demands on O.B. as, in addition to playing a key role on the Twerking Group, O.B. is responsible for providing final approval on funtimes decisions made by the analysts related to this special event.
 """,
                 language=l_french,
-            )
+            ),
+            item_text(
+                item_id=i_overview_before_test,
+                text_detail="""## Overview
+
+The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.
+
+The next page will allow you to:
+
+- read detailed instructions on how to complete the test;
+- see examples of how to respond to emails within the simulated inbox;
+- explore the test environment before the timed portion of the test begins.
+
+When instructed by the test administrator, you may select the "Continue to test instructions" button.
+""",
+                language=l_english,
+            ),
+            item_text(
+                item_id=i_overview_before_test,
+                text_detail="""## FR Overview 
+
+FR The e-MIB simulates an email inbox in which you will respond to a series of emails depicting situations typically encountered by managers in the federal public service. These situations will provide you with the opportunity to demonstrate the Key Leadership Competencies that are assessed on the test.
+
+FR The next page will allow you to:
+
+- FR read detailed instructions on how to complete the test;
+- FR see examples of how to respond to emails within the simulated inbox;
+- FR explore the test environment before the timed portion of the test begins.
+
+FR When instructed by the test administrator, you may select the "Continue to test instructions" button.
+""",
+                language=l_french,
+            ),
         ]
     )
 
@@ -1187,6 +1224,7 @@ def destroy_pizza_test(apps, schema_editor):
     it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
     it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
     it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
+    it_overview = item_type.objects.using(db_alias).filter(type_desc="overview").last()
 
     # getting question types
     qt_email = (
@@ -1541,6 +1579,11 @@ def destroy_pizza_test(apps, schema_editor):
     i_special_event_2 = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=7)
+        .last()
+    )
+    i_overview_before_test = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_overview, order=0)
         .last()
     )
 
@@ -1963,7 +2006,15 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_special_event_2, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_overview_before_test, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_overview_before_test, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_overview_before_test.delete()
     i_special_event_2.delete()
     i_special_event_1.delete()
     i_rebel_team_resp_and_challenges.delete()
