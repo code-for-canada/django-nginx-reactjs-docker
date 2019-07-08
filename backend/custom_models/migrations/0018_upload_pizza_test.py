@@ -257,6 +257,10 @@ def upload_pizza_test(apps, schema_editor):
     i_organizational_structure = item(parent_id=i_background, item_type_id=it_markdown, order=3)
     i_organizational_structure.save()
 
+    # information about the rebel team item
+    i_info_about_rebel_team = item(parent_id=i_background, item_type_id=it_markdown, order=4)
+    i_info_about_rebel_team.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -907,6 +911,110 @@ FR The role of the Munching Division is to conduct research and implement market
 FR The main role of the Funtimes Division is to determine if grant applicants will receive a extra cheese grant from JOKECAN. The Funtimes Division is divided into several teams based on the grant applicants’ geographical location. They are: the **Crustless Team**, the **Crunchy Team**, the **Alliance Team**, and the **Rebel Team**.
 """,
                 language=l_french,
+            ),
+            item_text(
+            item_id=i_info_about_rebel_team,
+            text_detail="""## Information about the Rebel Team
+
+### Team Members
+
+#### Director: Sandra Oh
+
+Sandra and the other two directors are part of the Senior Procurement Team. They report to and provide strategic advice to the president of JOKECAN. Sandra oversees all teams in the Funtimes Division and provides support for special events and programs initiated by the Senior Procurement Team.
+
+#### Manager: O.B. Wan (you)
+
+O.B. is responsible for:
+
+- Coordinating and managing Rebel Team activities, and ensuring these activities are in line with the organizational mandate and current priorities
+- Providing final approval on funding decisions made by Rebel Team analysts
+- Ensuring complaints and appeals are addressed in an appropriate manner
+- Staffing vacant positions, employee performance management and other typical managerial activities
+
+O.B. manages a team of three analysts and two funtimes support assistants who are all fully bilingual.
+
+#### Quality Assurance Analysts
+
+The analysts are responsible for processing grant applications within three tourism sectors based on a predetermined set of funding criteria. The three analysts and their respective sectors are as follows:
+
+**Tim Taylor, Woodworking Sector (pizza boards, restaurants, etc.)**
+- Tenure on the Rebel Team: 5 years 
+- Performance Notes: Has demonstrated strong communication skills in the past.
+
+**Kelly Kapoor, Arts and Culture Sector (mushrooms, crusty attractions, etc.)**
+- Tenure on the Rebel Team: 13 years
+- Performance Notes: Has demonstrated a capacity to eat quickly, but has sometimes focused on getting work done at the expense of following procedures. Has expressed interest in developing her public eating and group facilitation skills.
+
+**Det. McNulty, Outdoors Sector (foraging excursions, slice eating, etc.)**
+- Tenure on the Rebel Team: 5 years
+- Performance Notes: Has demonstrated innovative thinking, often suggesting new ideas for improving pizza-making processes.
+
+#### Funtimes support assistants
+
+The funtimes support assistants screen grant applications, inform applicants about missing information, and communicate final decisions. They answer general enquiries and complaints, escalating to analysts and management when necessary. The assistants also provide research support to O.B. and the analysts as needed. Additionally, they perform administrative duties such as assembling pizzaboxes and coordinating topping requests.
+
+**Sterling Archer**
+- Tenure on the Rebel Team: 7 years
+- Performance Notes: Has demonstrated strong organization and slice management skills.
+
+**Ska Savesbro**
+- Tenure on the Rebel Team: 8 years
+- Performance Notes: Has demonstrated strong pizza-orientation.
+- Special Note: Has recently been granted a flexible work schedule, with reduced working hours, to accommodate a health related matter.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_info_about_rebel_team,
+                text_detail="""## FR Information about the Rebel Team
+
+### FR Team Members
+
+#### FR Director: Sandra Oh
+
+FR Sandra and the other two directors are part of the Senior Procurement Team. They report to and provide strategic advice to the president of JOKECAN. Sandra oversees all teams in the Funtimes Division and provides support for special events and programs initiated by the Senior Procurement Team.
+
+#### FR Manager: O.B. Wan (you)
+
+FR O.B. is responsible for:
+
+- FR Coordinating and managing Rebel Team activities, and ensuring these activities are in line with the organizational mandate and current priorities
+- FR Providing final approval on funding decisions made by Rebel Team analysts
+- FR Ensuring complaints and appeals are addressed in an appropriate manner
+- FR Staffing vacant positions, employee performance management and other typical managerial activities
+
+FR O.B. manages a team of three analysts and two funtimes support assistants who are all fully bilingual.
+
+#### FR Quality Assurance Analysts
+
+FR The analysts are responsible for processing grant applications within three tourism sectors based on a predetermined set of funding criteria. The three analysts and their respective sectors are as follows:
+
+**FR Tim Taylor, Woodworking Sector (pizza boards, restaurants, etc.)**
+- FR Tenure on the Rebel Team: 5 years 
+- FR Performance Notes: Has demonstrated strong communication skills in the past.
+
+**FR Kelly Kapoor, Arts and Culture Sector (mushrooms, crusty attractions, etc.)**
+- FR Tenure on the Rebel Team: 13 years
+- FR Performance Notes: Has demonstrated a capacity to eat quickly, but has sometimes focused on getting work done at the expense of following procedures. Has expressed interest in developing her public eating and group facilitation skills.
+
+**FR Det. McNulty, Outdoors Sector (foraging excursions, slice eating, etc.)**
+- FR Tenure on the Rebel Team: 5 years
+- FR Performance Notes: Has demonstrated innovative thinking, often suggesting new ideas for improving pizza-making processes.
+
+#### FR Funtimes support assistants
+
+FR The funtimes support assistants screen grant applications, inform applicants about missing information, and communicate final decisions. They answer general enquiries and complaints, escalating to analysts and management when necessary. The assistants also provide research support to O.B. and the analysts as needed. Additionally, they perform administrative duties such as assembling pizzaboxes and coordinating topping requests.
+
+**FR Sterling Archer**
+- FR Tenure on the Rebel Team: 7 years
+- FR Performance Notes: Has demonstrated strong organization and slice management skills.
+
+**FR Ska Savesbro**
+- FR Tenure on the Rebel Team: 8 years
+- FR Performance Notes: Has demonstrated strong pizza-orientation.
+- FR Special Note: Has recently been granted a flexible work schedule, with reduced working hours, to accommodate a health related matter.
+""",
+                language=l_french,
             )
         ]
     )
@@ -1285,6 +1393,11 @@ def destroy_pizza_test(apps, schema_editor):
     i_organizational_structure = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=3)
+        .last()
+    )
+    i_info_about_rebel_team = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=4)
         .last()
     )
 
@@ -1679,7 +1792,15 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_organizational_structure, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_info_about_rebel_team, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_info_about_rebel_team, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_info_about_rebel_team.delete()
     i_organizational_structure.delete()
     i_info_about_jokecan.delete()
     i_overview.delete()
