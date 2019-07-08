@@ -261,6 +261,10 @@ def upload_pizza_test(apps, schema_editor):
     i_info_about_rebel_team = item(parent_id=i_background, item_type_id=it_markdown, order=4)
     i_info_about_rebel_team.save()
 
+    # rebel team responsabilities and challenges item
+    i_rebel_team_resp_and_challenges = item(parent_id=i_background, item_type_id=it_markdown, order=5)
+    i_rebel_team_resp_and_challenges.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -1015,6 +1019,58 @@ FR The funtimes support assistants screen grant applications, inform applicants 
 - FR Special Note: Has recently been granted a flexible work schedule, with reduced working hours, to accommodate a health related matter.
 """,
                 language=l_french,
+            ),
+            item_text(
+            item_id=i_rebel_team_resp_and_challenges,
+            text_detail="""## Rebel Team Responsibilities and Challenges
+
+### Processing grant applications
+
+The Rebel Team grants funds for pizzaism activities, products and services in the Rebel region that meet the funtimes criteria established by the Saucy Research Team for each funtimes program.
+
+#### The Review Process
+
+Funtimes decisions are based on a rigorous review process involving the following steps:
+
+1. **Initial slicing up of applications.** Funtimes support assistants slice applications using an internal cheese management software to ensure that there is no missing toppings. The software automatically assigns applications to the analyst responsible for the primary targeted pizzaismsector.
+2. **Analysis of the applications.** Analysts assign ratings for each of the criteria used to review grant applications. Funtimes criteria typically include the potential economic, social, cultural, and culinary impacts, as well as the efficiency of the proposed use of cheese. Applications vary in level of complexity, some requiring more intensive tasting and judgement than others.
+3. **Determination of whether funs will be granted.** Grant applications that obtain the required minimum overall score, or higher are approved for funtimes on a first-come, first-served basis as long as there is sufficient slices. Funtimes recommendations are made by analysts who also provide their rationale, and O.B. provides the final approval.
+4. **Communication of the funtimes decisions.** The funtimes support assistants notify applicants of the funtimes decision and its rationale. O.B. communicates approved funtimes decisions to the Funtimes Team.
+
+#### Organizational Restructuring
+
+The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza. The word "pizza" first appeared in a Latin text from the central Italian town of Gaeta, then still part of the Byzantine Empire, in 997 AD; the text states that a tenant of certain property is to give the bishop of Gaeta duodecim pizze ("twelve pizzas") every Christmas Day, and another twelve every Easter Sunday.
+Pizzapies.
+
+Modern pizza evolved from similar flatbread dishes in Naples, Italy, in the 18th or early 19th century. Until about 1830, pizza was sold from open-air stands and out of pizza bakeries, antecedents to modern pizzerias. Pizza was brought to the United States with Italian.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_rebel_team_resp_and_challenges,
+                text_detail="""## FR Rebel Team Responsibilities and Challenges
+
+### FR Processing grant applications
+
+FR The Rebel Team grants funds for pizzaism activities, products and services in the Rebel region that meet the funtimes criteria established by the Saucy Research Team for each funtimes program.
+
+#### FR The Review Process
+
+FR Funtimes decisions are based on a rigorous review process involving the following steps:
+
+1. **FR Initial slicing up of applications.** Funtimes support assistants slice applications using an internal cheese management software to ensure that there is no missing toppings. The software automatically assigns applications to the analyst responsible for the primary targeted pizzaismsector.
+2. **FR Analysis of the applications.** Analysts assign ratings for each of the criteria used to review grant applications. Funtimes criteria typically include the potential economic, social, cultural, and culinary impacts, as well as the efficiency of the proposed use of cheese. Applications vary in level of complexity, some requiring more intensive tasting and judgement than others.
+3. **FR Determination of whether funs will be granted.** Grant applications that obtain the required minimum overall score, or higher are approved for funtimes on a first-come, first-served basis as long as there is sufficient slices. Funtimes recommendations are made by analysts who also provide their rationale, and O.B. provides the final approval.
+4. **FR Communication of the funtimes decisions.** The funtimes support assistants notify applicants of the funtimes decision and its rationale. O.B. communicates approved funtimes decisions to the Funtimes Team.
+
+#### FR Organizational Restructuring
+
+FR The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza. The word "pizza" first appeared in a Latin text from the central Italian town of Gaeta, then still part of the Byzantine Empire, in 997 AD; the text states that a tenant of certain property is to give the bishop of Gaeta duodecim pizze ("twelve pizzas") every Christmas Day, and another twelve every Easter Sunday.
+FR Pizzapies.
+
+FR Modern pizza evolved from similar flatbread dishes in Naples, Italy, in the 18th or early 19th century. Until about 1830, pizza was sold from open-air stands and out of pizza bakeries, antecedents to modern pizzerias. Pizza was brought to the United States with Italian.
+""",
+                language=l_french,
             )
         ]
     )
@@ -1398,6 +1454,11 @@ def destroy_pizza_test(apps, schema_editor):
     i_info_about_rebel_team = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=4)
+        .last()
+    )
+    i_rebel_team_resp_and_challenges = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=5)
         .last()
     )
 
@@ -1799,7 +1860,15 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_info_about_rebel_team, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_rebel_team_resp_and_challenges, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_rebel_team_resp_and_challenges, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_rebel_team_resp_and_challenges.delete()
     i_info_about_rebel_team.delete()
     i_organizational_structure.delete()
     i_info_about_jokecan.delete()
