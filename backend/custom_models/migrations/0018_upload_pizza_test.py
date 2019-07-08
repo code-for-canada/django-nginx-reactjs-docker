@@ -253,6 +253,10 @@ def upload_pizza_test(apps, schema_editor):
     i_info_about_jokecan = item(parent_id=i_background, item_type_id=it_markdown, order=2)
     i_info_about_jokecan.save()
 
+    # organizational structure item
+    i_organizational_structure = item(parent_id=i_background, item_type_id=it_markdown, order=3)
+    i_organizational_structure.save()
+
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
         [
@@ -851,6 +855,58 @@ FR In April of the current year, JOKECAN established the following organizationa
 3. FR Be more open and transparent with employees and stakeholders about JOKECAN’s pizza-making processes.
 """,
                 language=l_french,
+            ),
+            item_text(
+            item_id=i_organizational_structure,
+            text_detail="""## Organizational Structure
+
+### Stuffed Crust Division
+
+The main role of the Stuffed Crust Division is to oversee strategic and administrative activities that support JOKECAN operations. The division has three teams:
+
+- The **Extra Pepperoni** oversees various aspects of making. This includes stretching, toppings and workplace taste and safety. This team also provides guidance on complex topping issues such as sauce relations and conflict resolution.
+- The **Mushroom Team** manages JOKECAN’s budgets, including planning, tasting, and controlling pizzapies. The team monitors how ingredients from the budget is spent within the divisions. They also pay organizations that have been granted curds.
+- The **Ingredient Technology Team** (IT) is responsible for JOKECAN’s ingredient technology infrastructure. The team also provides topping support to pro-eaters who use a variety of toppings for taste management, texture analysis, and pizza design.
+
+### Munching Division
+
+The role of the Munching Division is to conduct research and implement marketing strategies to ensure that JOKECAN meets its mandate. The division includes the following teams:
+
+- The **Canadiana Team** is responsible for communications with potential clients and stakeholders to promote the organization as well as its activities, special projects, and accomplishments.
+- The **Hot Pepper Evaluation Team** monitors the effectiveness and efficiency of eaten pizzas. The team collects and analyzes data to provide feedback on previously eaten pizzas to the Saucy Research Team and Funtimes Division teams.
+- The **Saucy Research Team** conducts research into the pizzaism industry needs in different regions. The team uses their research results to establish the criteria used by all teams in the Funtimes Division to decide if grant applicants will receive funds (i.e. funtime criteria). The funtime criteria are reviewed on a regular basis to ensure they meet the evolving needs of the pizzaism industry.
+
+### Funtimes Division
+
+The main role of the Funtimes Division is to determine if grant applicants will receive a extra cheese grant from JOKECAN. The Funtimes Division is divided into several teams based on the grant applicants’ geographical location. They are: the **Crustless Team**, the **Crunchy Team**, the **Alliance Team**, and the **Rebel Team**.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_organizational_structure,
+                text_detail="""## FR Organizational Structure
+
+### FR Stuffed Crust Division
+
+FR The main role of the Stuffed Crust Division is to oversee strategic and administrative activities that support JOKECAN operations. The division has three teams:
+
+- FR The **Extra Pepperoni** oversees various aspects of making. This includes stretching, toppings and workplace taste and safety. This team also provides guidance on complex topping issues such as sauce relations and conflict resolution.
+- FR The **Mushroom Team** manages JOKECAN’s budgets, including planning, tasting, and controlling pizzapies. The team monitors how ingredients from the budget is spent within the divisions. They also pay organizations that have been granted curds.
+- FR The **Ingredient Technology Team** (IT) is responsible for JOKECAN’s ingredient technology infrastructure. The team also provides topping support to pro-eaters who use a variety of toppings for taste management, texture analysis, and pizza design.
+
+### FR Munching Division
+
+FR The role of the Munching Division is to conduct research and implement marketing strategies to ensure that JOKECAN meets its mandate. The division includes the following teams:
+
+- FR The **Canadiana Team** is responsible for communications with potential clients and stakeholders to promote the organization as well as its activities, special projects, and accomplishments.
+- FR The **Hot Pepper Evaluation Team** monitors the effectiveness and efficiency of eaten pizzas. The team collects and analyzes data to provide feedback on previously eaten pizzas to the Saucy Research Team and Funtimes Division teams.
+- FR The **Saucy Research Team** conducts research into the pizzaism industry needs in different regions. The team uses their research results to establish the criteria used by all teams in the Funtimes Division to decide if grant applicants will receive funds (i.e. funtime criteria). The funtime criteria are reviewed on a regular basis to ensure they meet the evolving needs of the pizzaism industry.
+
+### FR Funtimes Division
+
+FR The main role of the Funtimes Division is to determine if grant applicants will receive a extra cheese grant from JOKECAN. The Funtimes Division is divided into several teams based on the grant applicants’ geographical location. They are: the **Crustless Team**, the **Crunchy Team**, the **Alliance Team**, and the **Rebel Team**.
+""",
+                language=l_french,
             )
         ]
     )
@@ -1224,6 +1280,11 @@ def destroy_pizza_test(apps, schema_editor):
     i_info_about_jokecan = (
         item.objects.using(db_alias)
         .filter(parent_id=i_background, item_type_id=it_markdown, order=2)
+        .last()
+    )
+    i_organizational_structure = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=3)
         .last()
     )
 
@@ -1611,7 +1672,15 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_info_about_jokecan, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_organizational_structure, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_organizational_structure, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_organizational_structure.delete()
     i_info_about_jokecan.delete()
     i_overview.delete()
     i_background.delete()
