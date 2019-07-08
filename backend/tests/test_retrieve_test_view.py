@@ -15,8 +15,8 @@ class RetrieveMetaTest(TestCase):
         )
         expected_json = {
             "test_internal_name": "emibSampleTest",
-            "test_en_name": "eMiB Sample Test",
-            "test_fr_name": "FR eMiB Sample Test",
+            "test_en_name": "eMIB Sample Test",
+            "test_fr_name": "FR eMIB Sample Test",
             "is_public": True,
             "default_time": None,
             "test_type": "emib",

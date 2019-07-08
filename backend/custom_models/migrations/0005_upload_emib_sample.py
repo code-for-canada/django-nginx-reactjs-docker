@@ -129,9 +129,9 @@ def upload_emib_sample(apps, schema_editor):
 
     # bulk create item_text
     item_text.objects.using(db_alias).bulk_create([
-        item_text(item_id=i_emib, text_detail="eMiB Sample Test",
+        item_text(item_id=i_emib, text_detail="eMIB Sample Test",
                   language=l_english),
-        item_text(item_id=i_emib, text_detail="FR eMiB Sample Test",
+        item_text(item_id=i_emib, text_detail="FR eMIB Sample Test",
                   language=l_french),
         item_text(item_id=i_q1, text_detail="Question 1", language=l_english),
         item_text(item_id=i_q1, text_detail="FR Question 1",

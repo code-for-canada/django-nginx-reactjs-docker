@@ -13,19 +13,28 @@ def upload_emib_sample(apps, schema_editor):
     db_alias = schema_editor.connection.alias
 
     # get emib_sample item
-    l_english = language.objects.using(db_alias).filter(
-        ISO_Code_1="en", ISO_Code_2="en-ca").last()
-    emib_sample_item_text_en = item_text.objects.using(db_alias).filter(
-        text_detail="eMiB Sample Test", language=l_english).last()
+    l_english = (
+        language.objects.using(db_alias)
+        .filter(ISO_Code_1="en", ISO_Code_2="en-ca")
+        .last()
+    )
+    emib_sample_item_text_en = (
+        item_text.objects.using(db_alias)
+        .filter(text_detail="eMIB Sample Test", language=l_english)
+        .last()
+    )
 
     # create emib sample test model
     # NOTE:
     # the test name ("emibSampleTest") is how we will look up the test
     # the test type ("emib") will also be used for other emib style tests
-    # there is also no default time for the sample eMiB
-    emib_sample_test = test(test_name="emibSampleTest",
-                            item_id=emib_sample_item_text_en.item_id,
-                            is_public=True, test_type="emib")
+    # there is also no default time for the sample eMIB
+    emib_sample_test = test(
+        test_name="emibSampleTest",
+        item_id=emib_sample_item_text_en.item_id,
+        is_public=True,
+        test_type="emib",
+    )
     emib_sample_test.save()
 
 
@@ -36,15 +45,12 @@ def destroy_emib_sample(apps, schema_editor):
     db_alias = schema_editor.connection.alias
     # destory the test item created above
     test.objects.using(db_alias).filter(
-        test_name="emibSampleTest", is_public=True, test_type="emib").delete()
+        test_name="emibSampleTest", is_public=True, test_type="emib"
+    ).delete()
 
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('custom_models', '0006_test'),
-    ]
+    dependencies = [("custom_models", "0006_test")]
 
-    operations = [
-        migrations.RunPython(upload_emib_sample, destroy_emib_sample),
-    ]
+    operations = [migrations.RunPython(upload_emib_sample, destroy_emib_sample)]
