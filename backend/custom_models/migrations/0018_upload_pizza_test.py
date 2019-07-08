@@ -432,22 +432,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q1_from,
-                text_detail="Buster Bluth (Manager, Bluth Company)",
+                text_detail="Sterling Archer (Funtimes Support Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_from,
-                text_detail="FR Buster Bluth (Manager, Bluth Company)",
+                text_detail="FR Sterling Archer (Funtimes Support Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -483,22 +483,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q2_from,
-                text_detail="Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                text_detail="Tim Taylor (Quality Assurance Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q2_from,
-                text_detail="FR Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                text_detail="FR Tim Taylor (Quality Assurance Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q2_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q2_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -534,22 +534,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q3_from,
-                text_detail="Det. McNulty (Outdoors Sector Analyst, Rebel Team)",
+                text_detail="Det. McNulty (Quality Assurance Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q3_from,
-                text_detail="FR Det. McNulty (Outdoors Sector Analyst, Rebel Team)",
+                text_detail="FR Det. McNulty (Quality Assurance Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q3_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q3_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -585,22 +585,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q4_from,
-                text_detail="Sterling Archer (Fencing Support Assistant, Rebel Team)",
+                text_detail="Sterling Archer (Funtimes Support Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q4_from,
-                text_detail="FR Sterling Archer (Fencing Support Assistant, Rebel Team)",
+                text_detail="FR Sterling Archer (Funtimes Support Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q4_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q4_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -636,22 +636,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q5_from,
-                text_detail="Sandra Oh (Director, Sugaring Division)",
+                text_detail="Sandra Oh (Director)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q5_from,
-                text_detail="FR Sandra Oh (Director, Sugaring Division)",
+                text_detail="FR Sandra Oh (Director)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q5_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q5_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -687,22 +687,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q6_from,
-                text_detail="Miranda Lambert (Manager, Information Technology)",
+                text_detail="Kelly Kapoor (Quality Assurance Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q6_from,
-                text_detail="FR Miranda Lambert (Manager, Information Technology)",
+                text_detail="FR Kelly Kapoor (Quality Assurance Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q6_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q6_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -738,22 +738,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q7_from,
-                text_detail="Kelly Kapoor (Arts and Culture Enthusiast, Rebel Team)",
+                text_detail="Kelly Kapoor (Quality Assurance Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q7_from,
-                text_detail="FR Kelly Kapoor (Arts and Culture Enthusiast, Rebel Team)",
+                text_detail="FR Kelly Kapoor (Quality Assurance Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q7_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q7_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -789,22 +789,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q8_from,
-                text_detail="Ska Savesbro (Musical Support Assistant, Rebel Team)",
+                text_detail="Ska Savesbro (Funtimes Support Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q8_from,
-                text_detail="FR Ska Savesbro (Musical Support Assistant, Rebel Team)",
+                text_detail="FR Ska Savesbro (Funtimes Support Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q8_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q8_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -841,22 +841,22 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q9_from,
-                text_detail="Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                text_detail="Tim Taylor (Quality Assurance Assistants)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q9_from,
-                text_detail="FR Tim Taylor (Woodwork Sector Analyst, Rebel Team)",
+                text_detail="FR Tim Taylor (Quality Assurance Assistants)",
                 language=l_french,
             ),
             item_text(
                 item_id=i_q9_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q9_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -902,12 +902,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q10_to,
-                text_detail="O.B Wan (Manager, Rebel Team)",
+                text_detail="O.B Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q10_to,
-                text_detail="FR O.B Wan (Manager, Rebel Team)",
+                text_detail="FR O.B Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
