@@ -87,24 +87,24 @@ class RetrieveInTest(TestCase):
                     "email": [
                         {
                             "subject": "Bad experience with Serv",
-                            "from": "Serge Duplessis (Quality Control Analyst, Quality Assurance Team)",
-                            "to": "Claude Huard (Manager, Quality Assurance Team)",
+                            "from": "Serge Duplessis (QA Analyst)",
+                            "to": "Claude Huard (Quality Assurance Manager - You)",
                             "date": "Thursday, November 3",
                             "body": "Hello Claude,\n\nAs you are settling into this position, I was hoping to share with you some of my thoughts about the proposed changes to our service requests and documentation practices.\n\nI have been working on the Quality Assurance team for over 12 years. I feel that, overall, we are quite successful in understanding and processing service requests. Switching to an automated, computerized system would take a very long time to adapt to and could jeopardize the quality of our service. For example, having a face-to-face or telephone conversation with a client can help us better understand the client’s issues in more depth because it allows us to ask probing questions and receive important information related to each case. By buying into this new technology, we risk having more IT problems and unexpected delays in the long-run.\n\nI have voiced my opinion in previous meetings but I do not feel that my opinions matter. Everyone else has been on the team for less than two years and I feel ignored because I’m the oldest member on the team. I urge you to consider my opinion so that we do not make a costly mistake.\n\nSerge",
                             "id": 0
                         },
                         {
                             "subject": "Informal Training on Serv",
-                            "from": "Marina Richter (Quality Control Analyst, Quality Assurance Team)",
-                            "to": "Claude Huard (Manager, Quality Assurance Team)",
+                            "from": "Marina Richter (QA Analyst)",
+                            "to": "Claude Huard (Quality Assurance Manager - You)",
                             "date": "Friday, November 4",
                             "body": "Hello Claude,\n\nDuring our last meeting, Danny had mentioned that he learned a lot about the Serv system during the pilot testing exercise with the IT unit.  While talking to other team members, some mentioned they were trained on and worked with an older version of Serv in previous jobs. However, there are a few of us who have never used it. I would like to know if there would be opportunities to be trained on Serv?\n\nMarina",
                             "id": 1
                         },
                         {
                             "subject": "Report deadline",
-                            "from": "Charlie Wang (Quality Control Analyst, Quality Assurance Team)",
-                            "to": "Claude Huard (Manager, Quality Assurance Team)",
+                            "from": "Charlie Wang (QA Analyst)",
+                            "to": "Claude Huard (Quality Assurance Manager - You)",
                             "date": "Friday, November 4",
                             "body": "Hello Claude,\n\nI am working with Clara Farewell from the Research and Innovations unit on evaluating the quality of a training approach and I am having a hard time getting a hold of her. I am starting to be concerned because I have been waiting on her part of the work to complete the evaluation report.\nFor the past three weeks, we had scheduled working meetings on Friday afternoons and although she did cancel the first one, she was absent the past two, without notice. She did not answer my attempts to contact her by phone or email. I am worried that I will not be able to complete the report by the end of next Friday without her content.\n\nOn another note, I was told by one of my colleagues from the Program Development unit that his director, Bartosz Greco, would invite employees from other units to help them develop a new training program. They want to take a multiple perspectives approach. I’m very much interested in participating in this process. As usual, manager permission is required for participation. I am wondering what you think?\n\nThank you,\nCharlie",
                             "id": 2
@@ -186,51 +186,51 @@ class RetrieveInTest(TestCase):
                                 {
                                     "organizational_structure_tree_child": [
                                         {
-                                            "text": "Jenna Icard - President",
+                                            "text": "Jenna Icard (President)",
                                             "organizational_structure_tree_child": [
                                                 {
-                                                    "text": "Amari Kinsler - Corporate Affairs Director",
+                                                    "text": "Amari Kinsler (Corporate Affairs Director)",
                                                     "organizational_structure_tree_child": [
                                                         {
-                                                            "text": "Marc Sheridan - Human Resources Manager",
+                                                            "text": "Marc Sheridan (Human Resources Manager)",
                                                             "id": 0
                                                         },
                                                         {
-                                                            "text": "Bob McNutt - Finance Manager",
+                                                            "text": "Bob McNutt (Finance Manager)",
                                                             "id": 1
                                                         },
                                                         {
-                                                            "text": "Lana Hussad - Information Technology Manager",
+                                                            "text": "Lana Hussad (Information Technology Manager)",
                                                             "id": 2
                                                         }
                                                     ],
                                                     "id": 0
                                                 },
                                                 {
-                                                    "text": "Geneviève Bédard - Research and Innovations Director",
+                                                    "text": "Geneviève Bédard (Research and Innovations Director)",
                                                     "id": 1
                                                 },
                                                 {
-                                                    "text": "Bartosz Greco - Program Development Director",
+                                                    "text": "Bartosz Greco (Program Development Director)",
                                                     "id": 2
                                                 },
                                                 {
-                                                    "text": "Nancy Ward - Services and Communications Director",
+                                                    "text": "Nancy Ward (Services and Communications Director)",
                                                     "organizational_structure_tree_child": [
                                                         {
-                                                            "text": "Claude Huard - Quality Assurance Manager (You)",
+                                                            "text": "Claude Huard (Quality Assurance Manager - You)",
                                                             "id": 0
                                                         },
                                                         {
-                                                            "text": "Haydar Kalil - Services and Support Manager",
+                                                            "text": "Haydar Kalil (Services and Support Manager)",
                                                             "id": 1
                                                         },
                                                         {
-                                                            "text": "Geoffrey Hamma - Audits Manager",
+                                                            "text": "Geoffrey Hamma (Audits Manager)",
                                                             "id": 2
                                                         },
                                                         {
-                                                            "text": "Lucy Trang - E-Training Manager",
+                                                            "text": "Lucy Trang (E-Training Manager)",
                                                             "id": 3
                                                         }
                                                     ],
@@ -245,30 +245,30 @@ class RetrieveInTest(TestCase):
                                 {
                                     "team_information_tree_child": [
                                         {
-                                            "text": "Claude Huard - Manager (You)",
+                                            "text": "Claude Huard (Quality Assurance Manager - You)",
                                             "team_information_tree_child": [
                                                 {
-                                                    "text": "Danny McBride - QA Analyst",
+                                                    "text": "Danny McBride (QA Analyst)",
                                                     "id": 0
                                                 },
                                                 {
-                                                    "text": "Serge Duplessis - QA Analyst",
+                                                    "text": "Serge Duplessis (QA Analyst)",
                                                     "id": 1
                                                 },
                                                 {
-                                                    "text": "Marina Richter - QA Analyst",
+                                                    "text": "Marina Richter (QA Analyst)",
                                                     "id": 2
                                                 },
                                                 {
-                                                    "text": "Mary Woodside - QA Analyst",
+                                                    "text": "Mary Woodside (QA Analyst)",
                                                     "id": 3
                                                 },
                                                 {
-                                                    "text": "Charlie Wang - QA Analyst",
+                                                    "text": "Charlie Wang (QA Analyst)",
                                                     "id": 4
                                                 },
                                                 {
-                                                    "text": "Jack Laurier - QA Analyst",
+                                                    "text": "Jack Laurier (QA Analyst)",
                                                     "id": 5
                                                 }
                                             ],
