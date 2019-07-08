@@ -146,7 +146,7 @@ def upload_background_tree_view_info(apps, schema_editor):
         [
             item_text(
                 item_id=i_tree_view_of_org_structure_person_1,
-                text_detail="Jenna Icard - President",
+                text_detail="Jenna Icard (President)",
                 language=l_english,
             ),
             item_text(
@@ -156,7 +156,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_2,
-                text_detail="Amari Kinsler - Corporate Affairs Director",
+                text_detail="Amari Kinsler (Corporate Affairs Director)",
                 language=l_english,
             ),
             item_text(
@@ -166,7 +166,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_3,
-                text_detail="Marc Sheridan - Human Resources Manager",
+                text_detail="Marc Sheridan (Human Resources Manager)",
                 language=l_english,
             ),
             item_text(
@@ -176,7 +176,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_4,
-                text_detail="Bob McNutt - Finance Manager",
+                text_detail="Bob McNutt (Finance Manager)",
                 language=l_english,
             ),
             item_text(
@@ -186,7 +186,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_5,
-                text_detail="Lana Hussad - Information Technology Manager",
+                text_detail="Lana Hussad (Information Technology Manager)",
                 language=l_english,
             ),
             item_text(
@@ -196,7 +196,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_6,
-                text_detail="Geneviève Bédard - Research and Innovations Director",
+                text_detail="Geneviève Bédard (Research and Innovations Director)",
                 language=l_english,
             ),
             item_text(
@@ -206,7 +206,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_7,
-                text_detail="Bartosz Greco - Program Development Director",
+                text_detail="Bartosz Greco (Program Development Director)",
                 language=l_english,
             ),
             item_text(
@@ -216,7 +216,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_8,
-                text_detail="Nancy Ward - Services and Communications Director",
+                text_detail="Nancy Ward (Services and Communications Director)",
                 language=l_english,
             ),
             item_text(
@@ -226,7 +226,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_9,
-                text_detail="Claude Huard - Quality Assurance Manager (You)",
+                text_detail="Claude Huard (Quality Assurance Manager - You)",
                 language=l_english,
             ),
             item_text(
@@ -236,7 +236,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_10,
-                text_detail="Haydar Kalil - Services and Support Manager",
+                text_detail="Haydar Kalil (Services and Support Manager)",
                 language=l_english,
             ),
             item_text(
@@ -246,7 +246,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_11,
-                text_detail="Geoffrey Hamma - Audits Manager",
+                text_detail="Geoffrey Hamma (Audits Manager)",
                 language=l_english,
             ),
             item_text(
@@ -256,7 +256,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_org_structure_person_12,
-                text_detail="Lucy Trang - E-Training Manager",
+                text_detail="Lucy Trang (E-Training Manager)",
                 language=l_english,
             ),
             item_text(
@@ -266,7 +266,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_1,
-                text_detail="Claude Huard - Manager (You)",
+                text_detail="Claude Huard (Quality Assurance Manager - You)",
                 language=l_english,
             ),
             item_text(
@@ -276,7 +276,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_2,
-                text_detail="Danny McBride - QA Analyst",
+                text_detail="Danny McBride (QA Analyst)",
                 language=l_english,
             ),
             item_text(
@@ -286,7 +286,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_3,
-                text_detail="Serge Duplessis - QA Analyst",
+                text_detail="Serge Duplessis (QA Analyst)",
                 language=l_english,
             ),
             item_text(
@@ -296,7 +296,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_4,
-                text_detail="Marina Richter - QA Analyst",
+                text_detail="Marina Richter (QA Analyst)",
                 language=l_english,
             ),
             item_text(
@@ -306,7 +306,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_5,
-                text_detail="Mary Woodside - QA Analyst",
+                text_detail="Mary Woodside (QA Analyst)",
                 language=l_english,
             ),
             item_text(
@@ -316,7 +316,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_6,
-                text_detail="Charlie Wang - QA Analyst",
+                text_detail="Charlie Wang (QA Analyst)",
                 language=l_english,
             ),
             item_text(
@@ -326,7 +326,7 @@ def upload_background_tree_view_info(apps, schema_editor):
             ),
             item_text(
                 item_id=i_tree_view_of_team_info_person_7,
-                text_detail="Jack Laurier - QA Analyst",
+                text_detail="Jack Laurier (QA Analyst)",
                 language=l_english,
             ),
             item_text(
