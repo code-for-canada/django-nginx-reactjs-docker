@@ -40,6 +40,8 @@ def upload_pizza_test(apps, schema_editor):
     it_to = item_type.objects.using(db_alias).filter(type_desc="to").last()
     it_date = item_type.objects.using(db_alias).filter(type_desc="date").last()
     it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
+    it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
+    it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
 
     # getting question types
     qt_email = (
@@ -236,6 +238,20 @@ def upload_pizza_test(apps, schema_editor):
 
     i_q10_body = item(parent_id=i_q10, item_type_id=it_body, order=5)
     i_q10_body.save()
+
+    # background
+    i_background = item(
+        parent_id=pizza_test_item_id, item_type_id=it_background, order=0
+    )
+    i_background.save()
+
+    # info about jokecan item
+    i_info_about_jokecan = item(parent_id=i_background, item_type_id=it_markdown, order=1)
+    i_info_about_jokecan.save()
+
+    # mandate item
+    # i_mandate = item(parent_id=i_background, item_type_id=it_markdown, order=2)
+    # i_mandate.save()
 
     # bulk create questions
     question.objects.using(db_alias).bulk_create(
@@ -767,6 +783,30 @@ def upload_pizza_test(apps, schema_editor):
                 text_detail="FR Hello everyone,\n\nLorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa deep v ennui. Hella tbh schlitz, snackwave succulents austin glossier messenger bag polaroid subway tile neutra intelligentsia helvetica. Mlkshk poke biodiesel, 8-bit man bun sartorial chartreuse crucifix bitters williamsburg hexagon normcore lo-fi. Direct trade neutra brunch, venmo hexagon pop-up post-ironic. Heirloom craft beer tattooed ennui, unicorn franzen vape. Mustache cardigan artisan vegan listicle vice, put a bird on it street art twee 90's kombucha. Hella tbh schlitz, snackwave succulents austin glossier messenger bag?\n\nO.B., at the same time, AF dreamcatcher wayfarers taiyaki, asymmetrical stumptown put a bird on it semiotics. Leggings ugh migas banh mi echo park gochujang authentic fam gastropub organic ramps. Shabby chic offal hot chicken drinking vinegar kitsch chicharrones. Brunch etsy leggings bicycle rights cliche. Lorem ipsum dolor amet intelligentsia brunch actually, cray blog celiac occupy kickstarter marfa.\n\nMichelle",
                 language=l_french,
             ),
+            item_text(
+                item_id=i_background, text_detail="Background", language=l_english
+            ),
+            item_text(item_id=i_background, text_detail="Contexte", language=l_french),
+            item_text(
+            item_id=i_info_about_jokecan,
+            text_detail="""## Information about JOKECAN
+
+JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
+
+JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
+""",
+            language=l_english,
+            ),
+            item_text(
+                item_id=i_info_about_jokecan,
+                text_detail="""## FR Information about JOKECAN
+
+FR JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
+
+FR JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
+""",
+                language=l_french,
+            ),
         ]
     )
 
@@ -808,6 +848,8 @@ def destroy_pizza_test(apps, schema_editor):
     it_to = item_type.objects.using(db_alias).filter(type_desc="to").last()
     it_date = item_type.objects.using(db_alias).filter(type_desc="date").last()
     it_body = item_type.objects.using(db_alias).filter(type_desc="body").last()
+    it_background = item_type.objects.using(db_alias).filter(type_desc="background").last()
+    it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
 
     # getting question types
     qt_email = (
@@ -1122,6 +1164,16 @@ def destroy_pizza_test(apps, schema_editor):
     i_q10_body = (
         item.objects.using(db_alias)
         .filter(parent_id=i_q10, item_type_id=it_body, order=5)
+        .last()
+    )
+    i_background = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_test_item_id, item_type_id=it_background, order=0)
+        .last()
+    )
+    i_info_about_jokecan = (
+        item.objects.using(db_alias)
+        .filter(parent_id=i_background, item_type_id=it_markdown, order=1)
         .last()
     )
 
@@ -1488,7 +1540,23 @@ def destroy_pizza_test(apps, schema_editor):
         item_id=i_q10_body, language=l_french
     ).delete()
 
+    item_text.objects.using(db_alias).filter(
+        item_id=i_background, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_background, language=l_french
+    ).delete()
+
+    item_text.objects.using(db_alias).filter(
+        item_id=i_info_about_jokecan, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=i_info_about_jokecan, language=l_french
+    ).delete()
+
     # destroy items; inverted order as children must be deleted first
+    i_background.delete()
+    i_info_about_jokecan.delete()
     i_q10_body.delete()
     i_q10_date.delete()
     i_q10_to.delete()
