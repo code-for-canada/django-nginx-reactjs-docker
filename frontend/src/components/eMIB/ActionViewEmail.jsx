@@ -39,7 +39,7 @@ const styles = {
       textDecoration: "underline"
     }
   },
-  hr: {
+  spacer: {
     margin: "16px 0 16px 0"
   },
   editButton: {
@@ -146,12 +146,12 @@ class ActionViewEmail extends Component {
             <span style={styles.replyAndUser}>{visibleCcNames}</span>
           </div>
         </div>
-        <hr style={styles.hr} />
+        <div style={styles.spacer} />
         <div>
           <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</div>
           <p style={styles.preWrap}>{action.emailBody}</p>
         </div>
-        <hr style={styles.hr} />
+        <div style={styles.spacer} />
         <div>
           <div style={styles.headings}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
@@ -160,7 +160,7 @@ class ActionViewEmail extends Component {
         </div>
         {!this.props.disabled && (
           <div>
-            <hr style={styles.hr} />
+            <div style={styles.spacer} />
             <div aria-label={LOCALIZE.ariaLabel.emailOptions}>
               <button
                 id="unit-test-view-email-edit-button"
