@@ -8,7 +8,6 @@ const styles = {
     color: "#00565E"
   },
   dataBodyDivider: {
-    borderTop: "1px solid #96a8b2",
     margin: "12px 0 12px 0"
   },
   preWrap: {
@@ -40,7 +39,7 @@ class EmailContent extends Component {
         <div>
           {LOCALIZE.emibTest.inboxPage.date}: {email.date}
         </div>
-        <hr style={styles.dataBodyDivider} />
+        <div style={styles.dataBodyDivider} />
         <div style={styles.preWrap}>{email.body}</div>
       </div>
     );
