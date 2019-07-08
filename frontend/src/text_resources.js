@@ -280,7 +280,7 @@ let LOCALIZE = new LocalizedStrings({
               "After sending an email or adding a task, you will be able to provide a justification in the “Reasons for Action” section. Here, you can explain why you took a specific action in response to a situation if you feel the need to provide additional information. Filling out the Reasons for Action section is optional. Note that you may decide to add Reasons for Action when responding to some emails and not others. This also applies for tasks in the task list. In addition, if you add Reasons for Action, you may choose to clarify only certain actions while others may not require additional explanations."
           },
           exampleEmail: {
-            to: "Claude Huard (Manager, Quality Assurance Team)",
+            to: "Claude Huard (Quality Assurance Manager - You)",
             from: "Geneviève Bédard (Director, Research and Innovations Unit)",
             subject: "Preparing Mary for her assignment",
             date: "Friday, November 4",
@@ -834,7 +834,7 @@ let LOCALIZE = new LocalizedStrings({
               "Après avoir envoyé un courriel ou ajouté une tâche, vous avez la possibilité d’expliquer votre raisonnement dans la section « Justification des mesures prises ». Vous pouvez expliquer dans cette section pourquoi vous avez pris une ou des mesures pour gérer la situation présentée dans le courriel en question. Remplir la section « Justification des mesures prises » est facultatif. Notez que vous pouvez décider d’ajouter une « Justification des mesures prises » lorsque vous répondez à certains courriels, mais pas pour d’autres. Ceci est également vrai pour les tâches dans la liste de tâches. De plus, si vous ajoutez une « Justification des mesures prises », vous pouvez choisir de justifier certaines des mesures prises tandis que d’autres ne nécessitent pas d’explications supplémentaires."
           },
           exampleEmail: {
-            to: "Claude Huard (gestionnaire, Équipe de l’assurance de la qualité)",
+            to: "Claude Huard (Gestionnaire, Assurance de la qualité - vous)",
             from: "Geneviève Bédard (directrice, Unité de recherche et innovations)",
             subject: "Préparation de Mary en vue de son affectation",
             date: "Le vendredi 4 novembre",
