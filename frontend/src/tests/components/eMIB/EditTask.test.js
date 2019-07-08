@@ -43,4 +43,15 @@ describe("char counts", () => {
     );
     expect(wrapper.find("#unit-test-task-rfa").text()).toEqual("11/650");
   });
+
+  it("renders and displays char count of 0 when undefined", () => {
+    const wrapper = shallow(
+      <EditTask
+        onChange={() => {}}
+        action={{ actionType: ACTION_TYPE.task, reasonsForAction: undefined, task: undefined }}
+      />
+    );
+    expect(wrapper.find("#unit-test-task-response").text()).toEqual("0/650");
+    expect(wrapper.find("#unit-test-task-rfa").text()).toEqual("0/650");
+  });
 });
