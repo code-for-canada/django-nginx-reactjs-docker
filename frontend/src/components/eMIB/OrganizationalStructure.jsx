@@ -13,7 +13,7 @@ import emib_sample_test_example_org_chart_fr_zoomed from "../../images/emib_samp
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
-import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { getTestContent } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
 import { processTreeContent } from "../../helpers/transformations";
 
@@ -31,7 +31,7 @@ class OrganizationalStructure extends Component {
   static propTypes = {
     // Props from Redux
     currentLanguage: PropTypes.string,
-    getTestQuestions: PropTypes.func
+    getTestContent: PropTypes.func
   };
 
   state = {
@@ -57,7 +57,7 @@ class OrganizationalStructure extends Component {
 
   // loads the markdown and tree view content (english and french versions)
   componentDidMount = () => {
-    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
       // Save the organizational structure markdown and tree view content in local states.
       this.setState({
         markdown_en: response.background.en.background[0].markdown[2].text,
@@ -179,7 +179,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getTestQuestions
+      getTestContent
     },
     dispatch
   );

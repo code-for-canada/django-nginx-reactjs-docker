@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { getTestContent } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 class OrganizationalInformation extends Component {
   static propTypes = {
     // Provided by Redux
-    getTestQuestions: PropTypes.func
+    getTestContent: PropTypes.func
   };
 
   state = {
@@ -20,7 +20,7 @@ class OrganizationalInformation extends Component {
 
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
-    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
       // saving the organizational information markdown content in local states
       this.setState({
         markdown_en: response.background.en.background[0].markdown[1].text,
@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getTestQuestions
+      getTestContent
     },
     dispatch
   );

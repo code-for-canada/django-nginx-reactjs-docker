@@ -13,7 +13,7 @@ import emib_sample_test_example_team_chart_fr_zoomed from "../../images/emib_sam
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
-import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { getTestContent } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
 import { processTreeContent } from "../../helpers/transformations";
 
@@ -31,7 +31,7 @@ class TeamInformation extends Component {
   static propTypes = {
     // Props from Redux
     currentLanguage: PropTypes.string,
-    getTestQuestions: PropTypes.func
+    getTestContent: PropTypes.func
   };
 
   state = {
@@ -59,7 +59,7 @@ class TeamInformation extends Component {
 
   // loads the markdown content (english and french versions)
   componentWillMount = () => {
-    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
       // Save the team information markdown content in local states.
       this.setState({
         markdown_section1_en: response.background.en.background[0].markdown[3].text,
@@ -193,7 +193,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getTestQuestions
+      getTestContent
     },
     dispatch
   );
