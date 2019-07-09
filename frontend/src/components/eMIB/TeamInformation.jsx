@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
@@ -13,8 +12,6 @@ import emib_sample_test_example_team_chart_fr_zoomed from "../../images/emib_sam
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
-import { getTestContent } from "../../modules/LoadTestContentRedux";
-import { TEST_DEFINITION } from "../../testDefinition";
 import { processTreeContent } from "../../helpers/transformations";
 
 const styles = {
@@ -31,22 +28,11 @@ class TeamInformation extends Component {
   static propTypes = {
     // Props from Redux
     currentLanguage: PropTypes.string,
-    getTestContent: PropTypes.func
+    testBackground: PropTypes.object
   };
 
   state = {
-    showPopupBox: false,
-    isLoadingComplete: false,
-    markdown_section1_en: "",
-    markdown_section1_fr: "",
-    markdown_section2_en: "",
-    markdown_section2_fr: "",
-    popupMarkdownTitle_en: "",
-    popupMarkdownTitle_fr: "",
-    popupMarkdownDescription_en: "",
-    popupMarkdownDescription_fr: "",
-    treeViewContent_en: [],
-    treeViewContent_fr: []
+    showPopupBox: false
   };
 
   openPopup = () => {
@@ -57,41 +43,28 @@ class TeamInformation extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // loads the markdown content (english and french versions)
-  componentWillMount = () => {
-    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // Save the team information markdown content in local states.
-      this.setState({
-        markdown_section1_en: response.background.en.background[0].markdown[3].text,
-        markdown_section1_fr: response.background.fr.background[0].markdown[3].text,
-        markdown_section2_en: response.background.en.background[0].markdown[4].text,
-        markdown_section2_fr: response.background.fr.background[0].markdown[4].text,
-        popupMarkdownTitle_en: response.background.en.background[0].markdown[7].text,
-        popupMarkdownTitle_fr: response.background.fr.background[0].markdown[7].text,
-        popupMarkdownDescription_en: response.background.en.background[0].markdown[8].text,
-        popupMarkdownDescription_fr: response.background.fr.background[0].markdown[8].text,
-        treeViewContent_en:
-          response.background.en.background[0].tree_view[1].team_information_tree_child,
-        treeViewContent_fr:
-          response.background.fr.background[0].tree_view[1].team_information_tree_child,
-        isLoadingComplete: true
-      });
-    });
-  };
-
   render() {
-    const { currentLanguage } = this.props;
-    const { treeViewContent_en, treeViewContent_fr } = this.state;
-    let treeView = [];
-    // waiting for tree view content data loading
-    if (this.state.isLoadingComplete) {
-      treeView = processTreeContent(
-        currentLanguage,
-        treeViewContent_en,
-        treeViewContent_fr,
-        "team_information_tree_child"
-      );
-    }
+    const { currentLanguage, testBackground } = this.props;
+
+    const markdown_section1_en = testBackground.en.background[0].markdown[3].text;
+    const markdown_section1_fr = testBackground.fr.background[0].markdown[3].text;
+    const markdown_section2_en = testBackground.en.background[0].markdown[4].text;
+    const markdown_section2_fr = testBackground.fr.background[0].markdown[4].text;
+    const popupMarkdownTitle_en = testBackground.en.background[0].markdown[7].text;
+    const popupMarkdownTitle_fr = testBackground.fr.background[0].markdown[7].text;
+    const popupMarkdownDescription_en = testBackground.en.background[0].markdown[8].text;
+    const popupMarkdownDescription_fr = testBackground.fr.background[0].markdown[8].text;
+    const treeViewContent_en =
+      testBackground.en.background[0].tree_view[1].team_information_tree_child;
+    const treeViewContent_fr =
+      testBackground.fr.background[0].tree_view[1].team_information_tree_child;
+
+    const treeView = processTreeContent(
+      currentLanguage,
+      treeViewContent_en,
+      treeViewContent_fr,
+      "team_information_tree_child"
+    );
 
     return (
       <div>
@@ -100,17 +73,15 @@ class TeamInformation extends Component {
           handleClose={this.closePopup}
           // only using the states here (without markdown), since the title must be a string
           title={
-            this.props.currentLanguage === LANGUAGES.english
-              ? this.state.popupMarkdownTitle_en
-              : this.state.popupMarkdownTitle_fr
+            currentLanguage === LANGUAGES.english ? popupMarkdownTitle_en : popupMarkdownTitle_fr
           }
           description={
             <div>
-              {this.props.currentLanguage === LANGUAGES.english && (
-                <ReactMarkdown source={this.state.popupMarkdownDescription_en} />
+              {currentLanguage === LANGUAGES.english && (
+                <ReactMarkdown source={popupMarkdownDescription_en} />
               )}
-              {this.props.currentLanguage === LANGUAGES.french && (
-                <ReactMarkdown source={this.state.popupMarkdownDescription_fr} />
+              {currentLanguage === LANGUAGES.french && (
+                <ReactMarkdown source={popupMarkdownDescription_fr} />
               )}
               <TreeNode nodes={treeView} />
             </div>
@@ -119,12 +90,8 @@ class TeamInformation extends Component {
           rightButtonTitle={LOCALIZE.commons.close}
         />
         <div>
-          {this.props.currentLanguage === LANGUAGES.english && (
-            <ReactMarkdown source={this.state.markdown_section1_en} />
-          )}
-          {this.props.currentLanguage === LANGUAGES.french && (
-            <ReactMarkdown source={this.state.markdown_section1_fr} />
-          )}
+          {currentLanguage === LANGUAGES.english && <ReactMarkdown source={markdown_section1_en} />}
+          {currentLanguage === LANGUAGES.french && <ReactMarkdown source={markdown_section1_fr} />}
           <div>
             <p>
               {currentLanguage === LANGUAGES.english && (
@@ -171,11 +138,11 @@ class TeamInformation extends Component {
             </button>
           </div>
           <div>
-            {this.props.currentLanguage === LANGUAGES.english && (
-              <ReactMarkdown source={this.state.markdown_section2_en} />
+            {currentLanguage === LANGUAGES.english && (
+              <ReactMarkdown source={markdown_section2_en} />
             )}
-            {this.props.currentLanguage === LANGUAGES.french && (
-              <ReactMarkdown source={this.state.markdown_section2_fr} />
+            {currentLanguage === LANGUAGES.french && (
+              <ReactMarkdown source={markdown_section2_fr} />
             )}
           </div>
         </div>
@@ -186,19 +153,12 @@ class TeamInformation extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentLanguage: state.localize.language
+    currentLanguage: state.localize.language,
+    testBackground: state.loadTestContent.testBackground
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getTestContent
-    },
-    dispatch
-  );
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(TeamInformation);
