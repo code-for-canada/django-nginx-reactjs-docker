@@ -11,7 +11,7 @@ import emibInbox, {
 } from "../../modules/EmibInboxRedux";
 import { EMAIL_TYPE, ACTION_TYPE } from "../../components/eMIB/constants";
 import { setLanguage } from "../../modules/LocalizeRedux";
-import { emailsJson } from "../../modules/sampleEmibJson";
+import { emailsJson } from "../components/eMIB/sampleData";
 
 describe("EmibInboxRedux", () => {
   let stubbedInitialState;

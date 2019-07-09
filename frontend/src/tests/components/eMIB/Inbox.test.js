@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { UnconnectedInbox as Inbox } from "../../../components/eMIB/Inbox";
-import { emailsJson } from "../../../modules/sampleEmibJson";
+import { emailsJson } from "./sampleData";
 import EmailPreview from "../../../components/eMIB/EmailPreview";
 import Email from "../../../components/eMIB/Email";
 

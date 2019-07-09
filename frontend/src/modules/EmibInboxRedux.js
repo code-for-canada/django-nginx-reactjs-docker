@@ -1,4 +1,4 @@
-import { emailsJson, addressBookJson } from "./sampleEmibJson";
+import { addressBookJson } from "./sampleEmibJson";
 import { SET_LANGUAGE } from "./LocalizeRedux";
 import { ACTION_TYPE } from "../components/eMIB/constants";
 
