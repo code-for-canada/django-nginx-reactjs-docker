@@ -53,6 +53,7 @@ class App extends Component {
 
     // if there is no token, then there is no point in trying to verify it
     if (auth_token === undefined) {
+      this.determinePath(undefined);
       return;
     }
 
@@ -64,32 +65,37 @@ class App extends Component {
       },
       body: JSON.stringify({ token: auth_token })
     }).then(response => {
-      // if valid, update the authenticated redux state to true
-      if (response.status === 200) {
-        this.props.authenticateAction(true);
-      }
-      // if not a valid url (part of the PATH object) or login path, redirect to dashboard page
-      const pathValues = Object.keys(PATH).map(function(e) {
-        return PATH[e];
-      });
-      if (
-        pathValues.indexOf(window.location.pathname) < 0 ||
-        window.location.pathname === PATH.login
-      ) {
-        history.push(PATH.dashboard);
-      }
-      // if not valid and not the eMIB sample url, logout and redirect to login page
-      if (
-        response.status !== 200 &&
-        window.location.pathname !== PATH.emibSampleTest &&
-        window.location.pathname !== PATH.status
-      ) {
-        this.props.authenticateAction(false);
-        this.props.logoutAction();
-        history.push(PATH.login);
-      }
+      this.determinePath(response.status);
     });
   };
+
+  //This logic needs to be used even if auth_token is undefined
+  determinePath(status) {
+    // if valid, update the authenticated redux state to true
+    if (status === 200) {
+      this.props.authenticateAction(true);
+    }
+    // if not a valid url (part of the PATH object) or login path, redirect to dashboard page
+    const pathValues = Object.keys(PATH).map(function(e) {
+      return PATH[e];
+    });
+    if (
+      pathValues.indexOf(window.location.pathname) < 0 ||
+      window.location.pathname === PATH.login
+    ) {
+      history.push(PATH.dashboard);
+    }
+    // if not valid and not the eMIB sample url, logout and redirect to login page
+    if (
+      status !== 200 &&
+      window.location.pathname !== PATH.emibSampleTest &&
+      window.location.pathname !== PATH.status
+    ) {
+      this.props.authenticateAction(false);
+      this.props.logoutAction();
+      history.push(PATH.login);
+    }
+  }
 
   render() {
     const { isTestActive } = this.props;
