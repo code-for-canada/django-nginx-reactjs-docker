@@ -49,7 +49,7 @@ class TreeNode extends Component {
       }
 
       if (node.groups) {
-        node.expanded = true;
+        node.expanded = false;
       }
 
       //TODO auto generate:
