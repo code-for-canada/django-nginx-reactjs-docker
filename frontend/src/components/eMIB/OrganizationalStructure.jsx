@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
 import LOCALIZE from "../../text_resources";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
@@ -13,8 +12,6 @@ import emib_sample_test_example_org_chart_fr_zoomed from "../../images/emib_samp
 import ImageZoom from "react-medium-image-zoom";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
-import { getTestQuestions } from "../../modules/LoadTestContentRedux";
-import { TEST_DEFINITION } from "../../testDefinition";
 import { processTreeContent } from "../../helpers/transformations";
 
 const styles = {
@@ -29,22 +26,13 @@ const styles = {
 
 class OrganizationalStructure extends Component {
   static propTypes = {
-    // Props from Redux
-    currentLanguage: PropTypes.string,
-    getTestQuestions: PropTypes.func
+    // Provided by Redux
+    testBackground: PropTypes.object,
+    currentLanguage: PropTypes.string
   };
 
   state = {
-    showPopupBox: false,
-    isLoadingComplete: false,
-    markdown_en: "",
-    markdown_fr: "",
-    popupMarkdownTitle_en: "",
-    popupMarkdownTitle_fr: "",
-    popupMarkdownDescription_en: "",
-    popupMarkdownDescription_fr: "",
-    treeViewContent_en: [],
-    treeViewContent_fr: []
+    showPopupBox: false
   };
 
   openPopup = () => {
@@ -55,39 +43,26 @@ class OrganizationalStructure extends Component {
     this.setState({ showPopupBox: false });
   };
 
-  // loads the markdown and tree view content (english and french versions)
-  componentDidMount = () => {
-    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // Save the organizational structure markdown and tree view content in local states.
-      this.setState({
-        markdown_en: response.background.en.background[0].markdown[2].text,
-        markdown_fr: response.background.fr.background[0].markdown[2].text,
-        popupMarkdownTitle_en: response.background.en.background[0].markdown[5].text,
-        popupMarkdownTitle_fr: response.background.fr.background[0].markdown[5].text,
-        popupMarkdownDescription_en: response.background.en.background[0].markdown[6].text,
-        popupMarkdownDescription_fr: response.background.fr.background[0].markdown[6].text,
-        treeViewContent_en:
-          response.background.en.background[0].tree_view[0].organizational_structure_tree_child,
-        treeViewContent_fr:
-          response.background.fr.background[0].tree_view[0].organizational_structure_tree_child,
-        isLoadingComplete: true
-      });
-    });
-  };
-
   render() {
-    const { currentLanguage } = this.props;
-    const { treeViewContent_en, treeViewContent_fr } = this.state;
-    let treeView = [];
-    // waiting for tree view content data loading
-    if (this.state.isLoadingComplete) {
-      treeView = processTreeContent(
-        currentLanguage,
-        treeViewContent_en,
-        treeViewContent_fr,
-        "organizational_structure_tree_child"
-      );
-    }
+    const { currentLanguage, testBackground } = this.props;
+
+    const treeViewContent_en =
+      testBackground.en.background[0].tree_view[0].organizational_structure_tree_child;
+    const treeViewContent_fr =
+      testBackground.fr.background[0].tree_view[0].organizational_structure_tree_child;
+    const markdown_en = testBackground.en.background[0].markdown[2].text;
+    const markdown_fr = testBackground.fr.background[0].markdown[2].text;
+    const popupMarkdownTitle_en = testBackground.en.background[0].markdown[5].text;
+    const popupMarkdownTitle_fr = testBackground.fr.background[0].markdown[5].text;
+    const popupMarkdownDescription_en = testBackground.en.background[0].markdown[6].text;
+    const popupMarkdownDescription_fr = testBackground.fr.background[0].markdown[6].text;
+
+    const treeView = processTreeContent(
+      currentLanguage,
+      treeViewContent_en,
+      treeViewContent_fr,
+      "organizational_structure_tree_child"
+    );
 
     return (
       <div>
@@ -97,16 +72,16 @@ class OrganizationalStructure extends Component {
           // only using the states here (without markdown), since the title must be a string
           title={
             this.props.currentLanguage === LANGUAGES.english
-              ? this.state.popupMarkdownTitle_en
-              : this.state.popupMarkdownTitle_fr
+              ? popupMarkdownTitle_en
+              : popupMarkdownTitle_fr
           }
           description={
             <div>
               {this.props.currentLanguage === LANGUAGES.english && (
-                <ReactMarkdown source={this.state.popupMarkdownDescription_en} />
+                <ReactMarkdown source={popupMarkdownDescription_en} />
               )}
               {this.props.currentLanguage === LANGUAGES.french && (
-                <ReactMarkdown source={this.state.popupMarkdownDescription_fr} />
+                <ReactMarkdown source={popupMarkdownDescription_fr} />
               )}
               <TreeNode nodes={treeView} />
             </div>
@@ -117,10 +92,10 @@ class OrganizationalStructure extends Component {
         <div>
           <div>
             {this.props.currentLanguage === LANGUAGES.english && (
-              <ReactMarkdown source={this.state.markdown_en} />
+              <ReactMarkdown source={markdown_en} />
             )}
             {this.props.currentLanguage === LANGUAGES.french && (
-              <ReactMarkdown source={this.state.markdown_fr} />
+              <ReactMarkdown source={markdown_fr} />
             )}
             <p>
               {currentLanguage === LANGUAGES.english && (
@@ -172,19 +147,12 @@ class OrganizationalStructure extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentLanguage: state.localize.language
+    currentLanguage: state.localize.language,
+    testBackground: state.loadTestContent.testBackground
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getTestQuestions
-    },
-    dispatch
-  );
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(OrganizationalStructure);

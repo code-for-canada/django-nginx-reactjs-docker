@@ -17,7 +17,7 @@ import {
   updateEmailsFrState,
   updateEmailsState
 } from "../../modules/EmibInboxRedux";
-import { getTestQuestions } from "../../modules/LoadTestContentRedux";
+import { getTestContent, updateTestBackgroundState } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
 import QuitConfirmation from "../commons/QuitConfirmation";
 
@@ -30,7 +30,8 @@ class Emib extends Component {
     updateEmailsEnState: PropTypes.func,
     updateEmailsFrState: PropTypes.func,
     updateEmailsState: PropTypes.func,
-    getTestQuestions: PropTypes.func
+    getTestContent: PropTypes.func,
+    updateTestQuestionsState: PropTypes.func
   };
 
   state = {
@@ -45,13 +46,18 @@ class Emib extends Component {
   loading test questions from the APIs on test start */
   handleStartTest = () => {
     // getting questions of the sample test from the api
-    this.props.getTestQuestions(TEST_DEFINITION.emib.sampleTest).then(response => {
+    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
+      // Load emails.
       // TODO: default language is English for now, but we'll need to put the landing page selected language here instead
       this.props.updateEmailsState(response.questions.en.email);
       // saving questions content in emails, emailsEN and emailsFR states
       this.props.updateEmailsEnState(response.questions.en.email);
       this.props.updateEmailsFrState(response.questions.fr.email);
 
+      // Load background info.
+      this.props.updateTestBackgroundState(response.background);
+
+      // Update state.
       this.setState({ testIsStarted: true, disabledTabs: [], currentTab: "background" });
     });
   };
@@ -151,7 +157,8 @@ const mapDispatchToProps = dispatch =>
       updateEmailsEnState,
       updateEmailsFrState,
       updateEmailsState,
-      getTestQuestions
+      getTestContent,
+      updateTestBackgroundState
     },
     dispatch
   );

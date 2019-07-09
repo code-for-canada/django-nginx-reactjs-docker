@@ -1,10 +1,13 @@
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
-const UPDATE_TEST_INSTRUCTIONS = "emibInbox/UPDATE_TEST_INSTRUCTIONS";
-const UPDATE_TEST_QUESTIONS = "emibInbox/UPDATE_TEST_QUESTIONS";
+const UPDATE_TEST_BACKGROUND = "emibInbox/UPDATE_TEST_BACKGROUND";
 
 // Action Creators
 const updateTestMetaDataState = testMetaData => ({ type: UPDATE_TEST_META_DATA, testMetaData });
+const updateTestBackgroundState = testBackground => ({
+  type: UPDATE_TEST_BACKGROUND,
+  testBackground
+});
 
 const getTestMetaData = testName => {
   return async function() {
@@ -18,45 +21,25 @@ const getTestMetaData = testName => {
   };
 };
 
-const updateTestInstructionsState = testInstructions => ({
-  type: UPDATE_TEST_INSTRUCTIONS,
-  testInstructions
-});
-
-const getTestInstructions = testName => {
+const getTestContent = testName => {
   return async function() {
-    let testInstructionsContent = await fetch(`/api/test-instructions/?test_name=${testName}`, {
+    let testContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
       method: "GET",
       Accept: "application/json",
       "Content-Type": "application/json",
       cache: "default"
     });
-    return await testInstructionsContent.json();
-  };
-};
-
-const updateTestQuestionsState = testQuestions => ({
-  type: UPDATE_TEST_QUESTIONS,
-  testQuestions
-});
-
-const getTestQuestions = testName => {
-  return async function() {
-    let testQuestionsContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
-      method: "GET",
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      cache: "default"
-    });
-    return await testQuestionsContent.json();
+    return await testContent.json();
   };
 };
 
 // Initial State
+// testMetaData contains the name of the test and the overview page content
+// testBackground contains all the background information
 const initialState = {
+  isMetaLoading: true,
   testMetaData: {},
-  testInstructions: {},
-  testQuestions: {}
+  testBackground: {}
 };
 
 // Reducer
@@ -65,17 +48,13 @@ const loadTestContent = (state = initialState, action) => {
     case UPDATE_TEST_META_DATA:
       return {
         ...state,
-        testMetaData: action.testMetaData
+        testMetaData: action.testMetaData,
+        isMetaLoading: false
       };
-    case UPDATE_TEST_INSTRUCTIONS:
+    case UPDATE_TEST_BACKGROUND:
       return {
         ...state,
-        testInstructions: action.testInstructions
-      };
-    case UPDATE_TEST_QUESTIONS:
-      return {
-        ...state,
-        testQuestions: action.testQuestions
+        testBackground: action.testBackground
       };
 
     default:
@@ -88,8 +67,6 @@ export {
   initialState,
   updateTestMetaDataState,
   getTestMetaData,
-  updateTestInstructionsState,
-  getTestInstructions,
-  updateTestQuestionsState,
-  getTestQuestions
+  updateTestBackgroundState,
+  getTestContent
 };
