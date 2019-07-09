@@ -34,7 +34,10 @@ const getTestContent = testName => {
 };
 
 // Initial State
+// testMetaData contains the name of the test and the overview page content
+// testBackground contains all the background information
 const initialState = {
+  isMetaLoading: true,
   testMetaData: {},
   testBackground: {}
 };
@@ -45,7 +48,8 @@ const loadTestContent = (state = initialState, action) => {
     case UPDATE_TEST_META_DATA:
       return {
         ...state,
-        testMetaData: action.testMetaData
+        testMetaData: action.testMetaData,
+        isMetaLoading: false
       };
     case UPDATE_TEST_BACKGROUND:
       return {

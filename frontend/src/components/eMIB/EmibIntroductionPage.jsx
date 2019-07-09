@@ -4,7 +4,7 @@ import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import { getTestMetaData } from "../../modules/LoadTestContentRedux";
+import { getTestMetaData, updateTestMetaDataState } from "../../modules/LoadTestContentRedux";
 import { TEST_DEFINITION } from "../../testDefinition";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
 
@@ -19,42 +19,43 @@ class EmibIntroductionPage extends Component {
   static propTypes = {
     nextPage: PropTypes.func.isRequired,
     // Provided by Redux
-    getTestMetaData: PropTypes.func
+    getTestMetaData: PropTypes.func.isRequired,
+    updateTestMetaDataState: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired,
+    testMetaData: PropTypes.object,
+    isMetaLoading: PropTypes.bool
   };
 
-  state = {
-    test_name_en: "",
-    test_name_fr: "",
-    markdown_en: "",
-    markdown_fr: ""
-  };
-
-  // loads the markdown content (english and french versions)
+  // Load current test markdown content.
   componentWillMount = () => {
     this.props.getTestMetaData(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // saving the test name and overview information markdown content in local states
-      this.setState({
-        test_name_en: response.test_en_name,
-        test_name_fr: response.test_fr_name,
-        markdown_en: response.meta_text.en.overview[0],
-        markdown_fr: response.meta_text.fr.overview[0]
-      });
+      this.props.updateTestMetaDataState(response);
     });
   };
 
   render() {
+    if (this.props.isMetaLoading) {
+      return <div />;
+    }
+
+    const { language, testMetaData } = this.props;
+    const test_name_en = testMetaData.test_en_name;
+    const test_name_fr = testMetaData.test_fr_name;
+    const markdown_en = testMetaData.meta_text.en.overview[0];
+    const markdown_fr = testMetaData.meta_text.fr.overview[0];
+
     return (
       <div>
-        {this.props.language === LANGUAGES.english && (
+        {language === LANGUAGES.english && (
           <div>
-            <h1 className="green-divider">{this.state.test_name_en}</h1>
-            <ReactMarkdown source={this.state.markdown_en} />
+            <h1 className="green-divider">{test_name_en}</h1>
+            <ReactMarkdown source={markdown_en} />
           </div>
         )}
-        {this.props.language === LANGUAGES.french && (
+        {language === LANGUAGES.french && (
           <div>
-            <h1 className="green-divider">{this.state.test_name_fr}</h1>
-            <ReactMarkdown source={this.state.markdown_fr} />
+            <h1 className="green-divider">{test_name_fr}</h1>
+            <ReactMarkdown source={markdown_fr} />
           </div>
         )}
         <div style={styles.startTestBtn}>
@@ -69,14 +70,17 @@ class EmibIntroductionPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    language: state.localize.language
+    language: state.localize.language,
+    testMetaData: state.loadTestContent.testMetaData,
+    isMetaLoading: state.loadTestContent.isMetaLoading
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getTestMetaData
+      getTestMetaData,
+      updateTestMetaDataState
     },
     dispatch
   );
