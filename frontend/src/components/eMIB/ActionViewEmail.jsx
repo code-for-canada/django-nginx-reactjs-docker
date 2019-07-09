@@ -9,10 +9,10 @@ import { bindActionCreators } from "redux";
 import { deleteEmail } from "../../modules/EmibInboxRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
-import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { contactNameFromId } from "../../helpers/transformations";
+import { getAddressInCurrentLanguage } from "../../modules/LoadTestContentRedux";
 
 const styles = {
   type: {
@@ -58,7 +58,7 @@ class ActionViewEmail extends Component {
     // optional prop to disable the entire component
     disabled: PropTypes.bool,
     // Props from Redux
-    addressBook: PropTypes.arrayOf(addressBookContactShape),
+    addressBook: PropTypes.array,
     deleteEmail: PropTypes.func
   };
 
@@ -227,7 +227,7 @@ export { ActionViewEmail as UnconnectedActionViewEmail };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    addressBook: state.emibInbox.addressBook
+    addressBook: getAddressInCurrentLanguage(state)
   };
 };
 

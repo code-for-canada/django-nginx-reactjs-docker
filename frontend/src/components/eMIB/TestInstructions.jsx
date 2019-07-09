@@ -36,7 +36,7 @@ class TestInstructions extends Component {
     const exampleEmailResponse = {
       actionType: ACTION_TYPE.email,
       emailType: EMAIL_TYPE.reply,
-      emailTo: [8], // Geneviève Bédard in the address book
+      emailTo: [4], // Geneviève Bédard in the address book
       emailCc: [],
       emailBody: LOCALIZE.emibTest.howToPage.testInstructions.exampleEmailResponse.emailBody,
       reasonsForAction:
@@ -78,14 +78,7 @@ class TestInstructions extends Component {
                 </h4>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para1}</p>
                 <p>{LOCALIZE.emibTest.howToPage.testInstructions.step1Section.part2.para2}</p>
-                <div style={styles.disabledExampleComponent}>
-                  <ActionViewEmail
-                    action={exampleEmailResponse}
-                    actionId={1}
-                    email={exampleEmail}
-                    disabled={true}
-                  />
-                </div>
+                <div style={styles.disabledExampleComponent} />
               </section>
               <section aria-labelledby="adding-a-task">
                 <h4 id="adding-a-task">

@@ -1,4 +1,5 @@
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
+import { addressBookJson } from "./sampleEmibJson";
 
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
@@ -42,7 +43,7 @@ const initialState = {
   isMetaLoading: true,
   testMetaData: {},
   testBackground: {},
-  addressBook: []
+  addressBook: addressBookJson.addressBookEN
 };
 
 // Reducer
