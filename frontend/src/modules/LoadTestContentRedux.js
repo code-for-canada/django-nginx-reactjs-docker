@@ -1,5 +1,4 @@
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
-import { addressBookJson } from "./sampleEmibJson";
 
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
@@ -12,6 +11,7 @@ const updateTestBackgroundState = testBackground => ({
   testBackground
 });
 
+// API Calls
 const getTestMetaData = testName => {
   return async function() {
     let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName}`, {
@@ -23,7 +23,6 @@ const getTestMetaData = testName => {
     return await metaDataContent.json();
   };
 };
-
 const getTestContent = testName => {
   return async function() {
     let testContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
@@ -37,13 +36,16 @@ const getTestContent = testName => {
 };
 
 // Initial State
-// testMetaData contains the name of the test and the overview page content
-// testBackground contains all the background information
+// isMetaLoading - boolean determining if the metadata has been initialized
+// testMetaData - contains the name of the test and the overview page content
+// testBackground - contains all the background information
+// addressBook - an object containing arrays of strings representing
+// an address book of contacts in each language
 const initialState = {
   isMetaLoading: true,
   testMetaData: {},
   testBackground: {},
-  addressBook: addressBookJson.addressBookEN
+  addressBook: { en: [], fr: [] }
 };
 
 // Reducer
@@ -68,13 +70,13 @@ const loadTestContent = (state = initialState, action) => {
 };
 
 // Converts the org charts in the background into an addressBook
+// to put into the redux store.
 const processAddressBook = testBackground => {
-  // Get the org charts out of the background.
+  // Get the org chart arrays out of the background content.
   const enOrgCharts = testBackground.en.background[0].tree_view;
   const frOrgCharts = testBackground.fr.background[0].tree_view;
 
-  // Flatten the trees and get rid of duplicates
-  // Format like an address book
+  // Flatten the trees and format as an array of names (strings).
   const enAddressBook = recursivelyCreateAddressBook(
     enOrgCharts[0].organizational_structure_tree_child,
     "organizational_structure_tree_child"
@@ -95,11 +97,14 @@ const processAddressBook = testBackground => {
     )
   );
 
-  // Return the formatted address book
+  // Return the formatted address book for each language.
   return { en: enAddressBook, fr: frAddressBook };
 };
 
-// Filters
+// Filters - used to get a filtered version of the state in the
+// mapStateToProps in the components.
+
+// Returns the address book in the current language.
 export const getAddressInCurrentLanguage = state => {
   const lang = state.localize.language;
   const addressBook = state.loadTestContent.addressBook;
