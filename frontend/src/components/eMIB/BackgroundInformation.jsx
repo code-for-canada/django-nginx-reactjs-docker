@@ -1,42 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import ReactMarkdown from "react-markdown";
-import { getTestContent } from "../../modules/LoadTestContentRedux";
-import { TEST_DEFINITION } from "../../testDefinition";
 import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 class BackgroundInformation extends Component {
   static propTypes = {
     // Provided by Redux
-    getTestContent: PropTypes.func
-  };
-
-  state = {
-    markdown_en: "",
-    markdown_fr: ""
-  };
-
-  // loads the markdown content (english and french versions)
-  componentWillMount = () => {
-    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
-      // saving the background information markdown content in local states
-      this.setState({
-        markdown_en: response.background.en.background[0].markdown[0].text,
-        markdown_fr: response.background.fr.background[0].markdown[0].text
-      });
-    });
+    testBackground: PropTypes.object,
+    language: PropTypes.string
   };
 
   render() {
     return (
       <div>
         {this.props.language === LANGUAGES.english && (
-          <ReactMarkdown source={this.state.markdown_en} />
+          <ReactMarkdown source={this.props.testBackground.en.background[0].markdown[0].text} />
         )}
         {this.props.language === LANGUAGES.french && (
-          <ReactMarkdown source={this.state.markdown_fr} />
+          <ReactMarkdown source={this.props.testBackground.fr.background[0].markdown[0].text} />
         )}
       </div>
     );
@@ -45,19 +27,12 @@ class BackgroundInformation extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    language: state.localize.language
+    language: state.localize.language,
+    testBackground: state.loadTestContent.testBackground
   };
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getTestContent
-    },
-    dispatch
-  );
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(BackgroundInformation);
