@@ -1,7 +1,7 @@
 import { LANGUAGES } from "../modules/LocalizeRedux";
 
 // Transform addressBook (list of names - strings) into a list of
-// options. This option list is what's required as the choices
+// options. This option list (addressBookOptionShape) is what's required as the choices
 // for the react-super-select input component.
 export function transformAddressBook(addressBook) {
   let options = [];
@@ -17,7 +17,7 @@ export function contactNameFromId(addressBook, id) {
 }
 
 // From an array of indexes, create an options list for the
-// to and cc fields. The option list is what's required
+// to and cc fields. The option list (addressBookOptionShape) is what's required
 // by the react-super-selct input component.
 export function optionsFromIds(addressBook, ids) {
   let options = [];

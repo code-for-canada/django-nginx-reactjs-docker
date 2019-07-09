@@ -59,7 +59,7 @@ class ActionViewEmail extends Component {
     disabled: PropTypes.bool,
     isInstructions: PropTypes.bool,
     // Props from Redux
-    addressBook: PropTypes.array,
+    addressBook: PropTypes.arrayOf(PropTypes.string),
     deleteEmail: PropTypes.func
   };
 
