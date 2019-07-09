@@ -1,4 +1,5 @@
 import { addressBookJson } from "./sampleEmibJson";
+import { recursivelyCreateAddressBook } from "../helpers/transformations";
 
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
@@ -66,16 +67,24 @@ const loadTestContent = (state = initialState, action) => {
   }
 };
 
+// Converts the org charts in the background to
+// addressBookContactShape2
 const processAddressBook = testBackground => {
   console.log("Generating addressbook");
 
   // Get the org charts out of the background.
-
   const enOrgCharts = testBackground.en.background[0].tree_view;
   const frOrgCharts = testBackground.fr.background[0].tree_view;
   console.log(enOrgCharts);
 
   // Flatten the trees and get rid of duplicates
+  const enAddressBookA = recursivelyCreateAddressBook(
+    enOrgCharts[0].organizational_structure_tree_child,
+    "organizational_structure_tree_child",
+    0
+  );
+
+  console.log(enAddressBookA);
 
   // Format like an address book
 

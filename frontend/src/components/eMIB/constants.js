@@ -55,3 +55,9 @@ export const addressBookContactShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired
 });
+
+// The stucture of a contact in the addressbook
+export const addressBookContactShape2 = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired
+});

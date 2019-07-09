@@ -115,3 +115,38 @@ export const recursivelyProcessTree = (treeContent, treeType, level, id, parent)
 
   return processedTree;
 };
+
+export const recursivelyCreateAddressBook = (treeContent, treeType, id) => {
+  let processedTree = [];
+  // For each node in the tree, process the node to the expected output for the tree view.
+  for (let i = 0; i < treeContent.length; i++) {
+    let treeNode = treeContent[i];
+
+    // If this node has children.
+    if (treeNode[treeType]) {
+      // Create a groups array after processing children.
+      const newNode = {
+        id: id,
+        name: treeNode.text
+      };
+
+      const childNodes = recursivelyCreateAddressBook(treeNode[treeType], treeType, id + 1);
+
+      // Update the processed set of the tree.
+      processedTree.push(newNode);
+      processedTree = processedTree.concat(childNodes);
+
+      // Increase the id by 1 plus the number of children ids
+      id = id + 1 + childNodes.length;
+    } else {
+      // This is a leaf node of the tree.
+      processedTree.push({
+        id: id,
+        name: treeNode.text
+      });
+      id++;
+    }
+  }
+
+  return processedTree;
+};
