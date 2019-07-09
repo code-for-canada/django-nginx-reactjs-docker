@@ -13,11 +13,6 @@ const styles = {
   button: {
     marginRight: 15
   },
-  hr: {
-    width: "100%",
-    borderTop: "2px solid #96a8b2",
-    margin: "16px 0 16px 0"
-  },
   checkboxZone: {
     paddingTop: 8
   },
