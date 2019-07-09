@@ -1,6 +1,8 @@
 import { LANGUAGES } from "../modules/LocalizeRedux";
 
-// transform addressBook (list of addressBookContactShape) into a list of display names (optionShapes)
+// Transform addressBook (list of names - strings) into a list of
+// options. This option list is what's required as the choices
+// for the react-super-select input component.
 export function transformAddressBook(addressBook) {
   let options = [];
   for (let i = 0; i < addressBook.length; i++) {
@@ -9,18 +11,14 @@ export function transformAddressBook(addressBook) {
   return options;
 }
 
-// transform addressBookContactShape a display name for the optionShape
-export function transformContactName(contact) {
-  return contact.name + " (" + contact.role + ")";
-}
-
 // Get the transformed name, or an empty string if it is not found
 export function contactNameFromId(addressBook, id) {
-  return addressBook[id];
+  return addressBook[id] || "";
 }
 
-// From an array of ids, create an options list for the
-// to and cc fields.
+// From an array of indexes, create an options list for the
+// to and cc fields. The option list is what's required
+// by the react-super-selct input component.
 export function optionsFromIds(addressBook, ids) {
   let options = [];
   ids = ids || [];
@@ -106,28 +104,24 @@ export const recursivelyProcessTree = (treeContent, treeType, level, id, parent)
   return processedTree;
 };
 
-// Converts org charts into an address book
+// Converts org chart trees into an address book (flattened array of strings).
 export const recursivelyCreateAddressBook = (treeContent, treeType) => {
   let processedTree = [];
   // For each node in the tree, process the node to the expected output for the tree view.
   for (let i = 0; i < treeContent.length; i++) {
-    let treeNode = treeContent[i];
+    const treeNode = treeContent[i];
 
     // If this node has children.
     if (treeNode[treeType]) {
-      // Create a groups array after processing children.
-      const newNode = treeNode.text;
+      // Update the processed set of the tree.
+      processedTree.push(treeNode.text);
 
       const childNodes = recursivelyCreateAddressBook(treeNode[treeType], treeType);
-
-      // Update the processed set of the tree.
-      processedTree.push(newNode);
       processedTree = processedTree.concat(childNodes);
     } else {
       // This is a leaf node of the tree.
       processedTree.push(treeNode.text);
     }
   }
-
   return processedTree;
 };
