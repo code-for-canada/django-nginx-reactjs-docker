@@ -1,4 +1,4 @@
-import { emailsJson, addressBookJson } from "./sampleEmibJson";
+import { addressBookJson } from "./sampleEmibJson";
 import { SET_LANGUAGE } from "./LocalizeRedux";
 import { ACTION_TYPE } from "../components/eMIB/constants";
 
@@ -28,15 +28,15 @@ const UPDATE_TASK = "emibInbox/UPDATE_TASK";
 const DELETE_EMAIL = "emibInbox/DELETE_EMAIL";
 const DELETE_TASK = "emibInbox/DELETE_TASK";
 const CHANGE_CURRENT_EMAIL = "emibInbox/CHANGE_CURRENT_EMAIL";
-const GET_EMAILS = "emibInbox/GET_EMAILS";
-const GET_EN_EMAILS = "emibInbox/GET_EN_EMAILS";
-const GET_FR_EMAILS = "emibInbox/GET_FR_EMAILS";
+const UPDATE_EMAILS_CONTENT = "emibInbox/UPDATE_EMAILS_CONTENT";
+const SET_EN_EMAILS = "emibInbox/SET_EN_EMAILS";
+const SET_FR_EMAILS = "emibInbox/SET_FR_EMAILS";
 
 // Action Creators
 // updating email states (emails, emailsEN and emailsFR)
-const updateEmailsEnState = emailsEN => ({ type: GET_EN_EMAILS, emailsEN });
-const updateEmailsFrState = emailsFR => ({ type: GET_FR_EMAILS, emailsFR });
-const updateEmailsState = emails => ({ type: GET_EMAILS, emails });
+const updateEmailsEnState = emailsEN => ({ type: SET_EN_EMAILS, emailsEN });
+const updateEmailsFrState = emailsFR => ({ type: SET_FR_EMAILS, emailsFR });
+const updateEmailsState = emails => ({ type: UPDATE_EMAILS_CONTENT, emails });
 
 const readEmail = emailIndex => ({ type: READ_EMAIL, emailIndex });
 // emailIndex refers to the index of the original parent email and emailAction is an actionShape
@@ -86,8 +86,8 @@ const initialState = {
   emails: {},
   emailsEN: {},
   emailsFR: {},
-  emailSummaries: initializeEmailSummaries(emailsJson.questions.en.email.length),
-  emailActions: initializeEmailActions(emailsJson.questions.en.email.length),
+  emailSummaries: [],
+  emailActions: [],
   addressBook: addressBookJson.addressBookEN,
   currentEmail: 0
 };
@@ -102,17 +102,19 @@ const emibInbox = (state = initialState, action) => {
         addressBook:
           action.language === "fr" ? addressBookJson.addressBookFR : addressBookJson.addressBookEN
       };
-    case GET_EMAILS:
+    case UPDATE_EMAILS_CONTENT:
       return {
         ...state,
-        emails: action.emails
+        emails: action.emails,
+        emailSummaries: initializeEmailSummaries(action.emails.length),
+        emailActions: initializeEmailActions(action.emails.length)
       };
-    case GET_EN_EMAILS:
+    case SET_EN_EMAILS:
       return {
         ...state,
         emailsEN: action.emailsEN
       };
-    case GET_FR_EMAILS:
+    case SET_FR_EMAILS:
       return {
         ...state,
         emailsFR: action.emailsFR
