@@ -44,7 +44,7 @@ class RetrieveMetaTest(TestCase):
             "test_en_name": "Pizza Test",
             "test_fr_name": "FR Pizza Test",
             "is_public": False,
-            "default_time": None,
+            "default_time": 180,
             "test_type": "emib",
             "meta_text": {
                 "en": {
