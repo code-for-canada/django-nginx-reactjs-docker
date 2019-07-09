@@ -53,7 +53,7 @@ class App extends Component {
 
     // if there is no token, then there is no point in trying to verify it
     if (auth_token === undefined) {
-      this.coreMountFunc(undefined);
+      this.determinePath(undefined);
       return;
     }
 
@@ -65,12 +65,12 @@ class App extends Component {
       },
       body: JSON.stringify({ token: auth_token })
     }).then(response => {
-      this.coreMountFunc(response.status);
+      this.determinePath(response.status);
     });
   };
 
   //This logic needs to be used even if auth_token is undefined
-  coreMountFunc(status) {
+  determinePath(status) {
     // if valid, update the authenticated redux state to true
     if (status === 200) {
       this.props.authenticateAction(true);
