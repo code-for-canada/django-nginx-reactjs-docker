@@ -1,4 +1,3 @@
-import { addressBookJson } from "./sampleEmibJson";
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
 
 // Action Types
@@ -43,7 +42,7 @@ const initialState = {
   isMetaLoading: true,
   testMetaData: {},
   testBackground: {},
-  addressBook: addressBookJson.addressBookEN
+  addressBook: []
 };
 
 // Reducer
@@ -75,20 +74,35 @@ const processAddressBook = testBackground => {
 
   // Flatten the trees and get rid of duplicates
   // Format like an address book
-  const addressBookA = recursivelyCreateAddressBook(
+  const enAddressBook = recursivelyCreateAddressBook(
     enOrgCharts[0].organizational_structure_tree_child,
+    "organizational_structure_tree_child"
+  ).concat(
+    recursivelyCreateAddressBook(
+      enOrgCharts[1].team_information_tree_child,
+      "team_information_tree_child"
+    )
+  );
+
+  const frAddressBook = recursivelyCreateAddressBook(
     frOrgCharts[0].organizational_structure_tree_child,
     "organizational_structure_tree_child"
+  ).concat(
+    recursivelyCreateAddressBook(
+      frOrgCharts[1].team_information_tree_child,
+      "team_information_tree_child"
+    )
   );
-  const addressBookB = recursivelyCreateAddressBook(
-    enOrgCharts[1].team_information_tree_child,
-    frOrgCharts[1].team_information_tree_child,
-    "team_information_tree_child"
-  );
-  const addressBook = addressBookA.concat(addressBookB);
 
   // Return the formatted address book
-  return addressBook;
+  return { en: enAddressBook, fr: frAddressBook };
+};
+
+// Filters
+export const getAddressInCurrentLanguage = state => {
+  const lang = state.localize.language;
+  const addressBook = state.loadTestContent.addressBook;
+  return addressBook[lang];
 };
 
 export default loadTestContent;
