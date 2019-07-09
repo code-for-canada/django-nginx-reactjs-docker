@@ -57,6 +57,7 @@ class ActionViewEmail extends Component {
     email: emailShape,
     // optional prop to disable the entire component
     disabled: PropTypes.bool,
+    isInstructions: PropTypes.bool,
     // Props from Redux
     addressBook: PropTypes.array,
     deleteEmail: PropTypes.func
@@ -89,7 +90,10 @@ class ActionViewEmail extends Component {
   // and transformed into a string that will be displayed to the candidate
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
-  generateEmailNameList(contactIdList) {
+  generateEmailNameList(contactIdList, isTo) {
+    if (this.props.isInstructions && isTo) {
+      return "Geneviève Bédard";
+    }
     if (contactIdList === undefined) {
       return "";
     }
@@ -102,7 +106,7 @@ class ActionViewEmail extends Component {
 
   render() {
     const action = this.props.action;
-    const visibleToNames = this.generateEmailNameList(action.emailTo);
+    const visibleToNames = this.generateEmailNameList(action.emailTo, true);
     const visibleCcNames = this.generateEmailNameList(action.emailCc);
     return (
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
