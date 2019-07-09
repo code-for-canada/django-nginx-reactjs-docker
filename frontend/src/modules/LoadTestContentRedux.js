@@ -75,21 +75,37 @@ const processAddressBook = testBackground => {
   // Get the org charts out of the background.
   const enOrgCharts = testBackground.en.background[0].tree_view;
   const frOrgCharts = testBackground.fr.background[0].tree_view;
-  console.log(enOrgCharts);
 
   // Flatten the trees and get rid of duplicates
+  // Format like an address book
   const enAddressBookA = recursivelyCreateAddressBook(
     enOrgCharts[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child",
-    0
+    "organizational_structure_tree_child"
   );
+  const enAddressBookB = recursivelyCreateAddressBook(
+    enOrgCharts[1].team_information_tree_child,
+    "team_information_tree_child"
+  );
+  let enAddressBook = enAddressBookA.concat(enAddressBookB);
 
-  console.log(enAddressBookA);
+  const frAddressBookA = recursivelyCreateAddressBook(
+    frOrgCharts[0].organizational_structure_tree_child,
+    "organizational_structure_tree_child"
+  );
+  const frAddressBookB = recursivelyCreateAddressBook(
+    frOrgCharts[1].team_information_tree_child,
+    "team_information_tree_child"
+  );
+  let frAddressBook = frAddressBookA.concat(frAddressBookB);
 
-  // Format like an address book
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  enAddressBook = enAddressBook.filter(onlyUnique);
+  frAddressBook = frAddressBook.filter(onlyUnique);
 
   // Return the formatted address book
-  return testBackground;
+  return { en: enAddressBook, fr: frAddressBook };
 };
 
 export default loadTestContent;
