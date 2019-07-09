@@ -67,45 +67,28 @@ const loadTestContent = (state = initialState, action) => {
   }
 };
 
-// Converts the org charts in the background to
-// addressBookContactShape2
+// Converts the org charts in the background into an addressBook
 const processAddressBook = testBackground => {
-  console.log("Generating addressbook");
-
   // Get the org charts out of the background.
   const enOrgCharts = testBackground.en.background[0].tree_view;
   const frOrgCharts = testBackground.fr.background[0].tree_view;
 
   // Flatten the trees and get rid of duplicates
   // Format like an address book
-  const enAddressBookA = recursivelyCreateAddressBook(
+  const addressBookA = recursivelyCreateAddressBook(
     enOrgCharts[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child"
-  );
-  const enAddressBookB = recursivelyCreateAddressBook(
-    enOrgCharts[1].team_information_tree_child,
-    "team_information_tree_child"
-  );
-  let enAddressBook = enAddressBookA.concat(enAddressBookB);
-
-  const frAddressBookA = recursivelyCreateAddressBook(
     frOrgCharts[0].organizational_structure_tree_child,
     "organizational_structure_tree_child"
   );
-  const frAddressBookB = recursivelyCreateAddressBook(
+  const addressBookB = recursivelyCreateAddressBook(
+    enOrgCharts[1].team_information_tree_child,
     frOrgCharts[1].team_information_tree_child,
     "team_information_tree_child"
   );
-  let frAddressBook = frAddressBookA.concat(frAddressBookB);
-
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-  enAddressBook = enAddressBook.filter(onlyUnique);
-  frAddressBook = frAddressBook.filter(onlyUnique);
+  const addressBook = addressBookA.concat(addressBookB);
 
   // Return the formatted address book
-  return { en: enAddressBook, fr: frAddressBook };
+  return addressBook;
 };
 
 export default loadTestContent;

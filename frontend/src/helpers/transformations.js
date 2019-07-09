@@ -116,25 +116,30 @@ export const recursivelyProcessTree = (treeContent, treeType, level, id, parent)
   return processedTree;
 };
 
-export const recursivelyCreateAddressBook = (treeContent, treeType) => {
+// Converts org charts into an address book
+export const recursivelyCreateAddressBook = (enTreeContent, frTreeContent, treeType) => {
   let processedTree = [];
   // For each node in the tree, process the node to the expected output for the tree view.
-  for (let i = 0; i < treeContent.length; i++) {
-    let treeNode = treeContent[i];
+  for (let i = 0; i < enTreeContent.length; i++) {
+    let treeNode = enTreeContent[i];
 
     // If this node has children.
     if (treeNode[treeType]) {
       // Create a groups array after processing children.
-      const newNode = treeNode.text;
+      const newNode = { en: enTreeContent[i].text, fr: frTreeContent[i].text };
 
-      const childNodes = recursivelyCreateAddressBook(treeNode[treeType], treeType);
+      const childNodes = recursivelyCreateAddressBook(
+        enTreeContent[i][treeType],
+        frTreeContent[i][treeType],
+        treeType
+      );
 
       // Update the processed set of the tree.
       processedTree.push(newNode);
       processedTree = processedTree.concat(childNodes);
     } else {
       // This is a leaf node of the tree.
-      processedTree.push(treeNode.text);
+      processedTree.push({ en: enTreeContent[i].text, fr: frTreeContent[i].text });
     }
   }
 
