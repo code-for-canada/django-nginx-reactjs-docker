@@ -29,13 +29,13 @@ const DELETE_EMAIL = "emibInbox/DELETE_EMAIL";
 const DELETE_TASK = "emibInbox/DELETE_TASK";
 const CHANGE_CURRENT_EMAIL = "emibInbox/CHANGE_CURRENT_EMAIL";
 const UPDATE_EMAILS_CONTENT = "emibInbox/UPDATE_EMAILS_CONTENT";
-const GET_EN_EMAILS = "emibInbox/GET_EN_EMAILS";
-const GET_FR_EMAILS = "emibInbox/GET_FR_EMAILS";
+const SET_EN_EMAILS = "emibInbox/SET_EN_EMAILS";
+const SET_FR_EMAILS = "emibInbox/SET_FR_EMAILS";
 
 // Action Creators
 // updating email states (emails, emailsEN and emailsFR)
-const updateEmailsEnState = emailsEN => ({ type: GET_EN_EMAILS, emailsEN });
-const updateEmailsFrState = emailsFR => ({ type: GET_FR_EMAILS, emailsFR });
+const updateEmailsEnState = emailsEN => ({ type: SET_EN_EMAILS, emailsEN });
+const updateEmailsFrState = emailsFR => ({ type: SET_FR_EMAILS, emailsFR });
 const updateEmailsState = emails => ({ type: UPDATE_EMAILS_CONTENT, emails });
 
 const readEmail = emailIndex => ({ type: READ_EMAIL, emailIndex });
@@ -107,12 +107,12 @@ const emibInbox = (state = initialState, action) => {
         ...state,
         emails: action.emails
       };
-    case GET_EN_EMAILS:
+    case SET_EN_EMAILS:
       return {
         ...state,
         emailsEN: action.emailsEN
       };
-    case GET_FR_EMAILS:
+    case SET_FR_EMAILS:
       return {
         ...state,
         emailsFR: action.emailsFR
