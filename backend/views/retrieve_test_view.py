@@ -9,16 +9,12 @@ from custom_models.question_type import QuestionType
 from custom_models.item_type import ItemType
 
 TEST_META_DATA = "test_meta_data"
-TEST_INSTRUCTIONS = "test_instructions"
 TEST_QUESTIONS = "test_questions"
 EN = "en"
 FR = "fr"
 
 # when gathering meta data, look for these items under each type
 META_CHILDREN_MAP = {"test": ["overview"]}
-
-# when gathering insructions, look for these items under each type
-INSTRUCTION_CHILDREN_MAP = {}
 
 # when gathering questions, look for these items under each type
 QUESTION_CHILDREN_MAP = {
@@ -122,12 +118,6 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
             META_CHILDREN_MAP,
         )
         return_dict["meta_text"] = meta_map
-        return return_dict
-
-    if request_type == TEST_INSTRUCTIONS:
-        # TODO jcherry Add logic to get data for instructions pages
-        # After instructions are actually stored in the DB
-        return_dict["instructions"] = []
         return return_dict
 
     if request_type == TEST_QUESTIONS:
