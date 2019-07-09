@@ -1,18 +1,17 @@
 import loadTestContent, {
   initialState,
   updateTestMetaDataState,
-  updateTestInstructionsState,
-  updateTestQuestionsState
+  updateTestBackgroundState
 } from "../../modules/LoadTestContentRedux";
 
-// updateTestQuestionsState
-describe("updateTestQuestionsState action", () => {
+// updateTestBackgroundState
+describe("updateTestBackgroundState action", () => {
   it("should update testQuestions state with given data", () => {
-    const action = updateTestQuestionsState("Hello World");
+    const action = updateTestBackgroundState("Hello World");
     expect(loadTestContent(initialState, action)).toEqual({
       testMetaData: {},
-      testInstructions: {},
-      testQuestions: "Hello World"
+      isMetaLoading: true,
+      testBackground: "Hello World"
     });
   });
 });
@@ -23,20 +22,8 @@ describe("updateTestMetaDataState action", () => {
     const action = updateTestMetaDataState("Hello World");
     expect(loadTestContent(initialState, action)).toEqual({
       testMetaData: "Hello World",
-      testInstructions: {},
-      testQuestions: {}
-    });
-  });
-});
-
-// updateTestInstructionsState
-describe("updateTestInstructionsState action", () => {
-  it("should update testInstructions state with given data", () => {
-    const action = updateTestInstructionsState("Hello World");
-    expect(loadTestContent(initialState, action)).toEqual({
-      testMetaData: {},
-      testInstructions: "Hello World",
-      testQuestions: {}
+      isMetaLoading: false,
+      testBackground: {}
     });
   });
 });
