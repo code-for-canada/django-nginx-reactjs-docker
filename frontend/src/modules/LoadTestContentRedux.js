@@ -1,3 +1,5 @@
+import { addressBookJson } from "./sampleEmibJson";
+
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
 const UPDATE_TEST_BACKGROUND = "emibInbox/UPDATE_TEST_BACKGROUND";
@@ -39,7 +41,8 @@ const getTestContent = testName => {
 const initialState = {
   isMetaLoading: true,
   testMetaData: {},
-  testBackground: {}
+  testBackground: {},
+  addressBook: addressBookJson.addressBookEN
 };
 
 // Reducer
@@ -54,12 +57,30 @@ const loadTestContent = (state = initialState, action) => {
     case UPDATE_TEST_BACKGROUND:
       return {
         ...state,
-        testBackground: action.testBackground
+        testBackground: action.testBackground,
+        addressBook: processAddressBook(action.testBackground)
       };
 
     default:
       return state;
   }
+};
+
+const processAddressBook = testBackground => {
+  console.log("Generating addressbook");
+
+  // Get the org charts out of the background.
+
+  const enOrgCharts = testBackground.en.background[0].tree_view;
+  const frOrgCharts = testBackground.fr.background[0].tree_view;
+  console.log(enOrgCharts);
+
+  // Flatten the trees and get rid of duplicates
+
+  // Format like an address book
+
+  // Return the formatted address book
+  return testBackground;
 };
 
 export default loadTestContent;
