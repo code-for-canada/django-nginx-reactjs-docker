@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "81b8c890-a3ec-41f0-9066-6cc0b0d0a779",
+		"_postman_id": "d7af44f3-4adf-485c-83a9-aab6964a708a",
 		"name": "ThunderCAT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -543,6 +543,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost/api/auth/me/",
 					"host": [
@@ -811,9 +815,9 @@
 							"    pm.expect(pm.response.text()).to.include('\"is_public\":true');\r",
 							"});\r",
 							"\r",
-							"// getting default_time  (expected: null)\r",
+							"// getting default_time  (expected: 180)\r",
 							"pm.test(\"Getting default_time\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('\"default_time\":null');\r",
+							"    pm.expect(pm.response.text()).to.include('\"default_time\":180');\r",
 							"});\r",
 							"\r",
 							"// getting test type\r",
