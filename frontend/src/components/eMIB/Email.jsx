@@ -83,7 +83,7 @@ class Email extends Component {
   render() {
     const { email, emailCount, taskCount, emailActionsArray } = this.props;
     const hasTakenAction = emailCount + taskCount > 0;
-    const emailActions = emailActionsArray[email.id];
+    const emailActions = emailActionsArray.length > email.id ? emailActionsArray[email.id] : [];
     let emailNumber = 0;
     let taskNumber = 0;
     return (

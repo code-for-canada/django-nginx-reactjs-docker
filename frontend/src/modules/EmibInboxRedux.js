@@ -86,8 +86,8 @@ const initialState = {
   emails: {},
   emailsEN: {},
   emailsFR: {},
-  emailSummaries: initializeEmailSummaries(emailsJson.questions.en.email.length),
-  emailActions: initializeEmailActions(emailsJson.questions.en.email.length),
+  emailSummaries: [],
+  emailActions: [],
   addressBook: addressBookJson.addressBookEN,
   currentEmail: 0
 };
@@ -105,7 +105,9 @@ const emibInbox = (state = initialState, action) => {
     case UPDATE_EMAILS_CONTENT:
       return {
         ...state,
-        emails: action.emails
+        emails: action.emails,
+        emailSummaries: initializeEmailSummaries(action.emails.length),
+        emailActions: initializeEmailActions(action.emails.length)
       };
     case SET_EN_EMAILS:
       return {
