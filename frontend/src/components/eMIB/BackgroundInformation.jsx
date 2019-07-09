@@ -12,13 +12,14 @@ class BackgroundInformation extends Component {
   };
 
   render() {
+    const { testBackground, language } = this.props;
     return (
       <div>
-        {this.props.language === LANGUAGES.english && (
-          <ReactMarkdown source={this.props.testBackground.en.background[0].markdown[0].text} />
+        {language === LANGUAGES.english && (
+          <ReactMarkdown source={testBackground.en.background[0].markdown[0].text} />
         )}
-        {this.props.language === LANGUAGES.french && (
-          <ReactMarkdown source={this.props.testBackground.fr.background[0].markdown[0].text} />
+        {language === LANGUAGES.french && (
+          <ReactMarkdown source={testBackground.fr.background[0].markdown[0].text} />
         )}
       </div>
     );
