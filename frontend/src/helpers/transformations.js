@@ -111,16 +111,12 @@ export const recursivelyCreateAddressBook = (treeContent, treeType) => {
   for (let i = 0; i < treeContent.length; i++) {
     const treeNode = treeContent[i];
 
+    processedTree.push(treeNode.text);
+
     // If this node has children.
     if (treeNode[treeType]) {
-      // Update the processed set of the tree.
-      processedTree.push(treeNode.text);
-
       const childNodes = recursivelyCreateAddressBook(treeNode[treeType], treeType);
       processedTree = processedTree.concat(childNodes);
-    } else {
-      // This is a leaf node of the tree.
-      processedTree.push(treeNode.text);
     }
   }
   return processedTree;
