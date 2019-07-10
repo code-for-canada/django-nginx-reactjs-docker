@@ -1,4 +1,3 @@
-import { addressBookJson } from "./sampleEmibJson";
 import { SET_LANGUAGE } from "./LocalizeRedux";
 import { ACTION_TYPE } from "../components/eMIB/constants";
 
@@ -80,7 +79,6 @@ const changeCurrentEmail = emailIndex => ({
 // emails - represents an array of emailShape objects in the currently selected language.
 // emailSummaries - represents an array of objects indicating read state of each email.
 // emailActions - represents an array of arrays, each array contains actionShape objects, representing an ACTION_TYPE.
-// addressBook - repesents an array of addressBookContactShape objects in the currently selected language
 const initialState = {
   // Loads emails from a static JSON file until an API exists.
   emails: {},
@@ -88,7 +86,6 @@ const initialState = {
   emailsFR: {},
   emailSummaries: [],
   emailActions: [],
-  addressBook: addressBookJson.addressBookEN,
   currentEmail: 0
 };
 
@@ -98,9 +95,7 @@ const emibInbox = (state = initialState, action) => {
     case SET_LANGUAGE:
       return {
         ...state,
-        emails: action.language === "fr" ? state.emailsFR : state.emailsEN,
-        addressBook:
-          action.language === "fr" ? addressBookJson.addressBookFR : addressBookJson.addressBookEN
+        emails: action.language === "fr" ? state.emailsFR : state.emailsEN
       };
     case UPDATE_EMAILS_CONTENT:
       return {

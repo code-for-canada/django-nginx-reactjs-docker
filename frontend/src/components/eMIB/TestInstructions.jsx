@@ -84,6 +84,7 @@ class TestInstructions extends Component {
                     actionId={1}
                     email={exampleEmail}
                     disabled={true}
+                    isInstructions={true}
                   />
                 </div>
               </section>

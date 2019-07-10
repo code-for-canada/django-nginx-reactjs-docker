@@ -50,8 +50,8 @@ export const actionShape = PropTypes.shape({
 });
 
 // The stucture of a contact in the addressbook
-export const addressBookContactShape = PropTypes.shape({
+// that's required to pass to react-super-select input.
+export const addressBookOptionShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired
 });

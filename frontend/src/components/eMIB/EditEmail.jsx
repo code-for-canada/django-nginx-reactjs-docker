@@ -4,12 +4,12 @@ import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
 import { EMAIL_TYPE, actionShape } from "./constants";
 import { transformAddressBook, optionsFromIds } from "../../helpers/transformations";
-import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { OverlayTrigger, Popover, Button } from "react-bootstrap";
 import ReactSuperSelect from "react-super-select";
 import "../../css/lib/react-super-select.css";
+import { getAddressInCurrentLanguage } from "../../modules/LoadTestContentRedux";
 
 // These two consts limit the number of characters
 // that can be entered into two text areas
@@ -104,7 +104,10 @@ const styles = {
 class EditEmail extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    action: actionShape
+    action: actionShape,
+
+    // Provided by redux
+    addressBook: PropTypes.arrayOf(PropTypes.string)
   };
 
   state = {
@@ -120,9 +123,7 @@ class EditEmail extends Component {
       ? ""
       : !this.props.action.reasonsForAction
       ? ""
-      : this.props.action.reasonsForAction,
-    // Provided by redux
-    addressBook: PropTypes.arrayOf(addressBookContactShape)
+      : this.props.action.reasonsForAction
   };
 
   onEmailTypeChange = event => {
@@ -412,7 +413,7 @@ export { EditEmail as UnconnectedEditEmail };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    addressBook: state.emibInbox.addressBook
+    addressBook: getAddressInCurrentLanguage(state)
   };
 };
 

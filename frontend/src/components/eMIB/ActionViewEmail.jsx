@@ -9,10 +9,10 @@ import { bindActionCreators } from "redux";
 import { deleteEmail } from "../../modules/EmibInboxRedux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import SystemMessage, { MESSAGE_TYPE } from "../commons/SystemMessage";
-import { addressBookContactShape } from "./constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { contactNameFromId } from "../../helpers/transformations";
+import { getAddressInCurrentLanguage } from "../../modules/LoadTestContentRedux";
 
 const styles = {
   type: {
@@ -57,8 +57,9 @@ class ActionViewEmail extends Component {
     email: emailShape,
     // optional prop to disable the entire component
     disabled: PropTypes.bool,
+    isInstructions: PropTypes.bool,
     // Props from Redux
-    addressBook: PropTypes.arrayOf(addressBookContactShape),
+    addressBook: PropTypes.arrayOf(PropTypes.string),
     deleteEmail: PropTypes.func
   };
 
@@ -89,7 +90,12 @@ class ActionViewEmail extends Component {
   // and transformed into a string that will be displayed to the candidate
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
-  generateEmailNameList(contactIdList) {
+  generateEmailNameList(contactIdList, isToField) {
+    // The instructions page does not have it's own address book
+    // and should always be the following string.
+    if (this.props.isInstructions && isToField) {
+      return "Geneviève Bédard";
+    }
     if (contactIdList === undefined) {
       return "";
     }
@@ -102,7 +108,7 @@ class ActionViewEmail extends Component {
 
   render() {
     const action = this.props.action;
-    const visibleToNames = this.generateEmailNameList(action.emailTo);
+    const visibleToNames = this.generateEmailNameList(action.emailTo, true);
     const visibleCcNames = this.generateEmailNameList(action.emailCc);
     return (
       <div aria-label={LOCALIZE.ariaLabel.responseDetails}>
@@ -227,7 +233,7 @@ export { ActionViewEmail as UnconnectedActionViewEmail };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    addressBook: state.emibInbox.addressBook
+    addressBook: getAddressInCurrentLanguage(state)
   };
 };
 
