@@ -114,7 +114,6 @@ class Status extends Component {
         <div className={"jumbotron"}>
           <h1>{LOCALIZE.statusPage.title}</h1>
           <p>{LOCALIZE.statusPage.welcomeMsg}</p>
-          <hr />
           <p>
             <a href="https://github.com/code-for-canada/project-thundercat">
               <button type="button" className="btn btn-primary">
@@ -151,7 +150,6 @@ class Status extends Component {
             </table>
           </div>
         </div>
-        <hr />
         <div>
           <h3>{LOCALIZE.statusPage.systemStatusTable.title}</h3>
           <div>
