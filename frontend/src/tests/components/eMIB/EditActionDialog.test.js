@@ -8,15 +8,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 const initialState = {
-  emibInbox: {
-    addressBook: [
-      { id: 0, name: "Joe", role: "Developer" },
-      { id: 1, name: "Bob", role: "Developer" },
-      { id: 2, name: "Smithers", role: "Butler" },
-      { id: 3, name: "Arthur", role: "King of Britain" },
-      { id: 4, name: "Richard", role: "Lionheart" },
-      { id: 5, name: "Robert", role: "The Bruce" }
-    ]
+  loadTestContent: {
+    addressBook: {
+      en: [
+        "Joe (Developer)",
+        "Bob (Developer)",
+        "Smithers (Butler)",
+        "Arthur (King of Britain)",
+        "Richard (Lionheart)",
+        "Robert (The Bruce)"
+      ],
+      fr: []
+    }
+  },
+  localize: {
+    language: "en"
   }
 };
 

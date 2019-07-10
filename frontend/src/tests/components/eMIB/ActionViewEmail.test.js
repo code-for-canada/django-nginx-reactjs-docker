@@ -2,19 +2,18 @@ import React from "react";
 import { shallow } from "enzyme";
 import { UnconnectedActionViewEmail } from "../../../components/eMIB/ActionViewEmail";
 import { EMAIL_TYPE, ACTION_TYPE } from "../../../components/eMIB/constants";
-import { transformContactName } from "../../../helpers/transformations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare, faShare } from "@fortawesome/free-solid-svg-icons";
 
 const addressBook = [
-  { id: 0, name: "Joe", role: "Developer" },
-  { id: 1, name: "Bob", role: "Developer" },
-  { id: 2, name: "Smithers", role: "Butler" },
-  { id: 3, name: "Arthur", role: "King of Britain" },
-  { id: 4, name: "Richard", role: "Lionheart" },
-  { id: 5, name: "Robert", role: "The Bruce" }
+  "Joe (Developer)",
+  "Bob (Developer)",
+  "Smithers (Butler)",
+  "Arthur (King of Britain)",
+  "Richard (Lionheart)",
+  "Robert (The Bruce)"
 ];
-const ccValue = addressBook[3].id;
+const ccValue = 3;
 
 const emailStub = {
   id: 0,
