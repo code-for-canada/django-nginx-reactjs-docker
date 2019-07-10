@@ -119,6 +119,23 @@ def reoder_emib_test(apps, schema_editor):
     # type background
     #
 
+    # create sections
+    sections = item(parent_id=emib_sample_item_id, item_type_id=it_sections, order=1)
+    # sections.save()
+
+    # section_1 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=1)
+    # section_1.save()
+    # section_2 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=2)
+    # section_2.save()
+    # section_3 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=3)
+    # section_3.save()
+    # section_4 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=4)
+    # section_4.save()
+
+    # item_text for each section
+    # move markdowns to be its children
+    # move tree_view to be its children
+
 
 def rollback_emib_test(apps, schema_editor):
     # get models
