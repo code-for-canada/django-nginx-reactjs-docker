@@ -90,8 +90,10 @@ class ActionViewEmail extends Component {
   // and transformed into a string that will be displayed to the candidate
   // the return is a string in the following format:
   //  "<name 1> (<role 1>), <name 2> (<role 2>), ...""
-  generateEmailNameList(contactIdList, isTo) {
-    if (this.props.isInstructions && isTo) {
+  generateEmailNameList(contactIdList, isToField) {
+    // The instructions page does not have it's own address book
+    // and should always be the following string.
+    if (this.props.isInstructions && isToField) {
       return "Geneviève Bédard";
     }
     if (contactIdList === undefined) {
