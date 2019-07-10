@@ -7,11 +7,54 @@ import loadTestContent, {
 // updateTestBackgroundState
 describe("updateTestBackgroundState action", () => {
   it("should update testQuestions state with given data", () => {
-    const action = updateTestBackgroundState("Hello World");
+    const action = updateTestBackgroundState({
+      en: {
+        background: [
+          {
+            tree_view: [
+              { organizational_structure_tree_child: [] },
+              { team_information_tree_child: [] }
+            ]
+          }
+        ]
+      },
+      fr: {
+        background: [
+          {
+            tree_view: [
+              { organizational_structure_tree_child: [] },
+              { team_information_tree_child: [] }
+            ]
+          }
+        ]
+      }
+    });
     expect(loadTestContent(initialState, action)).toEqual({
       testMetaData: {},
       isMetaLoading: true,
-      testBackground: "Hello World"
+      testBackground: {
+        en: {
+          background: [
+            {
+              tree_view: [
+                { organizational_structure_tree_child: [] },
+                { team_information_tree_child: [] }
+              ]
+            }
+          ]
+        },
+        fr: {
+          background: [
+            {
+              tree_view: [
+                { organizational_structure_tree_child: [] },
+                { team_information_tree_child: [] }
+              ]
+            }
+          ]
+        }
+      },
+      addressBook: { en: [], fr: [] }
     });
   });
 });
@@ -23,7 +66,8 @@ describe("updateTestMetaDataState action", () => {
     expect(loadTestContent(initialState, action)).toEqual({
       testMetaData: "Hello World",
       isMetaLoading: false,
-      testBackground: {}
+      testBackground: {},
+      addressBook: { en: [], fr: [] }
     });
   });
 });

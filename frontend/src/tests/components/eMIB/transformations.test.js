@@ -1,30 +1,17 @@
-import React from "react";
 import {
   transformAddressBook,
-  transformContact,
-  transformContactName,
   contactNameFromId,
   recursivelyProcessTree
 } from "../../../helpers/transformations";
 
 const addressBook = [
-  { id: 0, name: "Joe", role: "Developer" },
-  { id: 1, name: "Bob", role: "Developer" },
-  { id: 2, name: "Smithers", role: "Butler" },
-  { id: 3, name: "Arthur", role: "King of Britain" },
-  { id: 4, name: "Richard", role: "Lionheart" },
-  { id: 5, name: "Robert", role: "The Bruce" }
+  "Joe (Developer)",
+  "Bob (Developer)",
+  "Smithers (Butler)",
+  "Arthur (King of Britain)",
+  "Richard (Lionheart)",
+  "Robert (The Bruce)"
 ];
-
-it("Check transformContact", () => {
-  const contact = { id: 100, name: "Bob WhatHisName", role: "He Works Here" };
-  const option = { name: "Bob WhatHisName (He Works Here)", id: 100 };
-  expect(transformContact(contact)).toEqual(option);
-});
-
-it("Check transformContactName", () => {
-  expect(transformContactName(addressBook[0])).toEqual("Joe (Developer)");
-});
 
 it("Check transformAddressBook", () => {
   const options = [
