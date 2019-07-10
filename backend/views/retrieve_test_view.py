@@ -46,6 +46,8 @@ ALWAYS_SHOW_TEXT = [
     "team_information_tree_child",
 ]
 
+TEXT_AS_TITLE = ["section", "tree_view"]
+
 
 def is_test_public(test_name):
     # function that returns true if the test is public and false on the other hand
@@ -207,6 +209,9 @@ def get_items(
     if parent_type in ALWAYS_SHOW_TEXT:
         en_map["text"] = get_text_detail(parent_id, en_id, query_date_time)
         fr_map["text"] = get_text_detail(parent_id, fr_id, query_date_time)
+    if parent_type in TEXT_AS_TITLE:
+        en_map["title"] = get_text_detail(parent_id, en_id, query_date_time)
+        fr_map["title"] = get_text_detail(parent_id, fr_id, query_date_time)
     # a map to track the current id for a given child_type
     # this also ensures that the id/order is sequential
     order_map = {}
