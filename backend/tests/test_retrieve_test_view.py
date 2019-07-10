@@ -184,6 +184,7 @@ class RetrieveInTestSample(TestCase):
                             ],
                             "tree_view": [
                                 {
+                                    "title": null,
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "Jenna Icard (President)",
@@ -325,6 +326,7 @@ class RetrieveInTestSample(TestCase):
                             ],
                             "tree_view": [
                                 {
+                                    "title": null,
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "Jenna Icard (Présidente)",
@@ -640,6 +642,7 @@ class RetrieveInTestPizza(TestCase):
                             ],
                             "tree_view": [
                                 {
+                                    "title": null,
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "JOKECAN",
@@ -785,6 +788,7 @@ class RetrieveInTestPizza(TestCase):
                             ],
                             "tree_view": [
                                 {
+                                    "title": null,
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "FR JOKECAN",
