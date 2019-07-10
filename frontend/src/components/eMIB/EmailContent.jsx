@@ -7,15 +7,16 @@ const styles = {
   replyAndUser: {
     color: "#00565E"
   },
-  dataBodyDivider: {
-    borderTop: "1px solid #96a8b2",
-    margin: "12px 0 12px 0"
-  },
   preWrap: {
     whiteSpace: "pre-wrap"
   },
   subject: {
     fontSize: 20
+  },
+  metaData: {
+    marginBottom: 12,
+    paddingBottom: 12,
+    borderBottom: "1px solid #96a8b2"
   }
 };
 
@@ -28,19 +29,21 @@ class EmailContent extends Component {
     const { email } = this.props;
     return (
       <div>
-        <div style={styles.subject}>
-          {LOCALIZE.emibTest.inboxPage.subject + ": " + email.subject}
+        <div style={styles.metaData}>
+          <div style={styles.subject}>
+            {LOCALIZE.emibTest.inboxPage.subject + ": " + email.subject}
+          </div>
+          <div>
+            {LOCALIZE.emibTest.inboxPage.from}:{" "}
+            <span style={styles.replyAndUser}>{email.from}</span>
+          </div>
+          <div>
+            {LOCALIZE.emibTest.inboxPage.to}: <span style={styles.replyAndUser}>{email.to}</span>
+          </div>
+          <div>
+            {LOCALIZE.emibTest.inboxPage.date}: {email.date}
+          </div>
         </div>
-        <div>
-          {LOCALIZE.emibTest.inboxPage.from}: <span style={styles.replyAndUser}>{email.from}</span>
-        </div>
-        <div>
-          {LOCALIZE.emibTest.inboxPage.to}: <span style={styles.replyAndUser}>{email.to}</span>
-        </div>
-        <div>
-          {LOCALIZE.emibTest.inboxPage.date}: {email.date}
-        </div>
-        <hr style={styles.dataBodyDivider} />
         <div style={styles.preWrap}>{email.body}</div>
       </div>
     );
