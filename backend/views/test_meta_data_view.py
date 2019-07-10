@@ -16,7 +16,7 @@ class TestMetaDataSet(APIView):
                 return [permissions.IsAuthenticatedOrReadOnly()]
             # is_public = false
             else:
-                return [permissions.IsAdminUser()]
+                return [permissions.IsAuthenticated()]
         # is_test_public does not exist
         except ObjectDoesNotExist:
             return [permissions.IsAdminUser()]
