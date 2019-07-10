@@ -50,9 +50,6 @@ def reoder_emib_test(apps, schema_editor):
     )
 
     # get all markdown children
-    markdown_children = item.objects.using(db_alias).filter(
-        parent_id=background, item_type_id=it_markdown
-    )
     markdown_1 = (
         item.objects.using(db_alias)
         .filter(parent_id=background, item_type_id=it_markdown, order=1)
@@ -100,13 +97,20 @@ def reoder_emib_test(apps, schema_editor):
     )
 
     # get all tree_view children
+    tree_view_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=1)
+        .last()
+    )
+    tree_view_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=2)
+        .last()
+    )
 
     # correct the pizza test time limit
     # get the background object
-    # correct the pizza test time limit
-    # get the background object
     children2 = item.objects.using(db_alias).filter(parent_id=background)
-    children2 = markdown_children
     for child in children2:
         print("child")
         print(child.item_id)
