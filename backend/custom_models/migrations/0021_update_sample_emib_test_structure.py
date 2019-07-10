@@ -132,6 +132,30 @@ def reoder_emib_test(apps, schema_editor):
     # section_4 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=4)
     # section_4.save()
 
+    # section_1
+    # "Overview"
+    # "Contexte"
+
+    # section_2
+    # "Your organization"
+    # "FR Your organization"
+
+    # section_3
+    # "Organizational Structure"
+    # "Structure organisationnelle"
+
+    # section_4
+    # "Your team"
+    # "FR Your team"
+
+    # tree_view_1
+    # "The Organizational Chart of the ODC"
+    # "Organigramme (CDO)
+
+    # # tree_view_2
+    # "The Organizational Chart of the QA Team"
+    # "Organigramme Équipe de l'assurance de la qualité (AQ)"
+
     # item_text for each section
     # move markdowns to be its children
     # move tree_view to be its children
