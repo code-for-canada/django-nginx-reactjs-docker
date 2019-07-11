@@ -2,8 +2,14 @@
 export const TEST_DEFINITION = {
   emib: {
     // public test
-    sampleTest: "emibSampleTest",
+    sampleTest: {
+      title: "emibSampleTest",
+      public: true
+    },
     // non-public test
-    pizzaTest: "emibPizzaTest"
+    pizzaTest: {
+      title: "emibPizzaTest",
+      public: false
+    }
   }
 };
