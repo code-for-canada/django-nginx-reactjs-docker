@@ -664,7 +664,7 @@ class RetrieveInTestPizza(TestCase):
                             ],
                             "tree_view": [
                                 {
-                                    "title": null,
+                                    "title": "",
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "JOKECAN",
@@ -734,6 +734,7 @@ class RetrieveInTestPizza(TestCase):
                                     "id": 0
                                 },
                                 {
+                                    "title": "",
                                     "team_information_tree_child": [
                                         {
                                             "text": "Sandra Oh (Director)",
@@ -810,7 +811,7 @@ class RetrieveInTestPizza(TestCase):
                             ],
                             "tree_view": [
                                 {
-                                    "title": null,
+                                    "title": "",
                                     "organizational_structure_tree_child": [
                                         {
                                             "text": "FR JOKECAN",
@@ -880,6 +881,7 @@ class RetrieveInTestPizza(TestCase):
                                     "id": 0
                                 },
                                 {
+                                    "title": "",
                                     "team_information_tree_child": [
                                         {
                                             "text": "FR Sandra Oh (Director)",
