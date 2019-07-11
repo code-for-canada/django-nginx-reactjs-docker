@@ -23,8 +23,10 @@ QUESTION_CHILDREN_MAP = {
 }
 
 BACKGROUND_MAP = {
-    "test": ["background"],
+    "test": ["background", "sections"],
     "background": ["markdown", "tree_view"],
+    "sections": ["section"],
+    # "section": ["markdown", "tree_view"],
     "tree_view": ["organizational_structure_tree_child", "team_information_tree_child"],
     "organizational_structure_tree_child": ["organizational_structure_tree_child"],
     "team_information_tree_child": ["team_information_tree_child"],
@@ -36,6 +38,8 @@ SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 # list of items that are leaves in the item tree, but will have multiple siblings
 MULTI_CHILD_LEAF_LIST = [
     "markdown",
+    "sections",
+    "section",
     "organizational_structure_tree_child",
     "team_information_tree_child",
     "team_information_tree_child",

@@ -42,7 +42,7 @@ def reoder_emib_test(apps, schema_editor):
         item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
     )
 
-    # get the background child
+    # get the background item
     background = (
         item.objects.using(db_alias)
         .filter(parent_id=emib_sample_item_id, item_type_id=it_background, order=0)
@@ -108,29 +108,22 @@ def reoder_emib_test(apps, schema_editor):
         .last()
     )
 
-    # correct the pizza test time limit
-    # get the background object
-    children2 = item.objects.using(db_alias).filter(parent_id=background)
-    for child in children2:
-        print("child")
-        print(child.item_id)
-        print(child.item_type_id.type_desc)
-        print(child.order)
-    # type background
-    #
-
     # create sections
     sections = item(parent_id=emib_sample_item_id, item_type_id=it_sections, order=1)
-    # sections.save()
+    sections.save()
 
-    # section_1 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=1)
-    # section_1.save()
-    # section_2 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=2)
-    # section_2.save()
-    # section_3 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=3)
-    # section_3.save()
-    # section_4 = item(parent_id=emib_sample_item_id, item_type_id=it_section, order=4)
-    # section_4.save()
+    section_1 = item(parent_id=sections, item_type_id=it_section, order=1)
+    section_1.save()
+    section_2 = item(parent_id=sections, item_type_id=it_section, order=2)
+    section_2.save()
+    section_3 = item(parent_id=sections, item_type_id=it_section, order=3)
+    section_3.save()
+    section_4 = item(parent_id=sections, item_type_id=it_section, order=4)
+    section_4.save()
+
+    # TODO section text
+
+    # TODO tree-view text
 
     # section_1
     # "Overview"
@@ -160,14 +153,87 @@ def reoder_emib_test(apps, schema_editor):
     # move markdowns to be its children
     # move tree_view to be its children
 
+    # TODO reorder markdown and tree-view parentage
+
 
 def rollback_emib_test(apps, schema_editor):
     # get models
+    language = apps.get_model("custom_models", "Language")
     item_type = apps.get_model("custom_models", "ItemType")
+    item = apps.get_model("custom_models", "Item")
+    item_text = apps.get_model("custom_models", "ItemText")
+    question_type = apps.get_model("custom_models", "QuestionType")
+    question = apps.get_model("custom_models", "Question")
+    test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
 
-    # ...
+    # get language id and test
+    l_english = (
+        language.objects.using(db_alias)
+        .filter(ISO_Code_1="en", ISO_Code_2="en-ca")
+        .last()
+    )
+    l_french = (
+        language.objects.using(db_alias)
+        .filter(ISO_Code_1="fr", ISO_Code_2="fr-ca")
+        .last()
+    )
+    emib_sample_item_id = (
+        test.objects.using(db_alias).filter(test_name="emibSampleTest").last().item_id
+    )
+
+    # get item_types
+    it_sections = item_type.objects.using(db_alias).filter(type_desc="sections").last()
+    it_section = item_type.objects.using(db_alias).filter(type_desc="section").last()
+    it_background = (
+        item_type.objects.using(db_alias).filter(type_desc="background").last()
+    )
+    it_markdown = item_type.objects.using(db_alias).filter(type_desc="markdown").last()
+    it_tree_view = (
+        item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
+    )
+
+    # get sections
+    sections = (
+        item.objects.using(db_alias)
+        .filter(parent_id=emib_sample_item_id, item_type_id=it_sections, order=1)
+        .last()
+    )
+
+    section_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=1)
+        .last()
+    )
+    section_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=2)
+        .last()
+    )
+    section_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=3)
+        .last()
+    )
+    section_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=4)
+        .last()
+    )
+
+    # TODO delete section text
+
+    # TODO delete tree-view text
+
+    # TODO reorder markdown and tree-view parentage
+
+    # Delete sections
+    section_1.delete()
+    section_2.delete()
+    section_3.delete()
+    section_4.delete()
+    sections.delete()
 
 
 class Migration(migrations.Migration):
