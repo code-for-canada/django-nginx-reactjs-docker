@@ -14,14 +14,21 @@ const styles = {
   headings: {
     fontWeight: "bold"
   },
-  hr: {
-    margin: "16px 0 16px 0"
-  },
   editButton: {
     float: "right"
   },
   preWrap: {
     whiteSpace: "pre-wrap"
+  },
+  optionButtons: {
+    marginTop: 16,
+    paddingTop: 16,
+    borderTop: "1px solid rgba(0, 0, 0, 0.1)"
+  },
+  reasonsForAction: {
+    marginTop: 16,
+    paddingTop: 16,
+    borderTop: "1px solid rgba(0, 0, 0, 0.1)"
   }
 };
 
@@ -65,8 +72,7 @@ class ActionViewTask extends Component {
           <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.taskContent.task}</div>
           <p style={styles.preWrap}>{action.task}</p>
         </div>
-        <hr style={styles.hr} />
-        <div>
+        <div style={styles.reasonsForAction}>
           <div style={styles.headings}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
           </div>
@@ -74,8 +80,7 @@ class ActionViewTask extends Component {
         </div>
         {!this.props.disabled && (
           <div>
-            <hr style={styles.hr} />
-            <div aria-label={LOCALIZE.ariaLabel.taskOptions}>
+            <div style={styles.optionButtons} aria-label={LOCALIZE.ariaLabel.taskOptions}>
               <button
                 id="unit-test-view-task-edit-button"
                 className="btn btn-primary"
