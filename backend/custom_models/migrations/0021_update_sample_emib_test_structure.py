@@ -190,14 +190,14 @@ def reoder_emib_test(apps, schema_editor):
     markdown_5.order = 3
     markdown_5.save()
 
-    # TODO reorder markdown and tree-view parentage
     # section_1-> markdown_1
     # section_2 -> markdown_2
     # section_3 -> [markdown_3, tree_view_1]
     # section_4 -> [markdown_4, tree_view_2, markdown_5]
     expiry_date = datetime.now()
-    # TODO expire background
-    # expire markdown_6, markdown_7, markdown_8, markdown_9
+    # expire background, markdown_6, markdown_7, markdown_8, markdown_9
+    background.date_to = expiry_date
+    background.save()
     markdown_6.date_to = expiry_date
     markdown_6.save()
     markdown_7.date_to = expiry_date
@@ -382,7 +382,6 @@ def rollback_emib_test(apps, schema_editor):
     )
 
     # move markdowns and tree_view to belong to the correct parents
-    # TODO markdown
     markdown_1.parent_id = background
     markdown_1.order = 1
     markdown_1.save()
@@ -409,8 +408,9 @@ def rollback_emib_test(apps, schema_editor):
     markdown_5.save()
 
 
-    # TODO unexpire backgorund
-    # unexpire markdown_6, markdown_7, markdown_8, markdown_9
+    # unexpire background, markdown_6, markdown_7, markdown_8, markdown_9
+    background.date_to = None
+    background.save()
     markdown_6.date_to = None
     markdown_6.save()
     markdown_7.date_to = None
