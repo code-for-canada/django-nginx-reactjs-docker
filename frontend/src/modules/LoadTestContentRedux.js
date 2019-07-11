@@ -1,5 +1,7 @@
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
 
+let AUTH_TOKEN = localStorage.getItem("auth_token");
+
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
 const UPDATE_TEST_BACKGROUND = "emibInbox/UPDATE_TEST_BACKGROUND";
@@ -14,24 +16,58 @@ const updateTestBackgroundState = testBackground => ({
 // API Calls
 const getTestMetaData = testName => {
   return async function() {
-    let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName}`, {
-      method: "GET",
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      cache: "default"
-    });
-    return await metaDataContent.json();
+    // test is private
+    if (!testName.public) {
+      let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName.title}`, {
+        method: "GET",
+        headers: {
+          Authorization: "JWT " + AUTH_TOKEN,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          cache: "default"
+        }
+      });
+      return await metaDataContent.json();
+      // test is public
+    } else {
+      let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName.title}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          cache: "default"
+        }
+      });
+      return await metaDataContent.json();
+    }
   };
 };
 const getTestContent = testName => {
   return async function() {
-    let testContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
-      method: "GET",
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      cache: "default"
-    });
-    return await testContent.json();
+    // test is private
+    if (!testName.public) {
+      let testContent = await fetch(`/api/test-questions/?test_name=${testName.title}`, {
+        method: "GET",
+        headers: {
+          Authorization: "JWT " + AUTH_TOKEN,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          cache: "default"
+        }
+      });
+      return await testContent.json();
+      // test is public
+    } else {
+      let testContent = await fetch(`/api/test-questions/?test_name=${testName.title}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          cache: "default"
+        }
+      });
+      return await testContent.json();
+    }
   };
 };
 
