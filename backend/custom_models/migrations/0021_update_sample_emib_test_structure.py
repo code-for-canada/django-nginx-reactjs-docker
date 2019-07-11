@@ -2,6 +2,7 @@
 # Edited by J. Michael Cherry to correct the pizza test time limit
 
 from django.db import migrations
+from datetime import datetime  
 
 
 def reoder_emib_test(apps, schema_editor):
@@ -177,8 +178,17 @@ def reoder_emib_test(apps, schema_editor):
     # section 2 -> markdown_2
     # section_3 -> [markdown_3, tree_view_1]
     # section_4 -> [markdown_4, tree_view_2, markdown_5]
+    expiry_date = datetime.now()
     # TODO expire backgorund
-    # TODO expire markdown_6, markdown_7, markdown_8, markdown_9
+    # expire markdown_6, markdown_7, markdown_8, markdown_9
+    markdown_6.date_to = expiry_date
+    markdown_6.save()
+    markdown_7.date_to = expiry_date
+    markdown_7.save()
+    markdown_8.date_to = expiry_date
+    markdown_8.save()
+    markdown_9.date_to = expiry_date
+    markdown_9.save()
 
 
 def rollback_emib_test(apps, schema_editor):
@@ -316,7 +326,35 @@ def rollback_emib_test(apps, schema_editor):
     tree_view_2.save()
 
     # TODO unexpire backgorund
-    # TODO unexpire markdown_6, markdown_7, markdown_8, markdown_9
+    # unexpire markdown_6, markdown_7, markdown_8, markdown_9
+    markdown_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=6)
+        .last()
+    )
+    markdown_7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=7)
+        .last()
+    )
+    markdown_8 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=8)
+        .last()
+    )
+    markdown_9 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=9)
+        .last()
+    )
+    markdown_6.date_to = None
+    markdown_6.save()
+    markdown_7.date_to = None
+    markdown_7.save()
+    markdown_8.date_to = None
+    markdown_8.save()
+    markdown_9.date_to = None
+    markdown_9.save()
 
     # Delete sections
     section_1.delete()
