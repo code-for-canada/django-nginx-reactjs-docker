@@ -210,8 +210,14 @@ def get_items(
         en_map["text"] = get_text_detail(parent_id, en_id, query_date_time)
         fr_map["text"] = get_text_detail(parent_id, fr_id, query_date_time)
     if parent_type in TEXT_AS_TITLE:
-        en_map["title"] = get_text_detail(parent_id, en_id, query_date_time)
-        fr_map["title"] = get_text_detail(parent_id, fr_id, query_date_time)
+        en_title = get_text_detail(parent_id, en_id, query_date_time)
+        if en_title is None:
+            en_title = ""
+        fr_title = get_text_detail(parent_id, fr_id, query_date_time)
+        if fr_title is None:
+            fr_title = ""
+        en_map["title"] = en_title
+        fr_map["title"] = fr_title
     # a map to track the current id for a given child_type
     # this also ensures that the id/order is sequential
     order_map = {}
