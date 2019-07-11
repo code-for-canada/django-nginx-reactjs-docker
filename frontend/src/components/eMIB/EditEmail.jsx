@@ -144,19 +144,19 @@ class EditEmail extends Component {
 
   onEmailTypeChange = event => {
     const newEmailType = event.target.value;
+
+    // Names sent in the original email.
     const { originalTo, originalFrom } = this.props;
+
+    // By default (and forwarding) should have a blank to field.
     let replyList = [];
     if (newEmailType === EMAIL_TYPE.reply) {
-      replyList = originalFrom.split(", ").map(name => {
-        return this.props.addressBook.indexOf(name);
-      });
+      // Reply to the person that sent you this email.
+      replyList = this.generateToIds(originalFrom);
     } else if (newEmailType === EMAIL_TYPE.replyAll) {
-      const toList = originalTo.split(", ").map(name => {
-        return this.props.addressBook.indexOf(name);
-      });
-      const fromList = originalFrom.split(", ").map(name => {
-        return this.props.addressBook.indexOf(name);
-      });
+      // Reply all to everyone this email was from and sent to.
+      const toList = this.generateToIds(originalTo);
+      const fromList = this.generateToIds(originalFrom);
       replyList = toList.concat(fromList);
     }
 
