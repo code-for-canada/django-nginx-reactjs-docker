@@ -1,6 +1,6 @@
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
 
-let AUTH_TOKEN = localStorage.getItem("auth_token");
+const AUTH_TOKEN = localStorage.getItem("auth_token");
 
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
