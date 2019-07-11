@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { connect } from "react-redux";
-import { EMAIL_TYPE, actionShape } from "./constants";
+import { EMAIL_TYPE, actionShape, EDIT_MODE } from "./constants";
 import { transformAddressBook, optionsFromIds } from "../../helpers/transformations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply, faReplyAll, faShareSquare } from "@fortawesome/free-solid-svg-icons";
@@ -108,9 +108,18 @@ class EditEmail extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     action: actionShape,
+    originalFrom: PropTypes.string,
+    originalTo: PropTypes.string,
+    editMode: PropTypes.oneOf(Object.keys(EDIT_MODE)).isRequired,
 
     // Provided by redux
     addressBook: PropTypes.arrayOf(PropTypes.string)
+  };
+
+  generateToIds = contactsString => {
+    return contactsString.split(", ").map(name => {
+      return this.props.addressBook.indexOf(name);
+    });
   };
 
   state = {
@@ -120,7 +129,11 @@ class EditEmail extends Component {
       : !this.props.action.emailBody
       ? ""
       : this.props.action.emailBody,
-    emailTo: !this.props.action ? [] : this.props.action.emailTo,
+    emailTo: !this.props.action
+      ? this.props.editMode === EDIT_MODE.create
+        ? this.generateToIds(this.props.originalFrom)
+        : []
+      : this.props.action.emailTo,
     emailCc: !this.props.action ? [] : this.props.action.emailCc,
     reasonsForAction: !this.props.action
       ? ""
@@ -131,8 +144,24 @@ class EditEmail extends Component {
 
   onEmailTypeChange = event => {
     const newEmailType = event.target.value;
-    this.setState({ emailType: newEmailType });
-    this.props.onChange({ ...this.state, emailType: newEmailType });
+    const { originalTo, originalFrom } = this.props;
+    let replyList = [];
+    if (newEmailType === EMAIL_TYPE.reply) {
+      replyList = originalFrom.split(", ").map(name => {
+        return this.props.addressBook.indexOf(name);
+      });
+    } else if (newEmailType === EMAIL_TYPE.replyAll) {
+      const toList = originalTo.split(", ").map(name => {
+        return this.props.addressBook.indexOf(name);
+      });
+      const fromList = originalFrom.split(", ").map(name => {
+        return this.props.addressBook.indexOf(name);
+      });
+      replyList = toList.concat(fromList);
+    }
+
+    this.setState({ emailType: newEmailType, emailTo: replyList });
+    this.props.onChange({ ...this.state, emailType: newEmailType, emailTo: replyList });
   };
 
   onEmailToChange = options => {
