@@ -10,8 +10,6 @@ def reoder_emib_test(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
-    question_type = apps.get_model("custom_models", "QuestionType")
-    question = apps.get_model("custom_models", "Question")
     test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
@@ -179,8 +177,6 @@ def rollback_emib_test(apps, schema_editor):
     item_type = apps.get_model("custom_models", "ItemType")
     item = apps.get_model("custom_models", "Item")
     item_text = apps.get_model("custom_models", "ItemText")
-    question_type = apps.get_model("custom_models", "QuestionType")
-    question = apps.get_model("custom_models", "Question")
     test = apps.get_model("custom_models", "Test")
     # get db alias
     db_alias = schema_editor.connection.alias
