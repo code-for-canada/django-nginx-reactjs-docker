@@ -13,11 +13,11 @@ const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
 const styles = {
   bodyContent: {
-    overflow: "auto",
     height: INBOX_HEIGHT
   },
   contentColumn: {
-    paddingLeft: 0
+    paddingLeft: 0,
+    overflowY: "scroll"
   },
   navIntemContainer: {
     width: "100%",
