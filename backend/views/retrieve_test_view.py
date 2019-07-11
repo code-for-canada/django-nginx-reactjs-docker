@@ -26,7 +26,7 @@ BACKGROUND_MAP = {
     "test": ["background", "sections"],
     "background": ["markdown", "tree_view"],
     "sections": ["section"],
-    # "section": ["markdown", "tree_view"],
+    "section": ["markdown", "tree_view"],
     "tree_view": ["organizational_structure_tree_child", "team_information_tree_child"],
     "organizational_structure_tree_child": ["organizational_structure_tree_child"],
     "team_information_tree_child": ["team_information_tree_child"],

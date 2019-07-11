@@ -163,12 +163,22 @@ def reoder_emib_test(apps, schema_editor):
         ]
     )
 
-    # TODO tree-view text
-
-    # move markdowns to be its children
-    # move tree_view to be its children
+    # move markdowns and tree_view to belong to the correct parents
+    # TODO markdown
+    tree_view_1.parent_id = section_3
+    tree_view_1.order = 2
+    tree_view_1.save()
+    tree_view_2.parent_id = section_4
+    tree_view_2.order = 2
+    tree_view_2.save()
 
     # TODO reorder markdown and tree-view parentage
+    # section 1-> markdown_1
+    # section 2 -> markdown_2
+    # section_3 -> [markdown_3, tree_view_1]
+    # section_4 -> [markdown_4, tree_view_2, markdown_5]
+    # TODO expire backgorund
+    # TODO expire markdown_6, markdown_7, markdown_8, markdown_9
 
 
 def rollback_emib_test(apps, schema_editor):
@@ -214,19 +224,6 @@ def rollback_emib_test(apps, schema_editor):
         .last()
     )
 
-    # TODO fix the bellow lookups after the tree_view moves
-
-    tree_view_1 = (
-        item.objects.using(db_alias)
-        .filter(parent_id=background, item_type_id=it_tree_view, order=1)
-        .last()
-    )
-    tree_view_2 = (
-        item.objects.using(db_alias)
-        .filter(parent_id=background, item_type_id=it_tree_view, order=2)
-        .last()
-    )
-
     # get sections
     sections = (
         item.objects.using(db_alias)
@@ -252,6 +249,20 @@ def rollback_emib_test(apps, schema_editor):
     section_4 = (
         item.objects.using(db_alias)
         .filter(parent_id=sections, item_type_id=it_section, order=4)
+        .last()
+    )
+
+    # get the tree_views
+
+    tree_view_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_3, item_type_id=it_tree_view, order=2)
+        .last()
+    )
+
+    tree_view_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_4, item_type_id=it_tree_view, order=2)
         .last()
     )
 
@@ -295,7 +306,17 @@ def rollback_emib_test(apps, schema_editor):
         item_id=tree_view_2, language=l_french
     ).delete()
 
-    # TODO reorder markdown and tree-view parentage
+    # move markdowns and tree_view to belong to the correct parents
+    # TODO markdown
+    tree_view_1.parent_id = background
+    tree_view_1.order = 1
+    tree_view_1.save()
+    tree_view_2.parent_id = background
+    tree_view_2.order = 2
+    tree_view_2.save()
+
+    # TODO unexpire backgorund
+    # TODO unexpire markdown_6, markdown_7, markdown_8, markdown_9
 
     # Delete sections
     section_1.delete()
