@@ -165,21 +165,38 @@ def reoder_emib_test(apps, schema_editor):
     )
 
     # move markdowns and tree_view to belong to the correct parents
-    # TODO markdown
+    markdown_1.parent_id = section_1
+    markdown_1.order = 1
+    markdown_1.save()
+
+    markdown_2.parent_id = section_2
+    markdown_2.order = 1
+    markdown_2.save()
+
+    markdown_3.parent_id = section_3
+    markdown_3.order = 1
+    markdown_3.save()
     tree_view_1.parent_id = section_3
     tree_view_1.order = 2
     tree_view_1.save()
+
+    markdown_4.parent_id = section_4
+    markdown_4.order = 1
+    markdown_4.save()
     tree_view_2.parent_id = section_4
     tree_view_2.order = 2
     tree_view_2.save()
+    markdown_5.parent_id = section_4
+    markdown_5.order = 3
+    markdown_5.save()
 
     # TODO reorder markdown and tree-view parentage
-    # section 1-> markdown_1
-    # section 2 -> markdown_2
+    # section_1-> markdown_1
+    # section_2 -> markdown_2
     # section_3 -> [markdown_3, tree_view_1]
     # section_4 -> [markdown_4, tree_view_2, markdown_5]
     expiry_date = datetime.now()
-    # TODO expire backgorund
+    # TODO expire background
     # expire markdown_6, markdown_7, markdown_8, markdown_9
     markdown_6.date_to = expiry_date
     markdown_6.save()
@@ -316,17 +333,33 @@ def rollback_emib_test(apps, schema_editor):
         item_id=tree_view_2, language=l_french
     ).delete()
 
-    # move markdowns and tree_view to belong to the correct parents
-    # TODO markdown
-    tree_view_1.parent_id = background
-    tree_view_1.order = 1
-    tree_view_1.save()
-    tree_view_2.parent_id = background
-    tree_view_2.order = 2
-    tree_view_2.save()
+    # get markdowns
+    markdown_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_1, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_2, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_3, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_4, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_4, item_type_id=it_markdown, order=3)
+        .last()
+    )
 
-    # TODO unexpire backgorund
-    # unexpire markdown_6, markdown_7, markdown_8, markdown_9
     markdown_6 = (
         item.objects.using(db_alias)
         .filter(parent_id=background, item_type_id=it_markdown, order=6)
@@ -347,6 +380,37 @@ def rollback_emib_test(apps, schema_editor):
         .filter(parent_id=background, item_type_id=it_markdown, order=9)
         .last()
     )
+
+    # move markdowns and tree_view to belong to the correct parents
+    # TODO markdown
+    markdown_1.parent_id = background
+    markdown_1.order = 1
+    markdown_1.save()
+
+    markdown_2.parent_id = background
+    markdown_2.order = 2
+    markdown_2.save()
+
+    markdown_3.parent_id = background
+    markdown_3.order = 3
+    markdown_3.save()
+    tree_view_1.parent_id = background
+    tree_view_1.order = 1
+    tree_view_1.save()
+    
+    markdown_4.parent_id = background
+    markdown_4.order = 4
+    markdown_4.save()
+    tree_view_2.parent_id = background
+    tree_view_2.order = 2
+    tree_view_2.save()
+    markdown_5.parent_id = background
+    markdown_5.order = 5
+    markdown_5.save()
+
+
+    # TODO unexpire backgorund
+    # unexpire markdown_6, markdown_7, markdown_8, markdown_9
     markdown_6.date_to = None
     markdown_6.save()
     markdown_7.date_to = None
