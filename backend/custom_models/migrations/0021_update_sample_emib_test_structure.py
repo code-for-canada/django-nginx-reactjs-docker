@@ -121,35 +121,52 @@ def reoder_emib_test(apps, schema_editor):
     section_4 = item(parent_id=sections, item_type_id=it_section, order=4)
     section_4.save()
 
-    # TODO section text
+    # bulk create section and tree_view text
+    item_text.objects.using(db_alias).bulk_create(
+        [
+            item_text(item_id=section_1, text_detail="Overview", language=l_english),
+            item_text(item_id=section_1, text_detail="Contexte", language=l_french),
+            item_text(
+                item_id=section_2, text_detail="Your organization", language=l_english
+            ),
+            item_text(
+                item_id=section_2, text_detail="FR Your organization", language=l_french
+            ),
+            item_text(
+                item_id=section_3,
+                text_detail="Organizational Structure",
+                language=l_english,
+            ),
+            item_text(
+                item_id=section_3,
+                text_detail="Structure organisationnelle",
+                language=l_french,
+            ),
+            item_text(item_id=section_4, text_detail="Your team", language=l_english),
+            item_text(item_id=section_4, text_detail="FR Your team", language=l_french),
+            item_text(
+                item_id=tree_view_1,
+                text_detail="The Organizational Chart of the ODC",
+                language=l_english,
+            ),
+            item_text(
+                item_id=tree_view_1, text_detail="Organigramme (CDO)", language=l_french
+            ),
+            item_text(
+                item_id=tree_view_2,
+                text_detail="The Organizational Chart of the QA Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=tree_view_2,
+                text_detail="Organigramme Équipe de l'assurance de la qualité (AQ)",
+                language=l_french,
+            ),
+        ]
+    )
 
     # TODO tree-view text
 
-    # section_1
-    # "Overview"
-    # "Contexte"
-
-    # section_2
-    # "Your organization"
-    # "FR Your organization"
-
-    # section_3
-    # "Organizational Structure"
-    # "Structure organisationnelle"
-
-    # section_4
-    # "Your team"
-    # "FR Your team"
-
-    # tree_view_1
-    # "The Organizational Chart of the ODC"
-    # "Organigramme (CDO)
-
-    # # tree_view_2
-    # "The Organizational Chart of the QA Team"
-    # "Organigramme Équipe de l'assurance de la qualité (AQ)"
-
-    # item_text for each section
     # move markdowns to be its children
     # move tree_view to be its children
 
@@ -194,6 +211,26 @@ def rollback_emib_test(apps, schema_editor):
         item_type.objects.using(db_alias).filter(type_desc="tree_view").last()
     )
 
+    # get the background item
+    background = (
+        item.objects.using(db_alias)
+        .filter(parent_id=emib_sample_item_id, item_type_id=it_background, order=0)
+        .last()
+    )
+
+    # TODO fix the bellow lookups after the tree_view moves
+
+    tree_view_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=1)
+        .last()
+    )
+    tree_view_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=2)
+        .last()
+    )
+
     # get sections
     sections = (
         item.objects.using(db_alias)
@@ -222,9 +259,45 @@ def rollback_emib_test(apps, schema_editor):
         .last()
     )
 
-    # TODO delete section text
+    # Delete section and tree_view text
+    item_text.objects.using(db_alias).filter(
+        item_id=section_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_1, language=l_french
+    ).delete()
 
-    # TODO delete tree-view text
+    item_text.objects.using(db_alias).filter(
+        item_id=section_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_2, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_3, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_3, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_4, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_4, language=l_french
+    ).delete()
+
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_1, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_2, language=l_french
+    ).delete()
 
     # TODO reorder markdown and tree-view parentage
 
