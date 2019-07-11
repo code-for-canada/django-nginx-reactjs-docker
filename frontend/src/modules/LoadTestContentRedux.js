@@ -1,5 +1,7 @@
 import { recursivelyCreateAddressBook } from "../helpers/transformations";
 
+const AUTH_TOKEN = localStorage.getItem("auth_token");
+
 // Action Types
 const UPDATE_TEST_META_DATA = "emibInbox/UPDATE_TEST_META_DATA";
 const UPDATE_TEST_BACKGROUND = "emibInbox/UPDATE_TEST_BACKGROUND";
@@ -14,22 +16,34 @@ const updateTestBackgroundState = testBackground => ({
 // API Calls
 const getTestMetaData = testName => {
   return async function() {
-    let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName}`, {
-      method: "GET",
+    let headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       cache: "default"
+    };
+    if (AUTH_TOKEN) {
+      headers.Authorization = "JWT " + AUTH_TOKEN;
+    }
+    let metaDataContent = await fetch(`/api/test-meta-data/?test_name=${testName}`, {
+      method: "GET",
+      headers: headers
     });
     return await metaDataContent.json();
   };
 };
 const getTestContent = testName => {
   return async function() {
-    let testContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
-      method: "GET",
+    let headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       cache: "default"
+    };
+    if (AUTH_TOKEN) {
+      headers.Authorization = "JWT " + AUTH_TOKEN;
+    }
+    let testContent = await fetch(`/api/test-questions/?test_name=${testName}`, {
+      method: "GET",
+      headers: headers
     });
     return await testContent.json();
   };
