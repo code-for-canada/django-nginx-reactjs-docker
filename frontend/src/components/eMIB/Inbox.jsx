@@ -19,6 +19,11 @@ const styles = {
   contentColumn: {
     paddingLeft: 0
   },
+  navIntemContainer: {
+    width: "100%",
+    height: INBOX_HEIGHT,
+    overflow: "auto"
+  },
   navItem: {
     width: "100%"
   },
@@ -64,20 +69,22 @@ class Inbox extends Component {
           <Row>
             <Col role="complementary" sm={4}>
               <Nav className="flex-column">
-                {emails.map((email, index) => (
-                  <Nav.Item key={index} style={styles.navItem}>
-                    <Nav.Link eventKey={EVENT_KEYS[index]} style={styles.navLink}>
-                      <EmailPreview
-                        email={email}
-                        isRead={this.props.emailSummaries[index].isRead}
-                        isRepliedTo={
-                          emailSummaries[index].emailCount + emailSummaries[index].taskCount > 0
-                        }
-                        isSelected={index === this.props.currentEmail}
-                      />
-                    </Nav.Link>
-                  </Nav.Item>
-                ))}
+                <div style={styles.navIntemContainer}>
+                  {emails.map((email, index) => (
+                    <Nav.Item key={index} style={styles.navItem}>
+                      <Nav.Link eventKey={EVENT_KEYS[index]} style={styles.navLink}>
+                        <EmailPreview
+                          email={email}
+                          isRead={this.props.emailSummaries[index].isRead}
+                          isRepliedTo={
+                            emailSummaries[index].emailCount + emailSummaries[index].taskCount > 0
+                          }
+                          isSelected={index === this.props.currentEmail}
+                        />
+                      </Nav.Link>
+                    </Nav.Item>
+                  ))}
+                </div>
               </Nav>
             </Col>
             <Col sm={8} tabIndex={0} style={styles.contentColumn}>
