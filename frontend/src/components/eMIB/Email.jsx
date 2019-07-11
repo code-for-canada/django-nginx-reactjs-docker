@@ -14,7 +14,9 @@ import { faSignOutAlt, faEnvelope, faTasks } from "@fortawesome/free-solid-svg-i
 
 const styles = {
   header: {
-    marginBottom: 35
+    borderBottom: "1px solid #00565E",
+    marginBottom: 16,
+    paddingBottom: 35
   },
   emailId: {
     float: "left",
@@ -35,16 +37,16 @@ const styles = {
   replyIcon: {
     color: "#00565E"
   },
-  titleEmailDivider: {
-    width: "100%",
-    borderTop: "1px solid #00565E",
-    margin: "16px 0 12px 0"
-  },
   actionIcon: {
     marginRight: 5
   },
   addEmailButton: {
     marginRight: 20
+  },
+  actionArea: {
+    borderTop: "1px solid #00565E",
+    marginTop: 35,
+    paddingTop: 16
   }
 };
 
@@ -104,12 +106,10 @@ class Email extends Component {
             </div>
           )}
         </div>
-        <hr style={styles.titleEmailDivider} />
         <EmailContent email={email} />
 
         {!this.props.disabled && (
-          <div>
-            <hr style={styles.titleEmailDivider} />
+          <div style={styles.actionArea}>
             <button
               id="unit-test-email-reply-button"
               type="button"

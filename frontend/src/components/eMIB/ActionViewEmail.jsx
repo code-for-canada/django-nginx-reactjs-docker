@@ -39,14 +39,16 @@ const styles = {
       textDecoration: "underline"
     }
   },
-  hr: {
-    margin: "16px 0 16px 0"
-  },
   editButton: {
     float: "right"
   },
   preWrap: {
     whiteSpace: "pre-wrap"
+  },
+  topDivider: {
+    marginTop: 16,
+    paddingTop: 16,
+    borderTop: "1px solid rgba(0, 0, 0, 0.1)"
   }
 };
 
@@ -152,13 +154,11 @@ class ActionViewEmail extends Component {
             <span style={styles.replyAndUser}>{visibleCcNames}</span>
           </div>
         </div>
-        <hr style={styles.hr} />
-        <div>
+        <div style={styles.topDivider}>
           <div style={styles.headings}>{LOCALIZE.emibTest.inboxPage.emailResponse.response}</div>
           <p style={styles.preWrap}>{action.emailBody}</p>
         </div>
-        <hr style={styles.hr} />
-        <div>
+        <div style={styles.topDivider}>
           <div style={styles.headings}>
             {LOCALIZE.emibTest.inboxPage.emailResponse.reasonsForAction}
           </div>
@@ -166,8 +166,7 @@ class ActionViewEmail extends Component {
         </div>
         {!this.props.disabled && (
           <div>
-            <hr style={styles.hr} />
-            <div aria-label={LOCALIZE.ariaLabel.emailOptions}>
+            <div style={styles.topDivider} aria-label={LOCALIZE.ariaLabel.emailOptions}>
               <button
                 id="unit-test-view-email-edit-button"
                 className="btn btn-primary"

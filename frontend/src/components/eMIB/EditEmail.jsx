@@ -68,6 +68,9 @@ const styles = {
       paddingRight: 4,
       marginTop: 5,
       marginBottom: 5
+    },
+    toAndCcFieldPadding: {
+      marginBottom: 20
     }
   },
   response: {
@@ -285,7 +288,6 @@ class EditEmail extends Component {
               tags={true}
             />
           </div>
-          <hr />
           <div className="font-weight-bold" style={styles.header.toAndCcFieldPadding}>
             <label htmlFor="cc-field" style={styles.header.titleStyle}>
               {LOCALIZE.emibTest.inboxPage.emailCommons.cc}
@@ -302,7 +304,6 @@ class EditEmail extends Component {
               tags={true}
             />
           </div>
-          <hr />
           <div>
             <div className="font-weight-bold form-group">
               <label htmlFor="your-response-text-area">
