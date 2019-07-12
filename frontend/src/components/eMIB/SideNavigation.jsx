@@ -9,7 +9,6 @@ const EVENT_KEYS = ["first", "second", "third", "fourth"];
 
 const styles = {
   bodyContent: {
-    overflow: "auto",
     paddingRight: 20,
     paddingTop: 10,
     paddingBottom: 10,
@@ -19,6 +18,9 @@ const styles = {
   nav: {
     marginTop: 10,
     marginLeft: 10
+  },
+  tabContainer: {
+    overflowY: "scroll"
   }
 };
 
@@ -48,7 +50,7 @@ class SideNavigation extends Component {
               })}
             </Nav>
           </Col>
-          <Col sm={9}>
+          <Col sm={9} style={styles.tabContainer}>
             <Tab.Content tabIndex={0}>
               {specs.map((item, index) => {
                 return (

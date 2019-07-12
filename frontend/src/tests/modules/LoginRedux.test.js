@@ -2,7 +2,7 @@ import login, {
   authenticateAction,
   initialState,
   logoutAction,
-  updateIsRegistrationFormValidState
+  updatePageHasErrorState
 } from "../../modules/LoginRedux";
 
 // authenticateAction
@@ -11,14 +11,14 @@ describe("authenticate action", () => {
     const action = authenticateAction(true);
     expect(login(initialState, action)).toEqual({
       authenticated: true,
-      isRegistrationFormValid: false
+      pageHasError: false
     });
   });
   it("should update authenticated state to false", () => {
     const action = authenticateAction(false);
     expect(login(initialState, action)).toEqual({
       authenticated: false,
-      isRegistrationFormValid: false
+      pageHasError: false
     });
   });
 });
@@ -36,20 +36,20 @@ describe("logout action", () => {
   });
 });
 
-// updateIsRegistrationFormValidState
-describe("updateIsRegistrationFormValidState action", () => {
-  it("should update isRegistrationFormValid state to true", () => {
-    const action = updateIsRegistrationFormValidState(true);
+// updatePageHasErrorState
+describe("updatePageHasErrorState action", () => {
+  it("should update pageHasError state to true", () => {
+    const action = updatePageHasErrorState(true);
     expect(login(initialState, action)).toEqual({
       authenticated: false,
-      isRegistrationFormValid: true
+      pageHasError: true
     });
   });
-  it("should update isRegistrationFormValid state to false", () => {
-    const action = updateIsRegistrationFormValidState(false);
+  it("should update pageHasError state to false", () => {
+    const action = updatePageHasErrorState(false);
     expect(login(initialState, action)).toEqual({
       authenticated: false,
-      isRegistrationFormValid: false
+      pageHasError: false
     });
   });
 });

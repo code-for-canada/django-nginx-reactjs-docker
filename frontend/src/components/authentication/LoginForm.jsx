@@ -4,7 +4,7 @@ import LOCALIZE from "../../text_resources";
 import {
   loginAction,
   handleAuthResponseAndState,
-  updateIsRegistrationFormValidState
+  updatePageHasErrorState
 } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import history from "./history";
@@ -47,7 +47,7 @@ class LoginForm extends Component {
     handleAuthResponseAndState: PropTypes.func,
     setLoginState: PropTypes.func,
     authenticated: PropTypes.bool,
-    updateIsRegistrationFormValidState: PropTypes.func
+    updatePageHasErrorState: PropTypes.func
   };
 
   state = {
@@ -66,7 +66,7 @@ class LoginForm extends Component {
           this.setState({
             wrongCredentials: true
           });
-          this.props.updateIsRegistrationFormValidState(false);
+          this.props.updatePageHasErrorState(true);
           // focus on password field
           document.getElementById("password").focus();
           // right authentication
@@ -78,7 +78,7 @@ class LoginForm extends Component {
             window.location.pathname,
             history.push
           );
-          this.props.updateIsRegistrationFormValidState(true);
+          this.props.updatePageHasErrorState(false);
         }
       });
     event.preventDefault();
@@ -170,7 +170,7 @@ const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
   handleAuthResponseAndState: (userData, dispatch, location, push) =>
     dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
-  updateIsRegistrationFormValidState: bool => dispatch(updateIsRegistrationFormValidState(bool)),
+  updatePageHasErrorState: bool => dispatch(updatePageHasErrorState(bool)),
   dispatch
 });
 
