@@ -114,33 +114,35 @@ def reoder_emib_test(apps, schema_editor):
     section_6 = item(parent_id=sections, item_type_id=it_section, order=6)
     section_6.save()
 
-    # TODO create text for sections
     # TODO create text for tree_views
-    # TODO expire background
 
-    # # bulk create section and tree_view text
-    # item_text.objects.using(db_alias).bulk_create(
-    #     [
-    #         item_text(item_id=section_1, text_detail="Overview", language=l_english),
-    #         item_text(item_id=section_1, text_detail="Contexte", language=l_french),
-    #         item_text(
-    #             item_id=section_2, text_detail="Your organization", language=l_english
-    #         ),
-    #         item_text(
-    #             item_id=section_2, text_detail="FR Your organization", language=l_french
-    #         ),
-    #         item_text(
-    #             item_id=section_3,
-    #             text_detail="Organizational Structure",
-    #             language=l_english,
-    #         ),
-    #         item_text(
-    #             item_id=section_3,
-    #             text_detail="Structure organisationnelle",
-    #             language=l_french,
-    #         ),
-    #         item_text(item_id=section_4, text_detail="Your team", language=l_english),
-    #         item_text(item_id=section_4, text_detail="FR Your team", language=l_french),
+    # bulk create section and tree_view text
+    item_text.objects.using(db_alias).bulk_create(
+        [
+            item_text(item_id=section_1, text_detail="Overview", language=l_english),
+            item_text(item_id=section_1, text_detail="Contexte", language=l_french),
+            item_text(
+                item_id=section_2, text_detail="Organization", language=l_english
+            ),
+            item_text(
+                item_id=section_2, text_detail="FR Organization", language=l_french
+            ),
+            item_text(
+                item_id=section_3,
+                text_detail="Structure",
+                language=l_english,
+            ),
+            item_text(
+                item_id=section_3,
+                text_detail="Structure",
+                language=l_french,
+            ),
+            item_text(item_id=section_4, text_detail="Your team", language=l_english),
+            item_text(item_id=section_4, text_detail="FR Your team", language=l_french),
+            item_text(item_id=section_5, text_detail="Roles and responsibilities", language=l_english),
+            item_text(item_id=section_5, text_detail="FR Roles and responsibilities", language=l_french),
+            item_text(item_id=section_6, text_detail="Special events", language=l_english),
+            item_text(item_id=section_6, text_detail="FR Special events", language=l_french),
     #         item_text(
     #             item_id=tree_view_1,
     #             text_detail="The Organizational Chart of the ODC",
@@ -159,8 +161,8 @@ def reoder_emib_test(apps, schema_editor):
     #             text_detail="Organigramme Équipe de l'assurance de la qualité (AQ)",
     #             language=l_french,
     #         ),
-    #     ]
-    # )
+       ]
+    ) 
 
     # move markdowns and tree_view to the correct parents
     # section_1-> markdown_1
@@ -301,32 +303,43 @@ def rollback_emib_test(apps, schema_editor):
         .last()
     )
 
-    # # Delete section and tree_view text
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_1, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_1, language=l_french
-    # ).delete()
-
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_2, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_2, language=l_french
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_3, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_3, language=l_french
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_4, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=section_4, language=l_french
-    # ).delete()
+    # Delete section and tree_view text
+    item_text.objects.using(db_alias).filter(
+        item_id=section_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_1, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_2, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_3, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_3, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_4, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_4, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_5, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_5, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_6, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=section_6, language=l_french
+    ).delete()
 
     # item_text.objects.using(db_alias).filter(
     #     item_id=tree_view_1, language=l_english
