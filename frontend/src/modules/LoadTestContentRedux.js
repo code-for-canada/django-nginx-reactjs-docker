@@ -86,30 +86,53 @@ const loadTestContent = (state = initialState, action) => {
 // Converts the org charts in the background into an addressBook
 // to put into the redux store.
 const processAddressBook = testBackground => {
-  // Get the org chart arrays out of the background content.
-  const enOrgCharts = testBackground.en.background[0].tree_view;
-  const frOrgCharts = testBackground.fr.background[0].tree_view;
+  const enBackgroundSections = testBackground.en.sections[0].section;
+  const frBackgroundSections = testBackground.fr.sections[0].section;
 
+  let enTrees = [];
+  let frTrees = [];
+
+  // Iterate through the background material to find any org charts.
+  for (let i = 0; i < enBackgroundSections.length; i++) {
+    const enSectionContent = enBackgroundSections[i].section_content;
+    const frSectionContent = frBackgroundSections[i].section_content;
+
+    for (let j = 0; j < enSectionContent.length; j++) {
+      const enContentItem = enSectionContent[j];
+      const frContentItem = frSectionContent[j];
+
+      if (enContentItem.type === "tree_view") {
+        enTrees = enTrees.concat(enContentItem);
+        frTrees = frTrees.concat(frContentItem);
+      }
+    }
+  }
+
+  // Org charts are trees that will generate the address book.
   // Flatten the trees and format as an array of names (strings).
-  const enAddressBook = recursivelyCreateAddressBook(
-    enOrgCharts[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child"
-  ).concat(
-    recursivelyCreateAddressBook(
-      enOrgCharts[1].team_information_tree_child,
-      "team_information_tree_child"
-    )
-  );
+  let enAddressBook = [];
+  let frAddressBook = [];
 
-  const frAddressBook = recursivelyCreateAddressBook(
-    frOrgCharts[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child"
-  ).concat(
-    recursivelyCreateAddressBook(
-      frOrgCharts[1].team_information_tree_child,
-      "team_information_tree_child"
-    )
-  );
+  if (enTrees.length >= 2) {
+    enAddressBook = recursivelyCreateAddressBook(
+      enTrees[0].organizational_structure_tree_child,
+      "organizational_structure_tree_child"
+    ).concat(
+      recursivelyCreateAddressBook(
+        enTrees[1].team_information_tree_child,
+        "team_information_tree_child"
+      )
+    );
+    frAddressBook = recursivelyCreateAddressBook(
+      frTrees[0].organizational_structure_tree_child,
+      "organizational_structure_tree_child"
+    ).concat(
+      recursivelyCreateAddressBook(
+        frTrees[1].team_information_tree_child,
+        "team_information_tree_child"
+      )
+    );
+  }
 
   // Return the formatted address book for each language.
   return { en: enAddressBook, fr: frAddressBook };
@@ -123,6 +146,13 @@ export const getAddressInCurrentLanguage = state => {
   const lang = state.localize.language;
   const addressBook = state.loadTestContent.addressBook;
   return addressBook[lang];
+};
+
+// Returns the background info in the current language.
+export const getBackgroundInCurrentLanguage = state => {
+  const lang = state.localize.language;
+  const testBackground = state.loadTestContent.testBackground;
+  return testBackground[lang].sections[0].section;
 };
 
 export default loadTestContent;
