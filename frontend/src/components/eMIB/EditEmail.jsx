@@ -116,6 +116,12 @@ class EditEmail extends Component {
     addressBook: PropTypes.arrayOf(PropTypes.string)
   };
 
+  componentDidMount() {
+    // After generating the initial state, update the parent with it.
+    // This allows defaults to be set.
+    this.props.onChange(this.state);
+  }
+
   generateToIds = contactsString => {
     return contactsString.split(", ").map(name => {
       return this.props.addressBook.indexOf(name);
