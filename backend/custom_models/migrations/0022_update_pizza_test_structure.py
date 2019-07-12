@@ -114,8 +114,6 @@ def reoder_emib_test(apps, schema_editor):
     section_6 = item(parent_id=sections, item_type_id=it_section, order=6)
     section_6.save()
 
-    # TODO create text for tree_views
-
     # bulk create section and tree_view text
     item_text.objects.using(db_alias).bulk_create(
         [
@@ -143,24 +141,24 @@ def reoder_emib_test(apps, schema_editor):
             item_text(item_id=section_5, text_detail="FR Roles and responsibilities", language=l_french),
             item_text(item_id=section_6, text_detail="Special events", language=l_english),
             item_text(item_id=section_6, text_detail="FR Special events", language=l_french),
-    #         item_text(
-    #             item_id=tree_view_1,
-    #             text_detail="The Organizational Chart of the ODC",
-    #             language=l_english,
-    #         ),
-    #         item_text(
-    #             item_id=tree_view_1, text_detail="Organigramme (CDO)", language=l_french
-    #         ),
-    #         item_text(
-    #             item_id=tree_view_2,
-    #             text_detail="The Organizational Chart of the QA Team",
-    #             language=l_english,
-    #         ),
-    #         item_text(
-    #             item_id=tree_view_2,
-    #             text_detail="Organigramme Équipe de l'assurance de la qualité (AQ)",
-    #             language=l_french,
-    #         ),
+            item_text(
+                item_id=tree_view_1,
+                text_detail="The Organizational Chart of JOKECAN",
+                language=l_english,
+            ),
+            item_text(
+                item_id=tree_view_1, text_detail="FR The Organizational Chart of JOKECAN", language=l_french
+            ),
+            item_text(
+                item_id=tree_view_2,
+                text_detail="The Organizational Chart of the Rebel Team",
+                language=l_english,
+            ),
+            item_text(
+                item_id=tree_view_2,
+                text_detail="FR The Organizational Chart of the Rebel Team",
+                language=l_french,
+            ),
        ]
     ) 
 
@@ -341,18 +339,18 @@ def rollback_emib_test(apps, schema_editor):
         item_id=section_6, language=l_french
     ).delete()
 
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=tree_view_1, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=tree_view_1, language=l_french
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=tree_view_2, language=l_english
-    # ).delete()
-    # item_text.objects.using(db_alias).filter(
-    #     item_id=tree_view_2, language=l_french
-    # ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_1, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_1, language=l_french
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_2, language=l_english
+    ).delete()
+    item_text.objects.using(db_alias).filter(
+        item_id=tree_view_2, language=l_french
+    ).delete()
 
     # get markdowns
     markdown_1 = (
