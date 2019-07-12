@@ -62,8 +62,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1 className="green-divider">
+        <div role="region" aria-labelledby="user-welcome-message">
+          <h1 id="user-welcome-message" className="green-divider">
             {LOCALIZE.formatString(
               LOCALIZE.dashboard.title,
               this.state.first_name,
@@ -72,8 +72,8 @@ class Dashboard extends Component {
           </h1>
           <p>{LOCALIZE.dashboard.description}</p>
         </div>
-        <div>
-          <table style={styles.table}>
+        <div role="region" aria-labelledby="test-assignment-table">
+          <table id="test-assignment-table" style={styles.table}>
             <tbody>
               <tr>
                 <th style={{ ...styles.th, ...styles.borderRight, ...styles.topLeftBorderRadius }}>
