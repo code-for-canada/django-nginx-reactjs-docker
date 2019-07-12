@@ -114,6 +114,11 @@ def reoder_emib_test(apps, schema_editor):
     section_6 = item(parent_id=sections, item_type_id=it_section, order=6)
     section_6.save()
 
+    # TODO create text for sections
+    # TODO create text for tree_views
+    # TODO move markdowns
+    # TODO expire background
+
     # # bulk create section and tree_view text
     # item_text.objects.using(db_alias).bulk_create(
     #     [
