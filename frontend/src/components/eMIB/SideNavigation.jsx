@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const BODY_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
-const EVENT_KEYS = ["first", "second", "third", "fourth"];
+const EVENT_KEYS = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh"];
 
 const styles = {
   bodyContent: {
