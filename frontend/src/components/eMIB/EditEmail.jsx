@@ -122,6 +122,8 @@ class EditEmail extends Component {
     this.props.onChange(this.state);
   }
 
+  // Generate an array of ids, representing contacts
+  // based on a string of names in a to or from field.
   generateToIds = contactsString => {
     return contactsString.split(", ").map(name => {
       return this.props.addressBook.indexOf(name);
