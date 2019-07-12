@@ -40,7 +40,7 @@ class SideNavigation extends Component {
       <Tab.Container id="left-tabs-navigation" defaultActiveKey="first">
         <Row>
           <Col role="complementary" sm={3}>
-            <Nav variant="pills" className="flex-column" style={styles.nav}>
+            <Nav role="navigation" variant="pills" className="flex-column" style={styles.nav}>
               {specs.map((item, index) => {
                 return (
                   <Nav.Item key={index}>
@@ -51,7 +51,7 @@ class SideNavigation extends Component {
             </Nav>
           </Col>
           <Col sm={9} style={styles.tabContainer}>
-            <Tab.Content tabIndex={0}>
+            <Tab.Content role="contentinfo" tabIndex={0}>
               {specs.map((item, index) => {
                 return (
                   <Tab.Pane key={index} eventKey={EVENT_KEYS[index]}>
