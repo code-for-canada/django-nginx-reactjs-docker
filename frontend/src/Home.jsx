@@ -11,15 +11,15 @@ class Home extends Component {
   static propTypes = {
     // Props from Redux
     authenticated: PropTypes.bool,
-    isRegistrationFormValid: PropTypes.bool
+    pageHasError: PropTypes.bool
   };
 
   render() {
     return (
       <div className="app">
         <Helmet>
-          {this.props.isRegistrationFormValid && <title>{LOCALIZE.titles.home}</title>}
-          {!this.props.isRegistrationFormValid && <title>{LOCALIZE.titles.homeWithError}</title>}
+          {!this.props.pageHasError && <title>{LOCALIZE.titles.home}</title>}
+          {this.props.pageHasError && <title>{LOCALIZE.titles.homeWithError}</title>}
         </Helmet>
         <ContentContainer>
           {!this.props.authenticated && (
@@ -42,7 +42,7 @@ export { Home as UnconnectedHome };
 const mapStateToProps = (state, ownProps) => {
   return {
     authenticated: state.login.authenticated,
-    isRegistrationFormValid: state.login.isRegistrationFormValid
+    pageHasError: state.login.pageHasError
   };
 };
 

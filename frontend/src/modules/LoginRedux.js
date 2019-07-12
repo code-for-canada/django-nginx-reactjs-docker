@@ -41,10 +41,10 @@ function registerAction(data) {
   };
 }
 
-// updates isRegistrationFormValid state
-const updateIsRegistrationFormValidState = isRegistrationFormValid => ({
+// updates pageHasError state
+const updatePageHasErrorState = pageHasError => ({
   type: REGISTRATION,
-  isRegistrationFormValid
+  pageHasError
 });
 
 // getting user's token
@@ -88,7 +88,7 @@ function logoutAction() {
 // Initial State
 const initialState = {
   authenticated: false,
-  isRegistrationFormValid: false
+  pageHasError: false
 };
 
 // Reducer
@@ -104,7 +104,7 @@ const login = (state = initialState, action) => {
     case REGISTRATION:
       return {
         ...state,
-        isRegistrationFormValid: action.isRegistrationFormValid
+        pageHasError: action.pageHasError
       };
 
     default:
@@ -121,5 +121,5 @@ export {
   handleAuthResponseAndState,
   logoutAction,
   getUserInformation,
-  updateIsRegistrationFormValidState
+  updatePageHasErrorState
 };
