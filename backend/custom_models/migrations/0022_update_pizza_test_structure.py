@@ -96,21 +96,23 @@ def reoder_emib_test(apps, schema_editor):
         .filter(parent_id=background, item_type_id=it_tree_view, order=2)
         .last()
     )
-    print(tree_view_1)
-    print(tree_view_2)
 
     # create sections
-    # sections = item(parent_id=pizza_item_id, item_type_id=it_sections, order=1)
-    # sections.save()
+    sections = item(parent_id=pizza_item_id, item_type_id=it_sections, order=1)
+    sections.save()
 
-    # section_1 = item(parent_id=sections, item_type_id=it_section, order=1)
-    # section_1.save()
-    # section_2 = item(parent_id=sections, item_type_id=it_section, order=2)
-    # section_2.save()
-    # section_3 = item(parent_id=sections, item_type_id=it_section, order=3)
-    # section_3.save()
-    # section_4 = item(parent_id=sections, item_type_id=it_section, order=4)
-    # section_4.save()
+    section_1 = item(parent_id=sections, item_type_id=it_section, order=1)
+    section_1.save()
+    section_2 = item(parent_id=sections, item_type_id=it_section, order=2)
+    section_2.save()
+    section_3 = item(parent_id=sections, item_type_id=it_section, order=3)
+    section_3.save()
+    section_4 = item(parent_id=sections, item_type_id=it_section, order=4)
+    section_4.save()
+    section_5 = item(parent_id=sections, item_type_id=it_section, order=5)
+    section_5.save()
+    section_6 = item(parent_id=sections, item_type_id=it_section, order=6)
+    section_6.save()
 
     # # bulk create section and tree_view text
     # item_text.objects.using(db_alias).bulk_create(
@@ -243,33 +245,43 @@ def rollback_emib_test(apps, schema_editor):
         .last()
     )
 
-    # # get sections
-    # sections = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=pizza_item_id, item_type_id=it_sections, order=1)
-    #     .last()
-    # )
+    # get sections
+    sections = (
+        item.objects.using(db_alias)
+        .filter(parent_id=pizza_item_id, item_type_id=it_sections, order=1)
+        .last()
+    )
 
-    # section_1 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=sections, item_type_id=it_section, order=1)
-    #     .last()
-    # )
-    # section_2 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=sections, item_type_id=it_section, order=2)
-    #     .last()
-    # )
-    # section_3 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=sections, item_type_id=it_section, order=3)
-    #     .last()
-    # )
-    # section_4 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=sections, item_type_id=it_section, order=4)
-    #     .last()
-    # )
+    section_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=1)
+        .last()
+    )
+    section_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=2)
+        .last()
+    )
+    section_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=3)
+        .last()
+    )
+    section_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=4)
+        .last()
+    )
+    section_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=5)
+        .last()
+    )
+    section_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=sections, item_type_id=it_section, order=6)
+        .last()
+    )
 
     # # get the tree_views
     # tree_view_1 = (
@@ -411,12 +423,14 @@ def rollback_emib_test(apps, schema_editor):
     # markdown_9.date_to = None
     # markdown_9.save()
 
-    # # Delete sections
-    # section_1.delete()
-    # section_2.delete()
-    # section_3.delete()
-    # section_4.delete()
-    # sections.delete()
+    # Delete sections
+    section_1.delete()
+    section_2.delete()
+    section_3.delete()
+    section_4.delete()
+    section_5.delete()
+    section_6.delete()
+    sections.delete()
 
 
 class Migration(migrations.Migration):
