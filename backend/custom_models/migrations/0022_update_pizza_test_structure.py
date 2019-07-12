@@ -202,10 +202,9 @@ def reoder_emib_test(apps, schema_editor):
     markdown_7.order = 2
     markdown_7.save()
 
-    # # expire background, markdown_6, markdown_7, markdown_8, markdown_9
-    # expiry_date = timezone.now()
-    # background.date_to = expiry_date
-    # background.save()
+    # # expire background
+    background.date_to = timezone.now()
+    background.save()
 
 
 def rollback_emib_test(apps, schema_editor):
@@ -413,10 +412,10 @@ def rollback_emib_test(apps, schema_editor):
     markdown_7.order = 7
     markdown_7.save()
 
-    # # unexpire background, markdown_6, markdown_7, markdown_8, markdown_9
+    # # unexpire background
     # # don't need to change anything else with these
-    # background.date_to = None
-    # background.save()
+    background.date_to = None
+    background.save()
 
     # Delete sections
     section_1.delete()
