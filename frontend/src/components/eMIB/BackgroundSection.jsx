@@ -97,11 +97,9 @@ class BackgroundSection extends Component {
                   onClick={this.openPopup}
                   className="btn btn-secondary"
                   style={styles.button}
-                  aria-label={
-                    LOCALIZE.emibTest.background.organizationalStructure.orgChart.ariaLabel
-                  }
+                  aria-label={LOCALIZE.emibTest.background.orgCharts.ariaLabel}
                 >
-                  {LOCALIZE.emibTest.background.organizationalStructure.orgChart.link}
+                  {LOCALIZE.emibTest.background.orgCharts.link}
                 </button>
                 <PopupBox
                   show={this.state.showPopupBox}
@@ -109,7 +107,7 @@ class BackgroundSection extends Component {
                   title={contentItem.title}
                   description={
                     <div>
-                      <p>This is a tree view and you can open it</p>
+                      <p>{LOCALIZE.emibTest.background.orgCharts.treeViewInstructions}</p>
                       <TreeNode nodes={treeView} />
                     </div>
                   }
