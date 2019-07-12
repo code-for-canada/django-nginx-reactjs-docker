@@ -35,14 +35,9 @@ export function optionsFromIds(addressBook, ids) {
 // groups: array of numbers of the children
 // parent: number id of the parent
 // level (required): number representing the level of the tree you are in
-export const processTreeContent = (
-  currentLanguage,
-  treeViewContent_en,
-  treeViewContent_fr,
-  treeType
-) => {
-  const treeContent =
-    currentLanguage === LANGUAGES.english ? treeViewContent_en : treeViewContent_fr;
+export const processTreeContent = (treeContent, treeType) => {
+  console.log(treeContent);
+  //const treeContent = currentLanguage === LANGUAGES.english ? treeViewContent_en : treeViewContent_fr;
   const tree = recursivelyProcessTree(treeContent, treeType, 1, 0);
   return tree;
 };
