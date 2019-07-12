@@ -442,12 +442,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q1_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -493,12 +493,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q2_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q2_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -544,12 +544,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q3_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q3_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -595,12 +595,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q4_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q4_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -646,12 +646,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q5_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q5_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -697,12 +697,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q6_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q6_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -748,12 +748,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q7_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q7_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -799,12 +799,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q8_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q8_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -851,12 +851,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q9_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q9_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -902,12 +902,12 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
                 item_id=i_q10_to,
-                text_detail="O.B Wan (Manager - You)",
+                text_detail="O.B. Wan (Manager - You)",
                 language=l_english,
             ),
             item_text(
                 item_id=i_q10_to,
-                text_detail="FR O.B Wan (Manager - You)",
+                text_detail="FR O.B. Wan (Manager - You)",
                 language=l_french,
             ),
             item_text(
@@ -1217,7 +1217,7 @@ The idea to create Taste the North was conceived a year ago by JOKECAN’s senio
 
 A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
 
-Due to having an in-depth knowledge of the Rebel Region, O.B is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
+Due to having an in-depth knowledge of the Rebel Region, O.B. is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
 
 Other members of the Twerking Group from JOKECAN include the Director of the Crustless Affairs Division and the Director of the Mushrooms Division. To represent the interests of local communities, the following members are also part of the Twerking Group:
 
@@ -1241,7 +1241,7 @@ FR The idea to create Taste the North was conceived a year ago by JOKECAN’s se
 
 FR A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
 
-FR Due to having an in-depth knowledge of the Rebel Region, O.B is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
+FR Due to having an in-depth knowledge of the Rebel Region, O.B. is also a key member of the Twerking Group. O.B. often assists Sandra in matters related to Taste the North by gathering relevant information, identifying issues, and providing initial ideas and recommendations to be further assessed with the Twerking Group.
 
 FR Other members of the Twerking Group from JOKECAN include the Director of the Crustless Affairs Division and the Director of the Mushrooms Division. To represent the interests of local communities, the following members are also part of the Twerking Group:
 
