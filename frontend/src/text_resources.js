@@ -508,7 +508,9 @@ let LOCALIZE = new LocalizedStrings({
       passwordConfirmationRequirements: "It must match your password",
       dobDayField: "Day field selected",
       dobMonthField: "Month field selected",
-      dobYearField: "Year field selected"
+      dobYearField: "Year field selected",
+      emailsList: "emails list",
+      emailContent: "email content"
     },
 
     //Commons
@@ -1065,7 +1067,9 @@ let LOCALIZE = new LocalizedStrings({
       passwordConfirmationRequirements: "FR It must match your password",
       dobDayField: "FR Day field selected",
       dobMonthField: "FR Month field selected",
-      dobYearField: "FR Year field selected"
+      dobYearField: "FR Year field selected",
+      emailsList: "FR emails list",
+      emailContent: "FR email content"
     },
 
     //Commons
