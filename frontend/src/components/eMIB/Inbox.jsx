@@ -68,7 +68,7 @@ class Inbox extends Component {
         <Tab.Container id="inbox-tabs" defaultActiveKey="first" onSelect={this.changeEmail}>
           <Row>
             <Col role="complementary" sm={4}>
-              <Nav className="flex-column">
+              <Nav role="navigation" className="flex-column">
                 <div style={styles.navIntemContainer}>
                   {emails.map((email, index) => (
                     <Nav.Item key={index} style={styles.navItem}>
@@ -88,7 +88,7 @@ class Inbox extends Component {
               </Nav>
             </Col>
             <Col sm={8} tabIndex={0} style={styles.contentColumn}>
-              <Tab.Content style={styles.bodyContent}>
+              <Tab.Content role="contentinfo" style={styles.bodyContent}>
                 {emails.map((email, index) => (
                   <Tab.Pane eventKey={EVENT_KEYS[index]} key={index}>
                     <Email
