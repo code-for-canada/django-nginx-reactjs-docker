@@ -225,6 +225,9 @@ class EditActionDialog extends Component {
             <EditEmail
               onChange={this.editAction}
               action={editMode === EDIT_MODE.update ? this.props.action : null}
+              originalFrom={this.props.email.from}
+              originalTo={this.props.email.to}
+              editMode={editMode}
             />
           )}
           {actionType === ACTION_TYPE.task && (
