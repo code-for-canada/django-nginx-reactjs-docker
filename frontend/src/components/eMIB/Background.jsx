@@ -1,37 +1,40 @@
 import React, { Component } from "react";
-import LOCALIZE from "../../text_resources";
-import TeamInformation from "./TeamInformation";
-import BackgroundInformation from "./BackgroundInformation";
-import OrganizationalInformation from "./OrganizationalInformation";
-import OrganizationalStructure from "./OrganizationalStructure";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import SideNavigation from "./SideNavigation";
-
-export const getInstructionContent = () => {
-  return [
-    {
-      menuString: LOCALIZE.emibTest.background.backgroundInformation.title,
-      body: <BackgroundInformation />
-    },
-    {
-      menuString: LOCALIZE.emibTest.background.organizationalInformation.title,
-      body: <OrganizationalInformation />
-    },
-    {
-      menuString: LOCALIZE.emibTest.background.organizationalStructure.title,
-      body: <OrganizationalStructure />
-    },
-    {
-      menuString: LOCALIZE.emibTest.background.teamInformation.title,
-      body: <TeamInformation />
-    }
-  ];
-};
+import { getBackgroundInCurrentLanguage } from "../../modules/LoadTestContentRedux";
+import BackgroundSection from "./BackgroundSection";
 
 class Background extends Component {
+  static propTypes = {
+    language: PropTypes.string,
+    testBackground: PropTypes.object
+  };
+
   render() {
-    const specs = getInstructionContent();
-    return <SideNavigation specs={specs} />;
+    const sections = this.props.testBackground.sections[0].section;
+    console.log(sections);
+    return (
+      <SideNavigation
+        specs={sections.map(section => {
+          return {
+            menuString: section.title,
+            body: <BackgroundSection content={section.sectionContent} />
+          };
+        })}
+      />
+    );
   }
 }
 
-export default Background;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    language: state.localize.language,
+    testBackground: getBackgroundInCurrentLanguage(state)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Background);

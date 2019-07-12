@@ -72,6 +72,7 @@ const loadTestContent = (state = initialState, action) => {
 // Converts the org charts in the background into an addressBook
 // to put into the redux store.
 const processAddressBook = testBackground => {
+  return { en: [], fr: [] };
   // Get the org chart arrays out of the background content.
   const enOrgCharts = testBackground.en.background[0].tree_view;
   const frOrgCharts = testBackground.fr.background[0].tree_view;
@@ -109,6 +110,13 @@ export const getAddressInCurrentLanguage = state => {
   const lang = state.localize.language;
   const addressBook = state.loadTestContent.addressBook;
   return addressBook[lang];
+};
+
+// Returns the address book in the current language.
+export const getBackgroundInCurrentLanguage = state => {
+  const lang = state.localize.language;
+  const testBackground = state.loadTestContent.testBackground;
+  return testBackground[lang];
 };
 
 export default loadTestContent;
