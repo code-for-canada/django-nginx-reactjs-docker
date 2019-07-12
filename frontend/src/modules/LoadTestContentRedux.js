@@ -112,11 +112,11 @@ export const getAddressInCurrentLanguage = state => {
   return addressBook[lang];
 };
 
-// Returns the address book in the current language.
+// Returns the background info in the current language.
 export const getBackgroundInCurrentLanguage = state => {
   const lang = state.localize.language;
   const testBackground = state.loadTestContent.testBackground;
-  return testBackground[lang];
+  return testBackground[lang].sections[0].section;
 };
 
 export default loadTestContent;
