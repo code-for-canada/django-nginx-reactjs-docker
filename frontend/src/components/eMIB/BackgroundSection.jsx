@@ -118,6 +118,9 @@ class BackgroundSection extends Component {
                 />
               </div>
             );
+          } else {
+            // Unknown content type.
+            return <div />;
           }
         })}
       </div>

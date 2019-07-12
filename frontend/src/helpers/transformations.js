@@ -1,5 +1,3 @@
-import { LANGUAGES } from "../modules/LocalizeRedux";
-
 // Transform addressBook (list of names - strings) into a list of
 // options. This option list (addressBookOptionShape) is what's required as the choices
 // for the react-super-select input component.
@@ -36,10 +34,7 @@ export function optionsFromIds(addressBook, ids) {
 // parent: number id of the parent
 // level (required): number representing the level of the tree you are in
 export const processTreeContent = (treeContent, treeType) => {
-  console.log(treeContent);
-  //const treeContent = currentLanguage === LANGUAGES.english ? treeViewContent_en : treeViewContent_fr;
-  const tree = recursivelyProcessTree(treeContent, treeType, 1, 0);
-  return tree;
+  return recursivelyProcessTree(treeContent, treeType, 1, 0);
 };
 
 // Recursively process tree from API into tree needed for accessible tree view
