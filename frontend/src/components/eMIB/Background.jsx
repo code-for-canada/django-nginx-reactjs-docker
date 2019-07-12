@@ -19,7 +19,7 @@ class Background extends Component {
         specs={sections.map(section => {
           return {
             menuString: section.title,
-            body: <BackgroundSection content={section.sectionContent} />
+            body: <BackgroundSection content={section.section_content} />
           };
         })}
       />

@@ -9,7 +9,17 @@ class BackgroundSection extends Component {
 
   render() {
     const { content } = this.props;
-    return <div>this is a section</div>;
+    return (
+      <div>
+        {content.map((contentItem, id) => {
+          if (contentItem.type === "markdown") {
+            return <ReactMarkdown key={id} source={contentItem.text} />;
+          } else if (contentItem.type == "tree_view") {
+            return <div key={id}>It's a tree</div>;
+          }
+        })}
+      </div>
+    );
   }
 }
 
