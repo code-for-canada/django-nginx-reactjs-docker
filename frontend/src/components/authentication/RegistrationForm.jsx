@@ -12,7 +12,7 @@ import {
   registerAction,
   handleAuthResponseAndState,
   loginAction,
-  updateIsRegistrationFormValidState
+  updatePageHasErrorState
 } from "../../modules/LoginRedux";
 import { connect } from "react-redux";
 import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
@@ -108,7 +108,7 @@ class RegistrationForm extends Component {
     registerAction: PropTypes.func,
     handleAuthResponseAndState: PropTypes.func,
     loginAction: PropTypes.func,
-    updateIsRegistrationFormValidState: PropTypes.func
+    updatePageHasErrorState: PropTypes.func
   };
 
   state = {
@@ -464,9 +464,7 @@ class RegistrationForm extends Component {
         .registerAction({
           first_name: this.state.firstNameContent,
           last_name: this.state.lastNameContent,
-          birth_date: `${this.state.dobDayContent}/${this.state.dobMonthContent}/---${
-            this.state.dobYearContent
-          }`,
+          birth_date: `${this.state.dobDayContent}/${this.state.dobMonthContent}/---${this.state.dobYearContent}`,
           email: this.state.emailContent,
           pri_or_military_nbr: this.state.priOrMilitaryNbrContent,
           password: this.state.passwordContent,
@@ -498,9 +496,9 @@ class RegistrationForm extends Component {
                   history.push
                 );
               });
-            this.props.updateIsRegistrationFormValidState(true);
+            this.props.updatePageHasErrorState(false);
           } else {
-            this.props.updateIsRegistrationFormValidState(false);
+            this.props.updatePageHasErrorState(true);
           }
           // response gets username error(s)
           if (typeof response.username !== "undefined") {
@@ -514,7 +512,7 @@ class RegistrationForm extends Component {
           }
         });
     } else {
-      this.props.updateIsRegistrationFormValidState(false);
+      this.props.updatePageHasErrorState(true);
       this.focusOnHighestErrorField();
     }
     event.preventDefault();
@@ -535,10 +533,6 @@ class RegistrationForm extends Component {
 
   changeCheckboxStatus = () => {
     this.setState({ isCheckboxChecked: !this.state.isCheckboxChecked });
-  };
-
-  componentDidMount = () => {
-    this.props.updateIsRegistrationFormValidState(true);
   };
 
   render() {
@@ -1128,7 +1122,7 @@ const mapDispatchToProps = dispatch => ({
   loginAction: data => dispatch(loginAction(data)),
   handleAuthResponseAndState: (userData, dispatch, location, push) =>
     dispatch(handleAuthResponseAndState(userData, dispatch, location, push)),
-  updateIsRegistrationFormValidState: bool => dispatch(updateIsRegistrationFormValidState(bool)),
+  updatePageHasErrorState: bool => dispatch(updatePageHasErrorState(bool)),
   dispatch
 });
 
