@@ -330,27 +330,11 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        backgroundInformation: {
-          title: "Overview"
-        },
-        organizationalInformation: {
-          title: "Your organization"
-        },
-        organizationalStructure: {
-          title: "Organizational Structure",
-          orgChart: {
-            desciption: "Organizational Chart (ODC)",
-            link: "Image Description",
-            ariaLabel: "Image description of Organizational Chart (ODC)"
-          }
-        },
-        teamInformation: {
-          title: "Your team",
-          teamChart: {
-            desciption: "Organizational Chart The Quality Assurance (QA) Team",
-            link: "Image Description",
-            ariaLabel: "Image description of Organizational Chart The Quality Assurance (QA) Team"
-          }
+        orgCharts: {
+          link: "Image Description",
+          ariaLabel: "Image description of the organization chart",
+          treeViewInstructions:
+            "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information."
         }
       },
 
@@ -884,28 +868,11 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        backgroundInformation: {
-          title: "Contexte"
-        },
-        organizationalInformation: {
-          title: "FR Your organization"
-        },
-        organizationalStructure: {
-          title: "Structure organisationnelle",
-          orgChart: {
-            desciption: "Organigramme (CDO)",
-            link: "Description de l'image",
-            ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
-          }
-        },
-        teamInformation: {
-          title: "FR Your team",
-          teamChart: {
-            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            link: "Description de l'image",
-            ariaLabel:
-              "FR Description de l'image de l'Organigramme Équipe de l'assurance de la qualité (AQ)"
-          }
+        orgCharts: {
+          link: "Description de l'image",
+          ariaLabel: "Description de l'image de l'Organigramme Équipe",
+          treeViewInstructions:
+            "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information."
         }
       },
 
