@@ -78,6 +78,7 @@ const processAddressBook = testBackground => {
   let enTrees = [];
   let frTrees = [];
 
+  // Iterate through the background material to find any org charts.
   for (let i = 0; i < enBackgroundSections.length; i++) {
     const enSectionContent = enBackgroundSections[i].section_content;
     const frSectionContent = frBackgroundSections[i].section_content;
@@ -98,6 +99,7 @@ const processAddressBook = testBackground => {
     }
   }
 
+  // Org charts are trees that will generate the address book.
   // Flatten the trees and format as an array of names (strings).
   const enAddressBook = recursivelyCreateAddressBook(
     enTrees[0].organizational_structure_tree_child,
