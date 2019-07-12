@@ -24,6 +24,7 @@ import QuitTest from "./components/commons/QuitTest";
 import history from "./components/authentication/history";
 import SelectLanguage from "./SelectLanguage";
 import { LANGUAGES } from "./modules/LocalizeRedux";
+import { TEST_DEFINITION } from "./testDefinition";
 
 const styles = {
   nav: {
@@ -35,7 +36,8 @@ const PATH = {
   login: "/login",
   dashboard: "/dashboard",
   status: "/status",
-  emibSampleTest: "/emib-sample"
+  emibSampleTest: "/emib-sample",
+  test: "/test"
 };
 
 class App extends Component {
@@ -177,7 +179,14 @@ class App extends Component {
                 <Route exact path={PATH.login} component={Home} />
                 {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
                 <Route path={PATH.status} component={Status} />
-                <Route path={PATH.emibSampleTest} component={Emib} />
+                <Route
+                  path={PATH.emibSampleTest}
+                  component={() => <Emib testNameId={TEST_DEFINITION.emib.sampleTest} />}
+                />
+                <Route
+                  path={PATH.test}
+                  component={() => <Emib testNameId={TEST_DEFINITION.emib.pizzaTest} />}
+                />
               </div>
             </Router>
           </div>

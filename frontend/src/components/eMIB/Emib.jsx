@@ -18,11 +18,12 @@ import {
   updateEmailsState
 } from "../../modules/EmibInboxRedux";
 import { getTestContent, updateTestBackgroundState } from "../../modules/LoadTestContentRedux";
-import { TEST_DEFINITION } from "../../testDefinition";
 import QuitConfirmation from "../commons/QuitConfirmation";
+import { TEST_DEFINITION } from "../../testDefinition";
 
 class Emib extends Component {
   static propTypes = {
+    testNameId: PropTypes.string,
     // Provided by Redux
     activateTest: PropTypes.func.isRequired,
     deactivateTest: PropTypes.func.isRequired,
@@ -45,8 +46,11 @@ class Emib extends Component {
   /* Within eMIB Tabs functions
   loading test questions from the APIs on test start */
   handleStartTest = () => {
+    const testNameId = this.props.testNameId
+      ? this.props.testNameId
+      : TEST_DEFINITION.emib.sampleTest;
     // getting questions of the sample test from the api
-    this.props.getTestContent(TEST_DEFINITION.emib.sampleTest).then(response => {
+    this.props.getTestContent(testNameId).then(response => {
       // Load emails.
       // TODO: default language is English for now, but we'll need to put the landing page selected language here instead
       this.props.updateEmailsState(response.questions.en.email);
@@ -99,7 +103,10 @@ class Emib extends Component {
         {this.props.curPage !== PAGES.emibTabs && (
           <ContentContainer hideBanner={false}>
             {this.props.curPage === PAGES.preTest && (
-              <EmibIntroductionPage nextPage={this.props.activateTest} />
+              <EmibIntroductionPage
+                testNameId={this.props.testNameId}
+                nextPage={this.props.activateTest}
+              />
             )}
 
             {this.props.curPage === PAGES.confirm && <Confirmation />}
