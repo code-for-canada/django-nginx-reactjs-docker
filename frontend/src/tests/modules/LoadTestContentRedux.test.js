@@ -4,29 +4,14 @@ import loadTestContent, {
   updateTestBackgroundState
 } from "../../modules/LoadTestContentRedux";
 
-// updateTestBackgroundState
 describe("updateTestBackgroundState action", () => {
   it("should update test background and addressbook state with empty data", () => {
     const action = updateTestBackgroundState({
       en: {
-        background: [
-          {
-            tree_view: [
-              { organizational_structure_tree_child: [] },
-              { team_information_tree_child: [] }
-            ]
-          }
-        ]
+        sections: [{ section: [] }]
       },
       fr: {
-        background: [
-          {
-            tree_view: [
-              { organizational_structure_tree_child: [] },
-              { team_information_tree_child: [] }
-            ]
-          }
-        ]
+        sections: [{ section: [] }]
       }
     });
     expect(loadTestContent(initialState, action)).toEqual({
@@ -34,24 +19,10 @@ describe("updateTestBackgroundState action", () => {
       isMetaLoading: true,
       testBackground: {
         en: {
-          background: [
-            {
-              tree_view: [
-                { organizational_structure_tree_child: [] },
-                { team_information_tree_child: [] }
-              ]
-            }
-          ]
+          sections: [{ section: [] }]
         },
         fr: {
-          background: [
-            {
-              tree_view: [
-                { organizational_structure_tree_child: [] },
-                { team_information_tree_child: [] }
-              ]
-            }
-          ]
+          sections: [{ section: [] }]
         }
       },
       addressBook: { en: [], fr: [] }
@@ -128,7 +99,6 @@ describe("updateTestBackgroundState action", () => {
   });
 });
 
-// updateTestMetaDataState
 describe("updateTestMetaDataState action", () => {
   it("should update testMetaData state with given data", () => {
     const action = updateTestMetaDataState("Hello World");

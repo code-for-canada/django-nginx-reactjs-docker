@@ -101,25 +101,29 @@ const processAddressBook = testBackground => {
 
   // Org charts are trees that will generate the address book.
   // Flatten the trees and format as an array of names (strings).
-  const enAddressBook = recursivelyCreateAddressBook(
-    enTrees[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child"
-  ).concat(
-    recursivelyCreateAddressBook(
-      enTrees[1].team_information_tree_child,
-      "team_information_tree_child"
-    )
-  );
+  let enAddressBook = [];
+  let frAddressBook = [];
 
-  const frAddressBook = recursivelyCreateAddressBook(
-    frTrees[0].organizational_structure_tree_child,
-    "organizational_structure_tree_child"
-  ).concat(
-    recursivelyCreateAddressBook(
-      frTrees[1].team_information_tree_child,
-      "team_information_tree_child"
-    )
-  );
+  if (enTrees.length >= 2) {
+    enAddressBook = recursivelyCreateAddressBook(
+      enTrees[0].organizational_structure_tree_child,
+      "organizational_structure_tree_child"
+    ).concat(
+      recursivelyCreateAddressBook(
+        enTrees[1].team_information_tree_child,
+        "team_information_tree_child"
+      )
+    );
+    frAddressBook = recursivelyCreateAddressBook(
+      frTrees[0].organizational_structure_tree_child,
+      "organizational_structure_tree_child"
+    ).concat(
+      recursivelyCreateAddressBook(
+        frTrees[1].team_information_tree_child,
+        "team_information_tree_child"
+      )
+    );
+  }
 
   // Return the formatted address book for each language.
   return { en: enAddressBook, fr: frAddressBook };
