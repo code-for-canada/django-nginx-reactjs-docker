@@ -1,4 +1,4 @@
-from datetime import datetime
+from django.utils import timezone
 from rest_framework.response import Response
 from custom_models.item import Item
 from custom_models.item_text import ItemText
@@ -53,7 +53,7 @@ def is_test_public(test_name):
 
 
 def retrieve_test_data(request, request_type):
-    query_date_time = datetime.now()
+    query_date_time = timezone.now()
     return retrieve_response_from_name_date(request, query_date_time, request_type)
 
 
@@ -299,7 +299,7 @@ def gen_question_map(query_date_time):
 def get_language_ids(query_date_time):
     # get the active ids for en and fr
     if query_date_time is None:
-        query_date_time = datetime.now()
+        query_date_time = timezone.now()
     en_id = get_language("en-ca", query_date_time)
     fr_id = get_language("fr-ca", query_date_time)
     return en_id, fr_id

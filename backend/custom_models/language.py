@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 # Language model, containing language id and ISO Codes (fr, en; fr-ca, en-ca)
 # This is used to identify items in text tables so that the proper language is displayed
