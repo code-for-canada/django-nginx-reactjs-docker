@@ -13,13 +13,17 @@ class Background extends Component {
 
   render() {
     const sections = this.props.testBackground.sections[0].section;
-    console.log(sections);
     return (
       <SideNavigation
         specs={sections.map(section => {
           return {
             menuString: section.title,
-            body: <BackgroundSection content={section.section_content} />
+            body: (
+              <BackgroundSection
+                currentLanguage={this.props.language}
+                content={section.section_content}
+              />
+            )
           };
         })}
       />

@@ -7,10 +7,10 @@ import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
 import { processTreeContent } from "../../helpers/transformations";
-import emib_sample_test_example_org_chart_en from "../../images/orgCharts/emibSampleTest/org_chart_en.png";
-import emib_sample_test_example_org_chart_en_zoomed from "../../images/orgCharts/emibSampleTest/org_chart_en.png";
-import emib_sample_test_example_org_chart_fr from "../../images/orgCharts/emibSampleTest/org_chart_fr.png";
-import emib_sample_test_example_org_chart_fr_zoomed from "../../images/orgCharts/emibSampleTest/org_chart_fr.png";
+import emib_sample_test_org_chart_en from "../../images/orgCharts/emibSampleTest/org_chart_en.png";
+import emib_sample_test_org_chart_fr from "../../images/orgCharts/emibSampleTest/org_chart_fr.png";
+import emib_sample_test_team_chart_en from "../../images/orgCharts/emibSampleTest/team_chart_en.png";
+import emib_sample_test_team_chart_fr from "../../images/orgCharts/emibSampleTest/team_chart_fr.png";
 
 const styles = {
   testImage: {
@@ -24,7 +24,8 @@ const styles = {
 
 class BackgroundSection extends Component {
   static propTypes = {
-    content: PropTypes.array
+    content: PropTypes.array,
+    currentLanguage: PropTypes.string
   };
 
   state = {
@@ -40,7 +41,7 @@ class BackgroundSection extends Component {
   };
 
   render() {
-    const { content } = this.props;
+    const { content, currentLanguage } = this.props;
     return (
       <div>
         {content.map((contentItem, id) => {
@@ -53,7 +54,23 @@ class BackgroundSection extends Component {
               ? "organizational_structure_tree_child"
               : "team_information_tree_child";
             const treeView = processTreeContent(contentItem[treeType], treeType);
-            //const treeView = [];
+
+            // Determine what image to use.
+            // Todo(caleybrock) - make this more dynamic in the future.
+            let imageSource;
+            if (treeType === "organizational_structure_tree_child") {
+              if (currentLanguage === "en") {
+                imageSource = emib_sample_test_org_chart_en;
+              } else {
+                imageSource = emib_sample_test_org_chart_fr;
+              }
+            } else if (treeType === "team_information_tree_child") {
+              if (currentLanguage === "en") {
+                imageSource = emib_sample_test_team_chart_en;
+              } else {
+                imageSource = emib_sample_test_team_chart_fr;
+              }
+            }
 
             // Tree Views are org charts and require
             // - a title
@@ -64,13 +81,13 @@ class BackgroundSection extends Component {
               <div key={id}>
                 <ImageZoom
                   image={{
-                    src: emib_sample_test_example_org_chart_en,
+                    src: imageSource,
                     alt: contentItem.title,
                     style: styles.testImage,
                     className: "ie-zoom-cursor"
                   }}
                   zoomImage={{
-                    src: emib_sample_test_example_org_chart_en_zoomed,
+                    src: imageSource,
                     alt: contentItem.title,
                     className: "ie-zoom-cursor"
                   }}
