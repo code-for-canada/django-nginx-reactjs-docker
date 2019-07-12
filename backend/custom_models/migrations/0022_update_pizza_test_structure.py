@@ -48,66 +48,58 @@ def reoder_emib_test(apps, schema_editor):
         .last()
     )
 
-    # # get all markdown children
-    # markdown_1 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=1)
-    #     .last()
-    # )
-    # markdown_2 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=2)
-    #     .last()
-    # )
-    # markdown_3 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=3)
-    #     .last()
-    # )
-    # markdown_4 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=4)
-    #     .last()
-    # )
-    # markdown_5 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=5)
-    #     .last()
-    # )
-    # markdown_6 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=6)
-    #     .last()
-    # )
-    # markdown_7 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=7)
-    #     .last()
-    # )
-    # markdown_8 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=8)
-    #     .last()
-    # )
-    # markdown_9 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=9)
-    #     .last()
-    # )
+    # get all markdown children
+    markdown_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=2)
+        .last()
+    )
+    markdown_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=3)
+        .last()
+    )
+    markdown_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=4)
+        .last()
+    )
+    markdown_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=5)
+        .last()
+    )
+    markdown_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=6)
+        .last()
+    )
+    markdown_7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_markdown, order=7)
+        .last()
+    )
 
-    # # get all tree_view children
-    # tree_view_1 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_tree_view, order=1)
-    #     .last()
-    # )
-    # tree_view_2 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_tree_view, order=2)
-    #     .last()
-    # )
+    # get all tree_view children
+    tree_view_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=1)
+        .last()
+    )
+    tree_view_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=background, item_type_id=it_tree_view, order=2)
+        .last()
+    )
+    print(tree_view_1)
+    print(tree_view_2)
 
-    # # create sections
+    # create sections
     # sections = item(parent_id=pizza_item_id, item_type_id=it_sections, order=1)
     # sections.save()
 
