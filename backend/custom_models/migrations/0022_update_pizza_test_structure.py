@@ -116,7 +116,6 @@ def reoder_emib_test(apps, schema_editor):
 
     # TODO create text for sections
     # TODO create text for tree_views
-    # TODO move markdowns
     # TODO expire background
 
     # # bulk create section and tree_view text
@@ -163,48 +162,50 @@ def reoder_emib_test(apps, schema_editor):
     #     ]
     # )
 
-    # # move markdowns and tree_view to the correct parents
-    # # section_1-> markdown_1
-    # # section_2 -> markdown_2
-    # # section_3 -> [markdown_3, tree_view_1]
-    # # section_4 -> [markdown_4, tree_view_2, markdown_5]
-    # markdown_1.parent_id = section_1
-    # markdown_1.order = 1
-    # markdown_1.save()
+    # move markdowns and tree_view to the correct parents
+    # section_1-> markdown_1
+    # section_2 -> markdown_2
+    # section_3 -> [markdown_3, tree_view_1]
+    # section_4 -> [markdown_4, tree_view_2]
+    # section_5 -> markdown_5
+    # section_6 -> [markdown_6, markdown_7]
+    markdown_1.parent_id = section_1
+    markdown_1.order = 1
+    markdown_1.save()
 
-    # markdown_2.parent_id = section_2
-    # markdown_2.order = 1
-    # markdown_2.save()
+    markdown_2.parent_id = section_2
+    markdown_2.order = 1
+    markdown_2.save()
 
-    # markdown_3.parent_id = section_3
-    # markdown_3.order = 1
-    # markdown_3.save()
-    # tree_view_1.parent_id = section_3
-    # tree_view_1.order = 2
-    # tree_view_1.save()
+    markdown_3.parent_id = section_3
+    markdown_3.order = 1
+    markdown_3.save()
+    tree_view_1.parent_id = section_3
+    tree_view_1.order = 2
+    tree_view_1.save()
 
-    # markdown_4.parent_id = section_4
-    # markdown_4.order = 1
-    # markdown_4.save()
-    # tree_view_2.parent_id = section_4
-    # tree_view_2.order = 2
-    # tree_view_2.save()
-    # markdown_5.parent_id = section_4
-    # markdown_5.order = 3
-    # markdown_5.save()
+    markdown_4.parent_id = section_4
+    markdown_4.order = 1
+    markdown_4.save()
+    tree_view_2.parent_id = section_4
+    tree_view_2.order = 2
+    tree_view_2.save()
+
+    markdown_5.parent_id = section_5
+    markdown_5.order = 1
+    markdown_5.save()
+
+    markdown_6.parent_id = section_6
+    markdown_6.order = 1
+    markdown_6.save()
+    markdown_7.parent_id = section_6
+    markdown_7.order = 2
+    markdown_7.save()
 
     # # expire background, markdown_6, markdown_7, markdown_8, markdown_9
     # expiry_date = timezone.now()
     # background.date_to = expiry_date
     # background.save()
-    # markdown_6.date_to = expiry_date
-    # markdown_6.save()
-    # markdown_7.date_to = expiry_date
-    # markdown_7.save()
-    # markdown_8.date_to = expiry_date
-    # markdown_8.save()
-    # markdown_9.date_to = expiry_date
-    # markdown_9.save()
 
 
 def rollback_emib_test(apps, schema_editor):
@@ -288,18 +289,18 @@ def rollback_emib_test(apps, schema_editor):
         .last()
     )
 
-    # # get the tree_views
-    # tree_view_1 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_3, item_type_id=it_tree_view, order=2)
-    #     .last()
-    # )
+    # get the tree_views
+    tree_view_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_3, item_type_id=it_tree_view, order=2)
+        .last()
+    )
 
-    # tree_view_2 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_4, item_type_id=it_tree_view, order=2)
-    #     .last()
-    # )
+    tree_view_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_4, item_type_id=it_tree_view, order=2)
+        .last()
+    )
 
     # # Delete section and tree_view text
     # item_text.objects.using(db_alias).filter(
@@ -341,92 +342,81 @@ def rollback_emib_test(apps, schema_editor):
     #     item_id=tree_view_2, language=l_french
     # ).delete()
 
-    # # get markdowns
-    # markdown_1 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_1, item_type_id=it_markdown, order=1)
-    #     .last()
-    # )
-    # markdown_2 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_2, item_type_id=it_markdown, order=1)
-    #     .last()
-    # )
-    # markdown_3 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_3, item_type_id=it_markdown, order=1)
-    #     .last()
-    # )
-    # markdown_4 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_4, item_type_id=it_markdown, order=1)
-    #     .last()
-    # )
-    # markdown_5 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=section_4, item_type_id=it_markdown, order=3)
-    #     .last()
-    # )
+    # get markdowns
+    markdown_1 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_1, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_2 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_2, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_3 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_3, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_4 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_4, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_5 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_5, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_6 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_6, item_type_id=it_markdown, order=1)
+        .last()
+    )
+    markdown_7 = (
+        item.objects.using(db_alias)
+        .filter(parent_id=section_6, item_type_id=it_markdown, order=2)
+        .last()
+    )
 
-    # markdown_6 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=6)
-    #     .last()
-    # )
-    # markdown_7 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=7)
-    #     .last()
-    # )
-    # markdown_8 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=8)
-    #     .last()
-    # )
-    # markdown_9 = (
-    #     item.objects.using(db_alias)
-    #     .filter(parent_id=background, item_type_id=it_markdown, order=9)
-    #     .last()
-    # )
+    # move markdowns and tree_view to belong to the orignal parents (aka background)
+    markdown_1.parent_id = background
+    markdown_1.order = 1
+    markdown_1.save()
 
-    # # move markdowns and tree_view to belong to the orignal parents (aka background)
-    # markdown_1.parent_id = background
-    # markdown_1.order = 1
-    # markdown_1.save()
+    markdown_2.parent_id = background
+    markdown_2.order = 2
+    markdown_2.save()
 
-    # markdown_2.parent_id = background
-    # markdown_2.order = 2
-    # markdown_2.save()
+    markdown_3.parent_id = background
+    markdown_3.order = 3
+    markdown_3.save()
+    tree_view_1.parent_id = background
+    tree_view_1.order = 1
+    tree_view_1.save()
 
-    # markdown_3.parent_id = background
-    # markdown_3.order = 3
-    # markdown_3.save()
-    # tree_view_1.parent_id = background
-    # tree_view_1.order = 1
-    # tree_view_1.save()
+    markdown_4.parent_id = background
+    markdown_4.order = 4
+    markdown_4.save()
+    tree_view_2.parent_id = background
+    tree_view_2.order = 2
+    tree_view_2.save()
 
-    # markdown_4.parent_id = background
-    # markdown_4.order = 4
-    # markdown_4.save()
-    # tree_view_2.parent_id = background
-    # tree_view_2.order = 2
-    # tree_view_2.save()
-    # markdown_5.parent_id = background
-    # markdown_5.order = 5
-    # markdown_5.save()
+    markdown_5.parent_id = background
+    markdown_5.order = 5
+    markdown_5.save()
+
+    markdown_6.parent_id = background
+    markdown_6.order = 6
+    markdown_6.save()
+    markdown_7.parent_id = background
+    markdown_7.order = 7
+    markdown_7.save()
 
     # # unexpire background, markdown_6, markdown_7, markdown_8, markdown_9
     # # don't need to change anything else with these
     # background.date_to = None
     # background.save()
-    # markdown_6.date_to = None
-    # markdown_6.save()
-    # markdown_7.date_to = None
-    # markdown_7.save()
-    # markdown_8.date_to = None
-    # markdown_8.save()
-    # markdown_9.date_to = None
-    # markdown_9.save()
 
     # Delete sections
     section_1.delete()
