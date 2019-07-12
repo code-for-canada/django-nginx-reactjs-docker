@@ -30,67 +30,96 @@ describe("updateTestBackgroundState action", () => {
   });
 
   it("should update test background/addressbook state", () => {
-    const action = updateTestBackgroundState({
+    const content = {
       en: {
-        background: [
+        sections: [
           {
-            tree_view: [
+            section: [
+              { id: 0, section_content: [{ id: 1, type: "markdown", text: "hello world" }] },
               {
-                organizational_structure_tree_child: [{ text: "Jenna Icard (President)", id: 0 }]
+                id: 2,
+                section_content: [
+                  {
+                    id: 3,
+                    type: "tree_view",
+                    organizational_structure_tree_child: [
+                      {
+                        text: "Jenna Icard (President)",
+                        id: 0,
+                        organizational_structure_tree_child: []
+                      }
+                    ]
+                  }
+                ]
               },
-              { team_information_tree_child: [{ text: "Bob McNutt (Finance Manager)", id: 1 }] }
+              {
+                id: 4,
+                section_content: [
+                  {
+                    id: 5,
+                    type: "tree_view",
+                    team_information_tree_child: [
+                      {
+                        text: "Bob McNutt (Finance Manager)",
+                        id: 1,
+                        team_information_tree_child: []
+                      }
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
       },
       fr: {
-        background: [
+        sections: [
           {
-            tree_view: [
+            section: [
+              { id: 0, section_content: [{ id: 1, type: "markdown", text: "fr hello world" }] },
               {
-                organizational_structure_tree_child: [{ text: "FR Jenna Icard (President)", id: 0 }]
+                id: 2,
+                section_content: [
+                  {
+                    id: 3,
+                    type: "tree_view",
+                    organizational_structure_tree_child: [
+                      {
+                        text: "FR Jenna Icard (President)",
+                        id: 0,
+                        organizational_structure_tree_child: []
+                      }
+                    ]
+                  }
+                ]
               },
               {
-                team_information_tree_child: [{ text: "FR Bob McNutt (Finance Manager)", id: 1 }]
+                id: 4,
+                section_content: [
+                  {
+                    id: 5,
+                    type: "tree_view",
+                    team_information_tree_child: [
+                      {
+                        text: "FR Bob McNutt (Finance Manager)",
+                        id: 1,
+                        team_information_tree_child: []
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
         ]
       }
-    });
+    };
+    const action = updateTestBackgroundState(content);
+
     expect(loadTestContent(initialState, action)).toEqual({
       testMetaData: {},
       isMetaLoading: true,
-      testBackground: {
-        en: {
-          background: [
-            {
-              tree_view: [
-                {
-                  organizational_structure_tree_child: [{ text: "Jenna Icard (President)", id: 0 }]
-                },
-                { team_information_tree_child: [{ text: "Bob McNutt (Finance Manager)", id: 1 }] }
-              ]
-            }
-          ]
-        },
-        fr: {
-          background: [
-            {
-              tree_view: [
-                {
-                  organizational_structure_tree_child: [
-                    { text: "FR Jenna Icard (President)", id: 0 }
-                  ]
-                },
-                {
-                  team_information_tree_child: [{ text: "FR Bob McNutt (Finance Manager)", id: 1 }]
-                }
-              ]
-            }
-          ]
-        }
-      },
+      testBackground: content,
       addressBook: {
         en: ["Jenna Icard (President)", "Bob McNutt (Finance Manager)"],
         fr: ["FR Jenna Icard (President)", "FR Bob McNutt (Finance Manager)"]

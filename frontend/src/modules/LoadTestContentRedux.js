@@ -88,13 +88,8 @@ const processAddressBook = testBackground => {
       const frContentItem = frSectionContent[j];
 
       if (enContentItem.type === "tree_view") {
-        if (enContentItem.organizational_structure_tree_child) {
-          enTrees = enTrees.concat(enContentItem.organizational_structure_tree_child);
-          frTrees = frTrees.concat(frContentItem.organizational_structure_tree_child);
-        } else if (enContentItem.team_information_tree_child) {
-          enTrees = enTrees.concat(enContentItem.team_information_tree_child);
-          frTrees = frTrees.concat(frContentItem.team_information_tree_child);
-        }
+        enTrees = enTrees.concat(enContentItem);
+        frTrees = frTrees.concat(frContentItem);
       }
     }
   }
