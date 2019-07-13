@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClock,
+  faMinusCircle,
+  faPlusCircle,
+  faExclamationCircle
+} from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
+import { getTotalTestTime } from "../../modules/LoadTestContentRedux";
+import Countdown from "react-countdown-now";
 
 const styles = {
   container: {
@@ -32,10 +41,20 @@ const styles = {
   },
   timeOut: {
     color: "#D3080C"
+  },
+  timeOutIcon: {
+    paddingRight: 5
   }
 };
 
 class Timer extends Component {
+  static propTypes = {
+    // Provided by Redux
+    testTimeInMinutes: PropTypes.number
+  };
+
+  componentDidMount = () => {};
+
   state = {
     hidden: false
   };
@@ -44,11 +63,43 @@ class Timer extends Component {
     this.setState({ hidden: !this.state.hidden });
   };
 
-  render() {
-    const { hidden } = this.state;
+  // Renderer callback with condition
+  timeRenderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // TODO(caleybrock) - call function to submit the test.
+    }
+    if (hours === 0 && minutes === 30 && seconds === 0) {
+      // TODO(caleybrock) - call a function to show a warning dialog.
+    }
 
-    //TODO replace with actual timer calculation
-    const isTimeAlmostOut = false;
+    if (hours === 0 && minutes < 30) {
+      // Less than 30 minutes remaining.
+      return (
+        <div>
+          <span className="visually-hidden">{LOCALIZE.emibTest.testFooter.timer.timeLeft}</span>
+          <span style={styles.timeOut}>
+            <FontAwesomeIcon style={styles.timeOutIcon} icon={faExclamationCircle} />
+            {hours}:{minutes}:{seconds}
+          </span>
+        </div>
+      );
+    } else {
+      // Still plenty of time. Render the timer.
+      return (
+        <div>
+          <span className="visually-hidden">{LOCALIZE.emibTest.testFooter.timer.timeLeft}</span>
+          <span>
+            {hours}:{minutes}:{seconds}
+          </span>
+        </div>
+      );
+    }
+  };
+
+  render() {
+    const { hidden, isTimeAlmostOut } = this.state;
+    let { testTimeInMinutes } = this.props;
+    testTimeInMinutes = 30.25;
 
     return (
       <div style={styles.container}>
@@ -62,10 +113,7 @@ class Timer extends Component {
             </span>
           )}
           {!hidden && (
-            <div style={isTimeAlmostOut ? styles.timeOut : {}}>
-              <span className="visually-hidden">{LOCALIZE.emibTest.testFooter.timer.timeLeft}</span>
-              <span id="unit-test-time">00:00:00</span>
-            </div>
+            <Countdown date={Date.now() + testTimeInMinutes * 60000} renderer={this.timeRenderer} />
           )}
         </div>
         <Button
@@ -85,4 +133,13 @@ class Timer extends Component {
   }
 }
 
-export default Timer;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    testTimeInMinutes: getTotalTestTime(state)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Timer);
