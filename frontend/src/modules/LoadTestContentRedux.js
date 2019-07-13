@@ -155,6 +155,11 @@ export const getBackgroundInCurrentLanguage = state => {
   return testBackground[lang].sections[0].section;
 };
 
+// Returns the time allotted for the test in minutes.
+export const getTotalTestTime = state => {
+  return state.loadTestContent.testMetaData.default_time;
+};
+
 export default loadTestContent;
 export {
   initialState,
