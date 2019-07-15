@@ -494,7 +494,9 @@ let LOCALIZE = new LocalizedStrings({
       dobMonthField: "Month field selected",
       dobYearField: "Year field selected",
       emailsList: "emails list",
-      emailContent: "email content"
+      emailContent: "email content",
+      sideNavigationSections: "side navigation sections",
+      sideNavigationSectionContent: "selected side navigation section content"
     },
 
     //Commons
@@ -1037,7 +1039,9 @@ let LOCALIZE = new LocalizedStrings({
       dobMonthField: "FR Month field selected",
       dobYearField: "FR Year field selected",
       emailsList: "FR emails list",
-      emailContent: "FR email content"
+      emailContent: "FR email content",
+      sideNavigationSections: "FR side navigation sections",
+      sideNavigationSectionContent: "FR selected side navigation section content"
     },
 
     //Commons
