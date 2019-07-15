@@ -508,7 +508,8 @@ let LOCALIZE = new LocalizedStrings({
           "After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
           "You will have access to the instructions from within the test. Good luck!",
-        timeUnlimited: "unlimited time"
+        timeUnlimited: "unlimited time",
+        numberMinutes: "{0} minutes"
       },
       submitTestButton: "Submit test",
       quitTest: "Quit Test",
@@ -1048,7 +1049,8 @@ let LOCALIZE = new LocalizedStrings({
           "FR After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
           "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!",
-        timeUnlimited: "FR unlimited time"
+        timeUnlimited: "FR unlimited time",
+        numberMinutes: "{0} minutes"
       },
       submitTestButton: "Envoyer le test",
       quitTest: "Quitter la séance de test",
