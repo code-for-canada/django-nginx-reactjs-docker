@@ -91,4 +91,4 @@ To run Postman tests, you'll need to launch Postman desktop app and setup your e
 
    **Note that if you run the whole collection, you may need to delete some data, since the tests are creating new accounts and you also may need to add authorization for protected APIs.**
 
-   ![postman screenshot](/docs/images/postman-authorization-protected-apis.png)
+   ![postman screenshot](/docs/images/postman-authorization-for-protected-apis.png)
