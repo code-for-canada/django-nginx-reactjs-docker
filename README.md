@@ -1,8 +1,12 @@
 # Project ThunderCAT
 
-This application is a collaboration between Code for Canada (Cohort 2 Fellowship) and the Public Service Commission of Canada (PSC). It is called the Competency Assessment Tool (CAT), and is a platform to host the Electronic Managerial Inbox (eMIB), as assessment developed by the Public Service Commission to assess managerial candidates in the federal government. For more about the project please visit the [project updates blog](https://code-for-canada.github.io/psc-updates/).
+This application is a collaboration between Code for Canada (Cohort 2 Fellowship) and the Public Service Commission of Canada (PSC). It is called the Competency Assessment Tool (CAT) or Outil d’évaluation des compétences (OEC), and is a platform to host the Electronic Managerial Inbox (eMIB), as assessment developed by the Public Service Commission to assess managerial candidates in the federal government. For more about the project please visit the [project updates blog](https://code-for-canada.github.io/psc-updates/).
+
+![Application screenshot](/docs/images/CAT-candidate-home.png)
 
 This application introduced a [new tech stack for the PSC](https://code-for-canada.github.io/psc-updates/update-6/). It has a ReactJS front-end, Django back-end, and PostgreSQL DB. It uses Docker containers and Nginx as a web proxy.
+
+![Tech stack diagram](/docs/images/tech-stack.png)
 
 ## Quick start
 
@@ -27,7 +31,7 @@ Here's a quick overview of the major landmarks:
 
 ### [backend](./backend)
 
-The [Django](https://www.djangoproject.com/) application that manages data and requests through [REST APIs](https://www.django-rest-framework.org/).
+The [Django](https://www.djangoproject.com/) application that manages data and requests through [REST APIs](https://www.django-rest-framework.org/). Urls starting with `/api/` are sent to the backend.
 
 The backend is responsible for the direct interaction with PostgreSQL, data model definition, migrations, and API logic for
 
@@ -52,6 +56,7 @@ The frontend includes components, logic, and API interaction for:
 - [SETUP](./SETUP.md): Instructions to get everything up and running.
 - [TESTING](./TESTING.md): How to be sure nothing broke.
 - [LICENSE](./LICENSE.md): MIT
+- [Docker Setup](./docs/notes-on-docker.md) - diagrams explaining the container setup
 - There are many more topical guides in the [docs](./docs) folder.
 - In addition, several sections of the repository have their own documentation:
   - [frontend/README](./frontend/README.md)
