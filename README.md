@@ -68,6 +68,8 @@ Each pull request runs all tests via [Travis](https://travis-ci.org/), scans all
 
 Note: Heroku disabled as of June 2019.
 
+![CI/CD Diagram](/docs/images/CI-CD.png)
+
 ### Snyk Vulnerabilities
 
 frontend/package.json -> [![Known Vulnerabilities](https://snyk.io/test/github/code-for-canada/project-thundercat/badge.svg?targetFile=frontend%2Fpackage.json)](https://snyk.io/test/github/code-for-canada/project-thundercat?targetFile=frontend%2Fpackage.json)
