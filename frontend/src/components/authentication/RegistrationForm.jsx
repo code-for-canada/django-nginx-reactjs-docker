@@ -592,7 +592,7 @@ class RegistrationForm extends Component {
                   {isValidFirstName && (
                     <div style={styles.iconForNames}>
                       <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
-                      valid
+                      {LOCALIZE.authentication.createAccount.content.inputs.valid}
                     </div>
                   )}
 
@@ -625,6 +625,7 @@ class RegistrationForm extends Component {
                   {isValidLastName && (
                     <div style={styles.iconForNames}>
                       <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                      {LOCALIZE.authentication.createAccount.content.inputs.valid}
                     </div>
                   )}
                   <input

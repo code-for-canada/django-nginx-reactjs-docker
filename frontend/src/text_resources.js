@@ -48,6 +48,7 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
+            valid: "valid",
             firstNameTitle: "First name:",
             firstNameError: "Must be a valid first name",
             lastNameTitle: "Last name:",
@@ -582,6 +583,7 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "FR Un compte est nécessaire pour continuer. To create an account, fill out the following.",
           inputs: {
+            valid: "FR valid",
             firstNameTitle: "Prénom :",
             firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
