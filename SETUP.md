@@ -1,6 +1,6 @@
-## Setup Dev Environment
+# Setup Dev Environment
 
-### Install needed applications
+## Requirements to run the application
 
 Ensure that you have docker and docker-compose installed on your machine, as well as the rest of the Python stack.
 
@@ -20,7 +20,12 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
   - Pip is used to build the backend so that snyk can anaylze it locally
 - Docker
 - Docker Compose
-- Visual Studios Code
+
+## Requirements for development environment
+
+We use VS Code, and specific linting setup when developing the application. This ensures consistency in our code style.
+
+- Visual Studio Code
   - Install
     - Download VS Code for Windows
     - Download location is default: C:\Users\cbrock\AppData\Local\Programs\Microsoft VS Code
@@ -77,25 +82,33 @@ Ensure that you have docker and docker-compose installed on your machine, as wel
       - _"explorer.confirmDragAndDrop": false,_
       - _"javascript.updateImportsOnFileMove.enabled": "always",_
 
-* Snyk
+## Local automated validation
 
-  - Run 'npm install -g snyk' in a terminal
-  - Run 'npm install -g snyk-to-html' in a terminal
-    - This allows for clean output to html files when snyk is run locally
-    - Locally detected vulnerabilities can be documented in the repo and version controlled
-  - See [snyk.md](docs/snyk.md) for an explanation of why snyk is installed locally rather than in the containers
-  - Add the npm directory containing snyk to the path system environment variable (usually "C:\Users\<name>\AppData\Roaming\npm")
-    - Note: You may need to restart your computer for this change to take effect
-  - Create an account on snyk.io
-  - Run 'snyk auth' in a terminal
-  - Login when prompted (either in using the provided URL or in the opened browser)
+Learn more about these tools in [REPORTING.md](./REPORTING.md)
 
-* Accessibility Check Tool (pa11y)
+### Snyk
 
-  - Run 'run 'npm install -g pa11y' in a terminal
-  - Run also 'npm install -g pa11y pa11y-reporter-html' in a terminal
-    - This allows for clean output to html file when this tool is run locally
-    - It detects errors, warnings and notices related to accessibility of the application
-  - Make sure that the npm directory containing pa11y is part of the path system environment variable (usually "C:\Users\<name>\AppData\Roaming\npm")
-    - Should have already been added during Snyk configuration (see above)
-  - Click [here](https://github.com/pa11y/pa11y) to have more details about pa11y.
+[Snyk](https://snyk.io/) is a security scanning tool that helps ensure the security of open source packages.
+
+- Run 'npm install -g snyk' in a terminal
+- Run 'npm install -g snyk-to-html' in a terminal
+  - This allows for clean output to html files when snyk is run locally
+  - Locally detected vulnerabilities can be documented in the repo and version controlled
+- See [snyk.md](docs/snyk.md) for an explanation of why snyk is installed locally rather than in the containers
+- Add the npm directory containing snyk to the path system environment variable (usually "C:\Users\<name>\AppData\Roaming\npm")
+  - Note: You may need to restart your computer for this change to take effect
+- Create an account on snyk.io
+- Run 'snyk auth' in a terminal
+- Login when prompted (either in using the provided URL or in the opened browser)
+
+### Accessibility Check Tool (pa11y)
+
+Accessibility requirements cannot be ensured entirely through automated checks, but they do help ensure we are meeting basic standards. [Pa11y](https://github.com/pa11y/pa11y) is a tool that helps us do this.
+
+- Run 'run 'npm install -g pa11y' in a terminal
+- Run also 'npm install -g pa11y pa11y-reporter-html' in a terminal
+  - This allows for clean output to html file when this tool is run locally
+  - It detects errors, warnings and notices related to accessibility of the application
+- Make sure that the npm directory containing pa11y is part of the path system environment variable (usually "C:\Users\<name>\AppData\Roaming\npm")
+  - Should have already been added during Snyk configuration (see above)
+- Click [here](https://github.com/pa11y/pa11y) to have more details about pa11y.
