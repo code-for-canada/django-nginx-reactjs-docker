@@ -17,6 +17,7 @@ const styles = {
 
 class EmibIntroductionPage extends Component {
   static propTypes = {
+    testNameId: PropTypes.string,
     nextPage: PropTypes.func.isRequired,
     // Provided by Redux
     getTestMetaData: PropTypes.func.isRequired,
@@ -28,7 +29,10 @@ class EmibIntroductionPage extends Component {
 
   // Load current test markdown content.
   componentWillMount = () => {
-    this.props.getTestMetaData(TEST_DEFINITION.emib.sampleTest).then(response => {
+    const testNameId = this.props.testNameId
+      ? this.props.testNameId
+      : TEST_DEFINITION.emib.sampleTest;
+    this.props.getTestMetaData(testNameId).then(response => {
       this.props.updateTestMetaDataState(response);
     });
   };

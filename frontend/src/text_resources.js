@@ -330,27 +330,11 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        backgroundInformation: {
-          title: "Overview"
-        },
-        organizationalInformation: {
-          title: "Your organization"
-        },
-        organizationalStructure: {
-          title: "Organizational Structure",
-          orgChart: {
-            desciption: "Organizational Chart (ODC)",
-            link: "Image Description",
-            ariaLabel: "Image description of Organizational Chart (ODC)"
-          }
-        },
-        teamInformation: {
-          title: "Your team",
-          teamChart: {
-            desciption: "Organizational Chart The Quality Assurance (QA) Team",
-            link: "Image Description",
-            ariaLabel: "Image description of Organizational Chart The Quality Assurance (QA) Team"
-          }
+        orgCharts: {
+          link: "Image Description",
+          ariaLabel: "Image description of the organization chart",
+          treeViewInstructions:
+            "Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information."
         }
       },
 
@@ -526,7 +510,8 @@ let LOCALIZE = new LocalizedStrings({
           "After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
           "You will have access to the instructions from within the test. Good luck!",
-        timeUnlimited: "unlimited time"
+        timeUnlimited: "unlimited time",
+        numberMinutes: "{0} minutes"
       },
       submitTestButton: "Submit test",
       quitTest: "Quit Test",
@@ -886,28 +871,11 @@ let LOCALIZE = new LocalizedStrings({
 
       //Background Page
       background: {
-        backgroundInformation: {
-          title: "Contexte"
-        },
-        organizationalInformation: {
-          title: "FR Your organization"
-        },
-        organizationalStructure: {
-          title: "Structure organisationnelle",
-          orgChart: {
-            desciption: "Organigramme (CDO)",
-            link: "Description de l'image",
-            ariaLabel: "FR Description de l'image de l'Organigramme (CDO)"
-          }
-        },
-        teamInformation: {
-          title: "FR Your team",
-          teamChart: {
-            desciption: "Organigramme Équipe de l'assurance de la qualité (AQ)",
-            link: "Description de l'image",
-            ariaLabel:
-              "FR Description de l'image de l'Organigramme Équipe de l'assurance de la qualité (AQ)"
-          }
+        orgCharts: {
+          link: "Description de l'image",
+          ariaLabel: "Description de l'image de l'Organigramme Équipe",
+          treeViewInstructions:
+            "FR Below is a tree view of the organization chart. Once selected, you can use the arrow keys to navigation, expand, and collapse information."
         }
       },
 
@@ -1085,7 +1053,8 @@ let LOCALIZE = new LocalizedStrings({
           "FR After clicking start, you'll be taken to the 'Background' tab. You will have {0} to complete the test.",
         instructionsAccess:
           "Vous aurez accès aux instructions et à votre bloc-notes durant le test. Bonne chance!",
-        timeUnlimited: "FR unlimited time"
+        timeUnlimited: "FR unlimited time",
+        numberMinutes: "{0} minutes"
       },
       submitTestButton: "Envoyer le test",
       quitTest: "Quitter la séance de test",

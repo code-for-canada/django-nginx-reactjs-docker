@@ -88,12 +88,17 @@ class Dashboard extends Component {
               </tr>
               {/* temporary - to be removed in the future when we'll get assign test functionalities */}
               <tr>
-                <td style={{ ...styles.td, ...styles.borderRight }}>e-MIB test</td>
-                <td style={{ ...styles.td, ...styles.borderRight }}>May 20, 2019</td>
+                <td style={{ ...styles.td, ...styles.borderRight }}>e-MIB Pizza Test</td>
+                <td style={{ ...styles.td, ...styles.borderRight }}>
+                  {new Date()
+                    .toJSON()
+                    .slice(0, 10)
+                    .replace(/-/g, "/")}
+                </td>
                 <td style={{ ...styles.td, ...styles.centerText }}>
-                  <button className="btn btn-primary" style={styles.viewButton}>
+                  <a href="/test" className="btn btn-primary" style={styles.viewButton}>
                     View
-                  </button>
+                  </a>
                 </td>
               </tr>
               {/* ==================================================================================== */}

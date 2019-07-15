@@ -1,4 +1,4 @@
-from datetime import datetime
+from django.utils import timezone
 from rest_framework.response import Response
 from custom_models.item import Item
 from custom_models.item_text import ItemText
@@ -23,8 +23,10 @@ QUESTION_CHILDREN_MAP = {
 }
 
 BACKGROUND_MAP = {
-    "test": ["background"],
+    "test": ["background", "sections"],
     "background": ["markdown", "tree_view"],
+    "sections": ["section"],
+    "section": ["markdown", "tree_view"],
     "tree_view": ["organizational_structure_tree_child", "team_information_tree_child"],
     "organizational_structure_tree_child": ["organizational_structure_tree_child"],
     "team_information_tree_child": ["team_information_tree_child"],
@@ -36,6 +38,8 @@ SINGLE_RETURN = ["subject", "from", "to", "date", "body"]
 # list of items that are leaves in the item tree, but will have multiple siblings
 MULTI_CHILD_LEAF_LIST = [
     "markdown",
+    "sections",
+    "section",
     "organizational_structure_tree_child",
     "team_information_tree_child",
     "team_information_tree_child",
@@ -46,6 +50,12 @@ ALWAYS_SHOW_TEXT = [
     "team_information_tree_child",
 ]
 
+TEXT_AS_TITLE = ["section", "tree_view"]
+
+REPLACE_CHILD_KEY_MAP = {
+    "section": {"markdown": "section_content", "tree_view": "section_content"}
+}
+
 
 def is_test_public(test_name):
     # function that returns true if the test is public and false on the other hand
@@ -53,7 +63,7 @@ def is_test_public(test_name):
 
 
 def retrieve_test_data(request, request_type):
-    query_date_time = datetime.now()
+    query_date_time = timezone.now()
     return retrieve_response_from_name_date(request, query_date_time, request_type)
 
 
@@ -147,13 +157,13 @@ def retrieve_json_from_name_date(test_name, query_date_time, request_type):
     return {}
 
 
-def add_to_map(child_type, child_language_map, language_map):
+def add_to_map(child_type, child_language_map, language_map, map_key):
     if child_type in SINGLE_RETURN:
-        language_map[child_type] = child_language_map
-    elif child_type in language_map.keys():
-        language_map[child_type].append(child_language_map)
+        language_map[map_key] = child_language_map
+    elif map_key in language_map.keys():
+        language_map[map_key].append(child_language_map)
     else:
-        language_map[child_type] = [child_language_map]
+        language_map[map_key] = [child_language_map]
     return language_map
 
 
@@ -207,6 +217,15 @@ def get_items(
     if parent_type in ALWAYS_SHOW_TEXT:
         en_map["text"] = get_text_detail(parent_id, en_id, query_date_time)
         fr_map["text"] = get_text_detail(parent_id, fr_id, query_date_time)
+    if parent_type in TEXT_AS_TITLE:
+        en_title = get_text_detail(parent_id, en_id, query_date_time)
+        if en_title is None:
+            en_title = ""
+        fr_title = get_text_detail(parent_id, fr_id, query_date_time)
+        if fr_title is None:
+            fr_title = ""
+        en_map["title"] = en_title
+        fr_map["title"] = fr_title
     # a map to track the current id for a given child_type
     # this also ensures that the id/order is sequential
     order_map = {}
@@ -229,22 +248,30 @@ def get_items(
                 fr_id,
                 children_map,
             )
+            map_key = child_type
+            if parent_type in REPLACE_CHILD_KEY_MAP.keys():
+                if child_type in REPLACE_CHILD_KEY_MAP[parent_type].keys():
+                    map_key = REPLACE_CHILD_KEY_MAP[parent_type][child_type]
+
             # check if it is in this list; if so, add it to a dict
             if child_type in MULTI_CHILD_LEAF_LIST and not isinstance(child_en, dict):
                 child_en = {"text": child_en}
                 child_fr = {"text": child_fr}
             # if they are dicts, add the id as a key/value pair
             if isinstance(child_en, dict):
-                if child_type in order_map.keys():
-                    order_map[child_type] += 1
+                if map_key in order_map.keys():
+                    order_map[map_key] += 1
                 else:
-                    order_map[child_type] = 0
-                child_id = order_map[child_type]
+                    order_map[map_key] = 0
+                child_id = order_map[map_key]
                 child_en["id"] = child_id
                 child_fr["id"] = child_id
             # add to the return map
-            en_map = add_to_map(child_type, child_en, en_map)
-            fr_map = add_to_map(child_type, child_fr, fr_map)
+            if map_key != child_type:
+                child_en["type"] = child_type
+                child_fr["type"] = child_type
+            en_map = add_to_map(child_type, child_en, en_map, map_key)
+            fr_map = add_to_map(child_type, child_fr, fr_map, map_key)
     # if no children, just return the text
     if not children_items:
         return (
@@ -299,7 +326,7 @@ def gen_question_map(query_date_time):
 def get_language_ids(query_date_time):
     # get the active ids for en and fr
     if query_date_time is None:
-        query_date_time = datetime.now()
+        query_date_time = timezone.now()
     en_id = get_language("en-ca", query_date_time)
     fr_id = get_language("fr-ca", query_date_time)
     return en_id, fr_id
