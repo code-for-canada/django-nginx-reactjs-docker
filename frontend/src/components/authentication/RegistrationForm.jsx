@@ -50,13 +50,18 @@ const styles = {
   tooltipButton: {
     padding: 8
   },
+  checkMark: {
+    marginRight: 6
+  },
   iconForNames: {
     color: "#278400",
     position: "absolute",
     margin: "8px 0 0 175px"
   },
-  checkMark: {
-    marginRight: 6
+  iconForDates: {
+    color: "#278400",
+    position: "absolute",
+    margin: "8px 0 0 150px"
   },
   iconForOtherFields: {
     color: "#278400",
@@ -673,7 +678,7 @@ class RegistrationForm extends Component {
                   </OverlayTrigger>
                 </div>
                 {isValidDobDay && isValidDobMonth && isValidDobYear && (
-                  <div style={styles.iconForNames}>
+                  <div style={styles.iconForDates}>
                     <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
                     {LOCALIZE.authentication.createAccount.content.inputs.valid}
                   </div>
