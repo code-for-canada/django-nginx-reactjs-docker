@@ -7,7 +7,6 @@ import BackgroundSection from "./BackgroundSection";
 
 class Background extends Component {
   static propTypes = {
-    language: PropTypes.string,
     testBackground: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
@@ -32,12 +31,7 @@ class Background extends Component {
         specs={sections.map(section => {
           return {
             menuString: section.title,
-            body: (
-              <BackgroundSection
-                currentLanguage={this.props.language}
-                content={section.section_content}
-              />
-            )
+            body: <BackgroundSection content={section.section_content} />
           };
         })}
       />
@@ -47,7 +41,6 @@ class Background extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    language: state.localize.language,
     testBackground: getBackgroundInCurrentLanguage(state)
   };
 };

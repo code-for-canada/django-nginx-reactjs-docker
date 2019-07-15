@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ReactMarkdown from "react-markdown";
 import LOCALIZE from "../../text_resources";
@@ -7,10 +8,6 @@ import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
 import { processTreeContent } from "../../helpers/transformations";
-import emib_sample_test_org_chart_en from "../../images/orgCharts/emibSampleTest/org_chart_en.png";
-import emib_sample_test_org_chart_fr from "../../images/orgCharts/emibSampleTest/org_chart_fr.png";
-import emib_sample_test_team_chart_en from "../../images/orgCharts/emibSampleTest/team_chart_en.png";
-import emib_sample_test_team_chart_fr from "../../images/orgCharts/emibSampleTest/team_chart_fr.png";
 
 const styles = {
   testImage: {
@@ -25,7 +22,8 @@ const styles = {
 class BackgroundSection extends Component {
   static propTypes = {
     content: PropTypes.array,
-    currentLanguage: PropTypes.string
+    currentLanguage: PropTypes.string,
+    testNameId: PropTypes.string.isRequired
   };
 
   state = {
@@ -41,7 +39,7 @@ class BackgroundSection extends Component {
   };
 
   render() {
-    const { content, currentLanguage } = this.props;
+    const { content, currentLanguage, testNameId } = this.props;
     return (
       <div>
         {content.map((contentItem, id) => {
@@ -56,19 +54,21 @@ class BackgroundSection extends Component {
             const treeView = processTreeContent(contentItem[treeType], treeType);
 
             // Determine what image to use.
-            // Todo(caleybrock) - make this more dynamic in the future.
-            let imageSource;
+            // TODO(caleybrock) - move these images to a secure file server like S3.
+            // They are currently stored in the public folder which means
+            // you don't need to have any authentication to access org chart images.
+            let imageSource = `/orgCharts/${testNameId}/`;
             if (treeType === "organizational_structure_tree_child") {
               if (currentLanguage === "en") {
-                imageSource = emib_sample_test_org_chart_en;
+                imageSource = imageSource + "org_chart_en.png";
               } else {
-                imageSource = emib_sample_test_org_chart_fr;
+                imageSource = imageSource + "org_chart_fr.png";
               }
             } else if (treeType === "team_information_tree_child") {
               if (currentLanguage === "en") {
-                imageSource = emib_sample_test_team_chart_en;
+                imageSource = imageSource + "team_chart_en.png";
               } else {
-                imageSource = emib_sample_test_team_chart_fr;
+                imageSource = imageSource + "team_chart_fr.png";
               }
             }
 
@@ -126,4 +126,14 @@ class BackgroundSection extends Component {
   }
 }
 
-export default BackgroundSection;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentLanguage: state.localize.language,
+    testNameId: state.loadTestContent.testMetaData.test_internal_name
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(BackgroundSection);
