@@ -58,7 +58,7 @@ let LOCALIZE = new LocalizedStrings({
             dobTooltip: "You will only need to provide the last digit for your year of birth.",
             emailTitle: "Email address:",
             emailError: "Must be a valid email address",
-            priOrMilitaryNbrTitle: "PRI or Military number (if applicable):",
+            priOrMilitaryNbrTitle: "PRI or Military number - optional (if applicable):",
             priOrMilitaryNbrError: "Must be a valid PRI or a valid Military number:",
             passwordTitle: "Password:",
             passwordErrors: {
@@ -593,7 +593,7 @@ let LOCALIZE = new LocalizedStrings({
             dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
             emailError: "FR Must be a valid email address",
-            priOrMilitaryNbrTitle: "FR PRI or Military number (if applicable) :",
+            priOrMilitaryNbrTitle: "FR PRI or Military number - optional (if applicable) :",
             priOrMilitaryNbrError: "FR Must be a valid PRI or a valid Military number:",
             passwordTitle: "Mot de passe :",
             passwordErrors: {

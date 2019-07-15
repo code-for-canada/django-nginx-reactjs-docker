@@ -87,9 +87,6 @@ const styles = {
     padding: 0,
     marginTop: 6
   },
-  mandatoryMark: {
-    color: "#923534"
-  },
   privacyNoticeZone: {
     marginTop: 24
   },
@@ -107,8 +104,6 @@ const styles = {
     padding: 0
   }
 };
-
-const MANDATORY_MARK = " *";
 
 class RegistrationForm extends Component {
   static propTypes = {
@@ -592,7 +587,6 @@ class RegistrationForm extends Component {
                     <label id="first-name-title">
                       {LOCALIZE.authentication.createAccount.content.inputs.firstNameTitle}
                     </label>
-                    <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidFirstName && (
                     <div style={styles.iconForNames}>
@@ -625,7 +619,6 @@ class RegistrationForm extends Component {
                     <label id="last-name-title">
                       {LOCALIZE.authentication.createAccount.content.inputs.lastNameTitle}
                     </label>
-                    <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidLastName && (
                     <div style={styles.iconForNames}>
@@ -654,7 +647,6 @@ class RegistrationForm extends Component {
               <div>
                 <div style={styles.inputTitle}>
                   <label>{LOCALIZE.authentication.createAccount.content.inputs.dobDayTitle}</label>
-                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   <OverlayTrigger
                     trigger="click"
                     placement="right"
@@ -739,7 +731,6 @@ class RegistrationForm extends Component {
                   <label id="email-address-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.emailTitle}
                   </label>
-                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidEmail && (
                   <div style={styles.iconForOtherFields}>
@@ -806,7 +797,6 @@ class RegistrationForm extends Component {
                   <label id="password-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordTitle}
                   </label>
-                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   <OverlayTrigger
                     trigger="focus"
                     placement="right"
@@ -953,7 +943,6 @@ class RegistrationForm extends Component {
                   <label id="password-confirmation-title">
                     {LOCALIZE.authentication.createAccount.content.inputs.passwordConfirmationTitle}
                   </label>
-                  <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidPasswordConfirmation && (
                   <div style={styles.iconForOtherFields}>
