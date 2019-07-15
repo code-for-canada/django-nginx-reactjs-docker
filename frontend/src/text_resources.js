@@ -493,11 +493,11 @@ let LOCALIZE = new LocalizedStrings({
       dobDayField: "Day field selected",
       dobMonthField: "Month field selected",
       dobYearField: "Year field selected",
-      emailsList: "emails list",
-      emailContent: "email content",
-      sideNavigationSections: "side navigation sections",
-      sideNavigationSectionContent: "selected side navigation section content",
-      notepadSection: "notepad section"
+      emailsList: "Emails list",
+      emailContent: "Email content",
+      sideNavigationSections: "Side navigation sections",
+      sideNavigationSectionContent: "Selected side navigation section content",
+      notepadSection: "Notepad section"
     },
 
     //Commons
@@ -1039,11 +1039,11 @@ let LOCALIZE = new LocalizedStrings({
       dobDayField: "FR Day field selected",
       dobMonthField: "FR Month field selected",
       dobYearField: "FR Year field selected",
-      emailsList: "FR emails list",
-      emailContent: "FR email content",
-      sideNavigationSections: "FR side navigation sections",
-      sideNavigationSectionContent: "FR selected side navigation section content",
-      notepadSection: "FR notepad section"
+      emailsList: "FR Emails list",
+      emailContent: "FR Email content",
+      sideNavigationSections: "FR Side navigation sections",
+      sideNavigationSectionContent: "FR Selected side navigation section content",
+      notepadSection: "FR Notepad section"
     },
 
     //Commons
