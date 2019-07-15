@@ -61,7 +61,7 @@ const styles = {
   iconForOtherFields: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 484px"
+    margin: "8px 0 0 439px"
   },
   loginBtn: {
     width: 150,
@@ -672,6 +672,12 @@ class RegistrationForm extends Component {
                     </Button>
                   </OverlayTrigger>
                 </div>
+                {isValidDobDay && isValidDobMonth && isValidDobYear && (
+                  <div style={styles.iconForNames}>
+                    <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    {LOCALIZE.authentication.createAccount.content.inputs.valid}
+                  </div>
+                )}
                 <input
                   aria-label={this.dobDayAriaLabelCondition()}
                   aria-invalid={!this.state.isValidDobDay && !isFirstLoad}
@@ -731,7 +737,10 @@ class RegistrationForm extends Component {
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidEmail && (
-                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                  <div style={styles.iconForOtherFields}>
+                    <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    {LOCALIZE.authentication.createAccount.content.inputs.valid}
+                  </div>
                 )}
                 <input
                   className={isValidEmail || isFirstLoad ? validFieldClass : invalidFieldClass}
@@ -764,7 +773,10 @@ class RegistrationForm extends Component {
                   </label>
                 </div>
                 {isValidPriOrMilitaryNbr && (
-                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                  <div style={styles.iconForOtherFields}>
+                    <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    {LOCALIZE.authentication.createAccount.content.inputs.valid}
+                  </div>
                 )}
                 <input
                   className={
@@ -848,7 +860,10 @@ class RegistrationForm extends Component {
                   </OverlayTrigger>
                 </div>
                 {isValidPassword && (
-                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                  <div style={styles.iconForOtherFields}>
+                    <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    {LOCALIZE.authentication.createAccount.content.inputs.valid}
+                  </div>
                 )}
                 <input
                   className={isValidPassword || isFirstLoad ? validFieldClass : invalidFieldClass}
@@ -936,7 +951,10 @@ class RegistrationForm extends Component {
                   <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                 </div>
                 {isValidPasswordConfirmation && (
-                  <FontAwesomeIcon style={styles.iconForOtherFields} icon={faCheckCircle} />
+                  <div style={styles.iconForOtherFields}>
+                    <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    {LOCALIZE.authentication.createAccount.content.inputs.valid}
+                  </div>
                 )}
                 <input
                   className={
