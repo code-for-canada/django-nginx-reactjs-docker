@@ -1,13 +1,13 @@
 # Project ThunderCAT
 
-This application is a collaboration between Code for Canada and the Public Service Commission of Canada.
+This application is a collaboration between Code for Canada (Cohort 2 Fellowship) and the Public Service Commission of Canada (PSC). It is called the Competency Assessment Tool (CAT), and is a platform to host the Electronic Managerial Inbox (eMIB), as assessment developed by the Public Service Commission to assess managerial candidates in the federal government. For more about the project please visit the [project updates blog](https://code-for-canada.github.io/psc-updates/).
 
-This project serves as an example of a deployment front-end (ReactJS) and back-end (Django with PostgreSQL DB) using docker and nginx.
+This application introduced a [new tech stack for the PSC](https://code-for-canada.github.io/psc-updates/update-6/). It has a ReactJS front-end, Django back-end, and PostgreSQL DB. It uses Docker containers and Nginx as a web proxy.
 
 ## Quick start
 
 1. Follow our [setup guide](./SETUP.md) to configure your workstation.
-2. Clone the repository using [git](./doc/contributing-with-git.md)
+2. Clone the repository using [git](./doc/contributing-with-git.md).
 3. `docker-compose up` to build the application if you have not done so already
 4. Open your browser to [http://localhost:80/](http://localhost:80/).
 
@@ -15,8 +15,9 @@ To see a list of all build commands, run `docker` from the repository root or se
 
 ## How to help
 
-Interested in what we're working? [Learn more about us and our project](https://medium.com/code-for-canada/inboxing-clever-db6a334dda7d).
-Want to contribute? Please email caley@codefor.ca.
+Want to contribute? Please email Caley Brock, the Code for Canada Development Fellow at the Public Service Commission, at caley@codefor.ca.
+
+Note: After August 2019, this project will transfer ownership to the PSC, and the repository under [code-for-canada](https://github.com/code-for-canada) with no longer be updated.
 
 ## What's in this repo?
 
@@ -24,20 +25,25 @@ Here's a quick overview of the major landmarks:
 
 ### [backend](./backend)
 
-The server for our CAT platform, a [Django](https://www.djangoproject.com/) application responsible for:
+The [Django](https://www.djangoproject.com/) application that manages data and requests through [REST APIs](https://www.django-rest-framework.org/).
 
-- not much yet, but it will hold our APIs
+The backend is responsible for the direct interaction with PostgreSQL, data model definition, migrations, and API logic for
+
+- user management (candidates and admins) and sessions
+- test definitions (ie versions of test type eMIB) and test security
+- user test results
 
 ### [frontend](./frontend)
 
-The [ReactJS](https://reactjs.org/) application that users will see. It uses the Airbnb Styleguide. It will get built into a static package that we serve through nginx once we deploy it.
-We are using a combination of [React-Bootstrap](https://react-bootstrap.github.io/), [Aurora Design System](https://design.gccollab.ca/component), and custom PSC-specific for our components.
+The [ReactJS](https://reactjs.org/) application that users will see. It uses the Airbnb Styleguide. It will get built into a static package that we serve through nginx in production.
+We are using a combination of [React-Bootstrap](https://react-bootstrap.github.io/), [Aurora Design System](https://design.gccollab.ca/component), and custom PSC-specific styles for our components. It is localized into French and English and is in development to meet accessibility standards.
 
-This includes:
+The frontend includes components, logic, and API interaction for:
 
-- home page
-- status page
-- any prototypes we're working on
+- a home page for logged in an logged out users (/)
+- a status page (/status)
+- a public facing sample eMIB test (/emib-sample)
+- tools for candidates and administrators in real test sessions (/dashboard)
 
 ### Documentation
 
