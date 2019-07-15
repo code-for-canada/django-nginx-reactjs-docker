@@ -22,9 +22,7 @@ const ContentContainer = props => {
       {!props.hideBanner && (
         <img role="presentation" src={mini_banner} alt="" style={styles.banner} />
       )}
-      <div role="complementary" style={styles.container}>
-        {props.children}
-      </div>
+      <div style={styles.container}>{props.children}</div>
     </div>
   );
 };
