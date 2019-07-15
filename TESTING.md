@@ -36,14 +36,14 @@ npm run test
 
 The backend Django application has a set of tests for it's views and uses Postman to manage API tests.
 
-To run the unit tests, you'll need to enter the frontend Docker container.
+To run the unit tests, you'll need to enter the backend Docker container.
 
 In powershell:
 
 ```shell
 docker exec -it project-thundercat_backend_1 /bin/bash
 
-./manage.py test
+./manage.py test tests
 ```
 
 TODO(fnormand01) - Outline how to run Postman tests.

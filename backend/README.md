@@ -30,16 +30,16 @@ See [Django Migrations](https://docs.djangoproject.com/en/2.1/topics/migrations/
 You'll have to login to the backend container to run these scripts: `docker exec -it project-thundercat_backend_1 /bin/bash`
 
 Create new migrations based on the changes you've made to your models:
-`python manage.py makemigrations backend`
+`python manage.py makemigrations custom_models`
 
 Apply migrations that haven't been migrated yet:
-`python manage.py migrate backend`
+`python manage.py migrate` or `python manage.py migrate custom_models` (for only our custom models).
 
 List project's migrations and their status:
-`python manage.py showmigrations backend`
+`python manage.py showmigrations` or `python manage.py showmigrations custom_models` (for only our custom models).
 
 Migrate to a previous specified version:
-`python manage.py migrate <migration_name> backend`
+`python manage.py migrate custom_models <migration_name>`
 
-To rollback all migrations and re-run them:
+To rollback all migrations under custom_models and re-run them:
 `python manage.py migrate custom_models zero` and then `python manage.py migrate custom_models`
