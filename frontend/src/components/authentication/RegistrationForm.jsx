@@ -53,7 +53,10 @@ const styles = {
   iconForNames: {
     color: "#278400",
     position: "absolute",
-    margin: "8px 0 0 220px"
+    margin: "8px 0 0 175px"
+  },
+  checkMark: {
+    marginRight: 6
   },
   iconForOtherFields: {
     color: "#278400",
@@ -587,7 +590,10 @@ class RegistrationForm extends Component {
                     <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidFirstName && (
-                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
+                    <div style={styles.iconForNames}>
+                      <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                      valid
+                    </div>
                   )}
 
                   <input
@@ -617,7 +623,9 @@ class RegistrationForm extends Component {
                     <span style={styles.mandatoryMark}>{MANDATORY_MARK}</span>
                   </div>
                   {isValidLastName && (
-                    <FontAwesomeIcon style={styles.iconForNames} icon={faCheckCircle} />
+                    <div style={styles.iconForNames}>
+                      <FontAwesomeIcon style={styles.checkMark} icon={faCheckCircle} />
+                    </div>
                   )}
                   <input
                     className={isValidLastName || isFirstLoad ? validFieldClass : invalidFieldClass}
