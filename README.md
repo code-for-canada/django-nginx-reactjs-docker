@@ -13,7 +13,9 @@ This application introduced a [new tech stack for the PSC](https://code-for-cana
 
 To see a list of all build commands, run `docker` from the repository root or see our [notes-on-docker](./docs/notes-on-docker.md).
 
-## How to help
+## Contributing
+
+All changes to the application (no matter how small) require a pull request, with a filled out description (there's a template), passing CI runs, and at least one approval code review approval from a team member. Sometimes a designer or PM review is also required.
 
 Want to contribute? Please email Caley Brock, the Code for Canada Development Fellow at the Public Service Commission, at caley@codefor.ca.
 
@@ -55,7 +57,13 @@ The frontend includes components, logic, and API interaction for:
   - [frontend/README](./frontend/README.md)
   - [backend/README](./backend/README.md)
 
-## Snyk Vulnerabilities
+## CI Tools
+
+Each pull request runs all tests via [Travis](https://travis-ci.org/), scans all packages via [Snyk](https://snyk.io/), and deploys the frontend to a review app via [Heroku](https://devcenter.heroku.com/articles/github-integration-review-apps).
+
+Note: Heroku disabled as of June 2019.
+
+### Snyk Vulnerabilities
 
 frontend/package.json -> [![Known Vulnerabilities](https://snyk.io/test/github/code-for-canada/project-thundercat/badge.svg?targetFile=frontend%2Fpackage.json)](https://snyk.io/test/github/code-for-canada/project-thundercat?targetFile=frontend%2Fpackage.json)
 
