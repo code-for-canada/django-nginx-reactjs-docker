@@ -48,6 +48,7 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "An account is required to proceed further. To create an account, fill out the following.",
           inputs: {
+            valid: "valid",
             firstNameTitle: "First name:",
             firstNameError: "Must be a valid first name",
             lastNameTitle: "Last name:",
@@ -57,7 +58,7 @@ let LOCALIZE = new LocalizedStrings({
             dobTooltip: "You will only need to provide the last digit for your year of birth.",
             emailTitle: "Email address:",
             emailError: "Must be a valid email address",
-            priOrMilitaryNbrTitle: "PRI or Military number (if applicable):",
+            priOrMilitaryNbrTitle: "PRI or Military number - optional (if applicable):",
             priOrMilitaryNbrError: "Must be a valid PRI or a valid Military number:",
             passwordTitle: "Password:",
             passwordErrors: {
@@ -587,6 +588,7 @@ let LOCALIZE = new LocalizedStrings({
           description:
             "FR Un compte est nécessaire pour continuer. To create an account, fill out the following.",
           inputs: {
+            valid: "FR valid",
             firstNameTitle: "Prénom :",
             firstNameError: "FR Must be a valid first name",
             lastNameTitle: "Nom de famille :",
@@ -596,7 +598,7 @@ let LOCALIZE = new LocalizedStrings({
             dobTooltip: "FR You will only need to provide the last digit for your year of birth.",
             emailTitle: "Adresse courriel :",
             emailError: "FR Must be a valid email address",
-            priOrMilitaryNbrTitle: "FR PRI or Military number (if applicable) :",
+            priOrMilitaryNbrTitle: "FR PRI or Military number - optional (if applicable) :",
             priOrMilitaryNbrError: "FR Must be a valid PRI or a valid Military number:",
             passwordTitle: "Mot de passe :",
             passwordErrors: {
