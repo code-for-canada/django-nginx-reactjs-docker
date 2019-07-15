@@ -8,6 +8,7 @@ import "../../css/inbox.css";
 import { HEADER_HEIGHT, FOOTER_HEIGHT, emailShape } from "./constants";
 import { readEmail, changeCurrentEmail } from "../../modules/EmibInboxRedux";
 import { Tab, Row, Col, Nav } from "react-bootstrap";
+import LOCALIZE from "../../text_resources";
 
 const INBOX_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
@@ -67,8 +68,8 @@ class Inbox extends Component {
       <div>
         <Tab.Container id="inbox-tabs" defaultActiveKey="first" onSelect={this.changeEmail}>
           <Row>
-            <Col role="complementary" sm={4}>
-              <Nav className="flex-column">
+            <Col role="region" aria-label={LOCALIZE.ariaLabel.emailsList} sm={4}>
+              <Nav role="navigation" className="flex-column">
                 <div style={styles.navIntemContainer}>
                   {emails.map((email, index) => (
                     <Nav.Item key={index} style={styles.navItem}>
@@ -87,7 +88,13 @@ class Inbox extends Component {
                 </div>
               </Nav>
             </Col>
-            <Col sm={8} tabIndex={0} style={styles.contentColumn}>
+            <Col
+              role="region"
+              aria-label={LOCALIZE.ariaLabel.emailContent}
+              sm={8}
+              tabIndex={0}
+              style={styles.contentColumn}
+            >
               <Tab.Content style={styles.bodyContent}>
                 {emails.map((email, index) => (
                   <Tab.Pane eventKey={EVENT_KEYS[index]} key={index}>

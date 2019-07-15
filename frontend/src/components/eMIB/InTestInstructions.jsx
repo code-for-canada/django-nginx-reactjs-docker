@@ -20,7 +20,7 @@ const getInstructionContent = () => {
 class InTestInstructions extends Component {
   render() {
     const specs = getInstructionContent();
-    return <SideNavigation specs={specs} />;
+    return <SideNavigation specs={specs} startIndex={1} />;
   }
 }
 

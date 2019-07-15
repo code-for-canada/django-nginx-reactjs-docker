@@ -492,7 +492,12 @@ let LOCALIZE = new LocalizedStrings({
       passwordConfirmationRequirements: "It must match your password",
       dobDayField: "Day field selected",
       dobMonthField: "Month field selected",
-      dobYearField: "Year field selected"
+      dobYearField: "Year field selected",
+      emailsList: "Emails list",
+      emailContent: "Email content",
+      sideNavigationSections: "Side navigation sections",
+      sideNavigationSectionContent: "Selected side navigation section content",
+      notepadSection: "Notepad section"
     },
 
     //Commons
@@ -1033,7 +1038,12 @@ let LOCALIZE = new LocalizedStrings({
       passwordConfirmationRequirements: "FR It must match your password",
       dobDayField: "FR Day field selected",
       dobMonthField: "FR Month field selected",
-      dobYearField: "FR Year field selected"
+      dobYearField: "FR Year field selected",
+      emailsList: "FR Emails list",
+      emailContent: "FR Email content",
+      sideNavigationSections: "FR Side navigation sections",
+      sideNavigationSectionContent: "FR Selected side navigation section content",
+      notepadSection: "FR Notepad section"
     },
 
     //Commons

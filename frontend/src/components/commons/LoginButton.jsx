@@ -29,22 +29,15 @@ class LoginButton extends Component {
         {!this.props.authenticated && (
           <div>
             {window.location.pathname !== PATH.login && (
-              <a tabIndex="-1" href={PATH.login}>
-                <button style={styles.navlink} className="btn btn-primary">
-                  {LOCALIZE.commons.login}
-                </button>
+              <a tabIndex="-1" href={PATH.login} style={styles.navlink}>
+                <button className="btn btn-primary">{LOCALIZE.commons.login}</button>
               </a>
             )}
           </div>
         )}
         {this.props.authenticated && (
-          <a tabIndex="-1" href={PATH.login}>
-            <button
-              type="button"
-              className="btn btn-primary"
-              style={styles.navlink}
-              onClick={this.handleLogout}
-            >
+          <a tabIndex="-1" href={PATH.login} style={styles.navlink}>
+            <button type="button" className="btn btn-primary" onClick={this.handleLogout}>
               {LOCALIZE.commons.logout}
             </button>
           </a>

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Tab, Row, Col, Nav } from "react-bootstrap";
 import { HEADER_HEIGHT, FOOTER_HEIGHT } from "../eMIB/constants";
 import PropTypes from "prop-types";
+import LOCALIZE from "../../text_resources";
 
 const BODY_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
-const EVENT_KEYS = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh"];
+let EVENT_KEYS = [];
 
 const styles = {
   bodyContent: {
@@ -26,6 +27,7 @@ const styles = {
 
 class SideNavigation extends Component {
   static propTypes = {
+    startIndex: PropTypes.number.isRequired,
     specs: PropTypes.arrayOf(
       PropTypes.shape({
         menuString: PropTypes.string,
@@ -34,27 +36,47 @@ class SideNavigation extends Component {
     ).isRequired
   };
 
+  /* populating the event keys
+  Instructions: from index 1 to index 10
+  Background: from index 11 to index 20*/
+  populateEventKeys = () => {
+    for (let i = 1; i <= 20; i++) {
+      EVENT_KEYS.push(`event_key_${i}`);
+    }
+  };
+
+  componentWillMount = () => {
+    this.populateEventKeys();
+  };
+
   render() {
-    const { specs } = this.props;
+    const { startIndex, specs } = this.props;
     return (
-      <Tab.Container id="left-tabs-navigation" defaultActiveKey="first">
+      <Tab.Container id="left-tabs-navigation" defaultActiveKey={EVENT_KEYS[startIndex]}>
         <Row>
-          <Col role="complementary" sm={3}>
-            <Nav variant="pills" className="flex-column" style={styles.nav}>
+          <Col role="region" aria-label={LOCALIZE.ariaLabel.sideNavigationSections} sm={3}>
+            <Nav role="navigation" variant="pills" className="flex-column" style={styles.nav}>
               {specs.map((item, index) => {
                 return (
                   <Nav.Item key={index}>
-                    <Nav.Link eventKey={EVENT_KEYS[index]}>{specs[index].menuString}</Nav.Link>
+                    <Nav.Link eventKey={EVENT_KEYS[index + startIndex]}>
+                      {specs[index].menuString}
+                    </Nav.Link>
                   </Nav.Item>
                 );
               })}
             </Nav>
           </Col>
-          <Col sm={9} style={styles.tabContainer}>
+          <Col
+            role="region"
+            aria-label={LOCALIZE.ariaLabel.sideNavigationSectionContent}
+            sm={9}
+            style={styles.tabContainer}
+          >
             <Tab.Content tabIndex={0}>
               {specs.map((item, index) => {
                 return (
-                  <Tab.Pane key={index} eventKey={EVENT_KEYS[index]}>
+                  <Tab.Pane key={index} eventKey={EVENT_KEYS[index + startIndex]}>
                     <div style={styles.bodyContent}>{specs[index].body}</div>
                   </Tab.Pane>
                 );
