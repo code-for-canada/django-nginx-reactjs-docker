@@ -77,7 +77,12 @@ class EmibTabs extends Component {
               })}
             </Tabs>
           </Col>
-          <Col md="auto" style={styles.notepad}>
+          <Col
+            role="region"
+            aria-label={LOCALIZE.ariaLabel.notepadSection}
+            md="auto"
+            style={styles.notepad}
+          >
             <Notepad />
           </Col>
         </Row>
