@@ -1,4 +1,6 @@
-# List of Common Debugging
+# Known issues and debugging techniques
+
+## Docker and the command line
 
 - Cannot use VM on windows 10 and Docker at the same time
 - Cannot VPN into network and use Docker (nginex crashes) when working remotely
@@ -9,6 +11,8 @@
 - If you are using DockerToolbox rather than Docker for Windows on Windows, see rm-docker-toolbox-setup
 
 ## Debugging '...\r'
+
+We have seen issues with how new lines are saved in different environemnts depending on where they were created.
 
 Open '.gitattributes'
 
@@ -66,7 +70,7 @@ git checkout frontend/yarn.lock
 
 to checkout the old version and then it should work again.
 
-## Debugging nginx error
+## Cannot start service nginx
 
 On Windows 10, sometimes docker shows the following error when starting up
 

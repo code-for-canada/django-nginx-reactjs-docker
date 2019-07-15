@@ -1,29 +1,31 @@
-# How to setup SNYK Autorun on each PR
+# Setting up SNYK Autorun on each PR
 
 SNYK is a tool that is used to run security scans for known vulnerabilties among the dependencies of an application. It can be automated to scan the latest pull request for changes in dependencies and scan for vuilnerabilites. The results of the latest online run on the master branch are summarized in the [Readme](./Readme.md) file under the 'Snyk Vulnerabilities' section. From this link you can look at a more detailed breakdown of the vulnerabilites and their cause as well as recommended fixed. You can also trigger a re-run. The web based tool does not detect all problems with all containers, so it is recommended to also run locally periodically.
 
 ## Give SNYK access to the repo
- * Create/login to a SNYK account
-   * https://app.snyk.io
-   * [Login] -> GitHub (or other option if relevant)
- * Add relevant project
-    * To add your first repository to Snyk
-      * Select 'Projects' tab
-      * Select 'Add GitHub Repositories to Snyk'
-      * Grant Snyk the required accesses
-      * Select the repository(ies) you want to add to Snyk
-      * Wait for the import to finish
-        * Note, the loading bar will fill up, but you will not be redirected from this page
-    * To add another repository to Snyk
-      * From the Dashboard page, select 'Add more projects'
-      * Select the repository(ies) you want to add to Snyk
-      * Wait for the import to finish
+
+- Create/login to a SNYK account
+  - https://app.snyk.io
+  - [Login] -> GitHub (or other option if relevant)
+- Add relevant project
+  - To add your first repository to Snyk
+    - Select 'Projects' tab
+    - Select 'Add GitHub Repositories to Snyk'
+    - Grant Snyk the required accesses
+    - Select the repository(ies) you want to add to Snyk
+    - Wait for the import to finish
+      - Note, the loading bar will fill up, but you will not be redirected from this page
+  - To add another repository to Snyk
+    - From the Dashboard page, select 'Add more projects'
+    - Select the repository(ies) you want to add to Snyk
+    - Wait for the import to finish
 
 From here you can
- * View reports for all the relvant files
- * Create PRs with the suggested fixes
- * Set how often to run the checks
- * Modify settings for each file
+
+- View reports for all the relvant files
+- Create PRs with the suggested fixes
+- Set how often to run the checks
+- Modify settings for each file
 
 ## Enable SNYK to automatically run checks on every PR
 
@@ -31,11 +33,11 @@ This will allow SNYK to automatically run tests on every PR if there are changes
 
 This is recommended for each file in each project
 
- * For each file
-   * Click settings (the gear)
-   * Scroll down to the **Snyk Test on PRs** section
-   * Select the desired settings
-   * [Update Snyk Test Settings]
+- For each file
+  - Click settings (the gear)
+  - Scroll down to the **Snyk Test on PRs** section
+  - Select the desired settings
+  - [Update Snyk Test Settings]
 
 ## Enable Automatic PRs
 
@@ -44,13 +46,13 @@ Snyk can be configured to automatically notify developers about new vulnerabilit
 It is up to the given organization if they want to enable this kind of functionality.
 
 To enable this:
- * Login to Snyk
- * Select the **Settings** tab
- * Select **Integrations**
- * Under **Automatic pull requests**
-   * Check **Enable automatic pull requests for all projects in this organization
-   * [Update Settings]
 
+- Login to Snyk
+- Select the **Settings** tab
+- Select **Integrations**
+- Under **Automatic pull requests**
+  - Check \*\*Enable automatic pull requests for all projects in this organization
+  - [Update Settings]
 
 # Other Notes on snyk
 
@@ -59,12 +61,13 @@ To enable this:
 In [Setup](../SETUP.md), there are steps outlining how to install snyk locally rather pre-installing it inside the containers
 
 There are a few reasons for this
-  * Npm is currently not installed (nor is it needed) in the backend container
-  * Snyk uses an individual developer's account, rather than a centralized one
-    * Each developer can run snyk 200x in a given month for free
-    * Because each dev runs their own test, and PRs are run against a different account, we can run more tests in a given month
-  * The docker containers need to be build, but they do not need to be running for snyk to be run locally
-    * This means a faster turn around time for checking the results of a security patch locally
+
+- Npm is currently not installed (nor is it needed) in the backend container
+- Snyk uses an individual developer's account, rather than a centralized one
+  - Each developer can run snyk 200x in a given month for free
+  - Because each dev runs their own test, and PRs are run against a different account, we can run more tests in a given month
+- The docker containers need to be build, but they do not need to be running for snyk to be run locally
+  - This means a faster turn around time for checking the results of a security patch locally
 
 ## How to run snyk test locally
 
@@ -95,6 +98,7 @@ snyk test --docker <tag_name_to_test> --file=<path_to_dockerfile>
 ```
 
 Example:
+
 ```shell
 docker build -t backend_snyk_test backend/
 snyk test --docker backend_snyk_test --file=backend/Dockerfile
@@ -118,6 +122,7 @@ snyk test --docker <tag_name_to_test> --file=<path_to_dockerfile>
 ```
 
 Example:
+
 ```shell
 cd backend/
 docker build -t backend_snyk_test .

@@ -18,8 +18,6 @@ Please provide if applicable (browser for `frontend` or any visual way to show a
 
 # Testing
 
-Applicable for all code changes.
-
 Manual steps to reproduce this functionality:
 
 1.  Go to \_\_\_ page.
@@ -27,11 +25,8 @@ Manual steps to reproduce this functionality:
 
 # Checklist
 
-Applicable for all code changes.
-
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] My changes generate no new compiler warnings
-- [ ] My changes generate no new accessibility errors and/or warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have researched WCAG2.1 accessibility standards and met them in this PR (can be navigated using a keyboard)
 - [ ] My changes look good on IE 11+ and Chrome
