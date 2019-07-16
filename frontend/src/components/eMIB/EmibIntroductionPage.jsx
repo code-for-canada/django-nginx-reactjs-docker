@@ -34,6 +34,8 @@ class EmibIntroductionPage extends Component {
       : TEST_DEFINITION.emib.sampleTest;
     this.props.getTestMetaData(testNameId).then(response => {
       this.props.updateTestMetaDataState(response);
+      // focusing on test overview section after content load
+      document.getElementById("test-overview-div").focus();
     });
   };
 
@@ -49,7 +51,7 @@ class EmibIntroductionPage extends Component {
     const markdown_fr = testMetaData.meta_text.fr.overview[0];
 
     return (
-      <div>
+      <div id="test-overview-div" tabIndex={0}>
         {language === LANGUAGES.english && (
           <div>
             <h1 className="green-divider">{test_name_en}</h1>
