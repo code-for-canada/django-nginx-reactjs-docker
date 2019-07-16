@@ -196,6 +196,15 @@ class Status extends Component {
                 />
               </tbody>
             </table>
+            <p>{LOCALIZE.statusPage.additionalRequirements}</p>
+            <ul>
+              <li>{LOCALIZE.statusPage.secureSockets}</li>
+              <li>{LOCALIZE.statusPage.fullScreen}</li>
+              <li>{LOCALIZE.statusPage.copyPaste}</li>
+              <li>{LOCALIZE.statusPage.colorOptions}</li>
+              <li>{LOCALIZE.statusPage.fontsEnabled}</li>
+              <li>{LOCALIZE.statusPage.accessibilityOptions}</li>
+            </ul>
           </div>
         </div>
       </ContentContainer>

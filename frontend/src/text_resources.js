@@ -152,7 +152,15 @@ let LOCALIZE = new LocalizedStrings({
         javaScript: "JavaScript",
         browsers: "IE 10+, Chrome, Firefox",
         screenResolution: "Screen resolution minimum of 1024 x 768"
-      }
+      },
+      additionalRequirements:
+        "Additionally, the following requirements must be met to use this application in a test center.",
+      secureSockets: "Secure Socket Layer (SSL) encryption enabled",
+      fullScreen: "Full-screen mode enabled",
+      copyPaste: "Copy + paste functionality enabled",
+      colorOptions: "IE Internet Options > Colours enabled to users",
+      fontsEnabled: "IE Internet Options > Fonts enabled to users",
+      accessibilityOptions: "IE Internet Options > Accessibility enabled to users"
     },
 
     // Settings Dialog
@@ -693,7 +701,15 @@ let LOCALIZE = new LocalizedStrings({
         javaScript: "JavaScript",
         browsers: "IE 10+, Firefox, Chrome",
         screenResolution: "Résolution d'écran minimum de 1024 x 768"
-      }
+      },
+      additionalRequirements:
+        "FR Additionally, the following requirements must be met to use this application in a test center.",
+      secureSockets: "FR Secure Socket Layer (SSL) encryption enabled",
+      fullScreen: "FR Full-screen mode enabled",
+      copyPaste: "FR Copy + paste functionality enabled",
+      colorOptions: "FR IE Internet Options > Colours enabled to users",
+      fontsEnabled: "FR IE Internet Options > Fonts enabled to users",
+      accessibilityOptions: "FR IE Internet Options > Accessibility enabled to users"
     },
 
     // Settings Dialog
