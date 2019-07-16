@@ -150,8 +150,8 @@ let LOCALIZE = new LocalizedStrings({
       systemStatusTable: {
         title: "System Status",
         javaScript: "JavaScript",
-        browsers: "IE 9+, Chrome, Firefox",
-        screenResolution: "Screen resolution minimum of 800 x 600"
+        browsers: "IE 10+, Chrome, Firefox",
+        screenResolution: "Screen resolution minimum of 1024 x 768"
       }
     },
 
@@ -691,8 +691,8 @@ let LOCALIZE = new LocalizedStrings({
       systemStatusTable: {
         title: "Statut du système",
         javaScript: "JavaScript",
-        browsers: "IE 9+, Firefox, Chrome",
-        screenResolution: "Résolution d'écran minimum de 800 x 600"
+        browsers: "IE 10+, Firefox, Chrome",
+        screenResolution: "Résolution d'écran minimum de 1024 x 768"
       }
     },
 

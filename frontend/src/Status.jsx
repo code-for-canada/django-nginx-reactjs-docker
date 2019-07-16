@@ -78,11 +78,11 @@ class Status extends Component {
     }
   };
 
-  // Validates that the browser is IE 9+, Chrome or Firefox
+  // Validates that the browser is IE 10+, Chrome or Firefox
   // TODO(fnormand): test with IE 8 and make sure it fails
   validateBrowser = () => {
     if (BROWSER_STRING === IE_STRING) {
-      if (IE_VERSION >= 9) {
+      if (IE_VERSION >= 10) {
         this.setState({ browserStatus: true });
       }
     } else if (VALID_BROWSERS.indexOf(BROWSER_STRING) >= 0) {
@@ -90,9 +90,9 @@ class Status extends Component {
     }
   };
 
-  // Validates that screen resolution is at least 800 x 600
+  // Validates that screen resolution is at least 1024 x 768
   checkResolution = () => {
-    if (SCREEN_WIDTH >= 800 && SCREEN_HEIGHT >= 600) {
+    if (SCREEN_WIDTH >= 1024 && SCREEN_HEIGHT >= 768) {
       this.setState({ screenResolutionStatus: true });
     }
   };
