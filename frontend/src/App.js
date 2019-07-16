@@ -105,6 +105,9 @@ class App extends Component {
     const isLanguageSelected = this.props.currentLanguage !== "";
     return (
       <div>
+        <a href="#maincontent" className="visually-hidden">
+          Skip to main content
+        </a>
         {!isLanguageSelected && <SelectLanguage />}
         {isLanguageSelected && (
           <div>
