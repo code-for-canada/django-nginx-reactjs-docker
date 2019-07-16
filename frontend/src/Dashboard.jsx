@@ -51,6 +51,8 @@ class Dashboard extends Component {
 
   // calling getUserInformation on page load to get the first name and last name
   componentDidMount = () => {
+    // focusing on welcome message
+    window.location.hash = "#user-welcome-message-div";
     // should always be defined, except for unit tests
     if (typeof this.props.getUserInformation !== "undefined") {
       this.props.getUserInformation(localStorage.auth_token).then(response => {
@@ -62,7 +64,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div role="region" aria-labelledby="user-welcome-message">
+        <div id="user-welcome-message-div" role="region" aria-labelledby="user-welcome-message">
           <h1 id="user-welcome-message" className="green-divider">
             {LOCALIZE.formatString(
               LOCALIZE.dashboard.title,
