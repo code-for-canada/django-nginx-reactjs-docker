@@ -28,7 +28,7 @@ class Background extends Component {
     const sections = this.props.testBackground;
     return (
       <SideNavigation
-        startIndex={11}
+        startIndex={10}
         specs={sections.map(section => {
           return {
             menuString: section.title,
