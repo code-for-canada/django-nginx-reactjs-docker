@@ -179,17 +179,19 @@ class App extends Component {
                     <Translation variant="outline-light" />
                   </Navbar>
                 )}
-                <Route exact path={PATH.login} component={Home} />
-                {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
-                <Route path={PATH.status} component={Status} />
-                <Route
-                  path={PATH.emibSampleTest}
-                  component={() => <Emib testNameId={TEST_DEFINITION.emib.sampleTest} />}
-                />
-                <Route
-                  path={PATH.test}
-                  component={() => <Emib testNameId={TEST_DEFINITION.emib.pizzaTest} />}
-                />
+                <div id="maincontent">
+                  <Route exact path={PATH.login} component={Home} />
+                  {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
+                  <Route path={PATH.status} component={Status} />
+                  <Route
+                    path={PATH.emibSampleTest}
+                    component={() => <Emib testNameId={TEST_DEFINITION.emib.sampleTest} />}
+                  />
+                  <Route
+                    path={PATH.test}
+                    component={() => <Emib testNameId={TEST_DEFINITION.emib.pizzaTest} />}
+                  />
+                </div>
               </div>
             </Router>
           </div>
