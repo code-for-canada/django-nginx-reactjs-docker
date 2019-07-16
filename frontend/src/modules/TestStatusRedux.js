@@ -39,6 +39,7 @@ const testStatus = (state = initialState, action) => {
         currentPage: PAGES.confirm
       };
     case QUIT_TEST:
+      localStorage.removeItem("catLanguage");
       return {
         ...state,
         isTestActive: false,
