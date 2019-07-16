@@ -62,6 +62,21 @@ The frontend includes components, logic, and API interaction for:
   - [frontend/README](./frontend/README.md)
   - [backend/README](./backend/README.md)
 
+## Technical requirements
+
+This product was built to be capable of running in the following environment, where candidates are tested.
+
+- Internet Explorer 10 or later
+- JavaScript enabled
+- Secure Socket Layer (SSL) encryption enabled
+- Screen resolution must be set to a minimum of 1024 x 768
+- Full-screen mode enabled
+- Copy + paste functionality enabled
+- Accessibility functionality available to users
+  - IE Internet Options > Colours enabled to users
+  - IE Internet Options > Fonts enabled to users
+  - IE Internet Options > Accessibility enabled to users
+
 ## CI Tools
 
 Each pull request runs all tests via [Travis](https://travis-ci.org/), scans all packages via [Snyk](https://snyk.io/), and deploys the frontend to a review app via [Heroku](https://devcenter.heroku.com/articles/github-integration-review-apps).
