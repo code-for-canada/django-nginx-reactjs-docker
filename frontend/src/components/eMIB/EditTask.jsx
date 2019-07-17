@@ -118,6 +118,7 @@ class EditTask extends Component {
                 }
               >
                 <Button
+                  tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
                   style={styles.tooltipButton}
                   variant="link"
@@ -171,6 +172,7 @@ class EditTask extends Component {
                 }
               >
                 <Button
+                  tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
                   variant="link"
