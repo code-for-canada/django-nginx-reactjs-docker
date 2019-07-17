@@ -106,7 +106,7 @@ class App extends Component {
     return (
       <div>
         <a href="#maincontent" className="visually-hidden">
-          Skip to main content
+          {LOCALIZE.mainTabs.skipToMain}
         </a>
         {!isLanguageSelected && <SelectLanguage />}
         {isLanguageSelected && (

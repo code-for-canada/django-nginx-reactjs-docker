@@ -10,7 +10,8 @@ let LOCALIZE = new LocalizedStrings({
       sampleTest: "Sample eMIB",
       statusTabTitle: "Status",
       psc: "Public Service Commission of Canada",
-      canada: "Government of Canada"
+      canada: "Government of Canada",
+      skipToMain: "Skip to main content"
     },
 
     //HTML Page Titles
@@ -550,7 +551,8 @@ let LOCALIZE = new LocalizedStrings({
       sampleTest: "BRG-e pratique",
       statusTabTitle: "Statut",
       psc: "Commission de la fonction publique du Canada",
-      canada: "Gouvernement du canada"
+      canada: "Gouvernement du canada",
+      skipToMain: "FR Skip to main content"
     },
 
     //HTML Page Titles
