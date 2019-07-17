@@ -55,6 +55,8 @@ class Dashboard extends Component {
     if (typeof this.props.getUserInformation !== "undefined") {
       this.props.getUserInformation(localStorage.auth_token).then(response => {
         this.setState({ first_name: response.first_name, last_name: response.last_name });
+        // focusing on welcome message after content load
+        document.getElementById("user-welcome-message-div").focus();
       });
     }
   };
@@ -62,7 +64,12 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div role="region" aria-labelledby="user-welcome-message">
+        <div
+          id="user-welcome-message-div"
+          tabIndex={0}
+          role="region"
+          aria-labelledby="user-welcome-message"
+        >
           <h1 id="user-welcome-message" className="green-divider">
             {LOCALIZE.formatString(
               LOCALIZE.dashboard.title,

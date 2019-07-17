@@ -39,6 +39,8 @@ const testStatus = (state = initialState, action) => {
         currentPage: PAGES.confirm
       };
     case QUIT_TEST:
+      // Ensure local storage is cleaned up once the candidate quit the test.
+      localStorage.removeItem("catLanguage");
       return {
         ...state,
         isTestActive: false,

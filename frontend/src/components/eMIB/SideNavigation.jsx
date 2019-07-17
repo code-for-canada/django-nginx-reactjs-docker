@@ -47,6 +47,11 @@ class SideNavigation extends Component {
 
   componentWillMount = () => {
     this.populateEventKeys();
+    // if background tab is rendered
+    if (this.props.startIndex === 10) {
+      // focusing on side navigation items of background tab
+      document.getElementById("navigation-items-section").focus();
+    }
   };
 
   render() {
@@ -56,15 +61,17 @@ class SideNavigation extends Component {
         <Row>
           <Col role="region" aria-label={LOCALIZE.ariaLabel.sideNavigationSections} sm={3}>
             <Nav role="navigation" variant="pills" className="flex-column" style={styles.nav}>
-              {specs.map((item, index) => {
-                return (
-                  <Nav.Item key={index}>
-                    <Nav.Link eventKey={EVENT_KEYS[index + startIndex]}>
-                      {specs[index].menuString}
-                    </Nav.Link>
-                  </Nav.Item>
-                );
-              })}
+              <div id="navigation-items-section" tabIndex={-1}>
+                {specs.map((item, index) => {
+                  return (
+                    <Nav.Item key={index}>
+                      <Nav.Link eventKey={EVENT_KEYS[index + startIndex]}>
+                        {specs[index].menuString}
+                      </Nav.Link>
+                    </Nav.Item>
+                  );
+                })}
+              </div>
             </Nav>
           </Col>
           <Col
