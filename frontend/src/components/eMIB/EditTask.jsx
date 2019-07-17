@@ -94,6 +94,16 @@ class EditTask extends Component {
     this.props.onChange({ ...this.state, reasonsForAction: newReasonForAction });
   };
 
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerTaskTooltipClick = () => {
+    document.getElementById("your-tasks-tooltip-button").click();
+  };
+
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerReasonTooltipClick = () => {
+    document.getElementById("reasons-for-action-tooltip-button").click();
+  };
+
   render() {
     const { task, reasonsForAction } = this.state;
 
@@ -118,10 +128,12 @@ class EditTask extends Component {
                 }
               >
                 <Button
+                  id="your-tasks-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
                   style={styles.tooltipButton}
                   variant="link"
+                  onBlur={this.triggerTaskTooltipClick}
                 >
                   ?
                 </Button>
@@ -137,6 +149,8 @@ class EditTask extends Component {
                   style={styles.tasks.textArea}
                   value={task}
                   onChange={this.onTaskContentChange}
+                  onFocus={this.triggerTaskTooltipClick}
+                  onBlur={this.triggerTaskTooltipClick}
                 />
               </div>
               {this.state.task.length >= MAX_TASK && (
@@ -172,10 +186,12 @@ class EditTask extends Component {
                 }
               >
                 <Button
+                  id="reasons-for-action-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
                   variant="link"
+                  onBlur={this.triggerReasonTooltipClick}
                 >
                   ?
                 </Button>
@@ -188,6 +204,8 @@ class EditTask extends Component {
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
+                  onFocus={this.triggerReasonTooltipClick}
+                  onBlur={this.triggerReasonTooltipClick}
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (

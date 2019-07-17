@@ -204,6 +204,16 @@ class EditEmail extends Component {
     this.props.onChange({ ...this.state, reasonsForAction: newreasonsForAction });
   };
 
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerResponseTooltipClick = () => {
+    document.getElementById("your-response-tooltip-button").click();
+  };
+
+  // triggers DOB tooltip button click in order to show/hide the tooltip window
+  triggerReasonTooltipClick = () => {
+    document.getElementById("reasons-for-action-tooltip-button").click();
+  };
+
   render() {
     let { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
@@ -361,10 +371,12 @@ class EditEmail extends Component {
                 }
               >
                 <Button
+                  id="your-response-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.emailResponseTooltip}
                   style={styles.tooltipButton}
                   variant="link"
+                  onBlur={this.triggerResponseTooltipClick}
                 >
                   ?
                 </Button>
@@ -377,6 +389,8 @@ class EditEmail extends Component {
                   style={styles.response.textArea}
                   value={emailBody}
                   onChange={this.onEmailBodyChange}
+                  onFocus={this.triggerResponseTooltipClick}
+                  onBlur={this.triggerResponseTooltipClick}
                 />
               </div>
               {this.state.emailBody.length >= MAX_RESPONSE && (
@@ -413,10 +427,12 @@ class EditEmail extends Component {
                 }
               >
                 <Button
+                  id="reasons-for-action-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
                   variant="link"
+                  onBlur={this.triggerReasonTooltipClick}
                 >
                   ?
                 </Button>
@@ -429,6 +445,8 @@ class EditEmail extends Component {
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
+                  onFocus={this.triggerReasonTooltipClick}
+                  onBlur={this.triggerReasonTooltipClick}
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
