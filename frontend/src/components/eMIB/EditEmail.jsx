@@ -353,7 +353,7 @@ class EditEmail extends Component {
                 trigger="click"
                 placement="right"
                 overlay={
-                  <Popover id="reasons-for-action-tooltip">
+                  <Popover>
                     <div>
                       <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}</p>
                     </div>
@@ -403,7 +403,7 @@ class EditEmail extends Component {
                 trigger="click"
                 placement="right"
                 overlay={
-                  <Popover id="reasons-for-action-tooltip">
+                  <Popover>
                     <div>
                       <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}</p>
                     </div>

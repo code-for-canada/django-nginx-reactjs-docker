@@ -159,7 +159,7 @@ class EditTask extends Component {
                 trigger="click"
                 placement="right"
                 overlay={
-                  <Popover id="reasons-for-action-tooltip">
+                  <Popover>
                     <div>
                       <p>{LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}</p>
                     </div>
