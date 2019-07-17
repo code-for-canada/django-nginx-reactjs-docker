@@ -31,7 +31,7 @@ Here's a quick overview of the major landmarks:
 
 ### [backend](./backend)
 
-The [Django](https://www.djangoproject.com/) application that manages data and requests through [REST APIs](https://www.django-rest-framework.org/). Urls starting with `/api/` are sent to the backend.
+The [Django](https://www.djangoproject.com/) application that manages data and requests through [REST APIs](https://www.django-rest-framework.org/). Urls starting with `/api/` are sent to the backend. A tool called [Swagger UI](./docs/swagger.md) has been introduced to this project in order to see and manipulate the available APIs that the backend supports.
 
 The backend is responsible for the direct interaction with PostgreSQL, data model definition, migrations, and API logic for
 
