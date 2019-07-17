@@ -8,6 +8,7 @@ import PopupBox, { BUTTON_TYPE } from "../commons/PopupBox";
 import "../../css/react-medium-image-zoom.css";
 import TreeNode from "../commons/TreeNode";
 import { processTreeContent } from "../../helpers/transformations";
+import { LANGUAGES } from "../../modules/LocalizeRedux";
 
 const styles = {
   testImage: {
@@ -59,13 +60,13 @@ class BackgroundSection extends Component {
             // you don't need to have any authentication to access org chart images.
             let imageSource = `/orgCharts/${testNameId}/`;
             if (treeType === "organizational_structure_tree_child") {
-              if (currentLanguage === "en") {
+              if (currentLanguage === LANGUAGES.english) {
                 imageSource = imageSource + "org_chart_en.png";
               } else {
                 imageSource = imageSource + "org_chart_fr.png";
               }
             } else if (treeType === "team_information_tree_child") {
-              if (currentLanguage === "en") {
+              if (currentLanguage === LANGUAGES.english) {
                 imageSource = imageSource + "team_chart_en.png";
               } else {
                 imageSource = imageSource + "team_chart_fr.png";
