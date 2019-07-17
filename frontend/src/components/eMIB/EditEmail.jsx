@@ -350,7 +350,7 @@ class EditEmail extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="focus"
+                trigger="click"
                 placement="right"
                 overlay={
                   <Popover id="reasons-for-action-tooltip">
@@ -400,7 +400,7 @@ class EditEmail extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="focus"
+                trigger="click"
                 placement="right"
                 overlay={
                   <Popover id="reasons-for-action-tooltip">

@@ -106,7 +106,7 @@ class EditTask extends Component {
                 {LOCALIZE.formatString(LOCALIZE.emibTest.inboxPage.addEmailTask.task, MAX_TASK)}
               </label>
               <OverlayTrigger
-                trigger="focus"
+                trigger="click"
                 placement="right"
                 overlay={
                   <Popover>
@@ -156,7 +156,7 @@ class EditTask extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="focus"
+                trigger="click"
                 placement="right"
                 overlay={
                   <Popover id="reasons-for-action-tooltip">
