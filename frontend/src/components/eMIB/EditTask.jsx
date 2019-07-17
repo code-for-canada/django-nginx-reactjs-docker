@@ -129,6 +129,10 @@ class EditTask extends Component {
                 <textarea
                   id="your-tasks-text-area"
                   maxLength={MAX_TASK}
+                  aria-label={
+                    LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1 +
+                    LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2
+                  }
                   style={styles.tasks.textArea}
                   value={task}
                   onChange={this.onTaskContentChange}
@@ -178,6 +182,7 @@ class EditTask extends Component {
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}
+                  aria-label={LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}

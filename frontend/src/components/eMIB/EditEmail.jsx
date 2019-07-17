@@ -372,6 +372,7 @@ class EditEmail extends Component {
                 <textarea
                   id="your-response-text-area"
                   maxLength={MAX_RESPONSE}
+                  aria-label={LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}
                   style={styles.response.textArea}
                   value={emailBody}
                   onChange={this.onEmailBodyChange}
@@ -422,6 +423,7 @@ class EditEmail extends Component {
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}
+                  aria-label={LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
