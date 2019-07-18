@@ -389,8 +389,6 @@ class EditEmail extends Component {
                   style={styles.response.textArea}
                   value={emailBody}
                   onChange={this.onEmailBodyChange}
-                  onFocus={this.triggerResponseTooltipClick}
-                  onBlur={this.triggerResponseTooltipClick}
                 />
               </div>
               {this.state.emailBody.length >= MAX_RESPONSE && (
@@ -445,8 +443,6 @@ class EditEmail extends Component {
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
-                  onFocus={this.triggerReasonTooltipClick}
-                  onBlur={this.triggerReasonTooltipClick}
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (

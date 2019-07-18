@@ -149,8 +149,6 @@ class EditTask extends Component {
                   style={styles.tasks.textArea}
                   value={task}
                   onChange={this.onTaskContentChange}
-                  onFocus={this.triggerTaskTooltipClick}
-                  onBlur={this.triggerTaskTooltipClick}
                 />
               </div>
               {this.state.task.length >= MAX_TASK && (
@@ -204,8 +202,6 @@ class EditTask extends Component {
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
-                  onFocus={this.triggerReasonTooltipClick}
-                  onBlur={this.triggerReasonTooltipClick}
                 />
               </div>
               {this.state.reasonsForAction.length >= MAX_REASON && (
