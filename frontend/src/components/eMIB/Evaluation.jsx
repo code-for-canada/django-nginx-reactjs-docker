@@ -6,13 +6,13 @@ class Evaluation extends Component {
     return (
       <div>
         <div>
-          <h2>{LOCALIZE.emibTest.howToPage.evaluation.title}</h2>
+          <h1>{LOCALIZE.emibTest.howToPage.evaluation.title}</h1>
           <p>{LOCALIZE.emibTest.howToPage.evaluation.description}</p>
           <div id="keyLeadershipCompetencies">
             <section aria-labelledby="key-leadership-competencies">
-              <h3 id="key-leadership-competencies">
+              <h2 id="key-leadership-competencies">
                 {LOCALIZE.emibTest.howToPage.evaluation.keyLeadershipCompetenciesSection.title}
-              </h3>
+              </h2>
               <div>
                 <p>
                   <span className="font-weight-bold">

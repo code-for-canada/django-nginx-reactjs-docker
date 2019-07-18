@@ -7,7 +7,7 @@ class TipsOnTest extends Component {
   render() {
     return (
       <div>
-        <h2>{LOCALIZE.emibTest.howToPage.tipsOnTest.title}</h2>
+        <h1>{LOCALIZE.emibTest.howToPage.tipsOnTest.title}</h1>
         <p>{LOCALIZE.emibTest.howToPage.tipsOnTest.part1.description}</p>
         <ul>
           <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part1.bullet1}</li>
@@ -15,9 +15,9 @@ class TipsOnTest extends Component {
           <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part1.bullet3}</li>
         </ul>
         <section aria-labelledby="tips-other-important-notes">
-          <h4 id="tips-other-important-notes">
+          <h2 id="tips-other-important-notes">
             {LOCALIZE.emibTest.howToPage.tipsOnTest.part2.title}
-          </h4>
+          </h2>
           <div>
             <ul>
               <li>{LOCALIZE.emibTest.howToPage.tipsOnTest.part2.bullet1}</li>
