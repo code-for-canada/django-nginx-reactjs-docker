@@ -933,7 +933,7 @@ def upload_pizza_test(apps, schema_editor):
             ),
             item_text(
             item_id=i_overview,
-            text_detail="""## Overview
+            text_detail="""# Overview
 
 **Argentina, and more specifically Buenos Aires, received a massive Italian immigration at the turn of the 19th century. Immigrants from Naples and Genoa opened the first pizza bars. Today is March 14th.**
 
@@ -943,7 +943,7 @@ In the following sections, you will find information about JOKECAN and the Rebel
             ),
             item_text(
                 item_id=i_overview,
-                text_detail="""## FR Overview
+                text_detail="""# FR Overview
 
 **FR Argentina, and more specifically Buenos Aires, received a massive Italian immigration at the turn of the 19th century. Immigrants from Naples and Genoa opened the first pizza bars. Today is March 14th.**
 
@@ -953,18 +953,18 @@ FR In the following sections, you will find information about JOKECAN and the Re
             ),
             item_text(
             item_id=i_info_about_jokecan,
-            text_detail="""## Information about JOKECAN
+            text_detail="""# Information about JOKECAN
 
 JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
 
 JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
 
-### Mandate
+## Mandate
 
 - To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
 - To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations),
 
-### Priorities
+## Priorities
 
 In April of the current year, JOKECAN established the following organizational priorities for the next three years.
 
@@ -976,18 +976,18 @@ In April of the current year, JOKECAN established the following organizational p
             ),
             item_text(
                 item_id=i_info_about_jokecan,
-                text_detail="""## FR Information about JOKECAN
+                text_detail="""# FR Information about JOKECAN
 
 FR JOKECAN is a small federal government organization with approximately 100 employees located in Regina. The organization strives to increase pizzaism across Canada. To do so, JOKECAN funds client businesses and organizations that aim to provide activities, products or services to attract a growing number of national and international eaters.
 
 FR JOKECAN aims to have a positive social, economic, cultural and culinary impact on local communities. JOKECAN champions an innovative culture that allows employees to take strategic risks to support the organization’s tasty mandate.
 
-### FR Mandate
+## FR Mandate
 
 - FR To promote pizzaism based on the following values, which are placed at the forefront in Canada: taste, texture, cheeseyness, and crust softness.
 - FR To sustain culinary development in target areas by maintaining mutually beneficial relationships with all stakeholders (e.g. pepperoni partners, eating groups, local pizza associations),
 
-### FR Priorities
+## FR Priorities
 
 FR In April of the current year, JOKECAN established the following organizational priorities for the next three years.
 
@@ -999,9 +999,9 @@ FR In April of the current year, JOKECAN established the following organizationa
             ),
             item_text(
             item_id=i_organizational_structure,
-            text_detail="""## Organizational Structure
+            text_detail="""# Organizational Structure
 
-### Stuffed Crust Division
+## Stuffed Crust Division
 
 The main role of the Stuffed Crust Division is to oversee strategic and administrative activities that support JOKECAN operations. The division has three teams:
 
@@ -1009,7 +1009,7 @@ The main role of the Stuffed Crust Division is to oversee strategic and administ
 - The **Mushroom Team** manages JOKECAN’s budgets, including planning, tasting, and controlling pizzapies. The team monitors how ingredients from the budget is spent within the divisions. They also pay organizations that have been granted curds.
 - The **Ingredient Technology Team** (IT) is responsible for JOKECAN’s ingredient technology infrastructure. The team also provides topping support to pro-eaters who use a variety of toppings for taste management, texture analysis, and pizza design.
 
-### Munching Division
+## Munching Division
 
 The role of the Munching Division is to conduct research and implement marketing strategies to ensure that JOKECAN meets its mandate. The division includes the following teams:
 
@@ -1017,7 +1017,7 @@ The role of the Munching Division is to conduct research and implement marketing
 - The **Hot Pepper Evaluation Team** monitors the effectiveness and efficiency of eaten pizzas. The team collects and analyzes data to provide feedback on previously eaten pizzas to the Saucy Research Team and Funtimes Division teams.
 - The **Saucy Research Team** conducts research into the pizzaism industry needs in different regions. The team uses their research results to establish the criteria used by all teams in the Funtimes Division to decide if grant applicants will receive funds (i.e. funtime criteria). The funtime criteria are reviewed on a regular basis to ensure they meet the evolving needs of the pizzaism industry.
 
-### Funtimes Division
+## Funtimes Division
 
 The main role of the Funtimes Division is to determine if grant applicants will receive a extra cheese grant from JOKECAN. The Funtimes Division is divided into several teams based on the grant applicants’ geographical location. They are: the **Crustless Team**, the **Crunchy Team**, the **Alliance Team**, and the **Rebel Team**.
 """,
@@ -1025,9 +1025,9 @@ The main role of the Funtimes Division is to determine if grant applicants will 
             ),
             item_text(
                 item_id=i_organizational_structure,
-                text_detail="""## FR Organizational Structure
+                text_detail="""# FR Organizational Structure
 
-### FR Stuffed Crust Division
+## FR Stuffed Crust Division
 
 FR The main role of the Stuffed Crust Division is to oversee strategic and administrative activities that support JOKECAN operations. The division has three teams:
 
@@ -1035,7 +1035,7 @@ FR The main role of the Stuffed Crust Division is to oversee strategic and admin
 - FR The **Mushroom Team** manages JOKECAN’s budgets, including planning, tasting, and controlling pizzapies. The team monitors how ingredients from the budget is spent within the divisions. They also pay organizations that have been granted curds.
 - FR The **Ingredient Technology Team** (IT) is responsible for JOKECAN’s ingredient technology infrastructure. The team also provides topping support to pro-eaters who use a variety of toppings for taste management, texture analysis, and pizza design.
 
-### FR Munching Division
+## FR Munching Division
 
 FR The role of the Munching Division is to conduct research and implement marketing strategies to ensure that JOKECAN meets its mandate. The division includes the following teams:
 
@@ -1043,7 +1043,7 @@ FR The role of the Munching Division is to conduct research and implement market
 - FR The **Hot Pepper Evaluation Team** monitors the effectiveness and efficiency of eaten pizzas. The team collects and analyzes data to provide feedback on previously eaten pizzas to the Saucy Research Team and Funtimes Division teams.
 - FR The **Saucy Research Team** conducts research into the pizzaism industry needs in different regions. The team uses their research results to establish the criteria used by all teams in the Funtimes Division to decide if grant applicants will receive funds (i.e. funtime criteria). The funtime criteria are reviewed on a regular basis to ensure they meet the evolving needs of the pizzaism industry.
 
-### FR Funtimes Division
+## FR Funtimes Division
 
 FR The main role of the Funtimes Division is to determine if grant applicants will receive a extra cheese grant from JOKECAN. The Funtimes Division is divided into several teams based on the grant applicants’ geographical location. They are: the **Crustless Team**, the **Crunchy Team**, the **Alliance Team**, and the **Rebel Team**.
 """,
@@ -1051,15 +1051,15 @@ FR The main role of the Funtimes Division is to determine if grant applicants wi
             ),
             item_text(
             item_id=i_info_about_rebel_team,
-            text_detail="""## Information about the Rebel Team
+            text_detail="""# Information about the Rebel Team
 
-### Team Members
+## Team Members
 
-#### Director: Sandra Oh
+### Director: Sandra Oh
 
 Sandra and the other two directors are part of the Senior Procurement Team. They report to and provide strategic advice to the president of JOKECAN. Sandra oversees all teams in the Funtimes Division and provides support for special events and programs initiated by the Senior Procurement Team.
 
-#### Manager: O.B. Wan (you)
+### Manager: O.B. Wan (you)
 
 O.B. is responsible for:
 
@@ -1070,7 +1070,7 @@ O.B. is responsible for:
 
 O.B. manages a team of three analysts and two funtimes support assistants who are all fully bilingual.
 
-#### Quality Assurance Analysts
+### Quality Assurance Analysts
 
 The analysts are responsible for processing grant applications within three tourism sectors based on a predetermined set of funding criteria. The three analysts and their respective sectors are as follows:
 
@@ -1086,7 +1086,7 @@ The analysts are responsible for processing grant applications within three tour
 - Tenure on the Rebel Team: 5 years
 - Performance Notes: Has demonstrated innovative thinking, often suggesting new ideas for improving pizza-making processes.
 
-#### Funtimes support assistants
+### Funtimes support assistants
 
 The funtimes support assistants screen grant applications, inform applicants about missing information, and communicate final decisions. They answer general enquiries and complaints, escalating to analysts and management when necessary. The assistants also provide research support to O.B. and the analysts as needed. Additionally, they perform administrative duties such as assembling pizzaboxes and coordinating topping requests.
 
@@ -1103,15 +1103,15 @@ The funtimes support assistants screen grant applications, inform applicants abo
             ),
             item_text(
                 item_id=i_info_about_rebel_team,
-                text_detail="""## FR Information about the Rebel Team
+                text_detail="""# FR Information about the Rebel Team
 
-### FR Team Members
+## FR Team Members
 
-#### FR Director: Sandra Oh
+### FR Director: Sandra Oh
 
 FR Sandra and the other two directors are part of the Senior Procurement Team. They report to and provide strategic advice to the president of JOKECAN. Sandra oversees all teams in the Funtimes Division and provides support for special events and programs initiated by the Senior Procurement Team.
 
-#### FR Manager: O.B. Wan (you)
+### FR Manager: O.B. Wan (you)
 
 FR O.B. is responsible for:
 
@@ -1122,7 +1122,7 @@ FR O.B. is responsible for:
 
 FR O.B. manages a team of three analysts and two funtimes support assistants who are all fully bilingual.
 
-#### FR Quality Assurance Analysts
+### FR Quality Assurance Analysts
 
 FR The analysts are responsible for processing grant applications within three tourism sectors based on a predetermined set of funding criteria. The three analysts and their respective sectors are as follows:
 
@@ -1138,7 +1138,7 @@ FR The analysts are responsible for processing grant applications within three t
 - FR Tenure on the Rebel Team: 5 years
 - FR Performance Notes: Has demonstrated innovative thinking, often suggesting new ideas for improving pizza-making processes.
 
-#### FR Funtimes support assistants
+### FR Funtimes support assistants
 
 FR The funtimes support assistants screen grant applications, inform applicants about missing information, and communicate final decisions. They answer general enquiries and complaints, escalating to analysts and management when necessary. The assistants also provide research support to O.B. and the analysts as needed. Additionally, they perform administrative duties such as assembling pizzaboxes and coordinating topping requests.
 
@@ -1155,13 +1155,13 @@ FR The funtimes support assistants screen grant applications, inform applicants 
             ),
             item_text(
             item_id=i_rebel_team_resp_and_challenges,
-            text_detail="""## Rebel Team Responsibilities and Challenges
+            text_detail="""# Rebel Team Responsibilities and Challenges
 
-### Processing grant applications
+## Processing grant applications
 
 The Rebel Team grants funds for pizzaism activities, products and services in the Rebel region that meet the funtimes criteria established by the Saucy Research Team for each funtimes program.
 
-#### The Review Process
+### The Review Process
 
 Funtimes decisions are based on a rigorous review process involving the following steps:
 
@@ -1170,7 +1170,7 @@ Funtimes decisions are based on a rigorous review process involving the followin
 3. **Determination of whether funs will be granted.** Grant applications that obtain the required minimum overall score, or higher are approved for funtimes on a first-come, first-served basis as long as there is sufficient slices. Funtimes recommendations are made by analysts who also provide their rationale, and O.B. provides the final approval.
 4. **Communication of the funtimes decisions.** The funtimes support assistants notify applicants of the funtimes decision and its rationale. O.B. communicates approved funtimes decisions to the Funtimes Team.
 
-#### Organizational Restructuring
+### Organizational Restructuring
 
 The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza. The word "pizza" first appeared in a Latin text from the central Italian town of Gaeta, then still part of the Byzantine Empire, in 997 AD; the text states that a tenant of certain property is to give the bishop of Gaeta duodecim pizze ("twelve pizzas") every Christmas Day, and another twelve every Easter Sunday.
 Pizzapies.
@@ -1181,13 +1181,13 @@ Modern pizza evolved from similar flatbread dishes in Naples, Italy, in the 18th
             ),
             item_text(
                 item_id=i_rebel_team_resp_and_challenges,
-                text_detail="""## FR Rebel Team Responsibilities and Challenges
+                text_detail="""# FR Rebel Team Responsibilities and Challenges
 
-### FR Processing grant applications
+## FR Processing grant applications
 
 FR The Rebel Team grants funds for pizzaism activities, products and services in the Rebel region that meet the funtimes criteria established by the Saucy Research Team for each funtimes program.
 
-#### FR The Review Process
+### FR The Review Process
 
 FR Funtimes decisions are based on a rigorous review process involving the following steps:
 
@@ -1196,7 +1196,7 @@ FR Funtimes decisions are based on a rigorous review process involving the follo
 3. **FR Determination of whether funs will be granted.** Grant applications that obtain the required minimum overall score, or higher are approved for funtimes on a first-come, first-served basis as long as there is sufficient slices. Funtimes recommendations are made by analysts who also provide their rationale, and O.B. provides the final approval.
 4. **FR Communication of the funtimes decisions.** The funtimes support assistants notify applicants of the funtimes decision and its rationale. O.B. communicates approved funtimes decisions to the Funtimes Team.
 
-#### FR Organizational Restructuring
+### FR Organizational Restructuring
 
 FR The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza. The word "pizza" first appeared in a Latin text from the central Italian town of Gaeta, then still part of the Byzantine Empire, in 997 AD; the text states that a tenant of certain property is to give the bishop of Gaeta duodecim pizze ("twelve pizzas") every Christmas Day, and another twelve every Easter Sunday.
 FR Pizzapies.
@@ -1207,13 +1207,13 @@ FR Modern pizza evolved from similar flatbread dishes in Naples, Italy, in the 1
             ),
             item_text(
             item_id=i_special_event_1,
-            text_detail="""## Special Event
+            text_detail="""# Special Event
 
 In addition to the general processing of grant applications, JOKECAN also has various grant programs that target the specific needs of diverse regions across Canada. Each of these programs is different, with its own respective lifespan, deadline and budget. One of these programs, a special event called Taste the North, is currently being planned for the Rebel region.
 
 The idea to create Taste the North was conceived a year ago by JOKECAN’s senior management, in response to a steady decline in tourism in the Rebel region. The event will begin in six months, running from April to August. The world's largest pizza was prepared in Rome in December 2012, and measured 1,261 square meters (13,570 square feet). The pizza was named "Ottavia" in homage to the first Roman emperor Octavian Augustus, and was made with a gluten-free base. The world's longest pizza was made in Fontana, California in 2017 and measured 1,930.39 meters (6,333.3 feet). The activities will be hosted by businesses who receive Taste the North grants from JOKECAN or by any other interested organizations located in the Rebel region. The grants come from a budget specific to the special event and separate from the Rebel Team’s regular budget.
 
-### Taste the North Twerking Group
+## Taste the North Twerking Group
 
 A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
 
@@ -1231,13 +1231,13 @@ Other members of the Twerking Group from JOKECAN include the Director of the Cru
             ),
             item_text(
                 item_id=i_special_event_1,
-                text_detail="""## FR Special Event
+                text_detail="""# FR Special Event
 
 FR In addition to the general processing of grant applications, JOKECAN also has various grant programs that target the specific needs of diverse regions across Canada. Each of these programs is different, with its own respective lifespan, deadline and budget. One of these programs, a special event called Taste the North, is currently being planned for the Rebel region.
 
 FR The idea to create Taste the North was conceived a year ago by JOKECAN’s senior management, in response to a steady decline in tourism in the Rebel region. The event will begin in six months, running from April to August. The world's largest pizza was prepared in Rome in December 2012, and measured 1,261 square meters (13,570 square feet). The pizza was named "Ottavia" in homage to the first Roman emperor Octavian Augustus, and was made with a gluten-free base. The world's longest pizza was made in Fontana, California in 2017 and measured 1,930.39 meters (6,333.3 feet). The activities will be hosted by businesses who receive Taste the North grants from JOKECAN or by any other interested organizations located in the Rebel region. The grants come from a budget specific to the special event and separate from the Rebel Team’s regular budget.
 
-### FR Taste the North Twerking Group
+## FR Taste the North Twerking Group
 
 FR A Twerking Group has been put in place by JOKECAN to coordinate the organization of this special event. The Twerking Group members typically meet via videoconference because some members are located in the Rebel region. The Twerking Group discusses issues and plans related to Taste the North. The Twerking Group uses a when it comes to preparation, the dough and ingredients can be combined on any kind of table. With mass production of pizza, the process can be completely automated. Most restaurants still use standard and purpose-built pizza preparation tables. Pizzerias nowadays can even opt for hi tech pizza preparation tables that combine mass production elements with traditional techniques.
 
