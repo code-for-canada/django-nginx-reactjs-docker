@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Tab, Row, Col, Nav } from "react-bootstrap";
+import { Tab, Row, Col, Nav, Button } from "react-bootstrap";
 import { HEADER_HEIGHT, FOOTER_HEIGHT } from "../eMIB/constants";
 import PropTypes from "prop-types";
 import LOCALIZE from "../../text_resources";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const BODY_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)`;
 
@@ -85,7 +87,14 @@ class SideNavigation extends Component {
                 return (
                   <Tab.Pane key={index} eventKey={EVENT_KEYS[index + startIndex]}>
                     <div style={styles.bodyContent}>{specs[index].body}</div>
-                  </Tab.Pane>
+                    <Button
+        >
+          
+          <span>
+                  Next
+          </span>
+          <FontAwesomeIcon icon={faChevronRight} />
+        </Button>                  </Tab.Pane>
                 );
               })}
             </Tab.Content>
