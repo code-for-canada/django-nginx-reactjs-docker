@@ -51,7 +51,7 @@ class EmibIntroductionPage extends Component {
     const markdown_fr = testMetaData.meta_text.fr.overview[0];
 
     return (
-      <div id="test-overview-div" tabIndex={0}>
+      <div role="main" id="test-overview-div" tabIndex={0}>
         {language === LANGUAGES.english && (
           <div>
             <h1 className="green-divider">{test_name_en}</h1>
