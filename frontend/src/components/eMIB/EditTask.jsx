@@ -94,16 +94,6 @@ class EditTask extends Component {
     this.props.onChange({ ...this.state, reasonsForAction: newReasonForAction });
   };
 
-  // triggers DOB tooltip button click in order to show/hide the tooltip window
-  triggerTaskTooltipClick = () => {
-    document.getElementById("your-tasks-tooltip-button").click();
-  };
-
-  // triggers DOB tooltip button click in order to show/hide the tooltip window
-  triggerReasonTooltipClick = () => {
-    document.getElementById("reasons-for-action-tooltip-button").click();
-  };
-
   render() {
     const { task, reasonsForAction } = this.state;
 
@@ -116,7 +106,7 @@ class EditTask extends Component {
                 {LOCALIZE.formatString(LOCALIZE.emibTest.inboxPage.addEmailTask.task, MAX_TASK)}
               </label>
               <OverlayTrigger
-                trigger="click"
+                trigger="focus"
                 placement="right"
                 overlay={
                   <Popover>
@@ -133,7 +123,6 @@ class EditTask extends Component {
                   aria-label={LOCALIZE.ariaLabel.taskTooltip}
                   style={styles.tooltipButton}
                   variant="link"
-                  onBlur={this.triggerTaskTooltipClick}
                 >
                   ?
                 </Button>
@@ -173,7 +162,7 @@ class EditTask extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="click"
+                trigger="focus"
                 placement="right"
                 overlay={
                   <Popover>
@@ -189,7 +178,6 @@ class EditTask extends Component {
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
                   variant="link"
-                  onBlur={this.triggerReasonTooltipClick}
                 >
                   ?
                 </Button>

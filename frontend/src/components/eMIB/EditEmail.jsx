@@ -204,16 +204,6 @@ class EditEmail extends Component {
     this.props.onChange({ ...this.state, reasonsForAction: newreasonsForAction });
   };
 
-  // triggers DOB tooltip button click in order to show/hide the tooltip window
-  triggerResponseTooltipClick = () => {
-    document.getElementById("your-response-tooltip-button").click();
-  };
-
-  // triggers DOB tooltip button click in order to show/hide the tooltip window
-  triggerReasonTooltipClick = () => {
-    document.getElementById("reasons-for-action-tooltip-button").click();
-  };
-
   render() {
     let { emailTo, emailCc, emailBody, reasonsForAction } = this.state;
     const replyChecked = this.state.emailType === EMAIL_TYPE.reply;
@@ -360,7 +350,7 @@ class EditEmail extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="click"
+                trigger="focus"
                 placement="right"
                 overlay={
                   <Popover>
@@ -376,7 +366,6 @@ class EditEmail extends Component {
                   aria-label={LOCALIZE.ariaLabel.emailResponseTooltip}
                   style={styles.tooltipButton}
                   variant="link"
-                  onBlur={this.triggerResponseTooltipClick}
                 >
                   ?
                 </Button>
@@ -414,7 +403,7 @@ class EditEmail extends Component {
                 )}
               </label>
               <OverlayTrigger
-                trigger="click"
+                trigger="focus"
                 placement="right"
                 overlay={
                   <Popover>
@@ -430,7 +419,6 @@ class EditEmail extends Component {
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
                   variant="link"
-                  onBlur={this.triggerReasonTooltipClick}
                 >
                   ?
                 </Button>
