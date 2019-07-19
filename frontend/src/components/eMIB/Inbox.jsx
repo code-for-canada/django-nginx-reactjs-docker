@@ -73,7 +73,7 @@ class Inbox extends Component {
                 <div style={styles.navIntemContainer}>
                   {emails.map((email, index) => (
                     <Nav.Item key={index} style={styles.navItem}>
-                      <Nav.Link eventKey={EVENT_KEYS[index]} style={styles.navLink}>
+                      <Nav.Link role="tab" eventKey={EVENT_KEYS[index]} style={styles.navLink}>
                         <EmailPreview
                           email={email}
                           isRead={this.props.emailSummaries[index].isRead}
@@ -88,13 +88,7 @@ class Inbox extends Component {
                 </div>
               </Nav>
             </Col>
-            <Col
-              role="region"
-              aria-label={LOCALIZE.ariaLabel.emailContent}
-              sm={8}
-              tabIndex={0}
-              style={styles.contentColumn}
-            >
+            <Col role="main" sm={8} tabIndex={0} style={styles.contentColumn}>
               <Tab.Content style={styles.bodyContent}>
                 {emails.map((email, index) => (
                   <Tab.Pane eventKey={EVENT_KEYS[index]} key={index}>
