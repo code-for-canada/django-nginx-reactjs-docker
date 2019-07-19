@@ -350,7 +350,7 @@ class EditEmail extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label id="your-response-text-label" htmlFor="your-response-text-area">
+              <label id="your-response-text-label">
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailResponse.response,
                   MAX_RESPONSE
@@ -405,7 +405,7 @@ class EditEmail extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label id="reasons-for-action-text-label" htmlFor="reasons-for-action-text-area">
+              <label id="reasons-for-action-text-label">
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction,
                   MAX_REASON

@@ -111,11 +111,7 @@ class EditTask extends Component {
         <form>
           <div>
             <div className="font-weight-bold form-group">
-              <label
-                id="your-task-text-label"
-                htmlFor="your-tasks-text-area"
-                style={styles.tasks.title}
-              >
+              <label id="your-task-text-label" style={styles.tasks.title}>
                 {LOCALIZE.formatString(LOCALIZE.emibTest.inboxPage.addEmailTask.task, MAX_TASK)}
               </label>
               <OverlayTrigger
@@ -167,11 +163,7 @@ class EditTask extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label
-                id="reasons-for-action-text-label"
-                htmlFor="reasons-for-action-text-area"
-                style={styles.reasonsForAction.title}
-              >
+              <label id="reasons-for-action-text-label" style={styles.reasonsForAction.title}>
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailTask.reasonsForAction,
                   MAX_REASON
