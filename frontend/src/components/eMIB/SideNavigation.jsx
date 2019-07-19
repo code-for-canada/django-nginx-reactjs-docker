@@ -65,7 +65,7 @@ class SideNavigation extends Component {
                 {specs.map((item, index) => {
                   return (
                     <Nav.Item key={index}>
-                      <Nav.Link eventKey={EVENT_KEYS[index + startIndex]}>
+                      <Nav.Link role="tab" eventKey={EVENT_KEYS[index + startIndex]}>
                         {specs[index].menuString}
                       </Nav.Link>
                     </Nav.Item>
