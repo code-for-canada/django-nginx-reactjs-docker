@@ -100,10 +100,9 @@ class EditTask extends Component {
     // 1 is a popover (which does not exist until clicked on;
     // thus cannot be used for aria-labelled-by)
     // 2 is a visual hidden label which aria-labelled by can use
-    //TODO yourTaskTooltipText needs to be better formatted.....
+    // Note: yourTaskTooltipText is not used for the popup label as it needs additional html
     const yourTaskTooltipText =
       LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1 +
-      " " +
       LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2;
     const reasonsTooltipText = LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip;
 
@@ -125,7 +124,8 @@ class EditTask extends Component {
                 overlay={
                   <Popover>
                     <div>
-                      <p>{yourTaskTooltipText}</p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}</p>
+                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}</p>
                     </div>
                   </Popover>
                 }
