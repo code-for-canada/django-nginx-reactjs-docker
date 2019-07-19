@@ -23,7 +23,7 @@ class Home extends Component {
         </Helmet>
         <ContentContainer>
           {!this.props.authenticated && (
-            <div>
+            <div role="main" tabIndex={0}>
               <h1>{LOCALIZE.homePage.welcomeMsg}</h1>
               <p>{LOCALIZE.homePage.description}</p>
               <div>
@@ -31,7 +31,11 @@ class Home extends Component {
               </div>
             </div>
           )}
-          {this.props.authenticated && <Dashboard />}
+          {this.props.authenticated && (
+            <div role="main">
+              <Dashboard />
+            </div>
+          )}
         </ContentContainer>
       </div>
     );
