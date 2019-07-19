@@ -74,12 +74,7 @@ class SideNavigation extends Component {
               </div>
             </Nav>
           </Col>
-          <Col
-            role="region"
-            aria-label={LOCALIZE.ariaLabel.sideNavigationSectionContent}
-            sm={9}
-            style={styles.tabContainer}
-          >
+          <Col role="main" sm={9} style={styles.tabContainer}>
             <Tab.Content tabIndex={0}>
               {specs.map((item, index) => {
                 return (

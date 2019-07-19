@@ -505,7 +505,6 @@ let LOCALIZE = new LocalizedStrings({
       emailsList: "Emails list",
       emailContent: "Email content",
       sideNavigationSections: "Side navigation sections",
-      sideNavigationSectionContent: "Selected side navigation section content",
       notepadSection: "Notepad section"
     },
 
@@ -1060,7 +1059,6 @@ let LOCALIZE = new LocalizedStrings({
       emailsList: "FR Emails list",
       emailContent: "FR Email content",
       sideNavigationSections: "FR Side navigation sections",
-      sideNavigationSectionContent: "FR Selected side navigation section content",
       notepadSection: "FR Notepad section"
     },
 
