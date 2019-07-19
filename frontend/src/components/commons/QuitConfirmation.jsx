@@ -8,15 +8,19 @@ class QuitConfirmation extends Component {
   };
   render() {
     return (
-      <div id="you-have-quit-the-test-div" tabIndex={0}>
-        <h1 className="green-divider">{LOCALIZE.emibTest.quitConfirmationPage.title}</h1>
-        <p>{LOCALIZE.emibTest.quitConfirmationPage.instructionsRaiseHand}</p>
-        <p>
-          {LOCALIZE.formatString(
-            LOCALIZE.emibTest.quitConfirmationPage.instructionsEmail,
-            <a href="mailto:cfp.cpp-ppc.psc@canada.ca">cfp.cpp-ppc.psc@canada.ca</a>
-          )}
-        </p>
+      <div role="main">
+        <section aria-labelledby="you-have-quit-the-test-div">
+          <div id="you-have-quit-the-test-div" tabIndex={0}>
+            <h1 className="green-divider">{LOCALIZE.emibTest.quitConfirmationPage.title}</h1>
+            <p>{LOCALIZE.emibTest.quitConfirmationPage.instructionsRaiseHand}</p>
+            <p>
+              {LOCALIZE.formatString(
+                LOCALIZE.emibTest.quitConfirmationPage.instructionsEmail,
+                <a href="mailto:cfp.cpp-ppc.psc@canada.ca">cfp.cpp-ppc.psc@canada.ca</a>
+              )}
+            </p>
+          </div>
+        </section>
       </div>
     );
   }
