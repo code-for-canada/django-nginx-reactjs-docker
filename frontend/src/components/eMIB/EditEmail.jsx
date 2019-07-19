@@ -361,7 +361,6 @@ class EditEmail extends Component {
                 }
               >
                 <Button
-                  id="your-response-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.emailResponseTooltip}
                   style={styles.tooltipButton}
@@ -414,7 +413,6 @@ class EditEmail extends Component {
                 }
               >
                 <Button
-                  id="reasons-for-action-tooltip-button"
                   tabIndex="-1"
                   aria-label={LOCALIZE.ariaLabel.reasonsForActionTooltip}
                   style={styles.tooltipButton}
