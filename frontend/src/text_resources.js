@@ -504,7 +504,8 @@ let LOCALIZE = new LocalizedStrings({
       dobYearField: "Year field selected",
       emailsList: "Emails list",
       sideNavigationSections: "Side navigation sections",
-      notepadSection: "Notepad section"
+      notepadSection: "Notepad section",
+      quitTest: "Quit test"
     },
 
     //Commons
@@ -1057,7 +1058,8 @@ let LOCALIZE = new LocalizedStrings({
       dobYearField: "FR Year field selected",
       emailsList: "FR Emails list",
       sideNavigationSections: "FR Side navigation sections",
-      notepadSection: "FR Notepad section"
+      notepadSection: "FR Notepad section",
+      quitTest: "FR Quit test"
     },
 
     //Commons
