@@ -96,13 +96,27 @@ class EditTask extends Component {
 
   render() {
     const { task, reasonsForAction } = this.state;
+    // These two constants are used by 2 seperate labels:
+    // 1 is a popover (which does not exist until clicked on;
+    // thus cannot be used for aria-labelled-by)
+    // 2 is a visual hidden label which aria-labelled by can use
+    //TODO yourTaskTooltipText needs to be better formatted.....
+    const yourTaskTooltipText =
+      LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1 +
+      " " +
+      LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2;
+    const reasonsTooltipText = LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip;
 
     return (
       <div style={styles.container}>
         <form>
           <div>
             <div className="font-weight-bold form-group">
-              <label htmlFor="your-tasks-text-area" style={styles.tasks.title}>
+              <label
+                id="your-task-text-label"
+                htmlFor="your-tasks-text-area"
+                style={styles.tasks.title}
+              >
                 {LOCALIZE.formatString(LOCALIZE.emibTest.inboxPage.addEmailTask.task, MAX_TASK)}
               </label>
               <OverlayTrigger
@@ -111,8 +125,7 @@ class EditTask extends Component {
                 overlay={
                   <Popover>
                     <div>
-                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1}</p>
-                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2}</p>
+                      <p>{yourTaskTooltipText}</p>
                     </div>
                   </Popover>
                 }
@@ -127,13 +140,13 @@ class EditTask extends Component {
                 </Button>
               </OverlayTrigger>
               <div>
+                <label className="visually-hidden" id="your-task-tooltip-text">
+                  {yourTaskTooltipText}
+                </label>
                 <textarea
                   id="your-tasks-text-area"
                   maxLength={MAX_TASK}
-                  aria-label={
-                    LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart1 +
-                    LOCALIZE.emibTest.inboxPage.taskContent.taskTooltipPart2
-                  }
+                  aria-labelledby="your-task-text-label your-task-tooltip-text"
                   style={styles.tasks.textArea}
                   value={task}
                   onChange={this.onTaskContentChange}
@@ -154,7 +167,11 @@ class EditTask extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label htmlFor="reasons-for-action-text-area" style={styles.reasonsForAction.title}>
+              <label
+                id="reasons-for-action-text-label"
+                htmlFor="reasons-for-action-text-area"
+                style={styles.reasonsForAction.title}
+              >
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailTask.reasonsForAction,
                   MAX_REASON
@@ -166,7 +183,7 @@ class EditTask extends Component {
                 overlay={
                   <Popover>
                     <div>
-                      <p>{LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}</p>
+                      <p>{reasonsTooltipText}</p>
                     </div>
                   </Popover>
                 }
@@ -181,10 +198,13 @@ class EditTask extends Component {
                 </Button>
               </OverlayTrigger>
               <div>
+                <label className="visually-hidden" id="reasons-for-action-tooltip-text">
+                  {reasonsTooltipText}
+                </label>
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}
-                  aria-label={LOCALIZE.emibTest.inboxPage.taskContent.reasonsForActionTooltip}
+                  aria-labelledby="reasons-for-action-text-label reasons-for-action-tooltip-text"
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}

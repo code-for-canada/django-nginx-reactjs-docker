@@ -216,6 +216,13 @@ class EditEmail extends Component {
     // Convert emailTo and emailCC from array of indexes to options.
     emailTo = optionsFromIds(this.props.addressBook, emailTo);
     emailCc = optionsFromIds(this.props.addressBook, emailCc);
+    // These two constants are used by 2 seperate labels:
+    // 1 is a popover (which does not exist until clicked on;
+    // thus cannot be used for aria-labelled-by)
+    // 2 is a visual hidden label which aria-labelled by can use
+    const yourResponseTooltipText =
+      LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip;
+    const reasonsTooltipText = LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip;
     return (
       <div style={styles.container}>
         <form>
@@ -343,7 +350,7 @@ class EditEmail extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label htmlFor="your-response-text-area">
+              <label id="your-response-text-label" htmlFor="your-response-text-area">
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailResponse.response,
                   MAX_RESPONSE
@@ -355,7 +362,7 @@ class EditEmail extends Component {
                 overlay={
                   <Popover>
                     <div>
-                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}</p>
+                      <p>{yourResponseTooltipText}</p>
                     </div>
                   </Popover>
                 }
@@ -370,10 +377,13 @@ class EditEmail extends Component {
                 </Button>
               </OverlayTrigger>
               <div>
+                <label className="visually-hidden" id="your-response-tooltip-text">
+                  {yourResponseTooltipText}
+                </label>
                 <textarea
                   id="your-response-text-area"
                   maxLength={MAX_RESPONSE}
-                  aria-label={LOCALIZE.emibTest.inboxPage.addEmailResponse.emailResponseTooltip}
+                  aria-labelledby="your-response-text-label your-response-tooltip-text"
                   style={styles.response.textArea}
                   value={emailBody}
                   onChange={this.onEmailBodyChange}
@@ -395,7 +405,7 @@ class EditEmail extends Component {
           </div>
           <div>
             <div className="font-weight-bold form-group">
-              <label htmlFor="reasons-for-action-text-area">
+              <label id="reasons-for-action-text-label" htmlFor="reasons-for-action-text-area">
                 {LOCALIZE.formatString(
                   LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForAction,
                   MAX_REASON
@@ -407,7 +417,7 @@ class EditEmail extends Component {
                 overlay={
                   <Popover>
                     <div>
-                      <p>{LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}</p>
+                      <p>{reasonsTooltipText}</p>
                     </div>
                   </Popover>
                 }
@@ -422,10 +432,13 @@ class EditEmail extends Component {
                 </Button>
               </OverlayTrigger>
               <div>
+                <label className="visually-hidden" id="reasons-for-action-tooltip-text">
+                  {reasonsTooltipText}
+                </label>
                 <textarea
                   id="reasons-for-action-text-area"
                   maxLength={MAX_REASON}
-                  aria-label={LOCALIZE.emibTest.inboxPage.addEmailResponse.reasonsForActionTooltip}
+                  aria-labelledby="reasons-for-action-text-label reasons-for-action-tooltip-text"
                   style={styles.reasonsForAction.textArea}
                   value={reasonsForAction}
                   onChange={this.onReasonsForActionChange}
