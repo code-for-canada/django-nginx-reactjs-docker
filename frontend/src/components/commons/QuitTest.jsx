@@ -82,7 +82,7 @@ class QuitTest extends Component {
               style={styles.button}
               variant="outline-light"
               onClick={this.openQuitPopup}
-              aria-label={LOCALIZE.emibTest.testFooter.quitTestPopupBox.title}
+              aria-label={LOCALIZE.ariaLabel.quitTest}
             >
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
