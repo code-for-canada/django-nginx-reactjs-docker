@@ -61,7 +61,7 @@ class EmibTabs extends Component {
           <title>{LOCALIZE.titles.simulation}</title>
         </Helmet>
         <Row>
-          <Col role="complementary">
+          <Col>
             <Tabs
               defaultActiveKey="instructions"
               id="emib-tabs"
@@ -78,7 +78,7 @@ class EmibTabs extends Component {
             </Tabs>
           </Col>
           <Col
-            role="region"
+            role="complementary"
             aria-label={LOCALIZE.ariaLabel.notepadSection}
             md="auto"
             style={styles.notepad}

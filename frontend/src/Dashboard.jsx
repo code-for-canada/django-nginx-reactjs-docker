@@ -64,12 +64,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div
-          id="user-welcome-message-div"
-          tabIndex={0}
-          role="region"
-          aria-labelledby="user-welcome-message"
-        >
+        <div id="user-welcome-message-div" tabIndex={0} aria-labelledby="user-welcome-message">
           <h1 id="user-welcome-message" className="green-divider">
             {LOCALIZE.formatString(
               LOCALIZE.dashboard.title,
@@ -112,7 +107,11 @@ class Dashboard extends Component {
             </tbody>
           </table>
           {/* temporary - to be removed in the future when we'll get assign test functionalities */}
-          <p>* This is a temporary row. It is just to show the global view of this page</p>
+          <div role="region" aria-labelledby="temporary-row-msg">
+            <p id="temporary-row-msg">
+              * This is a temporary row. It is just to show the global view of this page
+            </p>
+          </div>
           {/* ==================================================================================== */}
         </div>
       </div>
