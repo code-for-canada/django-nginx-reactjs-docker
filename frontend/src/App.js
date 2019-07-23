@@ -25,6 +25,7 @@ import history from "./components/authentication/history";
 import SelectLanguage from "./SelectLanguage";
 import { LANGUAGES } from "./modules/LocalizeRedux";
 import { TEST_DEFINITION } from "./testDefinition";
+import NavAndContent from "./NavAndContent";
 
 const styles = {
   nav: {
@@ -43,7 +44,6 @@ const PATH = {
 class App extends Component {
   static propTypes = {
     // Props from Redux
-    currentLanguage: PropTypes.string,
     isTestActive: PropTypes.bool.isRequired,
     authenticateAction: PropTypes.func,
     logoutAction: PropTypes.func
@@ -101,96 +101,30 @@ class App extends Component {
 
   render() {
     const { isTestActive } = this.props;
-    // Determine if user has already selected a language.
-    const isLanguageSelected = this.props.currentLanguage !== "";
     return (
       <div>
-        {!isLanguageSelected && <SelectLanguage />}
-        {isLanguageSelected && (
-          <div>
-            <Helmet>
-              <html lang={this.props.currentLanguage} />
-              <title>{LOCALIZE.titles.CAT}</title>
-            </Helmet>
-            <Router history={history}>
-              <div>
-                {!isTestActive && (
-                  <div role="navigation">
-                    <Navbar bg="light" variant="light" style={styles.nav}>
-                      <img
-                        alt={LOCALIZE.mainTabs.psc}
-                        src={
-                          this.props.currentLanguage === LANGUAGES.french
-                            ? psc_logo_fr
-                            : psc_logo_en
-                        }
-                        width="370"
-                        className="d-inline-block align-top"
-                      />
-                      <img
-                        alt={LOCALIZE.mainTabs.canada}
-                        src={canada_logo}
-                        width="120"
-                        className="d-inline-block align-top"
-                      />
-                    </Navbar>
-                    <Navbar bg="light" variant="light" style={styles.nav}>
-                      <Nav>
-                        {!this.props.authenticated && (
-                          <Nav.Link href={PATH.login}>
-                            {LOCALIZE.mainTabs.homeTabTitleUnauthenticated}
-                          </Nav.Link>
-                        )}
-                        {this.props.authenticated && (
-                          <Nav.Link href={PATH.dashboard}>
-                            {LOCALIZE.mainTabs.homeTabTitleAuthenticated}
-                          </Nav.Link>
-                        )}
-                        <Nav.Link href="/emib-sample">{LOCALIZE.mainTabs.sampleTest}</Nav.Link>
-                      </Nav>
-                      <Nav>
-                        <LoginButton />
-                        <Settings variant="secondary" />
-                        <Translation variant="secondary" />
-                      </Nav>
-                    </Navbar>
-                  </div>
-                )}
-                {isTestActive && (
-                  <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand>
-                      <img
-                        alt=""
-                        src={
-                          this.props.currentLanguage === LANGUAGES.french
-                            ? psc_logo_light_fr
-                            : psc_logo_light_en
-                        }
-                        width="370"
-                        className="d-inline-block align-top"
-                      />
-                    </Navbar.Brand>
-                    <Nav className="mr-auto" />
-                    <QuitTest />
-                    <Settings variant="outline-light" />
-                    <Translation variant="outline-light" />
-                  </Navbar>
-                )}
-                <Route exact path={PATH.login} component={Home} />
-                {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
-                <Route path={PATH.status} component={Status} />
-                <Route
-                  path={PATH.emibSampleTest}
-                  component={() => <Emib testNameId={TEST_DEFINITION.emib.sampleTest} />}
-                />
-                <Route
-                  path={PATH.test}
-                  component={() => <Emib testNameId={TEST_DEFINITION.emib.pizzaTest} />}
-                />
-              </div>
-            </Router>
-          </div>
-        )}
+        <div>
+          <Helmet>
+            <html lang={this.props.currentLanguage} />
+            <title>{LOCALIZE.titles.CAT}</title>
+          </Helmet>
+          <Router history={history}>
+            <div>
+              <NavAndContent />
+              <Route exact path={PATH.login} component={Home} />
+              {this.props.authenticated && <Route path={PATH.dashboard} component={Home} />}
+              <Route path={PATH.status} component={Status} />
+              <Route
+                path={PATH.emibSampleTest}
+                component={() => <Emib testNameId={TEST_DEFINITION.emib.sampleTest} />}
+              />
+              <Route
+                path={PATH.test}
+                component={() => <Emib testNameId={TEST_DEFINITION.emib.pizzaTest} />}
+              />
+            </div>
+          </Router>
+        </div>
       </div>
     );
   }
@@ -199,7 +133,6 @@ export { PATH };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentLanguage: state.localize.language,
     isTestActive: state.testStatus.isTestActive,
     authenticated: state.login.authenticated
   };
