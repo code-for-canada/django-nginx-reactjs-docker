@@ -1,5 +1,9 @@
 # Project ThunderCAT
 
+The project now moved over to Gitlab.com : https://gitlab.com/thundercat-transition/project-thundercat
+
+Please join us there!
+
 This application is a collaboration between Code for Canada (Cohort 2 Fellowship) and the Public Service Commission of Canada (PSC). It is called the Competency Assessment Tool (CAT) or Outil d’évaluation des compétences (OEC), and is a platform to host the Electronic Managerial Inbox (eMIB), as assessment developed by the Public Service Commission to assess managerial candidates in the federal government. For more about the project please visit the [project updates blog](https://code-for-canada.github.io/psc-updates/).
 
 ![Application screenshot](/docs/images/CAT-candidate-home.png)
