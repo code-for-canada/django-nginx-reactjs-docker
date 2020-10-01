@@ -25,4 +25,4 @@ django-debug-toolbar==1.11
 djoser==1.5.1
 
 # latest compatible version of urllib3
-urllib3==1.24.3
+urllib3==1.25.9
