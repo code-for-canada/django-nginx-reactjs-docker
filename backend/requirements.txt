@@ -2,7 +2,7 @@ certifi==2019.3.9
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
-django==2.1.7
+django==2.1.9
 djangorestframework-simplejwt==4.3.0
 django-cors-headers==3.0.0
 django-rest-swagger==2.2.0
@@ -25,4 +25,4 @@ django-debug-toolbar==1.11
 djoser==1.5.1
 
 # latest compatible version of urllib3
-urllib3==1.24.3
+urllib3==1.25.9
