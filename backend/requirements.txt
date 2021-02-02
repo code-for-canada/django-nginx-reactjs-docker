@@ -2,7 +2,7 @@ certifi==2019.3.9
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
-django==2.1.7
+django==2.2.18
 djangorestframework-simplejwt==4.3.0
 django-cors-headers==3.0.0
 django-rest-swagger==2.2.0
@@ -11,7 +11,7 @@ djangorestframework==3.9.3
 djangorestframework-jwt==1.11.0
 idna==2.8
 itypes==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.0
 openapi-codec==1.3.2
 PyJWT==1.7.1
