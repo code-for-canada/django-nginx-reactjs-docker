@@ -21,7 +21,7 @@ simplejson==3.16.0
 sqlparse==0.3.0
 uritemplate==3.0.0
 psycopg2-binary==2.8.2
-django-debug-toolbar==1.11
+django-debug-toolbar==1.11.1
 djoser==1.5.1
 
 # latest compatible version of urllib3
