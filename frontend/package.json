@@ -12,7 +12,7 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "history": "^4.7.2",
     "lodash": "^4.17.14",
-    "newman": "^4.5.0",
+    "newman": "^5.2.1",
     "prop-types": "^15.5.8",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
