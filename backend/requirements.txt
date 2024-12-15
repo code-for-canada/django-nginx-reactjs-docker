@@ -22,7 +22,7 @@ sqlparse==0.3.0
 uritemplate==3.0.0
 psycopg2-binary==2.8.2
 django-debug-toolbar==1.11
-djoser==1.5.1
+djoser==2.3.0
 
 # latest compatible version of urllib3
 urllib3==1.24.3
